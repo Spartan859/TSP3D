@@ -7,7 +7,7 @@
 """A class to collect and evaluate language grounding results."""
 
 import torch
-
+import pdb
 from models.losses import _iou3d_par, box_cxcyczwhd_to_xyzxyz
 import utils.misc as misc
 import numpy as np
@@ -64,7 +64,29 @@ class GroundingEvaluator:
         self.gts.update({'vd50': 1e-14, 'vid50': 1e-14})
         self.gts.update({'hard50': 1e-14, 'easy50': 1e-14})
         self.gts.update({'multi50': 1e-14, 'unique50': 1e-14})
-
+        self.dets.update({'mask_3dcnn': 0})
+        self.gts.update({'mask_3dcnn': 1e-14})
+        self.dets.update({'vd_mask': 0})
+        self.dets.update({'vid_mask': 0})
+        self.dets.update({'hard_mask': 0})
+        self.dets.update({'easy_mask': 0})
+        self.dets.update({'unique_mask': 0})
+        self.dets.update({'multi_mask': 0})
+        self.dets.update({'vd50_mask': 0})
+        self.dets.update({'vid50_mask': 0})
+        self.dets.update({'hard50_mask': 0})
+        self.dets.update({'easy50_mask': 0})
+        self.dets.update({'unique50_mask': 0})
+        self.dets.update({'multi50_mask': 0})
+        self.dets.update({'overall_mask': 0})
+        self.dets.update({'overall50_mask': 0})
+        self.gts.update({'vd_num': 0})
+        self.gts.update({'vid_num': 0})
+        self.gts.update({'easy_num': 0})
+        self.gts.update({'hard_num': 0})
+        self.gts.update({'unique_num': 0})
+        self.gts.update({'multi_num': 0})
+        
     def print_stats(self):
         """Print accumulated accuracies."""
         mode_str = {
@@ -93,6 +115,27 @@ class GroundingEvaluator:
         for field in ['easy50', 'hard50', 'vd50', 'vid50', 'unique50', 'multi50']:
             print(field, self.dets[field] / self.gts[field])
 
+        print('mask@mean iou')
+        print('mask_3dcnn' + ' ' +  str(self.dets['mask_3dcnn'] / self.gts['mask_3dcnn']))
+        print('mask@kiou')
+        if self.gts['unique_num'] != 0:
+            print('unique25' + ' ' +  str(self.dets['unique_mask'] / self.gts['unique_num']))
+            print('unique50' + ' ' +  str(self.dets['unique50_mask'] / self.gts['unique_num']))
+            print('multi25' + ' ' +  str(self.dets['multi_mask'] / self.gts['multi_num']))
+            print('multi50' + ' ' +  str(self.dets['multi50_mask'] / self.gts['multi_num']))
+        print('overall25' + ' ' +  str(self.dets['overall_mask'] / self.gts['mask_3dcnn']))
+        print('overall50' + ' ' +  str(self.dets['overall50_mask'] / self.gts['mask_3dcnn']))
+        print('mask@identity')
+        print('vd25' + ' ' +  str(self.dets['vd_mask'] / self.gts['vd_num']))
+        print('vd50' + ' ' +  str(self.dets['vd50_mask'] / self.gts['vd_num']))
+        print('vid25' + ' ' +  str(self.dets['vid_mask'] / self.gts['vid_num']))
+        print('vid50' + ' ' +  str(self.dets['vid50_mask'] / self.gts['vid_num']))
+        print('easy25' + ' ' +  str(self.dets['easy_mask'] / self.gts['easy_num']))
+        print('easy50' + ' ' +  str(self.dets['easy50_mask'] / self.gts['easy_num']))
+        print('hard25' + ' ' +  str(self.dets['hard_mask'] / self.gts['hard_num']))
+        print('hard50' + ' ' +  str(self.dets['hard50_mask'] / self.gts['hard_num']))
+        
+        
     def synchronize_between_processes(self):
         all_dets = misc.all_gather(self.dets)
         all_gts = misc.all_gather(self.gts)
@@ -124,12 +167,70 @@ class GroundingEvaluator:
         # NOTE Two Evaluation Ways: position alignment, semantic alignment
         # self.evaluate_bbox_by_pos_align(end_points, prefix)
         # self.evaluate_bbox_by_sem_align(end_points, prefix)
-        
-        self.evaluate_bbox_by_3dcnn(end_points, prefix)
 
+        self.evaluate_bbox_by_3dcnn(end_points, prefix)
+        self.evaluate_segmentation_by_3dcnn(end_points, prefix)
+        
+    def evaluate_segmentation_by_3dcnn(self, end_points, prefix):
+        """
+        Evaluate masks IoU.
+        """     
+        num_points = 50000   
+        for bid in range(len(end_points['bbox_results'])):
+            
+            pred_mask = end_points['seg_pred']
+            pred_mask = pred_mask[bid][bid*num_points:bid*num_points+num_points]
+            gt_mask = end_points['seg_gt'][bid]
+            iou_score_sem = self.calculate_masks_iou(pred_mask, gt_mask)
+            self.gts['mask_3dcnn'] += 1
+            self.dets['mask_3dcnn'] += iou_score_sem
+
+            if end_points['is_view_dep'][bid]:
+                self.gts['vd_num'] += 1
+            else:
+                self.gts['vid_num'] += 1
+            if end_points['is_unique'][bid]:
+                self.gts['unique_num'] += 1
+            else:
+                self.gts['multi_num'] += 1
+            if end_points['is_hard'][bid]:
+                self.gts['hard_num'] += 1
+            else:
+                self.gts['easy_num'] += 1
+
+            if iou_score_sem > 0.25:
+                self.dets['overall_mask'] += 1
+                if end_points['is_view_dep'][bid]:
+                    self.dets['vd_mask'] += 1
+                else:
+                    self.dets['vid_mask'] += 1
+                if end_points['is_hard'][bid]:
+                    self.dets['hard_mask'] += 1
+                else:
+                    self.dets['easy_mask'] += 1
+                if end_points['is_unique'][bid]:
+                    self.dets['unique_mask'] += 1
+                else:
+                    self.dets['multi_mask'] += 1
+            if iou_score_sem > 0.5:
+                self.dets['overall50_mask'] += 1
+                if end_points['is_view_dep'][bid]:
+                    self.dets['vd50_mask'] += 1
+                else:
+                    self.dets['vid50_mask'] += 1
+                if end_points['is_hard'][bid]:
+                    self.dets['hard50_mask'] += 1
+                else:
+                    self.dets['easy50_mask'] += 1
+                if end_points['is_unique'][bid]:
+                    self.dets['unique50_mask'] += 1
+                else:
+                    self.dets['multi50_mask'] += 1            
+            # pdb.set_trace()
+    
     def evaluate_bbox_by_3dcnn(self, end_points, prefix):
         """
-        Evaluate bounding box IoU by semantic alignment.
+        Evaluate bounding box.
 
         Args:
             end_points (dict): contains predictions and gt
@@ -473,3 +574,10 @@ class GroundingEvaluator:
         
         return positive_map, modify_positive_map, pron_positive_map, other_entity_map, auxi_entity_positive_map, \
             rel_positive_map, gt_bboxes
+            
+    def calculate_masks_iou(self, mask1, mask2):
+        mask1, mask2 = mask1.cpu().numpy(), mask2.cpu().numpy()
+        intersection = np.logical_and(mask1, mask2)
+        union = np.logical_or(mask1, mask2)
+        iou_score = np.sum(intersection) / np.sum(union)
+        return iou_score

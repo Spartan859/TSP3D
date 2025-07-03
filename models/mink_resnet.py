@@ -13,7 +13,6 @@ except ImportError:
 
 import torch.nn as nn
 
-
 class TSPBackbone(nn.Module):
     r"""Minkowski ResNet backbone. See `4D Spatio-Temporal ConvNets
     <https://arxiv.org/abs/1904.08755>`_ for more details.
@@ -52,7 +51,7 @@ class TSPBackbone(nn.Module):
 
         self.inplanes = 64
         self.conv1 = ME.MinkowskiConvolution(
-            in_channels, self.inplanes, kernel_size=3, stride=2, dimension=3)
+            in_channels, self.inplanes, kernel_size=3, stride=1, dimension=3)
         norm1 = ME.MinkowskiInstanceNorm if norm == 'instance' \
             else ME.MinkowskiBatchNorm
         self.norm1 = norm1(self.inplanes)
@@ -115,12 +114,14 @@ class TSPBackbone(nn.Module):
         x = self.conv1(x)
         x = self.norm1(x)
         x = self.relu(x)
+        outs = []
+        outs.append(x)
         if self.pool:
             x = self.maxpool(x)
-        outs = []
         for i in range(self.num_stages):
             x = getattr(self, f'layer{i + 1}')(x)
             outs.append(x)
+        # import pdb;pdb.set_trace()
         return outs
 
-
+    

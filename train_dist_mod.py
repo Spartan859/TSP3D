@@ -186,10 +186,11 @@ class TrainTester(BaseTrainTester):
                     self.logger.info(''.join([
                         f"{'3dcnn'} Acc{t:.2f}: ", f"Top-{1}: {evaluator.dets[('3dcnn', t, 1, 'bbf')] / max(evaluator.gts[('3dcnn', t, 1, 'bbf')], 1):.5f}"
                     ]))           
-
-        print('inf: ', np.array(inf_speeds).mean(),'vis_back_speeds: ', np.array(vis_back_speeds).mean(),
-              'text_back_speeds: ', np.array(text_back_speeds).mean(),'fuiosn_speeds: ', np.array(fuiosn_speeds).mean(),
-              'head_speeds: ', np.array(head_speeds).mean())
+                self.logger.info('Acc_mask0.25' + ' ' +  str(evaluator.dets['overall_mask'] / evaluator.gts['mask_3dcnn']))  
+                self.logger.info('Acc_mask0.50' + ' ' +  str(evaluator.dets['overall50_mask'] / evaluator.gts['mask_3dcnn']))
+            print('inf: ', np.array(inf_speeds).mean(),'vis_back_speeds: ', np.array(vis_back_speeds).mean(),
+                'text_back_speeds: ', np.array(text_back_speeds).mean(),'fuiosn_speeds: ', np.array(fuiosn_speeds).mean(),
+                'head_speeds: ', np.array(head_speeds).mean())
 
         return None
        

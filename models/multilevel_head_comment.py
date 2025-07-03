@@ -18,10 +18,12 @@ import torch.distributed as dist
 
 class MinkowskiFeatureFusionBlock(nn.Module):
     """
-    Block to fuse backbone features with text features in Minkowski space.
+    一个在Minkowski稀疏空间中融合骨干网络特征和文本特征的模块。
+    这在TSP3D的最终预测头中使用，用于将文本信息融入到最终的体素特征中，然后再进行边界框和类别的预测。
     """
     def __init__(self, backbone_channels, text_channels, output_channels, dimension=3):
         super(MinkowskiFeatureFusionBlock, self).__init__()
+        # 1x1的卷积层，用于融合拼接后的特征并调整通道数
         self.conv = ME.MinkowskiConvolution(
             backbone_channels + text_channels,
             output_channels,
@@ -33,48 +35,54 @@ class MinkowskiFeatureFusionBlock(nn.Module):
         self.relu = ME.MinkowskiReLU(inplace=True)
 
     def forward(self, backbone_feats, text_feats):
-        # Extract batch indices from the coordinates of backbone features
+        # 从骨干网络特征的坐标中提取批次索引
         batch_indices = backbone_feats.C[:, 0].long()  # Last column is batch index
         
-        # Repeat text features for each point in the corresponding batch
+        # 根据每个点所在的批次，复制相应的文本特征
+        # 使得每个体素特征都有一个与之对应的文本特征
         repeated_text_feats = text_feats[batch_indices]  # Use indexing to repeat text features
         
-        # Combine the backbone and text features
+        # 将骨干网络特征和复制后的文本特征在特征维度上拼接
         combined_features = torch.cat([backbone_feats.F, repeated_text_feats], dim=1)
+        # 创建一个新的稀疏张量，包含拼接后的特征
         combined_feats = ME.SparseTensor(
             features=combined_features,
             coordinate_map_key=backbone_feats.coordinate_map_key,
             coordinate_manager=backbone_feats.coordinate_manager
         )
         
-        # Convolution and normalization
+        # 应用卷积、归一化和激活函数
         x = self.conv(combined_feats)
         x = self.norm(x)
         return self.relu(x)
     
 def bias_init_with_prob(prior_prob):
-    """initialize conv/fc bias value according to giving probablity."""
+    """根据给定的概率初始化卷积/全连接层的偏置值。"""
     bias_init = float(-np.log((1 - prior_prob) / prior_prob))
     return bias_init
 
 class TSPHead(nn.Module):
+    """
+    TSP3D模型的核心预测头。
+    该模块实现了论文中描述的多级特征金字塔、文本引导剪枝（TGP）和基于补全的添加（CBA）机制。
+    """
     def __init__(self,
                  n_classes=1,
                  in_channels=(128, 128, 128),
                  out_channels=128,
                  n_reg_outs=6,
                  voxel_size=.01,
-                 pts_prune_threshold=(1200,3600),
+                 pts_prune_threshold=(1200,3600), # 训练时每层保留的体素数量
                  volume_threshold=27,
                  r=(13,13),
                  assign_type='volume',
-                 prune_threshold=(0.3,0.7),
-                 com_threshold = 0.15,
-                 seg_thr = 0.3,
+                 prune_threshold=(0.3,0.7), # 推理时剪枝的阈值
+                 com_threshold = 0.15, # CBA模块中补全操作的阈值
+                 seg_thr = 0.3, # 分割任务的阈值
                  train_cfg=None,
                  test_cfg=dict(nms_pre=1, iou_thr=.5, score_thr=.01),
-                 keep_loss_weight = 1.0,
-                 bbox_loss_weight = 1.0,
+                 keep_loss_weight = 1.0, # TGP剪枝损失的权重
+                 bbox_loss_weight = 1.0, # 边界框回归损失的权重
                  seg_loss_weight = 2.,
                  seg_loss_dice_weight = .1):
         super(TSPHead, self).__init__()
@@ -88,17 +96,19 @@ class TSPHead(nn.Module):
         self.bbox_loss_weight = bbox_loss_weight
         self.seg_loss_weight = seg_loss_weight
         self.seg_loss_dice_weight = seg_loss_dice_weight
+        # 标签分配器，用于在训练时为每个点分配正负样本
         self.assigner = TR3DAssigner(top_pts_threshold=24, top_pts_threshold_det=8, label2level=[0])
+        # 定义各种损失函数
         self.bbox_loss = AxisAlignedIoULoss2(mode='diou', reduction='none')
-        self.cls_loss = FocalLoss(reduction='none')
-        self.com_loss = FocalLoss(reduction='none')
-        self.keep_loss = FocalLoss(reduction='mean', use_sigmoid=True)
+        self.cls_loss = FocalLoss(reduction='none') # 目标分类损失
+        self.com_loss = FocalLoss(reduction='none') # CBA补全损失
+        self.keep_loss = FocalLoss(reduction='mean', use_sigmoid=True) # TGP剪枝损失
         self.seg_loss = FocalLoss(reduction='mean', use_sigmoid=True)
         self.seg_loss_dice = DiceLoss(reduction='mean', use_sigmoid=True)
         self.train_cfg = train_cfg
         self.test_cfg = test_cfg
-        self.num_samples = (1600,400)
-        self.num_samples_com = 1600
+        self.num_samples = (1600,400) # TGP中每层用于注意力计算的采样点数
+        self.num_samples_com = 1600 # CBA中用于注意力计算的采样点数
         self.com_threshold = com_threshold
         self.random_prune_threshold = (1000,3000)
         self.seg_thr = seg_thr
@@ -108,27 +118,30 @@ class TSPHead(nn.Module):
         self.max_seg_bbox = 36
         self._init_layers(in_channels, out_channels, n_reg_outs, n_classes)
 
-
     @staticmethod
     def make_block(in_channels, out_channels, kernel_size=3):
+        """创建一个标准的Minkowski卷积块。"""
         return nn.Sequential(
             ME.MinkowskiConvolution(in_channels, out_channels,
                                     kernel_size=kernel_size, dimension=3),
             ME.MinkowskiBatchNorm(out_channels),
             ME.MinkowskiReLU(inplace=True))
 
-
     @staticmethod
     def make_down_block(in_channels, out_channels):
+        """创建一个Minkowski下采样卷积块。"""
         return nn.Sequential(
             ME.MinkowskiConvolution(in_channels, out_channels, kernel_size=3,
                                     stride=2, dimension=3),
             ME.MinkowskiBatchNorm(out_channels),
             ME.MinkowskiReLU(inplace=True))
 
-
     @staticmethod
     def make_up_block(in_channels, out_channels, generative=False):
+        """
+        创建一个Minkowski上采样块。
+        generative=True时使用生成式卷积，可以增加体素密度，对应论文中的GeSpConv。
+        """
         conv = ME.MinkowskiGenerativeConvolutionTranspose if generative \
             else ME.MinkowskiConvolutionTranspose
         return nn.Sequential(
@@ -141,10 +154,16 @@ class TSPHead(nn.Module):
             ME.MinkowskiBatchNorm(out_channels),
             ME.MinkowskiReLU(inplace=True))
 
-
     def _init_layers(self, in_channels, out_channels, n_reg_outs, n_classes):
+        """初始化模型的所有层。"""
+        # ------------------- 最终预测头 (Final Prediction Heads) -------------------
+        # 用于边界框回归的1x1卷积层。
+        # 它将最终的融合特征映射到边界框参数（中心点偏移、尺寸）。
         self.bbox_conv = ME.MinkowskiConvolution(
             out_channels, n_reg_outs, kernel_size=1, bias=True, dimension=3)
+        
+        # 用于目标分类的1x1卷积层。
+        # 它将最终的融合特征映射到类别分数。
         self.cls_conv = ME.MinkowskiConvolution(
             out_channels, n_classes, kernel_size=1, bias=True, dimension=3)
         # self.seg_conv = ME.MinkowskiConvolution(
@@ -153,7 +172,14 @@ class TSPHead(nn.Module):
             ME.MinkowskiConvolution(out_channels, 1, kernel_size=1, bias=True, dimension=3),
             ME.MinkowskiConvolution(out_channels, 1, kernel_size=1, bias=True, dimension=3)
         ])
+        
+        # 可学习的3D位置嵌入层。
+        # Transformer不具备位置感知能力，此层为输入的体素坐标生成位置编码，
+        # 以便Transformer在进行注意力计算时能够利用空间信息。
         self.pos_embed = PositionEmbeddingLearned(3, 128)
+        
+        # 定义TGP和CBA中使用的Transformer编码器层的基础结构。
+        # 这是一个双向编码器层，允许视觉和文本特征之间的自注意力和交叉注意力。 
         bi_layer0 = BiEncoderLayer(
             128, dropout=0.1, activation="relu",
             n_heads=8, dim_feedforward=128,
@@ -172,54 +198,64 @@ class TSPHead(nn.Module):
             self_attend_lang=True, self_attend_vis=True,
             use_butd_enc_attn=False
         )
+        
+        # TGP模块的Transformer编码器。
+        # 包含两个独立的Transformer，分别用于两个剪枝阶段。
+        # 它们负责融合采样后的体素特征和文本特征，以生成用于预测剪枝分数的融合特征。 
         self.keep_trans = nn.ModuleList([BiEncoder(bi_layer0, 2), BiEncoder(bi_layer1, 2)])
+        
+        # ------------------- 基于补全的添加 (CBA) 模块组件 -------------------
+        # CBA模块的Transformer编码器。
+        # 它负责融合从原始场景中采样的体素特征和文本特征，以预测需要补全的区域。 
         self.com_trans = BiEncoder(bi_layer2, 2)
-        self.pruning = ME.MinkowskiPruning()
         self.com_cls = nn.Conv1d(128, 1, kernel_size=1, bias=True)
 
+        # Minkowski引擎的剪枝操作模块，用于根据布尔掩码移除稀疏张量中的体素。
+        self.pruning = ME.MinkowskiPruning()
 
+        # ------------------- 特征金字塔网络 (FPN) 结构 -------------------
+        # 循环构建FPN的上采样通路和横向连接。 
         for i in range(len(in_channels)):
             if i > 0:
+                # 上采样模块，使用生成式转置卷积（GenerativeConvolutionTranspose） ，
+                # 将深层、低分辨率的特征上采样，同时增加体素密度。
                 self.__setattr__(
                     f'up_block_{i}',
                     self.make_up_block(in_channels[i], in_channels[i - 1], generative=True))
+            
+            # 横向连接模块，使用标准卷积块处理来自骨干网络对应层级的特征。
             self.__setattr__(
-                        f'lateral_block_{i}',
-                        self.make_block(in_channels[i], in_channels[i]))
+                f'lateral_block_{i}',
+                self.make_block(in_channels[i], in_channels[i]))
+            
             if i == 0:
+                # FPN最顶层的输出模块，在进行最终预测前处理最高分辨率的融合特征。
                 self.__setattr__(
                     f'out_block_{i}',
                     self.make_block(in_channels[i], out_channels))
 
+        # ------------------- 最终融合与分割头 -------------------
+        # 在最终预测前，融合视觉特征和全局文本特征的模块。
         self.fuse = MinkowskiFeatureFusionBlock(128, 128, 128)
+
+        # 以下是为分割任务额外添加的层
+        # 将特征上采样到更高分辨率以进行分割
         self.upsample_st_4 = nn.Sequential(
-                        ME.MinkowskiConvolutionTranspose(
-                            64,
-                            64,
-                            kernel_size=3,
-                            stride=4,
-                            dimension=3),
-                        ME.MinkowskiBatchNorm(64),
-                        ME.MinkowskiReLU(inplace=True))      
+            ME.MinkowskiConvolutionTranspose(64, 64, kernel_size=3, stride=4, dimension=3),
+            ME.MinkowskiBatchNorm(64),
+            ME.MinkowskiReLU(inplace=True))
         self.upsample_st_2 = nn.Sequential(
-                        ME.MinkowskiConvolutionTranspose(
-                            128,
-                            64,
-                            kernel_size=3,
-                            stride=2,
-                            dimension=3),
-                        ME.MinkowskiBatchNorm(64),
-                        ME.MinkowskiReLU(inplace=True)) 
-        self.conv_32_ch = nn.Sequential(
-                        ME.MinkowskiConvolution(
-                            64,
-                            32,
-                            kernel_size=3,
-                            stride=1,
-                            dimension=3),
-                        ME.MinkowskiBatchNorm(32),
-                        ME.MinkowskiReLU(inplace=True))  
+            ME.MinkowskiConvolutionTranspose(128, 64, kernel_size=3, stride=2, dimension=3),
+            ME.MinkowskiBatchNorm(64),
+            ME.MinkowskiReLU(inplace=True))
         
+        # 用于调整分割特征通道数的卷积层。
+        self.conv_32_ch = nn.Sequential(
+            ME.MinkowskiConvolution(64, 32, kernel_size=3, stride=1, dimension=3),
+            ME.MinkowskiBatchNorm(32),
+            ME.MinkowskiReLU(inplace=True))
+        
+        # 用于点云分割的Minkowski UNet网络。
         self.seg_unet = MinkUNet14B(in_channels=32, out_channels=1, D=3)
         
         
@@ -227,6 +263,7 @@ class TSPHead(nn.Module):
 
 
     def init_weights(self):
+        """初始化网络权重。"""
         nn.init.normal_(self.bbox_conv.kernel, std=.01)
         nn.init.normal_(self.cls_conv.kernel, std=.01)
         nn.init.constant_(self.cls_conv.bias, bias_init_with_prob(.01))
@@ -249,6 +286,7 @@ class TSPHead(nn.Module):
     
 
     def _forward_single(self, x):
+        """对单层特征进行前向传播，得到预测结果。"""
         reg_final = self.bbox_conv(x).features
         reg_distance = torch.exp(reg_final[:, 3:6])
         reg_angle = reg_final[:, 6:]
@@ -266,19 +304,46 @@ class TSPHead(nn.Module):
 
 
     def forward(self, x_all,text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc=None):
+        """
+        TSPHead的核心前向传播函数。
+        该函数实现了论文中描述的多级特征金字塔、文本引导剪枝（TGP）和基于补全的添加（CBA）。
+
+        Args:
+            x_all (list[ME.SparseTensor]): 来自骨干网络的多级稀疏特征张量。
+            text_feats (Tensor): 经过编码的文本特征。
+            text_attention_mask (Tensor): 文本特征的注意力掩码。
+            gt_bboxes (list[LiDARInstance3DBoxes]): 每个场景的真值目标边界框。
+            gt_labels (list[Tensor]): 每个场景的真值标签。
+            gt_all_bbox_new (list[LiDARInstance3DBoxes]): 每个场景中所有对象的边界框。
+            auxi_bbox (list[LiDARInstance3DBoxes]): 每个场景中辅助对象的边界框。
+            img_metas (list[dict]): 每个场景的元数据。
+            pc (Tensor, optional): 原始点云数据。Defaults to None.
+
+        Returns:
+            - 边界框预测、类别预测、点坐标
+            - TGP的预测分数和真值
+            - CBA的预测和真值
+            - 用于分割的特征
+        """
+        # ------------------- 1. 准备GT信息用于TGP监督 -------------------
+        # 此部分准备了用于监督文本引导剪枝（TGP）的真值边界框信息。
+        # bboxes_state 包含了场景中所有物体、目标物体和辅助物体的边界框信息，
+        # 并用一个标志位（0或1）来区分它们，这将在_get_keep_voxel函数中用于生成剪枝的真值掩码。
         bboxes_level = []
         bboxes_state = []
         if self.assign_type == 'volume':
             for idx in range(len(img_metas)):
- 
+                # 场景中所有物体的边界框
                 bbox_all = gt_all_bbox_new[idx]
                 bbox_level = torch.ones([bbox_all.shape[0], 1])
                 bbox_state_all = torch.cat((bbox_level, bbox_all.gravity_center, bbox_all.tensor[:, 3:]), dim=1)
-
+                # 目标（GT）边界框
                 bbox_gt = gt_bboxes[idx]
-                bbox_state_gt = torch.cat((bbox_gt.gravity_center, bbox_gt.tensor[:, 3:]), dim=1)                
+                bbox_state_gt = torch.cat((bbox_gt.gravity_center, bbox_gt.tensor[:, 3:]), dim=1)  
+                # 辅助（referential）边界框              
                 bbox_auxi = auxi_bbox[idx]
                 bbox_state_auxi = torch.cat((bbox_auxi.gravity_center, bbox_auxi.tensor[:, 3:]), dim=1)
+                # 将目标框和辅助框合并，它们的标志位设为0
                 bbox_state_auxi_gt = torch.cat((bbox_state_gt, bbox_state_auxi), dim=0)
                 bbox_level = torch.zeros([bbox_state_auxi_gt.shape[0], 1])
                 bbox_state_auxi_gt = torch.cat((bbox_level, bbox_state_auxi_gt), dim=1)
@@ -293,17 +358,29 @@ class TSPHead(nn.Module):
         keep_preds, prune_masks = [], []
         prune_mask = None
         # pdb.set_trace()
+        
+        # [cite_start]从骨干网络获取多级特征，论文中使用了3个层级的特征 [cite: 661]
         inputs = x_all[2:]
+        # 从最深层（分辨率最低，感受野最大）的特征开始，构建自顶向下的特征金字塔
         x = inputs[-1]
-        for i in range(len(inputs) - 1, -1, -1): # 2,1,0
-            if i ==1 :  #  1,0         
+        # ------------------- 2. FPN、TGP 和 CBA 的迭代处理 -------------------
+        # 从深到浅（i = 2, 1, 0）遍历特征层
+        for i in range(len(inputs) - 1, -1, -1): # 2,1,0、
+            # [cite_start]----- 文本引导剪枝 (Text-Guided Pruning, TGP) [cite: 556] -----
+            # 在第1和第0层特征上采样之前，先进行剪枝
+            if i ==1 :  #  1,0         # 对应论文中的场景级剪枝 (level 3 -> 2)
+                # 1. 为当前层的TGP生成监督标签
                 prune_mask = self._get_keep_voxel(x, i + 2, bboxes_state, img_metas) 
 
                 keep_gt = []
                 for permutation in x.decomposition_permutations:
                     keep_gt.append(prune_mask[permutation])
                 keep_gts.append(keep_gt)
+                
+                # [cite_start]2. 上采样特征，使用生成式卷积增加体素密度 [cite: 665]
                 x = self.__getattr__(f'up_block_{i + 1}')(x)
+                
+                # 3. FPN的横向连接与融合：将上采样的特征与骨干网络对应层的特征相加
                 coords = x.coordinates.float()
                 # pdb.set_trace()
                 x_level_features = inputs[i].features_at_coordinates(coords)  # select for partial addition
@@ -311,17 +388,27 @@ class TSPHead(nn.Module):
                                           coordinate_map_key=x.coordinate_map_key,
                                         coordinate_manager=x.coordinate_manager)
                 x = x + x_level
+                
+                # 4. 根据上一轮预测的剪枝分数（prune_training_keep）应用剪枝
                 x = self._prune_training(x, prune_training_keep, i) 
             elif i == 0:
+                # 1. 为当前层的TGP生成监督标签
                 prune_mask = self._get_keep_voxel(x, i + 2, bboxes_state, img_metas) 
                 keep_gt = []
                 for permutation in x.decomposition_permutations:
                     keep_gt.append(prune_mask[permutation])
                 keep_gts.append(keep_gt)
+                
+                # 2. 上采样特征
                 x = self.__getattr__(f'up_block_{i + 1}')(x)
+                
+                # 随机化剪枝数量以增加训练的鲁棒性
                 prune_threshold_ = np.random.randint(self.random_prune_threshold[0], self.random_prune_threshold[1])
                 self.pts_prune_threshold = (prune_threshold_,self.pts_prune_threshold[1])
+                # 根据上一轮预测的剪枝分数应用剪枝
                 x = self._prune_training(x, prune_training_keep, i)
+                
+                # 3. FPN的横向连接与融合
                 coords = x.coordinates.float()
                 # pdb.set_trace()
                 x_level_features = inputs[i].features_at_coordinates(coords)  # select for partial addition
@@ -330,9 +417,11 @@ class TSPHead(nn.Module):
                                         coordinate_manager=x.coordinate_manager)
                 x_ori = x + x_level
                 
-                
+                # [cite_start]----- 基于补全的添加 (Completion-Based Addition, CBA) [cite: 556] -----
+                # [cite_start]CBA旨在通过从原始场景中查询并添加可能被错误剪枝的体素来缓解过度剪枝问题 [cite: 558]。
                 sampled_coords,sampled_features, original_indices = [],[],[]
                 
+                # 1. 从最原始、最密集的特征层(inputs[0])中采样点
                 for permutation in inputs[0].decomposition_permutations:
                     original_indices.extend(permutation.cpu().numpy())
                     if len(permutation) > self.num_samples_com:
@@ -353,6 +442,8 @@ class TSPHead(nn.Module):
                         sampled_coords.append(padded_coords)
                 sampled_features = torch.stack(sampled_features)
                 sampled_coords = torch.stack(sampled_coords)
+                
+                 # 2. 将采样的点与文本特征通过Transformer(com_trans)进行交互，以预测补全区域
                 sampled_features, text_feats = self.com_trans(
                     vis_feats=sampled_features.contiguous(),
                     pos_feats=self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous(),
@@ -360,6 +451,7 @@ class TSPHead(nn.Module):
                     text_feats=text_feats,
                     text_padding_mask=text_attention_mask)
                 
+                # 3. 预测补全分数，并根据阈值筛选出需要补全的点
                 com_pred = self.com_cls(sampled_features.transpose(1, 2).contiguous()).transpose(1, 2).contiguous()
                 valid_mask = sampled_coords[:, :,0] != -1
                 com_pred_training = [com_pred[k][valid_mask[k]] for k in range(len(com_pred))]
@@ -369,17 +461,22 @@ class TSPHead(nn.Module):
                 com_pred = com_pred[valid_mask].squeeze(-1)
                 com_mask = com_pred.sigmoid() > self.com_threshold
                 sampled_features = sampled_features[com_mask]
-                sampled_coords = sampled_coords[com_mask]                
+                sampled_coords = sampled_coords[com_mask]    
+                
+                # 4. 移除已经存在于剪枝后特征中的点，避免重复添加            
                 matches = (sampled_coords.unsqueeze(1) == x_ori.coordinates.unsqueeze(0)).all(dim=-1).any(dim=1)
                 sampled_features = sampled_features[~matches]
                 sampled_coords = sampled_coords[~matches]                   
                 
+                # 5. 将筛选出的补全特征添加到剪枝后的特征图中，完成CBA过程
                 x_com_features = x.features_at_coordinates(sampled_coords.float())     
                 x_com_features = x_com_features + sampled_features           
                 x = ME.SparseTensor(features=torch.cat((x_ori.features,x_com_features),dim=0), 
                                     coordinates=torch.cat((x_ori.coordinates,sampled_coords),dim=0), 
                                     coordinate_manager=x_ori.coordinate_manager, tensor_stride=x_ori.tensor_stride, device=x_ori.device)
+            # TGP的预测阶段：在每一层，模型都需要预测下一层（更精细的层）的剪枝分数
             if i > 0: # 2,1
+                # 1. 从当前特征层采样点，用于和文本进行交互
                 sampled_coords,sampled_features, original_indices = [],[],[]
                 prune_mask = torch.zeros(x.shape[0], dtype=torch.bool).to(x.device)
                 for permutation in x.decomposition_permutations:
@@ -405,6 +502,9 @@ class TSPHead(nn.Module):
                         prune_mask[permutation] = True
                 sampled_features = torch.stack(sampled_features)
                 sampled_coords = torch.stack(sampled_coords)
+                
+                # 2. 将采样点与文本特征通过Transformer(keep_trans)交互，以预测剪枝分数
+                # [cite_start]TGP通过交叉注意力高效地交互体素和文本特征 [cite: 557]
                 sampled_features, text_feats = self.keep_trans[i-1](
                     vis_feats=sampled_features.contiguous(),
                     pos_feats=self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous(),
@@ -416,9 +516,11 @@ class TSPHead(nn.Module):
                 sampled_features = sampled_features[valid_mask]
                 sampled_coords = sampled_coords[valid_mask]
                 
+                # 3. 使用1x1卷积(keep_conv)预测剪枝分数
                 x = ME.SparseTensor(features=sampled_features, coordinates=sampled_coords, 
                                     coordinate_manager=x.coordinate_manager, tensor_stride=x.tensor_stride, device=x.device)
                 keep_scores = self.keep_conv[i-1](x) # 1 MLP
+                # 存储预测的分数，用于在下一轮迭代中进行剪枝
                 prune_training_keep = ME.SparseTensor(
                                     -keep_scores.features,
                                     coordinate_map_key=keep_scores.coordinate_map_key,
@@ -436,14 +538,23 @@ class TSPHead(nn.Module):
                     pdb.set_trace()
                 keep_preds.append(keeps)
             # if not dist.is_initialized() or dist.get_rank() == 0:
-            #     pdb.set_trace()                
+            #     pdb.set_trace()         
+            
+            # ------------------- 3. FPN横向连接和输出 -------------------
+            # 对当前层的特征进行处理       
             x = self.__getattr__(f'lateral_block_{i}')(x)
             if i == 0:
+                # 在最顶层（最高分辨率）进行最终的特征处理
                 out = self.__getattr__(f'out_block_{i}')(x)
+                
+        # ------------------- 4. 最终预测和分割特征生成 -------------------
+        # 将全局文本特征与最终的视觉特征图融合
         out = self.fuse(out, text_feats[:, 0])
+        # 从融合后的特征图中预测边界框和类别
         bbox_pred, cls_pred, point = self._forward_single(out)
         
         # pdb.set_trace()
+        # 为分割任务准备高分辨率特征图
         x = self.upsample_st_2(x) + x_all[1]
         x = self.upsample_st_4(x) + x_all[0]
         seg_feats = self.conv_32_ch(x)
@@ -452,7 +563,7 @@ class TSPHead(nn.Module):
             seg_feats
 
     def _prune_inference(self, x, scores, layer_id):
-        """Prunes the tensor by score thresholding.
+        """推理时根据分数阈值进行剪枝。
 
         Args:
             x (SparseTensor): Tensor to be pruned.
@@ -480,7 +591,7 @@ class TSPHead(nn.Module):
 
 
     def _prune_training(self, x, scores, layer_id):
-        """Prunes the tensor by score thresholding.
+        """训练时通过保留top-k分数最高的体素进行剪枝。
 
         Args:
             x (SparseTensor): Tensor to be pruned.
@@ -508,6 +619,9 @@ class TSPHead(nn.Module):
 
     @torch.no_grad()
     def _get_keep_voxel(self, input, cur_level, bboxes_state, input_metas):
+        """为TGP模块生成监督学习的真值掩码。
+        内部逻辑是判断每个体素是否落在了扩展后的GT BBox内，返回一个布尔掩码，标记哪些体素应该被保留。
+        """
         bboxes = []
         for size in range(len(input_metas)):
             bboxes.append([])
@@ -568,12 +682,7 @@ class TSPHead(nn.Module):
 
     @staticmethod
     def _bbox_to_loss(bbox):
-        """Transform box to the axis-aligned or rotated iou loss format.
-        Args:
-            bbox (Tensor): 3D box of shape (N, 6) or (N, 7).
-        Returns:
-            Tensor: Transformed 3D box of shape (N, 6) or (N, 7).
-        """
+        """将边界框格式转换为损失函数接受的格式。"""
         # rotated iou loss accepts (x, y, z, w, h, l, heading)
         if bbox.shape[-1] != 6:
             return bbox
@@ -588,14 +697,7 @@ class TSPHead(nn.Module):
 
     @staticmethod
     def _bbox_pred_to_bbox(points, bbox_pred):
-        """Transform predicted bbox parameters to bbox.
-        Args:
-            points (Tensor): Final locations of shape (N, 3)
-            bbox_pred (Tensor): Predicted bbox parameters of shape (N, 6)
-                or (N, 8).
-        Returns:
-            Tensor: Transformed 3D box of shape (N, 6) or (N, 7).
-        """
+        """将网络预测的参数转换为实际的边界框。"""
         if bbox_pred.shape[0] == 0:
             return bbox_pred
 
@@ -633,6 +735,7 @@ class TSPHead(nn.Module):
                      gt_labels,
                      img_meta,
                      com_pred,com_coords,):
+        """计算单个场景的损失。"""
         assigned_ids = self.assigner.assign(points, gt_bboxes, gt_labels, img_meta)
         bbox_preds = torch.cat(bbox_preds)
         cls_preds = torch.cat(cls_preds)
@@ -686,6 +789,7 @@ class TSPHead(nn.Module):
 
     def _loss(self, bbox_preds, cls_preds, points, gt_bboxes, gt_labels, img_metas, 
               keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training, gt_points, targets, seg_feats):
+        """聚合所有损失。"""
         bbox_losses, cls_losses, pos_masks, com_losses, pos_masks_com, selected_bboxes, selected_scores, selected_labels \
             = [], [], [], [], [], [], [], []
 
@@ -1245,6 +1349,10 @@ class TSPHead(nn.Module):
         return points_masks, labels, scores
     
 class TR3DAssigner:
+    """
+    标签分配器。根据一系列规则（如特征层级、与GT框中心的距离），
+    为每个点/体素分配一个GT框的ID或背景标签（-1）。
+    """
     def __init__(self, top_pts_threshold, top_pts_threshold_det, label2level):
         # top_pts_threshold: per box
         # label2level: list of len n_classes
@@ -1304,6 +1412,7 @@ class TR3DAssigner:
         return min_inds
     
 def get_face_distances(points, boxes):
+    """计算点到边界框各个面的距离。"""
     # points: of shape (..., 3)
     # boxes: of shape (..., 7)
     # -> of shape (..., 6): dx_min, dx_max, dy_min, dy_max, dz_min, dz_max

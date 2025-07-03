@@ -182,7 +182,7 @@ class TSPHead(nn.Module):
             if i > 0:
                 self.__setattr__(
                     f'up_block_{i}',
-                    self.make_up_block(in_channels[i], in_channels[i - 1], generative=True))
+                    self.make_up_block(in_channels[i], in_channels[i - 1], generative=False))
             self.__setattr__(
                         f'lateral_block_{i}',
                         self.make_block(in_channels[i], in_channels[i]))
@@ -305,7 +305,7 @@ class TSPHead(nn.Module):
                 keep_gts.append(keep_gt)
                 x = self.__getattr__(f'up_block_{i + 1}')(x)
                 coords = x.coordinates.float()
-                # pdb.set_trace()
+                
                 x_level_features = inputs[i].features_at_coordinates(coords)  # select for partial addition
                 x_level = ME.SparseTensor(features=x_level_features,
                                           coordinate_map_key=x.coordinate_map_key,
@@ -443,7 +443,7 @@ class TSPHead(nn.Module):
         out = self.fuse(out, text_feats[:, 0])
         bbox_pred, cls_pred, point = self._forward_single(out)
         
-        # pdb.set_trace()
+        
         x = self.upsample_st_2(x) + x_all[1]
         x = self.upsample_st_4(x) + x_all[0]
         seg_feats = self.conv_32_ch(x)

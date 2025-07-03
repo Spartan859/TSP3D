@@ -12,7 +12,7 @@
 
 import argparse
 import json
-import os
+import os, pdb
 import random
 import time
 
@@ -31,6 +31,7 @@ from utils import record_tensorboard
 
 from tqdm import tqdm
 from get_gt import get_gt
+from datetime import datetime 
 
 def parse_option():
     """Parse cmd arguments."""
@@ -175,13 +176,16 @@ class BaseTrainTester:
     # logger.
     def __init__(self, args):
         """Initialize."""
-        name = args.log_dir.split('/')[-1] 
-        
+        name = args.log_dir.split('/')[-1]
+
+        # Format current time as YYYY-MM-DD_HH-MM-SS
+        current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+
         # Create log dir
         args.log_dir = os.path.join(
             args.log_dir,
             ','.join(args.dataset),
-            f'{int(time.time())}'
+            current_time
         )
         os.makedirs(args.log_dir, exist_ok=True)
 
@@ -327,7 +331,8 @@ class BaseTrainTester:
 
         # Get model
         model = self.get_model(args)
-
+        # pdb.set_trace()
+                
         # Get criterion
         criterion, set_criterion = self.get_criterion(args)
 
@@ -351,7 +356,7 @@ class BaseTrainTester:
         # note Distributed Data-Parallel Training (DDP)
         model = DistributedDataParallel(
             model, device_ids=[args.local_rank],
-            broadcast_buffers=False  , find_unused_parameters=False
+            broadcast_buffers=False  , find_unused_parameters=True
         )
 
         # Check for a checkpoint
@@ -505,17 +510,40 @@ class BaseTrainTester:
         # Loop over batches
         train_loader = tqdm(train_loader)
         for batch_idx, batch_data in enumerate(train_loader):
-            gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, img_metas = get_gt(batch_data)
+            gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas = get_gt(batch_data)
             # Move to GPU
             batch_data = self._to_gpu(batch_data)
             # get the input data: pointcloud and text
             inputs = self._get_inputs(batch_data)
-            
-            losses = model(inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, img_metas, epoch)
+            # for name, param in model.named_parameters():
+            #     print(f"{name} param size: {param.size()}, stride: {param.stride()}")
+            # pdb.set_trace()          
+            losses = model(inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas, epoch)
             loss = losses['loss']
 
+            if torch.isnan(loss):
+                print("NaN loss detected!")
+                for name, param in model.named_parameters():
+                    if torch.isnan(param).any():
+                        print(f"NaN in param: {name}")
+                        if not dist.is_initialized() or dist.get_rank() == 0:
+                            pdb.set_trace()
             optimizer.zero_grad()
-            loss.backward()
+            try:
+                loss.backward()
+            except RuntimeError as e:
+                rank = dist.get_rank() if dist.is_initialized() else 0
+                print(f"[Rank {rank}] Exception during backward: {e}")
+
+                if 'illegal memory access' in str(e) or 'CUDA error' in str(e):
+                    # 多卡同步，避免死锁
+                    if dist.is_initialized():
+                        dist.barrier()
+
+                    torch.cuda.empty_cache()  # 清空显存，避免下次再爆
+                    continue  # 跳过这个 batch
+                else:
+                    raise  # 非 CUDA 错误继续抛出
 
             if args.clip_norm > 0:
                 grad_total_norm = torch.nn.utils.clip_grad_norm_(
@@ -548,7 +576,7 @@ class BaseTrainTester:
                           stat_dict,
                           criterion, set_criterion, args):
         # Move to GPU
-        gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, img_metas = get_gt(batch_data)
+        gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas = get_gt(batch_data)
         batch_data = self._to_gpu(batch_data)
         # inputs = self._get_inputs_contra(batch_data)
         inputs = self._get_inputs(batch_data)
@@ -560,11 +588,12 @@ class BaseTrainTester:
         
         # STEP Forward pass
         start_time = time.time()
-        bbox_results, losses, backbone_time, trans_time = model(inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, img_metas=img_metas)
+        bbox_results, seg_masks, losses, backbone_time, trans_time = model(
+            inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas=img_metas)
         end_time = time.time()
         inf_time = end_time - start_time
         
-        end_points = {'bbox_results': bbox_results, 'gt_bboxes_3d':gt_bboxes_3d}
+        end_points = {'bbox_results': bbox_results, 'gt_bboxes_3d':gt_bboxes_3d, "seg_pred": seg_masks, "seg_gt":gt_masks}
         # STEP Compute loss
         for key in batch_data:
             assert (key not in end_points)
