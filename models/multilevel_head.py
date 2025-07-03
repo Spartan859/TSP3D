@@ -766,14 +766,14 @@ class TSPHead(nn.Module):
             
         # pdb.set_trace()
         seg_preds, targets, v2r, r2scene, rois, scores, gt_idxs = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels)
-        seg_loss = self._loss_second(seg_preds, targets, v2r, r2scene, rois, gt_idxs,gt_bboxes, gt_labels, img_metas)
+        seg_loss, seg_loss_dice = self._loss_second(seg_preds, targets, v2r, r2scene, rois, gt_idxs,gt_bboxes, gt_labels, img_metas)
         # pdb.set_trace()
         return dict(
             bbox_loss=self.bbox_loss_weight * torch.mean(torch.cat(bbox_losses)),
             cls_loss=torch.sum(torch.cat(cls_losses)) / torch.sum(torch.cat(pos_masks)),
             keep_loss=self.keep_loss_weight * keep_losses / len(img_metas),
             seg_loss=self.seg_loss_weight * seg_loss,
-            # seg_loss_dice=self.seg_loss_dice_weight * seg_losses_dice / len(img_metas),
+            seg_loss_dice=self.seg_loss_dice_weight * seg_loss_dice,
             com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com))) 
 
     def _loss_second(self, cls_preds, targets, v2r, r2scene, rois, gt_idxs,
@@ -781,8 +781,9 @@ class TSPHead(nn.Module):
         # pdb.set_trace()
         v2scene = r2scene[v2r]
         seg_losses = []
+        seg_losses_dice = []
         for i in range(len(img_metas)):
-            seg_loss = self._loss_second_single(
+            seg_loss, seg_loss_dice = self._loss_second_single(
                 cls_preds=cls_preds[v2scene == i],
                 targets=targets[v2scene == i],
                 v2r=v2r[v2scene == i],
@@ -792,8 +793,9 @@ class TSPHead(nn.Module):
                 gt_labels=gt_labels[i],
                 img_meta=img_metas[i])
             seg_losses.append(seg_loss)
+            seg_losses_dice.append(seg_loss_dice)
         # pdb.set_trace()
-        return torch.mean(torch.stack(seg_losses))
+        return torch.mean(torch.stack(seg_losses)), torch.mean(torch.stack(seg_losses_dice))
     
     def _loss_second_single(self, cls_preds, targets, v2r, rois, gt_idxs, gt_bboxes, gt_labels, img_meta):
         if len(rois) == 0 or cls_preds.shape[0] == 0:
@@ -818,9 +820,10 @@ class TSPHead(nn.Module):
         # seg_targets[seg_targets == -1] = self.n_classes
         # pdb.set_trace()
         seg_loss = self.seg_loss(cls_preds, (targets).long())
+        seg_loss_dice = self.seg_loss_dice(cls_preds, (targets).long())
 
         # inst_loss = self.inst_loss(inst_preds, labels)
-        return seg_loss
+        return seg_loss, seg_loss_dice
     
     def forward_train(self, x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, \
         gt_points, targets, img_metas,pc=None):

@@ -51,7 +51,7 @@ class BeaUTyDETR(nn.Module):
         )       
         
         # self.neck = TR3DNeck()
-        self.head = TSPHead(voxel_size=self.voxel_size, seg_loss_weight=1.0)
+        self.head = TSPHead(voxel_size=self.voxel_size)
         
     def collate(self, points, quantization_mode):
         coordinates, features = ME.utils.batch_sparse_collate(
