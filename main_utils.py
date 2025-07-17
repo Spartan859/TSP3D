@@ -339,12 +339,6 @@ class BaseTrainTester:
         # Get optimizer
         optimizer = self.get_optimizer(args, model)
 
-        # Get scheduler
-        if not args.eval:
-            scheduler = get_scheduler(optimizer, len(train_loader), args)
-        else:
-            scheduler = None
-        
         # Move model to devices
         if torch.cuda.is_available():
             if torch.cuda.device_count() > 1:
@@ -362,7 +356,14 @@ class BaseTrainTester:
         # Check for a checkpoint
         if args.checkpoint_path:
             assert os.path.isfile(args.checkpoint_path)
-            load_checkpoint(args, model, optimizer, scheduler)
+            load_checkpoint(args, model, None, None)
+            
+        # Get scheduler
+        if not args.eval:
+            scheduler = get_scheduler(optimizer, len(train_loader), args)
+        else:
+            scheduler = None
+        
         
         # ##############################################
         # NOTE [eval-only] Just eval and end execution #

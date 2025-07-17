@@ -72,14 +72,14 @@ def get_scheduler(optimizer, n_iter_per_epoch, args):
         scheduler = CosineAnnealingLR(
             optimizer=optimizer,
             eta_min=0.000001,
-            T_max=(args.max_epoch - args.warmup_epoch) * n_iter_per_epoch)
+            T_max=(args.max_epoch - args.warmup_epoch - args.start_epoch + 1) * n_iter_per_epoch)
     elif "step" in args.lr_scheduler:
         if isinstance(args.lr_decay_epochs, int):
             args.lr_decay_epochs = [args.lr_decay_epochs]
         scheduler = MultiStepLR(
             optimizer=optimizer,
             gamma=args.lr_decay_rate,
-            milestones=[(m - args.warmup_epoch) * n_iter_per_epoch for m in args.lr_decay_epochs])
+            milestones=[(m - args.warmup_epoch - args.start_epoch + 1) * n_iter_per_epoch for m in args.lr_decay_epochs])
     else:
         raise NotImplementedError(f"scheduler {args.lr_scheduler} not supported")
 
