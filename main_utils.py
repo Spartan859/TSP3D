@@ -85,6 +85,7 @@ def parse_option():
     parser.add_argument("--keep_trans_lr", default=4e-4, type=float)
     parser.add_argument("--text_encoder_lr", default=1e-5, type=float)
     parser.add_argument("--box_select_lr", default=4e-4, type=float)
+    parser.add_argument("--seg_lr", default=1e-3, type=float)
     parser.add_argument('--lr-scheduler', type=str, default='step',
                         choices=["step", "cosine"])
     parser.add_argument('--lr_decay_epochs', type=int, default=[280, 340],
@@ -281,13 +282,15 @@ class BaseTrainTester:
 
     @staticmethod
     def get_optimizer(args, model):
+        # pdb.set_trace()
         """Initialize optimizer."""
         param_dicts = [
             {
                 "params": [
                     p for n, p in model.named_parameters()
                     if "keep_trans" not in n and "text_encoder" not in n
-                    and "select" not in n and p.requires_grad
+                    and "select" not in n and "seg_unet" not in n 
+                    and "upsample_st" not in n and p.requires_grad
                 ]
             },
             {
@@ -310,6 +313,13 @@ class BaseTrainTester:
                     if "select" in n and p.requires_grad
                 ],
                 "lr": args.box_select_lr
+            },
+            {
+                "params": [
+                    p for n, p in model.named_parameters()
+                    if ("seg_unet" in n or "upsample_st" in n) and p.requires_grad
+                ],
+                "lr": args.seg_lr
             }
         ]
         optimizer = optim.AdamW(param_dicts,
@@ -393,15 +403,17 @@ class BaseTrainTester:
             # log
             self.logger.info(
                 'epoch {}, total time {:.2f}, '
-                'lr_base {:.5f}, '
-                'lr_tran {:.5f}, '
-                'lr_text {:.5f}, '
-                'lr_select {:.5f}, '.format(
+                'lr_base {:.7f}, '
+                'lr_tran {:.7f}, '
+                'lr_text {:.7f}, '
+                'lr_select {:.7f}, '
+                'lr_seg {:.7f}'.format(
                     epoch, (time.time() - tic),
                     optimizer.param_groups[0]['lr'],
                     optimizer.param_groups[1]['lr'],
                     optimizer.param_groups[2]['lr'],
-                    optimizer.param_groups[3]['lr']
+                    optimizer.param_groups[3]['lr'],
+                    optimizer.param_groups[4]['lr']
                 )
             )
 

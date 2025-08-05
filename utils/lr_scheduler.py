@@ -4,6 +4,7 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------
 # noinspection PyProtectedMember
+import pdb
 from torch.optim.lr_scheduler import _LRScheduler, MultiStepLR, CosineAnnealingLR
 
 
@@ -76,10 +77,14 @@ def get_scheduler(optimizer, n_iter_per_epoch, args):
     elif "step" in args.lr_scheduler:
         if isinstance(args.lr_decay_epochs, int):
             args.lr_decay_epochs = [args.lr_decay_epochs]
+        milestones = [(m - args.warmup_epoch - args.start_epoch + 1) * n_iter_per_epoch for m in args.lr_decay_epochs]
+        # if variables in milestones are negative, set them to 0
+        milestones = [max(0, m) for m in milestones]
         scheduler = MultiStepLR(
             optimizer=optimizer,
             gamma=args.lr_decay_rate,
-            milestones=[(m - args.warmup_epoch - args.start_epoch + 1) * n_iter_per_epoch for m in args.lr_decay_epochs])
+            milestones=milestones)
+        # pdb.set_trace()
     else:
         raise NotImplementedError(f"scheduler {args.lr_scheduler} not supported")
 

@@ -7,3 +7,4 @@ data/*
 data_mini/*
 outputs
 outputs/*
+tensorboard_output/*
