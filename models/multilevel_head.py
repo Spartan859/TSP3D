@@ -257,12 +257,23 @@ class TSPHead(nn.Module):
         # seg_scores = self.seg_conv(x)
         cls_pred = scores.features
 
-        bbox_preds, cls_preds, points = [], [], []
+        bbox_preds, cls_preds, points, center_coords = [], [], [], []
         for permutation in x.decomposition_permutations:
+            # 提取当前场景的分类分数
+            scene_cls_pred = cls_pred[permutation]
+            
+            if scene_cls_pred.numel()>0:
+                # 1. 找到当前场景中分类分数最高的体素的局部索引
+                best_local_index = torch.argmax(scene_cls_pred)
+                best_coord = x.coordinates[permutation][best_local_index]
+                center_coords.append(best_coord)
+            else:
+                center_coords.append(torch.zeros(4, device=x.device))
+            
             bbox_preds.append(bbox_pred[permutation])
             cls_preds.append(cls_pred[permutation])
             points.append(x.coordinates[permutation][:, 1:]* self.voxel_size)
-        return bbox_preds, cls_preds, points#, seg_scores
+        return bbox_preds, cls_preds, points, center_coords#, seg_scores
 
 
     def forward(self, x_all,text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc=None):
@@ -441,9 +452,9 @@ class TSPHead(nn.Module):
             if i == 0:
                 out = self.__getattr__(f'out_block_{i}')(x)
         out = self.fuse(out, text_feats[:, 0])
-        bbox_pred, cls_pred, point = self._forward_single(out)
-        
-        # pdb.set_trace()
+        bbox_pred, cls_pred, point, center_coord = self._forward_single(out)
+        # get the center of the bbox
+        pdb.set_trace()
         x = self.upsample_st_2(x) + x_all[1]
         x = self.upsample_st_4(x) + x_all[0]
         seg_feats = self.conv_32_ch(x)
