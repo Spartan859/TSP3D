@@ -1,4 +1,5 @@
 import numpy as np
+from typing import List
 
 import MinkowskiEngine as ME
 
@@ -76,7 +77,11 @@ class TSPHead(nn.Module):
                  keep_loss_weight = 1.0,
                  bbox_loss_weight = 1.0,
                  seg_loss_weight = 2.,
-                 seg_loss_dice_weight = .1):
+                 seg_loss_dice_weight = .1,
+                 M_q_loss_weight = 2.,
+                 M_q_loss_dice_weight = .1,
+                 cross_loss_weight = 0.,
+                 ):
         super(TSPHead, self).__init__()
         self.voxel_size = voxel_size
         self.pts_prune_threshold = pts_prune_threshold
@@ -88,6 +93,9 @@ class TSPHead(nn.Module):
         self.bbox_loss_weight = bbox_loss_weight
         self.seg_loss_weight = seg_loss_weight
         self.seg_loss_dice_weight = seg_loss_dice_weight
+        self.M_q_loss_weight = M_q_loss_weight
+        self.M_q_loss_dice_weight = M_q_loss_dice_weight
+        self.cross_loss_weight = cross_loss_weight
         self.assigner = TR3DAssigner(top_pts_threshold=24, top_pts_threshold_det=8, label2level=[0])
         self.bbox_loss = AxisAlignedIoULoss2(mode='diou', reduction='none')
         self.cls_loss = FocalLoss(reduction='none')
@@ -95,6 +103,9 @@ class TSPHead(nn.Module):
         self.keep_loss = FocalLoss(reduction='mean', use_sigmoid=True)
         self.seg_loss = FocalLoss(reduction='mean', use_sigmoid=True)
         self.seg_loss_dice = DiceLoss(reduction='mean', use_sigmoid=True)
+        self.M_q_loss = FocalLoss(reduction='mean', use_sigmoid=True)
+        self.M_q_loss_dice = DiceLoss(reduction='mean', use_sigmoid=True)
+        self.cross_loss = nn.KLDivLoss(reduction='batchmean', log_target=False)
         self.train_cfg = train_cfg
         self.test_cfg = test_cfg
         self.num_samples = (1600,400)
@@ -222,6 +233,10 @@ class TSPHead(nn.Module):
         
         self.seg_unet = MinkUNet14B(in_channels=32, out_channels=1, D=3)
         
+        # For M_q branch: learnable scale and bias to convert similarity to logit
+        self.mq_scale = nn.Parameter(torch.tensor(10.0))
+        self.mq_bias = nn.Parameter(torch.tensor(0.0))
+        
         
         # self.maxpool = ME.MinkowskiMaxPooling(kernel_size=2, stride=2, dimension=3)
 
@@ -246,7 +261,7 @@ class TSPHead(nn.Module):
                 if isinstance(m, ME.MinkowskiBatchNorm):
                     nn.init.constant_(m.bn.weight, 1)
                     nn.init.constant_(m.bn.bias, 0)       
-    
+
 
     def _forward_single(self, x):
         reg_final = self.bbox_conv(x).features
@@ -257,7 +272,7 @@ class TSPHead(nn.Module):
         # seg_scores = self.seg_conv(x)
         cls_pred = scores.features
 
-        bbox_preds, cls_preds, points, center_coords = [], [], [], []
+        bbox_preds, cls_preds, points, center_coords, center_bbox_pred = [], [], [], [], []
         for permutation in x.decomposition_permutations:
             # 提取当前场景的分类分数
             scene_cls_pred = cls_pred[permutation]
@@ -266,16 +281,288 @@ class TSPHead(nn.Module):
                 # 1. 找到当前场景中分类分数最高的体素的局部索引
                 best_local_index = torch.argmax(scene_cls_pred)
                 best_coord = x.coordinates[permutation][best_local_index]
+                best_bbox_pred = bbox_pred[permutation][best_local_index]
                 center_coords.append(best_coord)
+                center_bbox_pred.append(best_bbox_pred)
             else:
                 center_coords.append(torch.zeros(4, device=x.device))
             
             bbox_preds.append(bbox_pred[permutation])
             cls_preds.append(cls_pred[permutation])
             points.append(x.coordinates[permutation][:, 1:]* self.voxel_size)
-        return bbox_preds, cls_preds, points, center_coords#, seg_scores
+            # pdb.set_trace()
+        return bbox_preds, cls_preds, points, center_coords, center_bbox_pred#, seg_scores
 
 
+    def _get_best_feats_F2(self, center_coords: List[torch.Tensor], saved_xs: List[ME.SparseTensor], kernel_size: int = 3) -> List[torch.Tensor]:
+        """
+        For each center_coord from F2, find its influential features in F1 and average them.
+        x_F1 is the result of a transposed convolution on x_F2 with stride 2.
+        """
+        x_F2 = saved_xs[-2]
+        x_F1 = saved_xs[-1]
+        best_feats_F2 = []
+
+        # Decompose the sparse tensor to process each batch item individually
+        x1_coords_decomposed: torch.Tensor = x_F1.decomposed_coordinates
+        x1_feats_decomposed: torch.Tensor = x_F1.decomposed_features
+
+        for i, center_coord in enumerate(center_coords):
+            # center_coord is a single coordinate from x_F2, e.g., [batch_idx, x, y, z]
+            # Note: The batch_idx in center_coord is the absolute batch index.
+            
+            # Get the corresponding coordinates and features for the current batch item from x_F1
+            x1_coords = x1_coords_decomposed[i]
+            x1_feats = x1_feats_decomposed[i]
+
+            if x1_coords.shape[0] == 0:
+                # If there are no points in the x_F1 for this batch, append a zero tensor
+                best_feats_F2.append(torch.zeros(x_F1.features.shape[1], device=x_F1.device))
+                continue
+
+            # Calculate the center of the search region in x_F1's coordinate space
+            # Stride is 2, so we multiply spatial coordinates by 2
+            center_in_x1_space = center_coord[1:]
+            
+            # pdb.set_trace()
+            
+            stride = torch.tensor(x_F1.tensor_stride, device=x_F1.device)
+
+            # Define the 3x3x3 neighborhood bounds
+            lower_bound = center_in_x1_space - (kernel_size // 2) * stride
+            upper_bound = center_in_x1_space + (kernel_size // 2) * stride
+
+            # Create a boolean mask to find all coordinates within the neighborhood
+            mask = (x1_coords[:, 0] >= lower_bound[0]) & (x1_coords[:, 0] <= upper_bound[0]) & \
+                   (x1_coords[:, 1] >= lower_bound[1]) & (x1_coords[:, 1] <= upper_bound[1]) & \
+                   (x1_coords[:, 2] >= lower_bound[2]) & (x1_coords[:, 2] <= upper_bound[2])
+            # pdb.set_trace()
+            # Get the features of the points within the neighborhood
+            neighbor_feats = x1_feats[mask]
+
+            if neighbor_feats.shape[0] > 0:
+                # If neighbors are found, compute their average feature
+                avg_feat = neighbor_feats.mean(dim=0)
+                best_feats_F2.append(avg_feat)
+            else:
+                # If no neighbors are found, append a zero tensor as a placeholder
+                best_feats_F2.append(torch.zeros(x_F1.features.shape[1], device=x_F1.device))
+        
+        return best_feats_F2
+            
+            
+    def _calculate_M_q(self, query_vectors: List[torch.Tensor], supervoxels_tensor: ME.SparseTensor):
+        """
+        计算查询向量和超体素集合之间的相似度图 M_q。
+
+        Args:
+            query_vectors (list[Tensor]): 每个场景的查询向量 Q_box 列表。
+            supervoxels_tensor (ME.SparseTensor): 包含整个批次超体素的稀疏张量。
+
+        Returns:
+            ME.SparseTensor: 相似度图 M_q。其坐标与supervoxels_tensor相同，
+                            特征为每个超体素与对应Q_box的相似度分数。
+        """
+        # 1. 从稀疏张量中提取所有超体素的特征
+        # supervoxel_features 的形状为 (N_total_supervoxels, 128)
+        supervoxel_features = supervoxels_tensor.F
+
+        # 2. 初始化一个张量，用于存放最终计算出的所有相似度分数
+        # 这个张量的大小将和supervoxel_features的行数相同
+        similarity_scores = torch.zeros(
+            supervoxel_features.shape[0], 1, device=supervoxels_tensor.device
+        )
+
+        # 3. 遍历批次中的每一个场景
+        # enumerate(supervoxels_tensor.decomposition_permutations) 会同时提供
+        # 场景索引(i, 从0到7)和该场景对应的索引掩码(permutation)
+        for i, permutation in enumerate(supervoxels_tensor.decomposition_permutations):
+            
+            # 3.1. 获取当前场景的查询向量 Q_box
+            # query_vectors[i] 的形状是 (128,)
+            q_box = query_vectors[i]
+
+            # 3.2. 使用permutation索引，提取出只属于当前场景的超体素特征
+            # scene_supervoxel_features 的形状为 (N_scene_supervoxels, 128)
+            scene_supervoxel_features = supervoxel_features[permutation]
+
+            # 3.3. 计算相似度（点积）
+            # 这是MCLN论文中 M_q = Q_box × V_s 的实现
+            # 我们将 q_box 变形为 (128, 1) 以进行矩阵乘法
+            # scene_similarity 的形状为 (N_scene_supervoxels, 1)
+            # 计算余弦相似度
+            q_box_norm = q_box / (q_box.norm(p=2) + 1e-8)
+            scene_supervoxel_features_norm = scene_supervoxel_features / (scene_supervoxel_features.norm(p=2, dim=1, keepdim=True) + 1e-8)
+            scene_similarity = (scene_supervoxel_features_norm @ q_box_norm.unsqueeze(1))
+
+            # 3.4. 将计算出的当前场景的相似度分数，放回总的similarity_scores张量的正确位置
+            similarity_scores[permutation] = scene_similarity
+
+        # 4. 创建最终的 M_q 稀疏张量
+        # 它使用与输入超体素张量完全相同的坐标管理器和坐标图键，
+        # 只是将其特征替换为我们刚刚计算出的相似度分数。
+        # pdb.set_trace()
+        M_q = ME.SparseTensor(
+            features=similarity_scores,
+            coordinate_map_key=supervoxels_tensor.coordinate_map_key,
+            coordinate_manager=supervoxels_tensor.coordinate_manager,
+        )
+
+        return M_q
+
+
+    def _extract_xF2_subset(self, center_bbox_scene_list: List[torch.Tensor], saved_xs: List[ME.SparseTensor], kernel_size: int = 3):
+        """根据预测的bbox在F1尺度上的体素范围反推其在F2尺度上的相关体素，提取x_F2的子集。
+        步骤:
+          1. 把center_bbox_scene_list转成F2的索引尺度 (除以 voxel_size)。
+          2. 考虑反卷积 kernel 的 3x3x3 覆盖(向外扩一圈)，得到 F2 尺度的中心坐标和尺寸bbox。
+          3. 在x_F2的坐标中筛选所有落入F2尺度中心bbox的体素坐标，形成子集SparseTensor。
+        Args:
+            center_bbox_scene_list: 每个场景的预测中心 bbox (米制) 列表, 每个元素为 (B,6) 的张量 (cx,cy,cz,w,h,l)
+            saved_xs: 已保存的多尺度 SparseTensor 列表, 末尾 -2 为 x_F2, -1 为 x_F1
+            kernel_size: 反卷积 kernel 边长(默认3)
+        Returns:
+            ME.SparseTensor: 只包含贡献F1 中心bbox区域的 x_F2 子集
+        """
+        if len(saved_xs) < 2:
+            return None
+        x_F2 = saved_xs[-2]
+        x_F1 = saved_xs[-1]
+        coords_F2 = x_F2.coordinates  # (N2,4) [b,x,y,z]
+        stride_F1 = x_F1.tensor_stride[0] if isinstance(x_F1.tensor_stride, (list, tuple)) else x_F1.tensor_stride
+        # F2 更粗, 通过 transposed conv(stride s = stride_F2/stride_F1) 上采到 F1
+        expand = stride_F1 * (kernel_size - 1) / 2.0  # 3 -> 1
+        device = coords_F2.device
+        keep_mask = torch.zeros(coords_F2.shape[0], dtype=torch.bool, device=device)
+        # 为了高效: 先按 batch 分组索引
+        # 构建 batch -> indices 映射
+        batch_indices = {}
+        for idx in range(coords_F2.shape[0]):
+            b = int(coords_F2[idx,0].item())
+            batch_indices.setdefault(b, []).append(idx)
+            
+        for scene_id, center_bbox_scene in enumerate(center_bbox_scene_list):
+            # 1. 转成 F2 索引尺度
+            centers_F2 = center_bbox_scene[0:3] / self.voxel_size  # (Ni,3)
+            sizes_F2 = center_bbox_scene[3:6] / self.voxel_size    # (Ni,3)
+            # 2. 考虑反卷积 kernel 的 3x3x3 覆盖 (向外扩一圈)
+            # 直接在 F2 尺度尺寸上加 2*expand
+            sizes_F2_expanded = sizes_F2 + 2 * expand
+            half_sizes = sizes_F2_expanded / 2.0
+            # 4. 获取该 scene 在 F2 中的所有坐标
+            scene_indices = batch_indices.get(scene_id, [])
+            if not scene_indices:
+                continue
+            scene_indices_tensor = torch.tensor(scene_indices, device=device, dtype=torch.long)
+            scene_coords = coords_F2[scene_indices_tensor][:,1:].float()  # (M,3)
+            # 5. 筛选落入 bbox 范围内的坐标
+            for i in range(3):
+                cond = (scene_coords[:,i] >= (centers_F2[i] - half_sizes[i])) & \
+                       (scene_coords[:,i] <= (centers_F2[i] + half_sizes[i]))
+                scene_coords = scene_coords[cond]
+                scene_indices_tensor = scene_indices_tensor[cond]
+                if scene_coords.shape[0] == 0:
+                    break
+            keep_mask[scene_indices_tensor] = True
+            # pdb.set_trace()
+        if keep_mask.sum() == 0:
+            return None
+        x_F2_subset = ME.SparseTensor(
+            features=x_F2.features[keep_mask],
+            coordinates=x_F2.coordinates[keep_mask],
+            coordinate_manager=x_F2.coordinate_manager,
+            tensor_stride=x_F2.tensor_stride,
+            device=x_F2.device
+        )
+        return x_F2_subset
+
+    def _generate_Mq_seg(self, M_q: ME.SparseTensor, seg_feats: ME.SparseTensor, radius: int = 5):
+        """
+        根据 M_q 的分数，为 seg_feats 的每个坐标点生成一个新的分数张量 M_q_seg。
+        此版本使用 softmax 进行加权融合，以保证梯度可以反向传播。
+        [FIXED] 增加了对无邻居点的处理，防止 softmax 出现 NaN。
+
+        规则:
+        对于 seg_feats 中的每个点，它会查看其周围 (2r+1)^3 区域内的所有 M_q 点。
+        然后根据这些 M_q 点的分数计算一个 softmax 权重，并用这些权重对分数进行加权求和，
+        得到该 seg_feats 点的新分数。
+
+        Args:
+            M_q (ME.SparseTensor): 源分数张量。其特征梯度可以被计算。
+            seg_feats (ME.SparseTensor): 目标坐标张量。
+            radius (int): 扩散的半径 (包含边界)。
+
+        Returns:
+            ME.SparseTensor: 一个与 seg_feats 形状完全相同的新稀疏张量 M_q_seg，且可微分。
+        """
+        # 1. 获取输入张量的坐标和 M_q 的特征
+        coords_seg = seg_feats.C
+        coords_Mq = M_q.C
+        feats_Mq = M_q.F
+        device = seg_feats.device
+
+        # 2. 初始化一个新的特征张量，与 seg_feats 的点数相同。
+        new_seg_feats = torch.zeros((len(coords_seg), 1), device=device, dtype=torch.float32)
+
+        # 3. 按场景（batch item）进行处理
+        for scene_id, seg_perm in enumerate(seg_feats.decomposition_permutations):
+            mq_scene_mask = (coords_Mq[:, 0] == scene_id)
+            if not torch.any(mq_scene_mask):
+                continue
+
+            coords_seg_scene = coords_seg[seg_perm][:, 1:]
+            coords_Mq_scene = coords_Mq[mq_scene_mask][:, 1:]
+            feats_Mq_scene = feats_Mq[mq_scene_mask]
+
+            # 4. 计算坐标差值并找到在半径内的点
+            delta = coords_seg_scene.unsqueeze(1) - coords_Mq_scene.unsqueeze(0)
+            is_within_box = (delta.abs() <= radius).all(dim=2)
+
+            # 5. [FIX] 检查哪些 seg_feats 点至少有一个 M_q 邻居
+            has_neighbors_mask = is_within_box.any(dim=1)
+            
+            # 初始化当前场景的分数为0
+            weighted_scores = torch.zeros(len(coords_seg_scene), device=device)
+
+            # 只对有邻居的点进行 softmax 计算
+            if has_neighbors_mask.any():
+                # 过滤出有邻居的点进行后续计算
+                relevant_seg_points_mask = has_neighbors_mask
+                
+                # 广播 M_q 的分数，并将不在范围内的分数设为-inf以便 softmax 正确处理
+                broadcasted_scores = feats_Mq_scene.T.expand(len(coords_seg_scene), -1)
+                
+                # 只考虑有邻居的行
+                scores_to_consider = torch.where(
+                    is_within_box[relevant_seg_points_mask],
+                    broadcasted_scores[relevant_seg_points_mask],
+                    -torch.inf
+                )
+
+                # 6. 计算 softmax 权重。-inf 的位置权重会变为 0。
+                softmax_weights = torch.softmax(scores_to_consider, dim=1)
+
+                # 7. 使用 softmax 权重对原始分数进行加权求和。
+                calculated_scores = torch.sum(
+                    broadcasted_scores[relevant_seg_points_mask] * softmax_weights, 
+                    dim=1
+                )
+                
+                # 将计算出的分数放回正确的位置
+                weighted_scores[relevant_seg_points_mask] = calculated_scores
+
+            # 8. 将计算出的场景分数放回全局特征张量中
+            new_seg_feats[seg_perm] = weighted_scores.unsqueeze(1)
+
+        # 9. 创建最终的稀疏张量 M_q_seg
+        M_q_seg = ME.SparseTensor(
+            features=new_seg_feats,
+            coordinate_map_key=seg_feats.coordinate_map_key,
+            coordinate_manager=seg_feats.coordinate_manager
+        )
+
+        return M_q_seg
+    
     def forward(self, x_all,text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc=None):
         bboxes_level = []
         bboxes_state = []
@@ -306,6 +593,7 @@ class TSPHead(nn.Module):
         # pdb.set_trace()
         inputs = x_all[2:]
         x = inputs[-1]
+        saved_xs = []
         for i in range(len(inputs) - 1, -1, -1): # 2,1,0
             if i ==1 :  #  1,0         
                 prune_mask = self._get_keep_voxel(x, i + 2, bboxes_state, img_metas) 
@@ -451,16 +739,33 @@ class TSPHead(nn.Module):
             x = self.__getattr__(f'lateral_block_{i}')(x)
             if i == 0:
                 out = self.__getattr__(f'out_block_{i}')(x)
+            saved_xs.append(x)
         out = self.fuse(out, text_feats[:, 0])
-        bbox_pred, cls_pred, point, center_coord = self._forward_single(out)
-        # get the center of the bbox
-        pdb.set_trace()
+        bbox_pred, cls_pred, point, center_coord, center_bbox_pred = self._forward_single(out)
+        best_feats_F2 = self._get_best_feats_F2(center_coord, saved_xs)
+        center_point = [cc[1:] * self.voxel_size for cc in center_coord]  # 提取空间坐标并转为米制
+        # 转tensor
+        center_point = torch.stack(center_point) if len(center_point) > 0 else torch.empty(0, 3, device=out.device)
+        center_bbox_pred = torch.stack(center_bbox_pred) if len(center_bbox_pred) > 0 else torch.empty(0, 6, device=out.device)
+        # 转换成米制真实框
+        center_bbox = self._bbox_pred_to_bbox(center_point, center_bbox_pred)  # center_bbox_pred 是 (B,6) 的偏移+尺度, center_bbox 是 (B,6) 的米制真实框 (cx,cy,cz,w,h,l)
+        # 新增: 提取 x_F2 子集 (可能为 None)
+        # pdb.set_trace()
+        x_F2_subset = self._extract_xF2_subset(center_bbox, saved_xs, kernel_size=3)
+        # bbox_F2 = self._get_bbox_F2(bbox_pred, saved_xs)
+        # pdb.set_trace()
+        M_q = self._calculate_M_q(best_feats_F2, x_F2_subset)
+        
+        # pdb.set_trace()
         x = self.upsample_st_2(x) + x_all[1]
         x = self.upsample_st_4(x) + x_all[0]
         seg_feats = self.conv_32_ch(x)
+        M_q_seg = self._generate_Mq_seg(M_q, seg_feats, radius=5)
+        # pdb.set_trace()
             
         return [bbox_pred], [cls_pred], [point], keep_preds[::-1], keep_gts[::-1], bboxes_level, com_pred_training, com_coords_training, \
-            seg_feats
+            seg_feats, M_q_seg
+
 
     def _prune_inference(self, x, scores, layer_id):
         """Prunes the tensor by score thresholding.
@@ -644,6 +949,7 @@ class TSPHead(nn.Module):
                      gt_labels,
                      img_meta,
                      com_pred,com_coords,):
+        # pdb.set_trace()
         assigned_ids = self.assigner.assign(points, gt_bboxes, gt_labels, img_meta)
         bbox_preds = torch.cat(bbox_preds)
         cls_preds = torch.cat(cls_preds)
@@ -696,7 +1002,7 @@ class TSPHead(nn.Module):
 
 
     def _loss(self, bbox_preds, cls_preds, points, gt_bboxes, gt_labels, img_metas, 
-              keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training, gt_points, targets, seg_feats):
+              keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training, gt_points, targets, seg_feats, M_q_seg):
         bbox_losses, cls_losses, pos_masks, com_losses, pos_masks_com, selected_bboxes, selected_scores, selected_labels \
             = [], [], [], [], [], [], [], []
 
@@ -776,8 +1082,8 @@ class TSPHead(nn.Module):
             selected_labels.append(selected_label)
             
         # pdb.set_trace()
-        seg_preds, targets, v2r, r2scene, rois, scores, gt_idxs = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels)
-        seg_loss, seg_loss_dice = self._loss_second(seg_preds, targets, v2r, r2scene, rois, gt_idxs,gt_bboxes, gt_labels, img_metas)
+        seg_preds, targets, v2r, r2scene, rois, scores, gt_idxs, M_q_seg_preds = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels, M_q_seg)
+        seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss = self._loss_second(seg_preds, targets, v2r, r2scene, rois, gt_idxs,gt_bboxes, gt_labels, img_metas, M_q_seg_preds)
         # pdb.set_trace()
         return dict(
             bbox_loss=self.bbox_loss_weight * torch.mean(torch.cat(bbox_losses)),
@@ -785,16 +1091,22 @@ class TSPHead(nn.Module):
             keep_loss=self.keep_loss_weight * keep_losses / len(img_metas),
             seg_loss=self.seg_loss_weight * seg_loss,
             seg_loss_dice=self.seg_loss_dice_weight * seg_loss_dice,
-            com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com))) 
+            com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com)),
+            M_q_loss=self.M_q_loss_weight * M_q_loss,
+            M_q_loss_dice=self.M_q_loss_dice_weight * M_q_loss_dice,
+            cross_loss=self.cross_loss_weight * cross_loss
+        )
 
     def _loss_second(self, cls_preds, targets, v2r, r2scene, rois, gt_idxs,
-                    gt_bboxes, gt_labels, img_metas):
+                    gt_bboxes, gt_labels, img_metas, M_q_seg_preds=None):
         # pdb.set_trace()
         v2scene = r2scene[v2r]
         seg_losses = []
         seg_losses_dice = []
+        M_q_losses, M_q_losses_dice = [], []
+        cross_losses = []
         for i in range(len(img_metas)):
-            seg_loss, seg_loss_dice = self._loss_second_single(
+            seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss = self._loss_second_single(
                 cls_preds=cls_preds[v2scene == i],
                 targets=targets[v2scene == i],
                 v2r=v2r[v2scene == i],
@@ -802,13 +1114,20 @@ class TSPHead(nn.Module):
                 gt_idxs=gt_idxs[i],
                 gt_bboxes=gt_bboxes[i],
                 gt_labels=gt_labels[i],
-                img_meta=img_metas[i])
+                img_meta=img_metas[i],
+                M_q_seg_pred = M_q_seg_preds[v2scene == i] if M_q_seg_preds is not None else None)
             seg_losses.append(seg_loss)
             seg_losses_dice.append(seg_loss_dice)
+            M_q_losses.append(M_q_loss)
+            M_q_losses_dice.append(M_q_loss_dice)
+            cross_losses.append(cross_loss)
+
         # pdb.set_trace()
-        return torch.mean(torch.stack(seg_losses)), torch.mean(torch.stack(seg_losses_dice))
+        return torch.mean(torch.stack(seg_losses)), torch.mean(torch.stack(seg_losses_dice)), \
+                torch.mean(torch.stack(M_q_losses)), torch.mean(torch.stack(M_q_losses_dice)), \
+                torch.mean(torch.stack(cross_losses))
     
-    def _loss_second_single(self, cls_preds, targets, v2r, rois, gt_idxs, gt_bboxes, gt_labels, img_meta):
+    def _loss_second_single(self, cls_preds, targets, v2r, rois, gt_idxs, gt_bboxes, gt_labels, img_meta, M_q_seg_pred=None):
         if len(rois) == 0 or cls_preds.shape[0] == 0:
             return cls_preds.sum().float()
         v2r = v2r - v2r.min()
@@ -832,29 +1151,67 @@ class TSPHead(nn.Module):
         # pdb.set_trace()
         seg_loss = self.seg_loss(cls_preds, (targets).long())
         seg_loss_dice = self.seg_loss_dice(cls_preds, (targets).long())
+        
+        # 初始化 M_q 和 cross loss 为零
+        M_q_loss = cls_preds.sum() * 0
+        M_q_loss_dice = cls_preds.sum() * 0
+        cross_loss = cls_preds.sum() * 0
 
-        # inst_loss = self.inst_loss(inst_preds, labels)
-        return seg_loss, seg_loss_dice
+        if M_q_seg_pred is not None:
+            # 2. 将 M_q_seg_pred (相似度) 转换为 logits
+            m_q_logits = M_q_seg_pred * self.mq_scale + self.mq_bias
+
+            # 3. 计算 M_q_seg_pred 相对于真值的损失
+            M_q_loss = self.M_q_loss(m_q_logits, (targets).long())
+            M_q_loss_dice = self.M_q_loss_dice(m_q_logits, (targets).long())
+
+            # 4. 计算协同训练的交叉损失 (对称KL散度)
+            # 使用 sigmoid 将 logits 转换为概率 p
+            p_seg = torch.sigmoid(cls_preds)
+            p_mq = torch.sigmoid(m_q_logits)
+
+            # 构建二分类概率分布 [1-p, p]
+            p_dist_seg = torch.cat([1 - p_seg, p_seg], dim=-1)
+            p_dist_mq = torch.cat([1 - p_mq, p_mq], dim=-1)
+            
+            # 为保证数值稳定性，在取对数前给概率值增加一个小的 epsilon
+            p_dist_seg = torch.clamp(p_dist_seg, 1e-8, 1.0 - 1e-8)
+            p_dist_mq = torch.clamp(p_dist_mq, 1e-8, 1.0 - 1e-8)
+
+            # 计算 log-probabilities
+            log_p_dist_seg = torch.log(p_dist_seg)
+            log_p_dist_mq = torch.log(p_dist_mq)
+
+            # 计算对称KL散度，梯度会流向两个分支
+            loss_seg_to_mq = self.cross_loss(log_p_dist_mq, p_dist_seg)
+            loss_mq_to_seg = self.cross_loss(log_p_dist_seg, p_dist_mq)
+            
+            cross_loss = loss_mq_to_seg + loss_seg_to_mq
+            
+        return seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss
     
     def forward_train(self, x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, \
         gt_points, targets, img_metas,pc=None):
         
-        bbox_preds, cls_preds, points, keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training, seg_feats = \
+        bbox_preds, cls_preds, points, keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training, seg_feats, M_q_seg = \
             self(x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc)
 
         return self._loss(bbox_preds, cls_preds, points,
                           gt_bboxes, gt_labels, img_metas, keep_preds, keep_gts, bboxes_level,
-                          com_pred_training, com_coords_training, gt_points, targets, seg_feats)
+                          com_pred_training, com_coords_training, gt_points, targets, seg_feats, M_q_seg)
 
-    def _forward_seg(self, x, targets, rois, scores, labels):
+    def _forward_seg(self, x, targets, rois, scores, labels, M_q_seg: ME.SparseTensor=None):
         # rois = [b[0] for b in bbox_list]
         # scores = [b[1] for b in bbox_list]
         # labels = [b[2] for b in bbox_list]
         # levels = [torch.zeros(len(b[0])) for b in bbox_list]
         # pdb.set_trace()
         feats_with_targets = ME.SparseTensor(torch.cat((x.features, targets), axis=1), x.coordinates)
+        if M_q_seg is not None :
+            M_q_seg_t , _ , _ , _ , _ = self.extract(M_q_seg, rois, scores, labels)
         tensors, ids, rois, scores, labels = self.extract(feats_with_targets, rois, scores, labels)        
-
+        # pdb.set_trace()
+        
         if tensors.features.shape[0] == 0:
             return (targets.new_zeros((0, 1)),
                     targets.new_zeros((0, 1)),
@@ -868,7 +1225,9 @@ class TSPHead(nn.Module):
         targets = tensors.features[:, -1:]
         # pdb.set_trace()
         preds = self.seg_unet(feats).features
-        return preds, targets, feats.coordinates[:, 0].long(), ids, rois, scores, labels
+        # pdb.set_trace()
+        return preds, targets, feats.coordinates[:, 0].long(), ids, rois, scores, labels, \
+            M_q_seg_t.features if M_q_seg is not None else None
 
     def extract(self, tensors, rois, scores, labels):
         # pdb.set_trace()
@@ -1179,7 +1538,7 @@ class TSPHead(nn.Module):
                 out = self.__getattr__(f'out_block_{i}')(x)
         start_time = time.time()
         out = self.fuse(out, text_feats[:, 0])
-        bbox_pred, cls_pred, point = self._forward_single(out)
+        bbox_pred, cls_pred, point, _ , _ = self._forward_single(out)
         
         results = self._get_bboxes([bbox_pred], [cls_pred], [point], img_metas)
         
@@ -1196,7 +1555,7 @@ class TSPHead(nn.Module):
 
         src_idxs = torch.arange(0, x_all[0].features.shape[0]).to(inverse_mapping.device)
         # src_idxs = src_idxs.unsqueeze(1).expand(src_idxs.shape[0], 2)
-        seg_preds, idxs, v2r, r2scene, rois, scores, gt_idxs = self._forward_seg(seg_feats, src_idxs.unsqueeze(-1), selected_bboxes,selected_scores,selected_labels)
+        seg_preds, idxs, v2r, r2scene, rois, scores, gt_idxs, _ = self._forward_seg(seg_feats, src_idxs.unsqueeze(-1), selected_bboxes,selected_scores,selected_labels)
         # seg_preds, targets_new, v2r, r2scene, rois, scores, gt_idxs = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels)
 
         # pdb.set_trace()
@@ -1271,6 +1630,7 @@ class TR3DAssigner:
 
     @torch.no_grad()
     def assign(self, points, gt_bboxes, gt_labels, img_meta):
+        # pdb.set_trace()
         # -> object id or -1 for each point
         float_max = points[0].new_tensor(1e8)
         levels = torch.cat([points[i].new_tensor(i, dtype=torch.long).expand(len(points[i]))
@@ -1314,7 +1674,7 @@ class TR3DAssigner:
         min_values, min_ids = center_distances.min(dim=1)
         min_inds = torch.where(min_values < float_max, min_ids, -1)
         min_inds = torch.where(min_inds == min_inds_, min_ids, -1)
-
+        # pdb.set_trace()
         return min_inds
     
 def get_face_distances(points, boxes):
