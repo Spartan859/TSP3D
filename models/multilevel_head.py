@@ -563,6 +563,95 @@ class TSPHead(nn.Module):
 
         return M_q_seg
     
+    def _get_M_q_F2(self, center_coord, center_bbox_pred, saved_xs, device):
+        best_feats_F2 = self._get_best_feats_F2(center_coord, saved_xs)
+        center_point = [cc[1:] * self.voxel_size for cc in center_coord]  # 提取空间坐标并转为米制
+        # 转tensor
+        center_point = torch.stack(center_point) if len(center_point) > 0 else torch.empty(0, 3, device=device)
+        center_bbox_pred = torch.stack(center_bbox_pred) if len(center_bbox_pred) > 0 else torch.empty(0, 6, device=device)
+        # 转换成米制真实框
+        center_bbox = self._bbox_pred_to_bbox(center_point, center_bbox_pred)  # center_bbox_pred 是 (B,6) 的偏移+尺度, center_bbox 是 (B,6) 的米制真实框 (cx,cy,cz,w,h,l)
+        # 新增: 提取 x_F2 子集 (可能为 None)
+        # pdb.set_trace()
+        x_F2_subset = self._extract_xF2_subset(center_bbox, saved_xs, kernel_size=3)
+        # bbox_F2 = self._get_bbox_F2(bbox_pred, saved_xs)
+        # pdb.set_trace()
+        M_q = self._calculate_M_q(best_feats_F2, x_F2_subset)
+        return M_q
+    
+    def _get_M_q_F1(self, center_coord, center_bbox_pred, saved_xs, cls_pred,device):
+        center_point = [cc[1:] * self.voxel_size for cc in center_coord]  # 提取空间坐标并转为米制
+        # 转tensor
+        center_point = torch.stack(center_point) if len(center_point) > 0 else torch.empty(0, 3, device=device)
+        center_bbox_pred = torch.stack(center_bbox_pred) if len(center_bbox_pred) > 0 else torch.empty(0, 6, device=device)
+        # 转换成米制真实框
+        center_bbox = self._bbox_pred_to_bbox(center_point, center_bbox_pred)  # (B,6): (cx,cy,cz,w,h,l)
+
+        # 从F1尺度的特征图中提取落在每个scene对应center_bbox内的点
+        x_F1: ME.SparseTensor = saved_xs[-1]
+        coords_F1 = x_F1.coordinates  # (N, 4): [batch, x, y, z]
+        device = x_F1.device
+
+        selected_coords = []
+        selected_feats = []
+
+        # 按scene处理：使用与F1相同的分解索引
+        for scene_id, perm in enumerate(x_F1.decomposition_permutations):
+            if len(perm) == 0:
+                continue
+            # 防守：若center_bbox数量少于scene数量，跳过越界scene
+            if center_bbox.shape[0] <= scene_id:
+                continue
+
+            # 该scene的F1点坐标(米制)
+            scene_coords_idx = coords_F1[perm]                   # int坐标(保持原dtype用于构建SparseTensor)
+            scene_points_m = scene_coords_idx[:, 1:].float() * self.voxel_size  # 转为米制用于几何判断
+
+            # 当前scene的bbox参数
+            cx, cy, cz, w, h, l = center_bbox[scene_id]
+            half = torch.tensor([w, h, l], device=device, dtype=scene_points_m.dtype) / 2.0
+            center = torch.tensor([cx, cy, cz], device=device, dtype=scene_points_m.dtype)
+
+            lower = center - half
+            upper = center + half
+
+            # 选出落在bbox范围内的点
+            mask = (scene_points_m[:, 0] >= lower[0]) & (scene_points_m[:, 0] <= upper[0]) & \
+                   (scene_points_m[:, 1] >= lower[1]) & (scene_points_m[:, 1] <= upper[1]) & \
+                   (scene_points_m[:, 2] >= lower[2]) & (scene_points_m[:, 2] <= upper[2])
+
+            if mask.any():
+                # 从cls_pred（按scene分割的logits或分数）中取出对应点的分数作为新特征
+                # cls_pred[scene_id] 形状: (Ni, 1)（n_classes=1时）
+                scene_scores = cls_pred[scene_id]
+                selected_coords.append(scene_coords_idx[mask])
+                selected_feats.append(scene_scores[mask])
+
+        if len(selected_coords) == 0:
+            # 返回一个空的稀疏张量（坐标管理与F1一致），后续逻辑可正常跳过
+            M_q = ME.SparseTensor(
+                features=coords_F1.new_zeros((0, 1), dtype=torch.float32),
+                coordinates=coords_F1.new_zeros((0, 4)).float(),  # dtype需为float
+                coordinate_manager=x_F1.coordinate_manager,
+                tensor_stride=x_F1.tensor_stride,
+                device=x_F1.device
+            )
+            return M_q
+
+        # 拼接被选中的F1子集坐标与对应的分数作为特征
+        selected_coords = torch.cat(selected_coords, dim=0).float()  # ME 需要 float 坐标
+        selected_feats = torch.cat(selected_feats, dim=0).to(torch.float32)
+
+        # 构建最终的 M_q 稀疏张量（只包含bbox范围内的点，特征为分类分数）
+        M_q = ME.SparseTensor(
+            features=selected_feats,
+            coordinates=selected_coords,
+            coordinate_manager=x_F1.coordinate_manager,
+            tensor_stride=x_F1.tensor_stride,
+            device=x_F1.device
+        )
+        return M_q
+    
     def forward(self, x_all,text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc=None):
         bboxes_level = []
         bboxes_state = []
@@ -742,19 +831,9 @@ class TSPHead(nn.Module):
             saved_xs.append(x)
         out = self.fuse(out, text_feats[:, 0])
         bbox_pred, cls_pred, point, center_coord, center_bbox_pred = self._forward_single(out)
-        best_feats_F2 = self._get_best_feats_F2(center_coord, saved_xs)
-        center_point = [cc[1:] * self.voxel_size for cc in center_coord]  # 提取空间坐标并转为米制
-        # 转tensor
-        center_point = torch.stack(center_point) if len(center_point) > 0 else torch.empty(0, 3, device=out.device)
-        center_bbox_pred = torch.stack(center_bbox_pred) if len(center_bbox_pred) > 0 else torch.empty(0, 6, device=out.device)
-        # 转换成米制真实框
-        center_bbox = self._bbox_pred_to_bbox(center_point, center_bbox_pred)  # center_bbox_pred 是 (B,6) 的偏移+尺度, center_bbox 是 (B,6) 的米制真实框 (cx,cy,cz,w,h,l)
-        # 新增: 提取 x_F2 子集 (可能为 None)
         # pdb.set_trace()
-        x_F2_subset = self._extract_xF2_subset(center_bbox, saved_xs, kernel_size=3)
-        # bbox_F2 = self._get_bbox_F2(bbox_pred, saved_xs)
-        # pdb.set_trace()
-        M_q = self._calculate_M_q(best_feats_F2, x_F2_subset)
+        # M_q = self._get_M_q_F2(center_coord, center_bbox_pred, saved_xs, device=x.device)
+        M_q = self._get_M_q_F1(center_coord, center_bbox_pred, saved_xs, cls_pred, device=x.device)
         
         # pdb.set_trace()
         x = self.upsample_st_2(x) + x_all[1]
