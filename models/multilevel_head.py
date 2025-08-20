@@ -832,8 +832,8 @@ class TSPHead(nn.Module):
         out = self.fuse(out, text_feats[:, 0])
         bbox_pred, cls_pred, point, center_coord, center_bbox_pred = self._forward_single(out)
         # pdb.set_trace()
-        # M_q = self._get_M_q_F2(center_coord, center_bbox_pred, saved_xs, device=x.device)
-        M_q = self._get_M_q_F1(center_coord, center_bbox_pred, saved_xs, cls_pred, device=x.device)
+        M_q = self._get_M_q_F2(center_coord, center_bbox_pred, saved_xs, device=x.device)
+        # M_q = self._get_M_q_F1(center_coord, center_bbox_pred, saved_xs, cls_pred, device=x.device)
         
         # pdb.set_trace()
         x = self.upsample_st_2(x) + x_all[1]
