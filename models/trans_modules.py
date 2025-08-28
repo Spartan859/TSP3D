@@ -5,6 +5,7 @@ import torch.nn.functional as F
 from copy import deepcopy
 from Swin3D.modules.swin3d_layers import BasicLayer
 import MinkowskiEngine as ME
+import torch
 
 def _get_clones(module, N):
     return nn.ModuleList([deepcopy(module) for _ in range(N)])
@@ -312,6 +313,7 @@ class BiEncoderLayerSwin(nn.Module):
                 quant_size=4,
                 drop_path=dropout
             )
+            
         else:
             self.self_attention_visual = None
 
@@ -321,7 +323,7 @@ class BiEncoderLayerSwin(nn.Module):
             use_butd_enc_attn
         )
 
-    def forward(self, vis_feats, pos_feats, coords_vis, sampled_coords, x_F3_vis_feats, x_F3_pos_feats, padding_mask, text_feats,
+    def forward(self, vis_feats, pos_feats, coords_vis, sampled_coords, x_F3_vis_feats, x_F3_pos_feats, padding_mask, x_F3_padding_mask, text_feats,
                 text_padding_mask, end_points={}, detected_feats=None,
                 detected_mask=None):
         """Forward pass, feats (B, N, F), masks (B, N), diff N for V/L."""
@@ -340,6 +342,20 @@ class BiEncoderLayerSwin(nn.Module):
             feats_valid = vis_feats_flat[valid_mask]
             coords_valid = sampled_coords_flat[valid_mask]
             
+            # 去除重复坐标，只保留第一个
+            coords_valid_np = coords_valid.cpu().numpy()
+            _, unique_idx_np = np.unique(coords_valid_np, axis=0, return_index=True)
+            unique_idx = torch.from_numpy(unique_idx_np).to(coords_valid.device)
+
+            # Use the indices to get the unique tensors
+            coords_valid = coords_valid[unique_idx]
+            feats_valid = feats_valid[unique_idx]
+            # 同步修改valid_mask（只保留unique的True）
+            valid_mask_indices = valid_mask.nonzero(as_tuple=True)[0]
+            keep_idx = valid_mask_indices[unique_idx]
+            new_valid_mask = torch.zeros_like(valid_mask)
+            new_valid_mask[keep_idx] = True
+            valid_mask = new_valid_mask
             sp_tensor = ME.SparseTensor(
                 features=feats_valid,
                 coordinates=coords_valid,
@@ -358,13 +374,17 @@ class BiEncoderLayerSwin(nn.Module):
             # new_sp.C: [M, 4]，new_sp.F: [M, C]
             # coords_valid: [num_valid, 4]，valid_mask: [B*N]
             # 目标：还原到vis_feats_flat的顺序（无效位置补0），再reshape成[B, N, C]
-            import torch
+            
             vis_feats_flat_out = torch.zeros_like(vis_feats_flat)
             # 构建映射：coords_valid 在 vis_feats_flat 的索引就是 valid_mask.nonzero(as_tuple=True)[0]
             idx_valid = valid_mask.nonzero(as_tuple=True)[0]
+            if not (sp_tensor.F.shape[0] == new_sp.F.shape[0] and idx_valid.shape[0] == new_sp.F.shape[0]):
+                print(f"sp_tensor.F.shape: {sp_tensor.F.shape}")
+                print(f"new_sp.F.shape: {new_sp.F.shape}")
+                print(f"idx_valid.shape: {idx_valid.shape}")
+                pdb.set_trace()
             vis_feats_flat_out[idx_valid] = new_sp.F
-            vis_feats_out = vis_feats_flat_out.view(B, N, C)
-            vis_feats = vis_feats_out.transpose(0, 1)  # (N, B, C)
+            vis_feats = vis_feats_flat_out.view(B, N, C)
             
 
         # STEP 2. Self attention for language
@@ -373,7 +393,21 @@ class BiEncoderLayerSwin(nn.Module):
                 text_feats.transpose(0, 1),
                 src_key_padding_mask=text_padding_mask
             ).transpose(0, 1)
+            # pdb.set_trace()
 
+        # 新增：用x_F3_vis_feats和x_F3_pos_feats对vis_feats再做一次cross attention
+        # x_F3_vis_feats: [B, N, C], x_F3_pos_feats: [B, N, C]
+        # 这里text_feats只是占位，不参与实际cross attention
+        vis_feats, _ = self.cross_layer(
+            vis_feats=vis_feats,
+            vis_key_padding_mask=padding_mask,
+            text_feats=x_F3_vis_feats+x_F3_pos_feats,
+            text_key_padding_mask=x_F3_padding_mask,
+            pos_feats=pos_feats,
+            detected_feats=None,
+            detected_mask=None
+        )
+        
         # STEP 3. Cross attention
         vis_feats, text_feats = self.cross_layer(
             vis_feats=vis_feats,
@@ -384,6 +418,8 @@ class BiEncoderLayerSwin(nn.Module):
             detected_feats=detected_feats,
             detected_mask=detected_mask
         )
+
+        
 
         return vis_feats, text_feats
     

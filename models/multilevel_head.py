@@ -370,6 +370,8 @@ class TSPHead(nn.Module):
             ME.SparseTensor: 相似度图 M_q。其坐标与supervoxels_tensor相同，
                             特征为每个超体素与对应Q_box的相似度分数。
         """
+        if supervoxels_tensor is None:
+            return None
         # 1. 从稀疏张量中提取所有超体素的特征
         # supervoxel_features 的形状为 (N_total_supervoxels, 128)
         supervoxel_features = supervoxels_tensor.F
@@ -737,6 +739,7 @@ class TSPHead(nn.Module):
         saved_xs = []
         x_F3_pos_feats = None
         x_F3_vis_feats = None
+        x_F3_padding_mask = None
         for i in range(len(inputs) - 1, -1, -1): # 2,1,0
             if i ==1 :  #  1,0         
                 prune_mask = self._get_keep_voxel(x, i + 2, bboxes_state, img_metas) 
@@ -849,11 +852,13 @@ class TSPHead(nn.Module):
                 sampled_coords = torch.stack(sampled_coords)
                 pos_feats = self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous()
                 vis_feats = sampled_features.contiguous()
+                padding_mask=sampled_coords[:, :,0] == -1
                 coords_vis = self._avg_feats_in_stride(sampled_coords, coords_x, x.tensor_stride)  # [B, N, C]
                 # pdb.set_trace()
                 if x_F3_pos_feats is None:
                     x_F3_pos_feats = pos_feats
                     x_F3_vis_feats = vis_feats
+                    x_F3_padding_mask = padding_mask
                 sampled_features, text_feats = self.keep_trans[i-1](
                     vis_feats=vis_feats,
                     pos_feats=pos_feats,
@@ -861,7 +866,8 @@ class TSPHead(nn.Module):
                     sampled_coords=sampled_coords,
                     x_F3_vis_feats=x_F3_vis_feats,
                     x_F3_pos_feats=x_F3_pos_feats,
-                    padding_mask=sampled_coords[:, :,0] == -1,
+                    padding_mask=padding_mask,
+                    x_F3_padding_mask=x_F3_padding_mask,
                     text_feats=text_feats,
                     text_padding_mask=text_attention_mask)
                 
@@ -1363,7 +1369,8 @@ class TSPHead(nn.Module):
                     targets.new_zeros(0),
                     [targets.new_zeros((0, 7)) for i in range(len(rois))],
                     [targets.new_zeros(0) for i in range(len(rois))],
-                    [targets.new_zeros(0) for i in range(len(rois))])
+                    [targets.new_zeros(0) for i in range(len(rois))],
+                    None)
 
         feats = ME.SparseTensor(tensors.features[:, :-1], tensors.coordinates)
         targets = tensors.features[:, -1:]
@@ -1548,12 +1555,15 @@ class TSPHead(nn.Module):
         return results
 
 
-    def forward_test(self, x_all, text_feats, text_attention_mask, targets, inverse_mapping, img_metas, pc=None, gt_bboxes=None):
+    def forward_test(self, x_all, coords_x, text_feats, text_attention_mask, targets, inverse_mapping, img_metas, pc=None, gt_bboxes=None):
         inputs = x_all[2:]
         x = inputs[-1]
         bbox_preds, cls_preds, points = [], [], []
         keep_scores = None
         
+        x_F3_pos_feats = None
+        x_F3_vis_feats = None
+        x_F3_padding_mask = None
         for i in range(len(inputs) - 1, -1, -1):
             if i ==1:
                 x = self._prune_inference(x, prune_inference,i)
@@ -1661,10 +1671,24 @@ class TSPHead(nn.Module):
                         sampled_coords.append(x.coordinates[permutation])                        
                 sampled_features = torch.stack(sampled_features)
                 sampled_coords = torch.stack(sampled_coords)
+                pos_feats = self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous()
+                vis_feats = sampled_features.contiguous()
+                padding_mask = sampled_coords[:, :,0] == -1
+                # 复制forward的keep_trans相关逻辑
+                coords_vis = self._avg_feats_in_stride(sampled_coords, coords_x, x.tensor_stride)
+                if x_F3_pos_feats is None:
+                    x_F3_pos_feats = pos_feats
+                    x_F3_vis_feats = vis_feats
+                    x_F3_padding_mask = padding_mask
                 sampled_features, text_feats = self.keep_trans[i-1](
-                    vis_feats=sampled_features.contiguous(),
-                    pos_feats=self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous(),
-                    padding_mask=sampled_coords[:, :,0] == -1,
+                    vis_feats=vis_feats,
+                    pos_feats=pos_feats,
+                    coords_vis=coords_vis,
+                    sampled_coords=sampled_coords,
+                    x_F3_vis_feats=x_F3_vis_feats,
+                    x_F3_pos_feats=x_F3_pos_feats,
+                    padding_mask=padding_mask,
+                    x_F3_padding_mask=x_F3_padding_mask,
                     text_feats=text_feats,
                     text_padding_mask=text_attention_mask)
                 

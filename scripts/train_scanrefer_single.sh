@@ -29,11 +29,11 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --use_color \
     --weight_decay 0.0005 \
     --data_root /home/guowenxuan/lxy/TSP3D/data/ \
-    --val_freq 3 --batch_size 6 --save_freq 3 --print_freq 500 \
-    --lr=5e-5 \
-    --keep_trans_lr=5e-5 \
-    --text_encoder_lr=1e-6 \
-    --box_select_lr=4e-5 \
+    --val_freq 1 --batch_size 6 --save_freq 3 --print_freq 500 \
+    --lr=5e-4 \
+    --keep_trans_lr=5e-4 \
+    --text_encoder_lr=1e-5 \
+    --box_select_lr=4e-4 \
     --seg_lr=5e-4 \
     --voxel_size=0.02 --num_workers=1 \
     --dataset scanrefer --test_dataset scanrefer \
@@ -41,8 +41,8 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --log_dir /home/guowenxuan/lxy/TSP3D/outputs/logs \
     --lr_decay_epochs 100 120\
     --augment_det \
+    --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/ckpt_scanrefer.pth \
     # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/logs/scanrefer/2025-08-21_00-44-56/ckpt_epoch_87.pth \
-    # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/ckpt_scanrefer.pth \
     # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/logs/scanrefer/2025-08-18_10-58-47/ckpt_epoch_81.pth \
     # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/ckpt_scanrefer.pth \
     # --checkpoint_path /home/gwx/lxy/TSP3D/outputs/logs/scanrefer/2025-07-10_10-27-52/ckpt_epoch_42.pth \

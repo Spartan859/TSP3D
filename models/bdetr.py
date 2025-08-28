@@ -128,7 +128,7 @@ class BeaUTyDETR(nn.Module):
         
         if not self.training:
             start_time = time.time()
-            bbox_list, head_time, seg_masks = self.head.forward_test(x, text_feats, text_attention_mask, targets, inverse_mapping, img_metas)
+            bbox_list, head_time, seg_masks = self.head.forward_test(x, coords_x, text_feats, text_attention_mask, targets, inverse_mapping, img_metas)
             bbox_results = [
                 bbox3d2result(bboxes, scores, labels)
                 for bboxes, scores, labels in bbox_list
