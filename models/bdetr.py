@@ -89,16 +89,30 @@ class BeaUTyDETR(nn.Module):
         points = [torch.cat([p, torch.unsqueeze(mask, 1)], dim=1) for p, mask in zip(points, gt_masks)]
         field = self.collate(points, ME.SparseTensorQuantizationMode.RANDOM_SUBSAMPLE)
         x = field.sparse()
+        # pdb.set_trace()
         targets = x.features[:, 6:].round().long()
         x = ME.SparseTensor(
             x.features[:, :6],
             coordinate_map_key=x.coordinate_map_key,
             coordinate_manager=x.coordinate_manager,
         )
+        # 获取 batch_id
+        batch_id = x.C[:, 0:1].float()  # [N, 1]
+        coords_feat = torch.cat([
+            batch_id,
+            x.features[:, :3] / self.voxel_size,
+            x.features[:, 3:6]
+        ], dim=1)  # [N, 7]
+        coords_x = ME.SparseTensor(
+            features=coords_feat,
+            coordinate_map_key=x.coordinate_map_key,
+            coordinate_manager=x.coordinate_manager,
+        )
+        # pdb.set_trace()
         x = self.vision_backbone(x)
         inverse_mapping = field.inverse_mapping(x[0].coordinate_map_key).long()
         visual_time = time.time() - start_time
-        
+        # pdb.set_trace()
         
         # Text encoding
 
@@ -140,7 +154,7 @@ class BeaUTyDETR(nn.Module):
             # print(seg_pred.sum())
             fusion_time = time.time() - start_time
             return bbox_results, seg_masks, {'loss':0.}, 0., [visual_time,text_time,fusion_time-head_time,head_time]
-        losses = self.head.forward_train(x,text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, \
+        losses = self.head.forward_train(x, coords_x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, \
             points, targets, img_metas)
         losses.update({'loss':sum(value for key, value in losses.items() if '_loss' in key)})
         return losses

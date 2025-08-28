@@ -41,7 +41,8 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --log_dir /home/guowenxuan/lxy/TSP3D/outputs/logs \
     --lr_decay_epochs 100 120\
     --augment_det \
-    --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/ckpt_scanrefer.pth \
+    # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/logs/scanrefer/2025-08-21_00-44-56/ckpt_epoch_87.pth \
+    # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/ckpt_scanrefer.pth \
     # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/logs/scanrefer/2025-08-18_10-58-47/ckpt_epoch_81.pth \
     # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/ckpt_scanrefer.pth \
     # --checkpoint_path /home/gwx/lxy/TSP3D/outputs/logs/scanrefer/2025-07-10_10-27-52/ckpt_epoch_42.pth \

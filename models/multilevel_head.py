@@ -10,7 +10,7 @@ from torch import nn
 from mmdet3d.structures.bbox_3d import rotation_3d_in_axis
 from .axis_aligned_iou_loss import AxisAlignedIoULoss2
 from mmdet.models.losses import FocalLoss, DiceLoss
-from .trans_modules import (BiEncoder, BiEncoderLayer, PositionEmbeddingLearned)
+from .trans_modules import (BiEncoder, BiEncoderLayer, BiEncoderLayerSwin, BiEncoderSwin, PositionEmbeddingLearned)
 from .mink_unet import MinkUNet14B
 
 import pdb
@@ -165,13 +165,19 @@ class TSPHead(nn.Module):
             ME.MinkowskiConvolution(out_channels, 1, kernel_size=1, bias=True, dimension=3)
         ])
         self.pos_embed = PositionEmbeddingLearned(3, 128)
-        bi_layer0 = BiEncoderLayer(
-            128, dropout=0.1, activation="relu",
-            n_heads=8, dim_feedforward=128,
-            self_attend_lang=True, self_attend_vis=True,
-            use_butd_enc_attn=False
-        )
-        bi_layer1 = BiEncoderLayer(
+        # bi_layer0 = BiEncoderLayer(
+        #     128, dropout=0.1, activation="relu",
+        #     n_heads=8, dim_feedforward=128,
+        #     self_attend_lang=True, self_attend_vis=True,
+        #     use_butd_enc_attn=False
+        # )
+        # bi_layer1 = BiEncoderLayer(
+        #     128, dropout=0.1, activation="relu",
+        #     n_heads=8, dim_feedforward=128,
+        #     self_attend_lang=True, self_attend_vis=True,
+        #     use_butd_enc_attn=False
+        # )
+        bi_layer0 = BiEncoderLayerSwin(
             128, dropout=0.1, activation="relu",
             n_heads=8, dim_feedforward=128,
             self_attend_lang=True, self_attend_vis=True,
@@ -183,7 +189,8 @@ class TSPHead(nn.Module):
             self_attend_lang=True, self_attend_vis=True,
             use_butd_enc_attn=False
         )
-        self.keep_trans = nn.ModuleList([BiEncoder(bi_layer0, 2), BiEncoder(bi_layer1, 2)])
+        # self.keep_trans = nn.ModuleList([BiEncoder(bi_layer0, 2), BiEncoder(bi_layer1, 2)])
+        self.keep_trans = nn.ModuleList([bi_layer0, bi_layer0])
         self.com_trans = BiEncoder(bi_layer2, 2)
         self.pruning = ME.MinkowskiPruning()
         self.com_cls = nn.Conv1d(128, 1, kernel_size=1, bias=True)
@@ -651,8 +658,53 @@ class TSPHead(nn.Module):
             device=x_F1.device
         )
         return M_q
+
+    def _avg_feats_in_stride(self, sampled_coords, coords_x, tensor_stride):
+        """
+        对于sampled_coords中的每个点，在其±tensor_stride的范围内查找coords_x中的点（同一batch），
+        并对找到的所有点的feat做平均，返回coords_vis。
+        若坐标的batch为-1，则特征直接设为全0。
+        sampled_coords: [B, N, 4] int/float
+        coords_x: ME.SparseTensor，features: [M, C]，coordinates: [M, 4]
+        tensor_stride: int 或 [3]，体素步长
+        返回: coords_vis [B, N, C]
+        """
+        B, N, D = sampled_coords.shape
+        M, C = coords_x.F.shape
+        coords_x_coords = coords_x.C  # [M, 4]
+        coords_x_feats = coords_x.F  # [M, C]
+        if isinstance(tensor_stride, (list, tuple, torch.Tensor)):
+            stride = torch.tensor(tensor_stride, device=coords_x_coords.device)
+        else:
+            stride = torch.full((3,), tensor_stride, device=coords_x_coords.device)
+        coords_vis = []
+        for b in range(B):
+            batch_mask = (coords_x_coords[:, 0] == b)
+            coords_x_b = coords_x_coords[batch_mask, 1:4]  # [Mb, 3]
+            feats_x_b = coords_x_feats[batch_mask]          # [Mb, C]
+            coords_b = sampled_coords[b]  # [N, 4]
+            vis_b = []
+            for n in range(N):
+                if coords_b[n, 0] == -1:
+                    vis_b.append(torch.zeros(C, device=coords_x.F.device, dtype=coords_x.F.dtype))
+                    continue
+                q = coords_b[n, 1:4]  # [3]
+                # 查找在q±stride范围内的所有点
+                lower = q - stride
+                upper = q + stride
+                mask = ((coords_x_b >= lower) & (coords_x_b <= upper)).all(dim=1)
+                if mask.any():
+                    feats = feats_x_b[mask]
+                    vis_b.append(feats.mean(dim=0))
+                else:
+                    vis_b.append(torch.zeros(C, device=coords_x.F.device, dtype=coords_x.F.dtype))
+            vis_b = torch.stack(vis_b, dim=0)  # [N, C]
+            coords_vis.append(vis_b)
+        coords_vis = torch.stack(coords_vis, dim=0)  # [B, N, C]
+        return coords_vis
     
-    def forward(self, x_all,text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc=None):
+    def forward(self, x_all, coords_x: ME.SparseTensor, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas, pc=None):
+        # pdb.set_trace()
         bboxes_level = []
         bboxes_state = []
         if self.assign_type == 'volume':
@@ -683,6 +735,8 @@ class TSPHead(nn.Module):
         inputs = x_all[2:]
         x = inputs[-1]
         saved_xs = []
+        x_F3_pos_feats = None
+        x_F3_vis_feats = None
         for i in range(len(inputs) - 1, -1, -1): # 2,1,0
             if i ==1 :  #  1,0         
                 prune_mask = self._get_keep_voxel(x, i + 2, bboxes_state, img_metas) 
@@ -793,9 +847,20 @@ class TSPHead(nn.Module):
                         prune_mask[permutation] = True
                 sampled_features = torch.stack(sampled_features)
                 sampled_coords = torch.stack(sampled_coords)
+                pos_feats = self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous()
+                vis_feats = sampled_features.contiguous()
+                coords_vis = self._avg_feats_in_stride(sampled_coords, coords_x, x.tensor_stride)  # [B, N, C]
+                # pdb.set_trace()
+                if x_F3_pos_feats is None:
+                    x_F3_pos_feats = pos_feats
+                    x_F3_vis_feats = vis_feats
                 sampled_features, text_feats = self.keep_trans[i-1](
-                    vis_feats=sampled_features.contiguous(),
-                    pos_feats=self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous(),
+                    vis_feats=vis_feats,
+                    pos_feats=pos_feats,
+                    coords_vis=coords_vis,
+                    sampled_coords=sampled_coords,
+                    x_F3_vis_feats=x_F3_vis_feats,
+                    x_F3_pos_feats=x_F3_pos_feats,
                     padding_mask=sampled_coords[:, :,0] == -1,
                     text_feats=text_feats,
                     text_padding_mask=text_attention_mask)
@@ -832,14 +897,14 @@ class TSPHead(nn.Module):
         out = self.fuse(out, text_feats[:, 0])
         bbox_pred, cls_pred, point, center_coord, center_bbox_pred = self._forward_single(out)
         # pdb.set_trace()
-        # M_q = self._get_M_q_F2(center_coord, center_bbox_pred, saved_xs, device=x.device)
-        M_q = self._get_M_q_F1(center_coord, center_bbox_pred, saved_xs, cls_pred, device=x.device)
+        M_q = self._get_M_q_F2(center_coord, center_bbox_pred, saved_xs, device=x.device)
+        # M_q = self._get_M_q_F1(center_coord, center_bbox_pred, saved_xs, cls_pred, device=x.device)
         
         # pdb.set_trace()
         x = self.upsample_st_2(x) + x_all[1]
         x = self.upsample_st_4(x) + x_all[0]
         seg_feats = self.conv_32_ch(x)
-        M_q_seg = self._generate_Mq_seg(M_q, seg_feats, radius=5)
+        M_q_seg = self._generate_Mq_seg(M_q, seg_feats, radius=13)
         # pdb.set_trace()
             
         return [bbox_pred], [cls_pred], [point], keep_preds[::-1], keep_gts[::-1], bboxes_level, com_pred_training, com_coords_training, \
@@ -1269,11 +1334,11 @@ class TSPHead(nn.Module):
             
         return seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss
     
-    def forward_train(self, x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, \
+    def forward_train(self, x, coords_x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, \
         gt_points, targets, img_metas,pc=None):
         
         bbox_preds, cls_preds, points, keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training, seg_feats, M_q_seg = \
-            self(x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc)
+            self(x, coords_x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc)
 
         return self._loss(bbox_preds, cls_preds, points,
                           gt_bboxes, gt_labels, img_metas, keep_preds, keep_gts, bboxes_level,

@@ -1,7 +1,10 @@
+import pdb
 import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 from copy import deepcopy
+from Swin3D.modules.swin3d_layers import BasicLayer
+import MinkowskiEngine as ME
 
 def _get_clones(module, N):
     return nn.ModuleList([deepcopy(module) for _ in range(N)])
@@ -262,6 +265,149 @@ class BiEncoder(nn.Module):
             vis_feats, text_feats = layer(
                 vis_feats,
                 pos_feats,
+                padding_mask,
+                text_feats,
+                text_padding_mask,
+                end_points,
+                detected_feats=detected_feats,
+                detected_mask=detected_mask
+            )
+            if 'lv_attention' in end_points:
+                end_points['lv_attention%d' % i] = end_points['lv_attention']
+        return vis_feats, text_feats
+    
+# BRIEF vision text self attention and cross attention
+class BiEncoderLayerSwin(nn.Module):
+    """Self->cross layer for both modalities."""
+
+    def __init__(self, d_model=256, dropout=0.1, activation="relu", n_heads=8,
+                 dim_feedforward=256,
+                 self_attend_lang=True, self_attend_vis=True,
+                 use_butd_enc_attn=False):
+        """Initialize layers, d_model is the encoder dimension."""
+        super().__init__()
+
+        # self attention in language
+        if self_attend_lang:
+            self.self_attention_lang = TransformerEncoderLayerNoFFN(
+                d_model=d_model,
+                nhead=n_heads,
+                dropout=dropout
+            )
+        else:
+            self.self_attention_lang = None
+
+        # self attention in vision
+        if self_attend_vis:
+            # self.self_attention_visual = PosTransformerEncoderLayerNoFFN(
+            #     d_model=d_model,
+            #     nhead=n_heads,
+            #     dropout=dropout
+            # )
+            self.self_attention_visual = BasicLayer(
+                dim=d_model,
+                depth=2,
+                num_heads=n_heads,
+                window_size=5,
+                quant_size=4,
+                drop_path=dropout
+            )
+        else:
+            self.self_attention_visual = None
+
+        # cross attention in language and vision
+        self.cross_layer = CrossAttentionLayer(
+            d_model, dropout, n_heads, dim_feedforward,
+            use_butd_enc_attn
+        )
+
+    def forward(self, vis_feats, pos_feats, coords_vis, sampled_coords, x_F3_vis_feats, x_F3_pos_feats, padding_mask, text_feats,
+                text_padding_mask, end_points={}, detected_feats=None,
+                detected_mask=None):
+        """Forward pass, feats (B, N, F), masks (B, N), diff N for V/L."""
+        #
+        # STEP 1. Self attention for vision
+        if self.self_attention_visual is not None:
+            # 先用vis_feats和sampled_coords构建SparseTensor(去除[-1,-1,-1,-1])
+            # vis_feats: [B, N, C], sampled_coords: [B, N, 4]
+            B, N, C = vis_feats.shape
+            device = vis_feats.device
+            # 展平
+            vis_feats_flat = vis_feats.view(-1, C)
+            sampled_coords_flat = sampled_coords.view(-1, 4)
+            # 有效mask
+            valid_mask = (sampled_coords_flat != -1).all(dim=1)
+            feats_valid = vis_feats_flat[valid_mask]
+            coords_valid = sampled_coords_flat[valid_mask]
+            
+            sp_tensor = ME.SparseTensor(
+                features=feats_valid,
+                coordinates=coords_valid,
+                device=device
+            )
+            # coords_vis: [B, N, C']
+            # 构建 coords_sp，和 sp_tensor 对齐
+            coords_vis_flat = coords_vis.view(-1, coords_vis.shape[-1])
+            coords_sp = ME.SparseTensor(
+                features=coords_vis_flat[valid_mask],
+                coordinates=coords_valid,
+                device=device
+            )
+            _, new_sp, _ = self.self_attention_visual(sp_tensor,coords_sp)
+            # new_sp还原到vis_feats
+            # new_sp.C: [M, 4]，new_sp.F: [M, C]
+            # coords_valid: [num_valid, 4]，valid_mask: [B*N]
+            # 目标：还原到vis_feats_flat的顺序（无效位置补0），再reshape成[B, N, C]
+            import torch
+            vis_feats_flat_out = torch.zeros_like(vis_feats_flat)
+            # 构建映射：coords_valid 在 vis_feats_flat 的索引就是 valid_mask.nonzero(as_tuple=True)[0]
+            idx_valid = valid_mask.nonzero(as_tuple=True)[0]
+            vis_feats_flat_out[idx_valid] = new_sp.F
+            vis_feats_out = vis_feats_flat_out.view(B, N, C)
+            vis_feats = vis_feats_out.transpose(0, 1)  # (N, B, C)
+            
+
+        # STEP 2. Self attention for language
+        if self.self_attention_lang is not None:
+            text_feats = self.self_attention_lang(
+                text_feats.transpose(0, 1),
+                src_key_padding_mask=text_padding_mask
+            ).transpose(0, 1)
+
+        # STEP 3. Cross attention
+        vis_feats, text_feats = self.cross_layer(
+            vis_feats=vis_feats,
+            vis_key_padding_mask=padding_mask,
+            text_feats=text_feats,
+            text_key_padding_mask=text_padding_mask,
+            pos_feats=pos_feats,
+            detected_feats=detected_feats,
+            detected_mask=detected_mask
+        )
+
+        return vis_feats, text_feats
+    
+class BiEncoderSwin(nn.Module):
+    """Encode jointly language and vision."""
+
+    def __init__(self, bi_layer, num_layers):
+        """Pass initialized BiEncoderLayer and number of such layers."""
+        super().__init__()
+        self.layers = _get_clones(bi_layer, num_layers)
+        self.num_layers = num_layers
+
+    def forward(self, vis_feats, pos_feats, coords_vis, sampled_coords, x_F3_vis_feats, x_F3_pos_feats, padding_mask, text_feats,
+                text_padding_mask, end_points={},
+                detected_feats=None, detected_mask=None):
+        """Forward pass, feats (B, N, F), masks (B, N), diff N for V/L."""
+        for i, layer in enumerate(self.layers):
+            vis_feats, text_feats = layer(
+                vis_feats,
+                pos_feats,
+                coords_vis,
+                sampled_coords,
+                x_F3_vis_feats,
+                x_F3_pos_feats,
                 padding_mask,
                 text_feats,
                 text_padding_mask,
