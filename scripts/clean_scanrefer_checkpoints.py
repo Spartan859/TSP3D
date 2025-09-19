@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""
+Clean .pth checkpoints in each folder under outputs/logs/scanrefer.
+Rules:
+ 1. Parse log.txt for these metrics lines (example):
+    "3dcnn Acc0.25: Top-1: 0.56077"
+    "3dcnn Acc0.50: Top-1: 0.45774"
+    "Acc_mask0.25 0.5817914213624895"
+    "Acc_mask0.50 0.51419259882254"
+ 2. For each of the four metrics, keep the checkpoint (.pth) of the epoch that achieved the maximum value for that metric (if ties, keep the latest epoch).
+ 3. After collecting up to 4 epochs to keep, delete other .pth files in the folder.
+
+By default runs in dry-run mode and prints what would be deleted. Use --apply to actually delete files.
+"""
+
+import re
+import argparse
+from pathlib import Path
+import json
+import sys
+import shutil
+
+METRIC_PATTERNS = {
+    'acc0.25': re.compile(r"3dcnn Acc0\.25: Top-1:\s*([0-9]*\.?[0-9]+)"),
+    'acc0.50': re.compile(r"3dcnn Acc0\.50: Top-1:\s*([0-9]*\.?[0-9]+)"),
+    'mask0.25': re.compile(r"Acc_mask0\.25\s*([0-9]*\.?[0-9]+)"),
+    'mask0.50': re.compile(r"Acc_mask0\.50\s*([0-9]*\.?[0-9]+)")
+}
+
+EPOCH_PATTERN = re.compile(r"\[?(?:[0-9]{2}/[0-9]{2})\s+[0-9]{2}:[0-9]{2}:[0-9]{2}\]?\s+logs INFO: (?:Eval: \[(?P<epoch>\d+)\]|epoch\s+(?P<epoch2>\d+))")
+# The log layout may vary; we'll also search for lines that say "Eval: [<epoch>]" and capture epoch.
+EVAL_EPOCH_LINE = re.compile(r"Eval: \[(?P<epoch>\d+)\]")
+
+
+def parse_log_for_metrics(log_path: Path):
+    """Parse log.txt and return a dict mapping epoch -> dict(metric_name -> value)
+    If no epoch can be determined for a metric line, that line will be ignored.
+    """
+    if not log_path.exists():
+        return {}
+
+    epoch_metrics = {}
+    current_epoch = None
+
+    with log_path.open('r', encoding='utf-8', errors='ignore') as f:
+        for line in f:
+            # detect Eval epoch lines
+            m_eval = EVAL_EPOCH_LINE.search(line)
+            if m_eval:
+                try:
+                    current_epoch = int(m_eval.group('epoch'))
+                except:
+                    current_epoch = None
+                continue
+
+            # also detect explicit 'epoch <num>' lines
+            m_epoch = re.search(r"epoch\s+(\d+)", line)
+            if m_epoch:
+                current_epoch = int(m_epoch.group(1))
+
+            # try each metric
+            for key, patt in METRIC_PATTERNS.items():
+                m = patt.search(line)
+                if m:
+                    try:
+                        val = float(m.group(1))
+                    except:
+                        continue
+                    if current_epoch is None:
+                        # If we don't know the epoch for this line, skip it
+                        continue
+                    epoch_metrics.setdefault(current_epoch, {})[key] = val
+    return epoch_metrics
+
+
+def select_best_epochs(epoch_metrics: dict):
+    """Given epoch_metrics: {epoch: {metric: value}}, return set of epochs to keep (one per metric)
+    If multiple epochs share the same metric value, keep the largest epoch (latest).
+    """
+    best_epochs = set()
+    # build metric -> list of (epoch, value)
+    per_metric = {k: [] for k in METRIC_PATTERNS.keys()}
+    for epoch, metrics in epoch_metrics.items():
+        for k in per_metric.keys():
+            if k in metrics:
+                per_metric[k].append((epoch, metrics[k]))
+    # for each metric select best epoch
+    for k, items in per_metric.items():
+        if not items:
+            continue
+        # find max value, if tie pick max epoch
+        items_sorted = sorted(items, key=lambda x: (x[1], x[0]))
+        best_epoch = items_sorted[-1][0]
+        best_epochs.add(best_epoch)
+    return best_epochs
+
+
+def find_pth_files(folder: Path):
+    return sorted([p for p in folder.glob('*.pth')])
+
+
+def epoch_from_pth(p: Path):
+    # common naming patterns: epoch_123.pth, model_epoch_123.pth, ckpt_epoch_123.pth, 123.pth
+    name = p.stem
+    m = re.search(r"(\d{1,4})", name)
+    if m:
+        return int(m.group(1))
+    return None
+
+
+def process_folder(folder: Path, apply: bool = False, dry_run: bool = True):
+    log_path = folder / 'log.txt'
+    epoch_metrics = parse_log_for_metrics(log_path)
+    if not epoch_metrics:
+        # If no metrics parsed, delete entire folder (or dry-run report)
+        if dry_run:
+            print(f"No metrics parsed for {folder}; would REMOVE entire folder (dry-run)")
+        else:
+            try:
+                shutil.rmtree(folder)
+                print(f"Removed folder {folder}")
+            except Exception as e:
+                print(f"Failed to remove folder {folder}: {e}")
+        return
+    best_epochs = select_best_epochs(epoch_metrics)
+    if not best_epochs:
+        print(f"No best epochs found for {folder}; skipping")
+        return
+    pth_files = find_pth_files(folder)
+    if not pth_files:
+        print(f"No .pth files in {folder}")
+        return
+
+    # map pth -> epoch (if found)
+    keep_files = set()
+    for p in pth_files:
+        e = epoch_from_pth(p)
+        if e is not None and e in best_epochs:
+            keep_files.add(p)
+    # if some best_epoch not matched by filename, print warning
+    unmatched = [e for e in best_epochs if not any(epoch_from_pth(p) == e for p in pth_files)]
+    if unmatched:
+        print(f"Warning: in {folder} best epochs {unmatched} not matched to any .pth filename")
+
+    # decide deletions: all pth not in keep_files
+    to_delete = [p for p in pth_files if p not in keep_files]
+
+    if dry_run:
+        print(f"Folder: {folder}")
+        print(f"  Best epochs to keep: {sorted(best_epochs)}")
+        print(f"  .pth files found: {len(pth_files)}; will keep {len(keep_files)}; would delete {len(to_delete)} files")
+        for p in to_delete:
+            print(f"    DELETE (dry): {p.name}")
+    else:
+        print(f"Applying deletions in {folder}")
+        for p in to_delete:
+            try:
+                p.unlink()
+                print(f"    Deleted: {p.name}")
+            except Exception as e:
+                print(f"    Failed to delete {p.name}: {e}")
+
+
+def main(root: str, apply: bool = False):
+    rootp = Path(root)
+    if not rootp.exists():
+        print(f"Root {root} does not exist")
+        return
+    for sub in sorted(rootp.iterdir()):
+        if not sub.is_dir():
+            continue
+        process_folder(sub, apply=apply, dry_run=not apply)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--root', type=str, default='outputs/logs/scanrefer', help='Root path containing scanrefer run folders')
+    parser.add_argument('--apply', action='store_true', help='Actually delete files; default is dry-run')
+    args = parser.parse_args()
+
+    main(args.root, apply=args.apply)

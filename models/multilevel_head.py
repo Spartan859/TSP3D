@@ -76,11 +76,14 @@ class TSPHead(nn.Module):
                  test_cfg=dict(nms_pre=1, iou_thr=.5, score_thr=.01),
                  keep_loss_weight = 1.0,
                  bbox_loss_weight = 1.0,
-                 seg_loss_weight = 2.,
-                 seg_loss_dice_weight = .1,
-                 M_q_loss_weight = 2.,
-                 M_q_loss_dice_weight = .1,
+                 seg_loss_weight = 0,
+                 seg_loss_dice_weight = 0,
+                 M_q_loss_weight = 0,
+                 M_q_loss_dice_weight = 0,
                  cross_loss_weight = 0.,
+                 use_F3_CA = False,
+                 window_size = 5,
+                 quant_size = 4,
                  ):
         super(TSPHead, self).__init__()
         self.voxel_size = voxel_size
@@ -96,6 +99,9 @@ class TSPHead(nn.Module):
         self.M_q_loss_weight = M_q_loss_weight
         self.M_q_loss_dice_weight = M_q_loss_dice_weight
         self.cross_loss_weight = cross_loss_weight
+        self.use_F3_CA = use_F3_CA
+        self.window_size = window_size
+        self.quant_size = quant_size
         self.assigner = TR3DAssigner(top_pts_threshold=24, top_pts_threshold_det=8, label2level=[0])
         self.bbox_loss = AxisAlignedIoULoss2(mode='diou', reduction='none')
         self.cls_loss = FocalLoss(reduction='none')
@@ -181,6 +187,15 @@ class TSPHead(nn.Module):
             128, dropout=0.1, activation="relu",
             n_heads=8, dim_feedforward=128,
             self_attend_lang=True, self_attend_vis=True,
+            use_butd_enc_attn=False,
+            use_F3_CA=self.use_F3_CA,
+            window_size=self.window_size,
+            quant_size=self.quant_size,
+        )
+        bi_layer1 = BiEncoderLayer(
+            128, dropout=0.1, activation="relu",
+            n_heads=8, dim_feedforward=128,
+            self_attend_lang=True, self_attend_vis=True,
             use_butd_enc_attn=False
         )
         bi_layer2 = BiEncoderLayer(
@@ -190,7 +205,7 @@ class TSPHead(nn.Module):
             use_butd_enc_attn=False
         )
         # self.keep_trans = nn.ModuleList([BiEncoder(bi_layer0, 2), BiEncoder(bi_layer1, 2)])
-        self.keep_trans = nn.ModuleList([bi_layer0, bi_layer0])
+        self.keep_trans = nn.ModuleList([bi_layer0, BiEncoder(bi_layer1, 2)])
         self.com_trans = BiEncoder(bi_layer2, 2)
         self.pruning = ME.MinkowskiPruning()
         self.com_cls = nn.Conv1d(128, 1, kernel_size=1, bias=True)
@@ -853,23 +868,36 @@ class TSPHead(nn.Module):
                 pos_feats = self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous()
                 vis_feats = sampled_features.contiguous()
                 padding_mask=sampled_coords[:, :,0] == -1
-                coords_vis = self._avg_feats_in_stride(sampled_coords, coords_x, x.tensor_stride)  # [B, N, C]
+                # coords_vis = self._avg_feats_in_stride(sampled_coords, coords_x, 5)  # [B, N, C]
+                
                 # pdb.set_trace()
                 if x_F3_pos_feats is None:
                     x_F3_pos_feats = pos_feats
-                    x_F3_vis_feats = vis_feats
+                    # x_F3_vis_feats = vis_feats
                     x_F3_padding_mask = padding_mask
-                sampled_features, text_feats = self.keep_trans[i-1](
-                    vis_feats=vis_feats,
-                    pos_feats=pos_feats,
-                    coords_vis=coords_vis,
-                    sampled_coords=sampled_coords,
-                    x_F3_vis_feats=x_F3_vis_feats,
-                    x_F3_pos_feats=x_F3_pos_feats,
-                    padding_mask=padding_mask,
-                    x_F3_padding_mask=x_F3_padding_mask,
-                    text_feats=text_feats,
-                    text_padding_mask=text_attention_mask)
+                
+                if i < 2:
+                    sampled_features, text_feats, x_F3_vis_feats = self.keep_trans[i-1](
+                        vis_feats=vis_feats,
+                        pos_feats=pos_feats,
+                        coords_vis=sampled_coords.float(),
+                        sampled_coords=sampled_coords,
+                        x_F3_vis_feats=x_F3_vis_feats,
+                        x_F3_pos_feats=x_F3_pos_feats,
+                        padding_mask=padding_mask,
+                        x_F3_padding_mask=x_F3_padding_mask,
+                        text_feats=text_feats,
+                        text_padding_mask=text_attention_mask)
+                else:
+                    sampled_features, text_feats = self.keep_trans[i-1](
+                        vis_feats=vis_feats,
+                        pos_feats=pos_feats,
+                        padding_mask=padding_mask,
+                        text_feats=text_feats,
+                        text_padding_mask=text_attention_mask)
+                    x_F3_vis_feats = sampled_features
+                # pdb.set_trace()
+                
                 
                 valid_mask = sampled_coords[:, :,0] != -1
                 sampled_features = sampled_features[valid_mask]
@@ -877,6 +905,7 @@ class TSPHead(nn.Module):
                 
                 x = ME.SparseTensor(features=sampled_features, coordinates=sampled_coords, 
                                     coordinate_manager=x.coordinate_manager, tensor_stride=x.tensor_stride, device=x.device)
+                # pdb.set_trace()
                 keep_scores = self.keep_conv[i-1](x) # 1 MLP
                 prune_training_keep = ME.SparseTensor(
                                     -keep_scores.features,
@@ -903,14 +932,15 @@ class TSPHead(nn.Module):
         out = self.fuse(out, text_feats[:, 0])
         bbox_pred, cls_pred, point, center_coord, center_bbox_pred = self._forward_single(out)
         # pdb.set_trace()
-        M_q = self._get_M_q_F2(center_coord, center_bbox_pred, saved_xs, device=x.device)
+        # M_q = self._get_M_q_F2(center_coord, center_bbox_pred, saved_xs, device=x.device)
         # M_q = self._get_M_q_F1(center_coord, center_bbox_pred, saved_xs, cls_pred, device=x.device)
         
         # pdb.set_trace()
         x = self.upsample_st_2(x) + x_all[1]
         x = self.upsample_st_4(x) + x_all[0]
         seg_feats = self.conv_32_ch(x)
-        M_q_seg = self._generate_Mq_seg(M_q, seg_feats, radius=13)
+        M_q_seg = None
+        # M_q_seg = self._generate_Mq_seg(M_q, seg_feats, radius=5)
         # pdb.set_trace()
             
         return [bbox_pred], [cls_pred], [point], keep_preds[::-1], keep_gts[::-1], bboxes_level, com_pred_training, com_coords_training, \
@@ -1232,19 +1262,19 @@ class TSPHead(nn.Module):
             selected_labels.append(selected_label)
             
         # pdb.set_trace()
-        seg_preds, targets, v2r, r2scene, rois, scores, gt_idxs, M_q_seg_preds = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels, M_q_seg)
-        seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss = self._loss_second(seg_preds, targets, v2r, r2scene, rois, gt_idxs,gt_bboxes, gt_labels, img_metas, M_q_seg_preds)
+        # seg_preds, targets, v2r, r2scene, rois, scores, gt_idxs, M_q_seg_preds = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels, M_q_seg)
+        # seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss = self._loss_second(seg_preds, targets, v2r, r2scene, rois, gt_idxs,gt_bboxes, gt_labels, img_metas, M_q_seg_preds)
         # pdb.set_trace()
         return dict(
             bbox_loss=self.bbox_loss_weight * torch.mean(torch.cat(bbox_losses)),
             cls_loss=torch.sum(torch.cat(cls_losses)) / torch.sum(torch.cat(pos_masks)),
             keep_loss=self.keep_loss_weight * keep_losses / len(img_metas),
-            seg_loss=self.seg_loss_weight * seg_loss,
-            seg_loss_dice=self.seg_loss_dice_weight * seg_loss_dice,
+            # seg_loss=self.seg_loss_weight * seg_loss,
+            # seg_loss_dice=self.seg_loss_dice_weight * seg_loss_dice,
             com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com)),
-            M_q_loss=self.M_q_loss_weight * M_q_loss,
-            M_q_loss_dice=self.M_q_loss_dice_weight * M_q_loss_dice,
-            cross_loss=self.cross_loss_weight * cross_loss
+            # M_q_loss=self.M_q_loss_weight * M_q_loss,
+            # M_q_loss_dice=self.M_q_loss_dice_weight * M_q_loss_dice,
+            # cross_loss=self.cross_loss_weight * cross_loss
         )
 
     def _loss_second(self, cls_preds, targets, v2r, r2scene, rois, gt_idxs,
@@ -1265,7 +1295,7 @@ class TSPHead(nn.Module):
                 gt_bboxes=gt_bboxes[i],
                 gt_labels=gt_labels[i],
                 img_meta=img_metas[i],
-                M_q_seg_pred = M_q_seg_preds[v2scene == i] if M_q_seg_preds is not None else None)
+                M_q_seg_pred=None if M_q_seg_preds is None else M_q_seg_preds[v2scene == i])
             seg_losses.append(seg_loss)
             seg_losses_dice.append(seg_loss_dice)
             M_q_losses.append(M_q_loss)
@@ -1675,22 +1705,31 @@ class TSPHead(nn.Module):
                 vis_feats = sampled_features.contiguous()
                 padding_mask = sampled_coords[:, :,0] == -1
                 # 复制forward的keep_trans相关逻辑
-                coords_vis = self._avg_feats_in_stride(sampled_coords, coords_x, x.tensor_stride)
+                # coords_vis = self._avg_feats_in_stride(sampled_coords, coords_x, 5)
                 if x_F3_pos_feats is None:
                     x_F3_pos_feats = pos_feats
                     x_F3_vis_feats = vis_feats
                     x_F3_padding_mask = padding_mask
-                sampled_features, text_feats = self.keep_trans[i-1](
-                    vis_feats=vis_feats,
-                    pos_feats=pos_feats,
-                    coords_vis=coords_vis,
-                    sampled_coords=sampled_coords,
-                    x_F3_vis_feats=x_F3_vis_feats,
-                    x_F3_pos_feats=x_F3_pos_feats,
-                    padding_mask=padding_mask,
-                    x_F3_padding_mask=x_F3_padding_mask,
-                    text_feats=text_feats,
-                    text_padding_mask=text_attention_mask)
+                
+                if i < 2:
+                    sampled_features, text_feats, x_F3_vis_feats = self.keep_trans[i-1](
+                        vis_feats=vis_feats,
+                        pos_feats=pos_feats,
+                        coords_vis=sampled_coords.float(),
+                        sampled_coords=sampled_coords,
+                        x_F3_vis_feats=x_F3_vis_feats,
+                        x_F3_pos_feats=x_F3_pos_feats,
+                        padding_mask=padding_mask,
+                        x_F3_padding_mask=x_F3_padding_mask,
+                        text_feats=text_feats,
+                        text_padding_mask=text_attention_mask)
+                else:
+                    sampled_features, text_feats = self.keep_trans[i-1](
+                        vis_feats=vis_feats,
+                        pos_feats=pos_feats,
+                        padding_mask=padding_mask,
+                        text_feats=text_feats,
+                        text_padding_mask=text_attention_mask)
                 
                 valid_mask = sampled_coords[:, :,0] != -1
                 sampled_features = sampled_features[valid_mask]

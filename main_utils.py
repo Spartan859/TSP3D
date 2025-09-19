@@ -120,6 +120,9 @@ def parse_option():
     parser.add_argument('--eval_train', action='store_true')
     parser.add_argument('--pp_checkpoint', default=None)    # pointnet checkpoint
     parser.add_argument('--reduce_lr', action='store_true')
+    parser.add_argument('--use_F3_CA', action='store_true')
+    parser.add_argument('--window_size', type=int, default=5)
+    parser.add_argument('--quant_size', type=int, default=4)
 
     args, _ = parser.parse_known_args()
 

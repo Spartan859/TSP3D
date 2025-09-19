@@ -110,7 +110,10 @@ class TrainTester(BaseTrainTester):
             pointnet_ckpt=args.pp_checkpoint,
             data_path = args.data_root,
             self_attend=args.self_attend,
-            voxel_size = args.voxel_size
+            voxel_size = args.voxel_size,
+            use_F3_CA=args.use_F3_CA,
+            window_size=args.window_size,
+            quant_size=args.quant_size
         )
         return model
 
@@ -324,6 +327,8 @@ class TrainTester(BaseTrainTester):
 
 
 if __name__ == '__main__':
+    
+    torch.autograd.set_detect_anomaly(True)
     # huggingface
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
     

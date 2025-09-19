@@ -23,7 +23,7 @@ class BeaUTyDETR(nn.Module):
                  num_decoder_layers=6, self_position_embedding='loc_learned',
                  contrastive_align_loss=True,
                  d_model=128, butd=True, pointnet_ckpt=None, data_path=None,
-                 self_attend=True, voxel_size=0.01):
+                 self_attend=True, voxel_size=0.01, use_F3_CA=False, window_size=5, quant_size=4):
         """Initialize layers."""
         super().__init__()
 
@@ -51,7 +51,7 @@ class BeaUTyDETR(nn.Module):
         )       
         
         # self.neck = TR3DNeck()
-        self.head = TSPHead(voxel_size=self.voxel_size)
+        self.head = TSPHead(voxel_size=self.voxel_size,use_F3_CA=use_F3_CA,window_size=window_size,quant_size=quant_size)
         
     def collate(self, points, quantization_mode):
         coordinates, features = ME.utils.batch_sparse_collate(

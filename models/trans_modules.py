@@ -284,10 +284,13 @@ class BiEncoderLayerSwin(nn.Module):
     def __init__(self, d_model=256, dropout=0.1, activation="relu", n_heads=8,
                  dim_feedforward=256,
                  self_attend_lang=True, self_attend_vis=True,
-                 use_butd_enc_attn=False):
+                 use_butd_enc_attn=False, window_size=9, quant_size=4, 
+                 use_F3_CA=False):
         """Initialize layers, d_model is the encoder dimension."""
         super().__init__()
 
+        self.use_F3_CA = use_F3_CA
+        
         # self attention in language
         if self_attend_lang:
             self.self_attention_lang = TransformerEncoderLayerNoFFN(
@@ -305,18 +308,24 @@ class BiEncoderLayerSwin(nn.Module):
             #     nhead=n_heads,
             #     dropout=dropout
             # )
+            # pdb.set_trace()
             self.self_attention_visual = BasicLayer(
                 dim=d_model,
                 depth=2,
                 num_heads=n_heads,
-                window_size=5,
-                quant_size=4,
-                drop_path=dropout
+                window_size=window_size,
+                quant_size=quant_size,
+                drop_path=dropout,
+                cRSE="XYZ"
             )
             
         else:
             self.self_attention_visual = None
-
+        # cross F3
+        self.cross_layer_F3 = CrossAttentionLayer(
+            d_model, dropout, n_heads, dim_feedforward,
+            use_butd_enc_attn
+        )
         # cross attention in language and vision
         self.cross_layer = CrossAttentionLayer(
             d_model, dropout, n_heads, dim_feedforward,
@@ -327,7 +336,7 @@ class BiEncoderLayerSwin(nn.Module):
                 text_padding_mask, end_points={}, detected_feats=None,
                 detected_mask=None):
         """Forward pass, feats (B, N, F), masks (B, N), diff N for V/L."""
-        #
+        
         # STEP 1. Self attention for vision
         if self.self_attention_visual is not None:
             # 先用vis_feats和sampled_coords构建SparseTensor(去除[-1,-1,-1,-1])
@@ -398,15 +407,17 @@ class BiEncoderLayerSwin(nn.Module):
         # 新增：用x_F3_vis_feats和x_F3_pos_feats对vis_feats再做一次cross attention
         # x_F3_vis_feats: [B, N, C], x_F3_pos_feats: [B, N, C]
         # 这里text_feats只是占位，不参与实际cross attention
-        vis_feats, _ = self.cross_layer(
-            vis_feats=vis_feats,
-            vis_key_padding_mask=padding_mask,
-            text_feats=x_F3_vis_feats+x_F3_pos_feats,
-            text_key_padding_mask=x_F3_padding_mask,
-            pos_feats=pos_feats,
-            detected_feats=None,
-            detected_mask=None
-        )
+        if self.use_F3_CA:
+            vis_feats, x_F3_vis_feats = self.cross_layer_F3(
+                vis_feats=vis_feats,
+                vis_key_padding_mask=padding_mask,
+                text_feats=x_F3_vis_feats+x_F3_pos_feats,
+                text_key_padding_mask=x_F3_padding_mask,
+                pos_feats=pos_feats,
+                detected_feats=None,
+                detected_mask=None
+            )
+            # pdb.set_trace()
         
         # STEP 3. Cross attention
         vis_feats, text_feats = self.cross_layer(
@@ -421,7 +432,7 @@ class BiEncoderLayerSwin(nn.Module):
 
         
 
-        return vis_feats, text_feats
+        return vis_feats, text_feats, x_F3_vis_feats
     
 class BiEncoderSwin(nn.Module):
     """Encode jointly language and vision."""

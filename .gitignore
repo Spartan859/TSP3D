@@ -8,3 +8,4 @@ data_mini/*
 outputs
 outputs/*
 tensorboard_output/*
+scripts/experiments/*
