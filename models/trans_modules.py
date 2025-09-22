@@ -285,6 +285,7 @@ class BiEncoderLayerSwin(nn.Module):
                  dim_feedforward=256,
                  self_attend_lang=True, self_attend_vis=True,
                  use_butd_enc_attn=False, window_size=9, quant_size=4, 
+                 swin_layer_num=2,
                  use_F3_CA=False):
         """Initialize layers, d_model is the encoder dimension."""
         super().__init__()
@@ -311,7 +312,7 @@ class BiEncoderLayerSwin(nn.Module):
             # pdb.set_trace()
             self.self_attention_visual = BasicLayer(
                 dim=d_model,
-                depth=2,
+                depth=swin_layer_num,
                 num_heads=n_heads,
                 window_size=window_size,
                 quant_size=quant_size,
@@ -406,7 +407,6 @@ class BiEncoderLayerSwin(nn.Module):
 
         # 新增：用x_F3_vis_feats和x_F3_pos_feats对vis_feats再做一次cross attention
         # x_F3_vis_feats: [B, N, C], x_F3_pos_feats: [B, N, C]
-        # 这里text_feats只是占位，不参与实际cross attention
         if self.use_F3_CA:
             vis_feats, x_F3_vis_feats = self.cross_layer_F3(
                 vis_feats=vis_feats,

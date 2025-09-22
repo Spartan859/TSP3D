@@ -113,7 +113,11 @@ class TrainTester(BaseTrainTester):
             voxel_size = args.voxel_size,
             use_F3_CA=args.use_F3_CA,
             window_size=args.window_size,
-            quant_size=args.quant_size
+            quant_size=args.quant_size,
+            swin_layer_num=args.swin_layer_num,
+            use_Swin=args.use_Swin,
+            use_seg=args.use_seg,
+            use_Mq=args.use_Mq
         )
         return model
 

@@ -123,6 +123,10 @@ def parse_option():
     parser.add_argument('--use_F3_CA', action='store_true')
     parser.add_argument('--window_size', type=int, default=5)
     parser.add_argument('--quant_size', type=int, default=4)
+    parser.add_argument('--swin_layer_num', type=int, default=2)
+    parser.add_argument('--use_Swin', action='store_true')
+    parser.add_argument('--use_seg', action='store_true')
+    parser.add_argument('--use_Mq', type=int, default=-1)
 
     args, _ = parser.parse_known_args()
 

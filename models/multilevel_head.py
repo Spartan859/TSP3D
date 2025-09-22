@@ -76,14 +76,18 @@ class TSPHead(nn.Module):
                  test_cfg=dict(nms_pre=1, iou_thr=.5, score_thr=.01),
                  keep_loss_weight = 1.0,
                  bbox_loss_weight = 1.0,
-                 seg_loss_weight = 0,
-                 seg_loss_dice_weight = 0,
-                 M_q_loss_weight = 0,
-                 M_q_loss_dice_weight = 0,
+                 seg_loss_weight = 2.,
+                 seg_loss_dice_weight = .1,
+                 M_q_loss_weight = 2.,
+                 M_q_loss_dice_weight = .1,
                  cross_loss_weight = 0.,
                  use_F3_CA = False,
                  window_size = 5,
                  quant_size = 4,
+                 swin_layer_num = 2,
+                 use_Swin = True,
+                 use_seg = False,
+                 use_Mq = -1,
                  ):
         super(TSPHead, self).__init__()
         self.voxel_size = voxel_size
@@ -102,6 +106,10 @@ class TSPHead(nn.Module):
         self.use_F3_CA = use_F3_CA
         self.window_size = window_size
         self.quant_size = quant_size
+        self.swin_layer_num = swin_layer_num
+        self.use_Swin = use_Swin
+        self.use_seg = use_seg
+        self.use_Mq = use_Mq
         self.assigner = TR3DAssigner(top_pts_threshold=24, top_pts_threshold_det=8, label2level=[0])
         self.bbox_loss = AxisAlignedIoULoss2(mode='diou', reduction='none')
         self.cls_loss = FocalLoss(reduction='none')
@@ -164,26 +172,20 @@ class TSPHead(nn.Module):
             out_channels, n_reg_outs, kernel_size=1, bias=True, dimension=3)
         self.cls_conv = ME.MinkowskiConvolution(
             out_channels, n_classes, kernel_size=1, bias=True, dimension=3)
-        # self.seg_conv = ME.MinkowskiConvolution(
-        #     out_channels, n_classes, kernel_size=1, bias=True, dimension=3)
+        self.seg_conv = ME.MinkowskiConvolution(
+            out_channels, n_classes, kernel_size=1, bias=True, dimension=3)
         self.keep_conv = nn.ModuleList([
             ME.MinkowskiConvolution(out_channels, 1, kernel_size=1, bias=True, dimension=3),
             ME.MinkowskiConvolution(out_channels, 1, kernel_size=1, bias=True, dimension=3)
         ])
         self.pos_embed = PositionEmbeddingLearned(3, 128)
-        # bi_layer0 = BiEncoderLayer(
-        #     128, dropout=0.1, activation="relu",
-        #     n_heads=8, dim_feedforward=128,
-        #     self_attend_lang=True, self_attend_vis=True,
-        #     use_butd_enc_attn=False
-        # )
-        # bi_layer1 = BiEncoderLayer(
-        #     128, dropout=0.1, activation="relu",
-        #     n_heads=8, dim_feedforward=128,
-        #     self_attend_lang=True, self_attend_vis=True,
-        #     use_butd_enc_attn=False
-        # )
-        bi_layer0 = BiEncoderLayerSwin(
+        bi_layer0 = BiEncoderLayer(
+            128, dropout=0.1, activation="relu",
+            n_heads=8, dim_feedforward=128,
+            self_attend_lang=True, self_attend_vis=True,
+            use_butd_enc_attn=False
+        )
+        bi_layer0_swin = BiEncoderLayerSwin(
             128, dropout=0.1, activation="relu",
             n_heads=8, dim_feedforward=128,
             self_attend_lang=True, self_attend_vis=True,
@@ -191,6 +193,7 @@ class TSPHead(nn.Module):
             use_F3_CA=self.use_F3_CA,
             window_size=self.window_size,
             quant_size=self.quant_size,
+            swin_layer_num=self.swin_layer_num,
         )
         bi_layer1 = BiEncoderLayer(
             128, dropout=0.1, activation="relu",
@@ -205,7 +208,10 @@ class TSPHead(nn.Module):
             use_butd_enc_attn=False
         )
         # self.keep_trans = nn.ModuleList([BiEncoder(bi_layer0, 2), BiEncoder(bi_layer1, 2)])
-        self.keep_trans = nn.ModuleList([bi_layer0, BiEncoder(bi_layer1, 2)])
+        if self.use_Swin:
+            self.keep_trans = nn.ModuleList([bi_layer0_swin, BiEncoder(bi_layer1, 2)])
+        else:
+            self.keep_trans = nn.ModuleList([BiEncoder(bi_layer0, 2), BiEncoder(bi_layer1, 2)])
         self.com_trans = BiEncoder(bi_layer2, 2)
         self.pruning = ME.MinkowskiPruning()
         self.com_cls = nn.Conv1d(128, 1, kernel_size=1, bias=True)
@@ -285,12 +291,14 @@ class TSPHead(nn.Module):
                     nn.init.constant_(m.bn.bias, 0)       
 
 
-    def _forward_single(self, x):
+    def _forward_single(self, x: ME.SparseTensor):
         reg_final = self.bbox_conv(x).features
-        reg_distance = torch.exp(reg_final[:, 3:6])
+        # print("Max value before exp:", reg_final[:, 3:6].max().item())
+        clamped_reg_final = torch.clamp(reg_final[:, 3:6], max=10.0) # 将输入的最大值限制为10
+        reg_distance = torch.exp(clamped_reg_final)
         reg_angle = reg_final[:, 6:]
         bbox_pred = torch.cat((reg_final[:, :3], reg_distance, reg_angle), dim=1)
-        scores = self.cls_conv(x)
+        scores: ME.SparseTensor = self.cls_conv(x)
         # seg_scores = self.seg_conv(x)
         cls_pred = scores.features
 
@@ -676,7 +684,7 @@ class TSPHead(nn.Module):
         )
         return M_q
 
-    def _avg_feats_in_stride(self, sampled_coords, coords_x, tensor_stride):
+    def _avg_feats_in_stride(self, sampled_coords: torch.Tensor, coords_x: ME.SparseTensor, tensor_stride: int | list[int] | torch.Tensor):
         """
         对于sampled_coords中的每个点，在其±tensor_stride的范围内查找coords_x中的点（同一batch），
         并对找到的所有点的feat做平均，返回coords_vis。
@@ -873,10 +881,9 @@ class TSPHead(nn.Module):
                 # pdb.set_trace()
                 if x_F3_pos_feats is None:
                     x_F3_pos_feats = pos_feats
-                    # x_F3_vis_feats = vis_feats
                     x_F3_padding_mask = padding_mask
                 
-                if i < 2:
+                if i < 2 and self.use_Swin:
                     sampled_features, text_feats, x_F3_vis_feats = self.keep_trans[i-1](
                         vis_feats=vis_feats,
                         pos_feats=pos_feats,
@@ -932,15 +939,29 @@ class TSPHead(nn.Module):
         out = self.fuse(out, text_feats[:, 0])
         bbox_pred, cls_pred, point, center_coord, center_bbox_pred = self._forward_single(out)
         # pdb.set_trace()
-        # M_q = self._get_M_q_F2(center_coord, center_bbox_pred, saved_xs, device=x.device)
-        # M_q = self._get_M_q_F1(center_coord, center_bbox_pred, saved_xs, cls_pred, device=x.device)
         
-        # pdb.set_trace()
-        x = self.upsample_st_2(x) + x_all[1]
-        x = self.upsample_st_4(x) + x_all[0]
-        seg_feats = self.conv_32_ch(x)
-        M_q_seg = None
-        # M_q_seg = self._generate_Mq_seg(M_q, seg_feats, radius=5)
+        if self.use_Mq==2:
+            M_q = self._get_M_q_F2(center_coord, center_bbox_pred, saved_xs, device=x.device)
+        elif self.use_Mq==1:
+            M_q = self._get_M_q_F1(center_coord, center_bbox_pred, saved_xs, cls_pred, device=x.device)
+        elif self.use_Mq==-1:
+            M_q = None
+        else:
+            logging.error('use_Mq can only be 2, 1 or -1')
+            pdb.set_trace()
+        
+        if self.use_seg:
+            # pdb.set_trace()
+            x = self.upsample_st_2(x) + x_all[1]
+            x = self.upsample_st_4(x) + x_all[0]
+            seg_feats = self.conv_32_ch(x)
+            if M_q is not None and M_q.F.shape[0] > 0:
+                M_q_seg = self._generate_Mq_seg(M_q, seg_feats, radius=5)
+            else:
+                M_q_seg = None
+        else:
+            seg_feats = None
+            M_q_seg = None
         # pdb.set_trace()
             
         return [bbox_pred], [cls_pred], [point], keep_preds[::-1], keep_gts[::-1], bboxes_level, com_pred_training, com_coords_training, \
@@ -1262,54 +1283,68 @@ class TSPHead(nn.Module):
             selected_labels.append(selected_label)
             
         # pdb.set_trace()
-        # seg_preds, targets, v2r, r2scene, rois, scores, gt_idxs, M_q_seg_preds = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels, M_q_seg)
-        # seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss = self._loss_second(seg_preds, targets, v2r, r2scene, rois, gt_idxs,gt_bboxes, gt_labels, img_metas, M_q_seg_preds)
+        if self.use_seg:
+            seg_preds, targets, v2r, r2scene, rois, scores, gt_idxs, M_q_seg_preds = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels, M_q_seg)
+            seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss = self._loss_second(seg_preds, targets, v2r, r2scene, rois, gt_idxs,gt_bboxes, gt_labels, img_metas, M_q_seg_preds)
         # pdb.set_trace()
-        return dict(
+        loss_dict = dict(
             bbox_loss=self.bbox_loss_weight * torch.mean(torch.cat(bbox_losses)),
             cls_loss=torch.sum(torch.cat(cls_losses)) / torch.sum(torch.cat(pos_masks)),
             keep_loss=self.keep_loss_weight * keep_losses / len(img_metas),
-            # seg_loss=self.seg_loss_weight * seg_loss,
-            # seg_loss_dice=self.seg_loss_dice_weight * seg_loss_dice,
             com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com)),
-            # M_q_loss=self.M_q_loss_weight * M_q_loss,
-            # M_q_loss_dice=self.M_q_loss_dice_weight * M_q_loss_dice,
-            # cross_loss=self.cross_loss_weight * cross_loss
         )
+        if self.use_seg:
+            loss_dict.update(dict(
+                seg_loss=self.seg_loss_weight * seg_loss,
+                seg_loss_dice=self.seg_loss_dice_weight * seg_loss_dice,
+            ))
+        if self.use_Mq == 1 or self.use_Mq == 2:
+            loss_dict.update(dict(
+                M_q_loss=self.M_q_loss_weight * M_q_loss,
+                M_q_loss_dice=self.M_q_loss_dice_weight * M_q_loss_dice,
+                cross_loss=self.cross_loss_weight * cross_loss
+            ))
+        return loss_dict
 
     def _loss_second(self, cls_preds, targets, v2r, r2scene, rois, gt_idxs,
                     gt_bboxes, gt_labels, img_metas, M_q_seg_preds=None):
         # pdb.set_trace()
-        v2scene = r2scene[v2r]
-        seg_losses = []
-        seg_losses_dice = []
-        M_q_losses, M_q_losses_dice = [], []
-        cross_losses = []
-        for i in range(len(img_metas)):
-            seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss = self._loss_second_single(
-                cls_preds=cls_preds[v2scene == i],
-                targets=targets[v2scene == i],
-                v2r=v2r[v2scene == i],
-                rois=rois[i],
-                gt_idxs=gt_idxs[i],
-                gt_bboxes=gt_bboxes[i],
-                gt_labels=gt_labels[i],
-                img_meta=img_metas[i],
-                M_q_seg_pred=None if M_q_seg_preds is None else M_q_seg_preds[v2scene == i])
-            seg_losses.append(seg_loss)
-            seg_losses_dice.append(seg_loss_dice)
-            M_q_losses.append(M_q_loss)
-            M_q_losses_dice.append(M_q_loss_dice)
-            cross_losses.append(cross_loss)
+        try:
+            v2scene = r2scene[v2r]
+            seg_losses = []
+            seg_losses_dice = []
+            M_q_losses, M_q_losses_dice = [], []
+            cross_losses = []
+            for i in range(len(img_metas)):
+                seg_loss, seg_loss_dice, M_q_loss, M_q_loss_dice, cross_loss = self._loss_second_single(
+                    cls_preds=cls_preds[v2scene == i],
+                    targets=targets[v2scene == i],
+                    v2r=v2r[v2scene == i],
+                    rois=rois[i],
+                    gt_idxs=gt_idxs[i],
+                    gt_bboxes=gt_bboxes[i],
+                    gt_labels=gt_labels[i],
+                    img_meta=img_metas[i],
+                    M_q_seg_pred=M_q_seg_preds[v2scene == i] if M_q_seg_preds is not None else None
+                )
+                seg_losses.append(seg_loss)
+                seg_losses_dice.append(seg_loss_dice)
+                M_q_losses.append(M_q_loss)
+                M_q_losses_dice.append(M_q_loss_dice)
+                cross_losses.append(cross_loss)
 
-        # pdb.set_trace()
-        return torch.mean(torch.stack(seg_losses)), torch.mean(torch.stack(seg_losses_dice)), \
-                torch.mean(torch.stack(M_q_losses)), torch.mean(torch.stack(M_q_losses_dice)), \
-                torch.mean(torch.stack(cross_losses))
+            # pdb.set_trace()
+            return torch.mean(torch.stack(seg_losses)), torch.mean(torch.stack(seg_losses_dice)), \
+                    torch.mean(torch.stack(M_q_losses)), torch.mean(torch.stack(M_q_losses_dice)), \
+                    torch.mean(torch.stack(cross_losses))
+        except Exception as e:
+            print(e)
+            pdb.set_trace()
     
     def _loss_second_single(self, cls_preds, targets, v2r, rois, gt_idxs, gt_bboxes, gt_labels, img_meta, M_q_seg_pred=None):
         if len(rois) == 0 or cls_preds.shape[0] == 0:
-            return cls_preds.sum().float()
+            zero_loss = cls_preds.sum().float() * 0.
+            return zero_loss, zero_loss, zero_loss, zero_loss, zero_loss
         v2r = v2r - v2r.min()
         
         assert len(torch.unique(v2r)) == len(rois)
@@ -1704,14 +1739,14 @@ class TSPHead(nn.Module):
                 pos_feats = self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous()
                 vis_feats = sampled_features.contiguous()
                 padding_mask = sampled_coords[:, :,0] == -1
-                # 复制forward的keep_trans相关逻辑
                 # coords_vis = self._avg_feats_in_stride(sampled_coords, coords_x, 5)
+                
+                
                 if x_F3_pos_feats is None:
                     x_F3_pos_feats = pos_feats
-                    x_F3_vis_feats = vis_feats
                     x_F3_padding_mask = padding_mask
                 
-                if i < 2:
+                if i < 2 and self.use_Swin:
                     sampled_features, text_feats, x_F3_vis_feats = self.keep_trans[i-1](
                         vis_feats=vis_feats,
                         pos_feats=pos_feats,
@@ -1730,6 +1765,7 @@ class TSPHead(nn.Module):
                         padding_mask=padding_mask,
                         text_feats=text_feats,
                         text_padding_mask=text_attention_mask)
+                    x_F3_vis_feats = sampled_features
                 
                 valid_mask = sampled_coords[:, :,0] != -1
                 sampled_features = sampled_features[valid_mask]
