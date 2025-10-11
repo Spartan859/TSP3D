@@ -286,7 +286,8 @@ class BiEncoderLayerSwin(nn.Module):
                  self_attend_lang=True, self_attend_vis=True,
                  use_butd_enc_attn=False, window_size=9, quant_size=4, 
                  swin_layer_num=2,
-                 use_F3_CA=False):
+                 use_F3_CA=False,
+                 swin_drop_path=0.0):
         """Initialize layers, d_model is the encoder dimension."""
         super().__init__()
 
@@ -316,9 +317,10 @@ class BiEncoderLayerSwin(nn.Module):
                 num_heads=n_heads,
                 window_size=window_size,
                 quant_size=quant_size,
-                drop_path=dropout,
+                drop_path=swin_drop_path,
                 cRSE="XYZ"
             )
+            self.visual_norm = nn.LayerNorm(d_model)
             
         else:
             self.self_attention_visual = None
@@ -395,7 +397,9 @@ class BiEncoderLayerSwin(nn.Module):
                 pdb.set_trace()
             vis_feats_flat_out[idx_valid] = new_sp.F
             vis_feats = vis_feats_flat_out.view(B, N, C)
-            
+            # pdb.set_trace()
+            vis_feats = self.visual_norm(vis_feats)
+            # pdb.set_trace()
 
         # STEP 2. Self attention for language
         if self.self_attention_lang is not None:

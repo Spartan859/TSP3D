@@ -112,6 +112,7 @@ class TrainTester(BaseTrainTester):
             self_attend=args.self_attend,
             voxel_size = args.voxel_size,
             use_F3_CA=args.use_F3_CA,
+            swin_drop_path=args.swin_drop_path,
             window_size=args.window_size,
             quant_size=args.quant_size,
             swin_layer_num=args.swin_layer_num,

@@ -82,6 +82,7 @@ class TSPHead(nn.Module):
                  M_q_loss_dice_weight = .1,
                  cross_loss_weight = 0.,
                  use_F3_CA = False,
+                 swin_drop_path = 0.0,
                  window_size = 5,
                  quant_size = 4,
                  swin_layer_num = 2,
@@ -104,6 +105,7 @@ class TSPHead(nn.Module):
         self.M_q_loss_dice_weight = M_q_loss_dice_weight
         self.cross_loss_weight = cross_loss_weight
         self.use_F3_CA = use_F3_CA
+        self.swin_drop_path = swin_drop_path
         self.window_size = window_size
         self.quant_size = quant_size
         self.swin_layer_num = swin_layer_num
@@ -191,6 +193,7 @@ class TSPHead(nn.Module):
             self_attend_lang=True, self_attend_vis=True,
             use_butd_enc_attn=False,
             use_F3_CA=self.use_F3_CA,
+            swin_drop_path=self.swin_drop_path,
             window_size=self.window_size,
             quant_size=self.quant_size,
             swin_layer_num=self.swin_layer_num,
