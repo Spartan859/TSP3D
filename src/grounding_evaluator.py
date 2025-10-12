@@ -32,13 +32,15 @@ class GroundingEvaluator:
     """
 
     def __init__(self, only_root=True, thresholds=[0.25, 0.5],
-                 topks=[1, 5, 10], prefixes=[], filter_non_gt_boxes=False):
+                 topks=[1, 5, 10], prefixes=[], filter_non_gt_boxes=False,
+                 use_seg=False):
         """Initialize accumulators."""
         self.only_root = only_root
         self.thresholds = thresholds
         self.topks = topks
         self.prefixes = prefixes
         self.filter_non_gt_boxes = filter_non_gt_boxes
+        self.use_seg = use_seg
         self.reset()
 
     def reset(self):
@@ -115,25 +117,26 @@ class GroundingEvaluator:
         for field in ['easy50', 'hard50', 'vd50', 'vid50', 'unique50', 'multi50']:
             print(field, self.dets[field] / self.gts[field])
 
-        print('mask@mean iou')
-        print('mask_3dcnn' + ' ' +  str(self.dets['mask_3dcnn'] / self.gts['mask_3dcnn']))
-        print('mask@kiou')
-        if self.gts['unique_num'] != 0:
-            print('unique25' + ' ' +  str(self.dets['unique_mask'] / self.gts['unique_num']))
-            print('unique50' + ' ' +  str(self.dets['unique50_mask'] / self.gts['unique_num']))
-            print('multi25' + ' ' +  str(self.dets['multi_mask'] / self.gts['multi_num']))
-            print('multi50' + ' ' +  str(self.dets['multi50_mask'] / self.gts['multi_num']))
-        print('overall25' + ' ' +  str(self.dets['overall_mask'] / self.gts['mask_3dcnn']))
-        print('overall50' + ' ' +  str(self.dets['overall50_mask'] / self.gts['mask_3dcnn']))
-        print('mask@identity')
-        print('vd25' + ' ' +  str(self.dets['vd_mask'] / self.gts['vd_num']))
-        print('vd50' + ' ' +  str(self.dets['vd50_mask'] / self.gts['vd_num']))
-        print('vid25' + ' ' +  str(self.dets['vid_mask'] / self.gts['vid_num']))
-        print('vid50' + ' ' +  str(self.dets['vid50_mask'] / self.gts['vid_num']))
-        print('easy25' + ' ' +  str(self.dets['easy_mask'] / self.gts['easy_num']))
-        print('easy50' + ' ' +  str(self.dets['easy50_mask'] / self.gts['easy_num']))
-        print('hard25' + ' ' +  str(self.dets['hard_mask'] / self.gts['hard_num']))
-        print('hard50' + ' ' +  str(self.dets['hard50_mask'] / self.gts['hard_num']))
+        if self.use_seg:
+            print('mask@mean iou')
+            print('mask_3dcnn' + ' ' +  str(self.dets['mask_3dcnn'] / self.gts['mask_3dcnn']))
+            print('mask@kiou')
+            if self.gts['unique_num'] != 0:
+                print('unique25' + ' ' +  str(self.dets['unique_mask'] / self.gts['unique_num']))
+                print('unique50' + ' ' +  str(self.dets['unique50_mask'] / self.gts['unique_num']))
+                print('multi25' + ' ' +  str(self.dets['multi_mask'] / self.gts['multi_num']))
+                print('multi50' + ' ' +  str(self.dets['multi50_mask'] / self.gts['multi_num']))
+            print('overall25' + ' ' +  str(self.dets['overall_mask'] / self.gts['mask_3dcnn']))
+            print('overall50' + ' ' +  str(self.dets['overall50_mask'] / self.gts['mask_3dcnn']))
+            print('mask@identity')
+            print('vd25' + ' ' +  str(self.dets['vd_mask'] / self.gts['vd_num']))
+            print('vd50' + ' ' +  str(self.dets['vd50_mask'] / self.gts['vd_num']))
+            print('vid25' + ' ' +  str(self.dets['vid_mask'] / self.gts['vid_num']))
+            print('vid50' + ' ' +  str(self.dets['vid50_mask'] / self.gts['vid_num']))
+            print('easy25' + ' ' +  str(self.dets['easy_mask'] / self.gts['easy_num']))
+            print('easy50' + ' ' +  str(self.dets['easy50_mask'] / self.gts['easy_num']))
+            print('hard25' + ' ' +  str(self.dets['hard_mask'] / self.gts['hard_num']))
+            print('hard50' + ' ' +  str(self.dets['hard50_mask'] / self.gts['hard_num']))
         
         
     def synchronize_between_processes(self):
@@ -169,7 +172,8 @@ class GroundingEvaluator:
         # self.evaluate_bbox_by_sem_align(end_points, prefix)
 
         self.evaluate_bbox_by_3dcnn(end_points, prefix)
-        self.evaluate_segmentation_by_3dcnn(end_points, prefix)
+        if self.use_seg:
+            self.evaluate_segmentation_by_3dcnn(end_points, prefix)
         
     def evaluate_segmentation_by_3dcnn(self, end_points, prefix):
         """

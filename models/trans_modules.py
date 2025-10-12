@@ -120,10 +120,13 @@ class CrossAttentionLayer(nn.Module):
 class TransformerEncoderLayerNoFFN(nn.Module):
     """TransformerEncoderLayer but without FFN."""
 
-    def __init__(self, d_model, nhead, dropout):
+    def __init__(self, d_model, nhead, dropout, use_external_attn=False):
         """Intialize same as Transformer (without FFN params)."""
         super().__init__()
-        self.self_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
+        if use_external_attn:
+            self.self_attn = ExternalMultiheadAttention(d_model, nhead, attn_drop=dropout)
+        else:
+            self.self_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
         self.norm1 = nn.LayerNorm(d_model)
         self.dropout1 = nn.Dropout(dropout)
 
@@ -152,9 +155,9 @@ class TransformerEncoderLayerNoFFN(nn.Module):
 class PosTransformerEncoderLayerNoFFN(TransformerEncoderLayerNoFFN):
     """TransformerEncoderLayerNoFFN but additionaly add pos_embed in query."""
 
-    def __init__(self, d_model, nhead, dropout):
+    def __init__(self, d_model, nhead, dropout, use_external_attn=False):
         """Intialize same as parent class."""
-        super().__init__(d_model, nhead, dropout)
+        super().__init__(d_model, nhead, dropout, use_external_attn)
 
     def forward(self, src, pos, src_mask=None, src_key_padding_mask=None):
         """
@@ -185,7 +188,8 @@ class BiEncoderLayer(nn.Module):
     def __init__(self, d_model=256, dropout=0.1, activation="relu", n_heads=8,
                  dim_feedforward=256,
                  self_attend_lang=True, self_attend_vis=True,
-                 use_butd_enc_attn=False):
+                 use_butd_enc_attn=False,
+                 use_external_attn=False):
         """Initialize layers, d_model is the encoder dimension."""
         super().__init__()
 
@@ -194,7 +198,8 @@ class BiEncoderLayer(nn.Module):
             self.self_attention_lang = TransformerEncoderLayerNoFFN(
                 d_model=d_model,
                 nhead=n_heads,
-                dropout=dropout
+                dropout=dropout,
+                use_external_attn=False
             )
         else:
             self.self_attention_lang = None
@@ -204,7 +209,8 @@ class BiEncoderLayer(nn.Module):
             self.self_attention_visual = PosTransformerEncoderLayerNoFFN(
                 d_model=d_model,
                 nhead=n_heads,
-                dropout=dropout
+                dropout=dropout,
+                use_external_attn=use_external_attn
             )
         else:
             self.self_attention_visual = None
@@ -469,3 +475,44 @@ class BiEncoderSwin(nn.Module):
             if 'lv_attention' in end_points:
                 end_points['lv_attention%d' % i] = end_points['lv_attention']
         return vis_feats, text_feats
+    
+class ExternalMultiheadAttention(nn.Module):
+    def __init__(self, embed_dim, num_heads=8, attn_drop=0., proj_drop=0.):
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.num_heads = num_heads
+        self.coef = 4
+        self.trans_dims = nn.Linear(embed_dim, embed_dim * self.coef)
+        self.num_heads_eff = self.num_heads * self.coef
+        self.k = 256 // self.coef
+        self.linear_0 = nn.Linear(embed_dim * self.coef // self.num_heads_eff, self.k)
+        self.linear_1 = nn.Linear(self.k, embed_dim * self.coef // self.num_heads_eff)
+        self.attn_drop = nn.Dropout(attn_drop)
+        self.proj = nn.Linear(embed_dim * self.coef, embed_dim)
+        self.proj_drop = nn.Dropout(proj_drop)
+
+    def forward(self, query, key=None, value=None, attn_mask=None, key_padding_mask=None, need_weights=False):
+        # 只支持自注意力（query=key=value），忽略attn_mask
+        # 输入: (B, N, C)
+        # key_padding_mask: (B, N)  True表示padding
+        x = query
+        if key_padding_mask is not None:
+            # 自动适配维度: 支持 (N, B) 或 (B, N)
+            if key_padding_mask.shape[0] == x.shape[1] and key_padding_mask.shape[1] == x.shape[0]:
+                key_padding_mask = key_padding_mask.t()
+            if key_padding_mask.shape[0] != x.shape[0] or key_padding_mask.shape[1] != x.shape[1]:
+                raise ValueError(f"key_padding_mask shape {key_padding_mask.shape} does not match input shape {(x.shape[0], x.shape[1])}")
+            mask = (~key_padding_mask).unsqueeze(-1).float()  # (B, N, 1)
+            x = x * mask
+        B, N, C = x.shape
+        x = self.trans_dims(x) # B, N, C'
+        x = x.view(B, N, self.num_heads_eff, -1).permute(0, 2, 1, 3)
+        attn = self.linear_0(x)
+        attn = attn.softmax(dim=-2)
+        attn = attn / (1e-9 + attn.sum(dim=-1, keepdim=True))
+        attn = self.attn_drop(attn)
+        x = self.linear_1(attn).permute(0,2,1,3).reshape(B, N, -1)
+        x = self.proj(x)
+        x = self.proj_drop(x)
+        attn_output_weights = None
+        return x, attn_output_weights

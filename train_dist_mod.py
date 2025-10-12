@@ -118,7 +118,8 @@ class TrainTester(BaseTrainTester):
             swin_layer_num=args.swin_layer_num,
             use_Swin=args.use_Swin,
             use_seg=args.use_seg,
-            use_Mq=args.use_Mq
+            use_Mq=args.use_Mq,
+            use_external_attn_bi_layer0=args.use_external_attn_bi_layer0
         )
         return model
 
@@ -158,7 +159,8 @@ class TrainTester(BaseTrainTester):
         evaluator = GroundingEvaluator(
             only_root=True, thresholds=[0.25, 0.5],     
             topks=[1], prefixes=prefixes,
-            filter_non_gt_boxes=args.butd_cls
+            filter_non_gt_boxes=args.butd_cls,
+            use_seg=args.use_seg
         )
 
         # NOTE Main eval branch
@@ -193,9 +195,10 @@ class TrainTester(BaseTrainTester):
                 for t in evaluator.thresholds:
                     self.logger.info(''.join([
                         f"{'3dcnn'} Acc{t:.2f}: ", f"Top-{1}: {evaluator.dets[('3dcnn', t, 1, 'bbf')] / max(evaluator.gts[('3dcnn', t, 1, 'bbf')], 1):.5f}"
-                    ]))           
-                self.logger.info('Acc_mask0.25' + ' ' +  str(evaluator.dets['overall_mask'] / evaluator.gts['mask_3dcnn']))  
-                self.logger.info('Acc_mask0.50' + ' ' +  str(evaluator.dets['overall50_mask'] / evaluator.gts['mask_3dcnn']))
+                    ]))   
+                if args.use_seg:        
+                    self.logger.info('Acc_mask0.25' + ' ' +  str(evaluator.dets['overall_mask'] / evaluator.gts['mask_3dcnn']))  
+                    self.logger.info('Acc_mask0.50' + ' ' +  str(evaluator.dets['overall50_mask'] / evaluator.gts['mask_3dcnn']))
             print('inf: ', np.array(inf_speeds).mean(),'vis_back_speeds: ', np.array(vis_back_speeds).mean(),
                 'text_back_speeds: ', np.array(text_back_speeds).mean(),'fuiosn_speeds: ', np.array(fuiosn_speeds).mean(),
                 'head_speeds: ', np.array(head_speeds).mean())

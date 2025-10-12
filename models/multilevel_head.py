@@ -86,9 +86,10 @@ class TSPHead(nn.Module):
                  window_size = 5,
                  quant_size = 4,
                  swin_layer_num = 2,
-                 use_Swin = True,
+                 use_Swin = False,
                  use_seg = False,
                  use_Mq = -1,
+                 use_external_attn_bi_layer0=False,
                  ):
         super(TSPHead, self).__init__()
         self.voxel_size = voxel_size
@@ -112,6 +113,7 @@ class TSPHead(nn.Module):
         self.use_Swin = use_Swin
         self.use_seg = use_seg
         self.use_Mq = use_Mq
+        self.use_external_attn_bi_layer0 = use_external_attn_bi_layer0
         self.assigner = TR3DAssigner(top_pts_threshold=24, top_pts_threshold_det=8, label2level=[0])
         self.bbox_loss = AxisAlignedIoULoss2(mode='diou', reduction='none')
         self.cls_loss = FocalLoss(reduction='none')
@@ -174,8 +176,8 @@ class TSPHead(nn.Module):
             out_channels, n_reg_outs, kernel_size=1, bias=True, dimension=3)
         self.cls_conv = ME.MinkowskiConvolution(
             out_channels, n_classes, kernel_size=1, bias=True, dimension=3)
-        self.seg_conv = ME.MinkowskiConvolution(
-            out_channels, n_classes, kernel_size=1, bias=True, dimension=3)
+        # self.seg_conv = ME.MinkowskiConvolution(
+        #     out_channels, n_classes, kernel_size=1, bias=True, dimension=3)
         self.keep_conv = nn.ModuleList([
             ME.MinkowskiConvolution(out_channels, 1, kernel_size=1, bias=True, dimension=3),
             ME.MinkowskiConvolution(out_channels, 1, kernel_size=1, bias=True, dimension=3)
@@ -185,19 +187,21 @@ class TSPHead(nn.Module):
             128, dropout=0.1, activation="relu",
             n_heads=8, dim_feedforward=128,
             self_attend_lang=True, self_attend_vis=True,
-            use_butd_enc_attn=False
-        )
-        bi_layer0_swin = BiEncoderLayerSwin(
-            128, dropout=0.1, activation="relu",
-            n_heads=8, dim_feedforward=128,
-            self_attend_lang=True, self_attend_vis=True,
             use_butd_enc_attn=False,
-            use_F3_CA=self.use_F3_CA,
-            swin_drop_path=self.swin_drop_path,
-            window_size=self.window_size,
-            quant_size=self.quant_size,
-            swin_layer_num=self.swin_layer_num,
+            use_external_attn=self.use_external_attn_bi_layer0
         )
+        if self.use_Swin:
+            bi_layer0_swin = BiEncoderLayerSwin(
+                128, dropout=0.1, activation="relu",
+                n_heads=8, dim_feedforward=128,
+                self_attend_lang=True, self_attend_vis=True,
+                use_butd_enc_attn=False,
+                use_F3_CA=self.use_F3_CA,
+                swin_drop_path=self.swin_drop_path,
+                window_size=self.window_size,
+                quant_size=self.quant_size,
+                swin_layer_num=self.swin_layer_num,
+            )
         bi_layer1 = BiEncoderLayer(
             128, dropout=0.1, activation="relu",
             n_heads=8, dim_feedforward=128,
@@ -234,39 +238,42 @@ class TSPHead(nn.Module):
                     self.make_block(in_channels[i], out_channels))
 
         self.fuse = MinkowskiFeatureFusionBlock(128, 128, 128)
-        self.upsample_st_4 = nn.Sequential(
-                        ME.MinkowskiConvolutionTranspose(
-                            64,
-                            64,
-                            kernel_size=3,
-                            stride=4,
-                            dimension=3),
-                        ME.MinkowskiBatchNorm(64),
-                        ME.MinkowskiReLU(inplace=True))      
-        self.upsample_st_2 = nn.Sequential(
-                        ME.MinkowskiConvolutionTranspose(
-                            128,
-                            64,
-                            kernel_size=3,
-                            stride=2,
-                            dimension=3),
-                        ME.MinkowskiBatchNorm(64),
-                        ME.MinkowskiReLU(inplace=True)) 
-        self.conv_32_ch = nn.Sequential(
-                        ME.MinkowskiConvolution(
-                            64,
-                            32,
-                            kernel_size=3,
-                            stride=1,
-                            dimension=3),
-                        ME.MinkowskiBatchNorm(32),
-                        ME.MinkowskiReLU(inplace=True))  
-        
-        self.seg_unet = MinkUNet14B(in_channels=32, out_channels=1, D=3)
-        
-        # For M_q branch: learnable scale and bias to convert similarity to logit
-        self.mq_scale = nn.Parameter(torch.tensor(10.0))
-        self.mq_bias = nn.Parameter(torch.tensor(0.0))
+
+        if self.use_seg:
+            pdb.set_trace()
+            self.upsample_st_4 = nn.Sequential(
+                            ME.MinkowskiConvolutionTranspose(
+                                64,
+                                64,
+                                kernel_size=3,
+                                stride=4,
+                                dimension=3),
+                            ME.MinkowskiBatchNorm(64),
+                            ME.MinkowskiReLU(inplace=True))      
+            self.upsample_st_2 = nn.Sequential(
+                            ME.MinkowskiConvolutionTranspose(
+                                128,
+                                64,
+                                kernel_size=3,
+                                stride=2,
+                                dimension=3),
+                            ME.MinkowskiBatchNorm(64),
+                            ME.MinkowskiReLU(inplace=True)) 
+            self.conv_32_ch = nn.Sequential(
+                            ME.MinkowskiConvolution(
+                                64,
+                                32,
+                                kernel_size=3,
+                                stride=1,
+                                dimension=3),
+                            ME.MinkowskiBatchNorm(32),
+                            ME.MinkowskiReLU(inplace=True))  
+            self.seg_unet = MinkUNet14B(in_channels=32, out_channels=1, D=3)
+
+        if self.use_Mq>=0:
+            # For M_q branch: learnable scale and bias to convert similarity to logit
+            self.mq_scale = nn.Parameter(torch.tensor(10.0))
+            self.mq_bias = nn.Parameter(torch.tensor(0.0))
         
         
         # self.maxpool = ME.MinkowskiMaxPooling(kernel_size=2, stride=2, dimension=3)
@@ -1443,7 +1450,10 @@ class TSPHead(nn.Module):
         feats = ME.SparseTensor(tensors.features[:, :-1], tensors.coordinates)
         targets = tensors.features[:, -1:]
         # pdb.set_trace()
-        preds = self.seg_unet(feats).features
+        if self.use_seg:
+            preds = self.seg_unet(feats).features
+        else:
+            preds = None
         # pdb.set_trace()
         return preds, targets, feats.coordinates[:, 0].long(), ids, rois, scores, labels, \
             M_q_seg_t.features if M_q_seg is not None else None
@@ -1788,32 +1798,35 @@ class TSPHead(nn.Module):
         
         results = self._get_bboxes([bbox_pred], [cls_pred], [point], img_metas)
         
-        x = self.upsample_st_2(x) + x_all[1]
-        x = self.upsample_st_4(x) + x_all[0]
-        seg_feats = self.conv_32_ch(x)
+        if self.use_seg:
+            x = self.upsample_st_2(x) + x_all[1]
+            x = self.upsample_st_4(x) + x_all[0]
+            seg_feats = self.conv_32_ch(x)
 
-        selected_bboxes,selected_scores,selected_labels = [],[],[]
-        for box, score, label in results:
-            box = torch.cat((box.gravity_center, box.tensor[:,  3:6]), dim=1)  
-            selected_bboxes.append(box)
-            selected_scores.append(score)
-            selected_labels.append(label)
+            selected_bboxes,selected_scores,selected_labels = [],[],[]
+            for box, score, label in results:
+                box = torch.cat((box.gravity_center, box.tensor[:,  3:6]), dim=1)  
+                selected_bboxes.append(box)
+                selected_scores.append(score)
+                selected_labels.append(label)
 
-        src_idxs = torch.arange(0, x_all[0].features.shape[0]).to(inverse_mapping.device)
-        # src_idxs = src_idxs.unsqueeze(1).expand(src_idxs.shape[0], 2)
-        seg_preds, idxs, v2r, r2scene, rois, scores, gt_idxs, _ = self._forward_seg(seg_feats, src_idxs.unsqueeze(-1), selected_bboxes,selected_scores,selected_labels)
-        # seg_preds, targets_new, v2r, r2scene, rois, scores, gt_idxs = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels)
+            src_idxs = torch.arange(0, x_all[0].features.shape[0]).to(inverse_mapping.device)
+            # src_idxs = src_idxs.unsqueeze(1).expand(src_idxs.shape[0], 2)
+            seg_preds, idxs, v2r, r2scene, rois, scores, gt_idxs, _ = self._forward_seg(seg_feats, src_idxs.unsqueeze(-1), selected_bboxes,selected_scores,selected_labels)
+            # seg_preds, targets_new, v2r, r2scene, rois, scores, gt_idxs = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels)
 
-        # pdb.set_trace()
-        seg_masks = self._get_instances(seg_preds[:, 0], idxs[:, 0], v2r, r2scene, scores, gt_idxs, inverse_mapping, img_metas)
-        # pdb.set_trace()
-        # seg_preds_list, targets_list = [],[]
-        
-        # for i in range(len(img_metas)):
-        #     seg_pred = seg_preds[v2r==i]
-        #     target = targets[[v2r==i]]
-        #     seg_preds_list.append(seg_pred)
-        #     targets_list.append(target)
+            # pdb.set_trace()
+            seg_masks = self._get_instances(seg_preds[:, 0], idxs[:, 0], v2r, r2scene, scores, gt_idxs, inverse_mapping, img_metas)
+            # pdb.set_trace()
+            # seg_preds_list, targets_list = [],[]
+            
+            # for i in range(len(img_metas)):
+            #     seg_pred = seg_preds[v2r==i]
+            #     target = targets[[v2r==i]]
+            #     seg_preds_list.append(seg_pred)
+            #     targets_list.append(target)
+        else:
+            seg_masks = None
         head_time = time.time() - start_time
         return results, head_time, seg_masks
 

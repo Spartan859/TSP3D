@@ -27,7 +27,11 @@ class BeaUTyDETR(nn.Module):
                  swin_drop_path=0.0,
                  window_size=5, quant_size=4,
                  swin_layer_num=2,
-                 use_Swin=True, use_seg=False, use_Mq=-1):
+                 use_Swin=True, 
+                 use_seg=False, 
+                 use_Mq=-1,
+                 use_external_attn_bi_layer0=False,
+                 ):
         """Initialize layers."""
         super().__init__()
 
@@ -59,7 +63,11 @@ class BeaUTyDETR(nn.Module):
                             swin_drop_path=swin_drop_path,
                             window_size=window_size,quant_size=quant_size,
                             swin_layer_num=swin_layer_num,
-                            use_Swin=use_Swin,use_seg=use_seg,use_Mq=use_Mq)
+                            use_Swin=use_Swin,
+                            use_seg=use_seg,
+                            use_Mq=use_Mq,
+                            use_external_attn_bi_layer0=use_external_attn_bi_layer0,
+                            )
         
     def collate(self, points, quantization_mode):
         coordinates, features = ME.utils.batch_sparse_collate(

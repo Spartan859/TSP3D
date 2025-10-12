@@ -128,6 +128,7 @@ def parse_option():
     parser.add_argument('--use_Swin', action='store_true')
     parser.add_argument('--use_seg', action='store_true')
     parser.add_argument('--use_Mq', type=int, default=-1)
+    parser.add_argument('--use_external_attn_bi_layer0', action='store_true')
 
     args, _ = parser.parse_known_args()
 
