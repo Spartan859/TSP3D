@@ -477,7 +477,7 @@ class BiEncoderSwin(nn.Module):
         return vis_feats, text_feats
     
 class ExternalMultiheadAttention(nn.Module):
-    def __init__(self, embed_dim, num_heads=8, attn_drop=0., proj_drop=0.):
+    def __init__(self, embed_dim, num_heads=8, attn_drop=0., proj_drop=0., batch_first=False):
         super().__init__()
         self.embed_dim = embed_dim
         self.num_heads = num_heads
@@ -490,16 +490,18 @@ class ExternalMultiheadAttention(nn.Module):
         self.attn_drop = nn.Dropout(attn_drop)
         self.proj = nn.Linear(embed_dim * self.coef, embed_dim)
         self.proj_drop = nn.Dropout(proj_drop)
+        self.batch_first = batch_first
 
     def forward(self, query, key=None, value=None, attn_mask=None, key_padding_mask=None, need_weights=False):
         # 只支持自注意力（query=key=value），忽略attn_mask
-        # 输入: (B, N, C)
+        # 输入: 
+        # batch_first=False: (N, B, C)
+        # batch_first=True: (B, N, C)
         # key_padding_mask: (B, N)  True表示padding
         x = query
+        if not self.batch_first:
+            x = x.transpose(0, 1)  # (B, N, C)
         if key_padding_mask is not None:
-            # 自动适配维度: 支持 (N, B) 或 (B, N)
-            if key_padding_mask.shape[0] == x.shape[1] and key_padding_mask.shape[1] == x.shape[0]:
-                key_padding_mask = key_padding_mask.t()
             if key_padding_mask.shape[0] != x.shape[0] or key_padding_mask.shape[1] != x.shape[1]:
                 raise ValueError(f"key_padding_mask shape {key_padding_mask.shape} does not match input shape {(x.shape[0], x.shape[1])}")
             mask = (~key_padding_mask).unsqueeze(-1).float()  # (B, N, 1)
@@ -515,4 +517,6 @@ class ExternalMultiheadAttention(nn.Module):
         x = self.proj(x)
         x = self.proj_drop(x)
         attn_output_weights = None
+        if not self.batch_first:
+            x = x.transpose(0, 1)  # (N, B, C)
         return x, attn_output_weights
