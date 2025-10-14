@@ -42,6 +42,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --log_dir "$(dirname "$(readlink -f "$0")")" \
     --augment_det \
     --lr_decay_epochs 50 75 \
+    # --use_external_attn_bi_layer0 \
     # --window_size 5 \
     # --quant_size 4 \
     # --swin_layer_num 2 \
