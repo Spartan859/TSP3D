@@ -1,0 +1,6 @@
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.weights
+*.txt.rank*
