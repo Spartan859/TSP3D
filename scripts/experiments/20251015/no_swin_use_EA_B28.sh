@@ -24,12 +24,12 @@ cvd=$(seq -s, 0 $((nproc_per_node-1)))
 echo cvd: ${cvd}
 echo log_dir: "$(dirname "$(readlink -f "$0")")"
 
-TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distributed.launch \
+TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --nproc_per_node ${nproc_per_node} --master_port 12222 \
     train_dist_mod.py \
     --use_color \
     --weight_decay 0.0005 \
-    --data_root /home/guowenxuan/lxy/TSP3D/data/ \
+    --data_root ${data_root}/ \
     --val_freq 3 --batch_size 28 --save_freq 6 --print_freq 500 \
     --lr=2e-3 \
     --keep_trans_lr=2e-3 \

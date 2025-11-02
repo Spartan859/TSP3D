@@ -4,7 +4,7 @@ else
     mode="large"
 fi
 
-data_root="/home/guowenxuan/lxy/TSP3D/data"
+data_root="/root/lxy/TSP3D/data"
 
 ln -sf ${data_root}/ScanRefer/ScanRefer_filtered_train_${mode}.txt \
     ${data_root}/ScanRefer/ScanRefer_filtered_train.txt
@@ -24,18 +24,18 @@ cvd=$(seq -s, 0 $((nproc_per_node-1)))
 echo cvd: ${cvd}
 echo log_dir: "$(dirname "$(readlink -f "$0")")"
 
-TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distributed.launch \
+TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --nproc_per_node ${nproc_per_node} --master_port 12222 \
     train_dist_mod.py \
     --use_color \
     --weight_decay 0.0005 \
     --data_root ${data_root}/ \
-    --val_freq 3 --batch_size 14 --save_freq 6 --print_freq 500 \
-    --lr=1e-3 \
-    --keep_trans_lr=1e-3 \
-    --text_encoder_lr=2e-5 \
-    --box_select_lr=8e-4 \
-    --seg_lr=1e-3 \
+    --val_freq 3 --batch_size 7 --save_freq 6 --print_freq 500 \
+    --lr=5e-4 \
+    --keep_trans_lr=5e-4 \
+    --text_encoder_lr=1e-5 \
+    --box_select_lr=4e-4 \
+    --seg_lr=5e-4 \
     --voxel_size=0.01 --num_workers=8 \
     --dataset scanrefer --test_dataset scanrefer \
     --detect_intermediate --joint_det \
@@ -43,6 +43,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --augment_det \
     --lr_decay_epochs 50 75 \
     --use_external_attn_bi_layer0 \
+    # --clip_norm 1.0 \
     # --window_size 5 \
     # --quant_size 4 \
     # --swin_layer_num 2 \

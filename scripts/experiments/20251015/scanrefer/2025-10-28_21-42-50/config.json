@@ -16,7 +16,7 @@
     "scanrefer"
   ],
   "test_dataset": "scanrefer",
-  "data_root": "/home/guowenxuan/lxy/TSP3D/data/",
+  "data_root": "/root/lxy/TSP3D/data/",
   "use_height": false,
   "use_color": true,
   "use_multiview": false,
@@ -47,7 +47,7 @@
   "warmup_epoch": -1,
   "warmup_multiplier": 100,
   "checkpoint_path": null,
-  "log_dir": "/data/lxy/TSP3D/scripts/experiments/20251015/scanrefer/2025-10-16_00-00-27",
+  "log_dir": "/mlp_vepfs/share/lxy/TSP3D/scripts/experiments/20251015/scanrefer/2025-10-28_21-42-50",
   "print_freq": 500,
   "save_freq": 6,
   "val_freq": 3,

@@ -1,3 +1,6 @@
+import faulthandler
+faulthandler.enable()
+
 import numpy as np
 from typing import List
 
@@ -1264,6 +1267,7 @@ class TSPHead(nn.Module):
 
             keep_losses = keep_losses + k_loss
 
+        # pdb.set_trace()
         for i in range(len(img_metas)):
         # for i, (coordinates, features) in enumerate(
         #     zip(*seg_feats.decomposed_coordinates_and_features)):
@@ -1303,6 +1307,7 @@ class TSPHead(nn.Module):
             keep_loss=self.keep_loss_weight * keep_losses / len(img_metas),
             com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com)),
         )
+        # pdb.set_trace()
         if self.use_seg:
             loss_dict.update(dict(
                 seg_loss=self.seg_loss_weight * seg_loss,
@@ -1418,9 +1423,10 @@ class TSPHead(nn.Module):
     def forward_train(self, x, coords_x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, \
         gt_points, targets, img_metas,pc=None):
         
+        # pdb.set_trace()
         bbox_preds, cls_preds, points, keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training, seg_feats, M_q_seg = \
             self(x, coords_x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc)
-
+        # pdb.set_trace()
         return self._loss(bbox_preds, cls_preds, points,
                           gt_bboxes, gt_labels, img_metas, keep_preds, keep_gts, bboxes_level,
                           com_pred_training, com_coords_training, gt_points, targets, seg_feats, M_q_seg)
