@@ -1,0 +1,772 @@
+[10/16 00:00:27] 20251015 INFO: Full config saved to /data/lxy/TSP3D/scripts/experiments/20251015/scanrefer/2025-10-16_00-00-27/config.json
+[10/16 00:00:27] 20251015 INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 14, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/home/guowenxuan/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.001, 'keep_trans_lr': 0.001, 'text_encoder_lr': 2e-05, 'box_select_lr': 0.0008, 'seg_lr': 0.001, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'checkpoint_path': None, 'log_dir': '/data/lxy/TSP3D/scripts/experiments/20251015/scanrefer/2025-10-16_00-00-27', 'print_freq': 500, 'save_freq': 6, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'pp_checkpoint': None, 'reduce_lr': False, 'use_F3_CA': False, 'swin_drop_path': 0.0, 'window_size': 5, 'quant_size': 4, 'swin_layer_num': 2, 'use_Swin': False, 'use_seg': False, 'use_Mq': -1, 'use_external_attn_bi_layer0': True}
+[10/16 00:11:34] 20251015 INFO: length of training dataset: 48655
+[10/16 00:11:34] 20251015 INFO: length of testing dataset: 9508
+[10/16 00:26:39] 20251015 INFO: epoch 1, total time 878.76, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 00:41:09] 20251015 INFO: epoch 2, total time 869.75, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 00:55:40] 20251015 INFO: epoch 3, total time 871.47, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 00:56:54] 20251015 INFO: Eval: [3]  
+[10/16 00:56:54] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.10660
+[10/16 00:56:54] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.07759
+[10/16 01:11:16] 20251015 INFO: epoch 4, total time 861.93, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 01:25:29] 20251015 INFO: epoch 5, total time 853.05, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 01:39:49] 20251015 INFO: epoch 6, total time 859.25, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 01:40:52] 20251015 INFO: Eval: [6]  
+[10/16 01:40:52] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.25305
+[10/16 01:40:52] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.18661
+[10/16 01:55:12] 20251015 INFO: epoch 7, total time 860.15, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 02:09:44] 20251015 INFO: epoch 8, total time 871.42, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 02:24:09] 20251015 INFO: epoch 9, total time 864.93, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 02:25:06] 20251015 INFO: Eval: [9]  
+[10/16 02:25:06] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.24422
+[10/16 02:25:06] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.18230
+[10/16 02:39:31] 20251015 INFO: epoch 10, total time 865.27, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 02:53:51] 20251015 INFO: epoch 11, total time 860.22, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 03:08:15] 20251015 INFO: epoch 12, total time 864.26, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 03:09:10] 20251015 INFO: Eval: [12]  
+[10/16 03:09:10] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.31518
+[10/16 03:09:10] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.24159
+[10/16 03:23:37] 20251015 INFO: epoch 13, total time 866.94, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 03:38:00] 20251015 INFO: epoch 14, total time 863.41, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 03:52:14] 20251015 INFO: epoch 15, total time 853.44, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 03:53:08] 20251015 INFO: Eval: [15]  
+[10/16 03:53:08] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.31550
+[10/16 03:53:08] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.25137
+[10/16 04:07:34] 20251015 INFO: epoch 16, total time 865.99, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 04:21:55] 20251015 INFO: epoch 17, total time 861.19, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 04:36:31] 20251015 INFO: epoch 18, total time 876.10, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 04:37:23] 20251015 INFO: Eval: [18]  
+[10/16 04:37:23] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.41516
+[10/16 04:37:23] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.33074
+[10/16 04:51:48] 20251015 INFO: epoch 19, total time 864.54, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 05:06:17] 20251015 INFO: epoch 20, total time 868.68, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 05:20:44] 20251015 INFO: epoch 21, total time 867.73, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 05:21:36] 20251015 INFO: Eval: [21]  
+[10/16 05:21:36] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.35124
+[10/16 05:21:36] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.27565
+[10/16 05:36:05] 20251015 INFO: epoch 22, total time 869.22, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 05:50:35] 20251015 INFO: epoch 23, total time 869.93, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 06:05:03] 20251015 INFO: epoch 24, total time 868.39, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 06:05:57] 20251015 INFO: Eval: [24]  
+[10/16 06:05:57] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.37069
+[10/16 06:05:57] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.29668
+[10/16 06:20:26] 20251015 INFO: epoch 25, total time 868.90, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 06:34:57] 20251015 INFO: epoch 26, total time 870.96, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 06:49:29] 20251015 INFO: epoch 27, total time 872.75, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 06:50:21] 20251015 INFO: Eval: [27]  
+[10/16 06:50:21] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.43303
+[10/16 06:50:21] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.34073
+[10/16 07:04:57] 20251015 INFO: epoch 28, total time 876.70, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 07:19:29] 20251015 INFO: epoch 29, total time 871.45, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 07:34:01] 20251015 INFO: epoch 30, total time 872.50, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 07:34:53] 20251015 INFO: Eval: [30]  
+[10/16 07:34:53] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.43818
+[10/16 07:34:53] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.36228
+[10/16 07:49:29] 20251015 INFO: epoch 31, total time 875.22, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 08:04:02] 20251015 INFO: epoch 32, total time 873.28, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 08:18:28] 20251015 INFO: epoch 33, total time 866.01, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 08:19:20] 20251015 INFO: Eval: [33]  
+[10/16 08:19:20] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.40402
+[10/16 08:19:20] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.33726
+[10/16 08:33:46] 20251015 INFO: epoch 34, total time 865.43, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 08:48:19] 20251015 INFO: epoch 35, total time 872.82, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 09:02:51] 20251015 INFO: epoch 36, total time 872.49, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 09:03:43] 20251015 INFO: Eval: [36]  
+[10/16 09:03:43] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.45879
+[10/16 09:03:43] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.37952
+[10/16 09:18:17] 20251015 INFO: epoch 37, total time 873.68, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 09:32:45] 20251015 INFO: epoch 38, total time 868.48, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 09:47:12] 20251015 INFO: epoch 39, total time 867.21, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 09:48:03] 20251015 INFO: Eval: [39]  
+[10/16 09:48:03] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.49117
+[10/16 09:48:03] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.39781
+[10/16 10:02:32] 20251015 INFO: epoch 40, total time 868.60, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 10:17:04] 20251015 INFO: epoch 41, total time 872.05, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 10:31:32] 20251015 INFO: epoch 42, total time 868.40, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 10:32:25] 20251015 INFO: Eval: [42]  
+[10/16 10:32:25] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.48076
+[10/16 10:32:25] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.39897
+[10/16 10:46:52] 20251015 INFO: epoch 43, total time 867.07, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 11:01:23] 20251015 INFO: epoch 44, total time 870.85, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 11:15:52] 20251015 INFO: epoch 45, total time 869.52, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 11:16:43] 20251015 INFO: Eval: [45]  
+[10/16 11:16:43] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.50042
+[10/16 11:16:43] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.41327
+[10/16 11:31:06] 20251015 INFO: epoch 46, total time 862.96, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 11:45:34] 20251015 INFO: epoch 47, total time 868.46, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 12:00:04] 20251015 INFO: epoch 48, total time 869.30, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 12:01:04] 20251015 INFO: Eval: [48]  
+[10/16 12:01:04] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.50126
+[10/16 12:01:04] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.41474
+[10/16 12:15:35] 20251015 INFO: epoch 49, total time 870.06, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 12:30:05] 20251015 INFO: epoch 50, total time 870.59, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0010000
+[10/16 12:44:36] 20251015 INFO: epoch 51, total time 871.10, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 12:45:27] 20251015 INFO: Eval: [51]  
+[10/16 12:45:27] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.49506
+[10/16 12:45:27] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.40475
+[10/16 12:59:58] 20251015 INFO: epoch 52, total time 871.49, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 13:14:28] 20251015 INFO: epoch 53, total time 870.01, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 13:28:57] 20251015 INFO: epoch 54, total time 868.68, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 13:29:48] 20251015 INFO: Eval: [54]  
+[10/16 13:29:48] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.51861
+[10/16 13:29:48] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.43997
+[10/16 13:44:20] 20251015 INFO: epoch 55, total time 872.06, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 13:58:55] 20251015 INFO: epoch 56, total time 875.49, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 14:13:34] 20251015 INFO: epoch 57, total time 878.98, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 14:14:23] 20251015 INFO: Eval: [57]  
+[10/16 14:14:23] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.51892
+[10/16 14:14:23] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44155
+[10/16 14:29:01] 20251015 INFO: epoch 58, total time 877.51, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 14:43:39] 20251015 INFO: epoch 59, total time 878.75, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 14:58:18] 20251015 INFO: epoch 60, total time 878.34, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 14:59:07] 20251015 INFO: Eval: [60]  
+[10/16 14:59:07] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52744
+[10/16 14:59:07] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.45038
+[10/16 15:13:49] 20251015 INFO: epoch 61, total time 882.54, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 15:28:25] 20251015 INFO: epoch 62, total time 876.08, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 15:43:02] 20251015 INFO: epoch 63, total time 876.41, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 15:43:51] 20251015 INFO: Eval: [63]  
+[10/16 15:43:51] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52807
+[10/16 15:43:51] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44933
+[10/16 15:58:25] 20251015 INFO: epoch 64, total time 874.59, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 16:13:06] 20251015 INFO: epoch 65, total time 881.02, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 16:27:44] 20251015 INFO: epoch 66, total time 878.06, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 16:28:34] 20251015 INFO: Eval: [66]  
+[10/16 16:28:34] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.51966
+[10/16 16:28:34] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44270
+[10/16 16:43:14] 20251015 INFO: epoch 67, total time 879.28, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 16:57:54] 20251015 INFO: epoch 68, total time 880.57, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 17:12:33] 20251015 INFO: epoch 69, total time 879.35, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 17:13:23] 20251015 INFO: Eval: [69]  
+[10/16 17:13:23] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52576
+[10/16 17:13:23] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44912
+[10/16 17:27:57] 20251015 INFO: epoch 70, total time 874.78, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 17:42:35] 20251015 INFO: epoch 71, total time 877.99, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 17:57:04] 20251015 INFO: epoch 72, total time 868.63, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 17:57:54] 20251015 INFO: Eval: [72]  
+[10/16 17:57:54] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52050
+[10/16 17:57:54] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44680
+[10/16 18:12:36] 20251015 INFO: epoch 73, total time 881.69, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 18:27:13] 20251015 INFO: epoch 74, total time 877.24, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 18:41:57] 20251015 INFO: epoch 75, total time 884.66, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0001000
+[10/16 18:42:47] 20251015 INFO: Eval: [75]  
+[10/16 18:42:47] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52523
+[10/16 18:42:47] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44754
+[10/16 18:57:20] 20251015 INFO: epoch 76, total time 873.26, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 19:11:56] 20251015 INFO: epoch 77, total time 876.28, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 19:26:33] 20251015 INFO: epoch 78, total time 876.61, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 19:27:22] 20251015 INFO: Eval: [78]  
+[10/16 19:27:22] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52639
+[10/16 19:27:22] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44649
+[10/16 19:42:05] 20251015 INFO: epoch 79, total time 883.67, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 19:56:45] 20251015 INFO: epoch 80, total time 879.57, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 20:11:25] 20251015 INFO: epoch 81, total time 880.30, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 20:12:14] 20251015 INFO: Eval: [81]  
+[10/16 20:12:14] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52733
+[10/16 20:12:14] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44743
+[10/16 20:26:50] 20251015 INFO: epoch 82, total time 875.89, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 20:41:25] 20251015 INFO: epoch 83, total time 874.67, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 20:56:03] 20251015 INFO: epoch 84, total time 877.94, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 20:56:51] 20251015 INFO: Eval: [84]  
+[10/16 20:56:51] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52712
+[10/16 20:56:51] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44691
+[10/16 21:11:34] 20251015 INFO: epoch 85, total time 883.17, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 21:26:06] 20251015 INFO: epoch 86, total time 871.69, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 21:40:43] 20251015 INFO: epoch 87, total time 877.10, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 21:41:32] 20251015 INFO: Eval: [87]  
+[10/16 21:41:32] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52660
+[10/16 21:41:32] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44659
+[10/16 21:56:11] 20251015 INFO: epoch 88, total time 879.18, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 22:10:52] 20251015 INFO: epoch 89, total time 880.02, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 22:25:27] 20251015 INFO: epoch 90, total time 875.61, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 22:26:15] 20251015 INFO: Eval: [90]  
+[10/16 22:26:15] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52828
+[10/16 22:26:15] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44954
+[10/16 22:40:54] 20251015 INFO: epoch 91, total time 878.83, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 22:55:31] 20251015 INFO: epoch 92, total time 877.62, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 23:10:10] 20251015 INFO: epoch 93, total time 878.82, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 23:10:59] 20251015 INFO: Eval: [93]  
+[10/16 23:10:59] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52754
+[10/16 23:10:59] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44870
+[10/16 23:25:34] 20251015 INFO: epoch 94, total time 874.87, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 23:40:14] 20251015 INFO: epoch 95, total time 880.30, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 23:54:49] 20251015 INFO: epoch 96, total time 875.17, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/16 23:55:37] 20251015 INFO: Eval: [96]  
+[10/16 23:55:37] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52523
+[10/16 23:55:37] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44544
+[10/17 00:10:25] 20251015 INFO: epoch 97, total time 887.92, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 00:25:05] 20251015 INFO: epoch 98, total time 879.33, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 00:39:49] 20251015 INFO: epoch 99, total time 883.88, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 00:40:36] 20251015 INFO: Eval: [99]  
+[10/17 00:40:36] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52597
+[10/17 00:40:36] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44607
+[10/17 00:55:12] 20251015 INFO: epoch 100, total time 876.06, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 01:09:58] 20251015 INFO: epoch 101, total time 885.37, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 01:24:33] 20251015 INFO: epoch 102, total time 874.97, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 01:25:21] 20251015 INFO: Eval: [102]  
+[10/17 01:25:21] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52817
+[10/17 01:25:21] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44828
+[10/17 01:39:52] 20251015 INFO: epoch 103, total time 870.76, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 01:54:31] 20251015 INFO: epoch 104, total time 878.69, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 02:09:17] 20251015 INFO: epoch 105, total time 885.88, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 02:10:05] 20251015 INFO: Eval: [105]  
+[10/17 02:10:05] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52933
+[10/17 02:10:05] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.45017
+[10/17 02:24:40] 20251015 INFO: epoch 106, total time 874.91, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 02:39:19] 20251015 INFO: epoch 107, total time 878.75, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 02:53:58] 20251015 INFO: epoch 108, total time 878.75, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 02:54:46] 20251015 INFO: Eval: [108]  
+[10/17 02:54:46] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52765
+[10/17 02:54:46] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44870
+[10/17 03:09:26] 20251015 INFO: epoch 109, total time 880.52, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 03:24:02] 20251015 INFO: epoch 110, total time 875.18, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 03:38:38] 20251015 INFO: epoch 111, total time 876.04, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 03:39:26] 20251015 INFO: Eval: [111]  
+[10/17 03:39:26] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52765
+[10/17 03:39:26] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44954
+[10/17 03:54:05] 20251015 INFO: epoch 112, total time 879.07, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 04:08:41] 20251015 INFO: epoch 113, total time 875.44, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 04:23:18] 20251015 INFO: epoch 114, total time 876.92, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 04:24:06] 20251015 INFO: Eval: [114]  
+[10/17 04:24:06] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52807
+[10/17 04:24:06] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44975
+[10/17 04:38:52] 20251015 INFO: epoch 115, total time 886.11, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 04:53:23] 20251015 INFO: epoch 116, total time 871.76, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 05:08:09] 20251015 INFO: epoch 117, total time 885.01, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 05:08:57] 20251015 INFO: Eval: [117]  
+[10/17 05:08:57] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52849
+[10/17 05:08:57] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44922
+[10/17 05:23:34] 20251015 INFO: epoch 118, total time 877.57, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 05:38:12] 20251015 INFO: epoch 119, total time 877.90, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 05:52:49] 20251015 INFO: epoch 120, total time 876.99, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 05:53:38] 20251015 INFO: Eval: [120]  
+[10/17 05:53:38] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52817
+[10/17 05:53:38] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44880
+[10/17 06:08:20] 20251015 INFO: epoch 121, total time 882.58, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 06:22:57] 20251015 INFO: epoch 122, total time 876.87, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 06:37:32] 20251015 INFO: epoch 123, total time 874.62, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 06:38:19] 20251015 INFO: Eval: [123]  
+[10/17 06:38:19] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52775
+[10/17 06:38:19] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44765
+[10/17 06:52:58] 20251015 INFO: epoch 124, total time 878.48, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 07:07:37] 20251015 INFO: epoch 125, total time 879.58, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 07:22:19] 20251015 INFO: epoch 126, total time 881.63, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 07:23:07] 20251015 INFO: Eval: [126]  
+[10/17 07:23:07] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53007
+[10/17 07:23:07] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.45090
+[10/17 07:37:45] 20251015 INFO: epoch 127, total time 877.71, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 07:52:25] 20251015 INFO: epoch 128, total time 880.29, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 08:07:07] 20251015 INFO: epoch 129, total time 881.42, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 08:07:55] 20251015 INFO: Eval: [129]  
+[10/17 08:07:55] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52902
+[10/17 08:07:55] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44943
+[10/17 08:22:32] 20251015 INFO: epoch 130, total time 877.10, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 08:37:11] 20251015 INFO: epoch 131, total time 878.99, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 08:51:42] 20251015 INFO: epoch 132, total time 871.15, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 08:52:30] 20251015 INFO: Eval: [132]  
+[10/17 08:52:30] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52744
+[10/17 08:52:30] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44796
+[10/17 09:07:11] 20251015 INFO: epoch 133, total time 880.74, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 09:21:49] 20251015 INFO: epoch 134, total time 878.14, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 09:36:26] 20251015 INFO: epoch 135, total time 876.97, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 09:37:13] 20251015 INFO: Eval: [135]  
+[10/17 09:37:13] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52912
+[10/17 09:37:13] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44859
+[10/17 09:51:48] 20251015 INFO: epoch 136, total time 874.81, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 10:06:27] 20251015 INFO: epoch 137, total time 879.56, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 10:21:08] 20251015 INFO: epoch 138, total time 880.32, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 10:21:55] 20251015 INFO: Eval: [138]  
+[10/17 10:21:55] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52891
+[10/17 10:21:55] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44996
+[10/17 10:36:29] 20251015 INFO: epoch 139, total time 873.78, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 10:51:04] 20251015 INFO: epoch 140, total time 874.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 11:05:40] 20251015 INFO: epoch 141, total time 876.14, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 11:06:27] 20251015 INFO: Eval: [141]  
+[10/17 11:06:27] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53122
+[10/17 11:06:27] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44996
+[10/17 11:21:02] 20251015 INFO: epoch 142, total time 874.89, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 11:35:33] 20251015 INFO: epoch 143, total time 870.83, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 11:50:10] 20251015 INFO: epoch 144, total time 876.55, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 11:50:58] 20251015 INFO: Eval: [144]  
+[10/17 11:50:58] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53122
+[10/17 11:50:58] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44901
+[10/17 12:05:40] 20251015 INFO: epoch 145, total time 881.85, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 12:20:17] 20251015 INFO: epoch 146, total time 877.88, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 12:34:58] 20251015 INFO: epoch 147, total time 880.13, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 12:35:44] 20251015 INFO: Eval: [147]  
+[10/17 12:35:44] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52975
+[10/17 12:35:44] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44996
+[10/17 12:50:20] 20251015 INFO: epoch 148, total time 875.59, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 13:04:57] 20251015 INFO: epoch 149, total time 877.04, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 13:19:32] 20251015 INFO: epoch 150, total time 874.61, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 13:20:20] 20251015 INFO: Eval: [150]  
+[10/17 13:20:20] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53038
+[10/17 13:20:20] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.45017
+[10/17 13:34:56] 20251015 INFO: epoch 151, total time 876.41, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 13:49:36] 20251015 INFO: epoch 152, total time 879.87, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 14:04:12] 20251015 INFO: epoch 153, total time 875.80, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 14:04:58] 20251015 INFO: Eval: [153]  
+[10/17 14:04:58] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52944
+[10/17 14:04:58] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44712
+[10/17 14:19:35] 20251015 INFO: epoch 154, total time 876.16, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 14:34:11] 20251015 INFO: epoch 155, total time 876.43, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 14:48:52] 20251015 INFO: epoch 156, total time 880.99, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 14:49:38] 20251015 INFO: Eval: [156]  
+[10/17 14:49:38] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52807
+[10/17 14:49:38] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44786
+[10/17 15:04:21] 20251015 INFO: epoch 157, total time 882.72, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 15:18:57] 20251015 INFO: epoch 158, total time 875.62, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 15:33:27] 20251015 INFO: epoch 159, total time 870.24, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 15:34:14] 20251015 INFO: Eval: [159]  
+[10/17 15:34:14] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52986
+[10/17 15:34:14] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44828
+[10/17 15:48:42] 20251015 INFO: epoch 160, total time 868.45, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 16:03:13] 20251015 INFO: epoch 161, total time 870.89, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 16:17:47] 20251015 INFO: epoch 162, total time 873.63, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 16:18:34] 20251015 INFO: Eval: [162]  
+[10/17 16:18:34] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53038
+[10/17 16:18:34] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44891
+[10/17 16:33:07] 20251015 INFO: epoch 163, total time 873.11, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 16:47:45] 20251015 INFO: epoch 164, total time 877.85, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 17:02:23] 20251015 INFO: epoch 165, total time 878.01, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 17:03:10] 20251015 INFO: Eval: [165]  
+[10/17 17:03:10] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52933
+[10/17 17:03:10] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44849
+[10/17 17:17:46] 20251015 INFO: epoch 166, total time 876.08, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 17:32:17] 20251015 INFO: epoch 167, total time 871.19, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 17:46:50] 20251015 INFO: epoch 168, total time 873.12, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 17:47:39] 20251015 INFO: Eval: [168]  
+[10/17 17:47:39] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52912
+[10/17 17:47:39] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44870
+[10/17 18:02:23] 20251015 INFO: epoch 169, total time 883.83, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 18:16:53] 20251015 INFO: epoch 170, total time 870.39, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 18:31:25] 20251015 INFO: epoch 171, total time 871.54, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 18:32:11] 20251015 INFO: Eval: [171]  
+[10/17 18:32:11] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52860
+[10/17 18:32:11] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44796
+[10/17 18:46:50] 20251015 INFO: epoch 172, total time 878.68, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 19:01:26] 20251015 INFO: epoch 173, total time 876.04, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 19:15:59] 20251015 INFO: epoch 174, total time 872.98, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 19:16:47] 20251015 INFO: Eval: [174]  
+[10/17 19:16:47] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53038
+[10/17 19:16:47] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44870
+[10/17 19:31:23] 20251015 INFO: epoch 175, total time 875.29, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 19:46:00] 20251015 INFO: epoch 176, total time 877.31, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 20:00:42] 20251015 INFO: epoch 177, total time 881.81, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 20:01:31] 20251015 INFO: Eval: [177]  
+[10/17 20:01:31] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53017
+[10/17 20:01:31] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44828
+[10/17 20:16:07] 20251015 INFO: epoch 178, total time 876.27, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 20:30:41] 20251015 INFO: epoch 179, total time 873.85, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 20:45:14] 20251015 INFO: epoch 180, total time 873.74, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 20:46:02] 20251015 INFO: Eval: [180]  
+[10/17 20:46:02] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53028
+[10/17 20:46:02] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44975
+[10/17 21:00:37] 20251015 INFO: epoch 181, total time 874.30, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 21:15:14] 20251015 INFO: epoch 182, total time 877.04, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 21:29:50] 20251015 INFO: epoch 183, total time 876.26, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 21:30:37] 20251015 INFO: Eval: [183]  
+[10/17 21:30:37] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52965
+[10/17 21:30:37] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44754
+[10/17 21:45:11] 20251015 INFO: epoch 184, total time 874.42, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 21:59:52] 20251015 INFO: epoch 185, total time 880.89, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 22:14:29] 20251015 INFO: epoch 186, total time 876.49, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 22:15:17] 20251015 INFO: Eval: [186]  
+[10/17 22:15:17] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52754
+[10/17 22:15:17] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44765
+[10/17 22:29:59] 20251015 INFO: epoch 187, total time 882.09, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 22:44:44] 20251015 INFO: epoch 188, total time 885.12, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 22:59:27] 20251015 INFO: epoch 189, total time 882.56, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 23:00:16] 20251015 INFO: Eval: [189]  
+[10/17 23:00:16] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52954
+[10/17 23:00:16] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44722
+[10/17 23:14:50] 20251015 INFO: epoch 190, total time 873.92, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 23:29:28] 20251015 INFO: epoch 191, total time 878.44, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 23:44:12] 20251015 INFO: epoch 192, total time 883.99, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/17 23:45:00] 20251015 INFO: Eval: [192]  
+[10/17 23:45:00] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52954
+[10/17 23:45:00] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44849
+[10/17 23:59:45] 20251015 INFO: epoch 193, total time 885.26, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 00:14:34] 20251015 INFO: epoch 194, total time 888.77, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 00:29:15] 20251015 INFO: epoch 195, total time 880.79, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 00:30:03] 20251015 INFO: Eval: [195]  
+[10/18 00:30:03] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52754
+[10/18 00:30:03] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44754
+[10/18 00:44:42] 20251015 INFO: epoch 196, total time 879.16, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 00:59:25] 20251015 INFO: epoch 197, total time 883.02, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 01:14:16] 20251015 INFO: epoch 198, total time 890.83, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 01:15:04] 20251015 INFO: Eval: [198]  
+[10/18 01:15:04] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52912
+[10/18 01:15:04] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44891
+[10/18 01:29:44] 20251015 INFO: epoch 199, total time 879.48, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 01:44:29] 20251015 INFO: epoch 200, total time 885.43, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 01:59:15] 20251015 INFO: epoch 201, total time 886.21, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 02:00:03] 20251015 INFO: Eval: [201]  
+[10/18 02:00:03] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52870
+[10/18 02:00:03] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44786
+[10/18 02:14:53] 20251015 INFO: epoch 202, total time 890.08, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 02:29:35] 20251015 INFO: epoch 203, total time 882.31, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 02:44:19] 20251015 INFO: epoch 204, total time 883.35, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 02:45:07] 20251015 INFO: Eval: [204]  
+[10/18 02:45:07] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52860
+[10/18 02:45:07] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44922
+[10/18 02:59:54] 20251015 INFO: epoch 205, total time 886.23, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 03:14:39] 20251015 INFO: epoch 206, total time 885.77, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 03:29:27] 20251015 INFO: epoch 207, total time 887.54, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 03:30:14] 20251015 INFO: Eval: [207]  
+[10/18 03:30:14] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52807
+[10/18 03:30:14] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44796
+[10/18 03:45:03] 20251015 INFO: epoch 208, total time 888.85, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 03:59:43] 20251015 INFO: epoch 209, total time 880.12, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 04:14:28] 20251015 INFO: epoch 210, total time 884.37, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 04:15:16] 20251015 INFO: Eval: [210]  
+[10/18 04:15:16] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52881
+[10/18 04:15:16] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44786
+[10/18 04:30:01] 20251015 INFO: epoch 211, total time 885.66, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 04:44:55] 20251015 INFO: epoch 212, total time 893.91, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 04:59:42] 20251015 INFO: epoch 213, total time 886.95, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 05:00:36] 20251015 INFO: Eval: [213]  
+[10/18 05:00:36] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52912
+[10/18 05:00:36] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44786
+[10/18 05:15:25] 20251015 INFO: epoch 214, total time 889.19, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 05:30:11] 20251015 INFO: epoch 215, total time 885.81, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 05:44:58] 20251015 INFO: epoch 216, total time 886.52, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 05:45:45] 20251015 INFO: Eval: [216]  
+[10/18 05:45:45] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52975
+[10/18 05:45:45] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44933
+[10/18 06:00:31] 20251015 INFO: epoch 217, total time 885.52, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 06:15:20] 20251015 INFO: epoch 218, total time 888.97, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 06:30:03] 20251015 INFO: epoch 219, total time 883.80, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 06:30:52] 20251015 INFO: Eval: [219]  
+[10/18 06:30:52] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52933
+[10/18 06:30:52] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44743
+[10/18 06:45:35] 20251015 INFO: epoch 220, total time 883.24, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 07:00:18] 20251015 INFO: epoch 221, total time 882.52, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 07:15:04] 20251015 INFO: epoch 222, total time 886.08, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 07:15:52] 20251015 INFO: Eval: [222]  
+[10/18 07:15:52] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52860
+[10/18 07:15:52] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44796
+[10/18 07:30:36] 20251015 INFO: epoch 223, total time 883.95, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 07:45:25] 20251015 INFO: epoch 224, total time 889.46, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 08:00:11] 20251015 INFO: epoch 225, total time 885.79, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 08:01:06] 20251015 INFO: Eval: [225]  
+[10/18 08:01:06] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52902
+[10/18 08:01:06] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44765
+[10/18 08:15:50] 20251015 INFO: epoch 226, total time 883.49, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 08:30:32] 20251015 INFO: epoch 227, total time 882.75, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 08:45:17] 20251015 INFO: epoch 228, total time 884.58, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 08:46:05] 20251015 INFO: Eval: [228]  
+[10/18 08:46:05] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52912
+[10/18 08:46:05] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44975
+[10/18 09:00:51] 20251015 INFO: epoch 229, total time 886.37, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 09:15:35] 20251015 INFO: epoch 230, total time 883.64, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 09:30:17] 20251015 INFO: epoch 231, total time 882.24, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 09:31:05] 20251015 INFO: Eval: [231]  
+[10/18 09:31:05] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52607
+[10/18 09:31:05] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44849
+[10/18 09:45:52] 20251015 INFO: epoch 232, total time 887.17, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 10:00:40] 20251015 INFO: epoch 233, total time 887.82, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 10:15:23] 20251015 INFO: epoch 234, total time 883.47, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 10:16:16] 20251015 INFO: Eval: [234]  
+[10/18 10:16:16] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52691
+[10/18 10:16:16] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44586
+[10/18 10:31:00] 20251015 INFO: epoch 235, total time 884.13, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 10:45:48] 20251015 INFO: epoch 236, total time 888.44, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 11:00:40] 20251015 INFO: epoch 237, total time 891.83, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 11:01:29] 20251015 INFO: Eval: [237]  
+[10/18 11:01:29] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52691
+[10/18 11:01:29] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44701
+[10/18 11:16:15] 20251015 INFO: epoch 238, total time 885.82, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 11:31:02] 20251015 INFO: epoch 239, total time 887.17, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 11:45:51] 20251015 INFO: epoch 240, total time 888.56, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 11:46:39] 20251015 INFO: Eval: [240]  
+[10/18 11:46:39] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52754
+[10/18 11:46:39] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44765
+[10/18 12:01:25] 20251015 INFO: epoch 241, total time 885.56, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 12:16:09] 20251015 INFO: epoch 242, total time 883.70, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 12:30:49] 20251015 INFO: epoch 243, total time 880.08, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 12:31:36] 20251015 INFO: Eval: [243]  
+[10/18 12:31:36] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52839
+[10/18 12:31:36] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44891
+[10/18 12:46:14] 20251015 INFO: epoch 244, total time 877.08, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 13:01:03] 20251015 INFO: epoch 245, total time 889.85, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 13:15:49] 20251015 INFO: epoch 246, total time 885.23, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 13:16:36] 20251015 INFO: Eval: [246]  
+[10/18 13:16:36] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52775
+[10/18 13:16:36] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44680
+[10/18 13:31:21] 20251015 INFO: epoch 247, total time 884.32, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 13:46:02] 20251015 INFO: epoch 248, total time 881.34, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 14:00:45] 20251015 INFO: epoch 249, total time 883.00, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 14:01:34] 20251015 INFO: Eval: [249]  
+[10/18 14:01:34] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52597
+[10/18 14:01:34] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44554
+[10/18 14:16:12] 20251015 INFO: epoch 250, total time 878.11, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 14:30:56] 20251015 INFO: epoch 251, total time 883.36, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 14:45:34] 20251015 INFO: epoch 252, total time 878.50, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 14:46:22] 20251015 INFO: Eval: [252]  
+[10/18 14:46:22] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52670
+[10/18 14:46:22] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44691
+[10/18 15:01:10] 20251015 INFO: epoch 253, total time 887.84, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 15:15:50] 20251015 INFO: epoch 254, total time 879.72, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 15:30:31] 20251015 INFO: epoch 255, total time 881.65, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 15:31:18] 20251015 INFO: Eval: [255]  
+[10/18 15:31:18] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52660
+[10/18 15:31:18] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44565
+[10/18 15:46:02] 20251015 INFO: epoch 256, total time 884.03, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 16:00:47] 20251015 INFO: epoch 257, total time 884.90, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 16:15:25] 20251015 INFO: epoch 258, total time 878.17, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 16:16:14] 20251015 INFO: Eval: [258]  
+[10/18 16:16:14] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52817
+[10/18 16:16:14] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44880
+[10/18 16:30:54] 20251015 INFO: epoch 259, total time 880.35, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 16:45:38] 20251015 INFO: epoch 260, total time 883.45, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 17:00:22] 20251015 INFO: epoch 261, total time 884.06, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 17:01:15] 20251015 INFO: Eval: [261]  
+[10/18 17:01:15] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52807
+[10/18 17:01:15] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44743
+[10/18 17:15:56] 20251015 INFO: epoch 262, total time 881.78, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 17:30:38] 20251015 INFO: epoch 263, total time 881.70, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 17:45:20] 20251015 INFO: epoch 264, total time 881.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 17:46:07] 20251015 INFO: Eval: [264]  
+[10/18 17:46:07] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52796
+[10/18 17:46:07] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44775
+[10/18 18:00:57] 20251015 INFO: epoch 265, total time 890.58, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 18:15:35] 20251015 INFO: epoch 266, total time 878.23, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 18:30:22] 20251015 INFO: epoch 267, total time 887.01, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 18:31:10] 20251015 INFO: Eval: [267]  
+[10/18 18:31:10] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52796
+[10/18 18:31:10] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44586
+[10/18 18:45:51] 20251015 INFO: epoch 268, total time 880.43, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 19:00:27] 20251015 INFO: epoch 269, total time 876.58, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 19:15:10] 20251015 INFO: epoch 270, total time 882.90, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 19:15:57] 20251015 INFO: Eval: [270]  
+[10/18 19:15:57] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52860
+[10/18 19:15:57] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44680
+[10/18 19:30:41] 20251015 INFO: epoch 271, total time 883.68, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 19:45:20] 20251015 INFO: epoch 272, total time 879.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 20:00:01] 20251015 INFO: epoch 273, total time 880.36, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 20:00:56] 20251015 INFO: Eval: [273]  
+[10/18 20:00:56] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52902
+[10/18 20:00:56] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44680
+[10/18 20:15:32] 20251015 INFO: epoch 274, total time 875.44, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 20:30:16] 20251015 INFO: epoch 275, total time 884.40, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 20:44:57] 20251015 INFO: epoch 276, total time 881.22, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 20:45:44] 20251015 INFO: Eval: [276]  
+[10/18 20:45:44] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52944
+[10/18 20:45:44] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44786
+[10/18 21:00:25] 20251015 INFO: epoch 277, total time 880.98, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 21:15:13] 20251015 INFO: epoch 278, total time 887.85, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 21:29:56] 20251015 INFO: epoch 279, total time 882.67, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 21:30:44] 20251015 INFO: Eval: [279]  
+[10/18 21:30:44] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52849
+[10/18 21:30:44] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44743
+[10/18 21:45:21] 20251015 INFO: epoch 280, total time 877.23, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 21:59:52] 20251015 INFO: epoch 281, total time 870.90, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 22:14:32] 20251015 INFO: epoch 282, total time 880.56, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 22:15:20] 20251015 INFO: Eval: [282]  
+[10/18 22:15:20] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52965
+[10/18 22:15:20] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44838
+[10/18 22:30:00] 20251015 INFO: epoch 283, total time 880.40, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 22:44:38] 20251015 INFO: epoch 284, total time 877.86, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 22:59:28] 20251015 INFO: epoch 285, total time 890.24, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 23:00:18] 20251015 INFO: Eval: [285]  
+[10/18 23:00:18] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52965
+[10/18 23:00:18] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44733
+[10/18 23:15:00] 20251015 INFO: epoch 286, total time 882.65, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 23:29:40] 20251015 INFO: epoch 287, total time 879.73, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 23:44:20] 20251015 INFO: epoch 288, total time 880.36, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/18 23:45:08] 20251015 INFO: Eval: [288]  
+[10/18 23:45:08] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53049
+[10/18 23:45:08] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44933
+[10/18 23:59:54] 20251015 INFO: epoch 289, total time 885.92, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 00:14:42] 20251015 INFO: epoch 290, total time 888.35, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 00:29:23] 20251015 INFO: epoch 291, total time 880.73, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 00:30:10] 20251015 INFO: Eval: [291]  
+[10/19 00:30:10] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52839
+[10/19 00:30:10] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44786
+[10/19 00:44:53] 20251015 INFO: epoch 292, total time 882.90, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 00:59:34] 20251015 INFO: epoch 293, total time 881.11, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 01:14:19] 20251015 INFO: epoch 294, total time 884.74, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 01:15:06] 20251015 INFO: Eval: [294]  
+[10/19 01:15:06] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52849
+[10/19 01:15:06] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44849
+[10/19 01:29:50] 20251015 INFO: epoch 295, total time 883.54, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 01:44:37] 20251015 INFO: epoch 296, total time 887.12, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 01:59:19] 20251015 INFO: epoch 297, total time 882.09, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 02:00:08] 20251015 INFO: Eval: [297]  
+[10/19 02:00:08] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52996
+[10/19 02:00:08] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44807
+[10/19 02:14:53] 20251015 INFO: epoch 298, total time 885.10, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 02:29:36] 20251015 INFO: epoch 299, total time 882.85, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 02:44:22] 20251015 INFO: epoch 300, total time 886.16, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 02:45:10] 20251015 INFO: Eval: [300]  
+[10/19 02:45:10] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52881
+[10/19 02:45:10] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44733
+[10/19 02:59:48] 20251015 INFO: epoch 301, total time 878.09, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 03:14:35] 20251015 INFO: epoch 302, total time 886.74, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 03:29:20] 20251015 INFO: epoch 303, total time 885.68, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 03:30:07] 20251015 INFO: Eval: [303]  
+[10/19 03:30:07] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53154
+[10/19 03:30:07] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44786
+[10/19 03:44:52] 20251015 INFO: epoch 304, total time 884.60, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 03:59:36] 20251015 INFO: epoch 305, total time 884.26, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 04:14:24] 20251015 INFO: epoch 306, total time 888.69, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 04:15:12] 20251015 INFO: Eval: [306]  
+[10/19 04:15:12] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52996
+[10/19 04:15:12] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44743
+[10/19 04:29:53] 20251015 INFO: epoch 307, total time 881.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 04:44:44] 20251015 INFO: epoch 308, total time 890.91, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 04:59:30] 20251015 INFO: epoch 309, total time 886.05, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 05:00:20] 20251015 INFO: Eval: [309]  
+[10/19 05:00:20] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52828
+[10/19 05:00:20] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44807
+[10/19 05:15:03] 20251015 INFO: epoch 310, total time 882.47, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 05:29:41] 20251015 INFO: epoch 311, total time 877.70, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 05:44:25] 20251015 INFO: epoch 312, total time 884.54, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 05:45:12] 20251015 INFO: Eval: [312]  
+[10/19 05:45:12] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53028
+[10/19 05:45:12] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44691
+[10/19 06:00:00] 20251015 INFO: epoch 313, total time 887.54, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 06:14:49] 20251015 INFO: epoch 314, total time 889.35, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 06:29:30] 20251015 INFO: epoch 315, total time 880.88, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 06:30:18] 20251015 INFO: Eval: [315]  
+[10/19 06:30:18] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52870
+[10/19 06:30:18] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44807
+[10/19 06:45:04] 20251015 INFO: epoch 316, total time 885.99, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 06:59:44] 20251015 INFO: epoch 317, total time 879.60, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 07:14:25] 20251015 INFO: epoch 318, total time 881.20, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 07:15:12] 20251015 INFO: Eval: [318]  
+[10/19 07:15:12] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52954
+[10/19 07:15:12] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44838
+[10/19 07:29:54] 20251015 INFO: epoch 319, total time 882.55, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 07:44:33] 20251015 INFO: epoch 320, total time 879.05, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 07:59:10] 20251015 INFO: epoch 321, total time 877.14, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 07:59:58] 20251015 INFO: Eval: [321]  
+[10/19 07:59:58] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52849
+[10/19 07:59:58] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44701
+[10/19 08:14:43] 20251015 INFO: epoch 322, total time 885.12, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 08:29:24] 20251015 INFO: epoch 323, total time 881.10, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 08:44:00] 20251015 INFO: epoch 324, total time 875.69, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 08:44:47] 20251015 INFO: Eval: [324]  
+[10/19 08:44:47] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52891
+[10/19 08:44:47] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44659
+[10/19 08:59:33] 20251015 INFO: epoch 325, total time 886.86, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 09:14:21] 20251015 INFO: epoch 326, total time 887.09, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 09:28:58] 20251015 INFO: epoch 327, total time 877.52, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 09:29:45] 20251015 INFO: Eval: [327]  
+[10/19 09:29:45] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52996
+[10/19 09:29:45] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44817
+[10/19 09:44:25] 20251015 INFO: epoch 328, total time 880.43, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 09:59:04] 20251015 INFO: epoch 329, total time 879.43, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 10:13:47] 20251015 INFO: epoch 330, total time 882.32, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 10:14:35] 20251015 INFO: Eval: [330]  
+[10/19 10:14:35] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52775
+[10/19 10:14:35] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44659
+[10/19 10:29:18] 20251015 INFO: epoch 331, total time 882.34, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 10:43:59] 20251015 INFO: epoch 332, total time 881.49, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 10:58:42] 20251015 INFO: epoch 333, total time 882.19, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 10:59:28] 20251015 INFO: Eval: [333]  
+[10/19 10:59:28] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53091
+[10/19 10:59:28] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44933
+[10/19 11:14:10] 20251015 INFO: epoch 334, total time 882.27, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 11:28:53] 20251015 INFO: epoch 335, total time 882.81, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 11:43:36] 20251015 INFO: epoch 336, total time 882.82, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 11:44:22] 20251015 INFO: Eval: [336]  
+[10/19 11:44:22] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52944
+[10/19 11:44:22] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44712
+[10/19 11:58:59] 20251015 INFO: epoch 337, total time 876.74, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 12:13:41] 20251015 INFO: epoch 338, total time 882.25, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 12:28:23] 20251015 INFO: epoch 339, total time 882.09, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 12:29:10] 20251015 INFO: Eval: [339]  
+[10/19 12:29:10] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.53070
+[10/19 12:29:10] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44901
+[10/19 12:43:53] 20251015 INFO: epoch 340, total time 883.24, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 12:58:30] 20251015 INFO: epoch 341, total time 877.13, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 13:13:18] 20251015 INFO: epoch 342, total time 887.58, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 13:14:05] 20251015 INFO: Eval: [342]  
+[10/19 13:14:05] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52912
+[10/19 13:14:05] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44722
+[10/19 13:28:48] 20251015 INFO: epoch 343, total time 882.95, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 13:43:26] 20251015 INFO: epoch 344, total time 877.68, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 13:58:05] 20251015 INFO: epoch 345, total time 879.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 13:58:52] 20251015 INFO: Eval: [345]  
+[10/19 13:58:52] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52860
+[10/19 13:58:52] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44712
+[10/19 14:13:38] 20251015 INFO: epoch 346, total time 885.65, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 14:28:19] 20251015 INFO: epoch 347, total time 881.54, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 14:43:03] 20251015 INFO: epoch 348, total time 883.53, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 14:43:50] 20251015 INFO: Eval: [348]  
+[10/19 14:43:50] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52891
+[10/19 14:43:50] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44712
+[10/19 14:58:28] 20251015 INFO: epoch 349, total time 878.32, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 15:13:11] 20251015 INFO: epoch 350, total time 882.99, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 15:27:59] 20251015 INFO: epoch 351, total time 888.34, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 15:28:47] 20251015 INFO: Eval: [351]  
+[10/19 15:28:47] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52754
+[10/19 15:28:47] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44607
+[10/19 15:43:37] 20251015 INFO: epoch 352, total time 889.90, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 15:58:18] 20251015 INFO: epoch 353, total time 880.93, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 16:13:06] 20251015 INFO: epoch 354, total time 888.41, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 16:13:53] 20251015 INFO: Eval: [354]  
+[10/19 16:13:53] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52891
+[10/19 16:13:53] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44649
+[10/19 16:28:32] 20251015 INFO: epoch 355, total time 879.29, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 16:43:10] 20251015 INFO: epoch 356, total time 878.43, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 16:57:49] 20251015 INFO: epoch 357, total time 878.94, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 16:58:41] 20251015 INFO: Eval: [357]  
+[10/19 16:58:41] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52944
+[10/19 16:58:41] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44554
+[10/19 17:13:28] 20251015 INFO: epoch 358, total time 886.76, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 17:28:17] 20251015 INFO: epoch 359, total time 888.82, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 17:43:05] 20251015 INFO: epoch 360, total time 887.64, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 17:43:52] 20251015 INFO: Eval: [360]  
+[10/19 17:43:52] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52807
+[10/19 17:43:52] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44649
+[10/19 17:58:35] 20251015 INFO: epoch 361, total time 882.62, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 18:13:28] 20251015 INFO: epoch 362, total time 893.06, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 18:28:15] 20251015 INFO: epoch 363, total time 886.71, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 18:29:01] 20251015 INFO: Eval: [363]  
+[10/19 18:29:01] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52702
+[10/19 18:29:01] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44607
+[10/19 18:43:39] 20251015 INFO: epoch 364, total time 878.04, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 18:58:26] 20251015 INFO: epoch 365, total time 886.61, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 19:13:22] 20251015 INFO: epoch 366, total time 896.31, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 19:14:11] 20251015 INFO: Eval: [366]  
+[10/19 19:14:11] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52586
+[10/19 19:14:11] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44607
+[10/19 19:29:09] 20251015 INFO: epoch 367, total time 898.24, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 19:44:01] 20251015 INFO: epoch 368, total time 891.99, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 19:58:49] 20251015 INFO: epoch 369, total time 887.48, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 19:59:36] 20251015 INFO: Eval: [369]  
+[10/19 19:59:36] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52954
+[10/19 19:59:36] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44891
+[10/19 20:14:26] 20251015 INFO: epoch 370, total time 889.45, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 20:29:09] 20251015 INFO: epoch 371, total time 882.79, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 20:43:49] 20251015 INFO: epoch 372, total time 880.53, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 20:44:36] 20251015 INFO: Eval: [372]  
+[10/19 20:44:36] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52902
+[10/19 20:44:36] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44817
+[10/19 20:59:16] 20251015 INFO: epoch 373, total time 879.90, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 21:14:02] 20251015 INFO: epoch 374, total time 885.84, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 21:28:45] 20251015 INFO: epoch 375, total time 882.67, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 21:29:31] 20251015 INFO: Eval: [375]  
+[10/19 21:29:31] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52891
+[10/19 21:29:31] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44754
+[10/19 21:44:17] 20251015 INFO: epoch 376, total time 885.72, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 21:58:58] 20251015 INFO: epoch 377, total time 880.90, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 22:13:40] 20251015 INFO: epoch 378, total time 882.24, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 22:14:28] 20251015 INFO: Eval: [378]  
+[10/19 22:14:28] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52944
+[10/19 22:14:28] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44796
+[10/19 22:29:08] 20251015 INFO: epoch 379, total time 880.20, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 22:43:57] 20251015 INFO: epoch 380, total time 889.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 22:58:40] 20251015 INFO: epoch 381, total time 882.80, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 22:59:28] 20251015 INFO: Eval: [381]  
+[10/19 22:59:28] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52607
+[10/19 22:59:28] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44712
+[10/19 23:14:20] 20251015 INFO: epoch 382, total time 892.75, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 23:29:12] 20251015 INFO: epoch 383, total time 891.25, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 23:43:55] 20251015 INFO: epoch 384, total time 883.11, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000100
+[10/19 23:44:43] 20251015 INFO: Eval: [384]  
+[10/19 23:44:43] 20251015 INFO: 3dcnn Acc0.25: Top-1: 0.52670
+[10/19 23:44:43] 20251015 INFO: 3dcnn Acc0.50: Top-1: 0.44638
