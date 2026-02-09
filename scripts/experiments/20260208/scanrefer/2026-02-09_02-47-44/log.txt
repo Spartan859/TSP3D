@@ -1,0 +1,44 @@
+[02/09 02:47:44] 20260208 INFO: Full config saved to /share/lxy/TSP3D/scripts/experiments/20260208/scanrefer/2026-02-09_02-47-44/config.json
+[02/09 02:47:44] 20260208 INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 1, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0005, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'checkpoint_path': '/root/lxy/TSP3D/scripts/experiments/20260208/scanrefer/2026-02-08_01-49-10/ckpt_epoch_66.pth', 'log_dir': '/share/lxy/TSP3D/scripts/experiments/20260208/scanrefer/2026-02-09_02-47-44', 'print_freq': 500, 'save_freq': 6, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': True, 'eval_train': False, 'pp_checkpoint': None, 'reduce_lr': False, 'use_F3_CA': False, 'swin_drop_path': 0.0, 'window_size': 5, 'quant_size': 4, 'swin_layer_num': 2, 'use_Swin': False, 'use_seg': False, 'use_Mq': -1, 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True}
+[02/09 02:48:53] 20260208 INFO: length of testing dataset: 9508
+[02/09 02:49:46] 20260208 INFO: Eval: [500/9508]  
+[02/09 02:49:46] 20260208 INFO: loss 0.0000 	
+[02/09 02:50:29] 20260208 INFO: Eval: [1000/9508]  
+[02/09 02:50:29] 20260208 INFO: loss 0.0000 	
+[02/09 02:51:12] 20260208 INFO: Eval: [1500/9508]  
+[02/09 02:51:12] 20260208 INFO: loss 0.0000 	
+[02/09 02:51:58] 20260208 INFO: Eval: [2000/9508]  
+[02/09 02:51:58] 20260208 INFO: loss 0.0000 	
+[02/09 02:52:48] 20260208 INFO: Eval: [2500/9508]  
+[02/09 02:52:48] 20260208 INFO: loss 0.0000 	
+[02/09 02:53:36] 20260208 INFO: Eval: [3000/9508]  
+[02/09 02:53:36] 20260208 INFO: loss 0.0000 	
+[02/09 02:54:26] 20260208 INFO: Eval: [3500/9508]  
+[02/09 02:54:26] 20260208 INFO: loss 0.0000 	
+[02/09 02:55:12] 20260208 INFO: Eval: [4000/9508]  
+[02/09 02:55:12] 20260208 INFO: loss 0.0000 	
+[02/09 02:55:55] 20260208 INFO: Eval: [4500/9508]  
+[02/09 02:55:55] 20260208 INFO: loss 0.0000 	
+[02/09 02:56:39] 20260208 INFO: Eval: [5000/9508]  
+[02/09 02:56:39] 20260208 INFO: loss 0.0000 	
+[02/09 02:57:27] 20260208 INFO: Eval: [5500/9508]  
+[02/09 02:57:27] 20260208 INFO: loss 0.0000 	
+[02/09 02:58:12] 20260208 INFO: Eval: [6000/9508]  
+[02/09 02:58:12] 20260208 INFO: loss 0.0000 	
+[02/09 02:58:59] 20260208 INFO: Eval: [6500/9508]  
+[02/09 02:58:59] 20260208 INFO: loss 0.0000 	
+[02/09 02:59:46] 20260208 INFO: Eval: [7000/9508]  
+[02/09 02:59:46] 20260208 INFO: loss 0.0000 	
+[02/09 03:00:33] 20260208 INFO: Eval: [7500/9508]  
+[02/09 03:00:33] 20260208 INFO: loss 0.0000 	
+[02/09 03:01:20] 20260208 INFO: Eval: [8000/9508]  
+[02/09 03:01:20] 20260208 INFO: loss 0.0000 	
+[02/09 03:02:07] 20260208 INFO: Eval: [8500/9508]  
+[02/09 03:02:07] 20260208 INFO: loss 0.0000 	
+[02/09 03:02:50] 20260208 INFO: Eval: [9000/9508]  
+[02/09 03:02:50] 20260208 INFO: loss 0.0000 	
+[02/09 03:03:31] 20260208 INFO: Eval: [9500/9508]  
+[02/09 03:03:31] 20260208 INFO: loss 0.0000 	
+[02/09 03:03:32] 20260208 INFO: Eval: [67]  
+[02/09 03:03:32] 20260208 INFO: 3dcnn Acc0.25: Top-1: 0.53702
+[02/09 03:03:32] 20260208 INFO: 3dcnn Acc0.50: Top-1: 0.45183

@@ -1,6 +1,3 @@
-import faulthandler
-faulthandler.enable()
-
 import numpy as np
 from typing import List
 
@@ -93,6 +90,8 @@ class TSPHead(nn.Module):
                  use_seg = False,
                  use_Mq = -1,
                  use_external_attn_bi_layer0=False,
+                 use_text_guided_external_attn_bi_layer0=False,
+                 use_film_text_guided_external_attn_bi_layer0=False,
                  ):
         super(TSPHead, self).__init__()
         self.voxel_size = voxel_size
@@ -117,6 +116,8 @@ class TSPHead(nn.Module):
         self.use_seg = use_seg
         self.use_Mq = use_Mq
         self.use_external_attn_bi_layer0 = use_external_attn_bi_layer0
+        self.use_text_guided_external_attn_bi_layer0 = use_text_guided_external_attn_bi_layer0
+        self.use_film_text_guided_external_attn_bi_layer0 = use_film_text_guided_external_attn_bi_layer0
         self.assigner = TR3DAssigner(top_pts_threshold=24, top_pts_threshold_det=8, label2level=[0])
         self.bbox_loss = AxisAlignedIoULoss2(mode='diou', reduction='none')
         self.cls_loss = FocalLoss(reduction='none')
@@ -191,7 +192,9 @@ class TSPHead(nn.Module):
             n_heads=8, dim_feedforward=128,
             self_attend_lang=True, self_attend_vis=True,
             use_butd_enc_attn=False,
-            use_external_attn=self.use_external_attn_bi_layer0
+            use_external_attn=self.use_external_attn_bi_layer0,
+            use_text_guided_external_attn=self.use_text_guided_external_attn_bi_layer0,
+            use_film_text_guided_external_attn=self.use_film_text_guided_external_attn_bi_layer0
         )
         if self.use_Swin:
             bi_layer0_swin = BiEncoderLayerSwin(

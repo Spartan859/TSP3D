@@ -31,6 +31,8 @@ class BeaUTyDETR(nn.Module):
                  use_seg=False, 
                  use_Mq=-1,
                  use_external_attn_bi_layer0=False,
+                 use_text_guided_external_attn_bi_layer0=False,
+                 use_film_text_guided_external_attn_bi_layer0=False,
                  ):
         """Initialize layers."""
         super().__init__()
@@ -67,6 +69,8 @@ class BeaUTyDETR(nn.Module):
                             use_seg=use_seg,
                             use_Mq=use_Mq,
                             use_external_attn_bi_layer0=use_external_attn_bi_layer0,
+                            use_text_guided_external_attn_bi_layer0=use_text_guided_external_attn_bi_layer0,
+                            use_film_text_guided_external_attn_bi_layer0=use_film_text_guided_external_attn_bi_layer0,
                             )
         
     def collate(self, points, quantization_mode):

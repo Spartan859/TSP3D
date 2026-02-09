@@ -1,10 +1,12 @@
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH}"
+
 if [[ "$@" == *"-m"* ]]; then
     mode="mini"
 else
     mode="large"
 fi
 
-data_root="/home/guowenxuan/lxy/TSP3D/data"
+data_root="/root/lxy/TSP3D/data"
 
 ln -sf ${data_root}/ScanRefer/ScanRefer_filtered_train_${mode}.txt \
     ${data_root}/ScanRefer/ScanRefer_filtered_train.txt
@@ -22,27 +24,38 @@ fi
 # let cvd = 0,1,2,...,nproc_per_node-1
 cvd=$(seq -s, 0 $((nproc_per_node-1)))
 echo cvd: ${cvd}
+echo log_dir: "$(dirname "$(readlink -f "$0")")"
 
-TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distributed.launch \
+TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --nproc_per_node ${nproc_per_node} --master_port 12222 \
     train_dist_mod.py \
     --use_color \
     --weight_decay 0.0005 \
-    --data_root /home/guowenxuan/lxy/TSP3D/data/ \
-    --val_freq 3 --batch_size 6 --save_freq 3 --print_freq 500 \
+    --data_root ${data_root}/ \
+    --val_freq 3 --batch_size 14 --save_freq 6 --print_freq 500 \
     --lr=5e-4 \
     --keep_trans_lr=5e-4 \
     --text_encoder_lr=1e-5 \
     --box_select_lr=4e-4 \
     --seg_lr=5e-4 \
-    --voxel_size=0.02 --num_workers=1 \
+    --voxel_size=0.01 --num_workers=8 \
     --dataset scanrefer --test_dataset scanrefer \
     --detect_intermediate --joint_det \
-    --log_dir /home/guowenxuan/lxy/TSP3D/outputs/logs \
+    --log_dir "$(dirname "$(readlink -f "$0")")" \
     --augment_det \
-    --lr_decay_epochs 30 45 \
+    --lr_decay_epochs 50 75 \
+    --use_external_attn_bi_layer0 \
+    --use_text_guided_external_attn_bi_layer0 \
+    # --clip_norm 1.0 \
+    # --window_size 5 \
+    # --quant_size 4 \
+    # --swin_layer_num 2 \
+    # --use_Swin \
+    # --swin_drop_path 0.3 \
+    # --checkpoint_path /home/guowenxuan/lxy/TSP3D/scripts/experiments/20250924/scanrefer/2025-09-24_19-43-49/ckpt_epoch_36.pth \
     # --use_F3_CA \
-    # --lr_decay_epochs 100 120 \
+    # --use_seg \
+    # --use_Mq 2 \
     # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/ckpt_scanrefer.pth \
     # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/logs/scanrefer/2025-08-29_19-48-22/ckpt_epoch_81.pth \
     # --checkpoint_path /home/guowenxuan/lxy/TSP3D/outputs/logs/scanrefer/2025-08-21_00-44-56/ckpt_epoch_87.pth \

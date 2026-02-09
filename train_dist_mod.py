@@ -119,7 +119,9 @@ class TrainTester(BaseTrainTester):
             use_Swin=args.use_Swin,
             use_seg=args.use_seg,
             use_Mq=args.use_Mq,
-            use_external_attn_bi_layer0=args.use_external_attn_bi_layer0
+            use_external_attn_bi_layer0=args.use_external_attn_bi_layer0,
+            use_text_guided_external_attn_bi_layer0=args.use_text_guided_external_attn_bi_layer0,
+            use_film_text_guided_external_attn_bi_layer0=args.use_film_text_guided_external_attn_bi_layer0
         )
         return model
 
@@ -340,7 +342,10 @@ if __name__ == '__main__':
     # huggingface
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
     
-    opt = parse_option()       
+    opt = parse_option()
+    if opt.local_rank is None:
+        opt.local_rank = int(os.environ.get("LOCAL_RANK", 0))
+        print("LOCAL_RANK", opt.local_rank)
     
     # distributed 
     torch.cuda.set_device(opt.local_rank)
