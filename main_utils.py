@@ -31,6 +31,7 @@ from utils import record_tensorboard
 
 from tqdm import tqdm
 from get_gt import get_gt
+from datetime import datetime 
 
 def parse_option():
     """Parse cmd arguments."""
@@ -118,6 +119,9 @@ def parse_option():
     parser.add_argument('--eval_train', action='store_true')
     parser.add_argument('--pp_checkpoint', default=None)    # pointnet checkpoint
     parser.add_argument('--reduce_lr', action='store_true')
+    parser.add_argument('--use_external_attn_bi_layer0', action='store_true')
+    parser.add_argument('--use_text_guided_external_attn_bi_layer0', action='store_true')
+    parser.add_argument('--use_film_text_guided_external_attn_bi_layer0', action='store_true')
 
     args, _ = parser.parse_known_args()
 
@@ -136,9 +140,11 @@ def load_checkpoint(args, model, optimizer, scheduler):
     except Exception:
         args.start_epoch = 0
     model.load_state_dict(checkpoint['model'], strict=False)
-    # if not args.eval and not args.reduce_lr:
-    #     optimizer.load_state_dict(checkpoint['optimizer'])
-    #     scheduler.load_state_dict(checkpoint['scheduler'])
+    if not args.eval and not args.reduce_lr:
+        if 'optimizer' in checkpoint:
+            optimizer.load_state_dict(checkpoint['optimizer'])
+        if 'scheduler' in checkpoint:
+            scheduler.load_state_dict(checkpoint['scheduler'])
 
     print("=> loaded successfully '{}' (epoch {})".format(
         args.checkpoint_path, checkpoint['epoch']
@@ -156,8 +162,8 @@ def save_checkpoint(args, epoch, model, optimizer, scheduler, save_cur=False):
             'config': args,
             'save_path': '',
             'model': model.state_dict(),
-            # 'optimizer': optimizer.state_dict(),
-            # 'scheduler': scheduler.state_dict(),
+            'optimizer': optimizer.state_dict(),
+            'scheduler': scheduler.state_dict(),
             'epoch': epoch
         }
         
@@ -175,13 +181,16 @@ class BaseTrainTester:
     # logger.
     def __init__(self, args):
         """Initialize."""
-        name = args.log_dir.split('/')[-1] 
-        
+        name = args.log_dir.split('/')[-1]
+
+        # Format current time as YYYY-MM-DD_HH-MM-SS
+        current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+
         # Create log dir
         args.log_dir = os.path.join(
             args.log_dir,
             ','.join(args.dataset),
-            f'{int(time.time())}'
+            current_time
         )
         os.makedirs(args.log_dir, exist_ok=True)
 

@@ -23,7 +23,10 @@ class BeaUTyDETR(nn.Module):
                  num_decoder_layers=6, self_position_embedding='loc_learned',
                  contrastive_align_loss=True,
                  d_model=128, butd=True, pointnet_ckpt=None, data_path=None,
-                 self_attend=True, voxel_size=0.01):
+                 self_attend=True, voxel_size=0.01,
+                 use_external_attn_bi_layer0=False,
+                 use_text_guided_external_attn_bi_layer0=False,
+                 use_film_text_guided_external_attn_bi_layer0=False):
         """Initialize layers."""
         super().__init__()
 
@@ -51,7 +54,12 @@ class BeaUTyDETR(nn.Module):
         )       
         
         # self.neck = TR3DNeck()
-        self.head = TSPHead(voxel_size=self.voxel_size)
+        self.head = TSPHead(
+            voxel_size=self.voxel_size,
+            use_external_attn_bi_layer0=use_external_attn_bi_layer0,
+            use_text_guided_external_attn_bi_layer0=use_text_guided_external_attn_bi_layer0,
+            use_film_text_guided_external_attn_bi_layer0=use_film_text_guided_external_attn_bi_layer0
+        )
         
     
     # BRIEF forward.

@@ -18,6 +18,7 @@ def represents_int(s):
 
 
 def read_label_mapping(filename, label_from='raw_category', label_to='nyu40id'):
+    print(f"Reading label mapping from {filename}...")
     assert os.path.isfile(filename)
     mapping = dict()
     with open(filename) as csvfile:

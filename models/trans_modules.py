@@ -2,6 +2,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 from copy import deepcopy
+import torch
 
 def _get_clones(module, N):
     return nn.ModuleList([deepcopy(module) for _ in range(N)])
@@ -116,14 +117,24 @@ class CrossAttentionLayer(nn.Module):
 class TransformerEncoderLayerNoFFN(nn.Module):
     """TransformerEncoderLayer but without FFN."""
 
-    def __init__(self, d_model, nhead, dropout):
+    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False):
         """Intialize same as Transformer (without FFN params)."""
         super().__init__()
-        self.self_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
+        self.use_text_guided_external_attn = use_text_guided_external_attn
+        self.use_film_text_guided_external_attn = use_film_text_guided_external_attn
+        if use_external_attn:
+            self.self_attn = ExternalMultiheadAttention(
+                d_model,
+                nhead,
+                attn_drop=dropout,
+                use_film_text_guided_external_attn=use_film_text_guided_external_attn
+            )
+        else:
+            self.self_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
         self.norm1 = nn.LayerNorm(d_model)
         self.dropout1 = nn.Dropout(dropout)
 
-    def forward(self, src, src_mask=None, src_key_padding_mask=None):
+    def forward(self, src, src_mask=None, src_key_padding_mask=None, text_feat=None):
         """
         Pass the input through the encoder layer (same as parent class).
 
@@ -135,11 +146,21 @@ class TransformerEncoderLayerNoFFN(nn.Module):
             see the docs in Transformer class.
         Return_shape: (S, B, F)
         """
-        src2 = self.self_attn(
-            src, src, src,
-            attn_mask=src_mask,
-            key_padding_mask=src_key_padding_mask
-        )[0]
+        if isinstance(self.self_attn, ExternalMultiheadAttention):
+            if not self.use_text_guided_external_attn:
+                text_feat = None
+            src2 = self.self_attn(
+                src, src, src,
+                attn_mask=src_mask,
+                key_padding_mask=src_key_padding_mask,
+                text_feat=text_feat
+            )[0]
+        else:
+            src2 = self.self_attn(
+                src, src, src,
+                attn_mask=src_mask,
+                key_padding_mask=src_key_padding_mask
+            )[0]
         src = src + self.dropout1(src2)
         src = self.norm1(src)
         return src
@@ -148,11 +169,11 @@ class TransformerEncoderLayerNoFFN(nn.Module):
 class PosTransformerEncoderLayerNoFFN(TransformerEncoderLayerNoFFN):
     """TransformerEncoderLayerNoFFN but additionaly add pos_embed in query."""
 
-    def __init__(self, d_model, nhead, dropout):
+    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False):
         """Intialize same as parent class."""
-        super().__init__(d_model, nhead, dropout)
+        super().__init__(d_model, nhead, dropout, use_external_attn, use_text_guided_external_attn, use_film_text_guided_external_attn)
 
-    def forward(self, src, pos, src_mask=None, src_key_padding_mask=None):
+    def forward(self, src, pos, src_mask=None, src_key_padding_mask=None, text_feat=None):
         """
         Pass the input through the encoder layer (same as parent class).
 
@@ -165,11 +186,23 @@ class PosTransformerEncoderLayerNoFFN(TransformerEncoderLayerNoFFN):
             see the docs in Transformer class.
         Return_shape: (S, B, F)
         """
-        src2 = self.self_attn(
-            src + pos, src + pos, src,
-            attn_mask=src_mask,
-            key_padding_mask=src_key_padding_mask
-        )[0]
+        if isinstance(self.self_attn, ExternalMultiheadAttention):
+            if not self.use_text_guided_external_attn:
+                text_feat = None
+            src2 = self.self_attn(
+                src + pos,
+                src + pos,
+                src,
+                attn_mask=src_mask,
+                key_padding_mask=src_key_padding_mask,
+                text_feat=text_feat
+            )[0]
+        else:
+            src2 = self.self_attn(
+                src + pos, src + pos, src,
+                attn_mask=src_mask,
+                key_padding_mask=src_key_padding_mask
+            )[0]
         src = src + self.dropout1(src2)
         src = self.norm1(src)
         return src
@@ -181,16 +214,24 @@ class BiEncoderLayer(nn.Module):
     def __init__(self, d_model=256, dropout=0.1, activation="relu", n_heads=8,
                  dim_feedforward=256,
                  self_attend_lang=True, self_attend_vis=True,
-                 use_butd_enc_attn=False):
+                 use_butd_enc_attn=False,
+                 use_external_attn=False,
+                 use_text_guided_external_attn=False,
+                 use_film_text_guided_external_attn=False):
         """Initialize layers, d_model is the encoder dimension."""
         super().__init__()
+        self.use_text_guided_external_attn = use_text_guided_external_attn
+        self.use_film_text_guided_external_attn = use_film_text_guided_external_attn
 
         # self attention in language
         if self_attend_lang:
             self.self_attention_lang = TransformerEncoderLayerNoFFN(
                 d_model=d_model,
                 nhead=n_heads,
-                dropout=dropout
+                dropout=dropout,
+                use_external_attn=False,
+                use_text_guided_external_attn=False,
+                use_film_text_guided_external_attn=False
             )
         else:
             self.self_attention_lang = None
@@ -200,7 +241,10 @@ class BiEncoderLayer(nn.Module):
             self.self_attention_visual = PosTransformerEncoderLayerNoFFN(
                 d_model=d_model,
                 nhead=n_heads,
-                dropout=dropout
+                dropout=dropout,
+                use_external_attn=use_external_attn,
+                use_text_guided_external_attn=use_text_guided_external_attn,
+                use_film_text_guided_external_attn=use_film_text_guided_external_attn
             )
         else:
             self.self_attention_visual = None
@@ -215,12 +259,22 @@ class BiEncoderLayer(nn.Module):
                 text_padding_mask, end_points={}, detected_feats=None,
                 detected_mask=None):
         """Forward pass, feats (B, N, F), masks (B, N), diff N for V/L."""
+        text_global = None
+        if self.use_text_guided_external_attn and text_feats is not None:
+            if text_padding_mask is not None:
+                valid_mask = (~text_padding_mask).unsqueeze(-1).type_as(text_feats)
+                denom = valid_mask.sum(dim=1).clamp(min=1.0)
+                text_global = (text_feats * valid_mask).sum(dim=1) / denom
+            else:
+                text_global = text_feats.mean(dim=1)
+
         # STEP 1. Self attention for vision
         if self.self_attention_visual is not None:
             vis_feats = self.self_attention_visual(
                 vis_feats.transpose(0, 1),
                 pos_feats.transpose(0, 1),
-                src_key_padding_mask=padding_mask
+                src_key_padding_mask=padding_mask,
+                text_feat=text_global
             ).transpose(0, 1)
 
         # STEP 2. Self attention for language
@@ -242,6 +296,81 @@ class BiEncoderLayer(nn.Module):
         )
 
         return vis_feats, text_feats
+
+
+class ExternalMultiheadAttention(nn.Module):
+    def __init__(self, embed_dim, num_heads=8, attn_drop=0., proj_drop=0., batch_first=False, use_film_text_guided_external_attn=False):
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.num_heads = num_heads
+        self.use_film_text_guided_external_attn = use_film_text_guided_external_attn
+        self.coef = 4
+        self.trans_dims = nn.Linear(embed_dim, embed_dim * self.coef)
+        self.num_heads_eff = self.num_heads * self.coef
+        self.k = 256 // self.coef
+        self.linear_0 = nn.Linear(embed_dim * self.coef // self.num_heads_eff, self.k)
+        self.linear_1 = nn.Linear(self.k, embed_dim * self.coef // self.num_heads_eff)
+        self.attn_drop = nn.Dropout(attn_drop)
+        self.proj = nn.Linear(embed_dim * self.coef, embed_dim)
+        self.proj_drop = nn.Dropout(proj_drop)
+        self.batch_first = batch_first
+        if self.use_film_text_guided_external_attn:
+            self.text_mlp_gamma = nn.Sequential(
+                nn.Linear(embed_dim, embed_dim),
+                nn.ReLU(inplace=True),
+                nn.Linear(embed_dim, self.k)
+            )
+            self.text_mlp_beta = nn.Sequential(
+                nn.Linear(embed_dim, embed_dim),
+                nn.ReLU(inplace=True),
+                nn.Linear(embed_dim, self.k)
+            )
+        else:
+            self.text_mlp = nn.Sequential(
+                nn.Linear(embed_dim, embed_dim),
+                nn.ReLU(inplace=True),
+                nn.Linear(embed_dim, self.k),
+                nn.Sigmoid()
+            )
+
+    def forward(self, query, key=None, value=None, attn_mask=None, key_padding_mask=None, need_weights=False, text_feat=None):
+        # Only supports self-attention (query=key=value); attn_mask ignored.
+        # Input:
+        # batch_first=False: (N, B, C)
+        # batch_first=True: (B, N, C)
+        # key_padding_mask: (B, N) True means padding
+        x = query
+        if not self.batch_first:
+            x = x.transpose(0, 1)  # (B, N, C)
+        if key_padding_mask is not None:
+            if key_padding_mask.shape[0] != x.shape[0] or key_padding_mask.shape[1] != x.shape[1]:
+                raise ValueError(f"key_padding_mask shape {key_padding_mask.shape} does not match input shape {(x.shape[0], x.shape[1])}")
+            mask = (~key_padding_mask).unsqueeze(-1).float()  # (B, N, 1)
+            x = x * mask
+        B, N, C = x.shape
+        x = self.trans_dims(x)  # B, N, C'
+        x = x.view(B, N, self.num_heads_eff, -1).permute(0, 2, 1, 3)
+        attn = self.linear_0(x)
+        if text_feat is not None:
+            if text_feat.dim() == 3:
+                text_feat = text_feat.mean(dim=1)
+            if self.use_film_text_guided_external_attn:
+                gamma = self.text_mlp_gamma(text_feat).view(B, 1, 1, self.k)
+                beta = self.text_mlp_beta(text_feat).view(B, 1, 1, self.k)
+                attn = (1.0 + gamma) * attn + beta
+            else:
+                gate = self.text_mlp(text_feat).view(B, 1, 1, self.k)
+                attn = attn * gate
+        attn = attn.softmax(dim=-2)
+        attn = attn / (1e-9 + attn.sum(dim=-1, keepdim=True))
+        attn = self.attn_drop(attn)
+        x = self.linear_1(attn).permute(0, 2, 1, 3).reshape(B, N, -1)
+        x = self.proj(x)
+        x = self.proj_drop(x)
+        attn_output_weights = None
+        if not self.batch_first:
+            x = x.transpose(0, 1)  # (N, B, C)
+        return x, attn_output_weights
 
 
 # BRIEF 

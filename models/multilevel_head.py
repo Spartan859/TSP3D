@@ -72,7 +72,10 @@ class TSPHead(nn.Module):
                  train_cfg=None,
                  test_cfg=dict(nms_pre=1, iou_thr=.5, score_thr=.01),
                  keep_loss_weight = 1.0,
-                 bbox_loss_weight = 1.0):
+                 bbox_loss_weight = 1.0,
+                 use_external_attn_bi_layer0=False,
+                 use_text_guided_external_attn_bi_layer0=False,
+                 use_film_text_guided_external_attn_bi_layer0=False):
         super(TSPHead, self).__init__()
         self.voxel_size = voxel_size
         self.pts_prune_threshold = pts_prune_threshold
@@ -82,6 +85,9 @@ class TSPHead(nn.Module):
         self.prune_threshold = prune_threshold
         self.keep_loss_weight = keep_loss_weight
         self.bbox_loss_weight = bbox_loss_weight
+        self.use_external_attn_bi_layer0 = use_external_attn_bi_layer0
+        self.use_text_guided_external_attn_bi_layer0 = use_text_guided_external_attn_bi_layer0
+        self.use_film_text_guided_external_attn_bi_layer0 = use_film_text_guided_external_attn_bi_layer0
         self.assigner = TR3DAssigner(top_pts_threshold=32, label2level=[0])
         self.bbox_loss = AxisAlignedIoULoss2(mode='diou', reduction='none')
         self.cls_loss = FocalLoss(reduction='none')
@@ -143,7 +149,10 @@ class TSPHead(nn.Module):
             128, dropout=0.1, activation="relu",
             n_heads=8, dim_feedforward=128,
             self_attend_lang=True, self_attend_vis=True,
-            use_butd_enc_attn=False
+            use_butd_enc_attn=False,
+            use_external_attn=self.use_external_attn_bi_layer0,
+            use_text_guided_external_attn=self.use_text_guided_external_attn_bi_layer0,
+            use_film_text_guided_external_attn=self.use_film_text_guided_external_attn_bi_layer0
         )
         bi_layer1 = BiEncoderLayer(
             128, dropout=0.1, activation="relu",

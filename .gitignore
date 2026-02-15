@@ -1,0 +1,12 @@
+*.pyc
+*.test
+*.ivg-embody-group
+data
+data_mini
+data/*
+data_mini/*
+outputs
+outputs/*
+tensorboard_output/*
+*.pth
+*.rank*
