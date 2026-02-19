@@ -399,7 +399,7 @@ class Joint3DDataset(Dataset):
         sampled_classes = list(sampled_classes & set(DC.nyu40id2class))
         # sample 10 classes
         if self.split == 'train' and self.random_utt:  # random utterance
-            sampled_classes_num = np.random.randint(1, 11)
+            sampled_classes_num = np.random.randint(1, 8)
             if len(sampled_classes) > sampled_classes_num:
                 sampled_classes = random.sample(sampled_classes, sampled_classes_num)
             ret = [DC.class2type[DC.nyu40id2class[i]] for i in sampled_classes]
@@ -711,11 +711,14 @@ class Joint3DDataset(Dataset):
             # TODO SR3D: anchor object
             if self.detect_intermediate:
                 # tids += anno.get('anchor_ids', [])    # BUTD-DETR
+                # EDA
                 if anno['auxi_entity'] is not None and len(anno['anchor_ids']):
                     tids.append(anno['anchor_ids'][0])
         point_instance_label = -np.ones(len(scan.pc))
+        gt_masks = np.zeros((MAX_NUM_OBJ, len(scan.pc)))
         for t, tid in enumerate(tids):
             point_instance_label[scan.three_d_objects[tid]['points']] = t
+            gt_masks[t][scan.three_d_objects[tid]['points']] = 1
         
         bboxes[:len(tids)] = np.stack([
             scan.get_object_bbox(tid).reshape(-1) for tid in tids
@@ -731,7 +734,7 @@ class Joint3DDataset(Dataset):
         box_label_mask = np.zeros(MAX_NUM_OBJ)
         box_label_mask[:len(tids)] = 1
         
-        return bboxes, box_label_mask, point_instance_label
+        return bboxes, box_label_mask, point_instance_label, gt_masks
 
     def _get_scene_objects(self, scan):
         # Objects to keep
@@ -936,9 +939,9 @@ class Joint3DDataset(Dataset):
         point_cloud, augmentations, og_color = self._get_pc(anno, scan)
 
         # step "Target" boxes: append anchors if they're to be detected
-        gt_bboxes, box_label_mask, point_instance_label = \
+        gt_bboxes, box_label_mask, point_instance_label, gt_masks = \
             self._get_target_boxes(anno, scan)
-
+        # pdb.set_trace()
         # step Scene gt boxes
         (
             class_ids, all_bboxes, all_bbox_label_mask
@@ -1000,6 +1003,7 @@ class Joint3DDataset(Dataset):
             'center_label': gt_bboxes[:, :3].astype(np.float32),
             'sem_cls_label': _labels.astype(np.int64),
             'size_gts': gt_bboxes[:, 3:].astype(np.float32),
+            'gt_masks': gt_masks.astype(np.float32),
         }
         ret_dict.update({
             "scan_ids": anno['scan_id'],

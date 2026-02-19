@@ -111,6 +111,7 @@ class TrainTester(BaseTrainTester):
             data_path = args.data_root,
             self_attend=args.self_attend,
             voxel_size = args.voxel_size,
+            use_seg=args.use_seg,
             use_external_attn_bi_layer0=args.use_external_attn_bi_layer0,
             use_text_guided_external_attn_bi_layer0=args.use_text_guided_external_attn_bi_layer0,
             use_film_text_guided_external_attn_bi_layer0=args.use_film_text_guided_external_attn_bi_layer0
@@ -153,7 +154,8 @@ class TrainTester(BaseTrainTester):
         evaluator = GroundingEvaluator(
             only_root=True, thresholds=[0.25, 0.5],     
             topks=[1], prefixes=prefixes,
-            filter_non_gt_boxes=args.butd_cls
+            filter_non_gt_boxes=args.butd_cls,
+            use_seg=args.use_seg
         )
 
         # NOTE Main eval branch
@@ -188,11 +190,13 @@ class TrainTester(BaseTrainTester):
                 for t in evaluator.thresholds:
                     self.logger.info(''.join([
                         f"{'3dcnn'} Acc{t:.2f}: ", f"Top-{1}: {evaluator.dets[('3dcnn', t, 1, 'bbf')] / max(evaluator.gts[('3dcnn', t, 1, 'bbf')], 1):.5f}"
-                    ]))           
-
-        print('inf: ', np.array(inf_speeds).mean(),'vis_back_speeds: ', np.array(vis_back_speeds).mean(),
-              'text_back_speeds: ', np.array(text_back_speeds).mean(),'fuiosn_speeds: ', np.array(fuiosn_speeds).mean(),
-              'head_speeds: ', np.array(head_speeds).mean())
+                    ]))   
+                if args.use_seg:        
+                    self.logger.info('Acc_mask0.25' + ' ' +  str(evaluator.dets['overall_mask'] / evaluator.gts['mask_3dcnn']))  
+                    self.logger.info('Acc_mask0.50' + ' ' +  str(evaluator.dets['overall50_mask'] / evaluator.gts['mask_3dcnn']))
+            print('inf: ', np.array(inf_speeds).mean(),'vis_back_speeds: ', np.array(vis_back_speeds).mean(),
+                'text_back_speeds: ', np.array(text_back_speeds).mean(),'fuiosn_speeds: ', np.array(fuiosn_speeds).mean(),
+                'head_speeds: ', np.array(head_speeds).mean())
 
         return None
        
@@ -329,10 +333,10 @@ if __name__ == '__main__':
     # huggingface
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
     
-    opt = parse_option() 
+    opt = parse_option()
     if opt.local_rank is None:
         opt.local_rank = int(os.environ.get("LOCAL_RANK", 0))
-        print("LOCAL_RANK", opt.local_rank)      
+        print("LOCAL_RANK", opt.local_rank)
     
     # distributed 
     torch.cuda.set_device(opt.local_rank)

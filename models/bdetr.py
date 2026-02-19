@@ -24,6 +24,7 @@ class BeaUTyDETR(nn.Module):
                  contrastive_align_loss=True,
                  d_model=128, butd=True, pointnet_ckpt=None, data_path=None,
                  self_attend=True, voxel_size=0.01,
+                 use_seg=False, 
                  use_external_attn_bi_layer0=False,
                  use_text_guided_external_attn_bi_layer0=False,
                  use_film_text_guided_external_attn_bi_layer0=False):
@@ -56,14 +57,26 @@ class BeaUTyDETR(nn.Module):
         # self.neck = TR3DNeck()
         self.head = TSPHead(
             voxel_size=self.voxel_size,
+            use_seg=use_seg,
             use_external_attn_bi_layer0=use_external_attn_bi_layer0,
             use_text_guided_external_attn_bi_layer0=use_text_guided_external_attn_bi_layer0,
             use_film_text_guided_external_attn_bi_layer0=use_film_text_guided_external_attn_bi_layer0
         )
-        
-    
+    def collate(self, points, quantization_mode):
+        coordinates, features = ME.utils.batch_sparse_collate(
+            [(p[:, :3] / self.voxel_size, p[:, 0:]) for p in points],
+            dtype=points[0].dtype,
+            device=points[0].device)
+        return ME.TensorField(
+            features=features,
+            coordinates=coordinates,
+            quantization_mode=quantization_mode,
+            minkowski_algorithm=ME.MinkowskiAlgorithm.SPEED_OPTIMIZED,
+            device=points[0].device,
+        )
+           
     # BRIEF forward.
-    def forward(self, inputs, gt_bboxes=None, gt_labels=None, gt_all_bbox_new=None, auxi_bbox=None, img_metas=None, epoch=None):
+    def forward(self, inputs, gt_bboxes=None, gt_labels=None, gt_all_bbox_new=None, auxi_bbox=None, gt_masks=None, img_metas=None, epoch=None):
         """
         Forward pass.
         Args:
@@ -81,8 +94,21 @@ class BeaUTyDETR(nn.Module):
                 [(p[:, :3] / self.voxel_size, p[:, 0:] if p.shape[1] > 3 else p[:, :3]) for p in points],
                 device=points[0].device)        
         x = ME.SparseTensor(coordinates=coordinates, features=features)
+        # pdb.set_trace()
+        points = [torch.cat([p, torch.unsqueeze(mask, 1)], dim=1) for p, mask in zip(points, gt_masks)]
+        field = self.collate(points, ME.SparseTensorQuantizationMode.RANDOM_SUBSAMPLE)
+        x = field.sparse()
+        # pdb.set_trace()
+        targets = x.features[:, 6:].round().long()
+        x = ME.SparseTensor(
+            x.features[:, :6],
+            coordinate_map_key=x.coordinate_map_key,
+            coordinate_manager=x.coordinate_manager,
+        )
         x = self.vision_backbone(x)
+        inverse_mapping = field.inverse_mapping(x[0].coordinate_map_key).long()
         visual_time = time.time() - start_time
+        # pdb.set_trace()
         
         # Text encoding
 
@@ -98,16 +124,18 @@ class BeaUTyDETR(nn.Module):
         
         if not self.training:
             start_time = time.time()
-            bbox_list, head_time = self.head.forward_test(x, text_feats, text_attention_mask, img_metas)
+            bbox_list, head_time, seg_masks = self.head.forward_test(x, text_feats, text_attention_mask, targets, inverse_mapping, img_metas)
             bbox_results = [
                 bbox3d2result(bboxes, scores, labels)
                 for bboxes, scores, labels in bbox_list
             ]
             fusion_time = time.time() - start_time
-            return bbox_results, {'loss':0.}, 0., [visual_time,text_time,fusion_time-head_time,head_time]
-        losses = self.head.forward_train(x,text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas)
+            return bbox_results, seg_masks, {'loss':0.}, 0., [visual_time,text_time,fusion_time-head_time,head_time]
+        losses = self.head.forward_train(x,text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, \
+            points, targets, img_metas)
         losses.update({'loss':sum(value for key, value in losses.items() if '_loss' in key)})
         return losses
+    
     def init_bn_momentum(self):
         """Initialize batch-norm momentum."""
         for m in self.modules():

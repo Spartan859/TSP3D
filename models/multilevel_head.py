@@ -1,4 +1,5 @@
 import numpy as np
+from typing import List
 
 import MinkowskiEngine as ME
 
@@ -8,8 +9,9 @@ from torch import nn
 
 from mmdet3d.structures.bbox_3d import rotation_3d_in_axis
 from .axis_aligned_iou_loss import AxisAlignedIoULoss2
-from mmdet.models.losses import FocalLoss
+from mmdet.models.losses import FocalLoss, DiceLoss
 from .trans_modules import (BiEncoder, BiEncoderLayer, PositionEmbeddingLearned)
+from .mink_unet import MinkUNet14B
 
 import pdb
 import logging
@@ -69,10 +71,14 @@ class TSPHead(nn.Module):
                  assign_type='volume',
                  prune_threshold=(0.3,0.7),
                  com_threshold = 0.15,
+                 seg_thr = 0.3,
                  train_cfg=None,
                  test_cfg=dict(nms_pre=1, iou_thr=.5, score_thr=.01),
                  keep_loss_weight = 1.0,
                  bbox_loss_weight = 1.0,
+                 seg_loss_weight = 2.,
+                 seg_loss_dice_weight = .1,
+                 use_seg = False,
                  use_external_attn_bi_layer0=False,
                  use_text_guided_external_attn_bi_layer0=False,
                  use_film_text_guided_external_attn_bi_layer0=False):
@@ -85,20 +91,31 @@ class TSPHead(nn.Module):
         self.prune_threshold = prune_threshold
         self.keep_loss_weight = keep_loss_weight
         self.bbox_loss_weight = bbox_loss_weight
+        self.seg_loss_weight = seg_loss_weight
+        self.seg_loss_dice_weight = seg_loss_dice_weight
+        self.use_seg = use_seg
         self.use_external_attn_bi_layer0 = use_external_attn_bi_layer0
         self.use_text_guided_external_attn_bi_layer0 = use_text_guided_external_attn_bi_layer0
         self.use_film_text_guided_external_attn_bi_layer0 = use_film_text_guided_external_attn_bi_layer0
-        self.assigner = TR3DAssigner(top_pts_threshold=32, label2level=[0])
+        # self.assigner = TR3DAssigner(top_pts_threshold=32, label2level=[0])
+        self.assigner = TR3DAssigner(top_pts_threshold=24, top_pts_threshold_det=8, label2level=[0])
         self.bbox_loss = AxisAlignedIoULoss2(mode='diou', reduction='none')
         self.cls_loss = FocalLoss(reduction='none')
         self.com_loss = FocalLoss(reduction='none')
         self.keep_loss = FocalLoss(reduction='mean', use_sigmoid=True)
+        self.seg_loss = FocalLoss(reduction='mean', use_sigmoid=True)
+        self.seg_loss_dice = DiceLoss(reduction='mean', use_sigmoid=True)
         self.train_cfg = train_cfg
         self.test_cfg = test_cfg
         self.num_samples = (3200,320)
         self.num_samples_com = 2400
         self.com_threshold = com_threshold
         self.random_prune_threshold = (1200,4000)
+        self.seg_thr = seg_thr
+        
+        self.padding = 0.08
+        self.min_pts_threshold = 16
+        self.max_seg_bbox = 36
         self._init_layers(in_channels, out_channels, n_reg_outs, n_classes)
 
 
@@ -187,6 +204,37 @@ class TSPHead(nn.Module):
 
         self.fuse = MinkowskiFeatureFusionBlock(128, 128, 128)
 
+        if self.use_seg:
+            # pdb.set_trace()
+            self.upsample_st_4 = nn.Sequential(
+                            ME.MinkowskiConvolutionTranspose(
+                                64,
+                                64,
+                                kernel_size=3,
+                                stride=4,
+                                dimension=3),
+                            ME.MinkowskiBatchNorm(64),
+                            ME.MinkowskiReLU(inplace=True))      
+            self.upsample_st_2 = nn.Sequential(
+                            ME.MinkowskiConvolutionTranspose(
+                                128,
+                                64,
+                                kernel_size=3,
+                                stride=2,
+                                dimension=3),
+                            ME.MinkowskiBatchNorm(64),
+                            ME.MinkowskiReLU(inplace=True)) 
+            self.conv_32_ch = nn.Sequential(
+                            ME.MinkowskiConvolution(
+                                64,
+                                32,
+                                kernel_size=3,
+                                stride=1,
+                                dimension=3),
+                            ME.MinkowskiBatchNorm(32),
+                            ME.MinkowskiReLU(inplace=True))  
+            self.seg_unet = MinkUNet14B(in_channels=32, out_channels=1, D=3)
+
 
     def init_weights(self):
         nn.init.normal_(self.bbox_conv.kernel, std=.01)
@@ -197,8 +245,8 @@ class TSPHead(nn.Module):
             nn.init.normal_(self.keep_conv[i].kernel, std=.01)
 
         for n, m in self.named_modules():
-            if ('bbox_conv' not in n) and ('cls_conv' not in n) \
-                and ('keep_conv' not in n) and ('loss' not in n):
+            if ('bbox_conv' not in n) and ('cls_conv' not in n) and ('seg_unet' not in n) \
+                and ('keep_conv' not in n) and ('loss' not in n) :
                 if isinstance(m, ME.MinkowskiConvolution):
                     ME.utils.kaiming_normal_(
                         m.kernel, mode='fan_out', nonlinearity='relu')
@@ -208,7 +256,7 @@ class TSPHead(nn.Module):
                     nn.init.constant_(m.bn.bias, 0)       
     
 
-    def _forward_single(self, x):
+    def _forward_single(self, x: ME.SparseTensor):
         reg_final = self.bbox_conv(x).features
         reg_distance = torch.exp(reg_final[:, 3:6])
         reg_angle = reg_final[:, 6:]
@@ -222,9 +270,8 @@ class TSPHead(nn.Module):
             cls_preds.append(cls_pred[permutation])
             points.append(x.coordinates[permutation][:, 1:]* self.voxel_size)
         return bbox_preds, cls_preds, points
-
-
-    def forward(self, x,text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc=None):
+    
+    def forward(self, x_all, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas, pc=None):
         bboxes_level = []
         bboxes_state = []
         if self.assign_type == 'volume':
@@ -251,7 +298,8 @@ class TSPHead(nn.Module):
         keep_gts = []
         keep_preds, prune_masks = [], []
         prune_mask = None
-        inputs = x[1:]
+        # pdb.set_trace()
+        inputs = x_all[2:]
         x = inputs[-1]
         for i in range(len(inputs) - 1, -1, -1): # 2,1,0
             if i ==1 :  #  1,0         
@@ -396,7 +444,15 @@ class TSPHead(nn.Module):
                 out = self.__getattr__(f'out_block_{i}')(x)
         out = self.fuse(out, text_feats[:, 0])
         bbox_pred, cls_pred, point = self._forward_single(out)
-        return [bbox_pred], [cls_pred], [point], keep_preds[::-1], keep_gts[::-1], bboxes_level, com_pred_training, com_coords_training
+        if self.use_seg:
+            # pdb.set_trace()
+            x = self.upsample_st_2(x) + x_all[1]
+            x = self.upsample_st_4(x) + x_all[0]
+            seg_feats = self.conv_32_ch(x)
+        else:
+            seg_feats = None
+        return [bbox_pred], [cls_pred], [point], keep_preds[::-1], keep_gts[::-1], bboxes_level, com_pred_training, com_coords_training, \
+            seg_feats
     
 
     def _prune_inference(self, x, scores, layer_id):
@@ -581,7 +637,8 @@ class TSPHead(nn.Module):
                      gt_bboxes,
                      gt_labels,
                      img_meta,
-                     com_pred,com_coords):
+                     com_pred,com_coords,):
+        # pdb.set_trace()
         assigned_ids = self.assigner.assign(points, gt_bboxes, gt_labels, img_meta)
         bbox_preds = torch.cat(bbox_preds)
         cls_preds = torch.cat(cls_preds)
@@ -619,17 +676,24 @@ class TSPHead(nn.Module):
             if pos_bbox_preds.shape[1] == 6:
                 pos_bbox_targets = pos_bbox_targets[:, :6]
             
+            pos_bbox_preds_format = self._bbox_pred_to_bbox(pos_points, pos_bbox_preds)
             bbox_loss = self.bbox_loss(
-                self._bbox_to_loss(self._bbox_pred_to_bbox(pos_points, pos_bbox_preds)),
-                self._bbox_to_loss(pos_bbox_targets))            
+                self._bbox_to_loss(pos_bbox_preds_format),
+                self._bbox_to_loss(pos_bbox_targets))     
+                
+            score = cls_preds[pos_mask]
+            label = gt_labels[assigned_ids][pos_mask]   
         else:
             bbox_loss = None
-        return bbox_loss, cls_loss, pos_mask, com_loss, pos_mask_com
+            
+        # pdb.set_trace()
+        return bbox_loss, cls_loss, pos_mask, com_loss, pos_mask_com, pos_bbox_preds_format, score, label
 
 
     def _loss(self, bbox_preds, cls_preds, points, gt_bboxes, gt_labels, img_metas, 
-              keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training):
-        bbox_losses, cls_losses, pos_masks, com_losses, pos_masks_com = [], [], [], [], []
+              keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training, gt_points, targets, seg_feats):
+        bbox_losses, cls_losses, pos_masks, com_losses, pos_masks_com, selected_bboxes, selected_scores, selected_labels \
+            = [], [], [], [], [], [], [], []
 
         #keep loss
         keep_losses = 0
@@ -651,7 +715,7 @@ class TSPHead(nn.Module):
             keep_losses = keep_losses + k_loss
 
         for i in range(len(img_metas)):
-            bbox_loss, cls_loss, pos_mask, com_loss,pos_mask_com = self._loss_single(
+            bbox_loss, cls_loss, pos_mask, com_loss,pos_mask_com, selected_bbox,selected_score, selected_label = self._loss_single(
                 bbox_preds=[x[i] for x in bbox_preds],
                 cls_preds=[x[i] for x in cls_preds],
                 points=[x[i] for x in points],
@@ -659,7 +723,7 @@ class TSPHead(nn.Module):
                 gt_bboxes=gt_bboxes[i],
                 gt_labels=gt_labels[i],
                 com_pred = com_pred_training[i],
-                com_coords = com_coords_training[i])
+                com_coords = com_coords_training[i],)
             if bbox_loss is not None:
                 bbox_losses.append(bbox_loss)
             cls_losses.append(cls_loss)
@@ -667,22 +731,212 @@ class TSPHead(nn.Module):
             pos_masks.append(pos_mask)
             pos_masks_com.append(pos_mask_com)
 
-        return dict(
+            if len(selected_bbox)>self.max_seg_bbox:
+                indices = torch.randperm(selected_bbox.shape[0])[:self.max_seg_bbox]
+                selected_bbox = selected_bbox[indices]
+                selected_score = selected_score[indices]
+                selected_label = selected_label[indices]
+            selected_bboxes.append(selected_bbox)
+            selected_scores.append(selected_score)
+            selected_labels.append(selected_label)
+            
+        # pdb.set_trace()
+        if self.use_seg:
+            seg_preds, targets, v2r, r2scene, rois, scores, gt_idxs = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels)
+            seg_loss, seg_loss_dice = self._loss_second(seg_preds, targets, v2r, r2scene, rois, gt_idxs,gt_bboxes, gt_labels, img_metas)
+        # pdb.set_trace()
+        loss_dict = dict(
             bbox_loss=self.bbox_loss_weight * torch.mean(torch.cat(bbox_losses)),
             cls_loss=torch.sum(torch.cat(cls_losses)) / torch.sum(torch.cat(pos_masks)),
             keep_loss=self.keep_loss_weight * keep_losses / len(img_metas),
-            com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com))) 
+            com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com)),
+        )
+        # pdb.set_trace()
+        if self.use_seg:
+            loss_dict.update(dict(
+                seg_loss=self.seg_loss_weight * seg_loss,
+                seg_loss_dice=self.seg_loss_dice_weight * seg_loss_dice,
+            ))
+        return loss_dict
 
+    def _loss_second(self, cls_preds, targets, v2r, r2scene, rois, gt_idxs,
+                    gt_bboxes, gt_labels, img_metas):
+        # pdb.set_trace()
+        try:
+            v2scene = r2scene[v2r]
+            seg_losses = []
+            seg_losses_dice = []
+            for i in range(len(img_metas)):
+                seg_loss, seg_loss_dice = self._loss_second_single(
+                    cls_preds=cls_preds[v2scene == i],
+                    targets=targets[v2scene == i],
+                    v2r=v2r[v2scene == i],
+                    rois=rois[i],
+                    gt_idxs=gt_idxs[i],
+                    gt_bboxes=gt_bboxes[i],
+                    gt_labels=gt_labels[i],
+                    img_meta=img_metas[i],
+                )
+                seg_losses.append(seg_loss)
+                seg_losses_dice.append(seg_loss_dice)
 
-    def forward_train(self, x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc=None):
-        bbox_preds, cls_preds, points, keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training = \
+            # pdb.set_trace()
+            return torch.mean(torch.stack(seg_losses)), torch.mean(torch.stack(seg_losses_dice))
+        except Exception as e:
+            print(e)
+            pdb.set_trace()
+    
+    def _loss_second_single(self, cls_preds, targets, v2r, rois, gt_idxs, gt_bboxes, gt_labels, img_meta):
+        if len(rois) == 0 or cls_preds.shape[0] == 0:
+            zero_loss = cls_preds.sum().float() * 0.
+            return zero_loss, zero_loss, zero_loss, zero_loss, zero_loss
+        v2r = v2r - v2r.min()
+        
+        assert len(torch.unique(v2r)) == len(rois)
+        assert torch.all(torch.unique(v2r) == torch.arange(0, v2r.max() + 1).to(v2r.device))
+        assert torch.max(gt_idxs) < len(gt_bboxes)
+
+        v2bbox = gt_idxs[v2r.long()]
+        assert torch.unique(v2bbox)[0] != -1
+        # inst_targets = targets[:, 0]
+        # pdb.set_trace()
+        # seg_targets = targets[:, 1]
+
+        # seg_preds = cls_preds[:, :-1]
+        # inst_preds = cls_preds[:, -1]
+
+        # labels = v2bbox == inst_targets
+
+        # seg_targets[seg_targets == -1] = self.n_classes
+        # pdb.set_trace()
+        seg_loss = self.seg_loss(cls_preds, (targets).long())
+        seg_loss_dice = self.seg_loss_dice(cls_preds, (targets).long())
+            
+        return seg_loss, seg_loss_dice
+    
+    def forward_train(self, x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, \
+        gt_points, targets, img_metas,pc=None):
+        
+        bbox_preds, cls_preds, points, keep_preds, keep_gts, bboxes_level, com_pred_training, com_coords_training, seg_feats = \
             self(x, text_feats, text_attention_mask, gt_bboxes, gt_labels, gt_all_bbox_new, auxi_bbox, img_metas,pc)
+        # pdb.set_trace()
 
         return self._loss(bbox_preds, cls_preds, points,
                           gt_bboxes, gt_labels, img_metas, keep_preds, keep_gts, bboxes_level,
-                          com_pred_training, com_coords_training)
+                          com_pred_training, com_coords_training, gt_points, targets, seg_feats)
+        
+    def _forward_seg(self, x, targets, rois, scores, labels):
+        # rois = [b[0] for b in bbox_list]
+        # scores = [b[1] for b in bbox_list]
+        # labels = [b[2] for b in bbox_list]
+        # levels = [torch.zeros(len(b[0])) for b in bbox_list]
+        # pdb.set_trace()
+        feats_with_targets = ME.SparseTensor(torch.cat((x.features, targets), axis=1), x.coordinates)
+        tensors, ids, rois, scores, labels = self.extract(feats_with_targets, rois, scores, labels)        
+        # pdb.set_trace()
+        
+        if tensors.features.shape[0] == 0:
+            return (targets.new_zeros((0, 1)),
+                    targets.new_zeros((0, 1)),
+                    targets.new_zeros(0),
+                    targets.new_zeros(0),
+                    [targets.new_zeros((0, 7)) for i in range(len(rois))],
+                    [targets.new_zeros(0) for i in range(len(rois))],
+                    [targets.new_zeros(0) for i in range(len(rois))],
+                    None)
 
-
+        feats = ME.SparseTensor(tensors.features[:, :-1], tensors.coordinates)
+        targets = tensors.features[:, -1:]
+        # pdb.set_trace()
+        if self.use_seg:
+            preds = self.seg_unet(feats).features
+        else:
+            preds = None
+        # pdb.set_trace()
+        return preds, targets, feats.coordinates[:, 0].long(), ids, rois, scores, labels
+    
+    def extract(self, tensors, rois, scores, labels):
+        # pdb.set_trace()
+        # for level, x in enumerate(tensors):
+        n_rois = 0
+        new_coordinates, new_features, new_roi, new_score, new_label, ids = [], [], [], [], [], []
+        for i, (coordinates, features) in enumerate(zip(*tensors.decomposed_coordinates_and_features)):        
+            roi = rois[i]
+            roi = torch.cat((
+                roi[:,  :3],
+                roi[:,  3:6] + self.padding,
+                roi[:, 6:]), dim=1)
+            score = scores[i]
+            label = labels[i]
+            new_index, new_coordinate, new_feature, roi, score, label = self._extract_single(
+                coordinates, features, roi, score, label)  
+            new_index = new_index + n_rois
+            n_rois += len(roi)
+            new_coordinate = torch.cat((
+                new_index.unsqueeze(1), new_coordinate), dim=1)
+            new_coordinates.append(new_coordinate)
+            new_features.append(new_feature)
+            ids += [i] * len(roi)
+            roi = torch.cat((roi[:, :3],
+                        roi[:,  3:6] - self.padding,
+                        roi[:, 6:]), dim=1)
+            new_roi.append(roi)
+            new_score.append(score)
+            new_label.append(label)
+            
+        new_tensors = ME.SparseTensor(
+            torch.cat(new_features),
+            torch.cat(new_coordinates).float(),
+            tensor_stride=tensors.tensor_stride)
+        # pdb.set_trace()
+        new_ids = tensors.coordinates.new_tensor(ids)
+        new_rois = new_roi
+        new_scores = new_score
+        new_labels = new_label
+        return new_tensors, new_ids, new_rois, new_scores, new_labels    
+    
+    def _extract_single(self, coordinates, features, rois, scores, labels):
+        # coordinates: of shape (n_points, 3)
+        # features: of shape (n_points, c)
+        # voxel_size: float
+        # rois: of shape (n_rois, 7)
+        # -> new indices of shape n_new_points
+        # -> new coordinates of shape (n_new_points, 3)
+        # -> new features of shape (n_new_points, c + 3)
+        # -> new rois of shape (n_new_rois, 7)
+        # -> new scores of shape (n_new_rois)
+        # -> new labels of shape (n_new_rois)
+        n_points = len(coordinates)
+        n_boxes = len(rois)
+        if n_boxes == 0:
+            return (coordinates.new_zeros(0),
+                    coordinates.new_zeros((0, 3)),
+                    features.new_zeros((0, features.shape[1])),
+                    features.new_zeros((0, 7)),
+                    features.new_zeros(0),
+                    coordinates.new_zeros(0))
+        points = coordinates * self.voxel_size
+        points = points.unsqueeze(1).expand(n_points, n_boxes, 3)
+        # pdb.set_trace()
+        rois = torch.cat([rois, torch.zeros((rois.size(0), 1), device=rois.device)], dim=1)
+        rois = rois.unsqueeze(0).expand(n_points, n_boxes, 7)
+        face_distances = get_face_distances(points, rois)
+        inside_condition = face_distances.min(dim=-1).values > 0
+        # pdb.set_trace()
+        # if np.random.randint(1, 11)>3:
+        #     self.min_pts_threshold = 16
+        # else:
+        #     self.min_pts_threshold = 160000
+        min_pts_condition = inside_condition.sum(dim=0) > self.min_pts_threshold
+        inside_condition = inside_condition[:, min_pts_condition]
+        rois = rois[0, min_pts_condition]
+        scores = scores[min_pts_condition]
+        labels = labels[min_pts_condition]
+        nonzero = torch.nonzero(inside_condition)
+        new_coordinates = coordinates[nonzero[:, 0]]
+        
+        return nonzero[:, 1], new_coordinates, features[nonzero[:, 0]], rois, scores, labels
+       
     def _nms(self, bboxes, scores, img_meta):
         """Multi-class nms for a single scene.
         Args:
@@ -776,8 +1030,8 @@ class TSPHead(nn.Module):
         return results
 
 
-    def forward_test(self, x, text_feats, text_attention_mask, img_metas, pc=None, gt_bboxes=None):
-        inputs = x[1:]
+    def forward_test(self, x_all, text_feats, text_attention_mask, targets, inverse_mapping, img_metas, pc=None, gt_bboxes=None):
+        inputs = x_all[2:]
         x = inputs[-1]
         bbox_preds, cls_preds, points = [], [], []
         keep_scores = None
@@ -912,21 +1166,99 @@ class TSPHead(nn.Module):
         out = self.fuse(out, text_feats[:, 0])
         bbox_pred, cls_pred, point = self._forward_single(out)
         results = self._get_bboxes([bbox_pred], [cls_pred], [point], img_metas)
-        head_time = time.time() - start_time
-        return results, head_time
+        
+        if self.use_seg:
+            x = self.upsample_st_2(x) + x_all[1]
+            x = self.upsample_st_4(x) + x_all[0]
+            seg_feats = self.conv_32_ch(x)
 
+            selected_bboxes,selected_scores,selected_labels = [],[],[]
+            for box, score, label in results:
+                box = torch.cat((box.gravity_center, box.tensor[:,  3:6]), dim=1)  
+                selected_bboxes.append(box)
+                selected_scores.append(score)
+                selected_labels.append(label)
+
+            src_idxs = torch.arange(0, x_all[0].features.shape[0]).to(inverse_mapping.device)
+            # src_idxs = src_idxs.unsqueeze(1).expand(src_idxs.shape[0], 2)
+            seg_preds, idxs, v2r, r2scene, rois, scores, gt_idxs = self._forward_seg(seg_feats, src_idxs.unsqueeze(-1), selected_bboxes,selected_scores,selected_labels)
+            # seg_preds, targets_new, v2r, r2scene, rois, scores, gt_idxs = self._forward_seg(seg_feats, targets, selected_bboxes,selected_scores,selected_labels)
+
+            # pdb.set_trace()
+            seg_masks = self._get_instances(seg_preds[:, 0], idxs[:, 0], v2r, r2scene, scores, gt_idxs, inverse_mapping, img_metas)
+            # pdb.set_trace()
+            # seg_preds_list, targets_list = [],[]
+            
+            # for i in range(len(img_metas)):
+            #     seg_pred = seg_preds[v2r==i]
+            #     target = targets[[v2r==i]]
+            #     seg_preds_list.append(seg_pred)
+            #     targets_list.append(target)
+        else:
+            seg_masks = None
+        head_time = time.time() - start_time
+        return results, head_time, seg_masks
+
+    def _get_instances(self, cls_preds, idxs, v2r, r2scene, scores, labels, inverse_mapping, img_metas):
+        v2scene = r2scene[v2r]
+        results = []
+        # pdb.set_trace()
+        for i in range(len(img_metas)):
+            seg_mask, _, _ = self._get_instances_single(
+                cls_preds=cls_preds[v2scene == i],
+                idxs=idxs[v2scene == i],
+                v2r=v2r[v2scene == i],
+                scores=scores[i],
+                labels=labels[i],
+                inverse_mapping=inverse_mapping)
+            results.append(seg_mask.squeeze())
+        return results
+    
+    def _get_instances_single(self, cls_preds, idxs, v2r, scores, labels, inverse_mapping):
+        if scores.shape[0] == 0:
+            return (inverse_mapping.new_zeros((1, len(inverse_mapping)), dtype=torch.bool),
+                    inverse_mapping.new_tensor([0], dtype=torch.long),
+                    inverse_mapping.new_tensor([0], dtype=torch.float32))
+        v2r = v2r - v2r.min()
+        assert len(torch.unique(v2r)) == scores.shape[0]
+        assert torch.all(torch.unique(v2r) == torch.arange(0, v2r.max() + 1).to(v2r.device))
+        # pdb.set_trace()
+        cls_preds = cls_preds.sigmoid()
+        binary_cls_preds = cls_preds > self.seg_thr
+        v2r_one_hot = torch.nn.functional.one_hot(v2r).bool()
+        n_rois = v2r_one_hot.shape[1]
+        # todo: why convert from float to long here? can it be long or even int32 before this function?
+        idxs_expand = idxs.unsqueeze(-1).expand(idxs.shape[0], n_rois).long()
+        # todo: can we not convert to ofloat here?
+        binary_cls_preds_expand = binary_cls_preds.unsqueeze(-1).expand(binary_cls_preds.shape[0], n_rois)
+        cls_preds[cls_preds <= self.seg_thr] = 0
+        cls_preds_expand = cls_preds.unsqueeze(-1).expand(cls_preds.shape[0], n_rois)
+        idxs_expand[~v2r_one_hot] = inverse_mapping.max() + 1
+
+        # toso: idxs is float. can these tensors be constructed with .new_zeros(..., dtype=bool) ?
+        voxels_masks = idxs.new_zeros(inverse_mapping.max() + 2, n_rois, dtype=bool)
+        voxels_preds = idxs.new_zeros(inverse_mapping.max() + 2, n_rois)
+        voxels_preds = voxels_preds.scatter_(0, idxs_expand, cls_preds_expand)[:-1, :]
+        # todo: is it ok that binary_cls_preds_expand is float?
+        voxels_masks = voxels_masks.scatter_(0, idxs_expand, binary_cls_preds_expand)[:-1, :]
+        scores = scores * voxels_preds.sum(axis=0) / voxels_masks.sum(axis=0)
+        points_masks = voxels_masks[inverse_mapping].T.bool()
+        return points_masks, labels, scores
+    
 class TR3DAssigner:
-    def __init__(self, top_pts_threshold, label2level):
+    def __init__(self, top_pts_threshold, top_pts_threshold_det, label2level):
         # top_pts_threshold: per box
         # label2level: list of len n_classes
         #     scannet: [0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0]
         #     sunrgbd: [1, 1, 1, 0, 0, 1, 0, 0, 1, 0]
         #       s3dis: [1, 0, 1, 1, 0]
         self.top_pts_threshold = top_pts_threshold
+        self.top_pts_threshold_det = top_pts_threshold_det
         self.label2level = label2level
 
     @torch.no_grad()
     def assign(self, points, gt_bboxes, gt_labels, img_meta):
+        # pdb.set_trace()
         # -> object id or -1 for each point
         float_max = points[0].new_tensor(1e8)
         levels = torch.cat([points[i].new_tensor(i, dtype=torch.long).expand(len(points[i]))
@@ -934,6 +1266,10 @@ class TR3DAssigner:
         points = torch.cat(points)
         n_points = len(points)
         n_boxes = len(gt_bboxes)
+        if n_boxes>1:
+            top_pts_threshold = self.top_pts_threshold_det
+        else:
+            top_pts_threshold = self.top_pts_threshold
 
         if len(gt_labels) == 0:
             return gt_labels.new_full((n_points,), -1)
@@ -953,7 +1289,7 @@ class TR3DAssigner:
         center_distances = torch.sum(torch.pow(center - points, 2), dim=-1)
         center_distances = torch.where(level_condition, center_distances, float_max)
         topk_distances = torch.topk(center_distances,
-                                    min(self.top_pts_threshold + 1, len(center_distances)),
+                                    min(top_pts_threshold + 1, len(center_distances)),
                                     largest=False, dim=0).values[-1]
         topk_condition = center_distances < topk_distances.unsqueeze(0)
 
@@ -966,5 +1302,25 @@ class TR3DAssigner:
         min_values, min_ids = center_distances.min(dim=1)
         min_inds = torch.where(min_values < float_max, min_ids, -1)
         min_inds = torch.where(min_inds == min_inds_, min_ids, -1)
-
+        # pdb.set_trace()
         return min_inds
+    
+def get_face_distances(points, boxes):
+    # points: of shape (..., 3)
+    # boxes: of shape (..., 7)
+    # -> of shape (..., 6): dx_min, dx_max, dy_min, dy_max, dz_min, dz_max
+    shift = torch.stack((
+        points[..., 0] - boxes[..., 0],
+        points[..., 1] - boxes[..., 1],
+        points[..., 2] - boxes[..., 2]), dim=-1).permute(1, 0, 2)
+    shift = rotation_3d_in_axis(shift, -boxes[0, :, 6], axis=2).permute(1, 0, 2)
+    centers = boxes[..., :3] + shift
+    dx_min = centers[..., 0] - boxes[..., 0] + boxes[..., 3] / 2
+    dx_max = boxes[..., 0] + boxes[..., 3] / 2 - centers[..., 0]
+    dy_min = centers[..., 1] - boxes[..., 1] + boxes[..., 4] / 2
+    dy_max = boxes[..., 1] + boxes[..., 4] / 2 - centers[..., 1]
+    dz_min = centers[..., 2] - boxes[..., 2] + boxes[..., 5] / 2
+    dz_max = boxes[..., 2] + boxes[..., 5] / 2 - centers[..., 2]
+    return torch.stack((dx_min, dx_max, dy_min, dy_max, dz_min, dz_max), dim=-1)
+
+

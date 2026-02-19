@@ -8,6 +8,38 @@ fi
 
 data_root="/root/lxy/TSP3D/data"
 
+NPROC_PER_NODE=4
+BASE_BS=28
+CUR_BS=28
+BASE_LR=5e-4
+BASE_KEEP_TRANS_LR=5e-4
+BASE_TEXT_ENCODER_LR=1e-5
+BASE_BOX_SELECT_LR=4e-4
+
+lr_scale() {
+    python - "$1" "$BASE_BS" "$CUR_BS" <<'PY'
+import sys
+
+base_lr = float(sys.argv[1])
+base_bs = float(sys.argv[2])
+cur_bs = float(sys.argv[3])
+print(base_lr * cur_bs / base_bs)
+PY
+}
+
+bs_per_gpu() {
+    python - "$1" "$2" <<'PY'
+import sys
+
+total_bs = float(sys.argv[1])
+ngpu = int(sys.argv[2])
+per = total_bs / ngpu
+if per != int(per):
+    print(f"Warning: total batch size {total_bs} not divisible by GPUs {ngpu}", file=sys.stderr)
+print(int(per))
+PY
+}
+
 ln -sf ${data_root}/ScanRefer/ScanRefer_filtered_train_${mode}.txt \
     ${data_root}/ScanRefer/ScanRefer_filtered_train.txt
 ln -sf ${data_root}/ScanRefer/ScanRefer_filtered_val_${mode}.txt \
@@ -17,7 +49,7 @@ ln -sf ${data_root}/train_v3scans_${mode}.pkl \
 ln -sf ${data_root}/val_v3scans_${mode}.pkl \
     ${data_root}/val_v3scans.pkl
 
-nproc_per_node=$(nvidia-smi -L | wc -l)
+nproc_per_node=${NPROC_PER_NODE:-$(nvidia-smi -L | wc -l)}
 if [[ "$@" == *"-s"* ]]; then
     nproc_per_node=1
 fi
@@ -32,18 +64,20 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --use_color \
     --weight_decay 0.0005 \
     --data_root ${data_root}/ \
-    --val_freq 3 --batch_size 14 --save_freq 3 --print_freq 500 \
-    --lr=5e-4 \
-    --keep_trans_lr=5e-4 \
+    --val_freq 3 --batch_size $(bs_per_gpu "${CUR_BS}" "${nproc_per_node}") --save_freq 3 --print_freq 500 \
+    --lr=$(lr_scale "${BASE_LR}") \
+    --keep_trans_lr=$(lr_scale "${BASE_KEEP_TRANS_LR}") \
+    --text_encoder_lr=$(lr_scale "${BASE_TEXT_ENCODER_LR}") \
+    --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --voxel_size=0.01 --num_workers=8 \
     --dataset scanrefer --test_dataset scanrefer \
     --detect_intermediate --joint_det \
     --log_dir "$(dirname "$(readlink -f "$0")")" \
     --augment_det \
     --lr_decay_epochs 50 75 \
-    --use_external_attn_bi_layer0 \
-    --use_text_guided_external_attn_bi_layer0 \
-    --use_film_text_guided_external_attn_bi_layer0 \
+    # --use_external_attn_bi_layer0 \
+    # --use_text_guided_external_attn_bi_layer0 \
+    # --use_film_text_guided_external_attn_bi_layer0 \
     # --clip_norm 1.0 \
     # --window_size 5 \
     # --quant_size 4 \

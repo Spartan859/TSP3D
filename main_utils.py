@@ -12,7 +12,7 @@
 
 import argparse
 import json
-import os
+import os, pdb
 import random
 import time
 
@@ -85,6 +85,7 @@ def parse_option():
     parser.add_argument("--keep_trans_lr", default=4e-4, type=float)
     parser.add_argument("--text_encoder_lr", default=1e-5, type=float)
     parser.add_argument("--box_select_lr", default=4e-4, type=float)
+    parser.add_argument("--seg_lr", default=1e-3, type=float)
     parser.add_argument('--lr-scheduler', type=str, default='step',
                         choices=["step", "cosine"])
     parser.add_argument('--lr_decay_epochs', type=int, default=[280, 340],
@@ -101,6 +102,10 @@ def parse_option():
     # io
     parser.add_argument('--checkpoint_path', default=None,
                         help='Model checkpoint path')
+    parser.add_argument('--load_optimizer', action='store_true',
+                        help='Load optimizer state from checkpoint')
+    parser.add_argument('--load_scheduler', action='store_true',
+                        help='Load scheduler state from checkpoint')
     parser.add_argument('--log_dir', default='log',
                         help='Dump dir to save model checkpoint')
     parser.add_argument('--print_freq', type=int, default=10)  # batch-wise
@@ -119,6 +124,7 @@ def parse_option():
     parser.add_argument('--eval_train', action='store_true')
     parser.add_argument('--pp_checkpoint', default=None)    # pointnet checkpoint
     parser.add_argument('--reduce_lr', action='store_true')
+    parser.add_argument('--use_seg', action='store_true')
     parser.add_argument('--use_external_attn_bi_layer0', action='store_true')
     parser.add_argument('--use_text_guided_external_attn_bi_layer0', action='store_true')
     parser.add_argument('--use_film_text_guided_external_attn_bi_layer0', action='store_true')
@@ -141,10 +147,20 @@ def load_checkpoint(args, model, optimizer, scheduler):
         args.start_epoch = 0
     model.load_state_dict(checkpoint['model'], strict=False)
     if not args.eval and not args.reduce_lr:
-        if 'optimizer' in checkpoint:
-            optimizer.load_state_dict(checkpoint['optimizer'])
-        if 'scheduler' in checkpoint:
-            scheduler.load_state_dict(checkpoint['scheduler'])
+        if args.load_optimizer and 'optimizer' in checkpoint:
+            try:
+                optimizer.load_state_dict(checkpoint['optimizer'])
+                if args.load_scheduler and 'scheduler' in checkpoint:
+                    # pdb.set_trace()
+                    try:
+                        scheduler.load_state_dict(checkpoint['scheduler'])
+                    except Exception as e:
+                        print("scheduler loaded failed, maybe due to different scheduler settings.")
+                        print(e)
+            except Exception as e:
+                # pdb.set_trace()
+                print("optimizer loaded failed, maybe due to different optimizer settings.")
+                print(e)
 
     print("=> loaded successfully '{}' (epoch {})".format(
         args.checkpoint_path, checkpoint['epoch']
@@ -292,7 +308,8 @@ class BaseTrainTester:
                 "params": [
                     p for n, p in model.named_parameters()
                     if "keep_trans" not in n and "text_encoder" not in n
-                    and "select" not in n and p.requires_grad
+                    and "select" not in n and "seg_unet" not in n 
+                    and "upsample_st" not in n and p.requires_grad
                 ]
             },
             {
@@ -315,6 +332,13 @@ class BaseTrainTester:
                     if "select" in n and p.requires_grad
                 ],
                 "lr": args.box_select_lr
+            },
+            {
+                "params": [
+                    p for n, p in model.named_parameters()
+                    if ("seg_unet" in n or "upsample_st" in n) and p.requires_grad
+                ],
+                "lr": args.seg_lr
             }
         ]
         optimizer = optim.AdamW(param_dicts,
@@ -396,15 +420,17 @@ class BaseTrainTester:
             # log
             self.logger.info(
                 'epoch {}, total time {:.2f}, '
-                'lr_base {:.5f}, '
-                'lr_tran {:.5f}, '
-                'lr_text {:.5f}, '
-                'lr_select {:.5f}, '.format(
+                'lr_base {:.7f}, '
+                'lr_tran {:.7f}, '
+                'lr_text {:.7f}, '
+                'lr_select {:.7f}, '
+                'lr_seg {:.7f}'.format(
                     epoch, (time.time() - tic),
                     optimizer.param_groups[0]['lr'],
                     optimizer.param_groups[1]['lr'],
                     optimizer.param_groups[2]['lr'],
-                    optimizer.param_groups[3]['lr']
+                    optimizer.param_groups[3]['lr'],
+                    optimizer.param_groups[4]['lr']
                 )
             )
 
@@ -514,13 +540,13 @@ class BaseTrainTester:
         # Loop over batches
         train_loader = tqdm(train_loader)
         for batch_idx, batch_data in enumerate(train_loader):
-            gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, img_metas = get_gt(batch_data)
+            gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas = get_gt(batch_data)
             # Move to GPU
             batch_data = self._to_gpu(batch_data)
             # get the input data: pointcloud and text
             inputs = self._get_inputs(batch_data)
             
-            losses = model(inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, img_metas, epoch)
+            losses = model(inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas, epoch)
             loss = losses['loss']
 
             optimizer.zero_grad()
@@ -557,7 +583,7 @@ class BaseTrainTester:
                           stat_dict,
                           criterion, set_criterion, args):
         # Move to GPU
-        gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, img_metas = get_gt(batch_data)
+        gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas = get_gt(batch_data)
         batch_data = self._to_gpu(batch_data)
         # inputs = self._get_inputs_contra(batch_data)
         inputs = self._get_inputs(batch_data)
@@ -569,11 +595,12 @@ class BaseTrainTester:
         
         # STEP Forward pass
         start_time = time.time()
-        bbox_results, losses, backbone_time, trans_time = model(inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, img_metas=img_metas)
+        bbox_results, seg_masks, losses, backbone_time, trans_time = model(
+            inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas=img_metas)
         end_time = time.time()
         inf_time = end_time - start_time
         
-        end_points = {'bbox_results': bbox_results, 'gt_bboxes_3d':gt_bboxes_3d}
+        end_points = {'bbox_results': bbox_results, 'gt_bboxes_3d':gt_bboxes_3d, "seg_pred": seg_masks, "seg_gt":gt_masks}
         # STEP Compute loss
         for key in batch_data:
             assert (key not in end_points)
