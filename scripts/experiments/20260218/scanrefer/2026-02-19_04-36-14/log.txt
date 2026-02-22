@@ -1,0 +1,663 @@
+[02/19 04:36:14] 20260218 INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/20260218/scanrefer/2026-02-19_04-36-14/config.json
+[02/19 04:36:14] 20260218 INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 5e-06, 'keep_trans_lr': 5e-06, 'text_encoder_lr': 1e-07, 'box_select_lr': 4e-06, 'seg_lr': 0.001, 'lr_scheduler': 'step', 'lr_decay_epochs': [30, 45], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'checkpoint_path': '/root/lxy/TSP3D_ori/scripts/experiments/20260216/scanrefer/2026-02-16_11-14-34/ckpt_epoch_144.pth', 'load_optimizer': False, 'load_scheduler': False, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/20260218/scanrefer/2026-02-19_04-36-14', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'pp_checkpoint': None, 'reduce_lr': False, 'use_seg': True, 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True}
+[02/19 04:41:59] 20260218 INFO: length of training dataset: 48655
+[02/19 04:41:59] 20260218 INFO: length of testing dataset: 9508
+[02/19 04:49:10] 20260218 INFO: Train: [145][500/1737]  
+[02/19 04:49:10] 20260218 INFO: bbox_loss 0.3778 	cls_loss 0.2218 	com_loss 0.2040 	keep_loss 0.0631 	loss 1.0453 	seg_loss 0.1273 	seg_loss_dice 0.0513 	
+[02/19 04:56:16] 20260218 INFO: Train: [145][1000/1737]  
+[02/19 04:56:16] 20260218 INFO: bbox_loss 0.3795 	cls_loss 0.2017 	com_loss 0.1818 	keep_loss 0.0635 	loss 0.9924 	seg_loss 0.1156 	seg_loss_dice 0.0503 	
+[02/19 05:03:20] 20260218 INFO: Train: [145][1500/1737]  
+[02/19 05:03:20] 20260218 INFO: bbox_loss 0.3794 	cls_loss 0.1933 	com_loss 0.1726 	keep_loss 0.0636 	loss 0.9686 	seg_loss 0.1100 	seg_loss_dice 0.0496 	
+[02/19 05:06:39] 20260218 INFO: epoch 145, total time 1470.89, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 05:13:40] 20260218 INFO: Train: [146][500/1737]  
+[02/19 05:13:40] 20260218 INFO: bbox_loss 0.3788 	cls_loss 0.1690 	com_loss 0.1483 	keep_loss 0.0629 	loss 0.9013 	seg_loss 0.0941 	seg_loss_dice 0.0482 	
+[02/19 05:20:47] 20260218 INFO: Train: [146][1000/1737]  
+[02/19 05:20:47] 20260218 INFO: bbox_loss 0.3805 	cls_loss 0.1701 	com_loss 0.1498 	keep_loss 0.0633 	loss 0.9056 	seg_loss 0.0937 	seg_loss_dice 0.0482 	
+[02/19 05:27:48] 20260218 INFO: Train: [146][1500/1737]  
+[02/19 05:27:48] 20260218 INFO: bbox_loss 0.3797 	cls_loss 0.1692 	com_loss 0.1491 	keep_loss 0.0631 	loss 0.9027 	seg_loss 0.0934 	seg_loss_dice 0.0482 	
+[02/19 05:31:10] 20260218 INFO: epoch 146, total time 1470.33, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 05:38:14] 20260218 INFO: Train: [147][500/1737]  
+[02/19 05:38:14] 20260218 INFO: bbox_loss 0.3752 	cls_loss 0.1657 	com_loss 0.1471 	keep_loss 0.0630 	loss 0.8892 	seg_loss 0.0904 	seg_loss_dice 0.0479 	
+[02/19 05:45:21] 20260218 INFO: Train: [147][1000/1737]  
+[02/19 05:45:21] 20260218 INFO: bbox_loss 0.3778 	cls_loss 0.1654 	com_loss 0.1471 	keep_loss 0.0624 	loss 0.8900 	seg_loss 0.0897 	seg_loss_dice 0.0477 	
+[02/19 05:52:20] 20260218 INFO: Train: [147][1500/1737]  
+[02/19 05:52:20] 20260218 INFO: bbox_loss 0.3770 	cls_loss 0.1651 	com_loss 0.1470 	keep_loss 0.0624 	loss 0.8882 	seg_loss 0.0890 	seg_loss_dice 0.0476 	
+[02/19 05:55:39] 20260218 INFO: epoch 147, total time 1469.30, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 05:56:41] 20260218 INFO: Eval: [147]  
+[02/19 05:56:41] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55648
+[02/19 05:56:41] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46319
+[02/19 05:56:41] 20260218 INFO: Acc_mask0.25 0.5725704669751788
+[02/19 05:56:41] 20260218 INFO: Acc_mask0.50 0.48758939840134624
+[02/19 06:03:44] 20260218 INFO: Train: [148][500/1737]  
+[02/19 06:03:44] 20260218 INFO: bbox_loss 0.3722 	cls_loss 0.1614 	com_loss 0.1453 	keep_loss 0.0630 	loss 0.8742 	seg_loss 0.0852 	seg_loss_dice 0.0473 	
+[02/19 06:11:00] 20260218 INFO: Train: [148][1000/1737]  
+[02/19 06:11:00] 20260218 INFO: bbox_loss 0.3756 	cls_loss 0.1622 	com_loss 0.1451 	keep_loss 0.0626 	loss 0.8786 	seg_loss 0.0860 	seg_loss_dice 0.0472 	
+[02/19 06:18:12] 20260218 INFO: Train: [148][1500/1737]  
+[02/19 06:18:12] 20260218 INFO: bbox_loss 0.3750 	cls_loss 0.1622 	com_loss 0.1451 	keep_loss 0.0623 	loss 0.8780 	seg_loss 0.0861 	seg_loss_dice 0.0473 	
+[02/19 06:21:34] 20260218 INFO: epoch 148, total time 1493.11, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 06:28:44] 20260218 INFO: Train: [149][500/1737]  
+[02/19 06:28:44] 20260218 INFO: bbox_loss 0.3741 	cls_loss 0.1591 	com_loss 0.1444 	keep_loss 0.0621 	loss 0.8714 	seg_loss 0.0843 	seg_loss_dice 0.0474 	
+[02/19 06:36:02] 20260218 INFO: Train: [149][1000/1737]  
+[02/19 06:36:02] 20260218 INFO: bbox_loss 0.3766 	cls_loss 0.1604 	com_loss 0.1454 	keep_loss 0.0626 	loss 0.8764 	seg_loss 0.0841 	seg_loss_dice 0.0474 	
+[02/19 06:43:15] 20260218 INFO: Train: [149][1500/1737]  
+[02/19 06:43:15] 20260218 INFO: bbox_loss 0.3766 	cls_loss 0.1602 	com_loss 0.1446 	keep_loss 0.0626 	loss 0.8749 	seg_loss 0.0838 	seg_loss_dice 0.0471 	
+[02/19 06:46:47] 20260218 INFO: epoch 149, total time 1512.69, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 06:54:26] 20260218 INFO: Train: [150][500/1737]  
+[02/19 06:54:26] 20260218 INFO: bbox_loss 0.3812 	cls_loss 0.1600 	com_loss 0.1452 	keep_loss 0.0626 	loss 0.8794 	seg_loss 0.0835 	seg_loss_dice 0.0469 	
+[02/19 07:01:35] 20260218 INFO: Train: [150][1000/1737]  
+[02/19 07:01:35] 20260218 INFO: bbox_loss 0.3798 	cls_loss 0.1602 	com_loss 0.1450 	keep_loss 0.0627 	loss 0.8777 	seg_loss 0.0831 	seg_loss_dice 0.0470 	
+[02/19 07:08:40] 20260218 INFO: Train: [150][1500/1737]  
+[02/19 07:08:40] 20260218 INFO: bbox_loss 0.3764 	cls_loss 0.1600 	com_loss 0.1445 	keep_loss 0.0629 	loss 0.8741 	seg_loss 0.0831 	seg_loss_dice 0.0471 	
+[02/19 07:12:00] 20260218 INFO: epoch 150, total time 1513.51, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 07:13:04] 20260218 INFO: Eval: [150]  
+[02/19 07:13:04] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55732
+[02/19 07:13:04] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46771
+[02/19 07:13:04] 20260218 INFO: Acc_mask0.25 0.5737273874631889
+[02/19 07:13:04] 20260218 INFO: Acc_mask0.50 0.4965292385359697
+[02/19 07:20:10] 20260218 INFO: Train: [151][500/1737]  
+[02/19 07:20:10] 20260218 INFO: bbox_loss 0.3779 	cls_loss 0.1580 	com_loss 0.1428 	keep_loss 0.0621 	loss 0.8675 	seg_loss 0.0802 	seg_loss_dice 0.0464 	
+[02/19 07:27:23] 20260218 INFO: Train: [151][1000/1737]  
+[02/19 07:27:23] 20260218 INFO: bbox_loss 0.3775 	cls_loss 0.1595 	com_loss 0.1446 	keep_loss 0.0631 	loss 0.8726 	seg_loss 0.0812 	seg_loss_dice 0.0468 	
+[02/19 07:34:26] 20260218 INFO: Train: [151][1500/1737]  
+[02/19 07:34:26] 20260218 INFO: bbox_loss 0.3780 	cls_loss 0.1587 	com_loss 0.1440 	keep_loss 0.0630 	loss 0.8713 	seg_loss 0.0809 	seg_loss_dice 0.0467 	
+[02/19 07:37:48] 20260218 INFO: epoch 151, total time 1483.86, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 07:44:56] 20260218 INFO: Train: [152][500/1737]  
+[02/19 07:44:56] 20260218 INFO: bbox_loss 0.3761 	cls_loss 0.1574 	com_loss 0.1435 	keep_loss 0.0622 	loss 0.8664 	seg_loss 0.0804 	seg_loss_dice 0.0468 	
+[02/19 07:52:04] 20260218 INFO: Train: [152][1000/1737]  
+[02/19 07:52:04] 20260218 INFO: bbox_loss 0.3765 	cls_loss 0.1575 	com_loss 0.1432 	keep_loss 0.0619 	loss 0.8657 	seg_loss 0.0798 	seg_loss_dice 0.0468 	
+[02/19 07:59:05] 20260218 INFO: Train: [152][1500/1737]  
+[02/19 07:59:05] 20260218 INFO: bbox_loss 0.3764 	cls_loss 0.1575 	com_loss 0.1430 	keep_loss 0.0621 	loss 0.8649 	seg_loss 0.0794 	seg_loss_dice 0.0466 	
+[02/19 08:02:34] 20260218 INFO: epoch 152, total time 1485.71, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 08:09:41] 20260218 INFO: Train: [153][500/1737]  
+[02/19 08:09:41] 20260218 INFO: bbox_loss 0.3719 	cls_loss 0.1552 	com_loss 0.1410 	keep_loss 0.0616 	loss 0.8549 	seg_loss 0.0786 	seg_loss_dice 0.0466 	
+[02/19 08:16:59] 20260218 INFO: Train: [153][1000/1737]  
+[02/19 08:16:59] 20260218 INFO: bbox_loss 0.3740 	cls_loss 0.1575 	com_loss 0.1427 	keep_loss 0.0621 	loss 0.8609 	seg_loss 0.0782 	seg_loss_dice 0.0464 	
+[02/19 08:24:09] 20260218 INFO: Train: [153][1500/1737]  
+[02/19 08:24:09] 20260218 INFO: bbox_loss 0.3733 	cls_loss 0.1578 	com_loss 0.1430 	keep_loss 0.0623 	loss 0.8613 	seg_loss 0.0783 	seg_loss_dice 0.0466 	
+[02/19 08:27:30] 20260218 INFO: epoch 153, total time 1496.36, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 08:28:35] 20260218 INFO: Eval: [153]  
+[02/19 08:28:35] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55774
+[02/19 08:28:35] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46466
+[02/19 08:28:35] 20260218 INFO: Acc_mask0.25 0.5744636095919226
+[02/19 08:28:35] 20260218 INFO: Acc_mask0.50 0.4944257467395877
+[02/19 08:35:47] 20260218 INFO: Train: [154][500/1737]  
+[02/19 08:35:47] 20260218 INFO: bbox_loss 0.3730 	cls_loss 0.1542 	com_loss 0.1410 	keep_loss 0.0608 	loss 0.8545 	seg_loss 0.0787 	seg_loss_dice 0.0469 	
+[02/19 08:43:03] 20260218 INFO: Train: [154][1000/1737]  
+[02/19 08:43:03] 20260218 INFO: bbox_loss 0.3728 	cls_loss 0.1546 	com_loss 0.1410 	keep_loss 0.0611 	loss 0.8536 	seg_loss 0.0776 	seg_loss_dice 0.0465 	
+[02/19 08:50:08] 20260218 INFO: Train: [154][1500/1737]  
+[02/19 08:50:08] 20260218 INFO: bbox_loss 0.3726 	cls_loss 0.1558 	com_loss 0.1420 	keep_loss 0.0613 	loss 0.8556 	seg_loss 0.0774 	seg_loss_dice 0.0464 	
+[02/19 08:53:31] 20260218 INFO: epoch 154, total time 1495.70, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 09:01:01] 20260218 INFO: Train: [155][500/1737]  
+[02/19 09:01:01] 20260218 INFO: bbox_loss 0.3750 	cls_loss 0.1567 	com_loss 0.1436 	keep_loss 0.0628 	loss 0.8611 	seg_loss 0.0766 	seg_loss_dice 0.0464 	
+[02/19 09:08:14] 20260218 INFO: Train: [155][1000/1737]  
+[02/19 09:08:14] 20260218 INFO: bbox_loss 0.3748 	cls_loss 0.1577 	com_loss 0.1451 	keep_loss 0.0632 	loss 0.8647 	seg_loss 0.0773 	seg_loss_dice 0.0466 	
+[02/19 09:15:31] 20260218 INFO: Train: [155][1500/1737]  
+[02/19 09:15:31] 20260218 INFO: bbox_loss 0.3741 	cls_loss 0.1571 	com_loss 0.1443 	keep_loss 0.0631 	loss 0.8618 	seg_loss 0.0769 	seg_loss_dice 0.0463 	
+[02/19 09:19:05] 20260218 INFO: epoch 155, total time 1533.80, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 09:26:12] 20260218 INFO: Train: [156][500/1737]  
+[02/19 09:26:12] 20260218 INFO: bbox_loss 0.3719 	cls_loss 0.1580 	com_loss 0.1445 	keep_loss 0.0636 	loss 0.8582 	seg_loss 0.0742 	seg_loss_dice 0.0460 	
+[02/19 09:33:23] 20260218 INFO: Train: [156][1000/1737]  
+[02/19 09:33:23] 20260218 INFO: bbox_loss 0.3744 	cls_loss 0.1569 	com_loss 0.1433 	keep_loss 0.0627 	loss 0.8579 	seg_loss 0.0745 	seg_loss_dice 0.0461 	
+[02/19 09:40:32] 20260218 INFO: Train: [156][1500/1737]  
+[02/19 09:40:32] 20260218 INFO: bbox_loss 0.3739 	cls_loss 0.1560 	com_loss 0.1426 	keep_loss 0.0621 	loss 0.8552 	seg_loss 0.0747 	seg_loss_dice 0.0460 	
+[02/19 09:43:53] 20260218 INFO: epoch 156, total time 1487.85, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 09:44:53] 20260218 INFO: Eval: [156]  
+[02/19 09:44:53] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55595
+[02/19 09:44:53] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46414
+[02/19 09:44:53] 20260218 INFO: Acc_mask0.25 0.572780816154817
+[02/19 09:44:53] 20260218 INFO: Acc_mask0.50 0.4997896508203618
+[02/19 09:52:05] 20260218 INFO: Train: [157][500/1737]  
+[02/19 09:52:05] 20260218 INFO: bbox_loss 0.3753 	cls_loss 0.1565 	com_loss 0.1430 	keep_loss 0.0627 	loss 0.8578 	seg_loss 0.0745 	seg_loss_dice 0.0459 	
+[02/19 09:59:17] 20260218 INFO: Train: [157][1000/1737]  
+[02/19 09:59:17] 20260218 INFO: bbox_loss 0.3751 	cls_loss 0.1570 	com_loss 0.1434 	keep_loss 0.0630 	loss 0.8592 	seg_loss 0.0745 	seg_loss_dice 0.0461 	
+[02/19 10:06:28] 20260218 INFO: Train: [157][1500/1737]  
+[02/19 10:06:28] 20260218 INFO: bbox_loss 0.3748 	cls_loss 0.1573 	com_loss 0.1440 	keep_loss 0.0631 	loss 0.8599 	seg_loss 0.0745 	seg_loss_dice 0.0462 	
+[02/19 10:09:49] 20260218 INFO: epoch 157, total time 1495.77, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 10:16:55] 20260218 INFO: Train: [158][500/1737]  
+[02/19 10:16:55] 20260218 INFO: bbox_loss 0.3721 	cls_loss 0.1569 	com_loss 0.1430 	keep_loss 0.0632 	loss 0.8544 	seg_loss 0.0738 	seg_loss_dice 0.0455 	
+[02/19 10:24:09] 20260218 INFO: Train: [158][1000/1737]  
+[02/19 10:24:09] 20260218 INFO: bbox_loss 0.3716 	cls_loss 0.1565 	com_loss 0.1426 	keep_loss 0.0625 	loss 0.8521 	seg_loss 0.0731 	seg_loss_dice 0.0458 	
+[02/19 10:31:33] 20260218 INFO: Train: [158][1500/1737]  
+[02/19 10:31:33] 20260218 INFO: bbox_loss 0.3753 	cls_loss 0.1569 	com_loss 0.1432 	keep_loss 0.0628 	loss 0.8573 	seg_loss 0.0732 	seg_loss_dice 0.0459 	
+[02/19 10:34:59] 20260218 INFO: epoch 158, total time 1510.08, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 10:42:08] 20260218 INFO: Train: [159][500/1737]  
+[02/19 10:42:08] 20260218 INFO: bbox_loss 0.3800 	cls_loss 0.1576 	com_loss 0.1442 	keep_loss 0.0625 	loss 0.8658 	seg_loss 0.0751 	seg_loss_dice 0.0464 	
+[02/19 10:49:18] 20260218 INFO: Train: [159][1000/1737]  
+[02/19 10:49:18] 20260218 INFO: bbox_loss 0.3766 	cls_loss 0.1551 	com_loss 0.1421 	keep_loss 0.0623 	loss 0.8560 	seg_loss 0.0738 	seg_loss_dice 0.0460 	
+[02/19 10:56:32] 20260218 INFO: Train: [159][1500/1737]  
+[02/19 10:56:32] 20260218 INFO: bbox_loss 0.3766 	cls_loss 0.1554 	com_loss 0.1419 	keep_loss 0.0624 	loss 0.8559 	seg_loss 0.0736 	seg_loss_dice 0.0461 	
+[02/19 10:59:54] 20260218 INFO: epoch 159, total time 1495.57, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 11:00:57] 20260218 INFO: Eval: [159]  
+[02/19 11:00:57] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55585
+[02/19 11:00:57] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46393
+[02/19 11:00:57] 20260218 INFO: Acc_mask0.25 0.5716238956668069
+[02/19 11:00:57] 20260218 INFO: Acc_mask0.50 0.4960033655868742
+[02/19 11:08:02] 20260218 INFO: Train: [160][500/1737]  
+[02/19 11:08:02] 20260218 INFO: bbox_loss 0.3761 	cls_loss 0.1573 	com_loss 0.1434 	keep_loss 0.0630 	loss 0.8582 	seg_loss 0.0723 	seg_loss_dice 0.0462 	
+[02/19 11:15:09] 20260218 INFO: Train: [160][1000/1737]  
+[02/19 11:15:09] 20260218 INFO: bbox_loss 0.3742 	cls_loss 0.1555 	com_loss 0.1420 	keep_loss 0.0625 	loss 0.8523 	seg_loss 0.0722 	seg_loss_dice 0.0458 	
+[02/19 11:22:10] 20260218 INFO: Train: [160][1500/1737]  
+[02/19 11:22:10] 20260218 INFO: bbox_loss 0.3749 	cls_loss 0.1557 	com_loss 0.1422 	keep_loss 0.0625 	loss 0.8540 	seg_loss 0.0726 	seg_loss_dice 0.0461 	
+[02/19 11:25:27] 20260218 INFO: epoch 160, total time 1470.30, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 11:32:38] 20260218 INFO: Train: [161][500/1737]  
+[02/19 11:32:38] 20260218 INFO: bbox_loss 0.3786 	cls_loss 0.1556 	com_loss 0.1415 	keep_loss 0.0629 	loss 0.8560 	seg_loss 0.0720 	seg_loss_dice 0.0454 	
+[02/19 11:39:45] 20260218 INFO: Train: [161][1000/1737]  
+[02/19 11:39:45] 20260218 INFO: bbox_loss 0.3762 	cls_loss 0.1545 	com_loss 0.1413 	keep_loss 0.0625 	loss 0.8517 	seg_loss 0.0716 	seg_loss_dice 0.0456 	
+[02/19 11:46:59] 20260218 INFO: Train: [161][1500/1737]  
+[02/19 11:46:59] 20260218 INFO: bbox_loss 0.3744 	cls_loss 0.1544 	com_loss 0.1409 	keep_loss 0.0622 	loss 0.8489 	seg_loss 0.0714 	seg_loss_dice 0.0455 	
+[02/19 11:50:19] 20260218 INFO: epoch 161, total time 1491.60, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 11:57:26] 20260218 INFO: Train: [162][500/1737]  
+[02/19 11:57:26] 20260218 INFO: bbox_loss 0.3714 	cls_loss 0.1563 	com_loss 0.1432 	keep_loss 0.0624 	loss 0.8500 	seg_loss 0.0710 	seg_loss_dice 0.0456 	
+[02/19 12:04:31] 20260218 INFO: Train: [162][1000/1737]  
+[02/19 12:04:31] 20260218 INFO: bbox_loss 0.3719 	cls_loss 0.1549 	com_loss 0.1415 	keep_loss 0.0626 	loss 0.8475 	seg_loss 0.0711 	seg_loss_dice 0.0455 	
+[02/19 12:11:44] 20260218 INFO: Train: [162][1500/1737]  
+[02/19 12:11:44] 20260218 INFO: bbox_loss 0.3721 	cls_loss 0.1558 	com_loss 0.1426 	keep_loss 0.0628 	loss 0.8501 	seg_loss 0.0712 	seg_loss_dice 0.0456 	
+[02/19 12:15:05] 20260218 INFO: epoch 162, total time 1486.57, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 12:16:09] 20260218 INFO: Eval: [162]  
+[02/19 12:16:09] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55648
+[02/19 12:16:09] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46592
+[02/19 12:16:09] 20260218 INFO: Acc_mask0.25 0.5721497686159024
+[02/19 12:16:09] 20260218 INFO: Acc_mask0.50 0.5041018090029449
+[02/19 12:23:19] 20260218 INFO: Train: [163][500/1737]  
+[02/19 12:23:19] 20260218 INFO: bbox_loss 0.3698 	cls_loss 0.1531 	com_loss 0.1396 	keep_loss 0.0621 	loss 0.8409 	seg_loss 0.0706 	seg_loss_dice 0.0457 	
+[02/19 12:30:30] 20260218 INFO: Train: [163][1000/1737]  
+[02/19 12:30:30] 20260218 INFO: bbox_loss 0.3728 	cls_loss 0.1544 	com_loss 0.1411 	keep_loss 0.0623 	loss 0.8471 	seg_loss 0.0705 	seg_loss_dice 0.0461 	
+[02/19 12:37:57] 20260218 INFO: Train: [163][1500/1737]  
+[02/19 12:37:57] 20260218 INFO: bbox_loss 0.3728 	cls_loss 0.1552 	com_loss 0.1422 	keep_loss 0.0625 	loss 0.8485 	seg_loss 0.0700 	seg_loss_dice 0.0458 	
+[02/19 12:41:37] 20260218 INFO: epoch 163, total time 1527.90, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 12:48:48] 20260218 INFO: Train: [164][500/1737]  
+[02/19 12:48:48] 20260218 INFO: bbox_loss 0.3762 	cls_loss 0.1555 	com_loss 0.1420 	keep_loss 0.0627 	loss 0.8518 	seg_loss 0.0697 	seg_loss_dice 0.0456 	
+[02/19 12:56:00] 20260218 INFO: Train: [164][1000/1737]  
+[02/19 12:56:00] 20260218 INFO: bbox_loss 0.3754 	cls_loss 0.1551 	com_loss 0.1420 	keep_loss 0.0621 	loss 0.8504 	seg_loss 0.0702 	seg_loss_dice 0.0457 	
+[02/19 13:03:13] 20260218 INFO: Train: [164][1500/1737]  
+[02/19 13:03:13] 20260218 INFO: bbox_loss 0.3752 	cls_loss 0.1558 	com_loss 0.1420 	keep_loss 0.0621 	loss 0.8506 	seg_loss 0.0700 	seg_loss_dice 0.0455 	
+[02/19 13:06:35] 20260218 INFO: epoch 164, total time 1498.71, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 13:13:43] 20260218 INFO: Train: [165][500/1737]  
+[02/19 13:13:43] 20260218 INFO: bbox_loss 0.3711 	cls_loss 0.1543 	com_loss 0.1400 	keep_loss 0.0623 	loss 0.8402 	seg_loss 0.0675 	seg_loss_dice 0.0450 	
+[02/19 13:20:47] 20260218 INFO: Train: [165][1000/1737]  
+[02/19 13:20:47] 20260218 INFO: bbox_loss 0.3717 	cls_loss 0.1548 	com_loss 0.1415 	keep_loss 0.0623 	loss 0.8437 	seg_loss 0.0684 	seg_loss_dice 0.0450 	
+[02/19 13:28:00] 20260218 INFO: Train: [165][1500/1737]  
+[02/19 13:28:00] 20260218 INFO: bbox_loss 0.3733 	cls_loss 0.1551 	com_loss 0.1415 	keep_loss 0.0622 	loss 0.8464 	seg_loss 0.0691 	seg_loss_dice 0.0451 	
+[02/19 13:31:20] 20260218 INFO: epoch 165, total time 1484.37, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 13:32:23] 20260218 INFO: Eval: [165]  
+[02/19 13:32:23] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55848
+[02/19 13:32:23] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46634
+[02/19 13:32:23] 20260218 INFO: Acc_mask0.25 0.5755153554901136
+[02/19 13:32:23] 20260218 INFO: Acc_mask0.50 0.503155237694573
+[02/19 13:39:45] 20260218 INFO: Train: [166][500/1737]  
+[02/19 13:39:45] 20260218 INFO: bbox_loss 0.3773 	cls_loss 0.1550 	com_loss 0.1425 	keep_loss 0.0625 	loss 0.8520 	seg_loss 0.0689 	seg_loss_dice 0.0457 	
+[02/19 13:46:53] 20260218 INFO: Train: [166][1000/1737]  
+[02/19 13:46:53] 20260218 INFO: bbox_loss 0.3736 	cls_loss 0.1540 	com_loss 0.1414 	keep_loss 0.0626 	loss 0.8456 	seg_loss 0.0687 	seg_loss_dice 0.0454 	
+[02/19 13:54:08] 20260218 INFO: Train: [166][1500/1737]  
+[02/19 13:54:08] 20260218 INFO: bbox_loss 0.3743 	cls_loss 0.1532 	com_loss 0.1403 	keep_loss 0.0620 	loss 0.8444 	seg_loss 0.0688 	seg_loss_dice 0.0455 	
+[02/19 13:57:28] 20260218 INFO: epoch 166, total time 1504.44, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 14:04:36] 20260218 INFO: Train: [167][500/1737]  
+[02/19 14:04:36] 20260218 INFO: bbox_loss 0.3761 	cls_loss 0.1552 	com_loss 0.1415 	keep_loss 0.0612 	loss 0.8476 	seg_loss 0.0682 	seg_loss_dice 0.0453 	
+[02/19 14:11:53] 20260218 INFO: Train: [167][1000/1737]  
+[02/19 14:11:53] 20260218 INFO: bbox_loss 0.3775 	cls_loss 0.1550 	com_loss 0.1416 	keep_loss 0.0620 	loss 0.8501 	seg_loss 0.0685 	seg_loss_dice 0.0454 	
+[02/19 14:19:15] 20260218 INFO: Train: [167][1500/1737]  
+[02/19 14:19:15] 20260218 INFO: bbox_loss 0.3762 	cls_loss 0.1547 	com_loss 0.1411 	keep_loss 0.0620 	loss 0.8475 	seg_loss 0.0683 	seg_loss_dice 0.0453 	
+[02/19 14:22:55] 20260218 INFO: epoch 167, total time 1527.83, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 14:30:03] 20260218 INFO: Train: [168][500/1737]  
+[02/19 14:30:03] 20260218 INFO: bbox_loss 0.3769 	cls_loss 0.1541 	com_loss 0.1404 	keep_loss 0.0620 	loss 0.8461 	seg_loss 0.0677 	seg_loss_dice 0.0449 	
+[02/19 14:37:07] 20260218 INFO: Train: [168][1000/1737]  
+[02/19 14:37:07] 20260218 INFO: bbox_loss 0.3749 	cls_loss 0.1545 	com_loss 0.1405 	keep_loss 0.0624 	loss 0.8456 	seg_loss 0.0680 	seg_loss_dice 0.0454 	
+[02/19 14:44:18] 20260218 INFO: Train: [168][1500/1737]  
+[02/19 14:44:18] 20260218 INFO: bbox_loss 0.3753 	cls_loss 0.1552 	com_loss 0.1409 	keep_loss 0.0625 	loss 0.8476 	seg_loss 0.0682 	seg_loss_dice 0.0455 	
+[02/19 14:47:37] 20260218 INFO: epoch 168, total time 1481.60, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 14:48:39] 20260218 INFO: Eval: [168]  
+[02/19 14:48:39] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55764
+[02/19 14:48:39] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46708
+[02/19 14:48:39] 20260218 INFO: Acc_mask0.25 0.5743584350021035
+[02/19 14:48:39] 20260218 INFO: Acc_mask0.50 0.5072570466975179
+[02/19 14:55:47] 20260218 INFO: Train: [169][500/1737]  
+[02/19 14:55:47] 20260218 INFO: bbox_loss 0.3724 	cls_loss 0.1539 	com_loss 0.1399 	keep_loss 0.0619 	loss 0.8394 	seg_loss 0.0662 	seg_loss_dice 0.0452 	
+[02/19 15:02:53] 20260218 INFO: Train: [169][1000/1737]  
+[02/19 15:02:53] 20260218 INFO: bbox_loss 0.3738 	cls_loss 0.1545 	com_loss 0.1408 	keep_loss 0.0623 	loss 0.8437 	seg_loss 0.0668 	seg_loss_dice 0.0454 	
+[02/19 15:10:02] 20260218 INFO: Train: [169][1500/1737]  
+[02/19 15:10:02] 20260218 INFO: bbox_loss 0.3731 	cls_loss 0.1540 	com_loss 0.1404 	keep_loss 0.0620 	loss 0.8418 	seg_loss 0.0668 	seg_loss_dice 0.0454 	
+[02/19 15:13:24] 20260218 INFO: epoch 169, total time 1484.56, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 15:20:36] 20260218 INFO: Train: [170][500/1737]  
+[02/19 15:20:36] 20260218 INFO: bbox_loss 0.3757 	cls_loss 0.1522 	com_loss 0.1408 	keep_loss 0.0630 	loss 0.8455 	seg_loss 0.0679 	seg_loss_dice 0.0459 	
+[02/19 15:27:44] 20260218 INFO: Train: [170][1000/1737]  
+[02/19 15:27:44] 20260218 INFO: bbox_loss 0.3757 	cls_loss 0.1524 	com_loss 0.1405 	keep_loss 0.0630 	loss 0.8447 	seg_loss 0.0673 	seg_loss_dice 0.0458 	
+[02/19 15:34:59] 20260218 INFO: Train: [170][1500/1737]  
+[02/19 15:34:59] 20260218 INFO: bbox_loss 0.3738 	cls_loss 0.1527 	com_loss 0.1405 	keep_loss 0.0630 	loss 0.8423 	seg_loss 0.0666 	seg_loss_dice 0.0456 	
+[02/19 15:38:22] 20260218 INFO: epoch 170, total time 1498.64, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 15:45:34] 20260218 INFO: Train: [171][500/1737]  
+[02/19 15:45:34] 20260218 INFO: bbox_loss 0.3710 	cls_loss 0.1544 	com_loss 0.1410 	keep_loss 0.0626 	loss 0.8391 	seg_loss 0.0653 	seg_loss_dice 0.0448 	
+[02/19 15:52:44] 20260218 INFO: Train: [171][1000/1737]  
+[02/19 15:52:44] 20260218 INFO: bbox_loss 0.3728 	cls_loss 0.1538 	com_loss 0.1403 	keep_loss 0.0625 	loss 0.8403 	seg_loss 0.0659 	seg_loss_dice 0.0450 	
+[02/19 16:00:10] 20260218 INFO: Train: [171][1500/1737]  
+[02/19 16:00:10] 20260218 INFO: bbox_loss 0.3732 	cls_loss 0.1539 	com_loss 0.1408 	keep_loss 0.0624 	loss 0.8417 	seg_loss 0.0662 	seg_loss_dice 0.0452 	
+[02/19 16:03:48] 20260218 INFO: epoch 171, total time 1525.42, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 16:04:49] 20260218 INFO: Eval: [171]  
+[02/19 16:04:49] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55869
+[02/19 16:04:49] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46592
+[02/19 16:04:49] 20260218 INFO: Acc_mask0.25 0.5760412284392091
+[02/19 16:04:49] 20260218 INFO: Acc_mask0.50 0.5070466975178797
+[02/19 16:11:56] 20260218 INFO: Train: [172][500/1737]  
+[02/19 16:11:56] 20260218 INFO: bbox_loss 0.3767 	cls_loss 0.1551 	com_loss 0.1420 	keep_loss 0.0618 	loss 0.8484 	seg_loss 0.0676 	seg_loss_dice 0.0452 	
+[02/19 16:19:03] 20260218 INFO: Train: [172][1000/1737]  
+[02/19 16:19:03] 20260218 INFO: bbox_loss 0.3769 	cls_loss 0.1551 	com_loss 0.1416 	keep_loss 0.0621 	loss 0.8481 	seg_loss 0.0671 	seg_loss_dice 0.0454 	
+[02/19 16:26:12] 20260218 INFO: Train: [172][1500/1737]  
+[02/19 16:26:12] 20260218 INFO: bbox_loss 0.3754 	cls_loss 0.1546 	com_loss 0.1415 	keep_loss 0.0624 	loss 0.8457 	seg_loss 0.0666 	seg_loss_dice 0.0452 	
+[02/19 16:29:34] 20260218 INFO: epoch 172, total time 1484.90, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 16:36:44] 20260218 INFO: Train: [173][500/1737]  
+[02/19 16:36:44] 20260218 INFO: bbox_loss 0.3724 	cls_loss 0.1544 	com_loss 0.1403 	keep_loss 0.0620 	loss 0.8410 	seg_loss 0.0667 	seg_loss_dice 0.0453 	
+[02/19 16:43:51] 20260218 INFO: Train: [173][1000/1737]  
+[02/19 16:43:51] 20260218 INFO: bbox_loss 0.3736 	cls_loss 0.1548 	com_loss 0.1414 	keep_loss 0.0624 	loss 0.8435 	seg_loss 0.0662 	seg_loss_dice 0.0452 	
+[02/19 16:51:03] 20260218 INFO: Train: [173][1500/1737]  
+[02/19 16:51:03] 20260218 INFO: bbox_loss 0.3720 	cls_loss 0.1531 	com_loss 0.1404 	keep_loss 0.0622 	loss 0.8386 	seg_loss 0.0659 	seg_loss_dice 0.0451 	
+[02/19 16:54:27] 20260218 INFO: epoch 173, total time 1492.52, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 17:01:38] 20260218 INFO: Train: [174][500/1737]  
+[02/19 17:01:38] 20260218 INFO: bbox_loss 0.3753 	cls_loss 0.1541 	com_loss 0.1403 	keep_loss 0.0625 	loss 0.8428 	seg_loss 0.0655 	seg_loss_dice 0.0452 	
+[02/19 17:08:51] 20260218 INFO: Train: [174][1000/1737]  
+[02/19 17:08:51] 20260218 INFO: bbox_loss 0.3747 	cls_loss 0.1537 	com_loss 0.1402 	keep_loss 0.0620 	loss 0.8413 	seg_loss 0.0653 	seg_loss_dice 0.0453 	
+[02/19 17:16:13] 20260218 INFO: Train: [174][1500/1737]  
+[02/19 17:16:13] 20260218 INFO: bbox_loss 0.3732 	cls_loss 0.1535 	com_loss 0.1403 	keep_loss 0.0620 	loss 0.8391 	seg_loss 0.0650 	seg_loss_dice 0.0450 	
+[02/19 17:19:36] 20260218 INFO: epoch 174, total time 1508.70, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0010000
+[02/19 17:20:38] 20260218 INFO: Eval: [174]  
+[02/19 17:20:38] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55911
+[02/19 17:20:38] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46424
+[02/19 17:20:38] 20260218 INFO: Acc_mask0.25 0.5750946571308372
+[02/19 17:20:38] 20260218 INFO: Acc_mask0.50 0.5068363483382414
+[02/19 17:27:48] 20260218 INFO: Train: [175][500/1737]  
+[02/19 17:27:48] 20260218 INFO: bbox_loss 0.3690 	cls_loss 0.1549 	com_loss 0.1425 	keep_loss 0.0623 	loss 0.8390 	seg_loss 0.0651 	seg_loss_dice 0.0451 	
+[02/19 17:34:53] 20260218 INFO: Train: [175][1000/1737]  
+[02/19 17:34:53] 20260218 INFO: bbox_loss 0.3694 	cls_loss 0.1548 	com_loss 0.1427 	keep_loss 0.0622 	loss 0.8388 	seg_loss 0.0648 	seg_loss_dice 0.0450 	
+[02/19 17:42:05] 20260218 INFO: Train: [175][1500/1737]  
+[02/19 17:42:05] 20260218 INFO: bbox_loss 0.3714 	cls_loss 0.1542 	com_loss 0.1418 	keep_loss 0.0619 	loss 0.8395 	seg_loss 0.0650 	seg_loss_dice 0.0451 	
+[02/19 17:45:30] 20260218 INFO: epoch 175, total time 1491.38, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 17:52:38] 20260218 INFO: Train: [176][500/1737]  
+[02/19 17:52:38] 20260218 INFO: bbox_loss 0.3761 	cls_loss 0.1543 	com_loss 0.1411 	keep_loss 0.0619 	loss 0.8425 	seg_loss 0.0638 	seg_loss_dice 0.0453 	
+[02/19 17:59:46] 20260218 INFO: Train: [176][1000/1737]  
+[02/19 17:59:46] 20260218 INFO: bbox_loss 0.3728 	cls_loss 0.1533 	com_loss 0.1396 	keep_loss 0.0620 	loss 0.8360 	seg_loss 0.0631 	seg_loss_dice 0.0452 	
+[02/19 18:07:05] 20260218 INFO: Train: [176][1500/1737]  
+[02/19 18:07:05] 20260218 INFO: bbox_loss 0.3726 	cls_loss 0.1534 	com_loss 0.1401 	keep_loss 0.0621 	loss 0.8365 	seg_loss 0.0632 	seg_loss_dice 0.0451 	
+[02/19 18:10:32] 20260218 INFO: epoch 176, total time 1502.21, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 18:17:40] 20260218 INFO: Train: [177][500/1737]  
+[02/19 18:17:40] 20260218 INFO: bbox_loss 0.3753 	cls_loss 0.1530 	com_loss 0.1412 	keep_loss 0.0630 	loss 0.8399 	seg_loss 0.0620 	seg_loss_dice 0.0453 	
+[02/19 18:24:44] 20260218 INFO: Train: [177][1000/1737]  
+[02/19 18:24:44] 20260218 INFO: bbox_loss 0.3748 	cls_loss 0.1512 	com_loss 0.1388 	keep_loss 0.0616 	loss 0.8342 	seg_loss 0.0625 	seg_loss_dice 0.0452 	
+[02/19 18:31:55] 20260218 INFO: Train: [177][1500/1737]  
+[02/19 18:31:55] 20260218 INFO: bbox_loss 0.3745 	cls_loss 0.1519 	com_loss 0.1392 	keep_loss 0.0620 	loss 0.8350 	seg_loss 0.0624 	seg_loss_dice 0.0450 	
+[02/19 18:35:19] 20260218 INFO: epoch 177, total time 1486.61, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 18:36:20] 20260218 INFO: Eval: [177]  
+[02/19 18:36:20] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55732
+[02/19 18:36:20] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46498
+[02/19 18:36:20] 20260218 INFO: Acc_mask0.25 0.5754101809002945
+[02/19 18:36:20] 20260218 INFO: Acc_mask0.50 0.506310475389146
+[02/19 18:43:55] 20260218 INFO: Train: [178][500/1737]  
+[02/19 18:43:55] 20260218 INFO: bbox_loss 0.3702 	cls_loss 0.1539 	com_loss 0.1413 	keep_loss 0.0626 	loss 0.8331 	seg_loss 0.0608 	seg_loss_dice 0.0443 	
+[02/19 18:51:06] 20260218 INFO: Train: [178][1000/1737]  
+[02/19 18:51:06] 20260218 INFO: bbox_loss 0.3714 	cls_loss 0.1526 	com_loss 0.1398 	keep_loss 0.0622 	loss 0.8318 	seg_loss 0.0613 	seg_loss_dice 0.0446 	
+[02/19 18:58:09] 20260218 INFO: Train: [178][1500/1737]  
+[02/19 18:58:09] 20260218 INFO: bbox_loss 0.3727 	cls_loss 0.1534 	com_loss 0.1402 	keep_loss 0.0620 	loss 0.8344 	seg_loss 0.0615 	seg_loss_dice 0.0447 	
+[02/19 19:01:30] 20260218 INFO: epoch 178, total time 1510.19, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 19:08:39] 20260218 INFO: Train: [179][500/1737]  
+[02/19 19:08:39] 20260218 INFO: bbox_loss 0.3714 	cls_loss 0.1536 	com_loss 0.1407 	keep_loss 0.0624 	loss 0.8336 	seg_loss 0.0610 	seg_loss_dice 0.0446 	
+[02/19 19:15:48] 20260218 INFO: Train: [179][1000/1737]  
+[02/19 19:15:48] 20260218 INFO: bbox_loss 0.3717 	cls_loss 0.1533 	com_loss 0.1398 	keep_loss 0.0622 	loss 0.8325 	seg_loss 0.0608 	seg_loss_dice 0.0446 	
+[02/19 19:23:04] 20260218 INFO: Train: [179][1500/1737]  
+[02/19 19:23:04] 20260218 INFO: bbox_loss 0.3733 	cls_loss 0.1547 	com_loss 0.1410 	keep_loss 0.0622 	loss 0.8373 	seg_loss 0.0614 	seg_loss_dice 0.0447 	
+[02/19 19:26:30] 20260218 INFO: epoch 179, total time 1500.75, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 19:33:41] 20260218 INFO: Train: [180][500/1737]  
+[02/19 19:33:41] 20260218 INFO: bbox_loss 0.3741 	cls_loss 0.1540 	com_loss 0.1412 	keep_loss 0.0624 	loss 0.8391 	seg_loss 0.0624 	seg_loss_dice 0.0451 	
+[02/19 19:40:47] 20260218 INFO: Train: [180][1000/1737]  
+[02/19 19:40:47] 20260218 INFO: bbox_loss 0.3749 	cls_loss 0.1544 	com_loss 0.1411 	keep_loss 0.0621 	loss 0.8396 	seg_loss 0.0623 	seg_loss_dice 0.0448 	
+[02/19 19:47:55] 20260218 INFO: Train: [180][1500/1737]  
+[02/19 19:47:55] 20260218 INFO: bbox_loss 0.3737 	cls_loss 0.1548 	com_loss 0.1415 	keep_loss 0.0624 	loss 0.8386 	seg_loss 0.0617 	seg_loss_dice 0.0446 	
+[02/19 19:51:21] 20260218 INFO: epoch 180, total time 1490.79, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 19:52:23] 20260218 INFO: Eval: [180]  
+[02/19 19:52:23] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55743
+[02/19 19:52:23] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46477
+[02/19 19:52:23] 20260218 INFO: Acc_mask0.25 0.5744636095919226
+[02/19 19:52:23] 20260218 INFO: Acc_mask0.50 0.5072570466975179
+[02/19 19:59:31] 20260218 INFO: Train: [181][500/1737]  
+[02/19 19:59:31] 20260218 INFO: bbox_loss 0.3785 	cls_loss 0.1556 	com_loss 0.1423 	keep_loss 0.0630 	loss 0.8454 	seg_loss 0.0611 	seg_loss_dice 0.0449 	
+[02/19 20:06:34] 20260218 INFO: Train: [181][1000/1737]  
+[02/19 20:06:34] 20260218 INFO: bbox_loss 0.3749 	cls_loss 0.1554 	com_loss 0.1423 	keep_loss 0.0627 	loss 0.8413 	seg_loss 0.0612 	seg_loss_dice 0.0448 	
+[02/19 20:13:45] 20260218 INFO: Train: [181][1500/1737]  
+[02/19 20:13:45] 20260218 INFO: bbox_loss 0.3748 	cls_loss 0.1544 	com_loss 0.1415 	keep_loss 0.0624 	loss 0.8399 	seg_loss 0.0617 	seg_loss_dice 0.0450 	
+[02/19 20:17:09] 20260218 INFO: epoch 181, total time 1485.53, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 20:24:20] 20260218 INFO: Train: [182][500/1737]  
+[02/19 20:24:20] 20260218 INFO: bbox_loss 0.3750 	cls_loss 0.1531 	com_loss 0.1383 	keep_loss 0.0621 	loss 0.8353 	seg_loss 0.0618 	seg_loss_dice 0.0450 	
+[02/19 20:31:22] 20260218 INFO: Train: [182][1000/1737]  
+[02/19 20:31:22] 20260218 INFO: bbox_loss 0.3734 	cls_loss 0.1530 	com_loss 0.1388 	keep_loss 0.0623 	loss 0.8338 	seg_loss 0.0614 	seg_loss_dice 0.0449 	
+[02/19 20:38:33] 20260218 INFO: Train: [182][1500/1737]  
+[02/19 20:38:33] 20260218 INFO: bbox_loss 0.3750 	cls_loss 0.1543 	com_loss 0.1399 	keep_loss 0.0625 	loss 0.8377 	seg_loss 0.0612 	seg_loss_dice 0.0448 	
+[02/19 20:41:56] 20260218 INFO: epoch 182, total time 1487.51, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 20:49:06] 20260218 INFO: Train: [183][500/1737]  
+[02/19 20:49:06] 20260218 INFO: bbox_loss 0.3765 	cls_loss 0.1524 	com_loss 0.1386 	keep_loss 0.0619 	loss 0.8351 	seg_loss 0.0612 	seg_loss_dice 0.0445 	
+[02/19 20:56:11] 20260218 INFO: Train: [183][1000/1737]  
+[02/19 20:56:11] 20260218 INFO: bbox_loss 0.3728 	cls_loss 0.1530 	com_loss 0.1396 	keep_loss 0.0621 	loss 0.8321 	seg_loss 0.0603 	seg_loss_dice 0.0444 	
+[02/19 21:03:23] 20260218 INFO: Train: [183][1500/1737]  
+[02/19 21:03:23] 20260218 INFO: bbox_loss 0.3737 	cls_loss 0.1528 	com_loss 0.1399 	keep_loss 0.0618 	loss 0.8328 	seg_loss 0.0603 	seg_loss_dice 0.0443 	
+[02/19 21:06:49] 20260218 INFO: epoch 183, total time 1493.05, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 21:07:52] 20260218 INFO: Eval: [183]  
+[02/19 21:07:52] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55606
+[02/19 21:07:52] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46487
+[02/19 21:07:52] 20260218 INFO: Acc_mask0.25 0.5748843079511989
+[02/19 21:07:52] 20260218 INFO: Acc_mask0.50 0.5061001262095077
+[02/19 21:15:02] 20260218 INFO: Train: [184][500/1737]  
+[02/19 21:15:02] 20260218 INFO: bbox_loss 0.3738 	cls_loss 0.1555 	com_loss 0.1411 	keep_loss 0.0622 	loss 0.8379 	seg_loss 0.0607 	seg_loss_dice 0.0446 	
+[02/19 21:22:15] 20260218 INFO: Train: [184][1000/1737]  
+[02/19 21:22:15] 20260218 INFO: bbox_loss 0.3707 	cls_loss 0.1529 	com_loss 0.1401 	keep_loss 0.0617 	loss 0.8308 	seg_loss 0.0609 	seg_loss_dice 0.0446 	
+[02/19 21:29:28] 20260218 INFO: Train: [184][1500/1737]  
+[02/19 21:29:28] 20260218 INFO: bbox_loss 0.3711 	cls_loss 0.1528 	com_loss 0.1398 	keep_loss 0.0619 	loss 0.8304 	seg_loss 0.0603 	seg_loss_dice 0.0444 	
+[02/19 21:32:55] 20260218 INFO: epoch 184, total time 1502.85, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 21:40:04] 20260218 INFO: Train: [185][500/1737]  
+[02/19 21:40:04] 20260218 INFO: bbox_loss 0.3729 	cls_loss 0.1520 	com_loss 0.1385 	keep_loss 0.0617 	loss 0.8305 	seg_loss 0.0609 	seg_loss_dice 0.0445 	
+[02/19 21:47:06] 20260218 INFO: Train: [185][1000/1737]  
+[02/19 21:47:06] 20260218 INFO: bbox_loss 0.3717 	cls_loss 0.1526 	com_loss 0.1393 	keep_loss 0.0624 	loss 0.8308 	seg_loss 0.0604 	seg_loss_dice 0.0445 	
+[02/19 21:54:24] 20260218 INFO: Train: [185][1500/1737]  
+[02/19 21:54:24] 20260218 INFO: bbox_loss 0.3709 	cls_loss 0.1525 	com_loss 0.1388 	keep_loss 0.0621 	loss 0.8292 	seg_loss 0.0602 	seg_loss_dice 0.0446 	
+[02/19 21:57:50] 20260218 INFO: epoch 185, total time 1495.06, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 22:04:53] 20260218 INFO: Train: [186][500/1737]  
+[02/19 22:04:53] 20260218 INFO: bbox_loss 0.3729 	cls_loss 0.1536 	com_loss 0.1405 	keep_loss 0.0627 	loss 0.8344 	seg_loss 0.0599 	seg_loss_dice 0.0449 	
+[02/19 22:11:54] 20260218 INFO: Train: [186][1000/1737]  
+[02/19 22:11:54] 20260218 INFO: bbox_loss 0.3742 	cls_loss 0.1537 	com_loss 0.1401 	keep_loss 0.0627 	loss 0.8354 	seg_loss 0.0602 	seg_loss_dice 0.0447 	
+[02/19 22:18:58] 20260218 INFO: Train: [186][1500/1737]  
+[02/19 22:18:58] 20260218 INFO: bbox_loss 0.3730 	cls_loss 0.1536 	com_loss 0.1402 	keep_loss 0.0625 	loss 0.8342 	seg_loss 0.0602 	seg_loss_dice 0.0446 	
+[02/19 22:22:22] 20260218 INFO: epoch 186, total time 1472.79, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 22:23:25] 20260218 INFO: Eval: [186]  
+[02/19 22:23:25] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55543
+[02/19 22:23:25] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46224
+[02/19 22:23:25] 20260218 INFO: Acc_mask0.25 0.5723601177955406
+[02/19 22:23:25] 20260218 INFO: Acc_mask0.50 0.5066259991586033
+[02/19 22:30:35] 20260218 INFO: Train: [187][500/1737]  
+[02/19 22:30:35] 20260218 INFO: bbox_loss 0.3760 	cls_loss 0.1528 	com_loss 0.1410 	keep_loss 0.0626 	loss 0.8380 	seg_loss 0.0609 	seg_loss_dice 0.0447 	
+[02/19 22:37:41] 20260218 INFO: Train: [187][1000/1737]  
+[02/19 22:37:41] 20260218 INFO: bbox_loss 0.3752 	cls_loss 0.1527 	com_loss 0.1398 	keep_loss 0.0624 	loss 0.8352 	seg_loss 0.0603 	seg_loss_dice 0.0447 	
+[02/19 22:44:49] 20260218 INFO: Train: [187][1500/1737]  
+[02/19 22:44:49] 20260218 INFO: bbox_loss 0.3748 	cls_loss 0.1536 	com_loss 0.1404 	keep_loss 0.0625 	loss 0.8362 	seg_loss 0.0604 	seg_loss_dice 0.0446 	
+[02/19 22:48:18] 20260218 INFO: epoch 187, total time 1492.57, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 22:55:26] 20260218 INFO: Train: [188][500/1737]  
+[02/19 22:55:26] 20260218 INFO: bbox_loss 0.3723 	cls_loss 0.1520 	com_loss 0.1404 	keep_loss 0.0623 	loss 0.8319 	seg_loss 0.0601 	seg_loss_dice 0.0448 	
+[02/19 23:02:30] 20260218 INFO: Train: [188][1000/1737]  
+[02/19 23:02:30] 20260218 INFO: bbox_loss 0.3734 	cls_loss 0.1538 	com_loss 0.1417 	keep_loss 0.0625 	loss 0.8362 	seg_loss 0.0601 	seg_loss_dice 0.0448 	
+[02/19 23:09:40] 20260218 INFO: Train: [188][1500/1737]  
+[02/19 23:09:40] 20260218 INFO: bbox_loss 0.3733 	cls_loss 0.1538 	com_loss 0.1411 	keep_loss 0.0626 	loss 0.8353 	seg_loss 0.0600 	seg_loss_dice 0.0446 	
+[02/19 23:13:05] 20260218 INFO: epoch 188, total time 1487.61, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 23:20:12] 20260218 INFO: Train: [189][500/1737]  
+[02/19 23:20:12] 20260218 INFO: bbox_loss 0.3764 	cls_loss 0.1520 	com_loss 0.1374 	keep_loss 0.0619 	loss 0.8334 	seg_loss 0.0611 	seg_loss_dice 0.0446 	
+[02/19 23:27:13] 20260218 INFO: Train: [189][1000/1737]  
+[02/19 23:27:13] 20260218 INFO: bbox_loss 0.3725 	cls_loss 0.1521 	com_loss 0.1383 	keep_loss 0.0620 	loss 0.8303 	seg_loss 0.0604 	seg_loss_dice 0.0450 	
+[02/19 23:34:22] 20260218 INFO: Train: [189][1500/1737]  
+[02/19 23:34:22] 20260218 INFO: bbox_loss 0.3740 	cls_loss 0.1536 	com_loss 0.1398 	keep_loss 0.0621 	loss 0.8352 	seg_loss 0.0607 	seg_loss_dice 0.0450 	
+[02/19 23:37:48] 20260218 INFO: epoch 189, total time 1482.72, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0001000
+[02/19 23:38:50] 20260218 INFO: Eval: [189]  
+[02/19 23:38:50] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55690
+[02/19 23:38:50] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46645
+[02/19 23:38:50] 20260218 INFO: Acc_mask0.25 0.5750946571308372
+[02/19 23:38:50] 20260218 INFO: Acc_mask0.50 0.5079932688262516
+[02/19 23:46:17] 20260218 INFO: Train: [190][500/1737]  
+[02/19 23:46:17] 20260218 INFO: bbox_loss 0.3716 	cls_loss 0.1508 	com_loss 0.1368 	keep_loss 0.0611 	loss 0.8264 	seg_loss 0.0612 	seg_loss_dice 0.0448 	
+[02/19 23:53:23] 20260218 INFO: Train: [190][1000/1737]  
+[02/19 23:53:23] 20260218 INFO: bbox_loss 0.3741 	cls_loss 0.1522 	com_loss 0.1380 	keep_loss 0.0615 	loss 0.8310 	seg_loss 0.0604 	seg_loss_dice 0.0447 	
+[02/20 00:00:36] 20260218 INFO: Train: [190][1500/1737]  
+[02/20 00:00:36] 20260218 INFO: bbox_loss 0.3729 	cls_loss 0.1516 	com_loss 0.1378 	keep_loss 0.0618 	loss 0.8290 	seg_loss 0.0603 	seg_loss_dice 0.0446 	
+[02/20 00:04:01] 20260218 INFO: epoch 190, total time 1510.28, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 00:11:13] 20260218 INFO: Train: [191][500/1737]  
+[02/20 00:11:13] 20260218 INFO: bbox_loss 0.3737 	cls_loss 0.1521 	com_loss 0.1391 	keep_loss 0.0617 	loss 0.8317 	seg_loss 0.0604 	seg_loss_dice 0.0446 	
+[02/20 00:18:23] 20260218 INFO: Train: [191][1000/1737]  
+[02/20 00:18:23] 20260218 INFO: bbox_loss 0.3729 	cls_loss 0.1536 	com_loss 0.1403 	keep_loss 0.0620 	loss 0.8335 	seg_loss 0.0600 	seg_loss_dice 0.0448 	
+[02/20 00:25:31] 20260218 INFO: Train: [191][1500/1737]  
+[02/20 00:25:31] 20260218 INFO: bbox_loss 0.3736 	cls_loss 0.1535 	com_loss 0.1406 	keep_loss 0.0620 	loss 0.8344 	seg_loss 0.0601 	seg_loss_dice 0.0447 	
+[02/20 00:28:57] 20260218 INFO: epoch 191, total time 1496.60, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 00:36:07] 20260218 INFO: Train: [192][500/1737]  
+[02/20 00:36:07] 20260218 INFO: bbox_loss 0.3747 	cls_loss 0.1524 	com_loss 0.1394 	keep_loss 0.0616 	loss 0.8333 	seg_loss 0.0606 	seg_loss_dice 0.0446 	
+[02/20 00:43:15] 20260218 INFO: Train: [192][1000/1737]  
+[02/20 00:43:15] 20260218 INFO: bbox_loss 0.3726 	cls_loss 0.1534 	com_loss 0.1401 	keep_loss 0.0617 	loss 0.8328 	seg_loss 0.0602 	seg_loss_dice 0.0447 	
+[02/20 00:50:28] 20260218 INFO: Train: [192][1500/1737]  
+[02/20 00:50:28] 20260218 INFO: bbox_loss 0.3725 	cls_loss 0.1535 	com_loss 0.1401 	keep_loss 0.0618 	loss 0.8324 	seg_loss 0.0597 	seg_loss_dice 0.0446 	
+[02/20 00:53:52] 20260218 INFO: epoch 192, total time 1494.68, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 00:54:56] 20260218 INFO: Eval: [192]  
+[02/20 00:54:56] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55721
+[02/20 00:54:56] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46571
+[02/20 00:54:56] 20260218 INFO: Acc_mask0.25 0.5753050063104754
+[02/20 00:54:56] 20260218 INFO: Acc_mask0.50 0.5091501893142617
+[02/20 01:02:00] 20260218 INFO: Train: [193][500/1737]  
+[02/20 01:02:00] 20260218 INFO: bbox_loss 0.3697 	cls_loss 0.1537 	com_loss 0.1422 	keep_loss 0.0627 	loss 0.8329 	seg_loss 0.0600 	seg_loss_dice 0.0446 	
+[02/20 01:09:02] 20260218 INFO: Train: [193][1000/1737]  
+[02/20 01:09:02] 20260218 INFO: bbox_loss 0.3708 	cls_loss 0.1536 	com_loss 0.1414 	keep_loss 0.0629 	loss 0.8333 	seg_loss 0.0601 	seg_loss_dice 0.0446 	
+[02/20 01:16:10] 20260218 INFO: Train: [193][1500/1737]  
+[02/20 01:16:10] 20260218 INFO: bbox_loss 0.3742 	cls_loss 0.1548 	com_loss 0.1419 	keep_loss 0.0627 	loss 0.8386 	seg_loss 0.0604 	seg_loss_dice 0.0446 	
+[02/20 01:19:37] 20260218 INFO: epoch 193, total time 1481.05, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 01:26:45] 20260218 INFO: Train: [194][500/1737]  
+[02/20 01:26:45] 20260218 INFO: bbox_loss 0.3769 	cls_loss 0.1541 	com_loss 0.1405 	keep_loss 0.0628 	loss 0.8386 	seg_loss 0.0598 	seg_loss_dice 0.0444 	
+[02/20 01:33:48] 20260218 INFO: Train: [194][1000/1737]  
+[02/20 01:33:48] 20260218 INFO: bbox_loss 0.3743 	cls_loss 0.1531 	com_loss 0.1397 	keep_loss 0.0622 	loss 0.8345 	seg_loss 0.0605 	seg_loss_dice 0.0447 	
+[02/20 01:40:55] 20260218 INFO: Train: [194][1500/1737]  
+[02/20 01:40:55] 20260218 INFO: bbox_loss 0.3742 	cls_loss 0.1536 	com_loss 0.1403 	keep_loss 0.0619 	loss 0.8345 	seg_loss 0.0600 	seg_loss_dice 0.0445 	
+[02/20 01:44:19] 20260218 INFO: epoch 194, total time 1482.14, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 01:51:32] 20260218 INFO: Train: [195][500/1737]  
+[02/20 01:51:32] 20260218 INFO: bbox_loss 0.3727 	cls_loss 0.1544 	com_loss 0.1410 	keep_loss 0.0621 	loss 0.8332 	seg_loss 0.0589 	seg_loss_dice 0.0441 	
+[02/20 01:58:35] 20260218 INFO: Train: [195][1000/1737]  
+[02/20 01:58:35] 20260218 INFO: bbox_loss 0.3718 	cls_loss 0.1544 	com_loss 0.1412 	keep_loss 0.0619 	loss 0.8336 	seg_loss 0.0599 	seg_loss_dice 0.0444 	
+[02/20 02:05:42] 20260218 INFO: Train: [195][1500/1737]  
+[02/20 02:05:42] 20260218 INFO: bbox_loss 0.3735 	cls_loss 0.1545 	com_loss 0.1412 	keep_loss 0.0623 	loss 0.8359 	seg_loss 0.0599 	seg_loss_dice 0.0445 	
+[02/20 02:09:05] 20260218 INFO: epoch 195, total time 1485.83, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 02:10:08] 20260218 INFO: Eval: [195]  
+[02/20 02:10:08] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55606
+[02/20 02:10:08] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46445
+[02/20 02:10:08] 20260218 INFO: Acc_mask0.25 0.5737273874631889
+[02/20 02:10:08] 20260218 INFO: Acc_mask0.50 0.5062053007993269
+[02/20 02:17:28] 20260218 INFO: Train: [196][500/1737]  
+[02/20 02:17:28] 20260218 INFO: bbox_loss 0.3744 	cls_loss 0.1541 	com_loss 0.1415 	keep_loss 0.0616 	loss 0.8365 	seg_loss 0.0604 	seg_loss_dice 0.0445 	
+[02/20 02:24:37] 20260218 INFO: Train: [196][1000/1737]  
+[02/20 02:24:37] 20260218 INFO: bbox_loss 0.3740 	cls_loss 0.1533 	com_loss 0.1403 	keep_loss 0.0618 	loss 0.8345 	seg_loss 0.0606 	seg_loss_dice 0.0446 	
+[02/20 02:31:45] 20260218 INFO: Train: [196][1500/1737]  
+[02/20 02:31:45] 20260218 INFO: bbox_loss 0.3741 	cls_loss 0.1526 	com_loss 0.1399 	keep_loss 0.0616 	loss 0.8331 	seg_loss 0.0604 	seg_loss_dice 0.0445 	
+[02/20 02:35:18] 20260218 INFO: epoch 196, total time 1510.37, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 02:42:23] 20260218 INFO: Train: [197][500/1737]  
+[02/20 02:42:23] 20260218 INFO: bbox_loss 0.3751 	cls_loss 0.1520 	com_loss 0.1390 	keep_loss 0.0610 	loss 0.8323 	seg_loss 0.0606 	seg_loss_dice 0.0447 	
+[02/20 03:20:24] 20260218 INFO: Train: [197][1000/1737]  
+[02/20 03:20:24] 20260218 INFO: bbox_loss 0.3752 	cls_loss 0.1528 	com_loss 0.1394 	keep_loss 0.0619 	loss 0.8344 	seg_loss 0.0605 	seg_loss_dice 0.0446 	
+[02/20 04:20:16] 20260218 INFO: Train: [197][1500/1737]  
+[02/20 04:20:16] 20260218 INFO: bbox_loss 0.3741 	cls_loss 0.1536 	com_loss 0.1402 	keep_loss 0.0621 	loss 0.8353 	seg_loss 0.0606 	seg_loss_dice 0.0447 	
+[02/20 04:35:26] 20260218 INFO: epoch 197, total time 7207.90, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 04:42:34] 20260218 INFO: Train: [198][500/1737]  
+[02/20 04:42:34] 20260218 INFO: bbox_loss 0.3729 	cls_loss 0.1537 	com_loss 0.1401 	keep_loss 0.0618 	loss 0.8349 	seg_loss 0.0616 	seg_loss_dice 0.0448 	
+[02/20 04:49:38] 20260218 INFO: Train: [198][1000/1737]  
+[02/20 04:49:38] 20260218 INFO: bbox_loss 0.3721 	cls_loss 0.1525 	com_loss 0.1392 	keep_loss 0.0616 	loss 0.8306 	seg_loss 0.0607 	seg_loss_dice 0.0446 	
+[02/20 04:56:46] 20260218 INFO: Train: [198][1500/1737]  
+[02/20 04:56:46] 20260218 INFO: bbox_loss 0.3720 	cls_loss 0.1532 	com_loss 0.1403 	keep_loss 0.0619 	loss 0.8322 	seg_loss 0.0602 	seg_loss_dice 0.0446 	
+[02/20 05:00:12] 20260218 INFO: epoch 198, total time 1486.55, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 05:01:14] 20260218 INFO: Eval: [198]  
+[02/20 05:01:14] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55574
+[02/20 05:01:14] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46350
+[02/20 05:01:14] 20260218 INFO: Acc_mask0.25 0.573832562053008
+[02/20 05:01:14] 20260218 INFO: Acc_mask0.50 0.5058897770298696
+[02/20 05:08:55] 20260218 INFO: Train: [199][500/1737]  
+[02/20 05:08:55] 20260218 INFO: bbox_loss 0.3760 	cls_loss 0.1518 	com_loss 0.1391 	keep_loss 0.0619 	loss 0.8348 	seg_loss 0.0610 	seg_loss_dice 0.0450 	
+[02/20 05:16:13] 20260218 INFO: Train: [199][1000/1737]  
+[02/20 05:16:13] 20260218 INFO: bbox_loss 0.3761 	cls_loss 0.1534 	com_loss 0.1406 	keep_loss 0.0623 	loss 0.8382 	seg_loss 0.0607 	seg_loss_dice 0.0451 	
+[02/20 05:23:20] 20260218 INFO: Train: [199][1500/1737]  
+[02/20 05:23:20] 20260218 INFO: bbox_loss 0.3733 	cls_loss 0.1532 	com_loss 0.1406 	keep_loss 0.0622 	loss 0.8343 	seg_loss 0.0601 	seg_loss_dice 0.0449 	
+[02/20 05:26:54] 20260218 INFO: epoch 199, total time 1540.44, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 05:34:06] 20260218 INFO: Train: [200][500/1737]  
+[02/20 05:34:06] 20260218 INFO: bbox_loss 0.3732 	cls_loss 0.1543 	com_loss 0.1418 	keep_loss 0.0621 	loss 0.8359 	seg_loss 0.0602 	seg_loss_dice 0.0443 	
+[02/20 05:41:09] 20260218 INFO: Train: [200][1000/1737]  
+[02/20 05:41:09] 20260218 INFO: bbox_loss 0.3726 	cls_loss 0.1532 	com_loss 0.1406 	keep_loss 0.0618 	loss 0.8327 	seg_loss 0.0600 	seg_loss_dice 0.0444 	
+[02/20 05:48:15] 20260218 INFO: Train: [200][1500/1737]  
+[02/20 05:48:15] 20260218 INFO: bbox_loss 0.3732 	cls_loss 0.1528 	com_loss 0.1397 	keep_loss 0.0618 	loss 0.8323 	seg_loss 0.0601 	seg_loss_dice 0.0446 	
+[02/20 05:51:40] 20260218 INFO: epoch 200, total time 1485.42, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 05:58:55] 20260218 INFO: Train: [201][500/1737]  
+[02/20 05:58:55] 20260218 INFO: bbox_loss 0.3726 	cls_loss 0.1533 	com_loss 0.1407 	keep_loss 0.0630 	loss 0.8352 	seg_loss 0.0610 	seg_loss_dice 0.0446 	
+[02/20 06:06:07] 20260218 INFO: Train: [201][1000/1737]  
+[02/20 06:06:07] 20260218 INFO: bbox_loss 0.3719 	cls_loss 0.1531 	com_loss 0.1409 	keep_loss 0.0624 	loss 0.8329 	seg_loss 0.0600 	seg_loss_dice 0.0444 	
+[02/20 06:13:17] 20260218 INFO: Train: [201][1500/1737]  
+[02/20 06:13:17] 20260218 INFO: bbox_loss 0.3724 	cls_loss 0.1532 	com_loss 0.1403 	keep_loss 0.0622 	loss 0.8330 	seg_loss 0.0604 	seg_loss_dice 0.0446 	
+[02/20 06:16:42] 20260218 INFO: epoch 201, total time 1502.20, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 06:17:45] 20260218 INFO: Eval: [201]  
+[02/20 06:17:45] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55711
+[02/20 06:17:45] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46498
+[02/20 06:17:45] 20260218 INFO: Acc_mask0.25 0.5749894825410181
+[02/20 06:17:45] 20260218 INFO: Acc_mask0.50 0.506415649978965
+[02/20 06:25:15] 20260218 INFO: Train: [202][500/1737]  
+[02/20 06:25:15] 20260218 INFO: bbox_loss 0.3718 	cls_loss 0.1548 	com_loss 0.1410 	keep_loss 0.0630 	loss 0.8336 	seg_loss 0.0588 	seg_loss_dice 0.0442 	
+[02/20 06:32:23] 20260218 INFO: Train: [202][1000/1737]  
+[02/20 06:32:23] 20260218 INFO: bbox_loss 0.3733 	cls_loss 0.1547 	com_loss 0.1416 	keep_loss 0.0624 	loss 0.8359 	seg_loss 0.0593 	seg_loss_dice 0.0445 	
+[02/20 06:39:34] 20260218 INFO: Train: [202][1500/1737]  
+[02/20 06:39:34] 20260218 INFO: bbox_loss 0.3729 	cls_loss 0.1541 	com_loss 0.1411 	keep_loss 0.0625 	loss 0.8351 	seg_loss 0.0599 	seg_loss_dice 0.0446 	
+[02/20 06:42:57] 20260218 INFO: epoch 202, total time 1512.39, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 06:50:09] 20260218 INFO: Train: [203][500/1737]  
+[02/20 06:50:09] 20260218 INFO: bbox_loss 0.3747 	cls_loss 0.1524 	com_loss 0.1382 	keep_loss 0.0619 	loss 0.8305 	seg_loss 0.0590 	seg_loss_dice 0.0444 	
+[02/20 06:57:10] 20260218 INFO: Train: [203][1000/1737]  
+[02/20 06:57:10] 20260218 INFO: bbox_loss 0.3730 	cls_loss 0.1529 	com_loss 0.1389 	keep_loss 0.0620 	loss 0.8303 	seg_loss 0.0592 	seg_loss_dice 0.0443 	
+[02/20 07:04:23] 20260218 INFO: Train: [203][1500/1737]  
+[02/20 07:04:23] 20260218 INFO: bbox_loss 0.3735 	cls_loss 0.1529 	com_loss 0.1394 	keep_loss 0.0621 	loss 0.8318 	seg_loss 0.0594 	seg_loss_dice 0.0445 	
+[02/20 07:07:53] 20260218 INFO: epoch 203, total time 1496.00, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 07:15:09] 20260218 INFO: Train: [204][500/1737]  
+[02/20 07:15:09] 20260218 INFO: bbox_loss 0.3703 	cls_loss 0.1516 	com_loss 0.1396 	keep_loss 0.0619 	loss 0.8282 	seg_loss 0.0600 	seg_loss_dice 0.0448 	
+[02/20 07:22:14] 20260218 INFO: Train: [204][1000/1737]  
+[02/20 07:22:14] 20260218 INFO: bbox_loss 0.3698 	cls_loss 0.1513 	com_loss 0.1385 	keep_loss 0.0619 	loss 0.8260 	seg_loss 0.0597 	seg_loss_dice 0.0448 	
+[02/20 07:29:27] 20260218 INFO: Train: [204][1500/1737]  
+[02/20 07:29:27] 20260218 INFO: bbox_loss 0.3691 	cls_loss 0.1519 	com_loss 0.1393 	keep_loss 0.0621 	loss 0.8265 	seg_loss 0.0595 	seg_loss_dice 0.0446 	
+[02/20 07:32:53] 20260218 INFO: epoch 204, total time 1500.14, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 07:33:56] 20260218 INFO: Eval: [204]  
+[02/20 07:33:56] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55795
+[02/20 07:33:56] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46908
+[02/20 07:33:56] 20260218 INFO: Acc_mask0.25 0.5762515776188473
+[02/20 07:33:56] 20260218 INFO: Acc_mask0.50 0.5077829196466134
+[02/20 07:41:27] 20260218 INFO: Train: [205][500/1737]  
+[02/20 07:41:27] 20260218 INFO: bbox_loss 0.3732 	cls_loss 0.1547 	com_loss 0.1407 	keep_loss 0.0634 	loss 0.8370 	seg_loss 0.0604 	seg_loss_dice 0.0445 	
+[02/20 07:48:33] 20260218 INFO: Train: [205][1000/1737]  
+[02/20 07:48:33] 20260218 INFO: bbox_loss 0.3719 	cls_loss 0.1538 	com_loss 0.1405 	keep_loss 0.0629 	loss 0.8333 	seg_loss 0.0598 	seg_loss_dice 0.0445 	
+[02/20 07:55:43] 20260218 INFO: Train: [205][1500/1737]  
+[02/20 07:55:43] 20260218 INFO: bbox_loss 0.3707 	cls_loss 0.1529 	com_loss 0.1398 	keep_loss 0.0627 	loss 0.8302 	seg_loss 0.0597 	seg_loss_dice 0.0444 	
+[02/20 07:59:08] 20260218 INFO: epoch 205, total time 1512.20, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 08:06:21] 20260218 INFO: Train: [206][500/1737]  
+[02/20 08:06:21] 20260218 INFO: bbox_loss 0.3727 	cls_loss 0.1550 	com_loss 0.1407 	keep_loss 0.0635 	loss 0.8363 	seg_loss 0.0599 	seg_loss_dice 0.0446 	
+[02/20 08:13:31] 20260218 INFO: Train: [206][1000/1737]  
+[02/20 08:13:31] 20260218 INFO: bbox_loss 0.3723 	cls_loss 0.1533 	com_loss 0.1396 	keep_loss 0.0626 	loss 0.8322 	seg_loss 0.0598 	seg_loss_dice 0.0446 	
+[02/20 08:20:43] 20260218 INFO: Train: [206][1500/1737]  
+[02/20 08:20:43] 20260218 INFO: bbox_loss 0.3720 	cls_loss 0.1527 	com_loss 0.1391 	keep_loss 0.0628 	loss 0.8310 	seg_loss 0.0599 	seg_loss_dice 0.0446 	
+[02/20 08:24:07] 20260218 INFO: epoch 206, total time 1499.24, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 08:31:37] 20260218 INFO: Train: [207][500/1737]  
+[02/20 08:31:37] 20260218 INFO: bbox_loss 0.3786 	cls_loss 0.1537 	com_loss 0.1401 	keep_loss 0.0616 	loss 0.8389 	seg_loss 0.0600 	seg_loss_dice 0.0450 	
+[02/20 08:38:36] 20260218 INFO: Train: [207][1000/1737]  
+[02/20 08:38:36] 20260218 INFO: bbox_loss 0.3742 	cls_loss 0.1534 	com_loss 0.1397 	keep_loss 0.0613 	loss 0.8328 	seg_loss 0.0597 	seg_loss_dice 0.0445 	
+[02/20 08:45:44] 20260218 INFO: Train: [207][1500/1737]  
+[02/20 08:45:44] 20260218 INFO: bbox_loss 0.3731 	cls_loss 0.1536 	com_loss 0.1399 	keep_loss 0.0615 	loss 0.8323 	seg_loss 0.0597 	seg_loss_dice 0.0445 	
+[02/20 08:49:06] 20260218 INFO: epoch 207, total time 1498.68, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 08:50:07] 20260218 INFO: Eval: [207]  
+[02/20 08:50:07] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55743
+[02/20 08:50:07] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46750
+[02/20 08:50:07] 20260218 INFO: Acc_mask0.25 0.5748843079511989
+[02/20 08:50:07] 20260218 INFO: Acc_mask0.50 0.5079932688262516
+[02/20 08:57:16] 20260218 INFO: Train: [208][500/1737]  
+[02/20 08:57:16] 20260218 INFO: bbox_loss 0.3749 	cls_loss 0.1544 	com_loss 0.1417 	keep_loss 0.0616 	loss 0.8374 	seg_loss 0.0605 	seg_loss_dice 0.0442 	
+[02/20 09:04:17] 20260218 INFO: Train: [208][1000/1737]  
+[02/20 09:04:17] 20260218 INFO: bbox_loss 0.3742 	cls_loss 0.1533 	com_loss 0.1406 	keep_loss 0.0611 	loss 0.8333 	seg_loss 0.0596 	seg_loss_dice 0.0444 	
+[02/20 09:11:27] 20260218 INFO: Train: [208][1500/1737]  
+[02/20 09:11:27] 20260218 INFO: bbox_loss 0.3733 	cls_loss 0.1527 	com_loss 0.1399 	keep_loss 0.0615 	loss 0.8312 	seg_loss 0.0593 	seg_loss_dice 0.0444 	
+[02/20 09:14:51] 20260218 INFO: epoch 208, total time 1484.04, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 09:22:00] 20260218 INFO: Train: [209][500/1737]  
+[02/20 09:22:00] 20260218 INFO: bbox_loss 0.3777 	cls_loss 0.1544 	com_loss 0.1399 	keep_loss 0.0621 	loss 0.8390 	seg_loss 0.0603 	seg_loss_dice 0.0445 	
+[02/20 09:29:06] 20260218 INFO: Train: [209][1000/1737]  
+[02/20 09:29:06] 20260218 INFO: bbox_loss 0.3760 	cls_loss 0.1520 	com_loss 0.1382 	keep_loss 0.0618 	loss 0.8316 	seg_loss 0.0593 	seg_loss_dice 0.0442 	
+[02/20 09:36:17] 20260218 INFO: Train: [209][1500/1737]  
+[02/20 09:36:17] 20260218 INFO: bbox_loss 0.3754 	cls_loss 0.1521 	com_loss 0.1383 	keep_loss 0.0620 	loss 0.8313 	seg_loss 0.0593 	seg_loss_dice 0.0443 	
+[02/20 09:39:42] 20260218 INFO: epoch 209, total time 1491.57, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 09:47:02] 20260218 INFO: Train: [210][500/1737]  
+[02/20 09:47:02] 20260218 INFO: bbox_loss 0.3723 	cls_loss 0.1534 	com_loss 0.1399 	keep_loss 0.0635 	loss 0.8330 	seg_loss 0.0593 	seg_loss_dice 0.0445 	
+[02/20 09:54:12] 20260218 INFO: Train: [210][1000/1737]  
+[02/20 09:54:12] 20260218 INFO: bbox_loss 0.3729 	cls_loss 0.1531 	com_loss 0.1393 	keep_loss 0.0627 	loss 0.8320 	seg_loss 0.0595 	seg_loss_dice 0.0446 	
+[02/20 10:01:27] 20260218 INFO: Train: [210][1500/1737]  
+[02/20 10:01:27] 20260218 INFO: bbox_loss 0.3722 	cls_loss 0.1527 	com_loss 0.1390 	keep_loss 0.0625 	loss 0.8305 	seg_loss 0.0594 	seg_loss_dice 0.0447 	
+[02/20 10:04:54] 20260218 INFO: epoch 210, total time 1512.16, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 10:05:56] 20260218 INFO: Eval: [210]  
+[02/20 10:05:56] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55700
+[02/20 10:05:56] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46519
+[02/20 10:05:56] 20260218 INFO: Acc_mask0.25 0.5743584350021035
+[02/20 10:05:56] 20260218 INFO: Acc_mask0.50 0.507362221287337
+[02/20 10:13:03] 20260218 INFO: Train: [211][500/1737]  
+[02/20 10:13:03] 20260218 INFO: bbox_loss 0.3796 	cls_loss 0.1533 	com_loss 0.1406 	keep_loss 0.0632 	loss 0.8405 	seg_loss 0.0594 	seg_loss_dice 0.0444 	
+[02/20 10:20:05] 20260218 INFO: Train: [211][1000/1737]  
+[02/20 10:20:05] 20260218 INFO: bbox_loss 0.3737 	cls_loss 0.1538 	com_loss 0.1399 	keep_loss 0.0627 	loss 0.8348 	seg_loss 0.0600 	seg_loss_dice 0.0446 	
+[02/20 10:27:15] 20260218 INFO: Train: [211][1500/1737]  
+[02/20 10:27:15] 20260218 INFO: bbox_loss 0.3733 	cls_loss 0.1536 	com_loss 0.1400 	keep_loss 0.0623 	loss 0.8336 	seg_loss 0.0598 	seg_loss_dice 0.0445 	
+[02/20 10:30:37] 20260218 INFO: epoch 211, total time 1481.62, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 10:37:47] 20260218 INFO: Train: [212][500/1737]  
+[02/20 10:37:47] 20260218 INFO: bbox_loss 0.3735 	cls_loss 0.1531 	com_loss 0.1399 	keep_loss 0.0625 	loss 0.8316 	seg_loss 0.0585 	seg_loss_dice 0.0441 	
+[02/20 10:44:54] 20260218 INFO: Train: [212][1000/1737]  
+[02/20 10:44:54] 20260218 INFO: bbox_loss 0.3741 	cls_loss 0.1542 	com_loss 0.1411 	keep_loss 0.0627 	loss 0.8353 	seg_loss 0.0589 	seg_loss_dice 0.0443 	
+[02/20 10:51:59] 20260218 INFO: Train: [212][1500/1737]  
+[02/20 10:51:59] 20260218 INFO: bbox_loss 0.3753 	cls_loss 0.1547 	com_loss 0.1413 	keep_loss 0.0627 	loss 0.8378 	seg_loss 0.0592 	seg_loss_dice 0.0445 	
+[02/20 10:55:20] 20260218 INFO: epoch 212, total time 1482.98, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 11:02:30] 20260218 INFO: Train: [213][500/1737]  
+[02/20 11:02:30] 20260218 INFO: bbox_loss 0.3758 	cls_loss 0.1548 	com_loss 0.1414 	keep_loss 0.0616 	loss 0.8380 	seg_loss 0.0598 	seg_loss_dice 0.0447 	
+[02/20 11:09:34] 20260218 INFO: Train: [213][1000/1737]  
+[02/20 11:09:34] 20260218 INFO: bbox_loss 0.3746 	cls_loss 0.1541 	com_loss 0.1409 	keep_loss 0.0623 	loss 0.8361 	seg_loss 0.0596 	seg_loss_dice 0.0446 	
+[02/20 11:16:47] 20260218 INFO: Train: [213][1500/1737]  
+[02/20 11:16:47] 20260218 INFO: bbox_loss 0.3735 	cls_loss 0.1537 	com_loss 0.1407 	keep_loss 0.0623 	loss 0.8346 	seg_loss 0.0597 	seg_loss_dice 0.0447 	
+[02/20 11:20:12] 20260218 INFO: epoch 213, total time 1491.48, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 11:21:14] 20260218 INFO: Eval: [213]  
+[02/20 11:21:14] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55532
+[02/20 11:21:14] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46519
+[02/20 11:21:14] 20260218 INFO: Acc_mask0.25 0.5734118636937316
+[02/20 11:21:14] 20260218 INFO: Acc_mask0.50 0.5061001262095077
+[02/20 11:28:27] 20260218 INFO: Train: [214][500/1737]  
+[02/20 11:28:27] 20260218 INFO: bbox_loss 0.3734 	cls_loss 0.1541 	com_loss 0.1392 	keep_loss 0.0628 	loss 0.8344 	seg_loss 0.0602 	seg_loss_dice 0.0447 	
+[02/20 11:35:29] 20260218 INFO: Train: [214][1000/1737]  
+[02/20 11:35:29] 20260218 INFO: bbox_loss 0.3734 	cls_loss 0.1537 	com_loss 0.1394 	keep_loss 0.0622 	loss 0.8330 	seg_loss 0.0597 	seg_loss_dice 0.0445 	
+[02/20 11:42:34] 20260218 INFO: Train: [214][1500/1737]  
+[02/20 11:42:34] 20260218 INFO: bbox_loss 0.3746 	cls_loss 0.1535 	com_loss 0.1397 	keep_loss 0.0621 	loss 0.8343 	seg_loss 0.0599 	seg_loss_dice 0.0446 	
+[02/20 11:45:59] 20260218 INFO: epoch 214, total time 1484.30, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 11:53:15] 20260218 INFO: Train: [215][500/1737]  
+[02/20 11:53:15] 20260218 INFO: bbox_loss 0.3776 	cls_loss 0.1537 	com_loss 0.1400 	keep_loss 0.0624 	loss 0.8369 	seg_loss 0.0589 	seg_loss_dice 0.0444 	
+[02/20 12:00:24] 20260218 INFO: Train: [215][1000/1737]  
+[02/20 12:00:24] 20260218 INFO: bbox_loss 0.3757 	cls_loss 0.1552 	com_loss 0.1419 	keep_loss 0.0623 	loss 0.8387 	seg_loss 0.0590 	seg_loss_dice 0.0445 	
+[02/20 12:07:35] 20260218 INFO: Train: [215][1500/1737]  
+[02/20 12:07:35] 20260218 INFO: bbox_loss 0.3741 	cls_loss 0.1548 	com_loss 0.1416 	keep_loss 0.0622 	loss 0.8363 	seg_loss 0.0592 	seg_loss_dice 0.0445 	
+[02/20 12:11:01] 20260218 INFO: epoch 215, total time 1501.77, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 12:18:15] 20260218 INFO: Train: [216][500/1737]  
+[02/20 12:18:15] 20260218 INFO: bbox_loss 0.3681 	cls_loss 0.1536 	com_loss 0.1407 	keep_loss 0.0622 	loss 0.8278 	seg_loss 0.0590 	seg_loss_dice 0.0441 	
+[02/20 12:25:23] 20260218 INFO: Train: [216][1000/1737]  
+[02/20 12:25:23] 20260218 INFO: bbox_loss 0.3723 	cls_loss 0.1528 	com_loss 0.1396 	keep_loss 0.0622 	loss 0.8316 	seg_loss 0.0600 	seg_loss_dice 0.0447 	
+[02/20 12:32:35] 20260218 INFO: Train: [216][1500/1737]  
+[02/20 12:32:35] 20260218 INFO: bbox_loss 0.3717 	cls_loss 0.1527 	com_loss 0.1395 	keep_loss 0.0620 	loss 0.8301 	seg_loss 0.0597 	seg_loss_dice 0.0446 	
+[02/20 12:35:58] 20260218 INFO: epoch 216, total time 1497.17, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 12:37:00] 20260218 INFO: Eval: [216]  
+[02/20 12:37:00] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55795
+[02/20 12:37:00] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46561
+[02/20 12:37:00] 20260218 INFO: Acc_mask0.25 0.5757257046697518
+[02/20 12:37:00] 20260218 INFO: Acc_mask0.50 0.5076777450567943
+[02/20 12:44:13] 20260218 INFO: Train: [217][500/1737]  
+[02/20 12:44:13] 20260218 INFO: bbox_loss 0.3724 	cls_loss 0.1523 	com_loss 0.1381 	keep_loss 0.0614 	loss 0.8285 	seg_loss 0.0598 	seg_loss_dice 0.0444 	
+[02/20 12:51:21] 20260218 INFO: Train: [217][1000/1737]  
+[02/20 12:51:21] 20260218 INFO: bbox_loss 0.3724 	cls_loss 0.1533 	com_loss 0.1387 	keep_loss 0.0617 	loss 0.8304 	seg_loss 0.0598 	seg_loss_dice 0.0445 	
+[02/20 12:58:28] 20260218 INFO: Train: [217][1500/1737]  
+[02/20 12:58:28] 20260218 INFO: bbox_loss 0.3727 	cls_loss 0.1533 	com_loss 0.1395 	keep_loss 0.0620 	loss 0.8319 	seg_loss 0.0599 	seg_loss_dice 0.0445 	
+[02/20 13:01:53] 20260218 INFO: epoch 217, total time 1492.72, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 13:09:04] 20260218 INFO: Train: [218][500/1737]  
+[02/20 13:09:04] 20260218 INFO: bbox_loss 0.3721 	cls_loss 0.1549 	com_loss 0.1412 	keep_loss 0.0623 	loss 0.8349 	seg_loss 0.0603 	seg_loss_dice 0.0442 	
+[02/20 13:16:11] 20260218 INFO: Train: [218][1000/1737]  
+[02/20 13:16:11] 20260218 INFO: bbox_loss 0.3749 	cls_loss 0.1548 	com_loss 0.1415 	keep_loss 0.0619 	loss 0.8372 	seg_loss 0.0598 	seg_loss_dice 0.0442 	
+[02/20 13:23:19] 20260218 INFO: Train: [218][1500/1737]  
+[02/20 13:23:19] 20260218 INFO: bbox_loss 0.3740 	cls_loss 0.1546 	com_loss 0.1415 	keep_loss 0.0620 	loss 0.8358 	seg_loss 0.0597 	seg_loss_dice 0.0441 	
+[02/20 13:26:43] 20260218 INFO: epoch 218, total time 1490.50, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 13:33:54] 20260218 INFO: Train: [219][500/1737]  
+[02/20 13:33:54] 20260218 INFO: bbox_loss 0.3782 	cls_loss 0.1557 	com_loss 0.1414 	keep_loss 0.0619 	loss 0.8434 	seg_loss 0.0611 	seg_loss_dice 0.0450 	
+[02/20 13:40:58] 20260218 INFO: Train: [219][1000/1737]  
+[02/20 13:40:58] 20260218 INFO: bbox_loss 0.3755 	cls_loss 0.1535 	com_loss 0.1405 	keep_loss 0.0619 	loss 0.8373 	seg_loss 0.0609 	seg_loss_dice 0.0449 	
+[02/20 13:47:59] 20260218 INFO: Train: [219][1500/1737]  
+[02/20 13:47:59] 20260218 INFO: bbox_loss 0.3744 	cls_loss 0.1533 	com_loss 0.1402 	keep_loss 0.0622 	loss 0.8349 	seg_loss 0.0601 	seg_loss_dice 0.0447 	
+[02/20 13:51:22] 20260218 INFO: epoch 219, total time 1478.58, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 13:52:23] 20260218 INFO: Eval: [219]  
+[02/20 13:52:23] 20260218 INFO: 3dcnn Acc0.25: Top-1: 0.55806
+[02/20 13:52:23] 20260218 INFO: 3dcnn Acc0.50: Top-1: 0.46466
+[02/20 13:52:23] 20260218 INFO: Acc_mask0.25 0.5751998317206563
+[02/20 13:52:23] 20260218 INFO: Acc_mask0.50 0.5076777450567943
+[02/20 13:59:31] 20260218 INFO: Train: [220][500/1737]  
+[02/20 13:59:31] 20260218 INFO: bbox_loss 0.3680 	cls_loss 0.1557 	com_loss 0.1415 	keep_loss 0.0630 	loss 0.8316 	seg_loss 0.0590 	seg_loss_dice 0.0444 	
+[02/20 14:06:39] 20260218 INFO: Train: [220][1000/1737]  
+[02/20 14:06:39] 20260218 INFO: bbox_loss 0.3688 	cls_loss 0.1545 	com_loss 0.1410 	keep_loss 0.0626 	loss 0.8313 	seg_loss 0.0597 	seg_loss_dice 0.0447 	
+[02/20 14:13:49] 20260218 INFO: Train: [220][1500/1737]  
+[02/20 14:13:49] 20260218 INFO: bbox_loss 0.3690 	cls_loss 0.1539 	com_loss 0.1404 	keep_loss 0.0621 	loss 0.8293 	seg_loss 0.0593 	seg_loss_dice 0.0445 	
+[02/20 14:17:13] 20260218 INFO: epoch 220, total time 1490.08, lr_base 0.0000001, lr_tran 0.0000001, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[02/20 14:24:23] 20260218 INFO: Train: [221][500/1737]  
+[02/20 14:24:23] 20260218 INFO: bbox_loss 0.3701 	cls_loss 0.1532 	com_loss 0.1401 	keep_loss 0.0623 	loss 0.8302 	seg_loss 0.0599 	seg_loss_dice 0.0446 	

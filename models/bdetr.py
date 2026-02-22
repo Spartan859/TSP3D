@@ -27,7 +27,8 @@ class BeaUTyDETR(nn.Module):
                  use_seg=False, 
                  use_external_attn_bi_layer0=False,
                  use_text_guided_external_attn_bi_layer0=False,
-                 use_film_text_guided_external_attn_bi_layer0=False):
+                 use_film_text_guided_external_attn_bi_layer0=False,
+                 mink_conv1_stride=2):
         """Initialize layers."""
         super().__init__()
 
@@ -39,7 +40,7 @@ class BeaUTyDETR(nn.Module):
         self.voxel_size = voxel_size
 
         # Visual encoder
-        self.vision_backbone = TSPBackbone(in_channels=6)
+        self.vision_backbone = TSPBackbone(in_channels=6, conv1_stride=mink_conv1_stride)
         
         # Text encoder
         t_type = f'{data_path}roberta-base/'
@@ -62,6 +63,13 @@ class BeaUTyDETR(nn.Module):
             use_text_guided_external_attn_bi_layer0=use_text_guided_external_attn_bi_layer0,
             use_film_text_guided_external_attn_bi_layer0=use_film_text_guided_external_attn_bi_layer0
         )
+        self.target_pool = None
+        if mink_conv1_stride > 1:
+            self.target_pool = ME.MinkowskiMaxPooling(
+                kernel_size=mink_conv1_stride,
+                stride=mink_conv1_stride,
+                dimension=3)
+        
     def collate(self, points, quantization_mode):
         coordinates, features = ME.utils.batch_sparse_collate(
             [(p[:, :3] / self.voxel_size, p[:, 0:]) for p in points],
@@ -100,13 +108,23 @@ class BeaUTyDETR(nn.Module):
         x = field.sparse()
         # pdb.set_trace()
         targets = x.features[:, 6:].round().long()
+        if self.target_pool is not None:
+            targets = ME.SparseTensor(
+                features=targets.float(),
+                coordinate_map_key=x.coordinate_map_key,
+                coordinate_manager=x.coordinate_manager,
+            )
+            targets = self.target_pool(targets).features
         x = ME.SparseTensor(
             x.features[:, :6],
             coordinate_map_key=x.coordinate_map_key,
             coordinate_manager=x.coordinate_manager,
         )
+        # pdb.set_trace()
         x = self.vision_backbone(x)
+        # pdb.set_trace()
         inverse_mapping = field.inverse_mapping(x[0].coordinate_map_key).long()
+        # pdb.set_trace()
         visual_time = time.time() - start_time
         # pdb.set_trace()
         

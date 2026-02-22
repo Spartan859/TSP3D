@@ -85,7 +85,8 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --use_external_attn_bi_layer0 \
     --use_text_guided_external_attn_bi_layer0 \
     --use_film_text_guided_external_attn_bi_layer0 \
-    --use_seg \
+    --mink_conv1_stride 1 \
+    # --use_seg \
     # --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/20260216/scanrefer/2026-02-16_11-14-34/ckpt_epoch_144.pth \
     # --clip_norm 1.0 \
     # --window_size 5 \

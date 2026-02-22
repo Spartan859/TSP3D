@@ -831,7 +831,7 @@ class TSPHead(nn.Module):
         # labels = [b[2] for b in bbox_list]
         # levels = [torch.zeros(len(b[0])) for b in bbox_list]
         # pdb.set_trace()
-        feats_with_targets = ME.SparseTensor(torch.cat((x.features, targets), axis=1), x.coordinates)
+        feats_with_targets = ME.SparseTensor(torch.cat((x.features, targets), dim=1), x.coordinates)
         tensors, ids, rois, scores, labels = self.extract(feats_with_targets, rois, scores, labels)        
         # pdb.set_trace()
         

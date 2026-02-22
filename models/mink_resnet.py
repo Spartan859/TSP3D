@@ -39,7 +39,8 @@ class TSPBackbone(nn.Module):
                  max_channels=128,
                  num_stages=4,
                  pool=True,
-                 norm='batch'):
+                 norm='batch',
+                 conv1_stride=2):
         super().__init__()
         if depth not in self.arch_settings:
             raise KeyError(f'invalid depth {depth} for resnet')
@@ -52,7 +53,7 @@ class TSPBackbone(nn.Module):
 
         self.inplanes = 64
         self.conv1 = ME.MinkowskiConvolution(
-            in_channels, self.inplanes, kernel_size=3, stride=1, dimension=3)
+            in_channels, self.inplanes, kernel_size=3, stride=conv1_stride, dimension=3)
         norm1 = ME.MinkowskiInstanceNorm if norm == 'instance' \
             else ME.MinkowskiBatchNorm
         self.norm1 = norm1(self.inplanes)

@@ -128,6 +128,8 @@ def parse_option():
     parser.add_argument('--use_external_attn_bi_layer0', action='store_true')
     parser.add_argument('--use_text_guided_external_attn_bi_layer0', action='store_true')
     parser.add_argument('--use_film_text_guided_external_attn_bi_layer0', action='store_true')
+    parser.add_argument('--mink_conv1_stride', type=int, default=2,
+                        help='Stride for Minkowski ResNet conv1 (>= 1).')
 
     args, _ = parser.parse_known_args()
 

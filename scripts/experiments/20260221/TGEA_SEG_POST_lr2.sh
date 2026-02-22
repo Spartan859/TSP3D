@@ -9,18 +9,18 @@ fi
 data_root="/root/lxy/TSP3D/data"
 
 NPROC_PER_NODE=4
-CVD_START=0
+CVD_START=4
 BASE_BS=28
 CUR_BS=28
 # BASE_LR=5e-4
 # BASE_KEEP_TRANS_LR=5e-4
 # BASE_TEXT_ENCODER_LR=1e-5
 # BASE_BOX_SELECT_LR=4e-4
-BASE_LR=5e-6
-BASE_KEEP_TRANS_LR=5e-6
-BASE_TEXT_ENCODER_LR=1e-7
-BASE_BOX_SELECT_LR=4e-6
-BASE_SEG_LR=1e-3
+BASE_LR=5e-5
+BASE_KEEP_TRANS_LR=5e-5
+BASE_TEXT_ENCODER_LR=1e-6
+BASE_BOX_SELECT_LR=4e-5
+BASE_SEG_LR=1e-4
 
 lr_scale() {
     python - "$1" "$BASE_BS" "$CUR_BS" <<'PY'
@@ -65,7 +65,7 @@ echo cvd: ${cvd}
 echo log_dir: "$(dirname "$(readlink -f "$0")")"
 
 TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
-    --nproc_per_node ${nproc_per_node} --master_port 12223 \
+    --nproc_per_node ${nproc_per_node} --master_port 12222 \
     train_dist_mod.py \
     --use_color \
     --weight_decay 0.0005 \
@@ -81,12 +81,12 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --detect_intermediate --joint_det \
     --log_dir "$(dirname "$(readlink -f "$0")")" \
     --augment_det \
-    --lr_decay_epochs 30 45 \
+    --lr_decay_epochs 30 \
     --use_external_attn_bi_layer0 \
     --use_text_guided_external_attn_bi_layer0 \
     --use_film_text_guided_external_attn_bi_layer0 \
     --use_seg \
-    --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/20260216/scanrefer/2026-02-16_11-14-34/ckpt_epoch_144.pth \
+    --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/20260218/scanrefer/2026-02-20_04-33-37/ckpt_epoch_168.pth \
     # --use_seg \
     # --clip_norm 1.0 \
     # --window_size 5 \

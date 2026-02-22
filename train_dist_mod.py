@@ -114,7 +114,8 @@ class TrainTester(BaseTrainTester):
             use_seg=args.use_seg,
             use_external_attn_bi_layer0=args.use_external_attn_bi_layer0,
             use_text_guided_external_attn_bi_layer0=args.use_text_guided_external_attn_bi_layer0,
-            use_film_text_guided_external_attn_bi_layer0=args.use_film_text_guided_external_attn_bi_layer0
+            use_film_text_guided_external_attn_bi_layer0=args.use_film_text_guided_external_attn_bi_layer0,
+            mink_conv1_stride=args.mink_conv1_stride
         )
         return model
 

@@ -16,10 +16,10 @@ CUR_BS=28
 # BASE_KEEP_TRANS_LR=5e-4
 # BASE_TEXT_ENCODER_LR=1e-5
 # BASE_BOX_SELECT_LR=4e-4
-BASE_LR=5e-6
-BASE_KEEP_TRANS_LR=5e-6
-BASE_TEXT_ENCODER_LR=1e-7
-BASE_BOX_SELECT_LR=4e-6
+BASE_LR=5e-5
+BASE_KEEP_TRANS_LR=5e-5
+BASE_TEXT_ENCODER_LR=1e-6
+BASE_BOX_SELECT_LR=4e-5
 BASE_SEG_LR=1e-3
 
 lr_scale() {
@@ -81,12 +81,9 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --detect_intermediate --joint_det \
     --log_dir "$(dirname "$(readlink -f "$0")")" \
     --augment_det \
-    --lr_decay_epochs 30 45 \
-    --use_external_attn_bi_layer0 \
-    --use_text_guided_external_attn_bi_layer0 \
-    --use_film_text_guided_external_attn_bi_layer0 \
+    --lr_decay_epochs 20 30 \
     --use_seg \
-    --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/20260216/scanrefer/2026-02-16_11-14-34/ckpt_epoch_144.pth \
+    --checkpoint_path /root/lxy/TSP3D_ori/ckpt_scanrefer.pth \
     # --use_seg \
     # --clip_norm 1.0 \
     # --window_size 5 \
