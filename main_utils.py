@@ -125,6 +125,12 @@ def parse_option():
     parser.add_argument('--pp_checkpoint', default=None)    # pointnet checkpoint
     parser.add_argument('--reduce_lr', action='store_true')
     parser.add_argument('--use_seg', action='store_true')
+    parser.add_argument('--use_external_attn_bi_layer', type=int, nargs='+', default=[],
+                        help='Indices of bi_layers to enable external attention, e.g. 0 1 2')
+    parser.add_argument('--use_text_guided_external_attn_bi_layer', type=int, nargs='+', default=[],
+                        help='Indices of bi_layers to enable text-guided external attention, e.g. 0 1 2')
+    parser.add_argument('--use_film_text_guided_external_attn_bi_layer', type=int, nargs='+', default=[],
+                        help='Indices of bi_layers to enable FiLM text-guided external attention, e.g. 0 1 2')
     parser.add_argument('--use_external_attn_bi_layer0', action='store_true')
     parser.add_argument('--use_text_guided_external_attn_bi_layer0', action='store_true')
     parser.add_argument('--use_film_text_guided_external_attn_bi_layer0', action='store_true')
@@ -134,6 +140,25 @@ def parse_option():
     args, _ = parser.parse_known_args()
 
     args.eval = args.eval or args.eval_train
+
+    valid_bi_layers = {0, 1, 2}
+    args.use_external_attn_bi_layer = sorted(
+        set(args.use_external_attn_bi_layer).intersection(valid_bi_layers))
+    args.use_text_guided_external_attn_bi_layer = sorted(
+        set(args.use_text_guided_external_attn_bi_layer).intersection(valid_bi_layers))
+    args.use_film_text_guided_external_attn_bi_layer = sorted(
+        set(args.use_film_text_guided_external_attn_bi_layer).intersection(valid_bi_layers))
+
+    if args.use_external_attn_bi_layer0 and 0 not in args.use_external_attn_bi_layer:
+        args.use_external_attn_bi_layer.append(0)
+    if args.use_text_guided_external_attn_bi_layer0 and 0 not in args.use_text_guided_external_attn_bi_layer:
+        args.use_text_guided_external_attn_bi_layer.append(0)
+    if args.use_film_text_guided_external_attn_bi_layer0 and 0 not in args.use_film_text_guided_external_attn_bi_layer:
+        args.use_film_text_guided_external_attn_bi_layer.append(0)
+
+    args.use_external_attn_bi_layer0 = 0 in args.use_external_attn_bi_layer
+    args.use_text_guided_external_attn_bi_layer0 = 0 in args.use_text_guided_external_attn_bi_layer
+    args.use_film_text_guided_external_attn_bi_layer0 = 0 in args.use_film_text_guided_external_attn_bi_layer
 
     return args
 

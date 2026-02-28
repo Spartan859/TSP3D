@@ -11,7 +11,7 @@
   "use_soft_token_loss": false,
   "detect_intermediate": true,
   "joint_det": true,
-  "batch_size": 7,
+  "batch_size": 28,
   "dataset": [
     "scanrefer"
   ],
@@ -37,7 +37,8 @@
   "seg_lr": 0.0001,
   "lr_scheduler": "step",
   "lr_decay_epochs": [
-    30
+    50,
+    75
   ],
   "lr_decay_rate": 0.1,
   "clip_norm": 0.1,
@@ -45,10 +46,10 @@
   "syncbn": false,
   "warmup_epoch": -1,
   "warmup_multiplier": 100,
-  "checkpoint_path": "/root/lxy/TSP3D_ori/scripts/experiments/20260218/scanrefer/2026-02-20_11-11-59/ckpt_epoch_93.pth",
+  "checkpoint_path": null,
   "load_optimizer": false,
   "load_scheduler": false,
-  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/20260221/scanrefer/2026-02-21_02-26-54",
+  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/TGEA012/TGEA012/scanrefer/2026-02-24_03-59-25",
   "print_freq": 500,
   "save_freq": 3,
   "val_freq": 3,
@@ -63,9 +64,24 @@
   "eval_train": false,
   "pp_checkpoint": null,
   "reduce_lr": false,
-  "use_seg": true,
-  "use_external_attn_bi_layer0": false,
-  "use_text_guided_external_attn_bi_layer0": false,
-  "use_film_text_guided_external_attn_bi_layer0": false,
+  "use_seg": false,
+  "use_external_attn_bi_layer": [
+    0,
+    1,
+    2
+  ],
+  "use_text_guided_external_attn_bi_layer": [
+    0,
+    1,
+    2
+  ],
+  "use_film_text_guided_external_attn_bi_layer": [
+    0,
+    1,
+    2
+  ],
+  "use_external_attn_bi_layer0": true,
+  "use_text_guided_external_attn_bi_layer0": true,
+  "use_film_text_guided_external_attn_bi_layer0": true,
   "mink_conv1_stride": 2
 }

@@ -8,6 +8,13 @@ fi
 
 data_root="/root/lxy/TSP3D/data"
 
+if [[ -z "${EXP_NAME}" ]]; then
+    EXP_NAME="$(basename "${0}" .sh)"
+fi
+
+log_dir="$(dirname "$(readlink -f "$0")")/${EXP_NAME}"
+mkdir -p "${log_dir}"
+
 ln -sf ${data_root}/ScanRefer/ScanRefer_filtered_train_${mode}.txt \
     ${data_root}/ScanRefer/ScanRefer_filtered_train.txt
 ln -sf ${data_root}/ScanRefer/ScanRefer_filtered_val_${mode}.txt \
@@ -24,7 +31,7 @@ fi
 # let cvd = 0,1,2,...,nproc_per_node-1
 cvd=$(seq -s, 0 $((nproc_per_node-1)))
 echo cvd: ${cvd}
-echo log_dir: "$(dirname "$(readlink -f "$0")")"
+echo log_dir: "${log_dir}"
 
 TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --nproc_per_node ${nproc_per_node} --master_port 12222 \
@@ -38,7 +45,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --voxel_size=0.01 --num_workers=8 \
     --dataset scanrefer --test_dataset scanrefer \
     --detect_intermediate --joint_det \
-    --log_dir "$(dirname "$(readlink -f "$0")")" \
+    --log_dir "${log_dir}" \
     --augment_det \
     --lr_decay_epochs 50 75 \
     --use_external_attn_bi_layer0 \

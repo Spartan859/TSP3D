@@ -25,9 +25,9 @@ class BeaUTyDETR(nn.Module):
                  d_model=128, butd=True, pointnet_ckpt=None, data_path=None,
                  self_attend=True, voxel_size=0.01,
                  use_seg=False, 
-                 use_external_attn_bi_layer0=False,
-                 use_text_guided_external_attn_bi_layer0=False,
-                 use_film_text_guided_external_attn_bi_layer0=False,
+                 use_external_attn_bi_layer=(),
+                 use_text_guided_external_attn_bi_layer=(),
+                 use_film_text_guided_external_attn_bi_layer=(),
                  mink_conv1_stride=2):
         """Initialize layers."""
         super().__init__()
@@ -59,9 +59,9 @@ class BeaUTyDETR(nn.Module):
         self.head = TSPHead(
             voxel_size=self.voxel_size,
             use_seg=use_seg,
-            use_external_attn_bi_layer0=use_external_attn_bi_layer0,
-            use_text_guided_external_attn_bi_layer0=use_text_guided_external_attn_bi_layer0,
-            use_film_text_guided_external_attn_bi_layer0=use_film_text_guided_external_attn_bi_layer0
+            use_external_attn_bi_layer=use_external_attn_bi_layer,
+            use_text_guided_external_attn_bi_layer=use_text_guided_external_attn_bi_layer,
+            use_film_text_guided_external_attn_bi_layer=use_film_text_guided_external_attn_bi_layer
         )
         self.target_pool = None
         if mink_conv1_stride > 1:

@@ -149,8 +149,8 @@ def process_folder(folder: Path, apply: bool = False, dry_run: bool = True):
         print(f"Folder: {folder}")
         print(f"  Best epochs to keep: {sorted(best_epochs)}")
         print(f"  .pth files found: {len(pth_files)}; will keep {len(keep_files)}; would delete {len(to_delete)} files")
-        for p in to_delete:
-            print(f"    DELETE (dry): {p.name}")
+        # for p in to_delete:
+        #     print(f"    DELETE (dry): {p.name}")
     else:
         print(f"Applying deletions in {folder}")
         for p in to_delete:

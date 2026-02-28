@@ -112,9 +112,9 @@ class TrainTester(BaseTrainTester):
             self_attend=args.self_attend,
             voxel_size = args.voxel_size,
             use_seg=args.use_seg,
-            use_external_attn_bi_layer0=args.use_external_attn_bi_layer0,
-            use_text_guided_external_attn_bi_layer0=args.use_text_guided_external_attn_bi_layer0,
-            use_film_text_guided_external_attn_bi_layer0=args.use_film_text_guided_external_attn_bi_layer0,
+            use_external_attn_bi_layer=args.use_external_attn_bi_layer,
+            use_text_guided_external_attn_bi_layer=args.use_text_guided_external_attn_bi_layer,
+            use_film_text_guided_external_attn_bi_layer=args.use_film_text_guided_external_attn_bi_layer,
             mink_conv1_stride=args.mink_conv1_stride
         )
         return model
