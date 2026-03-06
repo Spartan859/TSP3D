@@ -1515,19 +1515,21 @@ class TSPHead(nn.Module):
             if getattr(self, "use_refine", False) and refine_delta is not None and refine_delta.numel() > 0:
 
                 new_results = []
+                roi_offset = 0
 
                 for i, (box3d, score_mat, label) in enumerate(results):
-
-                    if len(rois[i]) == 0:
+                    roi_count = len(rois[i])
+                    if roi_count == 0:
                         new_results.append((box3d, score_mat, label))
                         continue
 
-                    # 当前scene唯一ROI
+                    # Current scene is expected to have a single ROI when nms_pre=1;
+                    # use the first ROI and its matching refine prediction.
                     roi = rois[i][0, :6].to(refine_delta.device)
 
                     roi_center = roi[:3]
 
-                    delta = refine_delta[i]
+                    delta = refine_delta[roi_offset]
 
                     # decode refine box
                     pred_center = roi_center + delta[:3]
@@ -1535,7 +1537,10 @@ class TSPHead(nn.Module):
 
                     refined_box = torch.cat([pred_center, pred_size], dim=0).unsqueeze(0)
 
-                    refined_score = refine_score[i].sigmoid().view(1,1)
+                    if refine_score is None:
+                        refined_score = score_mat
+                    else:
+                        refined_score = refine_score[roi_offset].sigmoid().view(1, 1)
 
                     refined_box3d = img_metas[i]['box_type_3d'](
                         refined_box,
@@ -1545,7 +1550,8 @@ class TSPHead(nn.Module):
                     )
 
                     new_results.append((refined_box3d, refined_score, label))
-                    # pdb.set_trace()
+                    roi_offset += roi_count
+
                 results = new_results
 
             # pdb.set_trace()
