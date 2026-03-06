@@ -125,6 +125,7 @@ def parse_option():
     parser.add_argument('--pp_checkpoint', default=None)    # pointnet checkpoint
     parser.add_argument('--reduce_lr', action='store_true')
     parser.add_argument('--use_seg', action='store_true')
+    parser.add_argument('--use_refine', action='store_true')
     parser.add_argument('--use_external_attn_bi_layer', type=int, nargs='+', default=[],
                         help='Indices of bi_layers to enable external attention, e.g. 0 1 2')
     parser.add_argument('--use_text_guided_external_attn_bi_layer', type=int, nargs='+', default=[],
