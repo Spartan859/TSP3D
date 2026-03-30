@@ -47,8 +47,8 @@ mkdir -p "${log_dir}"
 
 NPROC_PER_NODE=4
 CVD_START=0
-BASE_BS=28
-CUR_BS=28
+BASE_BS=7
+CUR_BS=7
 # BASE_LR=5e-4
 # BASE_KEEP_TRANS_LR=5e-4
 # BASE_TEXT_ENCODER_LR=1e-5
@@ -114,7 +114,7 @@ echo cvd: ${cvd}
 echo log_dir: "${log_dir}"
 
 TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
-    --nproc_per_node ${nproc_per_node} --master_port 12222 \
+    --nproc_per_node ${nproc_per_node} --master_port 32222 \
     train_dist_mod.py \
     --use_color \
     --weight_decay 0.0005 \
@@ -134,9 +134,10 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --use_external_attn_bi_layer 0 \
     --use_text_guided_external_attn_bi_layer 0 \
     --use_film_text_guided_external_attn_bi_layer 0 \
-    --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/20260218/scanrefer/2026-02-20_04-33-37/ckpt_epoch_168.pth \
+    --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/20260216/scanrefer/2026-02-16_11-14-34/ckpt_epoch_144.pth \
     --use_seg \
     --use_refine \
+    --use_seg_external_self_attn \
     # --clip_norm 1.0 \
     # --window_size 5 \
     # --quant_size 4 \
@@ -155,5 +156,6 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     # --checkpoint_path /home/gwx/lxy/TSP3D/outputs/logs/scanrefer/2025-07-10_10-27-52/ckpt_epoch_42.pth \
     # --checkpoint_path /home/gwx/lxy/TSP3D/outputs/logs/scanrefer/2025-07-03_18-03-55/ckpt_epoch_18.pth \
     # --checkpoint_path /home/gwx/gwx/3DVG/TSP3D/outputs/logs/scanrefer/2025-06-25_22-42-41/ckpt_epoch_51.pth \
+    # /root/lxy/TSP3D_ori/scripts/experiments/20260218/scanrefer/2026-02-20_04-33-37/ckpt_epoch_168.pth
 
 torchrun --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py

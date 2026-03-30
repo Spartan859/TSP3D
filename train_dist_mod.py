@@ -113,6 +113,7 @@ class TrainTester(BaseTrainTester):
             voxel_size = args.voxel_size,
             use_seg=args.use_seg,
             use_refine=args.use_refine,
+            use_seg_external_self_attn=args.use_seg_external_self_attn,
             use_external_attn_bi_layer=args.use_external_attn_bi_layer,
             use_text_guided_external_attn_bi_layer=args.use_text_guided_external_attn_bi_layer,
             use_film_text_guided_external_attn_bi_layer=args.use_film_text_guided_external_attn_bi_layer,

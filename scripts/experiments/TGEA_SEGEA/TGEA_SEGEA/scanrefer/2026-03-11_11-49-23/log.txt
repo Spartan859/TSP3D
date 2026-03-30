@@ -1,0 +1,121 @@
+[03/11 11:49:23] TGEA_SEGEA INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/TGEA_SEGEA/TGEA_SEGEA/scanrefer/2026-03-11_11-49-23/config.json
+[03/11 11:49:23] TGEA_SEGEA INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 5e-05, 'keep_trans_lr': 5e-05, 'text_encoder_lr': 1e-06, 'box_select_lr': 4e-05, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [30], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'checkpoint_path': '/root/lxy/TSP3D_ori/scripts/experiments/20260216/scanrefer/2026-02-16_11-14-34/ckpt_epoch_144.pth', 'load_optimizer': False, 'load_scheduler': False, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/TGEA_SEGEA/TGEA_SEGEA/scanrefer/2026-03-11_11-49-23', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'pp_checkpoint': None, 'reduce_lr': False, 'use_seg': True, 'use_refine': False, 'use_external_attn_bi_layer': [0], 'use_text_guided_external_attn_bi_layer': [0], 'use_film_text_guided_external_attn_bi_layer': [0], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': True}
+[03/11 11:55:09] TGEA_SEGEA INFO: length of training dataset: 48655
+[03/11 11:55:09] TGEA_SEGEA INFO: length of testing dataset: 9508
+[03/11 12:03:25] TGEA_SEGEA INFO: Train: [145][500/1737]  
+[03/11 12:03:25] TGEA_SEGEA INFO: bbox_loss 0.3763 	cls_loss 0.1746 	com_loss 0.1549 	keep_loss 0.0629 	loss 0.9610 	seg_loss 0.1398 	seg_loss_dice 0.0525 	
+[03/11 12:10:24] TGEA_SEGEA INFO: Train: [145][1000/1737]  
+[03/11 12:10:24] TGEA_SEGEA INFO: bbox_loss 0.3773 	cls_loss 0.1703 	com_loss 0.1522 	keep_loss 0.0636 	loss 0.9407 	seg_loss 0.1260 	seg_loss_dice 0.0513 	
+[03/11 12:17:17] TGEA_SEGEA INFO: Train: [145][1500/1737]  
+[03/11 12:17:17] TGEA_SEGEA INFO: bbox_loss 0.3773 	cls_loss 0.1679 	com_loss 0.1506 	keep_loss 0.0638 	loss 0.9288 	seg_loss 0.1187 	seg_loss_dice 0.0505 	
+[03/11 12:20:34] TGEA_SEGEA INFO: epoch 145, total time 1496.91, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 12:27:30] TGEA_SEGEA INFO: Train: [146][500/1737]  
+[03/11 12:27:30] TGEA_SEGEA INFO: bbox_loss 0.3776 	cls_loss 0.1581 	com_loss 0.1430 	keep_loss 0.0634 	loss 0.8891 	seg_loss 0.0985 	seg_loss_dice 0.0486 	
+[03/11 12:34:36] TGEA_SEGEA INFO: Train: [146][1000/1737]  
+[03/11 12:34:36] TGEA_SEGEA INFO: bbox_loss 0.3783 	cls_loss 0.1592 	com_loss 0.1448 	keep_loss 0.0638 	loss 0.8924 	seg_loss 0.0976 	seg_loss_dice 0.0485 	
+[03/11 12:42:22] TGEA_SEGEA INFO: Train: [146][1500/1737]  
+[03/11 12:42:22] TGEA_SEGEA INFO: bbox_loss 0.3779 	cls_loss 0.1587 	com_loss 0.1449 	keep_loss 0.0636 	loss 0.8909 	seg_loss 0.0972 	seg_loss_dice 0.0485 	
+[03/11 12:45:44] TGEA_SEGEA INFO: epoch 146, total time 1509.69, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 12:52:48] TGEA_SEGEA INFO: Train: [147][500/1737]  
+[03/11 12:52:48] TGEA_SEGEA INFO: bbox_loss 0.3749 	cls_loss 0.1564 	com_loss 0.1433 	keep_loss 0.0635 	loss 0.8797 	seg_loss 0.0933 	seg_loss_dice 0.0482 	
+[03/11 12:59:56] TGEA_SEGEA INFO: Train: [147][1000/1737]  
+[03/11 12:59:56] TGEA_SEGEA INFO: bbox_loss 0.3765 	cls_loss 0.1574 	com_loss 0.1446 	keep_loss 0.0634 	loss 0.8822 	seg_loss 0.0925 	seg_loss_dice 0.0479 	
+[03/11 13:06:58] TGEA_SEGEA INFO: Train: [147][1500/1737]  
+[03/11 13:06:58] TGEA_SEGEA INFO: bbox_loss 0.3759 	cls_loss 0.1574 	com_loss 0.1444 	keep_loss 0.0633 	loss 0.8807 	seg_loss 0.0918 	seg_loss_dice 0.0479 	
+[03/11 13:10:16] TGEA_SEGEA INFO: epoch 147, total time 1472.02, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 13:11:21] TGEA_SEGEA INFO: Eval: [147]  
+[03/11 13:11:21] TGEA_SEGEA INFO: 3dcnn Acc0.25: Top-1: 0.56132
+[03/11 13:11:21] TGEA_SEGEA INFO: 3dcnn Acc0.50: Top-1: 0.46782
+[03/11 13:11:21] TGEA_SEGEA INFO: Acc_mask0.25 0.5737273874631889
+[03/11 13:11:21] TGEA_SEGEA INFO: Acc_mask0.50 0.48012200252419013
+[03/11 13:18:19] TGEA_SEGEA INFO: Train: [148][500/1737]  
+[03/11 13:18:19] TGEA_SEGEA INFO: bbox_loss 0.3718 	cls_loss 0.1543 	com_loss 0.1420 	keep_loss 0.0641 	loss 0.8675 	seg_loss 0.0878 	seg_loss_dice 0.0475 	
+[03/11 13:25:27] TGEA_SEGEA INFO: Train: [148][1000/1737]  
+[03/11 13:25:27] TGEA_SEGEA INFO: bbox_loss 0.3754 	cls_loss 0.1558 	com_loss 0.1428 	keep_loss 0.0635 	loss 0.8736 	seg_loss 0.0886 	seg_loss_dice 0.0474 	
+[03/11 13:32:26] TGEA_SEGEA INFO: Train: [148][1500/1737]  
+[03/11 13:32:26] TGEA_SEGEA INFO: bbox_loss 0.3748 	cls_loss 0.1562 	com_loss 0.1430 	keep_loss 0.0633 	loss 0.8733 	seg_loss 0.0885 	seg_loss_dice 0.0475 	
+[03/11 13:35:42] TGEA_SEGEA INFO: epoch 148, total time 1460.94, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 13:42:40] TGEA_SEGEA INFO: Train: [149][500/1737]  
+[03/11 13:42:40] TGEA_SEGEA INFO: bbox_loss 0.3722 	cls_loss 0.1520 	com_loss 0.1412 	keep_loss 0.0621 	loss 0.8616 	seg_loss 0.0866 	seg_loss_dice 0.0475 	
+[03/11 13:49:47] TGEA_SEGEA INFO: Train: [149][1000/1737]  
+[03/11 13:49:47] TGEA_SEGEA INFO: bbox_loss 0.3750 	cls_loss 0.1543 	com_loss 0.1424 	keep_loss 0.0629 	loss 0.8686 	seg_loss 0.0865 	seg_loss_dice 0.0475 	
+[03/11 13:57:26] TGEA_SEGEA INFO: Train: [149][1500/1737]  
+[03/11 13:57:26] TGEA_SEGEA INFO: bbox_loss 0.3752 	cls_loss 0.1547 	com_loss 0.1419 	keep_loss 0.0631 	loss 0.8682 	seg_loss 0.0860 	seg_loss_dice 0.0473 	
+[03/11 14:00:51] TGEA_SEGEA INFO: epoch 149, total time 1509.27, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 14:08:12] TGEA_SEGEA INFO: Train: [150][500/1737]  
+[03/11 14:08:12] TGEA_SEGEA INFO: bbox_loss 0.3796 	cls_loss 0.1562 	com_loss 0.1423 	keep_loss 0.0632 	loss 0.8736 	seg_loss 0.0853 	seg_loss_dice 0.0470 	
+[03/11 14:15:23] TGEA_SEGEA INFO: Train: [150][1000/1737]  
+[03/11 14:15:23] TGEA_SEGEA INFO: bbox_loss 0.3786 	cls_loss 0.1560 	com_loss 0.1423 	keep_loss 0.0634 	loss 0.8724 	seg_loss 0.0850 	seg_loss_dice 0.0472 	
+[03/11 14:22:27] TGEA_SEGEA INFO: Train: [150][1500/1737]  
+[03/11 14:22:27] TGEA_SEGEA INFO: bbox_loss 0.3756 	cls_loss 0.1564 	com_loss 0.1429 	keep_loss 0.0637 	loss 0.8709 	seg_loss 0.0850 	seg_loss_dice 0.0473 	
+[03/11 14:25:46] TGEA_SEGEA INFO: epoch 150, total time 1495.30, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 14:26:51] TGEA_SEGEA INFO: Eval: [150]  
+[03/11 14:26:51] TGEA_SEGEA INFO: 3dcnn Acc0.25: Top-1: 0.55827
+[03/11 14:26:51] TGEA_SEGEA INFO: 3dcnn Acc0.50: Top-1: 0.46498
+[03/11 14:26:51] TGEA_SEGEA INFO: Acc_mask0.25 0.5742532604122844
+[03/11 14:26:51] TGEA_SEGEA INFO: Acc_mask0.50 0.48937736642827095
+[03/11 14:33:50] TGEA_SEGEA INFO: Train: [151][500/1737]  
+[03/11 14:33:50] TGEA_SEGEA INFO: bbox_loss 0.3770 	cls_loss 0.1531 	com_loss 0.1402 	keep_loss 0.0620 	loss 0.8611 	seg_loss 0.0822 	seg_loss_dice 0.0466 	
+[03/11 14:40:56] TGEA_SEGEA INFO: Train: [151][1000/1737]  
+[03/11 14:40:56] TGEA_SEGEA INFO: bbox_loss 0.3761 	cls_loss 0.1543 	com_loss 0.1413 	keep_loss 0.0632 	loss 0.8645 	seg_loss 0.0828 	seg_loss_dice 0.0468 	
+[03/11 14:47:52] TGEA_SEGEA INFO: Train: [151][1500/1737]  
+[03/11 14:47:52] TGEA_SEGEA INFO: bbox_loss 0.3770 	cls_loss 0.1537 	com_loss 0.1406 	keep_loss 0.0629 	loss 0.8637 	seg_loss 0.0826 	seg_loss_dice 0.0468 	
+[03/11 14:51:13] TGEA_SEGEA INFO: epoch 151, total time 1462.18, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 14:58:19] TGEA_SEGEA INFO: Train: [152][500/1737]  
+[03/11 14:58:19] TGEA_SEGEA INFO: bbox_loss 0.3750 	cls_loss 0.1533 	com_loss 0.1403 	keep_loss 0.0623 	loss 0.8602 	seg_loss 0.0823 	seg_loss_dice 0.0470 	
+[03/11 15:05:24] TGEA_SEGEA INFO: Train: [152][1000/1737]  
+[03/11 15:05:24] TGEA_SEGEA INFO: bbox_loss 0.3756 	cls_loss 0.1536 	com_loss 0.1405 	keep_loss 0.0621 	loss 0.8603 	seg_loss 0.0815 	seg_loss_dice 0.0470 	
+[03/11 15:12:23] TGEA_SEGEA INFO: Train: [152][1500/1737]  
+[03/11 15:12:23] TGEA_SEGEA INFO: bbox_loss 0.3753 	cls_loss 0.1535 	com_loss 0.1400 	keep_loss 0.0625 	loss 0.8592 	seg_loss 0.0811 	seg_loss_dice 0.0468 	
+[03/11 15:15:47] TGEA_SEGEA INFO: epoch 152, total time 1473.92, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 15:23:03] TGEA_SEGEA INFO: Train: [153][500/1737]  
+[03/11 15:23:03] TGEA_SEGEA INFO: bbox_loss 0.3704 	cls_loss 0.1507 	com_loss 0.1378 	keep_loss 0.0616 	loss 0.8476 	seg_loss 0.0803 	seg_loss_dice 0.0467 	
+[03/11 15:30:08] TGEA_SEGEA INFO: Train: [153][1000/1737]  
+[03/11 15:30:08] TGEA_SEGEA INFO: bbox_loss 0.3725 	cls_loss 0.1531 	com_loss 0.1394 	keep_loss 0.0625 	loss 0.8540 	seg_loss 0.0798 	seg_loss_dice 0.0465 	
+[03/11 15:37:09] TGEA_SEGEA INFO: Train: [153][1500/1737]  
+[03/11 15:37:09] TGEA_SEGEA INFO: bbox_loss 0.3719 	cls_loss 0.1538 	com_loss 0.1401 	keep_loss 0.0627 	loss 0.8553 	seg_loss 0.0801 	seg_loss_dice 0.0467 	
+[03/11 15:40:29] TGEA_SEGEA INFO: epoch 153, total time 1481.89, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 15:41:31] TGEA_SEGEA INFO: Eval: [153]  
+[03/11 15:41:31] TGEA_SEGEA INFO: 3dcnn Acc0.25: Top-1: 0.55585
+[03/11 15:41:31] TGEA_SEGEA INFO: 3dcnn Acc0.50: Top-1: 0.46014
+[03/11 15:41:31] TGEA_SEGEA INFO: Acc_mask0.25 0.5730963399242743
+[03/11 15:41:31] TGEA_SEGEA INFO: Acc_mask0.50 0.48716870004206986
+[03/11 15:48:35] TGEA_SEGEA INFO: Train: [154][500/1737]  
+[03/11 15:48:35] TGEA_SEGEA INFO: bbox_loss 0.3706 	cls_loss 0.1505 	com_loss 0.1374 	keep_loss 0.0614 	loss 0.8473 	seg_loss 0.0804 	seg_loss_dice 0.0469 	
+[03/11 15:55:44] TGEA_SEGEA INFO: Train: [154][1000/1737]  
+[03/11 15:55:44] TGEA_SEGEA INFO: bbox_loss 0.3706 	cls_loss 0.1508 	com_loss 0.1377 	keep_loss 0.0616 	loss 0.8463 	seg_loss 0.0791 	seg_loss_dice 0.0465 	
+[03/11 16:02:47] TGEA_SEGEA INFO: Train: [154][1500/1737]  
+[03/11 16:02:47] TGEA_SEGEA INFO: bbox_loss 0.3707 	cls_loss 0.1517 	com_loss 0.1388 	keep_loss 0.0618 	loss 0.8485 	seg_loss 0.0790 	seg_loss_dice 0.0465 	
+[03/11 16:06:10] TGEA_SEGEA INFO: epoch 154, total time 1479.29, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 16:13:17] TGEA_SEGEA INFO: Train: [155][500/1737]  
+[03/11 16:13:17] TGEA_SEGEA INFO: bbox_loss 0.3744 	cls_loss 0.1526 	com_loss 0.1393 	keep_loss 0.0627 	loss 0.8539 	seg_loss 0.0785 	seg_loss_dice 0.0465 	
+[03/11 16:20:27] TGEA_SEGEA INFO: Train: [155][1000/1737]  
+[03/11 16:20:27] TGEA_SEGEA INFO: bbox_loss 0.3742 	cls_loss 0.1537 	com_loss 0.1409 	keep_loss 0.0628 	loss 0.8573 	seg_loss 0.0790 	seg_loss_dice 0.0467 	
+[03/11 16:27:31] TGEA_SEGEA INFO: Train: [155][1500/1737]  
+[03/11 16:27:31] TGEA_SEGEA INFO: bbox_loss 0.3731 	cls_loss 0.1533 	com_loss 0.1404 	keep_loss 0.0628 	loss 0.8545 	seg_loss 0.0785 	seg_loss_dice 0.0464 	
+[03/11 16:30:52] TGEA_SEGEA INFO: epoch 155, total time 1481.43, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 16:38:08] TGEA_SEGEA INFO: Train: [156][500/1737]  
+[03/11 16:38:08] TGEA_SEGEA INFO: bbox_loss 0.3699 	cls_loss 0.1532 	com_loss 0.1403 	keep_loss 0.0637 	loss 0.8491 	seg_loss 0.0759 	seg_loss_dice 0.0461 	
+[03/11 16:45:23] TGEA_SEGEA INFO: Train: [156][1000/1737]  
+[03/11 16:45:23] TGEA_SEGEA INFO: bbox_loss 0.3724 	cls_loss 0.1524 	com_loss 0.1393 	keep_loss 0.0629 	loss 0.8493 	seg_loss 0.0761 	seg_loss_dice 0.0462 	
+[03/11 16:52:25] TGEA_SEGEA INFO: Train: [156][1500/1737]  
+[03/11 16:52:25] TGEA_SEGEA INFO: bbox_loss 0.3721 	cls_loss 0.1517 	com_loss 0.1385 	keep_loss 0.0622 	loss 0.8466 	seg_loss 0.0761 	seg_loss_dice 0.0460 	
+[03/11 16:55:45] TGEA_SEGEA INFO: epoch 156, total time 1492.59, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 16:56:46] TGEA_SEGEA INFO: Eval: [156]  
+[03/11 16:56:46] TGEA_SEGEA INFO: 3dcnn Acc0.25: Top-1: 0.55911
+[03/11 16:56:46] TGEA_SEGEA INFO: 3dcnn Acc0.50: Top-1: 0.46308
+[03/11 16:56:46] TGEA_SEGEA INFO: Acc_mask0.25 0.5765671013883046
+[03/11 16:56:46] TGEA_SEGEA INFO: Acc_mask0.50 0.49495161968868323
+[03/11 17:03:47] TGEA_SEGEA INFO: Train: [157][500/1737]  
+[03/11 17:03:47] TGEA_SEGEA INFO: bbox_loss 0.3734 	cls_loss 0.1535 	com_loss 0.1399 	keep_loss 0.0626 	loss 0.8515 	seg_loss 0.0761 	seg_loss_dice 0.0459 	
+[03/11 17:10:51] TGEA_SEGEA INFO: Train: [157][1000/1737]  
+[03/11 17:10:51] TGEA_SEGEA INFO: bbox_loss 0.3736 	cls_loss 0.1536 	com_loss 0.1399 	keep_loss 0.0627 	loss 0.8523 	seg_loss 0.0762 	seg_loss_dice 0.0462 	
+[03/11 17:17:52] TGEA_SEGEA INFO: Train: [157][1500/1737]  
+[03/11 17:17:52] TGEA_SEGEA INFO: bbox_loss 0.3732 	cls_loss 0.1535 	com_loss 0.1399 	keep_loss 0.0629 	loss 0.8521 	seg_loss 0.0762 	seg_loss_dice 0.0463 	
+[03/11 17:21:08] TGEA_SEGEA INFO: epoch 157, total time 1462.49, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/11 17:28:13] TGEA_SEGEA INFO: Train: [158][500/1737]  
+[03/11 17:28:13] TGEA_SEGEA INFO: bbox_loss 0.3710 	cls_loss 0.1512 	com_loss 0.1377 	keep_loss 0.0626 	loss 0.8433 	seg_loss 0.0751 	seg_loss_dice 0.0457 	
+[03/11 17:35:22] TGEA_SEGEA INFO: Train: [158][1000/1737]  
+[03/11 17:35:22] TGEA_SEGEA INFO: bbox_loss 0.3704 	cls_loss 0.1523 	com_loss 0.1385 	keep_loss 0.0625 	loss 0.8446 	seg_loss 0.0749 	seg_loss_dice 0.0459 	
+[03/11 17:42:24] TGEA_SEGEA INFO: Train: [158][1500/1737]  
+[03/11 17:42:24] TGEA_SEGEA INFO: bbox_loss 0.3739 	cls_loss 0.1530 	com_loss 0.1392 	keep_loss 0.0625 	loss 0.8495 	seg_loss 0.0748 	seg_loss_dice 0.0461 	

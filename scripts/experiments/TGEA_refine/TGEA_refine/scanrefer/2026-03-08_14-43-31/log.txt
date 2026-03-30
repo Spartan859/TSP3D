@@ -1,0 +1,774 @@
+[03/08 14:43:31] TGEA_refine INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/TGEA_refine/TGEA_refine/scanrefer/2026-03-08_14-43-31/config.json
+[03/08 14:43:31] TGEA_refine INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 5e-05, 'keep_trans_lr': 5e-05, 'text_encoder_lr': 1e-06, 'box_select_lr': 4e-05, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [30], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'checkpoint_path': '/root/lxy/TSP3D_ori/scripts/experiments/20260218/scanrefer/2026-02-20_04-33-37/ckpt_epoch_168.pth', 'load_optimizer': False, 'load_scheduler': False, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/TGEA_refine/TGEA_refine/scanrefer/2026-03-08_14-43-31', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'pp_checkpoint': None, 'reduce_lr': False, 'use_seg': True, 'use_refine': True, 'use_external_attn_bi_layer': [0], 'use_text_guided_external_attn_bi_layer': [0], 'use_film_text_guided_external_attn_bi_layer': [0], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2}
+[03/08 14:49:13] TGEA_refine INFO: length of training dataset: 48655
+[03/08 14:49:13] TGEA_refine INFO: length of testing dataset: 9508
+[03/08 14:57:12] TGEA_refine INFO: Train: [169][500/1737]  
+[03/08 14:57:12] TGEA_refine INFO: bbox_loss 0.3707 	cls_loss 0.1476 	com_loss 0.1346 	keep_loss 0.0595 	loss 1.7862 	refine_bbox_loss 0.8712 	refine_score_loss 0.0966 	seg_loss 0.0615 	seg_loss_dice 0.0445 	
+[03/08 15:04:32] TGEA_refine INFO: Train: [169][1000/1737]  
+[03/08 15:04:32] TGEA_refine INFO: bbox_loss 0.3708 	cls_loss 0.1475 	com_loss 0.1346 	keep_loss 0.0607 	loss 1.7612 	refine_bbox_loss 0.8737 	refine_score_loss 0.0667 	seg_loss 0.0622 	seg_loss_dice 0.0449 	
+[03/08 15:11:52] TGEA_refine INFO: Train: [169][1500/1737]  
+[03/08 15:11:52] TGEA_refine INFO: bbox_loss 0.3722 	cls_loss 0.1486 	com_loss 0.1353 	keep_loss 0.0612 	loss 1.7532 	refine_bbox_loss 0.8727 	refine_score_loss 0.0563 	seg_loss 0.0622 	seg_loss_dice 0.0449 	
+[03/08 15:15:27] TGEA_refine INFO: epoch 169, total time 1547.25, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 15:22:51] TGEA_refine INFO: Train: [170][500/1737]  
+[03/08 15:22:51] TGEA_refine INFO: bbox_loss 0.3726 	cls_loss 0.1473 	com_loss 0.1345 	keep_loss 0.0614 	loss 1.7133 	refine_bbox_loss 0.8595 	refine_score_loss 0.0294 	seg_loss 0.0632 	seg_loss_dice 0.0454 	
+[03/08 15:30:16] TGEA_refine INFO: Train: [170][1000/1737]  
+[03/08 15:30:16] TGEA_refine INFO: bbox_loss 0.3747 	cls_loss 0.1478 	com_loss 0.1344 	keep_loss 0.0610 	loss 1.7125 	refine_bbox_loss 0.8589 	refine_score_loss 0.0275 	seg_loss 0.0630 	seg_loss_dice 0.0451 	
+[03/08 15:37:54] TGEA_refine INFO: Train: [170][1500/1737]  
+[03/08 15:37:54] TGEA_refine INFO: bbox_loss 0.3720 	cls_loss 0.1482 	com_loss 0.1345 	keep_loss 0.0612 	loss 1.7062 	refine_bbox_loss 0.8558 	refine_score_loss 0.0270 	seg_loss 0.0625 	seg_loss_dice 0.0448 	
+[03/08 15:41:26] TGEA_refine INFO: epoch 170, total time 1559.92, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 15:48:58] TGEA_refine INFO: Train: [171][500/1737]  
+[03/08 15:48:58] TGEA_refine INFO: bbox_loss 0.3728 	cls_loss 0.1491 	com_loss 0.1362 	keep_loss 0.0611 	loss 1.6907 	refine_bbox_loss 0.8423 	refine_score_loss 0.0229 	seg_loss 0.0619 	seg_loss_dice 0.0443 	
+[03/08 15:56:33] TGEA_refine INFO: Train: [171][1000/1737]  
+[03/08 15:56:33] TGEA_refine INFO: bbox_loss 0.3713 	cls_loss 0.1488 	com_loss 0.1362 	keep_loss 0.0616 	loss 1.6889 	refine_bbox_loss 0.8407 	refine_score_loss 0.0236 	seg_loss 0.0620 	seg_loss_dice 0.0446 	
+[03/08 16:04:02] TGEA_refine INFO: Train: [171][1500/1737]  
+[03/08 16:04:02] TGEA_refine INFO: bbox_loss 0.3729 	cls_loss 0.1493 	com_loss 0.1363 	keep_loss 0.0617 	loss 1.6897 	refine_bbox_loss 0.8392 	refine_score_loss 0.0235 	seg_loss 0.0623 	seg_loss_dice 0.0446 	
+[03/08 16:07:35] TGEA_refine INFO: epoch 171, total time 1568.31, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 16:08:42] TGEA_refine INFO: Eval: [171]  
+[03/08 16:08:42] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.07352
+[03/08 16:08:42] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/08 16:08:42] TGEA_refine INFO: Acc_mask0.25 0.5791964661337821
+[03/08 16:08:42] TGEA_refine INFO: Acc_mask0.50 0.5146192679848549
+[03/08 16:16:27] TGEA_refine INFO: Train: [172][500/1737]  
+[03/08 16:16:27] TGEA_refine INFO: bbox_loss 0.3731 	cls_loss 0.1515 	com_loss 0.1380 	keep_loss 0.0623 	loss 1.6873 	refine_bbox_loss 0.8327 	refine_score_loss 0.0222 	seg_loss 0.0627 	seg_loss_dice 0.0448 	
+[03/08 16:23:55] TGEA_refine INFO: Train: [172][1000/1737]  
+[03/08 16:23:55] TGEA_refine INFO: bbox_loss 0.3733 	cls_loss 0.1515 	com_loss 0.1383 	keep_loss 0.0620 	loss 1.6879 	refine_bbox_loss 0.8319 	refine_score_loss 0.0231 	seg_loss 0.0628 	seg_loss_dice 0.0450 	
+[03/08 16:31:31] TGEA_refine INFO: Train: [172][1500/1737]  
+[03/08 16:31:31] TGEA_refine INFO: bbox_loss 0.3719 	cls_loss 0.1510 	com_loss 0.1375 	keep_loss 0.0625 	loss 1.6841 	refine_bbox_loss 0.8310 	refine_score_loss 0.0229 	seg_loss 0.0625 	seg_loss_dice 0.0449 	
+[03/08 16:35:04] TGEA_refine INFO: epoch 172, total time 1582.05, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 16:42:33] TGEA_refine INFO: Train: [173][500/1737]  
+[03/08 16:42:33] TGEA_refine INFO: bbox_loss 0.3727 	cls_loss 0.1487 	com_loss 0.1356 	keep_loss 0.0612 	loss 1.6771 	refine_bbox_loss 0.8274 	refine_score_loss 0.0236 	seg_loss 0.0628 	seg_loss_dice 0.0450 	
+[03/08 16:50:03] TGEA_refine INFO: Train: [173][1000/1737]  
+[03/08 16:50:03] TGEA_refine INFO: bbox_loss 0.3727 	cls_loss 0.1491 	com_loss 0.1359 	keep_loss 0.0615 	loss 1.6767 	refine_bbox_loss 0.8270 	refine_score_loss 0.0233 	seg_loss 0.0624 	seg_loss_dice 0.0447 	
+[03/08 16:57:40] TGEA_refine INFO: Train: [173][1500/1737]  
+[03/08 16:57:40] TGEA_refine INFO: bbox_loss 0.3715 	cls_loss 0.1485 	com_loss 0.1356 	keep_loss 0.0612 	loss 1.6729 	refine_bbox_loss 0.8265 	refine_score_loss 0.0227 	seg_loss 0.0623 	seg_loss_dice 0.0445 	
+[03/08 17:01:17] TGEA_refine INFO: epoch 173, total time 1572.17, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 17:08:53] TGEA_refine INFO: Train: [174][500/1737]  
+[03/08 17:08:53] TGEA_refine INFO: bbox_loss 0.3694 	cls_loss 0.1454 	com_loss 0.1319 	keep_loss 0.0613 	loss 1.6626 	refine_bbox_loss 0.8235 	refine_score_loss 0.0242 	seg_loss 0.0624 	seg_loss_dice 0.0445 	
+[03/08 17:16:25] TGEA_refine INFO: Train: [174][1000/1737]  
+[03/08 17:16:25] TGEA_refine INFO: bbox_loss 0.3716 	cls_loss 0.1465 	com_loss 0.1337 	keep_loss 0.0611 	loss 1.6667 	refine_bbox_loss 0.8239 	refine_score_loss 0.0229 	seg_loss 0.0621 	seg_loss_dice 0.0448 	
+[03/08 17:23:56] TGEA_refine INFO: Train: [174][1500/1737]  
+[03/08 17:23:56] TGEA_refine INFO: bbox_loss 0.3711 	cls_loss 0.1475 	com_loss 0.1341 	keep_loss 0.0614 	loss 1.6663 	refine_bbox_loss 0.8236 	refine_score_loss 0.0224 	seg_loss 0.0617 	seg_loss_dice 0.0446 	
+[03/08 17:27:28] TGEA_refine INFO: epoch 174, total time 1571.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 17:28:37] TGEA_refine INFO: Eval: [174]  
+[03/08 17:28:37] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.03723
+[03/08 17:28:37] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/08 17:28:37] TGEA_refine INFO: Acc_mask0.25 0.5761464030290282
+[03/08 17:28:37] TGEA_refine INFO: Acc_mask0.50 0.5090450147244425
+[03/08 17:36:17] TGEA_refine INFO: Train: [175][500/1737]  
+[03/08 17:36:17] TGEA_refine INFO: bbox_loss 0.3669 	cls_loss 0.1493 	com_loss 0.1360 	keep_loss 0.0614 	loss 1.6605 	refine_bbox_loss 0.8214 	refine_score_loss 0.0182 	seg_loss 0.0625 	seg_loss_dice 0.0449 	
+[03/08 17:43:46] TGEA_refine INFO: Train: [175][1000/1737]  
+[03/08 17:43:46] TGEA_refine INFO: bbox_loss 0.3679 	cls_loss 0.1492 	com_loss 0.1359 	keep_loss 0.0610 	loss 1.6606 	refine_bbox_loss 0.8212 	refine_score_loss 0.0189 	seg_loss 0.0621 	seg_loss_dice 0.0445 	
+[03/08 17:51:23] TGEA_refine INFO: Train: [175][1500/1737]  
+[03/08 17:51:23] TGEA_refine INFO: bbox_loss 0.3678 	cls_loss 0.1488 	com_loss 0.1355 	keep_loss 0.0612 	loss 1.6603 	refine_bbox_loss 0.8206 	refine_score_loss 0.0197 	seg_loss 0.0621 	seg_loss_dice 0.0446 	
+[03/08 17:54:57] TGEA_refine INFO: epoch 175, total time 1580.15, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 18:02:26] TGEA_refine INFO: Train: [176][500/1737]  
+[03/08 18:02:26] TGEA_refine INFO: bbox_loss 0.3717 	cls_loss 0.1511 	com_loss 0.1366 	keep_loss 0.0618 	loss 1.6671 	refine_bbox_loss 0.8184 	refine_score_loss 0.0209 	seg_loss 0.0617 	seg_loss_dice 0.0449 	
+[03/08 18:10:00] TGEA_refine INFO: Train: [176][1000/1737]  
+[03/08 18:10:00] TGEA_refine INFO: bbox_loss 0.3700 	cls_loss 0.1492 	com_loss 0.1351 	keep_loss 0.0618 	loss 1.6619 	refine_bbox_loss 0.8183 	refine_score_loss 0.0209 	seg_loss 0.0617 	seg_loss_dice 0.0450 	
+[03/08 18:17:29] TGEA_refine INFO: Train: [176][1500/1737]  
+[03/08 18:17:29] TGEA_refine INFO: bbox_loss 0.3688 	cls_loss 0.1480 	com_loss 0.1343 	keep_loss 0.0614 	loss 1.6576 	refine_bbox_loss 0.8178 	refine_score_loss 0.0205 	seg_loss 0.0618 	seg_loss_dice 0.0449 	
+[03/08 18:21:05] TGEA_refine INFO: epoch 176, total time 1568.77, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 18:28:44] TGEA_refine INFO: Train: [177][500/1737]  
+[03/08 18:28:44] TGEA_refine INFO: bbox_loss 0.3728 	cls_loss 0.1449 	com_loss 0.1317 	keep_loss 0.0611 	loss 1.6520 	refine_bbox_loss 0.8172 	refine_score_loss 0.0186 	seg_loss 0.0611 	seg_loss_dice 0.0447 	
+[03/08 18:36:14] TGEA_refine INFO: Train: [177][1000/1737]  
+[03/08 18:36:14] TGEA_refine INFO: bbox_loss 0.3711 	cls_loss 0.1446 	com_loss 0.1315 	keep_loss 0.0605 	loss 1.6501 	refine_bbox_loss 0.8171 	refine_score_loss 0.0186 	seg_loss 0.0619 	seg_loss_dice 0.0448 	
+[03/08 18:43:45] TGEA_refine INFO: Train: [177][1500/1737]  
+[03/08 18:43:45] TGEA_refine INFO: bbox_loss 0.3707 	cls_loss 0.1460 	com_loss 0.1326 	keep_loss 0.0611 	loss 1.6526 	refine_bbox_loss 0.8169 	refine_score_loss 0.0189 	seg_loss 0.0616 	seg_loss_dice 0.0446 	
+[03/08 18:47:29] TGEA_refine INFO: epoch 177, total time 1583.96, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 18:48:36] TGEA_refine INFO: Eval: [177]  
+[03/08 18:48:36] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.06416
+[03/08 18:48:36] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/08 18:48:36] TGEA_refine INFO: Acc_mask0.25 0.5766722759781236
+[03/08 18:48:36] TGEA_refine INFO: Acc_mask0.50 0.5114640302902819
+[03/08 18:56:09] TGEA_refine INFO: Train: [178][500/1737]  
+[03/08 18:56:09] TGEA_refine INFO: bbox_loss 0.3683 	cls_loss 0.1463 	com_loss 0.1330 	keep_loss 0.0610 	loss 1.6480 	refine_bbox_loss 0.8129 	refine_score_loss 0.0217 	seg_loss 0.0608 	seg_loss_dice 0.0440 	
+[03/08 19:03:39] TGEA_refine INFO: Train: [178][1000/1737]  
+[03/08 19:03:39] TGEA_refine INFO: bbox_loss 0.3693 	cls_loss 0.1462 	com_loss 0.1330 	keep_loss 0.0607 	loss 1.6494 	refine_bbox_loss 0.8138 	refine_score_loss 0.0209 	seg_loss 0.0614 	seg_loss_dice 0.0442 	
+[03/08 19:11:12] TGEA_refine INFO: Train: [178][1500/1737]  
+[03/08 19:11:12] TGEA_refine INFO: bbox_loss 0.3696 	cls_loss 0.1465 	com_loss 0.1334 	keep_loss 0.0607 	loss 1.6501 	refine_bbox_loss 0.8141 	refine_score_loss 0.0198 	seg_loss 0.0615 	seg_loss_dice 0.0444 	
+[03/08 19:14:46] TGEA_refine INFO: epoch 178, total time 1570.16, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 19:22:16] TGEA_refine INFO: Train: [179][500/1737]  
+[03/08 19:22:16] TGEA_refine INFO: bbox_loss 0.3661 	cls_loss 0.1472 	com_loss 0.1336 	keep_loss 0.0608 	loss 1.6437 	refine_bbox_loss 0.8130 	refine_score_loss 0.0175 	seg_loss 0.0609 	seg_loss_dice 0.0446 	
+[03/08 19:29:49] TGEA_refine INFO: Train: [179][1000/1737]  
+[03/08 19:29:49] TGEA_refine INFO: bbox_loss 0.3654 	cls_loss 0.1467 	com_loss 0.1332 	keep_loss 0.0609 	loss 1.6417 	refine_bbox_loss 0.8128 	refine_score_loss 0.0174 	seg_loss 0.0607 	seg_loss_dice 0.0446 	
+[03/08 19:37:19] TGEA_refine INFO: Train: [179][1500/1737]  
+[03/08 19:37:19] TGEA_refine INFO: bbox_loss 0.3678 	cls_loss 0.1478 	com_loss 0.1344 	keep_loss 0.0611 	loss 1.6471 	refine_bbox_loss 0.8130 	refine_score_loss 0.0173 	seg_loss 0.0611 	seg_loss_dice 0.0446 	
+[03/08 19:40:51] TGEA_refine INFO: epoch 179, total time 1565.15, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 19:48:34] TGEA_refine INFO: Train: [180][500/1737]  
+[03/08 19:48:34] TGEA_refine INFO: bbox_loss 0.3696 	cls_loss 0.1469 	com_loss 0.1326 	keep_loss 0.0618 	loss 1.6477 	refine_bbox_loss 0.8125 	refine_score_loss 0.0182 	seg_loss 0.0614 	seg_loss_dice 0.0447 	
+[03/08 19:55:59] TGEA_refine INFO: Train: [180][1000/1737]  
+[03/08 19:55:59] TGEA_refine INFO: bbox_loss 0.3708 	cls_loss 0.1482 	com_loss 0.1345 	keep_loss 0.0619 	loss 1.6522 	refine_bbox_loss 0.8131 	refine_score_loss 0.0173 	seg_loss 0.0621 	seg_loss_dice 0.0445 	
+[03/08 20:03:31] TGEA_refine INFO: Train: [180][1500/1737]  
+[03/08 20:03:31] TGEA_refine INFO: bbox_loss 0.3697 	cls_loss 0.1482 	com_loss 0.1346 	keep_loss 0.0618 	loss 1.6497 	refine_bbox_loss 0.8126 	refine_score_loss 0.0172 	seg_loss 0.0612 	seg_loss_dice 0.0443 	
+[03/08 20:07:04] TGEA_refine INFO: epoch 180, total time 1572.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 20:08:11] TGEA_refine INFO: Eval: [180]  
+[03/08 20:08:11] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04649
+[03/08 20:08:11] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/08 20:08:11] TGEA_refine INFO: Acc_mask0.25 0.5771981489272192
+[03/08 20:08:11] TGEA_refine INFO: Acc_mask0.50 0.5075725704669751
+[03/08 20:15:41] TGEA_refine INFO: Train: [181][500/1737]  
+[03/08 20:15:41] TGEA_refine INFO: bbox_loss 0.3736 	cls_loss 0.1484 	com_loss 0.1347 	keep_loss 0.0627 	loss 1.6533 	refine_bbox_loss 0.8124 	refine_score_loss 0.0161 	seg_loss 0.0607 	seg_loss_dice 0.0447 	
+[03/08 20:23:14] TGEA_refine INFO: Train: [181][1000/1737]  
+[03/08 20:23:14] TGEA_refine INFO: bbox_loss 0.3705 	cls_loss 0.1479 	com_loss 0.1336 	keep_loss 0.0616 	loss 1.6473 	refine_bbox_loss 0.8115 	refine_score_loss 0.0170 	seg_loss 0.0605 	seg_loss_dice 0.0447 	
+[03/08 20:30:42] TGEA_refine INFO: Train: [181][1500/1737]  
+[03/08 20:30:42] TGEA_refine INFO: bbox_loss 0.3709 	cls_loss 0.1470 	com_loss 0.1331 	keep_loss 0.0611 	loss 1.6468 	refine_bbox_loss 0.8116 	refine_score_loss 0.0172 	seg_loss 0.0611 	seg_loss_dice 0.0448 	
+[03/08 20:34:14] TGEA_refine INFO: epoch 181, total time 1562.64, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 20:41:55] TGEA_refine INFO: Train: [182][500/1737]  
+[03/08 20:41:55] TGEA_refine INFO: bbox_loss 0.3741 	cls_loss 0.1478 	com_loss 0.1329 	keep_loss 0.0618 	loss 1.6500 	refine_bbox_loss 0.8115 	refine_score_loss 0.0147 	seg_loss 0.0623 	seg_loss_dice 0.0448 	
+[03/08 20:49:22] TGEA_refine INFO: Train: [182][1000/1737]  
+[03/08 20:49:22] TGEA_refine INFO: bbox_loss 0.3699 	cls_loss 0.1467 	com_loss 0.1336 	keep_loss 0.0615 	loss 1.6443 	refine_bbox_loss 0.8106 	refine_score_loss 0.0154 	seg_loss 0.0618 	seg_loss_dice 0.0447 	
+[03/08 20:56:50] TGEA_refine INFO: Train: [182][1500/1737]  
+[03/08 20:56:50] TGEA_refine INFO: bbox_loss 0.3713 	cls_loss 0.1478 	com_loss 0.1343 	keep_loss 0.0615 	loss 1.6481 	refine_bbox_loss 0.8111 	refine_score_loss 0.0159 	seg_loss 0.0614 	seg_loss_dice 0.0446 	
+[03/08 21:00:33] TGEA_refine INFO: epoch 182, total time 1578.99, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 21:07:59] TGEA_refine INFO: Train: [183][500/1737]  
+[03/08 21:07:59] TGEA_refine INFO: bbox_loss 0.3709 	cls_loss 0.1479 	com_loss 0.1345 	keep_loss 0.0608 	loss 1.6461 	refine_bbox_loss 0.8098 	refine_score_loss 0.0159 	seg_loss 0.0620 	seg_loss_dice 0.0442 	
+[03/08 21:15:29] TGEA_refine INFO: Train: [183][1000/1737]  
+[03/08 21:15:29] TGEA_refine INFO: bbox_loss 0.3683 	cls_loss 0.1488 	com_loss 0.1342 	keep_loss 0.0612 	loss 1.6426 	refine_bbox_loss 0.8090 	refine_score_loss 0.0157 	seg_loss 0.0613 	seg_loss_dice 0.0443 	
+[03/08 21:23:02] TGEA_refine INFO: Train: [183][1500/1737]  
+[03/08 21:23:02] TGEA_refine INFO: bbox_loss 0.3686 	cls_loss 0.1483 	com_loss 0.1335 	keep_loss 0.0610 	loss 1.6415 	refine_bbox_loss 0.8091 	refine_score_loss 0.0159 	seg_loss 0.0608 	seg_loss_dice 0.0443 	
+[03/08 21:26:35] TGEA_refine INFO: epoch 183, total time 1562.22, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 21:27:42] TGEA_refine INFO: Eval: [183]  
+[03/08 21:27:42] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.06689
+[03/08 21:27:42] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/08 21:27:42] TGEA_refine INFO: Acc_mask0.25 0.5776188472864956
+[03/08 21:27:42] TGEA_refine INFO: Acc_mask0.50 0.5125157761884729
+[03/08 21:35:12] TGEA_refine INFO: Train: [184][500/1737]  
+[03/08 21:35:12] TGEA_refine INFO: bbox_loss 0.3675 	cls_loss 0.1462 	com_loss 0.1329 	keep_loss 0.0620 	loss 1.6380 	refine_bbox_loss 0.8075 	refine_score_loss 0.0176 	seg_loss 0.0598 	seg_loss_dice 0.0445 	
+[03/08 21:42:49] TGEA_refine INFO: Train: [184][1000/1737]  
+[03/08 21:42:49] TGEA_refine INFO: bbox_loss 0.3687 	cls_loss 0.1464 	com_loss 0.1332 	keep_loss 0.0609 	loss 1.6387 	refine_bbox_loss 0.8079 	refine_score_loss 0.0170 	seg_loss 0.0601 	seg_loss_dice 0.0445 	
+[03/08 21:50:21] TGEA_refine INFO: Train: [184][1500/1737]  
+[03/08 21:50:21] TGEA_refine INFO: bbox_loss 0.3681 	cls_loss 0.1462 	com_loss 0.1330 	keep_loss 0.0612 	loss 1.6380 	refine_bbox_loss 0.8078 	refine_score_loss 0.0176 	seg_loss 0.0596 	seg_loss_dice 0.0444 	
+[03/08 21:53:56] TGEA_refine INFO: epoch 184, total time 1574.01, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 22:01:34] TGEA_refine INFO: Train: [185][500/1737]  
+[03/08 22:01:34] TGEA_refine INFO: bbox_loss 0.3665 	cls_loss 0.1444 	com_loss 0.1302 	keep_loss 0.0597 	loss 1.6292 	refine_bbox_loss 0.8073 	refine_score_loss 0.0164 	seg_loss 0.0603 	seg_loss_dice 0.0444 	
+[03/08 22:08:59] TGEA_refine INFO: Train: [185][1000/1737]  
+[03/08 22:08:59] TGEA_refine INFO: bbox_loss 0.3675 	cls_loss 0.1455 	com_loss 0.1310 	keep_loss 0.0605 	loss 1.6323 	refine_bbox_loss 0.8076 	refine_score_loss 0.0159 	seg_loss 0.0600 	seg_loss_dice 0.0444 	
+[03/08 22:16:32] TGEA_refine INFO: Train: [185][1500/1737]  
+[03/08 22:16:32] TGEA_refine INFO: bbox_loss 0.3670 	cls_loss 0.1453 	com_loss 0.1311 	keep_loss 0.0606 	loss 1.6324 	refine_bbox_loss 0.8075 	refine_score_loss 0.0163 	seg_loss 0.0600 	seg_loss_dice 0.0445 	
+[03/08 22:20:02] TGEA_refine INFO: epoch 185, total time 1566.98, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 22:27:44] TGEA_refine INFO: Train: [186][500/1737]  
+[03/08 22:27:44] TGEA_refine INFO: bbox_loss 0.3683 	cls_loss 0.1455 	com_loss 0.1324 	keep_loss 0.0606 	loss 1.6327 	refine_bbox_loss 0.8074 	refine_score_loss 0.0141 	seg_loss 0.0596 	seg_loss_dice 0.0447 	
+[03/08 22:35:54] TGEA_refine INFO: Train: [186][1000/1737]  
+[03/08 22:35:54] TGEA_refine INFO: bbox_loss 0.3702 	cls_loss 0.1462 	com_loss 0.1323 	keep_loss 0.0615 	loss 1.6366 	refine_bbox_loss 0.8076 	refine_score_loss 0.0143 	seg_loss 0.0601 	seg_loss_dice 0.0444 	
+[03/08 22:43:35] TGEA_refine INFO: Train: [186][1500/1737]  
+[03/08 22:43:35] TGEA_refine INFO: bbox_loss 0.3694 	cls_loss 0.1463 	com_loss 0.1320 	keep_loss 0.0609 	loss 1.6356 	refine_bbox_loss 0.8070 	refine_score_loss 0.0153 	seg_loss 0.0603 	seg_loss_dice 0.0443 	
+[03/08 22:47:10] TGEA_refine INFO: epoch 186, total time 1627.01, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 22:48:15] TGEA_refine INFO: Eval: [186]  
+[03/08 22:48:15] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.06363
+[03/08 22:48:15] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/08 22:48:15] TGEA_refine INFO: Acc_mask0.25 0.5735170382835507
+[03/08 22:48:15] TGEA_refine INFO: Acc_mask0.50 0.5095708876735381
+[03/08 22:55:57] TGEA_refine INFO: Train: [187][500/1737]  
+[03/08 22:55:57] TGEA_refine INFO: bbox_loss 0.3687 	cls_loss 0.1443 	com_loss 0.1306 	keep_loss 0.0604 	loss 1.6305 	refine_bbox_loss 0.8062 	refine_score_loss 0.0154 	seg_loss 0.0604 	seg_loss_dice 0.0444 	
+[03/08 23:03:36] TGEA_refine INFO: Train: [187][1000/1737]  
+[03/08 23:03:36] TGEA_refine INFO: bbox_loss 0.3695 	cls_loss 0.1455 	com_loss 0.1317 	keep_loss 0.0603 	loss 1.6334 	refine_bbox_loss 0.8064 	refine_score_loss 0.0154 	seg_loss 0.0602 	seg_loss_dice 0.0446 	
+[03/08 23:11:14] TGEA_refine INFO: Train: [187][1500/1737]  
+[03/08 23:11:14] TGEA_refine INFO: bbox_loss 0.3701 	cls_loss 0.1459 	com_loss 0.1318 	keep_loss 0.0605 	loss 1.6352 	refine_bbox_loss 0.8065 	refine_score_loss 0.0154 	seg_loss 0.0604 	seg_loss_dice 0.0445 	
+[03/08 23:15:01] TGEA_refine INFO: epoch 187, total time 1605.55, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 23:22:52] TGEA_refine INFO: Train: [188][500/1737]  
+[03/08 23:22:52] TGEA_refine INFO: bbox_loss 0.3696 	cls_loss 0.1437 	com_loss 0.1295 	keep_loss 0.0602 	loss 1.6292 	refine_bbox_loss 0.8062 	refine_score_loss 0.0157 	seg_loss 0.0600 	seg_loss_dice 0.0443 	
+[03/08 23:30:32] TGEA_refine INFO: Train: [188][1000/1737]  
+[03/08 23:30:32] TGEA_refine INFO: bbox_loss 0.3708 	cls_loss 0.1452 	com_loss 0.1314 	keep_loss 0.0608 	loss 1.6338 	refine_bbox_loss 0.8063 	refine_score_loss 0.0150 	seg_loss 0.0599 	seg_loss_dice 0.0444 	
+[03/08 23:38:50] TGEA_refine INFO: Train: [188][1500/1737]  
+[03/08 23:38:50] TGEA_refine INFO: bbox_loss 0.3690 	cls_loss 0.1451 	com_loss 0.1311 	keep_loss 0.0607 	loss 1.6306 	refine_bbox_loss 0.8060 	refine_score_loss 0.0147 	seg_loss 0.0597 	seg_loss_dice 0.0443 	
+[03/08 23:42:30] TGEA_refine INFO: epoch 188, total time 1649.25, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/08 23:50:27] TGEA_refine INFO: Train: [189][500/1737]  
+[03/08 23:50:27] TGEA_refine INFO: bbox_loss 0.3689 	cls_loss 0.1457 	com_loss 0.1326 	keep_loss 0.0605 	loss 1.6329 	refine_bbox_loss 0.8059 	refine_score_loss 0.0142 	seg_loss 0.0608 	seg_loss_dice 0.0443 	
+[03/08 23:58:40] TGEA_refine INFO: Train: [189][1000/1737]  
+[03/08 23:58:40] TGEA_refine INFO: bbox_loss 0.3668 	cls_loss 0.1449 	com_loss 0.1314 	keep_loss 0.0606 	loss 1.6283 	refine_bbox_loss 0.8055 	refine_score_loss 0.0145 	seg_loss 0.0600 	seg_loss_dice 0.0446 	
+[03/09 00:06:15] TGEA_refine INFO: Train: [189][1500/1737]  
+[03/09 00:06:15] TGEA_refine INFO: bbox_loss 0.3687 	cls_loss 0.1448 	com_loss 0.1310 	keep_loss 0.0605 	loss 1.6307 	refine_bbox_loss 0.8058 	refine_score_loss 0.0147 	seg_loss 0.0604 	seg_loss_dice 0.0447 	
+[03/09 00:09:47] TGEA_refine INFO: epoch 189, total time 1636.47, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 00:10:50] TGEA_refine INFO: Eval: [189]  
+[03/09 00:10:50] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.02871
+[03/09 00:10:50] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 00:10:50] TGEA_refine INFO: Acc_mask0.25 0.57593605384939
+[03/09 00:10:50] TGEA_refine INFO: Acc_mask0.50 0.5110433319310055
+[03/09 00:18:25] TGEA_refine INFO: Train: [190][500/1737]  
+[03/09 00:18:25] TGEA_refine INFO: bbox_loss 0.3714 	cls_loss 0.1441 	com_loss 0.1292 	keep_loss 0.0597 	loss 1.6315 	refine_bbox_loss 0.8068 	refine_score_loss 0.0150 	seg_loss 0.0606 	seg_loss_dice 0.0447 	
+[03/09 00:25:50] TGEA_refine INFO: Train: [190][1000/1737]  
+[03/09 00:25:50] TGEA_refine INFO: bbox_loss 0.3701 	cls_loss 0.1459 	com_loss 0.1310 	keep_loss 0.0599 	loss 1.6318 	refine_bbox_loss 0.8060 	refine_score_loss 0.0143 	seg_loss 0.0601 	seg_loss_dice 0.0445 	
+[03/09 00:33:28] TGEA_refine INFO: Train: [190][1500/1737]  
+[03/09 00:33:28] TGEA_refine INFO: bbox_loss 0.3696 	cls_loss 0.1457 	com_loss 0.1310 	keep_loss 0.0603 	loss 1.6309 	refine_bbox_loss 0.8058 	refine_score_loss 0.0141 	seg_loss 0.0600 	seg_loss_dice 0.0444 	
+[03/09 00:37:00] TGEA_refine INFO: epoch 190, total time 1569.11, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 00:44:29] TGEA_refine INFO: Train: [191][500/1737]  
+[03/09 00:44:29] TGEA_refine INFO: bbox_loss 0.3662 	cls_loss 0.1443 	com_loss 0.1293 	keep_loss 0.0598 	loss 1.6244 	refine_bbox_loss 0.8052 	refine_score_loss 0.0146 	seg_loss 0.0605 	seg_loss_dice 0.0445 	
+[03/09 00:52:10] TGEA_refine INFO: Train: [191][1000/1737]  
+[03/09 00:52:10] TGEA_refine INFO: bbox_loss 0.3667 	cls_loss 0.1450 	com_loss 0.1308 	keep_loss 0.0606 	loss 1.6282 	refine_bbox_loss 0.8052 	refine_score_loss 0.0150 	seg_loss 0.0603 	seg_loss_dice 0.0446 	
+[03/09 01:00:01] TGEA_refine INFO: Train: [191][1500/1737]  
+[03/09 01:00:01] TGEA_refine INFO: bbox_loss 0.3674 	cls_loss 0.1453 	com_loss 0.1311 	keep_loss 0.0604 	loss 1.6283 	refine_bbox_loss 0.8050 	refine_score_loss 0.0145 	seg_loss 0.0602 	seg_loss_dice 0.0444 	
+[03/09 01:03:37] TGEA_refine INFO: epoch 191, total time 1596.97, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 01:11:42] TGEA_refine INFO: Train: [192][500/1737]  
+[03/09 01:11:42] TGEA_refine INFO: bbox_loss 0.3684 	cls_loss 0.1425 	com_loss 0.1293 	keep_loss 0.0597 	loss 1.6223 	refine_bbox_loss 0.8037 	refine_score_loss 0.0149 	seg_loss 0.0596 	seg_loss_dice 0.0442 	
+[03/09 01:19:13] TGEA_refine INFO: Train: [192][1000/1737]  
+[03/09 01:19:13] TGEA_refine INFO: bbox_loss 0.3676 	cls_loss 0.1434 	com_loss 0.1299 	keep_loss 0.0601 	loss 1.6238 	refine_bbox_loss 0.8041 	refine_score_loss 0.0147 	seg_loss 0.0595 	seg_loss_dice 0.0444 	
+[03/09 01:26:38] TGEA_refine INFO: Train: [192][1500/1737]  
+[03/09 01:26:38] TGEA_refine INFO: bbox_loss 0.3677 	cls_loss 0.1442 	com_loss 0.1303 	keep_loss 0.0603 	loss 1.6245 	refine_bbox_loss 0.8041 	refine_score_loss 0.0141 	seg_loss 0.0592 	seg_loss_dice 0.0444 	
+[03/09 01:30:18] TGEA_refine INFO: epoch 192, total time 1600.96, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 01:31:23] TGEA_refine INFO: Eval: [192]  
+[03/09 01:31:23] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04007
+[03/09 01:31:23] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 01:31:23] TGEA_refine INFO: Acc_mask0.25 0.5777240218763147
+[03/09 01:31:23] TGEA_refine INFO: Acc_mask0.50 0.5150399663441313
+[03/09 01:38:53] TGEA_refine INFO: Train: [193][500/1737]  
+[03/09 01:38:53] TGEA_refine INFO: bbox_loss 0.3681 	cls_loss 0.1453 	com_loss 0.1316 	keep_loss 0.0611 	loss 1.6282 	refine_bbox_loss 0.8038 	refine_score_loss 0.0145 	seg_loss 0.0593 	seg_loss_dice 0.0446 	
+[03/09 01:46:18] TGEA_refine INFO: Train: [193][1000/1737]  
+[03/09 01:46:18] TGEA_refine INFO: bbox_loss 0.3673 	cls_loss 0.1447 	com_loss 0.1313 	keep_loss 0.0610 	loss 1.6260 	refine_bbox_loss 0.8035 	refine_score_loss 0.0141 	seg_loss 0.0596 	seg_loss_dice 0.0446 	
+[03/09 01:53:53] TGEA_refine INFO: Train: [193][1500/1737]  
+[03/09 01:53:53] TGEA_refine INFO: bbox_loss 0.3690 	cls_loss 0.1457 	com_loss 0.1320 	keep_loss 0.0606 	loss 1.6301 	refine_bbox_loss 0.8040 	refine_score_loss 0.0142 	seg_loss 0.0600 	seg_loss_dice 0.0446 	
+[03/09 01:57:31] TGEA_refine INFO: epoch 193, total time 1568.53, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 02:05:01] TGEA_refine INFO: Train: [194][500/1737]  
+[03/09 02:05:01] TGEA_refine INFO: bbox_loss 0.3688 	cls_loss 0.1439 	com_loss 0.1297 	keep_loss 0.0604 	loss 1.6247 	refine_bbox_loss 0.8040 	refine_score_loss 0.0141 	seg_loss 0.0593 	seg_loss_dice 0.0446 	
+[03/09 02:13:16] TGEA_refine INFO: Train: [194][1000/1737]  
+[03/09 02:13:16] TGEA_refine INFO: bbox_loss 0.3688 	cls_loss 0.1435 	com_loss 0.1295 	keep_loss 0.0603 	loss 1.6246 	refine_bbox_loss 0.8034 	refine_score_loss 0.0147 	seg_loss 0.0598 	seg_loss_dice 0.0446 	
+[03/09 02:20:41] TGEA_refine INFO: Train: [194][1500/1737]  
+[03/09 02:20:41] TGEA_refine INFO: bbox_loss 0.3691 	cls_loss 0.1445 	com_loss 0.1301 	keep_loss 0.0604 	loss 1.6258 	refine_bbox_loss 0.8036 	refine_score_loss 0.0142 	seg_loss 0.0595 	seg_loss_dice 0.0444 	
+[03/09 02:24:14] TGEA_refine INFO: epoch 194, total time 1602.81, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 02:31:54] TGEA_refine INFO: Train: [195][500/1737]  
+[03/09 02:31:54] TGEA_refine INFO: bbox_loss 0.3663 	cls_loss 0.1435 	com_loss 0.1290 	keep_loss 0.0593 	loss 1.6164 	refine_bbox_loss 0.8034 	refine_score_loss 0.0129 	seg_loss 0.0577 	seg_loss_dice 0.0442 	
+[03/09 02:39:22] TGEA_refine INFO: Train: [195][1000/1737]  
+[03/09 02:39:22] TGEA_refine INFO: bbox_loss 0.3653 	cls_loss 0.1452 	com_loss 0.1307 	keep_loss 0.0601 	loss 1.6210 	refine_bbox_loss 0.8032 	refine_score_loss 0.0132 	seg_loss 0.0590 	seg_loss_dice 0.0444 	
+[03/09 02:46:55] TGEA_refine INFO: Train: [195][1500/1737]  
+[03/09 02:46:55] TGEA_refine INFO: bbox_loss 0.3663 	cls_loss 0.1449 	com_loss 0.1304 	keep_loss 0.0601 	loss 1.6215 	refine_bbox_loss 0.8029 	refine_score_loss 0.0137 	seg_loss 0.0589 	seg_loss_dice 0.0442 	
+[03/09 02:50:28] TGEA_refine INFO: epoch 195, total time 1573.68, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 02:51:32] TGEA_refine INFO: Eval: [195]  
+[03/09 02:51:32] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05942
+[03/09 02:51:32] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 02:51:32] TGEA_refine INFO: Acc_mask0.25 0.5763567522086663
+[03/09 02:51:32] TGEA_refine INFO: Acc_mask0.50 0.5123054270088346
+[03/09 02:58:59] TGEA_refine INFO: Train: [196][500/1737]  
+[03/09 02:58:59] TGEA_refine INFO: bbox_loss 0.3658 	cls_loss 0.1426 	com_loss 0.1283 	keep_loss 0.0592 	loss 1.6159 	refine_bbox_loss 0.8027 	refine_score_loss 0.0134 	seg_loss 0.0597 	seg_loss_dice 0.0442 	
+[03/09 03:06:32] TGEA_refine INFO: Train: [196][1000/1737]  
+[03/09 03:06:32] TGEA_refine INFO: bbox_loss 0.3667 	cls_loss 0.1432 	com_loss 0.1298 	keep_loss 0.0598 	loss 1.6204 	refine_bbox_loss 0.8027 	refine_score_loss 0.0141 	seg_loss 0.0598 	seg_loss_dice 0.0443 	
+[03/09 03:13:59] TGEA_refine INFO: Train: [196][1500/1737]  
+[03/09 03:13:59] TGEA_refine INFO: bbox_loss 0.3669 	cls_loss 0.1429 	com_loss 0.1296 	keep_loss 0.0596 	loss 1.6198 	refine_bbox_loss 0.8027 	refine_score_loss 0.0145 	seg_loss 0.0594 	seg_loss_dice 0.0442 	
+[03/09 03:17:34] TGEA_refine INFO: epoch 196, total time 1562.79, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 03:25:37] TGEA_refine INFO: Train: [197][500/1737]  
+[03/09 03:25:37] TGEA_refine INFO: bbox_loss 0.3684 	cls_loss 0.1419 	com_loss 0.1283 	keep_loss 0.0594 	loss 1.6174 	refine_bbox_loss 0.8021 	refine_score_loss 0.0134 	seg_loss 0.0596 	seg_loss_dice 0.0444 	
+[03/09 03:33:27] TGEA_refine INFO: Train: [197][1000/1737]  
+[03/09 03:33:27] TGEA_refine INFO: bbox_loss 0.3693 	cls_loss 0.1433 	com_loss 0.1295 	keep_loss 0.0603 	loss 1.6226 	refine_bbox_loss 0.8025 	refine_score_loss 0.0139 	seg_loss 0.0595 	seg_loss_dice 0.0443 	
+[03/09 03:40:54] TGEA_refine INFO: Train: [197][1500/1737]  
+[03/09 03:40:54] TGEA_refine INFO: bbox_loss 0.3671 	cls_loss 0.1436 	com_loss 0.1301 	keep_loss 0.0604 	loss 1.6210 	refine_bbox_loss 0.8026 	refine_score_loss 0.0132 	seg_loss 0.0596 	seg_loss_dice 0.0443 	
+[03/09 03:44:48] TGEA_refine INFO: epoch 197, total time 1633.84, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 03:52:11] TGEA_refine INFO: Train: [198][500/1737]  
+[03/09 03:52:11] TGEA_refine INFO: bbox_loss 0.3658 	cls_loss 0.1442 	com_loss 0.1304 	keep_loss 0.0595 	loss 1.6221 	refine_bbox_loss 0.8034 	refine_score_loss 0.0135 	seg_loss 0.0608 	seg_loss_dice 0.0446 	
+[03/09 03:59:29] TGEA_refine INFO: Train: [198][1000/1737]  
+[03/09 03:59:29] TGEA_refine INFO: bbox_loss 0.3655 	cls_loss 0.1438 	com_loss 0.1292 	keep_loss 0.0595 	loss 1.6175 	refine_bbox_loss 0.8027 	refine_score_loss 0.0130 	seg_loss 0.0595 	seg_loss_dice 0.0443 	
+[03/09 04:06:58] TGEA_refine INFO: Train: [198][1500/1737]  
+[03/09 04:06:58] TGEA_refine INFO: bbox_loss 0.3663 	cls_loss 0.1440 	com_loss 0.1298 	keep_loss 0.0600 	loss 1.6197 	refine_bbox_loss 0.8023 	refine_score_loss 0.0136 	seg_loss 0.0593 	seg_loss_dice 0.0444 	
+[03/09 04:10:30] TGEA_refine INFO: epoch 198, total time 1542.23, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[03/09 04:11:34] TGEA_refine INFO: Eval: [198]  
+[03/09 04:11:34] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.03765
+[03/09 04:11:34] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 04:11:34] TGEA_refine INFO: Acc_mask0.25 0.573832562053008
+[03/09 04:11:34] TGEA_refine INFO: Acc_mask0.50 0.5095708876735381
+[03/09 04:19:04] TGEA_refine INFO: Train: [199][500/1737]  
+[03/09 04:19:04] TGEA_refine INFO: bbox_loss 0.3703 	cls_loss 0.1437 	com_loss 0.1293 	keep_loss 0.0600 	loss 1.6227 	refine_bbox_loss 0.8020 	refine_score_loss 0.0130 	seg_loss 0.0598 	seg_loss_dice 0.0446 	
+[03/09 04:26:38] TGEA_refine INFO: Train: [199][1000/1737]  
+[03/09 04:26:38] TGEA_refine INFO: bbox_loss 0.3710 	cls_loss 0.1441 	com_loss 0.1302 	keep_loss 0.0599 	loss 1.6247 	refine_bbox_loss 0.8017 	refine_score_loss 0.0137 	seg_loss 0.0595 	seg_loss_dice 0.0447 	
+[03/09 04:34:04] TGEA_refine INFO: Train: [199][1500/1737]  
+[03/09 04:34:04] TGEA_refine INFO: bbox_loss 0.3670 	cls_loss 0.1435 	com_loss 0.1295 	keep_loss 0.0600 	loss 1.6188 	refine_bbox_loss 0.8015 	refine_score_loss 0.0137 	seg_loss 0.0592 	seg_loss_dice 0.0445 	
+[03/09 04:37:33] TGEA_refine INFO: epoch 199, total time 1558.82, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 04:45:13] TGEA_refine INFO: Train: [200][500/1737]  
+[03/09 04:45:13] TGEA_refine INFO: bbox_loss 0.3697 	cls_loss 0.1461 	com_loss 0.1304 	keep_loss 0.0596 	loss 1.6220 	refine_bbox_loss 0.8003 	refine_score_loss 0.0123 	seg_loss 0.0595 	seg_loss_dice 0.0443 	
+[03/09 04:52:37] TGEA_refine INFO: Train: [200][1000/1737]  
+[03/09 04:52:37] TGEA_refine INFO: bbox_loss 0.3688 	cls_loss 0.1438 	com_loss 0.1286 	keep_loss 0.0594 	loss 1.6168 	refine_bbox_loss 0.7996 	refine_score_loss 0.0127 	seg_loss 0.0595 	seg_loss_dice 0.0444 	
+[03/09 05:00:08] TGEA_refine INFO: Train: [200][1500/1737]  
+[03/09 05:00:08] TGEA_refine INFO: bbox_loss 0.3682 	cls_loss 0.1435 	com_loss 0.1281 	keep_loss 0.0594 	loss 1.6151 	refine_bbox_loss 0.7994 	refine_score_loss 0.0128 	seg_loss 0.0594 	seg_loss_dice 0.0444 	
+[03/09 05:03:41] TGEA_refine INFO: epoch 200, total time 1567.88, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 05:11:23] TGEA_refine INFO: Train: [201][500/1737]  
+[03/09 05:11:23] TGEA_refine INFO: bbox_loss 0.3702 	cls_loss 0.1440 	com_loss 0.1299 	keep_loss 0.0606 	loss 1.6213 	refine_bbox_loss 0.8001 	refine_score_loss 0.0129 	seg_loss 0.0594 	seg_loss_dice 0.0441 	
+[03/09 05:19:00] TGEA_refine INFO: Train: [201][1000/1737]  
+[03/09 05:19:00] TGEA_refine INFO: bbox_loss 0.3677 	cls_loss 0.1430 	com_loss 0.1288 	keep_loss 0.0599 	loss 1.6142 	refine_bbox_loss 0.7998 	refine_score_loss 0.0122 	seg_loss 0.0588 	seg_loss_dice 0.0442 	
+[03/09 05:26:38] TGEA_refine INFO: Train: [201][1500/1737]  
+[03/09 05:26:38] TGEA_refine INFO: bbox_loss 0.3674 	cls_loss 0.1426 	com_loss 0.1284 	keep_loss 0.0599 	loss 1.6132 	refine_bbox_loss 0.7993 	refine_score_loss 0.0123 	seg_loss 0.0590 	seg_loss_dice 0.0443 	
+[03/09 05:30:22] TGEA_refine INFO: epoch 201, total time 1601.43, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 05:31:26] TGEA_refine INFO: Eval: [201]  
+[03/09 05:31:26] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05133
+[03/09 05:31:26] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 05:31:26] TGEA_refine INFO: Acc_mask0.25 0.5788809423643247
+[03/09 05:31:26] TGEA_refine INFO: Acc_mask0.50 0.5146192679848549
+[03/09 05:39:27] TGEA_refine INFO: Train: [202][500/1737]  
+[03/09 05:39:27] TGEA_refine INFO: bbox_loss 0.3658 	cls_loss 0.1423 	com_loss 0.1282 	keep_loss 0.0595 	loss 1.6088 	refine_bbox_loss 0.7988 	refine_score_loss 0.0123 	seg_loss 0.0581 	seg_loss_dice 0.0437 	
+[03/09 05:47:05] TGEA_refine INFO: Train: [202][1000/1737]  
+[03/09 05:47:05] TGEA_refine INFO: bbox_loss 0.3658 	cls_loss 0.1426 	com_loss 0.1283 	keep_loss 0.0596 	loss 1.6094 	refine_bbox_loss 0.7988 	refine_score_loss 0.0122 	seg_loss 0.0581 	seg_loss_dice 0.0441 	
+[03/09 05:54:40] TGEA_refine INFO: Train: [202][1500/1737]  
+[03/09 05:54:40] TGEA_refine INFO: bbox_loss 0.3656 	cls_loss 0.1420 	com_loss 0.1278 	keep_loss 0.0593 	loss 1.6079 	refine_bbox_loss 0.7986 	refine_score_loss 0.0121 	seg_loss 0.0585 	seg_loss_dice 0.0441 	
+[03/09 05:58:24] TGEA_refine INFO: epoch 202, total time 1618.10, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 06:05:58] TGEA_refine INFO: Train: [203][500/1737]  
+[03/09 06:05:58] TGEA_refine INFO: bbox_loss 0.3678 	cls_loss 0.1400 	com_loss 0.1257 	keep_loss 0.0585 	loss 1.6030 	refine_bbox_loss 0.7983 	refine_score_loss 0.0118 	seg_loss 0.0571 	seg_loss_dice 0.0438 	
+[03/09 06:13:28] TGEA_refine INFO: Train: [203][1000/1737]  
+[03/09 06:13:28] TGEA_refine INFO: bbox_loss 0.3667 	cls_loss 0.1416 	com_loss 0.1270 	keep_loss 0.0587 	loss 1.6060 	refine_bbox_loss 0.7984 	refine_score_loss 0.0119 	seg_loss 0.0577 	seg_loss_dice 0.0440 	
+[03/09 06:21:12] TGEA_refine INFO: Train: [203][1500/1737]  
+[03/09 06:21:12] TGEA_refine INFO: bbox_loss 0.3670 	cls_loss 0.1420 	com_loss 0.1275 	keep_loss 0.0590 	loss 1.6083 	refine_bbox_loss 0.7985 	refine_score_loss 0.0123 	seg_loss 0.0579 	seg_loss_dice 0.0441 	
+[03/09 06:24:52] TGEA_refine INFO: epoch 203, total time 1588.33, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 06:32:28] TGEA_refine INFO: Train: [204][500/1737]  
+[03/09 06:32:28] TGEA_refine INFO: bbox_loss 0.3653 	cls_loss 0.1412 	com_loss 0.1266 	keep_loss 0.0590 	loss 1.6054 	refine_bbox_loss 0.7987 	refine_score_loss 0.0123 	seg_loss 0.0582 	seg_loss_dice 0.0441 	
+[03/09 06:40:03] TGEA_refine INFO: Train: [204][1000/1737]  
+[03/09 06:40:03] TGEA_refine INFO: bbox_loss 0.3644 	cls_loss 0.1404 	com_loss 0.1260 	keep_loss 0.0589 	loss 1.6024 	refine_bbox_loss 0.7982 	refine_score_loss 0.0121 	seg_loss 0.0581 	seg_loss_dice 0.0443 	
+[03/09 06:47:36] TGEA_refine INFO: Train: [204][1500/1737]  
+[03/09 06:47:36] TGEA_refine INFO: bbox_loss 0.3638 	cls_loss 0.1405 	com_loss 0.1259 	keep_loss 0.0590 	loss 1.6015 	refine_bbox_loss 0.7980 	refine_score_loss 0.0122 	seg_loss 0.0580 	seg_loss_dice 0.0441 	
+[03/09 06:51:13] TGEA_refine INFO: epoch 204, total time 1580.33, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 06:52:16] TGEA_refine INFO: Eval: [204]  
+[03/09 06:52:16] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04743
+[03/09 06:52:16] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 06:52:16] TGEA_refine INFO: Acc_mask0.25 0.5771981489272192
+[03/09 06:52:16] TGEA_refine INFO: Acc_mask0.50 0.5122002524190156
+[03/09 07:00:11] TGEA_refine INFO: Train: [205][500/1737]  
+[03/09 07:00:11] TGEA_refine INFO: bbox_loss 0.3690 	cls_loss 0.1438 	com_loss 0.1286 	keep_loss 0.0596 	loss 1.6150 	refine_bbox_loss 0.7986 	refine_score_loss 0.0121 	seg_loss 0.0592 	seg_loss_dice 0.0440 	
+[03/09 07:07:39] TGEA_refine INFO: Train: [205][1000/1737]  
+[03/09 07:07:39] TGEA_refine INFO: bbox_loss 0.3648 	cls_loss 0.1429 	com_loss 0.1276 	keep_loss 0.0602 	loss 1.6084 	refine_bbox_loss 0.7981 	refine_score_loss 0.0122 	seg_loss 0.0585 	seg_loss_dice 0.0442 	
+[03/09 07:15:17] TGEA_refine INFO: Train: [205][1500/1737]  
+[03/09 07:15:17] TGEA_refine INFO: bbox_loss 0.3633 	cls_loss 0.1419 	com_loss 0.1266 	keep_loss 0.0600 	loss 1.6047 	refine_bbox_loss 0.7980 	refine_score_loss 0.0121 	seg_loss 0.0585 	seg_loss_dice 0.0442 	
+[03/09 07:18:49] TGEA_refine INFO: epoch 205, total time 1593.44, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 07:26:18] TGEA_refine INFO: Train: [206][500/1737]  
+[03/09 07:26:18] TGEA_refine INFO: bbox_loss 0.3650 	cls_loss 0.1409 	com_loss 0.1260 	keep_loss 0.0599 	loss 1.6046 	refine_bbox_loss 0.7989 	refine_score_loss 0.0119 	seg_loss 0.0578 	seg_loss_dice 0.0441 	
+[03/09 07:33:50] TGEA_refine INFO: Train: [206][1000/1737]  
+[03/09 07:33:50] TGEA_refine INFO: bbox_loss 0.3663 	cls_loss 0.1409 	com_loss 0.1252 	keep_loss 0.0591 	loss 1.6043 	refine_bbox_loss 0.7989 	refine_score_loss 0.0116 	seg_loss 0.0581 	seg_loss_dice 0.0441 	
+[03/09 07:41:14] TGEA_refine INFO: Train: [206][1500/1737]  
+[03/09 07:41:14] TGEA_refine INFO: bbox_loss 0.3651 	cls_loss 0.1413 	com_loss 0.1260 	keep_loss 0.0595 	loss 1.6049 	refine_bbox_loss 0.7986 	refine_score_loss 0.0120 	seg_loss 0.0582 	seg_loss_dice 0.0442 	
+[03/09 07:44:45] TGEA_refine INFO: epoch 206, total time 1555.79, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 07:52:39] TGEA_refine INFO: Train: [207][500/1737]  
+[03/09 07:52:39] TGEA_refine INFO: bbox_loss 0.3685 	cls_loss 0.1409 	com_loss 0.1261 	keep_loss 0.0592 	loss 1.6097 	refine_bbox_loss 0.7986 	refine_score_loss 0.0125 	seg_loss 0.0593 	seg_loss_dice 0.0446 	
+[03/09 08:00:03] TGEA_refine INFO: Train: [207][1000/1737]  
+[03/09 08:00:03] TGEA_refine INFO: bbox_loss 0.3661 	cls_loss 0.1403 	com_loss 0.1257 	keep_loss 0.0587 	loss 1.6039 	refine_bbox_loss 0.7980 	refine_score_loss 0.0126 	seg_loss 0.0584 	seg_loss_dice 0.0441 	
+[03/09 08:07:34] TGEA_refine INFO: Train: [207][1500/1737]  
+[03/09 08:07:34] TGEA_refine INFO: bbox_loss 0.3640 	cls_loss 0.1410 	com_loss 0.1260 	keep_loss 0.0588 	loss 1.6025 	refine_bbox_loss 0.7977 	refine_score_loss 0.0126 	seg_loss 0.0584 	seg_loss_dice 0.0441 	
+[03/09 08:11:17] TGEA_refine INFO: epoch 207, total time 1591.45, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 08:12:22] TGEA_refine INFO: Eval: [207]  
+[03/09 08:12:22] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04964
+[03/09 08:12:22] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 08:12:22] TGEA_refine INFO: Acc_mask0.25 0.5757257046697518
+[03/09 08:12:22] TGEA_refine INFO: Acc_mask0.50 0.5120950778291965
+[03/09 08:19:55] TGEA_refine INFO: Train: [208][500/1737]  
+[03/09 08:19:55] TGEA_refine INFO: bbox_loss 0.3649 	cls_loss 0.1405 	com_loss 0.1247 	keep_loss 0.0580 	loss 1.6009 	refine_bbox_loss 0.7969 	refine_score_loss 0.0137 	seg_loss 0.0584 	seg_loss_dice 0.0438 	
+[03/09 08:27:26] TGEA_refine INFO: Train: [208][1000/1737]  
+[03/09 08:27:26] TGEA_refine INFO: bbox_loss 0.3651 	cls_loss 0.1396 	com_loss 0.1246 	keep_loss 0.0585 	loss 1.6004 	refine_bbox_loss 0.7977 	refine_score_loss 0.0127 	seg_loss 0.0580 	seg_loss_dice 0.0442 	
+[03/09 08:35:12] TGEA_refine INFO: Train: [208][1500/1737]  
+[03/09 08:35:12] TGEA_refine INFO: bbox_loss 0.3650 	cls_loss 0.1396 	com_loss 0.1244 	keep_loss 0.0583 	loss 1.5996 	refine_bbox_loss 0.7978 	refine_score_loss 0.0124 	seg_loss 0.0580 	seg_loss_dice 0.0441 	
+[03/09 08:38:46] TGEA_refine INFO: epoch 208, total time 1584.21, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 08:46:19] TGEA_refine INFO: Train: [209][500/1737]  
+[03/09 08:46:19] TGEA_refine INFO: bbox_loss 0.3705 	cls_loss 0.1415 	com_loss 0.1257 	keep_loss 0.0586 	loss 1.6095 	refine_bbox_loss 0.7985 	refine_score_loss 0.0115 	seg_loss 0.0589 	seg_loss_dice 0.0443 	
+[03/09 08:53:59] TGEA_refine INFO: Train: [209][1000/1737]  
+[03/09 08:53:59] TGEA_refine INFO: bbox_loss 0.3675 	cls_loss 0.1404 	com_loss 0.1252 	keep_loss 0.0586 	loss 1.6037 	refine_bbox_loss 0.7980 	refine_score_loss 0.0119 	seg_loss 0.0579 	seg_loss_dice 0.0441 	
+[03/09 09:01:29] TGEA_refine INFO: Train: [209][1500/1737]  
+[03/09 09:01:29] TGEA_refine INFO: bbox_loss 0.3660 	cls_loss 0.1407 	com_loss 0.1258 	keep_loss 0.0588 	loss 1.6031 	refine_bbox_loss 0.7978 	refine_score_loss 0.0120 	seg_loss 0.0577 	seg_loss_dice 0.0442 	
+[03/09 09:05:05] TGEA_refine INFO: epoch 209, total time 1579.67, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 09:12:47] TGEA_refine INFO: Train: [210][500/1737]  
+[03/09 09:12:47] TGEA_refine INFO: bbox_loss 0.3606 	cls_loss 0.1394 	com_loss 0.1254 	keep_loss 0.0594 	loss 1.5960 	refine_bbox_loss 0.7974 	refine_score_loss 0.0123 	seg_loss 0.0573 	seg_loss_dice 0.0440 	
+[03/09 09:20:17] TGEA_refine INFO: Train: [210][1000/1737]  
+[03/09 09:20:17] TGEA_refine INFO: bbox_loss 0.3630 	cls_loss 0.1398 	com_loss 0.1252 	keep_loss 0.0594 	loss 1.5988 	refine_bbox_loss 0.7975 	refine_score_loss 0.0123 	seg_loss 0.0576 	seg_loss_dice 0.0441 	
+[03/09 09:27:53] TGEA_refine INFO: Train: [210][1500/1737]  
+[03/09 09:27:53] TGEA_refine INFO: bbox_loss 0.3639 	cls_loss 0.1397 	com_loss 0.1253 	keep_loss 0.0591 	loss 1.5997 	refine_bbox_loss 0.7977 	refine_score_loss 0.0119 	seg_loss 0.0579 	seg_loss_dice 0.0441 	
+[03/09 09:31:29] TGEA_refine INFO: epoch 210, total time 1583.45, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 09:32:32] TGEA_refine INFO: Eval: [210]  
+[03/09 09:32:32] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05469
+[03/09 09:32:32] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 09:32:32] TGEA_refine INFO: Acc_mask0.25 0.5785654185948674
+[03/09 09:32:32] TGEA_refine INFO: Acc_mask0.50 0.5132519983172066
+[03/09 09:40:14] TGEA_refine INFO: Train: [211][500/1737]  
+[03/09 09:40:14] TGEA_refine INFO: bbox_loss 0.3711 	cls_loss 0.1425 	com_loss 0.1264 	keep_loss 0.0594 	loss 1.6120 	refine_bbox_loss 0.7986 	refine_score_loss 0.0115 	seg_loss 0.0587 	seg_loss_dice 0.0440 	
+[03/09 09:47:53] TGEA_refine INFO: Train: [211][1000/1737]  
+[03/09 09:47:53] TGEA_refine INFO: bbox_loss 0.3675 	cls_loss 0.1417 	com_loss 0.1268 	keep_loss 0.0591 	loss 1.6086 	refine_bbox_loss 0.7982 	refine_score_loss 0.0120 	seg_loss 0.0590 	seg_loss_dice 0.0442 	
+[03/09 09:55:27] TGEA_refine INFO: Train: [211][1500/1737]  
+[03/09 09:55:27] TGEA_refine INFO: bbox_loss 0.3674 	cls_loss 0.1416 	com_loss 0.1268 	keep_loss 0.0592 	loss 1.6080 	refine_bbox_loss 0.7980 	refine_score_loss 0.0121 	seg_loss 0.0586 	seg_loss_dice 0.0442 	
+[03/09 09:59:03] TGEA_refine INFO: epoch 211, total time 1590.96, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 10:06:44] TGEA_refine INFO: Train: [212][500/1737]  
+[03/09 10:06:44] TGEA_refine INFO: bbox_loss 0.3593 	cls_loss 0.1380 	com_loss 0.1244 	keep_loss 0.0586 	loss 1.5892 	refine_bbox_loss 0.7966 	refine_score_loss 0.0119 	seg_loss 0.0568 	seg_loss_dice 0.0435 	
+[03/09 10:14:16] TGEA_refine INFO: Train: [212][1000/1737]  
+[03/09 10:14:16] TGEA_refine INFO: bbox_loss 0.3621 	cls_loss 0.1401 	com_loss 0.1265 	keep_loss 0.0592 	loss 1.5988 	refine_bbox_loss 0.7974 	refine_score_loss 0.0119 	seg_loss 0.0576 	seg_loss_dice 0.0439 	
+[03/09 10:21:49] TGEA_refine INFO: Train: [212][1500/1737]  
+[03/09 10:21:49] TGEA_refine INFO: bbox_loss 0.3639 	cls_loss 0.1408 	com_loss 0.1265 	keep_loss 0.0592 	loss 1.6020 	refine_bbox_loss 0.7978 	refine_score_loss 0.0118 	seg_loss 0.0577 	seg_loss_dice 0.0441 	
+[03/09 10:25:29] TGEA_refine INFO: epoch 212, total time 1585.58, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 10:33:06] TGEA_refine INFO: Train: [213][500/1737]  
+[03/09 10:33:06] TGEA_refine INFO: bbox_loss 0.3693 	cls_loss 0.1417 	com_loss 0.1274 	keep_loss 0.0588 	loss 1.6098 	refine_bbox_loss 0.7986 	refine_score_loss 0.0120 	seg_loss 0.0578 	seg_loss_dice 0.0443 	
+[03/09 10:40:39] TGEA_refine INFO: Train: [213][1000/1737]  
+[03/09 10:40:39] TGEA_refine INFO: bbox_loss 0.3661 	cls_loss 0.1411 	com_loss 0.1265 	keep_loss 0.0590 	loss 1.6049 	refine_bbox_loss 0.7983 	refine_score_loss 0.0119 	seg_loss 0.0577 	seg_loss_dice 0.0443 	
+[03/09 10:48:19] TGEA_refine INFO: Train: [213][1500/1737]  
+[03/09 10:48:19] TGEA_refine INFO: bbox_loss 0.3657 	cls_loss 0.1407 	com_loss 0.1264 	keep_loss 0.0590 	loss 1.6047 	refine_bbox_loss 0.7983 	refine_score_loss 0.0120 	seg_loss 0.0582 	seg_loss_dice 0.0444 	
+[03/09 10:51:55] TGEA_refine INFO: epoch 213, total time 1586.29, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 10:53:00] TGEA_refine INFO: Eval: [213]  
+[03/09 10:53:00] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05311
+[03/09 10:53:00] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 10:53:00] TGEA_refine INFO: Acc_mask0.25 0.5775136726966765
+[03/09 10:53:00] TGEA_refine INFO: Acc_mask0.50 0.512726125368111
+[03/09 11:00:30] TGEA_refine INFO: Train: [214][500/1737]  
+[03/09 11:00:30] TGEA_refine INFO: bbox_loss 0.3641 	cls_loss 0.1412 	com_loss 0.1257 	keep_loss 0.0595 	loss 1.6035 	refine_bbox_loss 0.7974 	refine_score_loss 0.0126 	seg_loss 0.0587 	seg_loss_dice 0.0443 	
+[03/09 11:08:06] TGEA_refine INFO: Train: [214][1000/1737]  
+[03/09 11:08:06] TGEA_refine INFO: bbox_loss 0.3652 	cls_loss 0.1421 	com_loss 0.1266 	keep_loss 0.0592 	loss 1.6057 	refine_bbox_loss 0.7974 	refine_score_loss 0.0126 	seg_loss 0.0585 	seg_loss_dice 0.0442 	
+[03/09 11:15:35] TGEA_refine INFO: Train: [214][1500/1737]  
+[03/09 11:15:35] TGEA_refine INFO: bbox_loss 0.3667 	cls_loss 0.1420 	com_loss 0.1265 	keep_loss 0.0590 	loss 1.6065 	refine_bbox_loss 0.7977 	refine_score_loss 0.0118 	seg_loss 0.0584 	seg_loss_dice 0.0443 	
+[03/09 11:19:09] TGEA_refine INFO: epoch 214, total time 1568.79, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 11:26:50] TGEA_refine INFO: Train: [215][500/1737]  
+[03/09 11:26:50] TGEA_refine INFO: bbox_loss 0.3667 	cls_loss 0.1426 	com_loss 0.1271 	keep_loss 0.0594 	loss 1.6085 	refine_bbox_loss 0.7980 	refine_score_loss 0.0127 	seg_loss 0.0581 	seg_loss_dice 0.0440 	
+[03/09 11:34:21] TGEA_refine INFO: Train: [215][1000/1737]  
+[03/09 11:34:21] TGEA_refine INFO: bbox_loss 0.3671 	cls_loss 0.1430 	com_loss 0.1274 	keep_loss 0.0596 	loss 1.6093 	refine_bbox_loss 0.7979 	refine_score_loss 0.0122 	seg_loss 0.0580 	seg_loss_dice 0.0440 	
+[03/09 11:41:59] TGEA_refine INFO: Train: [215][1500/1737]  
+[03/09 11:41:59] TGEA_refine INFO: bbox_loss 0.3663 	cls_loss 0.1421 	com_loss 0.1269 	keep_loss 0.0593 	loss 1.6071 	refine_bbox_loss 0.7979 	refine_score_loss 0.0122 	seg_loss 0.0581 	seg_loss_dice 0.0441 	
+[03/09 11:45:35] TGEA_refine INFO: epoch 215, total time 1586.42, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 11:53:07] TGEA_refine INFO: Train: [216][500/1737]  
+[03/09 11:53:07] TGEA_refine INFO: bbox_loss 0.3627 	cls_loss 0.1410 	com_loss 0.1276 	keep_loss 0.0593 	loss 1.6020 	refine_bbox_loss 0.7976 	refine_score_loss 0.0121 	seg_loss 0.0580 	seg_loss_dice 0.0438 	
+[03/09 12:00:43] TGEA_refine INFO: Train: [216][1000/1737]  
+[03/09 12:00:43] TGEA_refine INFO: bbox_loss 0.3646 	cls_loss 0.1407 	com_loss 0.1256 	keep_loss 0.0587 	loss 1.6023 	refine_bbox_loss 0.7977 	refine_score_loss 0.0122 	seg_loss 0.0586 	seg_loss_dice 0.0441 	
+[03/09 12:08:11] TGEA_refine INFO: Train: [216][1500/1737]  
+[03/09 12:08:11] TGEA_refine INFO: bbox_loss 0.3642 	cls_loss 0.1403 	com_loss 0.1252 	keep_loss 0.0587 	loss 1.6005 	refine_bbox_loss 0.7975 	refine_score_loss 0.0123 	seg_loss 0.0583 	seg_loss_dice 0.0441 	
+[03/09 12:11:41] TGEA_refine INFO: epoch 216, total time 1565.82, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 12:12:45] TGEA_refine INFO: Eval: [216]  
+[03/09 12:12:45] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04975
+[03/09 12:12:45] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 12:12:45] TGEA_refine INFO: Acc_mask0.25 0.5788809423643247
+[03/09 12:12:45] TGEA_refine INFO: Acc_mask0.50 0.5130416491375683
+[03/09 12:20:23] TGEA_refine INFO: Train: [217][500/1737]  
+[03/09 12:20:23] TGEA_refine INFO: bbox_loss 0.3631 	cls_loss 0.1393 	com_loss 0.1237 	keep_loss 0.0581 	loss 1.5964 	refine_bbox_loss 0.7974 	refine_score_loss 0.0124 	seg_loss 0.0585 	seg_loss_dice 0.0439 	
+[03/09 12:27:58] TGEA_refine INFO: Train: [217][1000/1737]  
+[03/09 12:27:58] TGEA_refine INFO: bbox_loss 0.3637 	cls_loss 0.1400 	com_loss 0.1252 	keep_loss 0.0587 	loss 1.5993 	refine_bbox_loss 0.7974 	refine_score_loss 0.0124 	seg_loss 0.0581 	seg_loss_dice 0.0439 	
+[03/09 12:35:30] TGEA_refine INFO: Train: [217][1500/1737]  
+[03/09 12:35:30] TGEA_refine INFO: bbox_loss 0.3647 	cls_loss 0.1405 	com_loss 0.1254 	keep_loss 0.0586 	loss 1.6009 	refine_bbox_loss 0.7975 	refine_score_loss 0.0119 	seg_loss 0.0582 	seg_loss_dice 0.0440 	
+[03/09 12:39:08] TGEA_refine INFO: epoch 217, total time 1583.54, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 12:46:39] TGEA_refine INFO: Train: [218][500/1737]  
+[03/09 12:46:39] TGEA_refine INFO: bbox_loss 0.3674 	cls_loss 0.1393 	com_loss 0.1241 	keep_loss 0.0591 	loss 1.6027 	refine_bbox_loss 0.7981 	refine_score_loss 0.0118 	seg_loss 0.0592 	seg_loss_dice 0.0438 	
+[03/09 12:54:05] TGEA_refine INFO: Train: [218][1000/1737]  
+[03/09 12:54:05] TGEA_refine INFO: bbox_loss 0.3677 	cls_loss 0.1401 	com_loss 0.1252 	keep_loss 0.0589 	loss 1.6046 	refine_bbox_loss 0.7982 	refine_score_loss 0.0116 	seg_loss 0.0591 	seg_loss_dice 0.0439 	
+[03/09 13:01:35] TGEA_refine INFO: Train: [218][1500/1737]  
+[03/09 13:01:35] TGEA_refine INFO: bbox_loss 0.3664 	cls_loss 0.1401 	com_loss 0.1251 	keep_loss 0.0587 	loss 1.6025 	refine_bbox_loss 0.7978 	refine_score_loss 0.0120 	seg_loss 0.0586 	seg_loss_dice 0.0438 	
+[03/09 13:05:08] TGEA_refine INFO: epoch 218, total time 1559.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 13:12:37] TGEA_refine INFO: Train: [219][500/1737]  
+[03/09 13:12:37] TGEA_refine INFO: bbox_loss 0.3669 	cls_loss 0.1412 	com_loss 0.1264 	keep_loss 0.0596 	loss 1.6090 	refine_bbox_loss 0.7982 	refine_score_loss 0.0130 	seg_loss 0.0592 	seg_loss_dice 0.0445 	
+[03/09 13:20:13] TGEA_refine INFO: Train: [219][1000/1737]  
+[03/09 13:20:13] TGEA_refine INFO: bbox_loss 0.3681 	cls_loss 0.1412 	com_loss 0.1252 	keep_loss 0.0594 	loss 1.6072 	refine_bbox_loss 0.7980 	refine_score_loss 0.0121 	seg_loss 0.0588 	seg_loss_dice 0.0445 	
+[03/09 13:27:43] TGEA_refine INFO: Train: [219][1500/1737]  
+[03/09 13:27:43] TGEA_refine INFO: bbox_loss 0.3656 	cls_loss 0.1409 	com_loss 0.1252 	keep_loss 0.0593 	loss 1.6031 	refine_bbox_loss 0.7976 	refine_score_loss 0.0119 	seg_loss 0.0584 	seg_loss_dice 0.0443 	
+[03/09 13:31:18] TGEA_refine INFO: epoch 219, total time 1570.49, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 13:32:23] TGEA_refine INFO: Eval: [219]  
+[03/09 13:32:23] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04975
+[03/09 13:32:23] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 13:32:23] TGEA_refine INFO: Acc_mask0.25 0.5787757677745057
+[03/09 13:32:23] TGEA_refine INFO: Acc_mask0.50 0.513777871266302
+[03/09 13:40:04] TGEA_refine INFO: Train: [220][500/1737]  
+[03/09 13:40:04] TGEA_refine INFO: bbox_loss 0.3621 	cls_loss 0.1415 	com_loss 0.1266 	keep_loss 0.0601 	loss 1.6018 	refine_bbox_loss 0.7976 	refine_score_loss 0.0119 	seg_loss 0.0580 	seg_loss_dice 0.0441 	
+[03/09 13:47:32] TGEA_refine INFO: Train: [220][1000/1737]  
+[03/09 13:47:32] TGEA_refine INFO: bbox_loss 0.3628 	cls_loss 0.1397 	com_loss 0.1251 	keep_loss 0.0595 	loss 1.5987 	refine_bbox_loss 0.7969 	refine_score_loss 0.0119 	seg_loss 0.0584 	seg_loss_dice 0.0444 	
+[03/09 13:55:05] TGEA_refine INFO: Train: [220][1500/1737]  
+[03/09 13:55:05] TGEA_refine INFO: bbox_loss 0.3635 	cls_loss 0.1396 	com_loss 0.1243 	keep_loss 0.0590 	loss 1.5972 	refine_bbox_loss 0.7970 	refine_score_loss 0.0119 	seg_loss 0.0579 	seg_loss_dice 0.0442 	
+[03/09 13:58:41] TGEA_refine INFO: epoch 220, total time 1577.41, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 14:06:12] TGEA_refine INFO: Train: [221][500/1737]  
+[03/09 14:06:12] TGEA_refine INFO: bbox_loss 0.3638 	cls_loss 0.1409 	com_loss 0.1253 	keep_loss 0.0581 	loss 1.5987 	refine_bbox_loss 0.7976 	refine_score_loss 0.0109 	seg_loss 0.0578 	seg_loss_dice 0.0443 	
+[03/09 14:13:48] TGEA_refine INFO: Train: [221][1000/1737]  
+[03/09 14:13:48] TGEA_refine INFO: bbox_loss 0.3652 	cls_loss 0.1415 	com_loss 0.1262 	keep_loss 0.0585 	loss 1.6022 	refine_bbox_loss 0.7980 	refine_score_loss 0.0113 	seg_loss 0.0576 	seg_loss_dice 0.0440 	
+[03/09 14:21:22] TGEA_refine INFO: Train: [221][1500/1737]  
+[03/09 14:21:22] TGEA_refine INFO: bbox_loss 0.3657 	cls_loss 0.1415 	com_loss 0.1267 	keep_loss 0.0586 	loss 1.6041 	refine_bbox_loss 0.7979 	refine_score_loss 0.0116 	seg_loss 0.0579 	seg_loss_dice 0.0440 	
+[03/09 14:24:57] TGEA_refine INFO: epoch 221, total time 1576.04, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 14:32:33] TGEA_refine INFO: Train: [222][500/1737]  
+[03/09 14:32:33] TGEA_refine INFO: bbox_loss 0.3661 	cls_loss 0.1404 	com_loss 0.1267 	keep_loss 0.0584 	loss 1.6021 	refine_bbox_loss 0.7976 	refine_score_loss 0.0112 	seg_loss 0.0579 	seg_loss_dice 0.0439 	
+[03/09 14:40:10] TGEA_refine INFO: Train: [222][1000/1737]  
+[03/09 14:40:10] TGEA_refine INFO: bbox_loss 0.3664 	cls_loss 0.1405 	com_loss 0.1259 	keep_loss 0.0590 	loss 1.6032 	refine_bbox_loss 0.7979 	refine_score_loss 0.0117 	seg_loss 0.0576 	seg_loss_dice 0.0441 	
+[03/09 14:47:40] TGEA_refine INFO: Train: [222][1500/1737]  
+[03/09 14:47:40] TGEA_refine INFO: bbox_loss 0.3665 	cls_loss 0.1408 	com_loss 0.1262 	keep_loss 0.0592 	loss 1.6042 	refine_bbox_loss 0.7978 	refine_score_loss 0.0119 	seg_loss 0.0576 	seg_loss_dice 0.0442 	
+[03/09 14:51:18] TGEA_refine INFO: epoch 222, total time 1581.85, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 14:52:23] TGEA_refine INFO: Eval: [222]  
+[03/09 14:52:23] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04544
+[03/09 14:52:23] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 14:52:23] TGEA_refine INFO: Acc_mask0.25 0.579091291543963
+[03/09 14:52:23] TGEA_refine INFO: Acc_mask0.50 0.5139882204459403
+[03/09 14:59:55] TGEA_refine INFO: Train: [223][500/1737]  
+[03/09 14:59:55] TGEA_refine INFO: bbox_loss 0.3669 	cls_loss 0.1411 	com_loss 0.1273 	keep_loss 0.0588 	loss 1.6068 	refine_bbox_loss 0.7979 	refine_score_loss 0.0120 	seg_loss 0.0583 	seg_loss_dice 0.0444 	
+[03/09 15:07:20] TGEA_refine INFO: Train: [223][1000/1737]  
+[03/09 15:07:20] TGEA_refine INFO: bbox_loss 0.3673 	cls_loss 0.1415 	com_loss 0.1269 	keep_loss 0.0589 	loss 1.6065 	refine_bbox_loss 0.7977 	refine_score_loss 0.0121 	seg_loss 0.0580 	seg_loss_dice 0.0442 	
+[03/09 15:14:57] TGEA_refine INFO: Train: [223][1500/1737]  
+[03/09 15:14:57] TGEA_refine INFO: bbox_loss 0.3664 	cls_loss 0.1411 	com_loss 0.1266 	keep_loss 0.0589 	loss 1.6052 	refine_bbox_loss 0.7977 	refine_score_loss 0.0121 	seg_loss 0.0582 	seg_loss_dice 0.0442 	
+[03/09 15:18:33] TGEA_refine INFO: epoch 223, total time 1570.26, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 15:26:13] TGEA_refine INFO: Train: [224][500/1737]  
+[03/09 15:26:13] TGEA_refine INFO: bbox_loss 0.3662 	cls_loss 0.1375 	com_loss 0.1234 	keep_loss 0.0578 	loss 1.5959 	refine_bbox_loss 0.7978 	refine_score_loss 0.0112 	seg_loss 0.0577 	seg_loss_dice 0.0443 	
+[03/09 15:34:03] TGEA_refine INFO: Train: [224][1000/1737]  
+[03/09 15:34:03] TGEA_refine INFO: bbox_loss 0.3654 	cls_loss 0.1383 	com_loss 0.1232 	keep_loss 0.0582 	loss 1.5965 	refine_bbox_loss 0.7974 	refine_score_loss 0.0117 	seg_loss 0.0579 	seg_loss_dice 0.0443 	
+[03/09 15:41:29] TGEA_refine INFO: Train: [224][1500/1737]  
+[03/09 15:41:29] TGEA_refine INFO: bbox_loss 0.3649 	cls_loss 0.1382 	com_loss 0.1230 	keep_loss 0.0582 	loss 1.5952 	refine_bbox_loss 0.7974 	refine_score_loss 0.0114 	seg_loss 0.0577 	seg_loss_dice 0.0443 	
+[03/09 15:45:04] TGEA_refine INFO: epoch 224, total time 1590.36, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 15:52:45] TGEA_refine INFO: Train: [225][500/1737]  
+[03/09 15:52:45] TGEA_refine INFO: bbox_loss 0.3620 	cls_loss 0.1383 	com_loss 0.1247 	keep_loss 0.0584 	loss 1.5943 	refine_bbox_loss 0.7964 	refine_score_loss 0.0116 	seg_loss 0.0582 	seg_loss_dice 0.0446 	
+[03/09 16:00:17] TGEA_refine INFO: Train: [225][1000/1737]  
+[03/09 16:00:17] TGEA_refine INFO: bbox_loss 0.3636 	cls_loss 0.1404 	com_loss 0.1263 	keep_loss 0.0591 	loss 1.6001 	refine_bbox_loss 0.7969 	refine_score_loss 0.0118 	seg_loss 0.0577 	seg_loss_dice 0.0443 	
+[03/09 16:07:49] TGEA_refine INFO: Train: [225][1500/1737]  
+[03/09 16:07:49] TGEA_refine INFO: bbox_loss 0.3648 	cls_loss 0.1402 	com_loss 0.1262 	keep_loss 0.0591 	loss 1.6010 	refine_bbox_loss 0.7970 	refine_score_loss 0.0119 	seg_loss 0.0577 	seg_loss_dice 0.0442 	
+[03/09 16:11:29] TGEA_refine INFO: epoch 225, total time 1585.14, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 16:12:32] TGEA_refine INFO: Eval: [225]  
+[03/09 16:12:32] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.06426
+[03/09 16:12:32] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 16:12:32] TGEA_refine INFO: Acc_mask0.25 0.5793016407236011
+[03/09 16:12:32] TGEA_refine INFO: Acc_mask0.50 0.5141985696255784
+[03/09 16:20:05] TGEA_refine INFO: Train: [226][500/1737]  
+[03/09 16:20:05] TGEA_refine INFO: bbox_loss 0.3636 	cls_loss 0.1398 	com_loss 0.1261 	keep_loss 0.0591 	loss 1.6009 	refine_bbox_loss 0.7968 	refine_score_loss 0.0130 	seg_loss 0.0582 	seg_loss_dice 0.0443 	
+[03/09 16:27:41] TGEA_refine INFO: Train: [226][1000/1737]  
+[03/09 16:27:41] TGEA_refine INFO: bbox_loss 0.3680 	cls_loss 0.1414 	com_loss 0.1268 	keep_loss 0.0593 	loss 1.6086 	refine_bbox_loss 0.7978 	refine_score_loss 0.0121 	seg_loss 0.0587 	seg_loss_dice 0.0446 	
+[03/09 16:35:18] TGEA_refine INFO: Train: [226][1500/1737]  
+[03/09 16:35:18] TGEA_refine INFO: bbox_loss 0.3673 	cls_loss 0.1410 	com_loss 0.1266 	keep_loss 0.0588 	loss 1.6063 	refine_bbox_loss 0.7977 	refine_score_loss 0.0121 	seg_loss 0.0584 	seg_loss_dice 0.0445 	
+[03/09 16:38:54] TGEA_refine INFO: epoch 226, total time 1581.57, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 16:46:37] TGEA_refine INFO: Train: [227][500/1737]  
+[03/09 16:46:37] TGEA_refine INFO: bbox_loss 0.3674 	cls_loss 0.1422 	com_loss 0.1264 	keep_loss 0.0587 	loss 1.6063 	refine_bbox_loss 0.7979 	refine_score_loss 0.0117 	seg_loss 0.0579 	seg_loss_dice 0.0440 	
+[03/09 16:54:15] TGEA_refine INFO: Train: [227][1000/1737]  
+[03/09 16:54:15] TGEA_refine INFO: bbox_loss 0.3664 	cls_loss 0.1419 	com_loss 0.1265 	keep_loss 0.0591 	loss 1.6057 	refine_bbox_loss 0.7975 	refine_score_loss 0.0120 	seg_loss 0.0582 	seg_loss_dice 0.0442 	
+[03/09 17:01:47] TGEA_refine INFO: Train: [227][1500/1737]  
+[03/09 17:01:47] TGEA_refine INFO: bbox_loss 0.3674 	cls_loss 0.1422 	com_loss 0.1270 	keep_loss 0.0592 	loss 1.6077 	refine_bbox_loss 0.7977 	refine_score_loss 0.0119 	seg_loss 0.0582 	seg_loss_dice 0.0441 	
+[03/09 17:05:24] TGEA_refine INFO: epoch 227, total time 1589.76, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 17:13:06] TGEA_refine INFO: Train: [228][500/1737]  
+[03/09 17:13:06] TGEA_refine INFO: bbox_loss 0.3655 	cls_loss 0.1392 	com_loss 0.1257 	keep_loss 0.0585 	loss 1.6004 	refine_bbox_loss 0.7978 	refine_score_loss 0.0118 	seg_loss 0.0577 	seg_loss_dice 0.0443 	
+[03/09 17:20:41] TGEA_refine INFO: Train: [228][1000/1737]  
+[03/09 17:20:41] TGEA_refine INFO: bbox_loss 0.3656 	cls_loss 0.1410 	com_loss 0.1266 	keep_loss 0.0589 	loss 1.6030 	refine_bbox_loss 0.7976 	refine_score_loss 0.0113 	seg_loss 0.0578 	seg_loss_dice 0.0441 	
+[03/09 17:28:33] TGEA_refine INFO: Train: [228][1500/1737]  
+[03/09 17:28:33] TGEA_refine INFO: bbox_loss 0.3652 	cls_loss 0.1401 	com_loss 0.1256 	keep_loss 0.0588 	loss 1.6010 	refine_bbox_loss 0.7974 	refine_score_loss 0.0118 	seg_loss 0.0580 	seg_loss_dice 0.0442 	
+[03/09 17:32:06] TGEA_refine INFO: epoch 228, total time 1602.04, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 17:33:10] TGEA_refine INFO: Eval: [228]  
+[03/09 17:33:10] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05858
+[03/09 17:33:10] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 17:33:10] TGEA_refine INFO: Acc_mask0.25 0.5799326882625158
+[03/09 17:33:10] TGEA_refine INFO: Acc_mask0.50 0.5151451409339504
+[03/09 17:41:04] TGEA_refine INFO: Train: [229][500/1737]  
+[03/09 17:41:04] TGEA_refine INFO: bbox_loss 0.3639 	cls_loss 0.1411 	com_loss 0.1254 	keep_loss 0.0591 	loss 1.5988 	refine_bbox_loss 0.7966 	refine_score_loss 0.0112 	seg_loss 0.0571 	seg_loss_dice 0.0443 	
+[03/09 17:48:39] TGEA_refine INFO: Train: [229][1000/1737]  
+[03/09 17:48:39] TGEA_refine INFO: bbox_loss 0.3637 	cls_loss 0.1400 	com_loss 0.1253 	keep_loss 0.0586 	loss 1.5975 	refine_bbox_loss 0.7967 	refine_score_loss 0.0118 	seg_loss 0.0573 	seg_loss_dice 0.0441 	
+[03/09 17:56:12] TGEA_refine INFO: Train: [229][1500/1737]  
+[03/09 17:56:12] TGEA_refine INFO: bbox_loss 0.3630 	cls_loss 0.1395 	com_loss 0.1249 	keep_loss 0.0581 	loss 1.5954 	refine_bbox_loss 0.7964 	refine_score_loss 0.0119 	seg_loss 0.0576 	seg_loss_dice 0.0439 	
+[03/09 17:59:50] TGEA_refine INFO: epoch 229, total time 1600.04, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 18:07:38] TGEA_refine INFO: Train: [230][500/1737]  
+[03/09 18:07:38] TGEA_refine INFO: bbox_loss 0.3669 	cls_loss 0.1386 	com_loss 0.1241 	keep_loss 0.0583 	loss 1.5992 	refine_bbox_loss 0.7970 	refine_score_loss 0.0117 	seg_loss 0.0584 	seg_loss_dice 0.0442 	
+[03/09 18:15:14] TGEA_refine INFO: Train: [230][1000/1737]  
+[03/09 18:15:14] TGEA_refine INFO: bbox_loss 0.3671 	cls_loss 0.1400 	com_loss 0.1253 	keep_loss 0.0590 	loss 1.6030 	refine_bbox_loss 0.7971 	refine_score_loss 0.0120 	seg_loss 0.0584 	seg_loss_dice 0.0441 	
+[03/09 18:22:42] TGEA_refine INFO: Train: [230][1500/1737]  
+[03/09 18:22:42] TGEA_refine INFO: bbox_loss 0.3662 	cls_loss 0.1398 	com_loss 0.1253 	keep_loss 0.0590 	loss 1.6020 	refine_bbox_loss 0.7970 	refine_score_loss 0.0122 	seg_loss 0.0583 	seg_loss_dice 0.0441 	
+[03/09 18:26:25] TGEA_refine INFO: epoch 230, total time 1595.06, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 18:34:03] TGEA_refine INFO: Train: [231][500/1737]  
+[03/09 18:34:03] TGEA_refine INFO: bbox_loss 0.3658 	cls_loss 0.1412 	com_loss 0.1262 	keep_loss 0.0587 	loss 1.6027 	refine_bbox_loss 0.7979 	refine_score_loss 0.0107 	seg_loss 0.0584 	seg_loss_dice 0.0438 	
+[03/09 18:41:40] TGEA_refine INFO: Train: [231][1000/1737]  
+[03/09 18:41:40] TGEA_refine INFO: bbox_loss 0.3675 	cls_loss 0.1409 	com_loss 0.1250 	keep_loss 0.0582 	loss 1.6029 	refine_bbox_loss 0.7978 	refine_score_loss 0.0114 	seg_loss 0.0582 	seg_loss_dice 0.0440 	
+[03/09 18:49:17] TGEA_refine INFO: Train: [231][1500/1737]  
+[03/09 18:49:17] TGEA_refine INFO: bbox_loss 0.3683 	cls_loss 0.1414 	com_loss 0.1257 	keep_loss 0.0583 	loss 1.6056 	refine_bbox_loss 0.7976 	refine_score_loss 0.0117 	seg_loss 0.0583 	seg_loss_dice 0.0441 	
+[03/09 18:52:51] TGEA_refine INFO: epoch 231, total time 1586.57, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 18:53:53] TGEA_refine INFO: Eval: [231]  
+[03/09 18:53:53] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05942
+[03/09 18:53:53] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 18:53:53] TGEA_refine INFO: Acc_mask0.25 0.5794068153134203
+[03/09 18:53:53] TGEA_refine INFO: Acc_mask0.50 0.5149347917543121
+[03/09 19:01:36] TGEA_refine INFO: Train: [232][500/1737]  
+[03/09 19:01:36] TGEA_refine INFO: bbox_loss 0.3652 	cls_loss 0.1416 	com_loss 0.1260 	keep_loss 0.0580 	loss 1.6033 	refine_bbox_loss 0.7975 	refine_score_loss 0.0122 	seg_loss 0.0584 	seg_loss_dice 0.0445 	
+[03/09 19:09:09] TGEA_refine INFO: Train: [232][1000/1737]  
+[03/09 19:09:09] TGEA_refine INFO: bbox_loss 0.3659 	cls_loss 0.1422 	com_loss 0.1269 	keep_loss 0.0584 	loss 1.6057 	refine_bbox_loss 0.7970 	refine_score_loss 0.0125 	seg_loss 0.0585 	seg_loss_dice 0.0444 	
+[03/09 19:16:52] TGEA_refine INFO: Train: [232][1500/1737]  
+[03/09 19:16:52] TGEA_refine INFO: bbox_loss 0.3664 	cls_loss 0.1415 	com_loss 0.1261 	keep_loss 0.0583 	loss 1.6040 	refine_bbox_loss 0.7971 	refine_score_loss 0.0121 	seg_loss 0.0584 	seg_loss_dice 0.0442 	
+[03/09 19:20:50] TGEA_refine INFO: epoch 232, total time 1617.21, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 19:28:28] TGEA_refine INFO: Train: [233][500/1737]  
+[03/09 19:28:28] TGEA_refine INFO: bbox_loss 0.3688 	cls_loss 0.1425 	com_loss 0.1279 	keep_loss 0.0601 	loss 1.6125 	refine_bbox_loss 0.7976 	refine_score_loss 0.0120 	seg_loss 0.0589 	seg_loss_dice 0.0447 	
+[03/09 19:36:00] TGEA_refine INFO: Train: [233][1000/1737]  
+[03/09 19:36:00] TGEA_refine INFO: bbox_loss 0.3666 	cls_loss 0.1415 	com_loss 0.1268 	keep_loss 0.0593 	loss 1.6068 	refine_bbox_loss 0.7969 	refine_score_loss 0.0124 	seg_loss 0.0587 	seg_loss_dice 0.0445 	
+[03/09 19:43:36] TGEA_refine INFO: Train: [233][1500/1737]  
+[03/09 19:43:36] TGEA_refine INFO: bbox_loss 0.3665 	cls_loss 0.1414 	com_loss 0.1265 	keep_loss 0.0589 	loss 1.6052 	refine_bbox_loss 0.7973 	refine_score_loss 0.0119 	seg_loss 0.0584 	seg_loss_dice 0.0444 	
+[03/09 19:47:08] TGEA_refine INFO: epoch 233, total time 1578.12, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 19:54:35] TGEA_refine INFO: Train: [234][500/1737]  
+[03/09 19:54:35] TGEA_refine INFO: bbox_loss 0.3626 	cls_loss 0.1389 	com_loss 0.1255 	keep_loss 0.0594 	loss 1.5947 	refine_bbox_loss 0.7966 	refine_score_loss 0.0113 	seg_loss 0.0567 	seg_loss_dice 0.0436 	
+[03/09 20:02:13] TGEA_refine INFO: Train: [234][1000/1737]  
+[03/09 20:02:13] TGEA_refine INFO: bbox_loss 0.3630 	cls_loss 0.1381 	com_loss 0.1242 	keep_loss 0.0590 	loss 1.5940 	refine_bbox_loss 0.7968 	refine_score_loss 0.0114 	seg_loss 0.0575 	seg_loss_dice 0.0439 	
+[03/09 20:10:22] TGEA_refine INFO: Train: [234][1500/1737]  
+[03/09 20:10:22] TGEA_refine INFO: bbox_loss 0.3635 	cls_loss 0.1388 	com_loss 0.1246 	keep_loss 0.0589 	loss 1.5958 	refine_bbox_loss 0.7968 	refine_score_loss 0.0114 	seg_loss 0.0577 	seg_loss_dice 0.0440 	
+[03/09 20:14:06] TGEA_refine INFO: epoch 234, total time 1617.24, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 20:15:10] TGEA_refine INFO: Eval: [234]  
+[03/09 20:15:10] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05501
+[03/09 20:15:10] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 20:15:10] TGEA_refine INFO: Acc_mask0.25 0.578039545645772
+[03/09 20:15:10] TGEA_refine INFO: Acc_mask0.50 0.5140933950357593
+[03/09 20:22:56] TGEA_refine INFO: Train: [235][500/1737]  
+[03/09 20:22:56] TGEA_refine INFO: bbox_loss 0.3652 	cls_loss 0.1419 	com_loss 0.1267 	keep_loss 0.0590 	loss 1.6036 	refine_bbox_loss 0.7969 	refine_score_loss 0.0123 	seg_loss 0.0578 	seg_loss_dice 0.0437 	
+[03/09 20:30:28] TGEA_refine INFO: Train: [235][1000/1737]  
+[03/09 20:30:28] TGEA_refine INFO: bbox_loss 0.3648 	cls_loss 0.1411 	com_loss 0.1261 	keep_loss 0.0594 	loss 1.6027 	refine_bbox_loss 0.7970 	refine_score_loss 0.0122 	seg_loss 0.0580 	seg_loss_dice 0.0440 	
+[03/09 20:38:01] TGEA_refine INFO: Train: [235][1500/1737]  
+[03/09 20:38:01] TGEA_refine INFO: bbox_loss 0.3640 	cls_loss 0.1408 	com_loss 0.1260 	keep_loss 0.0590 	loss 1.6004 	refine_bbox_loss 0.7969 	refine_score_loss 0.0119 	seg_loss 0.0579 	seg_loss_dice 0.0441 	
+[03/09 20:41:40] TGEA_refine INFO: epoch 235, total time 1589.28, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 20:49:17] TGEA_refine INFO: Train: [236][500/1737]  
+[03/09 20:49:17] TGEA_refine INFO: bbox_loss 0.3647 	cls_loss 0.1417 	com_loss 0.1276 	keep_loss 0.0580 	loss 1.6040 	refine_bbox_loss 0.7975 	refine_score_loss 0.0110 	seg_loss 0.0589 	seg_loss_dice 0.0446 	
+[03/09 20:56:49] TGEA_refine INFO: Train: [236][1000/1737]  
+[03/09 20:56:49] TGEA_refine INFO: bbox_loss 0.3671 	cls_loss 0.1405 	com_loss 0.1260 	keep_loss 0.0579 	loss 1.6029 	refine_bbox_loss 0.7975 	refine_score_loss 0.0115 	seg_loss 0.0582 	seg_loss_dice 0.0440 	
+[03/09 21:04:28] TGEA_refine INFO: Train: [236][1500/1737]  
+[03/09 21:04:28] TGEA_refine INFO: bbox_loss 0.3666 	cls_loss 0.1400 	com_loss 0.1252 	keep_loss 0.0581 	loss 1.6007 	refine_bbox_loss 0.7973 	refine_score_loss 0.0115 	seg_loss 0.0580 	seg_loss_dice 0.0441 	
+[03/09 21:08:02] TGEA_refine INFO: epoch 236, total time 1582.96, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 21:15:42] TGEA_refine INFO: Train: [237][500/1737]  
+[03/09 21:15:42] TGEA_refine INFO: bbox_loss 0.3665 	cls_loss 0.1399 	com_loss 0.1246 	keep_loss 0.0571 	loss 1.5991 	refine_bbox_loss 0.7973 	refine_score_loss 0.0116 	seg_loss 0.0579 	seg_loss_dice 0.0443 	
+[03/09 21:23:21] TGEA_refine INFO: Train: [237][1000/1737]  
+[03/09 21:23:21] TGEA_refine INFO: bbox_loss 0.3641 	cls_loss 0.1390 	com_loss 0.1243 	keep_loss 0.0577 	loss 1.5956 	refine_bbox_loss 0.7967 	refine_score_loss 0.0117 	seg_loss 0.0578 	seg_loss_dice 0.0443 	
+[03/09 21:30:55] TGEA_refine INFO: Train: [237][1500/1737]  
+[03/09 21:30:55] TGEA_refine INFO: bbox_loss 0.3660 	cls_loss 0.1393 	com_loss 0.1242 	keep_loss 0.0580 	loss 1.5985 	refine_bbox_loss 0.7967 	refine_score_loss 0.0121 	seg_loss 0.0579 	seg_loss_dice 0.0443 	
+[03/09 21:34:34] TGEA_refine INFO: epoch 237, total time 1591.24, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 21:35:39] TGEA_refine INFO: Eval: [237]  
+[03/09 21:35:39] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05227
+[03/09 21:35:39] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 21:35:39] TGEA_refine INFO: Acc_mask0.25 0.5774084981068573
+[03/09 21:35:39] TGEA_refine INFO: Acc_mask0.50 0.514724442574674
+[03/09 21:43:15] TGEA_refine INFO: Train: [238][500/1737]  
+[03/09 21:43:15] TGEA_refine INFO: bbox_loss 0.3662 	cls_loss 0.1392 	com_loss 0.1252 	keep_loss 0.0592 	loss 1.5990 	refine_bbox_loss 0.7974 	refine_score_loss 0.0112 	seg_loss 0.0566 	seg_loss_dice 0.0440 	
+[03/09 21:50:43] TGEA_refine INFO: Train: [238][1000/1737]  
+[03/09 21:50:43] TGEA_refine INFO: bbox_loss 0.3671 	cls_loss 0.1391 	com_loss 0.1251 	keep_loss 0.0593 	loss 1.6008 	refine_bbox_loss 0.7975 	refine_score_loss 0.0111 	seg_loss 0.0573 	seg_loss_dice 0.0442 	
+[03/09 21:58:19] TGEA_refine INFO: Train: [238][1500/1737]  
+[03/09 21:58:19] TGEA_refine INFO: bbox_loss 0.3652 	cls_loss 0.1390 	com_loss 0.1247 	keep_loss 0.0588 	loss 1.5970 	refine_bbox_loss 0.7970 	refine_score_loss 0.0108 	seg_loss 0.0575 	seg_loss_dice 0.0441 	
+[03/09 22:01:54] TGEA_refine INFO: epoch 238, total time 1574.79, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 22:09:29] TGEA_refine INFO: Train: [239][500/1737]  
+[03/09 22:09:29] TGEA_refine INFO: bbox_loss 0.3636 	cls_loss 0.1395 	com_loss 0.1256 	keep_loss 0.0589 	loss 1.5975 	refine_bbox_loss 0.7967 	refine_score_loss 0.0114 	seg_loss 0.0573 	seg_loss_dice 0.0445 	
+[03/09 22:17:13] TGEA_refine INFO: Train: [239][1000/1737]  
+[03/09 22:17:13] TGEA_refine INFO: bbox_loss 0.3632 	cls_loss 0.1397 	com_loss 0.1252 	keep_loss 0.0589 	loss 1.5971 	refine_bbox_loss 0.7965 	refine_score_loss 0.0116 	seg_loss 0.0578 	seg_loss_dice 0.0441 	
+[03/09 22:25:21] TGEA_refine INFO: Train: [239][1500/1737]  
+[03/09 22:25:21] TGEA_refine INFO: bbox_loss 0.3660 	cls_loss 0.1401 	com_loss 0.1255 	keep_loss 0.0586 	loss 1.6010 	refine_bbox_loss 0.7968 	refine_score_loss 0.0118 	seg_loss 0.0580 	seg_loss_dice 0.0442 	
+[03/09 22:29:14] TGEA_refine INFO: epoch 239, total time 1639.34, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 22:37:24] TGEA_refine INFO: Train: [240][500/1737]  
+[03/09 22:37:24] TGEA_refine INFO: bbox_loss 0.3666 	cls_loss 0.1393 	com_loss 0.1237 	keep_loss 0.0584 	loss 1.5979 	refine_bbox_loss 0.7966 	refine_score_loss 0.0115 	seg_loss 0.0576 	seg_loss_dice 0.0442 	
+[03/09 22:45:23] TGEA_refine INFO: Train: [240][1000/1737]  
+[03/09 22:45:23] TGEA_refine INFO: bbox_loss 0.3696 	cls_loss 0.1414 	com_loss 0.1258 	keep_loss 0.0588 	loss 1.6066 	refine_bbox_loss 0.7971 	refine_score_loss 0.0116 	seg_loss 0.0580 	seg_loss_dice 0.0442 	
+[03/09 22:53:12] TGEA_refine INFO: Train: [240][1500/1737]  
+[03/09 22:53:12] TGEA_refine INFO: bbox_loss 0.3676 	cls_loss 0.1408 	com_loss 0.1251 	keep_loss 0.0584 	loss 1.6020 	refine_bbox_loss 0.7967 	refine_score_loss 0.0118 	seg_loss 0.0575 	seg_loss_dice 0.0441 	
+[03/09 22:56:55] TGEA_refine INFO: epoch 240, total time 1661.11, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 22:57:58] TGEA_refine INFO: Eval: [240]  
+[03/09 22:57:58] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05700
+[03/09 22:57:58] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/09 22:57:58] TGEA_refine INFO: Acc_mask0.25 0.5782498948254102
+[03/09 22:57:58] TGEA_refine INFO: Acc_mask0.50 0.5110433319310055
+[03/09 23:05:29] TGEA_refine INFO: Train: [241][500/1737]  
+[03/09 23:05:29] TGEA_refine INFO: bbox_loss 0.3649 	cls_loss 0.1394 	com_loss 0.1248 	keep_loss 0.0583 	loss 1.5976 	refine_bbox_loss 0.7967 	refine_score_loss 0.0119 	seg_loss 0.0575 	seg_loss_dice 0.0440 	
+[03/09 23:13:02] TGEA_refine INFO: Train: [241][1000/1737]  
+[03/09 23:13:02] TGEA_refine INFO: bbox_loss 0.3640 	cls_loss 0.1395 	com_loss 0.1250 	keep_loss 0.0582 	loss 1.5962 	refine_bbox_loss 0.7964 	refine_score_loss 0.0119 	seg_loss 0.0574 	seg_loss_dice 0.0438 	
+[03/09 23:20:39] TGEA_refine INFO: Train: [241][1500/1737]  
+[03/09 23:20:39] TGEA_refine INFO: bbox_loss 0.3636 	cls_loss 0.1391 	com_loss 0.1245 	keep_loss 0.0581 	loss 1.5950 	refine_bbox_loss 0.7963 	refine_score_loss 0.0119 	seg_loss 0.0574 	seg_loss_dice 0.0440 	
+[03/09 23:24:14] TGEA_refine INFO: epoch 241, total time 1575.36, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 23:31:43] TGEA_refine INFO: Train: [242][500/1737]  
+[03/09 23:31:43] TGEA_refine INFO: bbox_loss 0.3653 	cls_loss 0.1399 	com_loss 0.1262 	keep_loss 0.0582 	loss 1.6010 	refine_bbox_loss 0.7965 	refine_score_loss 0.0119 	seg_loss 0.0588 	seg_loss_dice 0.0442 	
+[03/09 23:39:24] TGEA_refine INFO: Train: [242][1000/1737]  
+[03/09 23:39:24] TGEA_refine INFO: bbox_loss 0.3643 	cls_loss 0.1396 	com_loss 0.1253 	keep_loss 0.0577 	loss 1.5979 	refine_bbox_loss 0.7963 	refine_score_loss 0.0115 	seg_loss 0.0588 	seg_loss_dice 0.0443 	
+[03/09 23:46:52] TGEA_refine INFO: Train: [242][1500/1737]  
+[03/09 23:46:52] TGEA_refine INFO: bbox_loss 0.3652 	cls_loss 0.1400 	com_loss 0.1256 	keep_loss 0.0582 	loss 1.5993 	refine_bbox_loss 0.7966 	refine_score_loss 0.0113 	seg_loss 0.0582 	seg_loss_dice 0.0442 	
+[03/09 23:50:28] TGEA_refine INFO: epoch 242, total time 1573.98, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/09 23:58:16] TGEA_refine INFO: Train: [243][500/1737]  
+[03/09 23:58:16] TGEA_refine INFO: bbox_loss 0.3737 	cls_loss 0.1403 	com_loss 0.1262 	keep_loss 0.0570 	loss 1.6080 	refine_bbox_loss 0.7968 	refine_score_loss 0.0124 	seg_loss 0.0578 	seg_loss_dice 0.0439 	
+[03/10 00:05:51] TGEA_refine INFO: Train: [243][1000/1737]  
+[03/10 00:05:51] TGEA_refine INFO: bbox_loss 0.3685 	cls_loss 0.1401 	com_loss 0.1258 	keep_loss 0.0578 	loss 1.6026 	refine_bbox_loss 0.7960 	refine_score_loss 0.0124 	seg_loss 0.0580 	seg_loss_dice 0.0440 	
+[03/10 00:13:31] TGEA_refine INFO: Train: [243][1500/1737]  
+[03/10 00:13:31] TGEA_refine INFO: bbox_loss 0.3673 	cls_loss 0.1398 	com_loss 0.1251 	keep_loss 0.0581 	loss 1.6002 	refine_bbox_loss 0.7963 	refine_score_loss 0.0118 	seg_loss 0.0578 	seg_loss_dice 0.0441 	
+[03/10 00:17:03] TGEA_refine INFO: epoch 243, total time 1595.49, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 00:18:07] TGEA_refine INFO: Eval: [243]  
+[03/10 00:18:07] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04775
+[03/10 00:18:07] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/10 00:18:07] TGEA_refine INFO: Acc_mask0.25 0.5785654185948674
+[03/10 00:18:07] TGEA_refine INFO: Acc_mask0.50 0.5134623474968447
+[03/10 00:25:57] TGEA_refine INFO: Train: [244][500/1737]  
+[03/10 00:25:57] TGEA_refine INFO: bbox_loss 0.3605 	cls_loss 0.1409 	com_loss 0.1271 	keep_loss 0.0593 	loss 1.5979 	refine_bbox_loss 0.7962 	refine_score_loss 0.0126 	seg_loss 0.0575 	seg_loss_dice 0.0439 	
+[03/10 00:34:01] TGEA_refine INFO: Train: [244][1000/1737]  
+[03/10 00:34:01] TGEA_refine INFO: bbox_loss 0.3615 	cls_loss 0.1404 	com_loss 0.1258 	keep_loss 0.0595 	loss 1.5956 	refine_bbox_loss 0.7960 	refine_score_loss 0.0118 	seg_loss 0.0569 	seg_loss_dice 0.0437 	
+[03/10 00:42:19] TGEA_refine INFO: Train: [244][1500/1737]  
+[03/10 00:42:19] TGEA_refine INFO: bbox_loss 0.3635 	cls_loss 0.1416 	com_loss 0.1264 	keep_loss 0.0595 	loss 1.6005 	refine_bbox_loss 0.7966 	refine_score_loss 0.0118 	seg_loss 0.0571 	seg_loss_dice 0.0439 	
+[03/10 00:46:20] TGEA_refine INFO: epoch 244, total time 1693.39, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 00:54:04] TGEA_refine INFO: Train: [245][500/1737]  
+[03/10 00:54:04] TGEA_refine INFO: bbox_loss 0.3677 	cls_loss 0.1370 	com_loss 0.1234 	keep_loss 0.0580 	loss 1.5959 	refine_bbox_loss 0.7968 	refine_score_loss 0.0112 	seg_loss 0.0573 	seg_loss_dice 0.0444 	
+[03/10 01:01:36] TGEA_refine INFO: Train: [245][1000/1737]  
+[03/10 01:01:36] TGEA_refine INFO: bbox_loss 0.3675 	cls_loss 0.1392 	com_loss 0.1248 	keep_loss 0.0582 	loss 1.6006 	refine_bbox_loss 0.7969 	refine_score_loss 0.0113 	seg_loss 0.0581 	seg_loss_dice 0.0446 	
+[03/10 01:09:10] TGEA_refine INFO: Train: [245][1500/1737]  
+[03/10 01:09:10] TGEA_refine INFO: bbox_loss 0.3658 	cls_loss 0.1390 	com_loss 0.1239 	keep_loss 0.0580 	loss 1.5968 	refine_bbox_loss 0.7964 	refine_score_loss 0.0113 	seg_loss 0.0581 	seg_loss_dice 0.0443 	
+[03/10 01:12:55] TGEA_refine INFO: epoch 245, total time 1594.60, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 01:20:32] TGEA_refine INFO: Train: [246][500/1737]  
+[03/10 01:20:32] TGEA_refine INFO: bbox_loss 0.3656 	cls_loss 0.1410 	com_loss 0.1249 	keep_loss 0.0583 	loss 1.5992 	refine_bbox_loss 0.7962 	refine_score_loss 0.0117 	seg_loss 0.0575 	seg_loss_dice 0.0442 	
+[03/10 01:28:50] TGEA_refine INFO: Train: [246][1000/1737]  
+[03/10 01:28:50] TGEA_refine INFO: bbox_loss 0.3648 	cls_loss 0.1410 	com_loss 0.1251 	keep_loss 0.0587 	loss 1.5981 	refine_bbox_loss 0.7961 	refine_score_loss 0.0113 	seg_loss 0.0571 	seg_loss_dice 0.0440 	
+[03/10 01:36:42] TGEA_refine INFO: Train: [246][1500/1737]  
+[03/10 01:36:42] TGEA_refine INFO: bbox_loss 0.3659 	cls_loss 0.1413 	com_loss 0.1258 	keep_loss 0.0588 	loss 1.6016 	refine_bbox_loss 0.7966 	refine_score_loss 0.0114 	seg_loss 0.0576 	seg_loss_dice 0.0442 	
+[03/10 01:40:16] TGEA_refine INFO: epoch 246, total time 1641.18, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 01:41:20] TGEA_refine INFO: Eval: [246]  
+[03/10 01:41:20] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04712
+[03/10 01:41:20] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/10 01:41:20] TGEA_refine INFO: Acc_mask0.25 0.5793016407236011
+[03/10 01:41:20] TGEA_refine INFO: Acc_mask0.50 0.5143037442153976
+[03/10 01:48:58] TGEA_refine INFO: Train: [247][500/1737]  
+[03/10 01:48:58] TGEA_refine INFO: bbox_loss 0.3695 	cls_loss 0.1413 	com_loss 0.1255 	keep_loss 0.0591 	loss 1.6078 	refine_bbox_loss 0.7978 	refine_score_loss 0.0121 	seg_loss 0.0581 	seg_loss_dice 0.0444 	
+[03/10 01:56:40] TGEA_refine INFO: Train: [247][1000/1737]  
+[03/10 01:56:40] TGEA_refine INFO: bbox_loss 0.3691 	cls_loss 0.1399 	com_loss 0.1251 	keep_loss 0.0587 	loss 1.6046 	refine_bbox_loss 0.7974 	refine_score_loss 0.0121 	seg_loss 0.0581 	seg_loss_dice 0.0443 	
+[03/10 02:08:42] TGEA_refine INFO: Train: [247][1500/1737]  
+[03/10 02:08:42] TGEA_refine INFO: bbox_loss 0.3678 	cls_loss 0.1394 	com_loss 0.1244 	keep_loss 0.0586 	loss 1.6012 	refine_bbox_loss 0.7971 	refine_score_loss 0.0118 	seg_loss 0.0577 	seg_loss_dice 0.0443 	
+[03/10 02:12:16] TGEA_refine INFO: epoch 247, total time 1856.39, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 02:19:59] TGEA_refine INFO: Train: [248][500/1737]  
+[03/10 02:19:59] TGEA_refine INFO: bbox_loss 0.3652 	cls_loss 0.1398 	com_loss 0.1250 	keep_loss 0.0585 	loss 1.5978 	refine_bbox_loss 0.7968 	refine_score_loss 0.0120 	seg_loss 0.0568 	seg_loss_dice 0.0438 	
+[03/10 02:27:30] TGEA_refine INFO: Train: [248][1000/1737]  
+[03/10 02:27:30] TGEA_refine INFO: bbox_loss 0.3639 	cls_loss 0.1407 	com_loss 0.1252 	keep_loss 0.0587 	loss 1.5983 	refine_bbox_loss 0.7968 	refine_score_loss 0.0115 	seg_loss 0.0574 	seg_loss_dice 0.0441 	
+[03/10 02:35:08] TGEA_refine INFO: Train: [248][1500/1737]  
+[03/10 02:35:08] TGEA_refine INFO: bbox_loss 0.3634 	cls_loss 0.1394 	com_loss 0.1249 	keep_loss 0.0583 	loss 1.5956 	refine_bbox_loss 0.7966 	refine_score_loss 0.0115 	seg_loss 0.0574 	seg_loss_dice 0.0441 	
+[03/10 02:38:41] TGEA_refine INFO: epoch 248, total time 1584.59, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 02:46:23] TGEA_refine INFO: Train: [249][500/1737]  
+[03/10 02:46:23] TGEA_refine INFO: bbox_loss 0.3613 	cls_loss 0.1403 	com_loss 0.1244 	keep_loss 0.0595 	loss 1.5932 	refine_bbox_loss 0.7953 	refine_score_loss 0.0114 	seg_loss 0.0575 	seg_loss_dice 0.0434 	
+[03/10 02:54:39] TGEA_refine INFO: Train: [249][1000/1737]  
+[03/10 02:54:39] TGEA_refine INFO: bbox_loss 0.3609 	cls_loss 0.1392 	com_loss 0.1249 	keep_loss 0.0588 	loss 1.5926 	refine_bbox_loss 0.7957 	refine_score_loss 0.0115 	seg_loss 0.0577 	seg_loss_dice 0.0439 	
+[03/10 03:02:37] TGEA_refine INFO: Train: [249][1500/1737]  
+[03/10 03:02:37] TGEA_refine INFO: bbox_loss 0.3623 	cls_loss 0.1395 	com_loss 0.1250 	keep_loss 0.0586 	loss 1.5939 	refine_bbox_loss 0.7959 	refine_score_loss 0.0115 	seg_loss 0.0575 	seg_loss_dice 0.0438 	
+[03/10 03:06:11] TGEA_refine INFO: epoch 249, total time 1650.16, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 03:07:16] TGEA_refine INFO: Eval: [249]  
+[03/10 03:07:16] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05217
+[03/10 03:07:16] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/10 03:07:16] TGEA_refine INFO: Acc_mask0.25 0.5754101809002945
+[03/10 03:07:16] TGEA_refine INFO: Acc_mask0.50 0.5117795540597392
+[03/10 03:14:54] TGEA_refine INFO: Train: [250][500/1737]  
+[03/10 03:14:54] TGEA_refine INFO: bbox_loss 0.3642 	cls_loss 0.1408 	com_loss 0.1249 	keep_loss 0.0593 	loss 1.5974 	refine_bbox_loss 0.7963 	refine_score_loss 0.0107 	seg_loss 0.0572 	seg_loss_dice 0.0440 	
+[03/10 03:22:28] TGEA_refine INFO: Train: [250][1000/1737]  
+[03/10 03:22:28] TGEA_refine INFO: bbox_loss 0.3628 	cls_loss 0.1404 	com_loss 0.1247 	keep_loss 0.0588 	loss 1.5947 	refine_bbox_loss 0.7964 	refine_score_loss 0.0111 	seg_loss 0.0569 	seg_loss_dice 0.0436 	
+[03/10 03:29:55] TGEA_refine INFO: Train: [250][1500/1737]  
+[03/10 03:29:55] TGEA_refine INFO: bbox_loss 0.3638 	cls_loss 0.1404 	com_loss 0.1247 	keep_loss 0.0587 	loss 1.5962 	refine_bbox_loss 0.7964 	refine_score_loss 0.0113 	seg_loss 0.0573 	seg_loss_dice 0.0437 	
+[03/10 03:33:35] TGEA_refine INFO: epoch 250, total time 1579.21, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 03:41:12] TGEA_refine INFO: Train: [251][500/1737]  
+[03/10 03:41:12] TGEA_refine INFO: bbox_loss 0.3627 	cls_loss 0.1370 	com_loss 0.1220 	keep_loss 0.0579 	loss 1.5895 	refine_bbox_loss 0.7962 	refine_score_loss 0.0112 	seg_loss 0.0581 	seg_loss_dice 0.0444 	
+[03/10 03:48:44] TGEA_refine INFO: Train: [251][1000/1737]  
+[03/10 03:48:44] TGEA_refine INFO: bbox_loss 0.3622 	cls_loss 0.1383 	com_loss 0.1235 	keep_loss 0.0583 	loss 1.5922 	refine_bbox_loss 0.7960 	refine_score_loss 0.0113 	seg_loss 0.0583 	seg_loss_dice 0.0442 	
+[03/10 03:56:25] TGEA_refine INFO: Train: [251][1500/1737]  
+[03/10 03:56:25] TGEA_refine INFO: bbox_loss 0.3623 	cls_loss 0.1385 	com_loss 0.1238 	keep_loss 0.0585 	loss 1.5923 	refine_bbox_loss 0.7963 	refine_score_loss 0.0111 	seg_loss 0.0579 	seg_loss_dice 0.0441 	
+[03/10 04:00:01] TGEA_refine INFO: epoch 251, total time 1586.35, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 04:07:36] TGEA_refine INFO: Train: [252][500/1737]  
+[03/10 04:07:36] TGEA_refine INFO: bbox_loss 0.3649 	cls_loss 0.1406 	com_loss 0.1264 	keep_loss 0.0594 	loss 1.6013 	refine_bbox_loss 0.7962 	refine_score_loss 0.0118 	seg_loss 0.0577 	seg_loss_dice 0.0442 	
+[03/10 04:15:16] TGEA_refine INFO: Train: [252][1000/1737]  
+[03/10 04:15:16] TGEA_refine INFO: bbox_loss 0.3653 	cls_loss 0.1408 	com_loss 0.1256 	keep_loss 0.0590 	loss 1.6009 	refine_bbox_loss 0.7963 	refine_score_loss 0.0121 	seg_loss 0.0578 	seg_loss_dice 0.0440 	
+[03/10 04:22:46] TGEA_refine INFO: Train: [252][1500/1737]  
+[03/10 04:22:46] TGEA_refine INFO: bbox_loss 0.3678 	cls_loss 0.1408 	com_loss 0.1260 	keep_loss 0.0590 	loss 1.6040 	refine_bbox_loss 0.7968 	refine_score_loss 0.0119 	seg_loss 0.0577 	seg_loss_dice 0.0441 	
+[03/10 04:26:20] TGEA_refine INFO: epoch 252, total time 1578.42, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 04:27:23] TGEA_refine INFO: Eval: [252]  
+[03/10 04:27:23] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.04785
+[03/10 04:27:23] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/10 04:27:23] TGEA_refine INFO: Acc_mask0.25 0.580143037442154
+[03/10 04:27:23] TGEA_refine INFO: Acc_mask0.50 0.5146192679848549
+[03/10 04:35:02] TGEA_refine INFO: Train: [253][500/1737]  
+[03/10 04:35:02] TGEA_refine INFO: bbox_loss 0.3679 	cls_loss 0.1375 	com_loss 0.1236 	keep_loss 0.0582 	loss 1.5969 	refine_bbox_loss 0.7970 	refine_score_loss 0.0113 	seg_loss 0.0572 	seg_loss_dice 0.0442 	
+[03/10 04:42:30] TGEA_refine INFO: Train: [253][1000/1737]  
+[03/10 04:42:30] TGEA_refine INFO: bbox_loss 0.3651 	cls_loss 0.1391 	com_loss 0.1248 	keep_loss 0.0588 	loss 1.5973 	refine_bbox_loss 0.7968 	refine_score_loss 0.0112 	seg_loss 0.0574 	seg_loss_dice 0.0442 	
+[03/10 04:50:05] TGEA_refine INFO: Train: [253][1500/1737]  
+[03/10 04:50:05] TGEA_refine INFO: bbox_loss 0.3641 	cls_loss 0.1388 	com_loss 0.1240 	keep_loss 0.0587 	loss 1.5948 	refine_bbox_loss 0.7964 	refine_score_loss 0.0113 	seg_loss 0.0574 	seg_loss_dice 0.0440 	
+[03/10 04:53:38] TGEA_refine INFO: epoch 253, total time 1574.31, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 05:01:10] TGEA_refine INFO: Train: [254][500/1737]  
+[03/10 05:01:10] TGEA_refine INFO: bbox_loss 0.3649 	cls_loss 0.1401 	com_loss 0.1258 	keep_loss 0.0579 	loss 1.5975 	refine_bbox_loss 0.7961 	refine_score_loss 0.0115 	seg_loss 0.0570 	seg_loss_dice 0.0440 	
+[03/10 05:08:51] TGEA_refine INFO: Train: [254][1000/1737]  
+[03/10 05:08:51] TGEA_refine INFO: bbox_loss 0.3650 	cls_loss 0.1406 	com_loss 0.1264 	keep_loss 0.0584 	loss 1.6000 	refine_bbox_loss 0.7963 	refine_score_loss 0.0114 	seg_loss 0.0577 	seg_loss_dice 0.0442 	
+[03/10 05:16:21] TGEA_refine INFO: Train: [254][1500/1737]  
+[03/10 05:16:21] TGEA_refine INFO: bbox_loss 0.3652 	cls_loss 0.1402 	com_loss 0.1257 	keep_loss 0.0583 	loss 1.5987 	refine_bbox_loss 0.7964 	refine_score_loss 0.0111 	seg_loss 0.0577 	seg_loss_dice 0.0440 	
+[03/10 05:19:56] TGEA_refine INFO: epoch 254, total time 1578.58, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 05:28:17] TGEA_refine INFO: Train: [255][500/1737]  
+[03/10 05:28:17] TGEA_refine INFO: bbox_loss 0.3600 	cls_loss 0.1388 	com_loss 0.1250 	keep_loss 0.0584 	loss 1.5888 	refine_bbox_loss 0.7957 	refine_score_loss 0.0104 	seg_loss 0.0566 	seg_loss_dice 0.0440 	
+[03/10 05:36:12] TGEA_refine INFO: Train: [255][1000/1737]  
+[03/10 05:36:12] TGEA_refine INFO: bbox_loss 0.3625 	cls_loss 0.1394 	com_loss 0.1249 	keep_loss 0.0586 	loss 1.5941 	refine_bbox_loss 0.7959 	refine_score_loss 0.0116 	seg_loss 0.0572 	seg_loss_dice 0.0441 	
+[03/10 05:44:07] TGEA_refine INFO: Train: [255][1500/1737]  
+[03/10 05:44:07] TGEA_refine INFO: bbox_loss 0.3628 	cls_loss 0.1397 	com_loss 0.1246 	keep_loss 0.0588 	loss 1.5951 	refine_bbox_loss 0.7960 	refine_score_loss 0.0115 	seg_loss 0.0575 	seg_loss_dice 0.0442 	
+[03/10 05:47:44] TGEA_refine INFO: epoch 255, total time 1667.96, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 05:48:49] TGEA_refine INFO: Eval: [255]  
+[03/10 05:48:49] TGEA_refine INFO: 3dcnn Acc0.25: Top-1: 0.05721
+[03/10 05:48:49] TGEA_refine INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[03/10 05:48:49] TGEA_refine INFO: Acc_mask0.25 0.5791964661337821
+[03/10 05:48:49] TGEA_refine INFO: Acc_mask0.50 0.5144089188052167
+[03/10 05:56:22] TGEA_refine INFO: Train: [256][500/1737]  
+[03/10 05:56:22] TGEA_refine INFO: bbox_loss 0.3682 	cls_loss 0.1418 	com_loss 0.1281 	keep_loss 0.0584 	loss 1.6060 	refine_bbox_loss 0.7971 	refine_score_loss 0.0110 	seg_loss 0.0576 	seg_loss_dice 0.0439 	
+[03/10 06:03:53] TGEA_refine INFO: Train: [256][1000/1737]  
+[03/10 06:03:53] TGEA_refine INFO: bbox_loss 0.3665 	cls_loss 0.1397 	com_loss 0.1257 	keep_loss 0.0584 	loss 1.6006 	refine_bbox_loss 0.7967 	refine_score_loss 0.0117 	seg_loss 0.0578 	seg_loss_dice 0.0441 	
+[03/10 06:11:37] TGEA_refine INFO: Train: [256][1500/1737]  
+[03/10 06:11:37] TGEA_refine INFO: bbox_loss 0.3653 	cls_loss 0.1391 	com_loss 0.1244 	keep_loss 0.0585 	loss 1.5962 	refine_bbox_loss 0.7966 	refine_score_loss 0.0113 	seg_loss 0.0573 	seg_loss_dice 0.0439 	
+[03/10 06:15:13] TGEA_refine INFO: epoch 256, total time 1584.00, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 06:22:44] TGEA_refine INFO: Train: [257][500/1737]  
+[03/10 06:22:44] TGEA_refine INFO: bbox_loss 0.3653 	cls_loss 0.1387 	com_loss 0.1246 	keep_loss 0.0584 	loss 1.5959 	refine_bbox_loss 0.7968 	refine_score_loss 0.0110 	seg_loss 0.0567 	seg_loss_dice 0.0444 	
+[03/10 06:30:19] TGEA_refine INFO: Train: [257][1000/1737]  
+[03/10 06:30:19] TGEA_refine INFO: bbox_loss 0.3643 	cls_loss 0.1388 	com_loss 0.1245 	keep_loss 0.0581 	loss 1.5948 	refine_bbox_loss 0.7967 	refine_score_loss 0.0111 	seg_loss 0.0570 	seg_loss_dice 0.0443 	
+[03/10 06:37:46] TGEA_refine INFO: Train: [257][1500/1737]  
+[03/10 06:37:46] TGEA_refine INFO: bbox_loss 0.3649 	cls_loss 0.1395 	com_loss 0.1253 	keep_loss 0.0578 	loss 1.5971 	refine_bbox_loss 0.7967 	refine_score_loss 0.0114 	seg_loss 0.0574 	seg_loss_dice 0.0442 	
+[03/10 06:41:20] TGEA_refine INFO: epoch 257, total time 1567.01, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[03/10 06:48:58] TGEA_refine INFO: Train: [258][500/1737]  
+[03/10 06:48:58] TGEA_refine INFO: bbox_loss 0.3649 	cls_loss 0.1386 	com_loss 0.1226 	keep_loss 0.0581 	loss 1.5943 	refine_bbox_loss 0.7964 	refine_score_loss 0.0118 	seg_loss 0.0581 	seg_loss_dice 0.0439 	

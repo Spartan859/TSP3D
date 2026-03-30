@@ -27,6 +27,7 @@ class BeaUTyDETR(nn.Module):
                  self_attend=True, voxel_size=0.01,
                  use_seg=False, 
                  use_refine=False,
+                 use_seg_external_self_attn=False,
                  use_external_attn_bi_layer=(),
                  use_text_guided_external_attn_bi_layer=(),
                  use_film_text_guided_external_attn_bi_layer=(),
@@ -62,6 +63,7 @@ class BeaUTyDETR(nn.Module):
             self.head = TSPHead_refine(
                 voxel_size=self.voxel_size,
                 use_seg=use_seg,
+                use_seg_external_self_attn=use_seg_external_self_attn,
                 use_external_attn_bi_layer=use_external_attn_bi_layer,
                 use_text_guided_external_attn_bi_layer=use_text_guided_external_attn_bi_layer,
                 use_film_text_guided_external_attn_bi_layer=use_film_text_guided_external_attn_bi_layer
@@ -70,6 +72,7 @@ class BeaUTyDETR(nn.Module):
             self.head = TSPHead(
                 voxel_size=self.voxel_size,
                 use_seg=use_seg,
+                use_seg_external_self_attn=use_seg_external_self_attn,
                 use_external_attn_bi_layer=use_external_attn_bi_layer,
                 use_text_guided_external_attn_bi_layer=use_text_guided_external_attn_bi_layer,
                 use_film_text_guided_external_attn_bi_layer=use_film_text_guided_external_attn_bi_layer

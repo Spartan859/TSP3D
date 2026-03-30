@@ -137,6 +137,9 @@ def parse_option():
     parser.add_argument('--use_film_text_guided_external_attn_bi_layer0', action='store_true')
     parser.add_argument('--mink_conv1_stride', type=int, default=2,
                         help='Stride for Minkowski ResNet conv1 (>= 1).')
+    parser.add_argument('--use_seg_external_self_attn', dest='use_seg_external_self_attn', action='store_true',
+                        help='Enable external self-attention before seg upsample stages.')
+    parser.set_defaults(use_seg_external_self_attn=False)
 
     args, _ = parser.parse_known_args()
 
@@ -336,7 +339,7 @@ class BaseTrainTester:
                 "params": [
                     p for n, p in model.named_parameters()
                     if "keep_trans" not in n and "text_encoder" not in n
-                    and "select" not in n and "seg_unet" not in n 
+                    and "select" not in n and "seg_unet" not in n and "refine_head" not in n 
                     and "upsample_st" not in n and p.requires_grad
                 ]
             },
@@ -364,11 +367,12 @@ class BaseTrainTester:
             {
                 "params": [
                     p for n, p in model.named_parameters()
-                    if ("seg_unet" in n or "upsample_st" in n) and p.requires_grad
+                    if ("seg_unet" in n or "upsample_st" in n or "refine_head" in n) and p.requires_grad
                 ],
                 "lr": args.seg_lr
             }
         ]
+        # pdb.set_trace()
         optimizer = optim.AdamW(param_dicts,
                                 lr=args.lr,
                                 weight_decay=args.weight_decay)

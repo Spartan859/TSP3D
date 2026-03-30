@@ -349,6 +349,7 @@ class ExternalMultiheadAttention(nn.Module):
             x = x * mask
         B, N, C = x.shape
         x = self.trans_dims(x)  # B, N, C'
+        # import pdb;pdb.set_trace()
         x = x.view(B, N, self.num_heads_eff, -1).permute(0, 2, 1, 3)
         attn = self.linear_0(x)
         if text_feat is not None:

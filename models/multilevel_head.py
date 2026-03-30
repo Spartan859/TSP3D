@@ -10,7 +10,8 @@ from torch import nn
 from mmdet3d.structures.bbox_3d import rotation_3d_in_axis
 from .axis_aligned_iou_loss import AxisAlignedIoULoss2
 from mmdet.models.losses import FocalLoss, DiceLoss
-from .trans_modules import (BiEncoder, BiEncoderLayer, PositionEmbeddingLearned)
+from .trans_modules import (BiEncoder, BiEncoderLayer, PositionEmbeddingLearned,
+                            PosTransformerEncoderLayerNoFFN)
 from .mink_unet import MinkUNet14B
 
 import pdb
@@ -79,6 +80,7 @@ class TSPHead(nn.Module):
                  seg_loss_weight = 2.,
                  seg_loss_dice_weight = .1,
                  use_seg = False,
+                 use_seg_external_self_attn=False,
                  use_external_attn_bi_layer=(),
                  use_text_guided_external_attn_bi_layer=(),
                  use_film_text_guided_external_attn_bi_layer=()):
@@ -94,6 +96,7 @@ class TSPHead(nn.Module):
         self.seg_loss_weight = seg_loss_weight
         self.seg_loss_dice_weight = seg_loss_dice_weight
         self.use_seg = use_seg
+        self.use_seg_external_self_attn = use_seg_external_self_attn
         self.use_external_attn_bi_layer = set(use_external_attn_bi_layer)
         self.use_text_guided_external_attn_bi_layer = set(use_text_guided_external_attn_bi_layer)
         self.use_film_text_guided_external_attn_bi_layer = set(use_film_text_guided_external_attn_bi_layer)
@@ -210,6 +213,25 @@ class TSPHead(nn.Module):
 
         self.fuse = MinkowskiFeatureFusionBlock(128, 128, 128)
 
+        if self.use_seg and self.use_seg_external_self_attn:
+            self.seg_pos_embed_128 = PositionEmbeddingLearned(3, 128)
+            self.seg_pos_embed_64 = PositionEmbeddingLearned(3, 64)
+            self.seg_text_proj_64 = nn.Linear(128, 64)
+            self.seg_self_attn_128 = PosTransformerEncoderLayerNoFFN(
+                d_model=128,
+                nhead=8,
+                dropout=0.1,
+                use_external_attn=True,
+                use_text_guided_external_attn=True,
+                use_film_text_guided_external_attn=True)
+            self.seg_self_attn_64 = PosTransformerEncoderLayerNoFFN(
+                d_model=64,
+                nhead=8,
+                dropout=0.1,
+                use_external_attn=True,
+                use_text_guided_external_attn=True,
+                use_film_text_guided_external_attn=True)
+
         if self.use_seg:
             # pdb.set_trace()
             self.upsample_st_4 = nn.Sequential(
@@ -260,6 +282,74 @@ class TSPHead(nn.Module):
                 if isinstance(m, ME.MinkowskiBatchNorm):
                     nn.init.constant_(m.bn.weight, 1)
                     nn.init.constant_(m.bn.bias, 0)       
+
+
+    def _seg_external_self_attn(self,
+                                x: ME.SparseTensor,
+                                attn_layer,
+                                pos_embed_layer,
+                                text_feats=None,
+                                text_attention_mask=None,
+                                text_proj=None):
+        if x is None or x.features.shape[0] == 0:
+            return x
+
+        sampled_coords, sampled_features = [], []
+        max_len = max(len(permutation) for permutation in x.decomposition_permutations)
+
+        for permutation in x.decomposition_permutations:
+            if len(permutation) < max_len:
+                padding_size = max_len - len(permutation)
+                padded_features = torch.cat(
+                    [x.features[permutation],
+                     torch.zeros((padding_size, x.features[permutation].shape[1]),
+                                 dtype=x.features.dtype,
+                                 device=x.device)],
+                    dim=0)
+                padded_coords = torch.cat(
+                    [x.coordinates[permutation],
+                     -torch.ones((padding_size, x.coordinates[permutation].shape[1]),
+                                 dtype=x.coordinates.dtype,
+                                 device=x.device)],
+                    dim=0)
+                sampled_features.append(padded_features)
+                sampled_coords.append(padded_coords)
+            else:
+                sampled_features.append(x.features[permutation])
+                sampled_coords.append(x.coordinates[permutation])
+
+        sampled_features = torch.stack(sampled_features)
+        sampled_coords = torch.stack(sampled_coords)
+        padding_mask = sampled_coords[:, :, 0] == -1
+        pos_feats = pos_embed_layer(
+            sampled_coords[:, :, 1:] * self.voxel_size).transpose(1, 2).contiguous()
+
+        text_global = None
+        if text_feats is not None:
+            text_for_attn = text_proj(text_feats) if text_proj is not None else text_feats
+            if text_attention_mask is not None:
+                valid_mask = (~text_attention_mask).unsqueeze(-1).type_as(text_for_attn)
+                denom = valid_mask.sum(dim=1).clamp(min=1.0)
+                text_global = (text_for_attn * valid_mask).sum(dim=1) / denom
+            else:
+                text_global = text_for_attn.mean(dim=1)
+
+        sampled_features = attn_layer(
+            sampled_features.transpose(0, 1).contiguous(),
+            pos_feats.transpose(0, 1).contiguous(),
+            src_key_padding_mask=padding_mask,
+            text_feat=text_global).transpose(0, 1).contiguous()
+
+        valid_mask = ~padding_mask
+        sampled_features = sampled_features[valid_mask]
+        sampled_coords = sampled_coords[valid_mask]
+
+        return ME.SparseTensor(
+            features=sampled_features,
+            coordinates=sampled_coords,
+            coordinate_manager=x.coordinate_manager,
+            tensor_stride=x.tensor_stride,
+            device=x.device)
     
 
     def _forward_single(self, x: ME.SparseTensor):
@@ -452,7 +542,22 @@ class TSPHead(nn.Module):
         bbox_pred, cls_pred, point = self._forward_single(out)
         if self.use_seg:
             # pdb.set_trace()
+            if self.use_seg_external_self_attn:
+                x = self._seg_external_self_attn(
+                    x,
+                    self.seg_self_attn_128,
+                    self.seg_pos_embed_128,
+                    text_feats=text_feats,
+                    text_attention_mask=text_attention_mask)
             x = self.upsample_st_2(x) + x_all[1]
+            if self.use_seg_external_self_attn:
+                x = self._seg_external_self_attn(
+                    x,
+                    self.seg_self_attn_64,
+                    self.seg_pos_embed_64,
+                    text_feats=text_feats,
+                    text_attention_mask=text_attention_mask,
+                    text_proj=self.seg_text_proj_64)
             x = self.upsample_st_4(x) + x_all[0]
             seg_feats = self.conv_32_ch(x)
         else:
@@ -1174,7 +1279,22 @@ class TSPHead(nn.Module):
         results = self._get_bboxes([bbox_pred], [cls_pred], [point], img_metas)
         
         if self.use_seg:
+            if self.use_seg_external_self_attn:
+                x = self._seg_external_self_attn(
+                    x,
+                    self.seg_self_attn_128,
+                    self.seg_pos_embed_128,
+                    text_feats=text_feats,
+                    text_attention_mask=text_attention_mask)
             x = self.upsample_st_2(x) + x_all[1]
+            if self.use_seg_external_self_attn:
+                x = self._seg_external_self_attn(
+                    x,
+                    self.seg_self_attn_64,
+                    self.seg_pos_embed_64,
+                    text_feats=text_feats,
+                    text_attention_mask=text_attention_mask,
+                    text_proj=self.seg_text_proj_64)
             x = self.upsample_st_4(x) + x_all[0]
             seg_feats = self.conv_32_ch(x)
 

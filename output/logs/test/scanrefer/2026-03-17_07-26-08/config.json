@@ -1,0 +1,83 @@
+{
+  "num_target": 256,
+  "sampling": "kps",
+  "voxel_size": 0.01,
+  "num_encoder_layers": 3,
+  "num_decoder_layers": 6,
+  "self_position_embedding": "loc_learned",
+  "self_attend": false,
+  "query_points_obj_topk": 4,
+  "use_contrastive_align": false,
+  "use_soft_token_loss": false,
+  "detect_intermediate": true,
+  "joint_det": false,
+  "batch_size": 12,
+  "dataset": [
+    "scanrefer"
+  ],
+  "test_dataset": "scanrefer",
+  "data_root": "/root/lxy/TSP3D_ori/data/",
+  "use_height": false,
+  "use_color": true,
+  "use_multiview": false,
+  "wo_obj_name": "None",
+  "butd": false,
+  "butd_gt": false,
+  "butd_cls": false,
+  "augment_det": true,
+  "num_workers": 8,
+  "start_epoch": 1,
+  "max_epoch": 400,
+  "optimizer": "adamW",
+  "weight_decay": 0.0005,
+  "lr": 0.0005,
+  "keep_trans_lr": 0.0005,
+  "text_encoder_lr": 1e-05,
+  "box_select_lr": 0.0004,
+  "seg_lr": 0.001,
+  "lr_scheduler": "step",
+  "lr_decay_epochs": [
+    50,
+    75
+  ],
+  "lr_decay_rate": 0.1,
+  "clip_norm": 0.1,
+  "bn_momentum": 0.1,
+  "syncbn": false,
+  "warmup_epoch": -1,
+  "warmup_multiplier": 100,
+  "checkpoint_path": "/root/lxy/TSP3D_ori/scripts/experiments/TGEA_convrefine/TGEA_refine/scanrefer/2026-03-15_13-30-43/ckpt_epoch_198.pth",
+  "load_optimizer": false,
+  "load_scheduler": false,
+  "log_dir": "/root/lxy/TSP3D_ori/output/logs/test/scanrefer/2026-03-17_07-26-08",
+  "print_freq": 500,
+  "save_freq": 6,
+  "val_freq": 3,
+  "local_rank": 0,
+  "ap_iou_thresholds": [
+    0.25,
+    0.5
+  ],
+  "rng_seed": 0,
+  "debug": false,
+  "eval": true,
+  "eval_train": false,
+  "pp_checkpoint": null,
+  "reduce_lr": false,
+  "use_seg": true,
+  "use_refine": true,
+  "use_external_attn_bi_layer": [
+    0
+  ],
+  "use_text_guided_external_attn_bi_layer": [
+    0
+  ],
+  "use_film_text_guided_external_attn_bi_layer": [
+    0
+  ],
+  "use_external_attn_bi_layer0": true,
+  "use_text_guided_external_attn_bi_layer0": true,
+  "use_film_text_guided_external_attn_bi_layer0": true,
+  "mink_conv1_stride": 2,
+  "use_seg_external_self_attn": true
+}

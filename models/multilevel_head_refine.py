@@ -10,8 +10,10 @@ from torch import nn
 from mmdet3d.structures.bbox_3d import rotation_3d_in_axis
 from .axis_aligned_iou_loss import AxisAlignedIoULoss2
 from mmdet.models.losses import FocalLoss, DiceLoss
-from .trans_modules import (BiEncoder, BiEncoderLayer, PositionEmbeddingLearned)
+from .trans_modules import (BiEncoder, BiEncoderLayer, PositionEmbeddingLearned,
+                            PosTransformerEncoderLayerNoFFN)
 from .mink_unet import MinkUNet14B
+from .roiaware_pool3d_utils import RoIAwarePool3d
 
 import pdb
 import logging
@@ -51,155 +53,173 @@ class MinkowskiFeatureFusionBlock(nn.Module):
         x = self.conv(combined_feats)
         x = self.norm(x)
         return self.relu(x)
-    
-class SparseRefineHead(nn.Module):
-    """
-    14^3 sparse (C=32) -> (2 sparse conv) -> pool (14->7) -> (2 sparse conv)
-    -> fill full 7^3 per ROI with zero
-    -> vectorize (343*32) per ROI
-    -> 2-layer MLP -> 256-d
-    -> regress bbox_delta(6) + score(1)
-    """
-    def __init__(self, in_ch=32, mid_ch=32, out_feat_ch=256, D=3):
-        super().__init__()
-        self.mid_ch = mid_ch
 
-        self.block1 = nn.Sequential(
+class SimpleRefineHead(nn.Module):
+    def __init__(self, in_ch=32, grid_size=6, hidden=256, mid_ch=64, D=3):
+        super().__init__()
+        self.grid_size = grid_size
+        self.mid_ch = mid_ch
+        self.D = D
+
+        # -------- sparse conv trunk --------
+        self.sparse_conv1 = nn.Sequential(
             ME.MinkowskiConvolution(in_ch, mid_ch, kernel_size=3, stride=1, dimension=D),
             ME.MinkowskiBatchNorm(mid_ch),
             ME.MinkowskiReLU(inplace=True),
+        )
+        self.sparse_conv2 = nn.Sequential(
             ME.MinkowskiConvolution(mid_ch, mid_ch, kernel_size=3, stride=1, dimension=D),
             ME.MinkowskiBatchNorm(mid_ch),
             ME.MinkowskiReLU(inplace=True),
         )
-        self.pool = ME.MinkowskiMaxPooling(kernel_size=2, stride=2, dimension=D)  # 14->7
+        self.sparse_pool = ME.MinkowskiMaxPooling(kernel_size=2, stride=2, dimension=D)
 
-        self.block2 = nn.Sequential(
+        self.sparse_conv3 = nn.Sequential(
             ME.MinkowskiConvolution(mid_ch, mid_ch, kernel_size=3, stride=1, dimension=D),
             ME.MinkowskiBatchNorm(mid_ch),
             ME.MinkowskiReLU(inplace=True),
+        )
+        self.sparse_conv4 = nn.Sequential(
             ME.MinkowskiConvolution(mid_ch, mid_ch, kernel_size=3, stride=1, dimension=D),
             ME.MinkowskiBatchNorm(mid_ch),
             ME.MinkowskiReLU(inplace=True),
         )
 
-        # vectorize size: 343 voxels * mid_ch
-        self.mlp = nn.Sequential(
-            nn.Linear(343 * mid_ch, out_feat_ch),
+        pooled_grid = grid_size // 2
+        fc_in_dim = mid_ch * pooled_grid * pooled_grid * pooled_grid
+
+        # -------- fc heads --------
+        self.shared_fc = nn.Sequential(
+            nn.Linear(fc_in_dim, hidden),
             nn.ReLU(inplace=True),
-            nn.Linear(out_feat_ch, out_feat_ch),
+            nn.Linear(hidden, hidden),
             nn.ReLU(inplace=True),
         )
+        self.bbox_fc = nn.Linear(hidden, 6)
+        self.score_fc = nn.Linear(hidden, 1)
 
-        self.bbox_fc = nn.Linear(out_feat_ch, 6)
-        self.score_fc = nn.Linear(out_feat_ch, 1)
+        self.init_weights()
 
-        # init
-        for m in self.mlp:
+    def init_weights(self):
+        for m in self.modules():
             if isinstance(m, nn.Linear):
-                nn.init.normal_(m.weight, std=0.01)
-                nn.init.constant_(m.bias, 0.0)
-        nn.init.normal_(self.bbox_fc.weight, std=0.01)
-        nn.init.constant_(self.bbox_fc.bias, 0.0)
-        nn.init.normal_(self.score_fc.weight, std=0.01)
-        nn.init.constant_(self.score_fc.bias, 0.0)
+                nn.init.xavier_normal_(m.weight)
+                if m.bias is not None:
+                    nn.init.constant_(m.bias, 0)
+
+        nn.init.normal_(self.bbox_fc.weight, mean=0, std=0.001)
+        nn.init.constant_(self.bbox_fc.bias, 0)
+
+        nn.init.normal_(self.score_fc.weight, mean=0, std=0.001)
+        nn.init.constant_(self.score_fc.bias, 0)
+
+        for m in self.modules():
+            if isinstance(m, ME.MinkowskiConvolution):
+                ME.utils.kaiming_normal_(m.kernel, mode='fan_out', nonlinearity='relu')
+            if isinstance(m, ME.MinkowskiBatchNorm):
+                nn.init.constant_(m.bn.weight, 1)
+                nn.init.constant_(m.bn.bias, 0)
 
     @staticmethod
-    def _build_full_coords_7x7x7(roi_ids: torch.Tensor, device):
-        rng = torch.arange(7, device=device, dtype=torch.long)
-        gx, gy, gz = torch.meshgrid(rng, rng, rng, indexing="ij")
-        grid = torch.stack([gx.reshape(-1), gy.reshape(-1), gz.reshape(-1)], dim=1)  # (343,3)
+    def fake_sparse_idx(device, batch_size_rcnn):
+        # 避免某些 batch/roi 全空导致 BN 或 sparse conv 出问题
+        sparse_idx = torch.zeros((batch_size_rcnn, 4), dtype=torch.int32, device=device)
+        sparse_idx[:, 0] = torch.arange(batch_size_rcnn, device=device, dtype=torch.int32)
+        return sparse_idx
 
-        R = roi_ids.numel()
-        full_roi = roi_ids[:, None].repeat(1, 343).reshape(-1, 1)   # (R*343,1)
-        full_xyz = grid[None, :, :].repeat(R, 1, 1).reshape(-1, 3)  # (R*343,3)
-        return torch.cat([full_roi, full_xyz], dim=1)               # (R*343,4)
-
-    @staticmethod
-    def _make_key(coords_long):
-        roi = coords_long[:, 0]
-        ix = coords_long[:, 1]
-        iy = coords_long[:, 2]
-        iz = coords_long[:, 3]
-        return roi * 343 + (ix * 49 + iy * 7 + iz)
-
-    @classmethod
-    def _fill_full_7x7x7(cls, x: ME.SparseTensor, roi_ids_all: torch.Tensor, out_ch: int, tensor_stride=(1,1,1)):
+    def dense_to_sparse_with_fake(self, pooled_feats):
         """
-        Return SparseTensor covering full 7x7x7 coords for all roi_ids_all.
-        Missing coords filled with 0 features.
+        pooled_feats: (R, g, g, g, C)
+        return:
+            x_sp: ME.SparseTensor
+            R: number of rois
         """
-        device = roi_ids_all.device
-        if roi_ids_all is None or roi_ids_all.numel() == 0:
-            return None
+        R, gx, gy, gz, C = pooled_feats.shape
+        device = pooled_feats.device
 
-        full_coords = cls._build_full_coords_7x7x7(roi_ids_all.long(), device)  # (R*343,4)
-        full_feats = torch.zeros((full_coords.shape[0], out_ch), device=device,
-                                 dtype=(x.F.dtype if (x is not None and x.F is not None and x.F.numel() > 0) else torch.float32))
+        # 非零体素
+        valid_mask = pooled_feats.abs().sum(dim=-1) > 0   # (R, g, g, g)
+        sparse_idx = valid_mask.nonzero(as_tuple=False)   # (N, 4): [roi_id, x, y, z]
 
-        if x is not None and x.F is not None and x.F.shape[0] > 0:
-            full_key = cls._make_key(full_coords)
-            orig_key = cls._make_key(x.C.long())
+        # ---- 关键：检查哪些 roi 一个点都没有，给它补一个 fake voxel ----
+        if sparse_idx.numel() > 0:
+            exist_roi = torch.unique(sparse_idx[:, 0])
+        else:
+            exist_roi = torch.empty((0,), dtype=torch.long, device=device)
 
-            full_key_sorted, order = torch.sort(full_key)
-            pos_in_sorted = torch.searchsorted(full_key_sorted, orig_key)
+        all_roi = torch.arange(R, device=device, dtype=torch.long)
+        missing_roi_mask = torch.ones(R, dtype=torch.bool, device=device)
+        if exist_roi.numel() > 0:
+            missing_roi_mask[exist_roi] = False
+        missing_roi = all_roi[missing_roi_mask]
 
-            valid = (pos_in_sorted >= 0) & (pos_in_sorted < full_key_sorted.numel())
-            pos = order[pos_in_sorted[valid]]
-            full_feats[pos] = x.F[valid]
-            tensor_stride = x.tensor_stride
+        if missing_roi.numel() > 0:
+            fake_idx = torch.zeros((missing_roi.numel(), 4), dtype=torch.long, device=device)
+            fake_idx[:, 0] = missing_roi   # 放在每个缺失 roi 的 (0,0,0)
+            sparse_idx = torch.cat([sparse_idx, fake_idx], dim=0)
 
-        x_full = ME.SparseTensor(
-            features=full_feats,
-            coordinates=full_coords.float(),
-            tensor_stride=tensor_stride,
+        feats = pooled_feats[
+            sparse_idx[:, 0].long(),
+            sparse_idx[:, 1].long(),
+            sparse_idx[:, 2].long(),
+            sparse_idx[:, 3].long()
+        ]  # (N, C)
+
+        coords = sparse_idx.int().contiguous()
+
+        x_sp = ME.SparseTensor(
+            features=feats.contiguous(),
+            coordinates=coords,
+            tensor_stride=(1, 1, 1),
             device=device
         )
-        return x_full
+        return x_sp, R
 
-    @staticmethod
-    def _vectorize_full7(x_full: ME.SparseTensor, roi_ids_all: torch.Tensor):
+    def sparse_to_dense(self, x_sp, batch_size_rcnn):
         """
-        x_full is full grid: coords cover all 343 per ROI.
-        Return (R, 343*C) tensor in a fixed order of voxels.
+        x_sp.dense() -> (B, C, X, Y, Z)
         """
-        R = roi_ids_all.numel()
-        C = x_full.F.shape[1]
-        device = x_full.F.device
+        # pdb.set_trace()
+        x_dense = x_sp.dense()[0]  # MinkowskiEngine 返回一般是 (tensor, min_coord, tensor_stride)
+        # x_dense: (R, C, gx, gy, gz)
+        return x_dense
 
-        # compute linear index 0..342 for each voxel in ROI
-        coords = x_full.C.long()  # (R*343,4)
-        roi = coords[:, 0]
-        ix, iy, iz = coords[:, 1], coords[:, 2], coords[:, 3]
-        lin = ix * 49 + iy * 7 + iz  # (R*343,)
+    def forward(self, pooled_feats):
+        """
+        pooled_feats: (R, g, g, g, C)
+        """
+        R = pooled_feats.shape[0]
+        if R == 0:
+            device = pooled_feats.device
+            return (
+                torch.zeros((0, 6), device=device, dtype=pooled_feats.dtype),
+                torch.zeros((0, 1), device=device, dtype=pooled_feats.dtype),
+            )
 
-        # map roi_id -> 0..R-1 (roi_ids_all is assumed 0..R-1, but make robust)
-        # if roi_ids_all is 0..R-1, then roi itself is already in [0..R-1]
-        roi0 = roi
-        if roi_ids_all.min() != 0 or roi_ids_all.max() != (R - 1):
-            # build mapping dict via searchsorted
-            sorted_ids, order = torch.sort(roi_ids_all.long())
-            idx_in_sorted = torch.searchsorted(sorted_ids, roi)
-            roi0 = order[idx_in_sorted]
+        x_sp, R = self.dense_to_sparse_with_fake(pooled_feats)
 
-        out = x_full.F.new_zeros((R, 343, C))
-        out[roi0, lin] = x_full.F
-        return out.reshape(R, 343 * C)
+        x_sp = self.sparse_conv1(x_sp)
+        x_sp = self.sparse_conv2(x_sp)
+        x_sp = self.sparse_pool(x_sp)
+        x_sp = self.sparse_conv3(x_sp)
+        x_sp = self.sparse_conv4(x_sp)
 
-    def forward(self, x14: ME.SparseTensor, roi_ids_all: torch.Tensor):
-        x = self.block1(x14)
-        x = self.pool(x)
-        x = self.block2(x)
+        pooled_grid = self.grid_size // 2
+        dense_shape = torch.Size([R, self.mid_ch, pooled_grid, pooled_grid, pooled_grid])
+        x_dense = x_sp.dense(shape=dense_shape)[0]
+        # x_dense = x_sp.dense()[0]   # (B, C, 7, 7, 7)  或者视你的 ME 版本而定
 
-        # fill full 7^3 on block2 output channels (mid_ch)
-        x_full = self._fill_full_7x7x7(x, roi_ids_all=roi_ids_all, out_ch=self.mid_ch)
+        # 再做一层保险
+        if x_dense.shape[0] != R:
+            raise RuntimeError(
+                f"RefineHead batch mismatch: expected R={R}, got dense batch={x_dense.shape[0]}"
+            )
 
-        vec = self._vectorize_full7(x_full, roi_ids_all)  # (R, 343*mid_ch)
-        feat = self.mlp(vec)                              # (R,256)
-
-        bbox_delta = self.bbox_fc(feat)                   # (R,6)
-        score_logit = self.score_fc(feat)                 # (R,1)
-        return bbox_delta, score_logit, feat
+        x = x_dense.contiguous().view(R, -1)
+        feat = self.shared_fc(x)
+        bbox_delta = self.bbox_fc(feat)
+        score_logit = self.score_fc(feat)
+        return bbox_delta, score_logit
     
 def bias_init_with_prob(prior_prob):
     """initialize conv/fc bias value according to giving probablity."""
@@ -228,6 +248,7 @@ class TSPHead(nn.Module):
                  seg_loss_weight = 2.,
                  seg_loss_dice_weight = .1,
                  use_seg = False,
+                 use_seg_external_self_attn=False,
                  use_external_attn_bi_layer=(),
                  use_text_guided_external_attn_bi_layer=(),
                  use_film_text_guided_external_attn_bi_layer=()):
@@ -243,6 +264,7 @@ class TSPHead(nn.Module):
         self.seg_loss_weight = seg_loss_weight
         self.seg_loss_dice_weight = seg_loss_dice_weight
         self.use_seg = use_seg
+        self.use_seg_external_self_attn = use_seg_external_self_attn
         self.use_external_attn_bi_layer = set(use_external_attn_bi_layer)
         self.use_text_guided_external_attn_bi_layer = set(use_text_guided_external_attn_bi_layer)
         self.use_film_text_guided_external_attn_bi_layer = set(use_film_text_guided_external_attn_bi_layer)
@@ -338,6 +360,7 @@ class TSPHead(nn.Module):
             use_text_guided_external_attn=2 in self.use_text_guided_external_attn_bi_layer,
             use_film_text_guided_external_attn=2 in self.use_film_text_guided_external_attn_bi_layer
         )
+        # pdb.set_trace()
         self.keep_trans = nn.ModuleList([BiEncoder(bi_layer0, 2), BiEncoder(bi_layer1, 2)])
         self.com_trans = BiEncoder(bi_layer2, 2)
         self.pruning = ME.MinkowskiPruning()
@@ -359,7 +382,28 @@ class TSPHead(nn.Module):
 
         self.fuse = MinkowskiFeatureFusionBlock(128, 128, 128)
 
+        if self.use_seg and self.use_seg_external_self_attn:
+            # External self-attention before each seg upsample stage.
+            self.seg_pos_embed_128 = PositionEmbeddingLearned(3, 128)
+            self.seg_pos_embed_64 = PositionEmbeddingLearned(3, 64)
+            self.seg_text_proj_64 = nn.Linear(128, 64)
+            self.seg_self_attn_128 = PosTransformerEncoderLayerNoFFN(
+                d_model=128,
+                nhead=8,
+                dropout=0.1,
+                use_external_attn=True,
+                use_text_guided_external_attn=True,
+                use_film_text_guided_external_attn=True)
+            self.seg_self_attn_64 = PosTransformerEncoderLayerNoFFN(
+                d_model=64,
+                nhead=8,
+                dropout=0.1,
+                use_external_attn=True,
+                use_text_guided_external_attn=True,
+                use_film_text_guided_external_attn=True)
+
         if self.use_seg:
+
             # pdb.set_trace()
             self.upsample_st_4 = nn.Sequential(
                             ME.MinkowskiConvolutionTranspose(
@@ -392,10 +436,17 @@ class TSPHead(nn.Module):
 
             # ---- refine head (uses feats BEFORE seg_unet) ----
             self.use_refine = True
-            self.refine_head = SparseRefineHead(in_ch=32, mid_ch=32, out_feat_ch=256, D=3)
-            self.refine_score_loss_weight = 1.0
-            self.refine_bbox_loss_weight = 1.0
+            self.refine_grid_size = 14
+            self.refine_pool = RoIAwarePool3d(
+                out_size=self.refine_grid_size,
+                max_pts_each_voxel=128
+            )
+            self.refine_head = SimpleRefineHead(in_ch=32, grid_size=self.refine_grid_size, hidden=256)
+
             self.refine_score_loss = nn.BCEWithLogitsLoss(reduction='mean')
+            
+            self.refine_score_loss_weight = 0.0     #1.0
+            self.refine_bbox_loss_weight = 100.0  #100.
 
 
     def init_weights(self):
@@ -416,6 +467,75 @@ class TSPHead(nn.Module):
                 if isinstance(m, ME.MinkowskiBatchNorm):
                     nn.init.constant_(m.bn.weight, 1)
                     nn.init.constant_(m.bn.bias, 0)       
+
+
+    def _seg_external_self_attn(self,
+                                x: ME.SparseTensor,
+                                attn_layer,
+                                pos_embed_layer,
+                                text_feats=None,
+                                text_attention_mask=None,
+                                text_proj=None):
+        """Apply external-attention self-attention on sparse voxels per batch."""
+        if x is None or x.features.shape[0] == 0:
+            return x
+
+        sampled_coords, sampled_features = [], []
+        max_len = max(len(permutation) for permutation in x.decomposition_permutations)
+
+        for permutation in x.decomposition_permutations:
+            if len(permutation) < max_len:
+                padding_size = max_len - len(permutation)
+                padded_features = torch.cat(
+                    [x.features[permutation],
+                     torch.zeros((padding_size, x.features[permutation].shape[1]),
+                                 dtype=x.features.dtype,
+                                 device=x.device)],
+                    dim=0)
+                padded_coords = torch.cat(
+                    [x.coordinates[permutation],
+                     -torch.ones((padding_size, x.coordinates[permutation].shape[1]),
+                                 dtype=x.coordinates.dtype,
+                                 device=x.device)],
+                    dim=0)
+                sampled_features.append(padded_features)
+                sampled_coords.append(padded_coords)
+            else:
+                sampled_features.append(x.features[permutation])
+                sampled_coords.append(x.coordinates[permutation])
+
+        sampled_features = torch.stack(sampled_features)
+        sampled_coords = torch.stack(sampled_coords)
+        padding_mask = sampled_coords[:, :, 0] == -1
+        pos_feats = pos_embed_layer(
+            sampled_coords[:, :, 1:] * self.voxel_size).transpose(1, 2).contiguous()
+
+        text_global = None
+        if text_feats is not None:
+            text_for_attn = text_proj(text_feats) if text_proj is not None else text_feats
+            if text_attention_mask is not None:
+                valid_mask = (~text_attention_mask).unsqueeze(-1).type_as(text_for_attn)
+                denom = valid_mask.sum(dim=1).clamp(min=1.0)
+                text_global = (text_for_attn * valid_mask).sum(dim=1) / denom
+            else:
+                text_global = text_for_attn.mean(dim=1)
+
+        sampled_features = attn_layer(
+            sampled_features.transpose(0, 1).contiguous(),
+            pos_feats.transpose(0, 1).contiguous(),
+            src_key_padding_mask=padding_mask,
+            text_feat=text_global).transpose(0, 1).contiguous()
+
+        valid_mask = ~padding_mask
+        sampled_features = sampled_features[valid_mask]
+        sampled_coords = sampled_coords[valid_mask]
+
+        return ME.SparseTensor(
+            features=sampled_features,
+            coordinates=sampled_coords,
+            coordinate_manager=x.coordinate_manager,
+            tensor_stride=x.tensor_stride,
+            device=x.device)
     
 
     def _forward_single(self, x: ME.SparseTensor):
@@ -608,7 +728,22 @@ class TSPHead(nn.Module):
         bbox_pred, cls_pred, point = self._forward_single(out)
         if self.use_seg:
             # pdb.set_trace()
+            if self.use_seg_external_self_attn:
+                x = self._seg_external_self_attn(
+                    x,
+                    self.seg_self_attn_128,
+                    self.seg_pos_embed_128,
+                    text_feats=text_feats,
+                    text_attention_mask=text_attention_mask)
             x = self.upsample_st_2(x) + x_all[1]
+            if self.use_seg_external_self_attn:
+                x = self._seg_external_self_attn(
+                    x,
+                    self.seg_self_attn_64,
+                    self.seg_pos_embed_64,
+                    text_feats=text_feats,
+                    text_attention_mask=text_attention_mask,
+                    text_proj=self.seg_text_proj_64)
             x = self.upsample_st_4(x) + x_all[0]
             seg_feats = self.conv_32_ch(x)
         else:
@@ -931,75 +1066,72 @@ class TSPHead(nn.Module):
                 refine_score_loss=self.refine_score_loss_weight * refine_score_loss,
             ))
         return loss_dict
+        # return dict(refine_bbox_loss=self.refine_bbox_loss_weight * refine_bbox_loss,refine_score_loss=self.refine_score_loss_weight * refine_score_loss )
     
     def _loss_refine(self, rois_list, refine_delta, refine_score_logit, gt_bboxes, img_metas):
-        """
-        rois_list: list length B, each (n_rois_i, 6) ROI boxes [cx,cy,cz,w,h,l]
-        refine_delta: (R,6) predicted [dxc,dyc,dzc, log(w),log(h),log(l)] in ROI local param
-        refine_score_logit: (R,1)
-        gt_bboxes: list length B, each is box_type_3d (has gravity_center, tensor)
-        """
         if refine_delta is None or refine_delta.numel() == 0:
-            zero = (refine_score_logit.sum() if refine_score_logit is not None else 0.0) * 0.0
+            zero = refine_score_logit.sum() * 0.0 if refine_score_logit is not None else torch.tensor(0.0, device=rois_list[0].device)
             return zero, zero
 
-        rois_all = torch.cat([r[:, :6] for r in rois_list], dim=0).to(refine_delta.device).detach()  # (R,6) detach grad!!!
-        roi_centers = rois_all[:, :3]
-        # decode refine box in same style as detection head
-        # pdb.set_trace()
-        pred_center = roi_centers + refine_delta[:, :3]
-        pred_size = torch.exp(refine_delta[:, 3:6])
-        pred_boxes = torch.cat([pred_center, pred_size], dim=1)  # (R,6)
+        rois_all = torch.cat([r[:, :6] for r in rois_list], dim=0).to(refine_delta.device).detach()
+        pred_boxes = self.decode_roi_residual(rois_all, refine_delta)
 
-        # match each ROI to best GT in its scene by IoU
-        # build per-roi scene id based on rois_list lengths
         lens = [len(r) for r in rois_list]
-        scene_ids = []
-        for i, n in enumerate(lens):
-            scene_ids.append(torch.full((n,), i, device=pred_boxes.device, dtype=torch.long))
-        scene_ids = torch.cat(scene_ids, dim=0)  # (R,)
-        # pdb.set_trace()
+        scene_ids = torch.cat([
+            torch.full((n,), i, device=refine_delta.device, dtype=torch.long)
+            for i, n in enumerate(lens)
+        ], dim=0)
 
-        bbox_losses = []
+        reg_losses = []
         score_losses = []
+
+        reg_loss_fn = nn.SmoothL1Loss(reduction='none')
 
         for i in range(len(img_metas)):
             mask = scene_ids == i
             if mask.sum() == 0:
                 continue
-            pb = pred_boxes[mask]  # (Ri,6)
+
+            cur_rois = rois_all[mask]
+            cur_pred_boxes = pred_boxes[mask]
+            cur_pred_delta = refine_delta[mask]
+            cur_score_logit = refine_score_logit[mask]
 
             gt = gt_bboxes[i]
             if len(gt) == 0:
-                # no gt: score target 0, bbox loss skip
-                q = pb.new_zeros((pb.shape[0], 1))
-                score_losses.append(self.refine_score_loss(refine_score_logit[mask], q))
+                q = cur_pred_boxes.new_zeros((cur_pred_boxes.shape[0], 1))
+                score_losses.append(self.refine_score_loss(cur_score_logit, q))
                 continue
 
-            gt6 = torch.cat((gt.gravity_center, gt.tensor[:, 3:6]), dim=1).to(pb.device)  # (Gi,6)
-            ious = axis_aligned_iou_3d(pb, gt6)  # (Ri,Gi)
-            best_iou, best_id = ious.max(dim=1)  # (Ri,)
+            gt6 = torch.cat((gt.gravity_center, gt.tensor[:, 3:6]), dim=1).to(cur_pred_boxes.device)
 
-            # bbox target = matched gt box (in absolute coords)
-            tgt = gt6[best_id]  # (Ri,6)
-            bbox_losses.append(self.bbox_loss(self._bbox_to_loss(pb), self._bbox_to_loss(tgt)))
+            # assign gt by ROI, not by pred_boxes
+            roi_ious = axis_aligned_iou_3d(cur_rois, gt6)
+            best_iou_roi, best_id = roi_ious.max(dim=1)
 
-            # IoU-guided score target
-            q = iou_guided_quality(best_iou).unsqueeze(1)  # (Ri,1)
-            score_losses.append(self.refine_score_loss(refine_score_logit[mask], q))
-            # pdb.set_trace()
+            matched_gt = gt6[best_id]
+            reg_target = self.encode_roi_residual(cur_rois, matched_gt)
 
-        if len(bbox_losses) == 0:
-            bbox_loss = pred_boxes.sum() * 0.0
+            reg_loss = reg_loss_fn(cur_pred_delta, reg_target).mean(dim=1)
+            reg_losses.append(reg_loss)
+
+            pred_ious = axis_aligned_iou_3d(cur_pred_boxes, gt6)
+            best_iou_pred, _ = pred_ious.max(dim=1)
+            q = iou_guided_quality(best_iou_pred).unsqueeze(1)
+
+            score_losses.append(self.refine_score_loss(cur_score_logit, q))
+
+        if len(reg_losses) == 0:
+            reg_loss = refine_delta.sum() * 0.0
         else:
-            bbox_loss = torch.mean(torch.cat(bbox_losses))
+            reg_loss = torch.cat(reg_losses).mean()
 
         if len(score_losses) == 0:
             score_loss = refine_score_logit.sum() * 0.0
         else:
-            score_loss = torch.mean(torch.stack(score_losses))
+            score_loss = torch.stack(score_losses).mean()
 
-        return bbox_loss, score_loss
+        return reg_loss, score_loss
 
     def _loss_second(self, cls_preds, targets, v2r, r2scene, rois, gt_idxs,
                     gt_bboxes, gt_labels, img_metas):
@@ -1074,6 +1206,7 @@ class TSPHead(nn.Module):
         # levels = [torch.zeros(len(b[0])) for b in bbox_list]
         # pdb.set_trace()
         feats_with_targets = ME.SparseTensor(torch.cat((x.features, targets), dim=1), x.coordinates)
+        # pdb.set_trace()
         tensors, ids, rois, scores, labels = self.extract(feats_with_targets, rois, scores, labels)        
         # pdb.set_trace()
         
@@ -1104,16 +1237,12 @@ class TSPHead(nn.Module):
             refine_bbox_delta = None
             refine_score_logit = None
             if getattr(self, "use_refine", False):
-                # rois 是 list per scene，先算本次总 ROI 数 R
-                R = 0
-                for r in rois:
-                    R += len(r)
+                R = sum(len(r) for r in rois)
                 if R > 0:
-                    roi_ids_all = torch.arange(R, device=feats.device, dtype=torch.long)
-
-                    roi14 = self._roi_voxelize_avgpool_14(feats, rois)  # 可能缺少“完全无点ROI”
                     # pdb.set_trace()
-                    refine_bbox_delta, refine_score_logit, _ = self.refine_head(roi14, roi_ids_all=roi_ids_all)
+                    pooled_feats = self.roi_grid_pool_axis_aligned_cuda(feats, rois, grid_size=self.refine_grid_size)  # (R, g, g, g, C)
+
+                    refine_bbox_delta, refine_score_logit = self.refine_head(pooled_feats)
 
         return preds, targets, feats.coordinates[:, 0].long(), ids, rois, scores, labels, refine_bbox_delta, refine_score_logit
     
@@ -1146,80 +1275,21 @@ class TSPHead(nn.Module):
             new_score.append(score)
             new_label.append(label)
             
+        new_coords = torch.cat(new_coordinates).int().contiguous()
+        new_feats = torch.cat(new_features).contiguous()
+
         new_tensors = ME.SparseTensor(
-            torch.cat(new_features),
-            torch.cat(new_coordinates).float(),
-            tensor_stride=tensors.tensor_stride)
+            features=new_feats,
+            coordinates=new_coords,
+            tensor_stride=tensors.tensor_stride,
+            device=new_feats.device
+)
         # pdb.set_trace()
         new_ids = tensors.coordinates.new_tensor(ids)
         new_rois = new_roi
         new_scores = new_score
         new_labels = new_label
         return new_tensors, new_ids, new_rois, new_scores, new_labels    
-
-    def _roi_voxelize_avgpool_14(self, feats: ME.SparseTensor, rois_list):
-        """
-        feats: ROI-point sparse tensor BEFORE seg_unet
-            feats.coordinates: (N, 4) [roi_idx, x, y, z]  (x,y,z are global voxel coords)
-            feats.features: (N, C=32)
-        rois_list: list length B; each is Tensor (n_rois_i, 6) [cx,cy,cz,w,h,l]
-                (must correspond to roi_idx assignment order in extract())
-
-        Return:
-        roi14: SparseTensor with coords (N', 4) [roi_idx, ix, iy, iz], ix/iy/iz in [0..13]
-                features are mean pooled within each voxel cell
-        """
-        if feats.features.shape[0] == 0:
-            return ME.SparseTensor(
-                feats.features.new_zeros((0, feats.features.shape[1])),
-                feats.coordinates.new_zeros((0, 4)).float(),
-                tensor_stride=(1, 1, 1),
-                device=feats.device
-            )
-
-        # build a flat rois tensor indexed by roi_idx
-        # rois_list was created in extract(): n_rois is accumulated per scene, so roi_idx is global.
-        rois_all = []
-        for r in rois_list:
-            rois_all.append(r[:, :6])
-        rois_all = torch.cat(rois_all, dim=0).to(feats.device)  # (R, 6)
-
-        roi_idx = feats.coordinates[:, 0].long()  # (N,)
-        pts_world = feats.coordinates[:, 1:4].float() * self.voxel_size  # (N,3) world coords
-
-        roi = rois_all[roi_idx]  # (N,6)
-        centers = roi[:, :3]
-        sizes = roi[:, 3:6].clamp(min=1e-6)
-
-        roi_min = centers - sizes / 2
-        rel = (pts_world - roi_min) / sizes  # (N,3) in [0,1] ideally
-        grid = torch.floor(rel * 14.0).long()
-        grid = torch.clamp(grid, 0, 13)
-
-        # Now we have target voxel coords within ROI: (roi_idx, ix,iy,iz)
-        new_coords = torch.cat([roi_idx[:, None], grid], dim=1)  # (N,4) int
-
-        # Mean pool by identical coords:
-        # unique rows
-        uniq, inv = torch.unique(new_coords, dim=0, return_inverse=True)
-        C = feats.features.shape[1]
-
-        out_feat = feats.features.new_zeros((uniq.shape[0], C))
-        out_cnt = feats.features.new_zeros((uniq.shape[0], 1))
-
-        out_feat.scatter_add_(0, inv[:, None].expand(-1, C), feats.features)
-        out_cnt.scatter_add_(0, inv[:, None], out_cnt.new_ones((inv.numel(), 1)))
-
-        out_feat = out_feat / out_cnt.clamp(min=1.0)
-
-        # IMPORTANT: Minkowski wants coords float but integer valued
-        roi14 = ME.SparseTensor(
-            features=out_feat,
-            coordinates=uniq.float(),
-            tensor_stride=(1, 1, 1),
-            device=feats.device
-        )
-        return roi14
     
     def _extract_single(self, coordinates, features, rois, scores, labels):
         # coordinates: of shape (n_points, 3)
@@ -1262,6 +1332,85 @@ class TSPHead(nn.Module):
         new_coordinates = coordinates[nonzero[:, 0]]
         
         return nonzero[:, 1], new_coordinates, features[nonzero[:, 0]], rois, scores, labels
+    
+    def encode_roi_residual(self, rois, gt_boxes):
+        """
+        rois: (N,6) [cx,cy,cz,w,h,l]
+        gt_boxes: (N,6)
+        return:
+            delta: (N,6)
+        """
+        roi_ctr = rois[:, :3]
+        roi_size = rois[:, 3:6].clamp(min=1e-6)
+
+        gt_ctr = gt_boxes[:, :3]
+        gt_size = gt_boxes[:, 3:6].clamp(min=1e-6)
+
+        delta_ctr = (gt_ctr - roi_ctr) / roi_size
+        delta_size = torch.log(gt_size / roi_size)
+
+        # delta_ctr = gt_ctr - roi_ctr
+        # delta_size = torch.log(gt_size)
+
+        return torch.cat([delta_ctr, delta_size], dim=1)
+    
+    def decode_roi_residual(self, rois, delta):
+        roi_ctr = rois[:, :3]
+        roi_size = rois[:, 3:6].clamp(min=1e-6)
+
+        pred_ctr = roi_ctr + delta[:, :3] * roi_size
+        pred_size = roi_size * torch.exp(delta[:, 3:6])
+
+        # pred_ctr = roi_ctr + delta[:, :3] 
+        # pred_size = torch.exp(delta[:, 3:6])
+
+        return torch.cat([pred_ctr, pred_size], dim=1)
+
+    def roi_grid_pool_axis_aligned_cuda(self, feats: ME.SparseTensor, rois_list, grid_size):
+        """
+        feats:
+            coordinates: (N, 4) [roi_idx, x, y, z]
+            features:    (N, C)
+        rois_list:
+            list of per-scene rois, each (n_i, 6)
+        return:
+            pooled_feats: (R, g, g, g, C)
+        """
+        if feats.features.shape[0] == 0:
+            C = feats.features.shape[1]
+            R = sum(len(r) for r in rois_list)
+            return feats.features.new_zeros((R, grid_size, grid_size, grid_size, C))
+
+        device = feats.features.device
+        rois_all = torch.cat([r[:, :6] for r in rois_list], dim=0).to(device)  # (R, 6)
+        R = rois_all.shape[0]
+
+        # axis-aligned -> heading = 0
+        heading = rois_all.new_zeros((R, 1))
+        rois7 = torch.cat([rois_all, heading], dim=1).contiguous()  # (R, 7)
+
+        # coords: [roi_idx, x, y, z]
+        roi_idx = feats.coordinates[:, 0].long()
+        pts_world = feats.coordinates[:, 1:4].float() * self.voxel_size
+        pts_feat = feats.features.contiguous()
+
+        pooled_list = []
+        C = pts_feat.shape[1]
+
+        for rid in range(R):
+            mask = (roi_idx == rid)
+            if mask.sum() == 0:
+                pooled = pts_feat.new_zeros((1, grid_size, grid_size, grid_size, C))
+            else:
+                cur_pts = pts_world[mask].contiguous()
+                cur_feat = pts_feat[mask].contiguous()
+                cur_roi = rois7[rid:rid + 1].contiguous()
+                pooled = self.refine_pool(cur_roi, cur_pts, cur_feat, pool_method='max')
+            pooled_list.append(pooled)
+
+        pooled_feats = torch.cat(pooled_list, dim=0)  # (R, g, g, g, C)
+        return pooled_feats
+
        
     def _nms(self, bboxes, scores, img_meta):
         """Multi-class nms for a single scene.
@@ -1444,6 +1593,7 @@ class TSPHead(nn.Module):
                 len_x = []
                 for permutation in x.decomposition_permutations:
                     len_x.append(len(x.coordinates[permutation]))
+                # max_len_x = self.num_samples[i-1]
                 max_len_x = int(torch.tensor(len_x).max())
                 if len(len_x)>1:
                     for permutation in x.decomposition_permutations:
@@ -1494,7 +1644,22 @@ class TSPHead(nn.Module):
         results = self._get_bboxes([bbox_pred], [cls_pred], [point], img_metas)
         
         if self.use_seg:
+            if self.use_seg_external_self_attn:
+                x = self._seg_external_self_attn(
+                    x,
+                    self.seg_self_attn_128,
+                    self.seg_pos_embed_128,
+                    text_feats=text_feats,
+                    text_attention_mask=text_attention_mask)
             x = self.upsample_st_2(x) + x_all[1]
+            if self.use_seg_external_self_attn:
+                x = self._seg_external_self_attn(
+                    x,
+                    self.seg_self_attn_64,
+                    self.seg_pos_embed_64,
+                    text_feats=text_feats,
+                    text_attention_mask=text_attention_mask,
+                    text_proj=self.seg_text_proj_64)
             x = self.upsample_st_4(x) + x_all[0]
             seg_feats = self.conv_32_ch(x)
 
@@ -1527,15 +1692,15 @@ class TSPHead(nn.Module):
                     # use the first ROI and its matching refine prediction.
                     roi = rois[i][0, :6].to(refine_delta.device)
 
-                    roi_center = roi[:3]
+                    # roi_center = roi[:3]
+                    # delta = refine_delta[roi_offset]
+                    # # decode refine box
+                    # pred_center = roi_center + delta[:3]
+                    # pred_size = torch.exp(delta[3:6])
 
                     delta = refine_delta[roi_offset]
-
-                    # decode refine box
-                    pred_center = roi_center + delta[:3]
-                    pred_size = torch.exp(delta[3:6])
-
-                    refined_box = torch.cat([pred_center, pred_size], dim=0).unsqueeze(0)
+                    refined_box = self.decode_roi_residual(roi.unsqueeze(0), delta.unsqueeze(0))  # (1,6)
+                    # pdb.set_trace()
 
                     if refine_score is None:
                         refined_score = score_mat
