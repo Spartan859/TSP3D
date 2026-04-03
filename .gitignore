@@ -10,3 +10,4 @@ outputs/*
 tensorboard_output/*
 *.pth
 *.rank*
+*.log
