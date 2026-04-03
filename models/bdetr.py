@@ -6,7 +6,6 @@ from transformers import RobertaModel, RobertaTokenizerFast
 import MinkowskiEngine as ME
 from .mink_resnet import TSPBackbone
 from .tr3d_neck import TR3DNeck
-from .multilevel_head import TSPHead
 from .multilevel_head_refine import TSPHead as TSPHead_refine
 from mmdet3d.structures.bbox_3d import DepthInstance3DBoxes
 from mmdet3d.structures import bbox3d2result
@@ -61,28 +60,16 @@ class BeaUTyDETR(nn.Module):
         )       
         
         # self.neck = TR3DNeck()
-        if use_refine:
-            self.head = TSPHead_refine(
-                voxel_size=self.voxel_size,
-                use_seg=use_seg,
-                use_seg_external_self_attn=use_seg_external_self_attn,
-                use_external_attn_bi_layer=use_external_attn_bi_layer,
-                use_text_guided_external_attn_bi_layer=use_text_guided_external_attn_bi_layer,
-                use_film_text_guided_external_attn_bi_layer=use_film_text_guided_external_attn_bi_layer,
-                com_threshold=com_threshold,
-                num_samples_com=num_samples_com
-            )
-        else:
-            self.head = TSPHead(
-                voxel_size=self.voxel_size,
-                use_seg=use_seg,
-                use_seg_external_self_attn=use_seg_external_self_attn,
-                use_external_attn_bi_layer=use_external_attn_bi_layer,
-                use_text_guided_external_attn_bi_layer=use_text_guided_external_attn_bi_layer,
-                use_film_text_guided_external_attn_bi_layer=use_film_text_guided_external_attn_bi_layer,
-                com_threshold=com_threshold,
-                num_samples_com=num_samples_com
-            )
+        self.head = TSPHead_refine(
+            voxel_size=self.voxel_size,
+            use_seg=use_seg,
+            use_seg_external_self_attn=use_seg_external_self_attn,
+            use_external_attn_bi_layer=use_external_attn_bi_layer,
+            use_text_guided_external_attn_bi_layer=use_text_guided_external_attn_bi_layer,
+            use_film_text_guided_external_attn_bi_layer=use_film_text_guided_external_attn_bi_layer,
+            com_threshold=com_threshold,
+            num_samples_com=num_samples_com
+        )
         self.target_pool = None
         if mink_conv1_stride > 1:
             self.target_pool = ME.MinkowskiMaxPooling(
