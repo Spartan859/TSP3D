@@ -122,6 +122,12 @@ def parse_option():
                         help="try to overfit few samples")
     parser.add_argument('--eval', default=False, action='store_true')
     parser.add_argument('--eval_train', action='store_true')
+    parser.add_argument('--measure_fps', action='store_true',
+                        help='Measure inference FPS during eval (single-card recommended).')
+    parser.add_argument('--fps_warmup_iters', type=int, default=20,
+                        help='Number of warmup eval iterations excluded from FPS stats.')
+    parser.add_argument('--fps_max_iters', type=int, default=-1,
+                        help='Max eval iterations to include for FPS; -1 means full loader.')
     parser.add_argument('--pp_checkpoint', default=None)    # pointnet checkpoint
     parser.add_argument('--reduce_lr', action='store_true')
     parser.add_argument('--use_seg', action='store_true')
@@ -140,6 +146,10 @@ def parse_option():
     parser.add_argument('--use_seg_external_self_attn', dest='use_seg_external_self_attn', action='store_true',
                         help='Enable external self-attention before seg upsample stages.')
     parser.set_defaults(use_seg_external_self_attn=False)
+    parser.add_argument('--com_threshold', type=float, default=0.15,
+                        help='Threshold for completion branch voxel selection.')
+    parser.add_argument('--num_samples_com', type=int, default=2400,
+                        help='Number of sampled voxels per scene for completion branch attention.')
 
     args, _ = parser.parse_known_args()
 
@@ -230,8 +240,17 @@ class BaseTrainTester:
         """Initialize."""
         name = args.log_dir.split('/')[-1]
 
-        # Format current time as YYYY-MM-DD_HH-MM-SS
-        current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        # Use a single run timestamp across all DDP ranks to avoid split log dirs.
+        if dist.is_available() and dist.is_initialized():
+            if dist.get_rank() == 0:
+                run_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            else:
+                run_time = None
+            shared_obj = [run_time]
+            dist.broadcast_object_list(shared_obj, src=0)
+            current_time = shared_obj[0]
+        else:
+            current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
         # Create log dir
         args.log_dir = os.path.join(
@@ -478,10 +497,11 @@ class BaseTrainTester:
                     model, criterion, set_criterion, args
                 )
 
-        # Training is over
-        save_checkpoint(args, 'last', model, optimizer, scheduler, True)
         saved_path = os.path.join(args.log_dir, 'ckpt_epoch_last.pth')
-        self.logger.info("Saved in {}".format(saved_path))
+        # Training is over (only rank0 writes checkpoint files).
+        if dist.get_rank() == 0:
+            save_checkpoint(args, 'last', model, optimizer, scheduler, True)
+            self.logger.info("Saved in {}".format(saved_path))
         self.evaluate_one_epoch(
             args.max_epoch, test_loader,
             model, criterion, set_criterion, args
@@ -626,9 +646,13 @@ class BaseTrainTester:
             
         
         # STEP Forward pass
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()
         start_time = time.time()
         bbox_results, seg_masks, losses, backbone_time, trans_time = model(
             inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas=img_metas)
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()
         end_time = time.time()
         inf_time = end_time - start_time
         

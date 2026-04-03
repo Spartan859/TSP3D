@@ -14,7 +14,7 @@ cpu_num=90
 # volc ml_devinstance launch --resource_queue_id q-20251219130948-j9w2k --flavor_id ml.pni3ln.11xlarge -- zsh -c "source ~/.zshrc && exec zsh"
 
 # 4 4090 mml.xni3c.5xlarge
-volc ml_devinstance launch --resource_queue_id q-20251223151605-j9psw --flavor_id ml.xni3c.11xlarge -- zsh -c "source ~/.zshrc && exec zsh"
+volc ml_devinstance launch --resource_queue_id q-20260227174226-28nzx --flavor_id ml.xni3c.11xlarge -- zsh -c "source ~/.zshrc && exec zsh"
 
 # # 4 gpus ml.pni3ln.17xlarge
 # volc ml_devinstance launch --resource_queue_id q-20251219130948-j9w2k --flavor_id ml.pni3ln.17xlarge -- zsh -c "source ~/.zshrc && exec zsh"

@@ -18,6 +18,8 @@ from .roiaware_pool3d_utils import RoIAwarePool3d
 import pdb
 import logging
 
+logger = logging.getLogger(__name__)
+
 class MinkowskiFeatureFusionBlock(nn.Module):
     """
     Block to fuse backbone features with text features in Minkowski space.
@@ -240,6 +242,7 @@ class TSPHead(nn.Module):
                  assign_type='volume',
                  prune_threshold=(0.3,0.7),
                  com_threshold = 0.15,
+                 num_samples_com=2400,
                  seg_thr = 0.3,
                  train_cfg=None,
                  test_cfg=dict(nms_pre=1, iou_thr=.5, score_thr=.01),
@@ -279,7 +282,7 @@ class TSPHead(nn.Module):
         self.train_cfg = train_cfg
         self.test_cfg = test_cfg
         self.num_samples = (3200,320)
-        self.num_samples_com = 2400
+        self.num_samples_com = num_samples_com
         self.com_threshold = com_threshold
         self.random_prune_threshold = (1200,4000)
         self.seg_thr = seg_thr
@@ -772,9 +775,17 @@ class TSPHead(nn.Module):
                 mask = score > self.prune_threshold[layer_id]
                 mask = mask.reshape([len(score)])
                 prune_mask[permutation[mask]] = True                 
-        if prune_mask.sum() != 0:
+        kept = int(prune_mask.sum().item())
+        if kept != 0:
             x = self.pruning(x, prune_mask)
         else:
+            logger.warning(
+                "Prune inference removed all points at layer %s (threshold=%s, scores_range=[%.6f, %.6f]).",
+                layer_id,
+                self.prune_threshold[layer_id],
+                float(scores.min().item()) if scores.numel() else float("nan"),
+                float(scores.max().item()) if scores.numel() else float("nan"),
+            )
             x = None
 
         return x
@@ -1513,9 +1524,11 @@ class TSPHead(nn.Module):
         
         for i in range(len(inputs) - 1, -1, -1):
             if i ==1:
+                logger.info("Forward test layer %s: x points=%s", i, int(x.features.shape[0]))
                 x = self._prune_inference(x, prune_inference,i)
                 
                 if x != None:
+                    logger.info("After prune layer %s: x points=%s", i, int(x.features.shape[0]))
                     x = self.__getattr__(f'up_block_{i + 1}')(x)
                     coords = x.coordinates.float()
                     x_level_features = inputs[i].features_at_coordinates(coords)
@@ -1524,12 +1537,15 @@ class TSPHead(nn.Module):
                                               coordinate_manager=x.coordinate_manager)
                     x = x + x_level
                 else:
+                    logger.warning("Forward test stopped at layer %s: x is None after pruning.", i)
                     pdb.set_trace()
                     break
             elif i ==0:
+                logger.info("Forward test layer %s: x points=%s", i, int(x.features.shape[0]))
                 x = self._prune_inference(x, prune_inference,i)
                 
                 if x != None:
+                    logger.info("After prune layer %s: x points=%s", i, int(x.features.shape[0]))
                     x = self.__getattr__(f'up_block_{i + 1}')(x)
                     coords = x.coordinates.float()
                     x_level_features = inputs[i].features_at_coordinates(coords)
@@ -1538,6 +1554,7 @@ class TSPHead(nn.Module):
                                               coordinate_manager=x.coordinate_manager)
                     x_ori = x + x_level
                 else:
+                    logger.warning("Forward test stopped at layer %s: x is None after pruning.", i)
                     pdb.set_trace()
                     break
         

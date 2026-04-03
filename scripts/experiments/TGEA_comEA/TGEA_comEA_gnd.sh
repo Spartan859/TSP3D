@@ -1,13 +1,21 @@
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH}"
 
-if [[ "$@" == *"-m"* ]]; then
-    mode="mini"
-else
-    mode="large"
-fi
+mode="large"
+single_mode=0
+for arg in "$@"; do
+    case "$arg" in
+        -m|--mini)
+            mode="mini"
+            ;;
+        -s|--single)
+            single_mode=1
+            ;;
+    esac
+done
 
-all_args="$*"
 custom_cvd="${CVD:-}"
+custom_master_port="${MASTER_PORT:-}"
+train_extra_args=()
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --cvd)
@@ -30,7 +38,20 @@ while [[ $# -gt 0 ]]; do
             custom_cvd="$2"
             shift 2
             ;;
+        --master_port)
+            if [[ -z "${2:-}" ]]; then
+                echo "Error: --master_port requires a value like 11022"
+                exit 1
+            fi
+            custom_master_port="$2"
+            shift 2
+            ;;
+        --master_port=*)
+            custom_master_port="${1#*=}"
+            shift
+            ;;
         *)
+            train_extra_args+=("$1")
             shift
             ;;
     esac
@@ -58,6 +79,7 @@ BASE_BOX_SELECT_LR=4e-4
 # BASE_TEXT_ENCODER_LR=1e-6
 # BASE_BOX_SELECT_LR=4e-5
 BASE_SEG_LR=1e-4
+MASTER_PORT_DEFAULT=11022
 
 lr_scale() {
     python - "$1" "$BASE_BS" "$CUR_BS" <<'PY'
@@ -93,7 +115,7 @@ ln -sf ${data_root}/val_v3scans_${mode}.pkl \
     ${data_root}/val_v3scans.pkl
 
 nproc_per_node=${NPROC_PER_NODE:-$(nvidia-smi -L | wc -l)}
-if [[ "${all_args}" == *"-s"* ]]; then
+if [[ ${single_mode} -eq 1 ]]; then
     nproc_per_node=1
 fi
 
@@ -113,8 +135,11 @@ fi
 echo cvd: ${cvd}
 echo log_dir: "${log_dir}"
 
+master_port="${custom_master_port:-${MASTER_PORT_DEFAULT}}"
+echo master_port: ${master_port}
+
 TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
-    --nproc_per_node ${nproc_per_node} --master_port 11022 \
+    --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
     train_dist_mod.py \
     --use_color \
     --weight_decay 0.0005 \
@@ -135,6 +160,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --use_text_guided_external_attn_bi_layer 0 2\
     --use_film_text_guided_external_attn_bi_layer 0 2\
     --use_refine \
+    "${train_extra_args[@]}" \
     # --use_seg \
     # --use_seg_external_self_attn \
     # --clip_norm 1.0 \
@@ -156,5 +182,9 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     # --checkpoint_path /home/gwx/lxy/TSP3D/outputs/logs/scanrefer/2025-07-03_18-03-55/ckpt_epoch_18.pth \
     # --checkpoint_path /home/gwx/gwx/3DVG/TSP3D/outputs/logs/scanrefer/2025-06-25_22-42-41/ckpt_epoch_51.pth \
     # /root/lxy/TSP3D_ori/scripts/experiments/20260218/scanrefer/2026-02-20_04-33-37/ckpt_epoch_168.pth
-
-torchrun --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
+if [[ "${OCCUPY_GPU_AFTER_TRAIN:-0}" == "1" ]]; then
+    echo "Post-train GPU occupy enabled (OCCUPY_GPU_AFTER_TRAIN=1)."
+    torchrun --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
+else
+    echo "Skip post-train GPU occupy (set OCCUPY_GPU_AFTER_TRAIN=1 to enable)."
+fi

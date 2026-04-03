@@ -1,0 +1,810 @@
+[04/02 00:45:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/TGEA_comEA/TGEA_comEA_gnd_RB_t0p10_n1200/scanrefer/2026-04-02_00-45-19/config.json
+[04/02 00:45:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 150, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'checkpoint_path': None, 'load_optimizer': False, 'load_scheduler': False, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/TGEA_comEA/TGEA_comEA_gnd_RB_t0p10_n1200/scanrefer/2026-04-02_00-45-19', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'use_seg': False, 'use_refine': True, 'use_external_attn_bi_layer': [0, 2], 'use_text_guided_external_attn_bi_layer': [0, 2], 'use_film_text_guided_external_attn_bi_layer': [0, 2], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.1, 'num_samples_com': 1200}
+[04/02 00:52:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: length of training dataset: 48655
+[04/02 00:52:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: length of testing dataset: 9508
+[04/02 00:56:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [1][500/1737]  
+[04/02 00:56:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.8162 	cls_loss 0.7364 	com_loss 0.4358 	keep_loss 0.2226 	loss 2.2110 	
+[04/02 01:00:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [1][1000/1737]  
+[04/02 01:00:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.7807 	cls_loss 0.6122 	com_loss 0.4165 	keep_loss 0.2140 	loss 2.0234 	
+[04/02 01:04:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [1][1500/1737]  
+[04/02 01:04:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.7550 	cls_loss 0.5630 	com_loss 0.4074 	keep_loss 0.2086 	loss 1.9340 	
+[04/02 01:06:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 1, total time 801.39, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 01:10:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [2][500/1737]  
+[04/02 01:10:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.6541 	cls_loss 0.4416 	com_loss 0.3703 	keep_loss 0.1866 	loss 1.6525 	
+[04/02 01:13:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [2][1000/1737]  
+[04/02 01:13:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.6475 	cls_loss 0.4354 	com_loss 0.3656 	keep_loss 0.1827 	loss 1.6312 	
+[04/02 01:17:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [2][1500/1737]  
+[04/02 01:17:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.6380 	cls_loss 0.4283 	com_loss 0.3614 	keep_loss 0.1794 	loss 1.6070 	
+[04/02 01:19:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 2, total time 812.84, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 01:23:30] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [3][500/1737]  
+[04/02 01:23:30] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5986 	cls_loss 0.3923 	com_loss 0.3418 	keep_loss 0.1656 	loss 1.4983 	
+[04/02 01:27:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [3][1000/1737]  
+[04/02 01:27:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5944 	cls_loss 0.3862 	com_loss 0.3376 	keep_loss 0.1637 	loss 1.4820 	
+[04/02 01:31:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [3][1500/1737]  
+[04/02 01:31:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5875 	cls_loss 0.3807 	com_loss 0.3335 	keep_loss 0.1613 	loss 1.4630 	
+[04/02 01:33:02] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 3, total time 805.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 01:33:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [3]  
+[04/02 01:33:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.30953
+[04/02 01:33:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.22213
+[04/02 01:37:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [4][500/1737]  
+[04/02 01:37:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5591 	cls_loss 0.3549 	com_loss 0.3158 	keep_loss 0.1497 	loss 1.3796 	
+[04/02 01:41:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [4][1000/1737]  
+[04/02 01:41:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5603 	cls_loss 0.3511 	com_loss 0.3122 	keep_loss 0.1473 	loss 1.3710 	
+[04/02 01:45:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [4][1500/1737]  
+[04/02 01:45:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5568 	cls_loss 0.3502 	com_loss 0.3118 	keep_loss 0.1464 	loss 1.3653 	
+[04/02 01:47:14] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 4, total time 801.36, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 01:51:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [5][500/1737]  
+[04/02 01:51:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5433 	cls_loss 0.3365 	com_loss 0.3018 	keep_loss 0.1401 	loss 1.3216 	
+[04/02 01:55:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [5][1000/1737]  
+[04/02 01:55:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5422 	cls_loss 0.3362 	com_loss 0.2994 	keep_loss 0.1385 	loss 1.3162 	
+[04/02 01:59:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [5][1500/1737]  
+[04/02 01:59:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5414 	cls_loss 0.3347 	com_loss 0.2978 	keep_loss 0.1382 	loss 1.3121 	
+[04/02 02:00:56] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 5, total time 821.34, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 02:04:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [6][500/1737]  
+[04/02 02:04:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5263 	cls_loss 0.3192 	com_loss 0.2864 	keep_loss 0.1314 	loss 1.2633 	
+[04/02 02:08:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [6][1000/1737]  
+[04/02 02:08:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5274 	cls_loss 0.3210 	com_loss 0.2876 	keep_loss 0.1319 	loss 1.2678 	
+[04/02 02:12:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [6][1500/1737]  
+[04/02 02:12:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5254 	cls_loss 0.3205 	com_loss 0.2866 	keep_loss 0.1320 	loss 1.2646 	
+[04/02 02:14:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 6, total time 815.24, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 02:15:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [6]  
+[04/02 02:15:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.39767
+[04/02 02:15:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.28976
+[04/02 02:19:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [7][500/1737]  
+[04/02 02:19:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5241 	cls_loss 0.3120 	com_loss 0.2780 	keep_loss 0.1297 	loss 1.2438 	
+[04/02 02:22:57] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [7][1000/1737]  
+[04/02 02:22:57] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5181 	cls_loss 0.3119 	com_loss 0.2781 	keep_loss 0.1294 	loss 1.2374 	
+[04/02 02:26:47] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [7][1500/1737]  
+[04/02 02:26:47] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5166 	cls_loss 0.3102 	com_loss 0.2761 	keep_loss 0.1286 	loss 1.2315 	
+[04/02 02:28:37] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 7, total time 799.26, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 02:32:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [8][500/1737]  
+[04/02 02:32:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5098 	cls_loss 0.3017 	com_loss 0.2697 	keep_loss 0.1245 	loss 1.2056 	
+[04/02 02:36:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [8][1000/1737]  
+[04/02 02:36:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5083 	cls_loss 0.3014 	com_loss 0.2705 	keep_loss 0.1247 	loss 1.2050 	
+[04/02 02:40:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [8][1500/1737]  
+[04/02 02:40:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.5060 	cls_loss 0.3014 	com_loss 0.2698 	keep_loss 0.1244 	loss 1.2017 	
+[04/02 02:42:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 8, total time 819.41, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 02:46:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [9][500/1737]  
+[04/02 02:46:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4919 	cls_loss 0.2930 	com_loss 0.2644 	keep_loss 0.1244 	loss 1.1737 	
+[04/02 02:50:06] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [9][1000/1737]  
+[04/02 02:50:06] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4935 	cls_loss 0.2934 	com_loss 0.2640 	keep_loss 0.1231 	loss 1.1740 	
+[04/02 02:54:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [9][1500/1737]  
+[04/02 02:54:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4946 	cls_loss 0.2933 	com_loss 0.2638 	keep_loss 0.1229 	loss 1.1746 	
+[04/02 02:55:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 9, total time 816.85, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 02:56:40] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [9]  
+[04/02 02:56:40] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.43721
+[04/02 02:56:40] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.32909
+[04/02 03:00:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [10][500/1737]  
+[04/02 03:00:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4879 	cls_loss 0.2839 	com_loss 0.2553 	keep_loss 0.1171 	loss 1.1441 	
+[04/02 03:04:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [10][1000/1737]  
+[04/02 03:04:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4894 	cls_loss 0.2841 	com_loss 0.2550 	keep_loss 0.1183 	loss 1.1468 	
+[04/02 03:08:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [10][1500/1737]  
+[04/02 03:08:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4875 	cls_loss 0.2840 	com_loss 0.2550 	keep_loss 0.1183 	loss 1.1448 	
+[04/02 03:10:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 10, total time 815.87, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 03:14:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [11][500/1737]  
+[04/02 03:14:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4874 	cls_loss 0.2811 	com_loss 0.2523 	keep_loss 0.1158 	loss 1.1367 	
+[04/02 03:18:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [11][1000/1737]  
+[04/02 03:18:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4885 	cls_loss 0.2821 	com_loss 0.2522 	keep_loss 0.1165 	loss 1.1394 	
+[04/02 03:22:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [11][1500/1737]  
+[04/02 03:22:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4861 	cls_loss 0.2829 	com_loss 0.2533 	keep_loss 0.1172 	loss 1.1394 	
+[04/02 03:23:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 11, total time 817.04, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 03:27:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [12][500/1737]  
+[04/02 03:27:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4777 	cls_loss 0.2771 	com_loss 0.2502 	keep_loss 0.1155 	loss 1.1204 	
+[04/02 03:31:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [12][1000/1737]  
+[04/02 03:31:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4801 	cls_loss 0.2769 	com_loss 0.2490 	keep_loss 0.1156 	loss 1.1217 	
+[04/02 03:35:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [12][1500/1737]  
+[04/02 03:35:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4800 	cls_loss 0.2761 	com_loss 0.2482 	keep_loss 0.1152 	loss 1.1195 	
+[04/02 03:37:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 12, total time 822.94, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 03:38:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [12]  
+[04/02 03:38:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.45499
+[04/02 03:38:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.35044
+[04/02 03:42:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [13][500/1737]  
+[04/02 03:42:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4768 	cls_loss 0.2738 	com_loss 0.2455 	keep_loss 0.1148 	loss 1.1108 	
+[04/02 03:46:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [13][1000/1737]  
+[04/02 03:46:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4721 	cls_loss 0.2715 	com_loss 0.2444 	keep_loss 0.1135 	loss 1.1016 	
+[04/02 03:50:08] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [13][1500/1737]  
+[04/02 03:50:08] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4756 	cls_loss 0.2710 	com_loss 0.2436 	keep_loss 0.1130 	loss 1.1032 	
+[04/02 03:51:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 13, total time 814.52, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 03:55:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [14][500/1737]  
+[04/02 03:55:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4686 	cls_loss 0.2664 	com_loss 0.2404 	keep_loss 0.1126 	loss 1.0879 	
+[04/02 03:59:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [14][1000/1737]  
+[04/02 03:59:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4707 	cls_loss 0.2666 	com_loss 0.2404 	keep_loss 0.1114 	loss 1.0891 	
+[04/02 04:03:40] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [14][1500/1737]  
+[04/02 04:03:40] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4697 	cls_loss 0.2664 	com_loss 0.2395 	keep_loss 0.1115 	loss 1.0871 	
+[04/02 04:05:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 14, total time 813.89, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 04:09:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [15][500/1737]  
+[04/02 04:09:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4652 	cls_loss 0.2625 	com_loss 0.2358 	keep_loss 0.1107 	loss 1.0742 	
+[04/02 04:13:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [15][1000/1737]  
+[04/02 04:13:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4649 	cls_loss 0.2614 	com_loss 0.2362 	keep_loss 0.1106 	loss 1.0731 	
+[04/02 04:17:19] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [15][1500/1737]  
+[04/02 04:17:19] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4665 	cls_loss 0.2630 	com_loss 0.2371 	keep_loss 0.1106 	loss 1.0771 	
+[04/02 04:19:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 15, total time 821.26, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 04:20:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [15]  
+[04/02 04:20:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.46918
+[04/02 04:20:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.35970
+[04/02 04:23:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [16][500/1737]  
+[04/02 04:23:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4669 	cls_loss 0.2590 	com_loss 0.2335 	keep_loss 0.1079 	loss 1.0672 	
+[04/02 04:27:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [16][1000/1737]  
+[04/02 04:27:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4647 	cls_loss 0.2605 	com_loss 0.2340 	keep_loss 0.1079 	loss 1.0671 	
+[04/02 04:31:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [16][1500/1737]  
+[04/02 04:31:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4640 	cls_loss 0.2603 	com_loss 0.2340 	keep_loss 0.1085 	loss 1.0669 	
+[04/02 04:33:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 16, total time 817.45, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 04:37:37] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [17][500/1737]  
+[04/02 04:37:37] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4591 	cls_loss 0.2556 	com_loss 0.2301 	keep_loss 0.1061 	loss 1.0509 	
+[04/02 04:41:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [17][1000/1737]  
+[04/02 04:41:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4603 	cls_loss 0.2561 	com_loss 0.2294 	keep_loss 0.1063 	loss 1.0521 	
+[04/02 04:45:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [17][1500/1737]  
+[04/02 04:45:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4591 	cls_loss 0.2557 	com_loss 0.2290 	keep_loss 0.1064 	loss 1.0501 	
+[04/02 04:47:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 17, total time 820.47, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 04:51:11] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [18][500/1737]  
+[04/02 04:51:11] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4600 	cls_loss 0.2521 	com_loss 0.2249 	keep_loss 0.1051 	loss 1.0421 	
+[04/02 04:55:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [18][1000/1737]  
+[04/02 04:55:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4562 	cls_loss 0.2520 	com_loss 0.2265 	keep_loss 0.1058 	loss 1.0405 	
+[04/02 04:58:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [18][1500/1737]  
+[04/02 04:58:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4550 	cls_loss 0.2531 	com_loss 0.2275 	keep_loss 0.1063 	loss 1.0419 	
+[04/02 05:00:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 18, total time 802.64, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 05:01:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [18]  
+[04/02 05:01:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.48790
+[04/02 05:01:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.37884
+[04/02 05:05:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [19][500/1737]  
+[04/02 05:05:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4537 	cls_loss 0.2497 	com_loss 0.2240 	keep_loss 0.1055 	loss 1.0329 	
+[04/02 05:09:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [19][1000/1737]  
+[04/02 05:09:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4530 	cls_loss 0.2502 	com_loss 0.2248 	keep_loss 0.1043 	loss 1.0322 	
+[04/02 05:13:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [19][1500/1737]  
+[04/02 05:13:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4535 	cls_loss 0.2509 	com_loss 0.2255 	keep_loss 0.1045 	loss 1.0344 	
+[04/02 05:14:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 19, total time 801.00, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 05:18:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [20][500/1737]  
+[04/02 05:18:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4516 	cls_loss 0.2496 	com_loss 0.2237 	keep_loss 0.1038 	loss 1.0287 	
+[04/02 05:22:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [20][1000/1737]  
+[04/02 05:22:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4513 	cls_loss 0.2473 	com_loss 0.2223 	keep_loss 0.1040 	loss 1.0250 	
+[04/02 05:26:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [20][1500/1737]  
+[04/02 05:26:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4517 	cls_loss 0.2468 	com_loss 0.2213 	keep_loss 0.1038 	loss 1.0235 	
+[04/02 05:28:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 20, total time 819.76, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 05:32:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [21][500/1737]  
+[04/02 05:32:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4500 	cls_loss 0.2460 	com_loss 0.2194 	keep_loss 0.1042 	loss 1.0196 	
+[04/02 05:36:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [21][1000/1737]  
+[04/02 05:36:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4525 	cls_loss 0.2460 	com_loss 0.2195 	keep_loss 0.1038 	loss 1.0218 	
+[04/02 05:40:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [21][1500/1737]  
+[04/02 05:40:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4516 	cls_loss 0.2468 	com_loss 0.2206 	keep_loss 0.1042 	loss 1.0231 	
+[04/02 05:42:08] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 21, total time 819.41, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 05:42:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [21]  
+[04/02 05:42:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.50179
+[04/02 05:42:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.38441
+[04/02 05:46:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [22][500/1737]  
+[04/02 05:46:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4515 	cls_loss 0.2449 	com_loss 0.2188 	keep_loss 0.1036 	loss 1.0187 	
+[04/02 05:50:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [22][1000/1737]  
+[04/02 05:50:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4481 	cls_loss 0.2434 	com_loss 0.2172 	keep_loss 0.1022 	loss 1.0108 	
+[04/02 05:54:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [22][1500/1737]  
+[04/02 05:54:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4489 	cls_loss 0.2432 	com_loss 0.2165 	keep_loss 0.1022 	loss 1.0108 	
+[04/02 05:56:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 22, total time 816.21, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 06:00:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [23][500/1737]  
+[04/02 06:00:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4462 	cls_loss 0.2409 	com_loss 0.2159 	keep_loss 0.1012 	loss 1.0042 	
+[04/02 06:04:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [23][1000/1737]  
+[04/02 06:04:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4448 	cls_loss 0.2418 	com_loss 0.2166 	keep_loss 0.1015 	loss 1.0047 	
+[04/02 06:08:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [23][1500/1737]  
+[04/02 06:08:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4440 	cls_loss 0.2414 	com_loss 0.2161 	keep_loss 0.1015 	loss 1.0030 	
+[04/02 06:10:19] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 23, total time 827.92, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 06:14:19] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [24][500/1737]  
+[04/02 06:14:19] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4473 	cls_loss 0.2395 	com_loss 0.2123 	keep_loss 0.1000 	loss 0.9992 	
+[04/02 06:18:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [24][1000/1737]  
+[04/02 06:18:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4457 	cls_loss 0.2412 	com_loss 0.2142 	keep_loss 0.1002 	loss 1.0012 	
+[04/02 06:22:08] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [24][1500/1737]  
+[04/02 06:22:08] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4453 	cls_loss 0.2413 	com_loss 0.2141 	keep_loss 0.1004 	loss 1.0011 	
+[04/02 06:23:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 24, total time 820.09, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 06:24:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [24]  
+[04/02 06:24:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.50347
+[04/02 06:24:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.39409
+[04/02 06:28:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [25][500/1737]  
+[04/02 06:28:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4386 	cls_loss 0.2376 	com_loss 0.2111 	keep_loss 0.1019 	loss 0.9892 	
+[04/02 06:32:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [25][1000/1737]  
+[04/02 06:32:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4387 	cls_loss 0.2349 	com_loss 0.2091 	keep_loss 0.1001 	loss 0.9828 	
+[04/02 06:36:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [25][1500/1737]  
+[04/02 06:36:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4400 	cls_loss 0.2360 	com_loss 0.2097 	keep_loss 0.1001 	loss 0.9858 	
+[04/02 06:38:14] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 25, total time 809.06, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 06:42:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [26][500/1737]  
+[04/02 06:42:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4399 	cls_loss 0.2396 	com_loss 0.2138 	keep_loss 0.1005 	loss 0.9937 	
+[04/02 06:46:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [26][1000/1737]  
+[04/02 06:46:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4391 	cls_loss 0.2390 	com_loss 0.2131 	keep_loss 0.0999 	loss 0.9912 	
+[04/02 06:49:56] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [26][1500/1737]  
+[04/02 06:49:56] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4390 	cls_loss 0.2369 	com_loss 0.2114 	keep_loss 0.0993 	loss 0.9866 	
+[04/02 06:51:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 26, total time 815.00, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 06:55:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [27][500/1737]  
+[04/02 06:55:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4371 	cls_loss 0.2302 	com_loss 0.2053 	keep_loss 0.0984 	loss 0.9710 	
+[04/02 06:59:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [27][1000/1737]  
+[04/02 06:59:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4399 	cls_loss 0.2326 	com_loss 0.2068 	keep_loss 0.0989 	loss 0.9781 	
+[04/02 07:03:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [27][1500/1737]  
+[04/02 07:03:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4385 	cls_loss 0.2333 	com_loss 0.2077 	keep_loss 0.0990 	loss 0.9785 	
+[04/02 07:05:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 27, total time 812.66, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 07:06:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [27]  
+[04/02 07:06:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.50747
+[04/02 07:06:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.39861
+[04/02 07:10:06] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [28][500/1737]  
+[04/02 07:10:06] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4368 	cls_loss 0.2308 	com_loss 0.2040 	keep_loss 0.0985 	loss 0.9701 	
+[04/02 07:13:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [28][1000/1737]  
+[04/02 07:13:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4391 	cls_loss 0.2308 	com_loss 0.2050 	keep_loss 0.0979 	loss 0.9728 	
+[04/02 07:17:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [28][1500/1737]  
+[04/02 07:17:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4370 	cls_loss 0.2304 	com_loss 0.2045 	keep_loss 0.0974 	loss 0.9692 	
+[04/02 07:19:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 28, total time 809.08, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 07:23:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [29][500/1737]  
+[04/02 07:23:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4340 	cls_loss 0.2290 	com_loss 0.2034 	keep_loss 0.0965 	loss 0.9629 	
+[04/02 07:27:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [29][1000/1737]  
+[04/02 07:27:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4366 	cls_loss 0.2303 	com_loss 0.2050 	keep_loss 0.0971 	loss 0.9691 	
+[04/02 07:31:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [29][1500/1737]  
+[04/02 07:31:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4358 	cls_loss 0.2309 	com_loss 0.2051 	keep_loss 0.0974 	loss 0.9693 	
+[04/02 07:33:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 29, total time 808.80, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 07:36:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [30][500/1737]  
+[04/02 07:36:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4316 	cls_loss 0.2289 	com_loss 0.2030 	keep_loss 0.0981 	loss 0.9616 	
+[04/02 07:40:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [30][1000/1737]  
+[04/02 07:40:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4323 	cls_loss 0.2292 	com_loss 0.2025 	keep_loss 0.0982 	loss 0.9620 	
+[04/02 07:44:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [30][1500/1737]  
+[04/02 07:44:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4321 	cls_loss 0.2302 	com_loss 0.2034 	keep_loss 0.0983 	loss 0.9640 	
+[04/02 07:46:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 30, total time 813.61, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 07:47:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [30]  
+[04/02 07:47:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.50168
+[04/02 07:47:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.38704
+[04/02 07:51:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [31][500/1737]  
+[04/02 07:51:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4332 	cls_loss 0.2259 	com_loss 0.2012 	keep_loss 0.0958 	loss 0.9561 	
+[04/02 07:55:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [31][1000/1737]  
+[04/02 07:55:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4332 	cls_loss 0.2262 	com_loss 0.2009 	keep_loss 0.0962 	loss 0.9565 	
+[04/02 07:59:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [31][1500/1737]  
+[04/02 07:59:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4345 	cls_loss 0.2271 	com_loss 0.2014 	keep_loss 0.0962 	loss 0.9592 	
+[04/02 08:00:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 31, total time 808.05, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 08:04:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [32][500/1737]  
+[04/02 08:04:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4304 	cls_loss 0.2254 	com_loss 0.1998 	keep_loss 0.0959 	loss 0.9515 	
+[04/02 08:08:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [32][1000/1737]  
+[04/02 08:08:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4291 	cls_loss 0.2255 	com_loss 0.1990 	keep_loss 0.0958 	loss 0.9494 	
+[04/02 08:12:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [32][1500/1737]  
+[04/02 08:12:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4298 	cls_loss 0.2258 	com_loss 0.1995 	keep_loss 0.0955 	loss 0.9505 	
+[04/02 08:14:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 32, total time 830.39, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 08:18:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [33][500/1737]  
+[04/02 08:18:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4274 	cls_loss 0.2212 	com_loss 0.1965 	keep_loss 0.0941 	loss 0.9392 	
+[04/02 08:22:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [33][1000/1737]  
+[04/02 08:22:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4277 	cls_loss 0.2222 	com_loss 0.1973 	keep_loss 0.0946 	loss 0.9418 	
+[04/02 08:26:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [33][1500/1737]  
+[04/02 08:26:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4299 	cls_loss 0.2235 	com_loss 0.1979 	keep_loss 0.0944 	loss 0.9458 	
+[04/02 08:28:08] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 33, total time 804.86, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 08:28:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [33]  
+[04/02 08:28:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.50905
+[04/02 08:28:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.41323
+[04/02 08:32:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [34][500/1737]  
+[04/02 08:32:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4271 	cls_loss 0.2195 	com_loss 0.1942 	keep_loss 0.0936 	loss 0.9344 	
+[04/02 08:36:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [34][1000/1737]  
+[04/02 08:36:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4284 	cls_loss 0.2214 	com_loss 0.1957 	keep_loss 0.0943 	loss 0.9399 	
+[04/02 08:40:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [34][1500/1737]  
+[04/02 08:40:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4267 	cls_loss 0.2211 	com_loss 0.1957 	keep_loss 0.0941 	loss 0.9377 	
+[04/02 08:42:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 34, total time 819.33, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 08:46:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [35][500/1737]  
+[04/02 08:46:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4254 	cls_loss 0.2228 	com_loss 0.1983 	keep_loss 0.0939 	loss 0.9404 	
+[04/02 08:50:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [35][1000/1737]  
+[04/02 08:50:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4270 	cls_loss 0.2221 	com_loss 0.1974 	keep_loss 0.0937 	loss 0.9402 	
+[04/02 08:54:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [35][1500/1737]  
+[04/02 08:54:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4261 	cls_loss 0.2221 	com_loss 0.1969 	keep_loss 0.0942 	loss 0.9393 	
+[04/02 08:56:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 35, total time 815.77, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 09:00:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [36][500/1737]  
+[04/02 09:00:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4298 	cls_loss 0.2194 	com_loss 0.1927 	keep_loss 0.0927 	loss 0.9346 	
+[04/02 09:04:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [36][1000/1737]  
+[04/02 09:04:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4279 	cls_loss 0.2197 	com_loss 0.1933 	keep_loss 0.0929 	loss 0.9338 	
+[04/02 09:08:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [36][1500/1737]  
+[04/02 09:08:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4255 	cls_loss 0.2185 	com_loss 0.1924 	keep_loss 0.0927 	loss 0.9291 	
+[04/02 09:09:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 36, total time 824.99, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 09:10:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [36]  
+[04/02 09:10:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.51704
+[04/02 09:10:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.40892
+[04/02 09:14:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [37][500/1737]  
+[04/02 09:14:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4206 	cls_loss 0.2138 	com_loss 0.1884 	keep_loss 0.0920 	loss 0.9148 	
+[04/02 09:18:30] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [37][1000/1737]  
+[04/02 09:18:30] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4224 	cls_loss 0.2159 	com_loss 0.1902 	keep_loss 0.0925 	loss 0.9210 	
+[04/02 09:22:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [37][1500/1737]  
+[04/02 09:22:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4225 	cls_loss 0.2162 	com_loss 0.1904 	keep_loss 0.0927 	loss 0.9217 	
+[04/02 09:24:14] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 37, total time 813.33, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 09:28:11] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [38][500/1737]  
+[04/02 09:28:11] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4237 	cls_loss 0.2183 	com_loss 0.1902 	keep_loss 0.0931 	loss 0.9253 	
+[04/02 09:32:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [38][1000/1737]  
+[04/02 09:32:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4227 	cls_loss 0.2173 	com_loss 0.1898 	keep_loss 0.0924 	loss 0.9221 	
+[04/02 09:36:02] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [38][1500/1737]  
+[04/02 09:36:02] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4234 	cls_loss 0.2190 	com_loss 0.1925 	keep_loss 0.0933 	loss 0.9281 	
+[04/02 09:37:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 38, total time 818.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 09:41:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [39][500/1737]  
+[04/02 09:41:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4160 	cls_loss 0.2134 	com_loss 0.1872 	keep_loss 0.0914 	loss 0.9080 	
+[04/02 09:45:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [39][1000/1737]  
+[04/02 09:45:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4173 	cls_loss 0.2136 	com_loss 0.1881 	keep_loss 0.0919 	loss 0.9109 	
+[04/02 09:49:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [39][1500/1737]  
+[04/02 09:49:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4181 	cls_loss 0.2144 	com_loss 0.1881 	keep_loss 0.0917 	loss 0.9122 	
+[04/02 09:51:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 39, total time 812.83, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 09:52:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [39]  
+[04/02 09:52:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.51378
+[04/02 09:52:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.40818
+[04/02 09:56:06] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [40][500/1737]  
+[04/02 09:56:06] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4167 	cls_loss 0.2140 	com_loss 0.1871 	keep_loss 0.0910 	loss 0.9088 	
+[04/02 09:59:57] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [40][1000/1737]  
+[04/02 09:59:57] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4205 	cls_loss 0.2153 	com_loss 0.1888 	keep_loss 0.0912 	loss 0.9158 	
+[04/02 10:03:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [40][1500/1737]  
+[04/02 10:03:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4216 	cls_loss 0.2149 	com_loss 0.1882 	keep_loss 0.0911 	loss 0.9158 	
+[04/02 10:05:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 40, total time 804.61, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 10:09:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [41][500/1737]  
+[04/02 10:09:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4162 	cls_loss 0.2122 	com_loss 0.1868 	keep_loss 0.0891 	loss 0.9044 	
+[04/02 10:13:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [41][1000/1737]  
+[04/02 10:13:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4192 	cls_loss 0.2140 	com_loss 0.1882 	keep_loss 0.0907 	loss 0.9121 	
+[04/02 10:17:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [41][1500/1737]  
+[04/02 10:17:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4198 	cls_loss 0.2145 	com_loss 0.1886 	keep_loss 0.0910 	loss 0.9140 	
+[04/02 10:19:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 41, total time 817.20, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 10:23:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [42][500/1737]  
+[04/02 10:23:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4138 	cls_loss 0.2105 	com_loss 0.1849 	keep_loss 0.0899 	loss 0.8991 	
+[04/02 10:27:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [42][1000/1737]  
+[04/02 10:27:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4167 	cls_loss 0.2114 	com_loss 0.1854 	keep_loss 0.0902 	loss 0.9037 	
+[04/02 10:30:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [42][1500/1737]  
+[04/02 10:30:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4190 	cls_loss 0.2128 	com_loss 0.1858 	keep_loss 0.0906 	loss 0.9081 	
+[04/02 10:32:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 42, total time 810.22, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 10:33:30] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [42]  
+[04/02 10:33:30] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.51767
+[04/02 10:33:30] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.41597
+[04/02 10:37:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [43][500/1737]  
+[04/02 10:37:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4205 	cls_loss 0.2140 	com_loss 0.1854 	keep_loss 0.0903 	loss 0.9102 	
+[04/02 10:41:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [43][1000/1737]  
+[04/02 10:41:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4181 	cls_loss 0.2128 	com_loss 0.1855 	keep_loss 0.0898 	loss 0.9061 	
+[04/02 10:45:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [43][1500/1737]  
+[04/02 10:45:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4170 	cls_loss 0.2121 	com_loss 0.1855 	keep_loss 0.0901 	loss 0.9047 	
+[04/02 10:46:56] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 43, total time 806.05, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 10:51:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [44][500/1737]  
+[04/02 10:51:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4212 	cls_loss 0.2090 	com_loss 0.1838 	keep_loss 0.0898 	loss 0.9038 	
+[04/02 10:54:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [44][1000/1737]  
+[04/02 10:54:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4164 	cls_loss 0.2086 	com_loss 0.1817 	keep_loss 0.0890 	loss 0.8957 	
+[04/02 10:58:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [44][1500/1737]  
+[04/02 10:58:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4153 	cls_loss 0.2096 	com_loss 0.1833 	keep_loss 0.0896 	loss 0.8977 	
+[04/02 11:00:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 44, total time 827.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 11:04:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [45][500/1737]  
+[04/02 11:04:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4134 	cls_loss 0.2081 	com_loss 0.1816 	keep_loss 0.0893 	loss 0.8923 	
+[04/02 11:08:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [45][1000/1737]  
+[04/02 11:08:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4149 	cls_loss 0.2103 	com_loss 0.1836 	keep_loss 0.0896 	loss 0.8984 	
+[04/02 11:12:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [45][1500/1737]  
+[04/02 11:12:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4145 	cls_loss 0.2103 	com_loss 0.1838 	keep_loss 0.0895 	loss 0.8981 	
+[04/02 11:14:02] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 45, total time 799.45, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 11:14:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [45]  
+[04/02 11:14:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.52230
+[04/02 11:14:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.42669
+[04/02 11:18:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [46][500/1737]  
+[04/02 11:18:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4171 	cls_loss 0.2078 	com_loss 0.1800 	keep_loss 0.0884 	loss 0.8932 	
+[04/02 11:22:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [46][1000/1737]  
+[04/02 11:22:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4154 	cls_loss 0.2084 	com_loss 0.1817 	keep_loss 0.0884 	loss 0.8939 	
+[04/02 11:26:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [46][1500/1737]  
+[04/02 11:26:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4154 	cls_loss 0.2084 	com_loss 0.1818 	keep_loss 0.0883 	loss 0.8939 	
+[04/02 11:28:17] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 46, total time 808.27, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 11:32:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [47][500/1737]  
+[04/02 11:32:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4150 	cls_loss 0.2061 	com_loss 0.1781 	keep_loss 0.0872 	loss 0.8863 	
+[04/02 11:36:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [47][1000/1737]  
+[04/02 11:36:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4166 	cls_loss 0.2069 	com_loss 0.1790 	keep_loss 0.0876 	loss 0.8901 	
+[04/02 11:40:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [47][1500/1737]  
+[04/02 11:40:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4142 	cls_loss 0.2067 	com_loss 0.1792 	keep_loss 0.0882 	loss 0.8882 	
+[04/02 11:41:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 47, total time 815.48, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 11:45:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [48][500/1737]  
+[04/02 11:45:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4100 	cls_loss 0.2066 	com_loss 0.1801 	keep_loss 0.0885 	loss 0.8852 	
+[04/02 11:49:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [48][1000/1737]  
+[04/02 11:49:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4134 	cls_loss 0.2082 	com_loss 0.1819 	keep_loss 0.0886 	loss 0.8920 	
+[04/02 11:53:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [48][1500/1737]  
+[04/02 11:53:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4141 	cls_loss 0.2090 	com_loss 0.1831 	keep_loss 0.0886 	loss 0.8947 	
+[04/02 11:55:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 48, total time 808.55, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 11:56:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [48]  
+[04/02 11:56:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.52587
+[04/02 11:56:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.42280
+[04/02 12:00:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [49][500/1737]  
+[04/02 12:00:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4127 	cls_loss 0.2042 	com_loss 0.1775 	keep_loss 0.0864 	loss 0.8808 	
+[04/02 12:03:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [49][1000/1737]  
+[04/02 12:03:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4139 	cls_loss 0.2066 	com_loss 0.1801 	keep_loss 0.0877 	loss 0.8883 	
+[04/02 12:07:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [49][1500/1737]  
+[04/02 12:07:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4136 	cls_loss 0.2065 	com_loss 0.1795 	keep_loss 0.0877 	loss 0.8874 	
+[04/02 12:09:35] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 49, total time 808.38, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 12:13:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [50][500/1737]  
+[04/02 12:13:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4126 	cls_loss 0.2015 	com_loss 0.1763 	keep_loss 0.0882 	loss 0.8786 	
+[04/02 12:17:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [50][1000/1737]  
+[04/02 12:17:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4107 	cls_loss 0.2033 	com_loss 0.1782 	keep_loss 0.0880 	loss 0.8802 	
+[04/02 12:21:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [50][1500/1737]  
+[04/02 12:21:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4108 	cls_loss 0.2041 	com_loss 0.1781 	keep_loss 0.0878 	loss 0.8808 	
+[04/02 12:23:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 50, total time 825.69, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/02 12:27:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [51][500/1737]  
+[04/02 12:27:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4102 	cls_loss 0.2035 	com_loss 0.1767 	keep_loss 0.0848 	loss 0.8752 	
+[04/02 12:31:14] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [51][1000/1737]  
+[04/02 12:31:14] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4093 	cls_loss 0.2027 	com_loss 0.1756 	keep_loss 0.0859 	loss 0.8735 	
+[04/02 12:35:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [51][1500/1737]  
+[04/02 12:35:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4106 	cls_loss 0.2039 	com_loss 0.1770 	keep_loss 0.0864 	loss 0.8779 	
+[04/02 12:36:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 51, total time 813.77, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 12:37:40] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [51]  
+[04/02 12:37:40] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.52146
+[04/02 12:37:40] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.41586
+[04/02 12:41:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [52][500/1737]  
+[04/02 12:41:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3980 	cls_loss 0.1974 	com_loss 0.1706 	keep_loss 0.0850 	loss 0.8510 	
+[04/02 12:45:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [52][1000/1737]  
+[04/02 12:45:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.4002 	cls_loss 0.1963 	com_loss 0.1691 	keep_loss 0.0841 	loss 0.8497 	
+[04/02 12:49:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [52][1500/1737]  
+[04/02 12:49:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3999 	cls_loss 0.1953 	com_loss 0.1679 	keep_loss 0.0832 	loss 0.8463 	
+[04/02 12:51:08] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 52, total time 808.59, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 12:55:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [53][500/1737]  
+[04/02 12:55:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3947 	cls_loss 0.1901 	com_loss 0.1623 	keep_loss 0.0814 	loss 0.8286 	
+[04/02 12:58:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [53][1000/1737]  
+[04/02 12:58:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3989 	cls_loss 0.1899 	com_loss 0.1621 	keep_loss 0.0814 	loss 0.8324 	
+[04/02 13:02:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [53][1500/1737]  
+[04/02 13:02:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3966 	cls_loss 0.1905 	com_loss 0.1627 	keep_loss 0.0813 	loss 0.8311 	
+[04/02 13:04:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 53, total time 808.13, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 13:08:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [54][500/1737]  
+[04/02 13:08:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3951 	cls_loss 0.1902 	com_loss 0.1621 	keep_loss 0.0801 	loss 0.8274 	
+[04/02 13:12:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [54][1000/1737]  
+[04/02 13:12:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3913 	cls_loss 0.1879 	com_loss 0.1603 	keep_loss 0.0803 	loss 0.8198 	
+[04/02 13:16:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [54][1500/1737]  
+[04/02 13:16:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3915 	cls_loss 0.1874 	com_loss 0.1602 	keep_loss 0.0803 	loss 0.8194 	
+[04/02 13:18:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 54, total time 816.97, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 13:18:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [54]  
+[04/02 13:18:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54186
+[04/02 13:18:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44079
+[04/02 13:22:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [55][500/1737]  
+[04/02 13:22:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3895 	cls_loss 0.1871 	com_loss 0.1595 	keep_loss 0.0798 	loss 0.8159 	
+[04/02 13:26:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [55][1000/1737]  
+[04/02 13:26:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3909 	cls_loss 0.1875 	com_loss 0.1591 	keep_loss 0.0800 	loss 0.8175 	
+[04/02 13:30:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [55][1500/1737]  
+[04/02 13:30:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3919 	cls_loss 0.1863 	com_loss 0.1582 	keep_loss 0.0797 	loss 0.8161 	
+[04/02 13:32:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 55, total time 809.71, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 13:36:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [56][500/1737]  
+[04/02 13:36:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3950 	cls_loss 0.1835 	com_loss 0.1573 	keep_loss 0.0792 	loss 0.8150 	
+[04/02 13:40:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [56][1000/1737]  
+[04/02 13:40:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3926 	cls_loss 0.1858 	com_loss 0.1590 	keep_loss 0.0793 	loss 0.8168 	
+[04/02 13:44:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [56][1500/1737]  
+[04/02 13:44:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3917 	cls_loss 0.1856 	com_loss 0.1586 	keep_loss 0.0794 	loss 0.8154 	
+[04/02 13:45:56] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 56, total time 807.96, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 13:49:50] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [57][500/1737]  
+[04/02 13:49:50] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3911 	cls_loss 0.1835 	com_loss 0.1556 	keep_loss 0.0774 	loss 0.8077 	
+[04/02 13:53:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [57][1000/1737]  
+[04/02 13:53:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3930 	cls_loss 0.1838 	com_loss 0.1561 	keep_loss 0.0781 	loss 0.8110 	
+[04/02 13:57:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [57][1500/1737]  
+[04/02 13:57:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3954 	cls_loss 0.1848 	com_loss 0.1566 	keep_loss 0.0785 	loss 0.8153 	
+[04/02 13:59:35] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 57, total time 818.74, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 14:00:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [57]  
+[04/02 14:00:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54459
+[04/02 14:00:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44142
+[04/02 14:04:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [58][500/1737]  
+[04/02 14:04:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3911 	cls_loss 0.1844 	com_loss 0.1572 	keep_loss 0.0789 	loss 0.8116 	
+[04/02 14:08:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [58][1000/1737]  
+[04/02 14:08:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3916 	cls_loss 0.1849 	com_loss 0.1573 	keep_loss 0.0788 	loss 0.8127 	
+[04/02 14:11:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [58][1500/1737]  
+[04/02 14:11:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3911 	cls_loss 0.1848 	com_loss 0.1572 	keep_loss 0.0784 	loss 0.8116 	
+[04/02 14:13:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 58, total time 808.70, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 14:17:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [59][500/1737]  
+[04/02 14:17:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3987 	cls_loss 0.1850 	com_loss 0.1562 	keep_loss 0.0790 	loss 0.8189 	
+[04/02 14:21:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [59][1000/1737]  
+[04/02 14:21:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3946 	cls_loss 0.1847 	com_loss 0.1565 	keep_loss 0.0782 	loss 0.8140 	
+[04/02 14:25:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [59][1500/1737]  
+[04/02 14:25:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3926 	cls_loss 0.1832 	com_loss 0.1550 	keep_loss 0.0778 	loss 0.8086 	
+[04/02 14:27:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 59, total time 819.32, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 14:31:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [60][500/1737]  
+[04/02 14:31:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3889 	cls_loss 0.1821 	com_loss 0.1534 	keep_loss 0.0781 	loss 0.8026 	
+[04/02 14:35:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [60][1000/1737]  
+[04/02 14:35:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3879 	cls_loss 0.1818 	com_loss 0.1542 	keep_loss 0.0777 	loss 0.8016 	
+[04/02 14:39:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [60][1500/1737]  
+[04/02 14:39:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3896 	cls_loss 0.1823 	com_loss 0.1543 	keep_loss 0.0774 	loss 0.8036 	
+[04/02 14:41:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 60, total time 827.33, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 14:42:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [60]  
+[04/02 14:42:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54796
+[04/02 14:42:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44899
+[04/02 14:45:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [61][500/1737]  
+[04/02 14:45:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3845 	cls_loss 0.1797 	com_loss 0.1533 	keep_loss 0.0767 	loss 0.7942 	
+[04/02 14:49:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [61][1000/1737]  
+[04/02 14:49:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3886 	cls_loss 0.1806 	com_loss 0.1538 	keep_loss 0.0769 	loss 0.8000 	
+[04/02 14:53:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [61][1500/1737]  
+[04/02 14:53:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3901 	cls_loss 0.1815 	com_loss 0.1547 	keep_loss 0.0771 	loss 0.8034 	
+[04/02 14:55:30] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 61, total time 809.14, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 14:59:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [62][500/1737]  
+[04/02 14:59:26] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3866 	cls_loss 0.1806 	com_loss 0.1540 	keep_loss 0.0773 	loss 0.7986 	
+[04/02 15:03:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [62][1000/1737]  
+[04/02 15:03:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3871 	cls_loss 0.1803 	com_loss 0.1530 	keep_loss 0.0774 	loss 0.7978 	
+[04/02 15:07:11] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [62][1500/1737]  
+[04/02 15:07:11] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3876 	cls_loss 0.1805 	com_loss 0.1532 	keep_loss 0.0768 	loss 0.7980 	
+[04/02 15:09:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 62, total time 814.35, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 15:13:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [63][500/1737]  
+[04/02 15:13:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3884 	cls_loss 0.1796 	com_loss 0.1522 	keep_loss 0.0768 	loss 0.7971 	
+[04/02 15:16:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [63][1000/1737]  
+[04/02 15:16:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3896 	cls_loss 0.1795 	com_loss 0.1516 	keep_loss 0.0764 	loss 0.7972 	
+[04/02 15:20:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [63][1500/1737]  
+[04/02 15:20:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3892 	cls_loss 0.1794 	com_loss 0.1517 	keep_loss 0.0762 	loss 0.7965 	
+[04/02 15:22:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 63, total time 811.44, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 15:23:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [63]  
+[04/02 15:23:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54691
+[04/02 15:23:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44678
+[04/02 15:27:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [64][500/1737]  
+[04/02 15:27:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3918 	cls_loss 0.1797 	com_loss 0.1528 	keep_loss 0.0763 	loss 0.8006 	
+[04/02 15:31:11] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [64][1000/1737]  
+[04/02 15:31:11] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3887 	cls_loss 0.1791 	com_loss 0.1519 	keep_loss 0.0760 	loss 0.7957 	
+[04/02 15:35:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [64][1500/1737]  
+[04/02 15:35:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3904 	cls_loss 0.1796 	com_loss 0.1527 	keep_loss 0.0762 	loss 0.7988 	
+[04/02 15:36:56] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 64, total time 813.84, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 15:40:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [65][500/1737]  
+[04/02 15:40:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3913 	cls_loss 0.1785 	com_loss 0.1496 	keep_loss 0.0763 	loss 0.7957 	
+[04/02 15:44:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [65][1000/1737]  
+[04/02 15:44:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3881 	cls_loss 0.1793 	com_loss 0.1509 	keep_loss 0.0765 	loss 0.7948 	
+[04/02 15:48:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [65][1500/1737]  
+[04/02 15:48:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3860 	cls_loss 0.1792 	com_loss 0.1512 	keep_loss 0.0767 	loss 0.7932 	
+[04/02 15:50:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 65, total time 812.81, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 15:54:37] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [66][500/1737]  
+[04/02 15:54:37] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3844 	cls_loss 0.1782 	com_loss 0.1507 	keep_loss 0.0754 	loss 0.7888 	
+[04/02 15:58:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [66][1000/1737]  
+[04/02 15:58:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3901 	cls_loss 0.1790 	com_loss 0.1505 	keep_loss 0.0760 	loss 0.7956 	
+[04/02 16:02:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [66][1500/1737]  
+[04/02 16:02:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3895 	cls_loss 0.1796 	com_loss 0.1513 	keep_loss 0.0763 	loss 0.7968 	
+[04/02 16:04:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 66, total time 834.27, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 16:05:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [66]  
+[04/02 16:05:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54649
+[04/02 16:05:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44605
+[04/02 16:09:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [67][500/1737]  
+[04/02 16:09:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3871 	cls_loss 0.1767 	com_loss 0.1504 	keep_loss 0.0738 	loss 0.7881 	
+[04/02 16:13:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [67][1000/1737]  
+[04/02 16:13:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3885 	cls_loss 0.1783 	com_loss 0.1514 	keep_loss 0.0755 	loss 0.7937 	
+[04/02 16:16:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [67][1500/1737]  
+[04/02 16:16:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3876 	cls_loss 0.1780 	com_loss 0.1507 	keep_loss 0.0755 	loss 0.7918 	
+[04/02 16:18:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 67, total time 821.98, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 16:23:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [68][500/1737]  
+[04/02 16:23:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3864 	cls_loss 0.1786 	com_loss 0.1514 	keep_loss 0.0754 	loss 0.7918 	
+[04/02 16:26:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [68][1000/1737]  
+[04/02 16:26:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3876 	cls_loss 0.1776 	com_loss 0.1494 	keep_loss 0.0754 	loss 0.7901 	
+[04/02 16:30:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [68][1500/1737]  
+[04/02 16:30:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3845 	cls_loss 0.1769 	com_loss 0.1496 	keep_loss 0.0754 	loss 0.7864 	
+[04/02 16:32:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 68, total time 825.17, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 16:36:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [69][500/1737]  
+[04/02 16:36:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3876 	cls_loss 0.1784 	com_loss 0.1491 	keep_loss 0.0752 	loss 0.7903 	
+[04/02 16:40:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [69][1000/1737]  
+[04/02 16:40:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3852 	cls_loss 0.1770 	com_loss 0.1480 	keep_loss 0.0750 	loss 0.7852 	
+[04/02 16:44:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [69][1500/1737]  
+[04/02 16:44:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3861 	cls_loss 0.1778 	com_loss 0.1489 	keep_loss 0.0752 	loss 0.7880 	
+[04/02 16:46:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 69, total time 821.74, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 16:47:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [69]  
+[04/02 16:47:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54428
+[04/02 16:47:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44562
+[04/02 16:50:57] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [70][500/1737]  
+[04/02 16:50:57] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3911 	cls_loss 0.1786 	com_loss 0.1500 	keep_loss 0.0741 	loss 0.7938 	
+[04/02 16:54:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [70][1000/1737]  
+[04/02 16:54:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3899 	cls_loss 0.1787 	com_loss 0.1505 	keep_loss 0.0745 	loss 0.7937 	
+[04/02 16:58:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [70][1500/1737]  
+[04/02 16:58:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3880 	cls_loss 0.1785 	com_loss 0.1503 	keep_loss 0.0751 	loss 0.7918 	
+[04/02 17:00:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 70, total time 819.38, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 17:04:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [71][500/1737]  
+[04/02 17:04:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3882 	cls_loss 0.1756 	com_loss 0.1484 	keep_loss 0.0760 	loss 0.7882 	
+[04/02 17:08:35] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [71][1000/1737]  
+[04/02 17:08:35] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3858 	cls_loss 0.1760 	com_loss 0.1489 	keep_loss 0.0755 	loss 0.7861 	
+[04/02 17:12:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [71][1500/1737]  
+[04/02 17:12:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3871 	cls_loss 0.1777 	com_loss 0.1501 	keep_loss 0.0755 	loss 0.7905 	
+[04/02 17:14:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 71, total time 815.85, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 17:18:17] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [72][500/1737]  
+[04/02 17:18:17] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3923 	cls_loss 0.1767 	com_loss 0.1478 	keep_loss 0.0740 	loss 0.7908 	
+[04/02 17:22:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [72][1000/1737]  
+[04/02 17:22:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3886 	cls_loss 0.1770 	com_loss 0.1488 	keep_loss 0.0744 	loss 0.7888 	
+[04/02 17:26:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [72][1500/1737]  
+[04/02 17:26:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3872 	cls_loss 0.1771 	com_loss 0.1492 	keep_loss 0.0746 	loss 0.7881 	
+[04/02 17:27:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 72, total time 814.61, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 17:28:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [72]  
+[04/02 17:28:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54828
+[04/02 17:28:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44752
+[04/02 17:32:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [73][500/1737]  
+[04/02 17:32:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3877 	cls_loss 0.1756 	com_loss 0.1469 	keep_loss 0.0746 	loss 0.7848 	
+[04/02 17:36:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [73][1000/1737]  
+[04/02 17:36:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3896 	cls_loss 0.1772 	com_loss 0.1481 	keep_loss 0.0747 	loss 0.7896 	
+[04/02 17:40:20] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [73][1500/1737]  
+[04/02 17:40:20] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3887 	cls_loss 0.1770 	com_loss 0.1484 	keep_loss 0.0751 	loss 0.7892 	
+[04/02 17:42:11] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 73, total time 812.95, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 17:46:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [74][500/1737]  
+[04/02 17:46:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3850 	cls_loss 0.1760 	com_loss 0.1498 	keep_loss 0.0750 	loss 0.7857 	
+[04/02 17:50:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [74][1000/1737]  
+[04/02 17:50:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3845 	cls_loss 0.1773 	com_loss 0.1501 	keep_loss 0.0752 	loss 0.7871 	
+[04/02 17:53:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [74][1500/1737]  
+[04/02 17:53:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3856 	cls_loss 0.1774 	com_loss 0.1503 	keep_loss 0.0750 	loss 0.7883 	
+[04/02 17:55:50] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 74, total time 819.12, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 17:59:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [75][500/1737]  
+[04/02 17:59:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3858 	cls_loss 0.1786 	com_loss 0.1502 	keep_loss 0.0745 	loss 0.7892 	
+[04/02 18:03:35] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [75][1000/1737]  
+[04/02 18:03:35] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3875 	cls_loss 0.1766 	com_loss 0.1486 	keep_loss 0.0744 	loss 0.7871 	
+[04/02 18:07:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [75][1500/1737]  
+[04/02 18:07:24] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3891 	cls_loss 0.1775 	com_loss 0.1497 	keep_loss 0.0746 	loss 0.7909 	
+[04/02 18:09:16] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 75, total time 805.96, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/02 18:10:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [75]  
+[04/02 18:10:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54817
+[04/02 18:10:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44499
+[04/02 18:14:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [76][500/1737]  
+[04/02 18:14:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3880 	cls_loss 0.1738 	com_loss 0.1450 	keep_loss 0.0736 	loss 0.7804 	
+[04/02 18:18:06] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [76][1000/1737]  
+[04/02 18:18:06] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3878 	cls_loss 0.1743 	com_loss 0.1467 	keep_loss 0.0742 	loss 0.7830 	
+[04/02 18:21:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [76][1500/1737]  
+[04/02 18:21:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3861 	cls_loss 0.1750 	com_loss 0.1473 	keep_loss 0.0742 	loss 0.7826 	
+[04/02 18:23:50] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 76, total time 828.84, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 18:27:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [77][500/1737]  
+[04/02 18:27:48] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3844 	cls_loss 0.1720 	com_loss 0.1437 	keep_loss 0.0729 	loss 0.7731 	
+[04/02 18:31:37] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [77][1000/1737]  
+[04/02 18:31:37] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3825 	cls_loss 0.1735 	com_loss 0.1457 	keep_loss 0.0736 	loss 0.7753 	
+[04/02 18:35:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [77][1500/1737]  
+[04/02 18:35:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3818 	cls_loss 0.1742 	com_loss 0.1463 	keep_loss 0.0737 	loss 0.7759 	
+[04/02 18:37:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 77, total time 808.04, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 18:41:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [78][500/1737]  
+[04/02 18:41:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3830 	cls_loss 0.1763 	com_loss 0.1479 	keep_loss 0.0752 	loss 0.7825 	
+[04/02 18:45:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [78][1000/1737]  
+[04/02 18:45:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3827 	cls_loss 0.1742 	com_loss 0.1466 	keep_loss 0.0740 	loss 0.7775 	
+[04/02 18:49:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [78][1500/1737]  
+[04/02 18:49:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3835 	cls_loss 0.1750 	com_loss 0.1471 	keep_loss 0.0740 	loss 0.7795 	
+[04/02 18:50:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 78, total time 816.34, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 18:51:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [78]  
+[04/02 18:51:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54607
+[04/02 18:51:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44584
+[04/02 18:55:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [79][500/1737]  
+[04/02 18:55:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3810 	cls_loss 0.1730 	com_loss 0.1462 	keep_loss 0.0738 	loss 0.7740 	
+[04/02 18:59:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [79][1000/1737]  
+[04/02 18:59:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3834 	cls_loss 0.1734 	com_loss 0.1459 	keep_loss 0.0739 	loss 0.7765 	
+[04/02 19:03:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [79][1500/1737]  
+[04/02 19:03:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3822 	cls_loss 0.1730 	com_loss 0.1455 	keep_loss 0.0736 	loss 0.7742 	
+[04/02 19:05:06] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 79, total time 806.26, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 19:09:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [80][500/1737]  
+[04/02 19:09:01] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3819 	cls_loss 0.1710 	com_loss 0.1452 	keep_loss 0.0738 	loss 0.7717 	
+[04/02 19:12:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [80][1000/1737]  
+[04/02 19:12:43] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3835 	cls_loss 0.1720 	com_loss 0.1454 	keep_loss 0.0738 	loss 0.7747 	
+[04/02 19:16:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [80][1500/1737]  
+[04/02 19:16:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3842 	cls_loss 0.1730 	com_loss 0.1460 	keep_loss 0.0740 	loss 0.7772 	
+[04/02 19:18:25] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 80, total time 799.35, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 19:22:20] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [81][500/1737]  
+[04/02 19:22:20] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3888 	cls_loss 0.1728 	com_loss 0.1448 	keep_loss 0.0738 	loss 0.7803 	
+[04/02 19:26:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [81][1000/1737]  
+[04/02 19:26:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3867 	cls_loss 0.1724 	com_loss 0.1451 	keep_loss 0.0734 	loss 0.7775 	
+[04/02 19:30:02] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [81][1500/1737]  
+[04/02 19:30:02] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3838 	cls_loss 0.1721 	com_loss 0.1447 	keep_loss 0.0733 	loss 0.7739 	
+[04/02 19:31:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 81, total time 808.06, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 19:32:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [81]  
+[04/02 19:32:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54628
+[04/02 19:32:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44699
+[04/02 19:36:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [82][500/1737]  
+[04/02 19:36:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3797 	cls_loss 0.1753 	com_loss 0.1477 	keep_loss 0.0746 	loss 0.7773 	
+[04/02 19:40:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [82][1000/1737]  
+[04/02 19:40:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3842 	cls_loss 0.1754 	com_loss 0.1469 	keep_loss 0.0747 	loss 0.7812 	
+[04/02 19:44:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [82][1500/1737]  
+[04/02 19:44:27] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3850 	cls_loss 0.1747 	com_loss 0.1460 	keep_loss 0.0742 	loss 0.7798 	
+[04/02 19:46:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 82, total time 819.95, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 19:50:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [83][500/1737]  
+[04/02 19:50:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3817 	cls_loss 0.1738 	com_loss 0.1466 	keep_loss 0.0744 	loss 0.7765 	
+[04/02 19:54:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [83][1000/1737]  
+[04/02 19:54:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3842 	cls_loss 0.1737 	com_loss 0.1458 	keep_loss 0.0741 	loss 0.7778 	
+[04/02 19:57:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [83][1500/1737]  
+[04/02 19:57:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3840 	cls_loss 0.1735 	com_loss 0.1451 	keep_loss 0.0739 	loss 0.7766 	
+[04/02 19:59:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 83, total time 804.03, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 20:03:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [84][500/1737]  
+[04/02 20:03:38] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3862 	cls_loss 0.1734 	com_loss 0.1457 	keep_loss 0.0734 	loss 0.7788 	
+[04/02 20:07:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [84][1000/1737]  
+[04/02 20:07:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3855 	cls_loss 0.1725 	com_loss 0.1450 	keep_loss 0.0736 	loss 0.7766 	
+[04/02 20:11:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [84][1500/1737]  
+[04/02 20:11:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3856 	cls_loss 0.1727 	com_loss 0.1452 	keep_loss 0.0736 	loss 0.7771 	
+[04/02 20:13:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 84, total time 807.97, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 20:13:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [84]  
+[04/02 20:13:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54575
+[04/02 20:13:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44699
+[04/02 20:17:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [85][500/1737]  
+[04/02 20:17:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3854 	cls_loss 0.1695 	com_loss 0.1414 	keep_loss 0.0723 	loss 0.7686 	
+[04/02 20:21:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [85][1000/1737]  
+[04/02 20:21:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3838 	cls_loss 0.1707 	com_loss 0.1433 	keep_loss 0.0724 	loss 0.7701 	
+[04/02 20:25:47] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [85][1500/1737]  
+[04/02 20:25:47] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3838 	cls_loss 0.1716 	com_loss 0.1442 	keep_loss 0.0726 	loss 0.7721 	
+[04/02 20:27:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 85, total time 825.11, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 20:31:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [86][500/1737]  
+[04/02 20:31:36] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3802 	cls_loss 0.1723 	com_loss 0.1464 	keep_loss 0.0740 	loss 0.7729 	
+[04/02 20:35:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [86][1000/1737]  
+[04/02 20:35:28] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3804 	cls_loss 0.1720 	com_loss 0.1452 	keep_loss 0.0735 	loss 0.7711 	
+[04/02 20:39:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [86][1500/1737]  
+[04/02 20:39:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3825 	cls_loss 0.1725 	com_loss 0.1448 	keep_loss 0.0733 	loss 0.7730 	
+[04/02 20:41:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 86, total time 803.29, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 20:45:02] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [87][500/1737]  
+[04/02 20:45:02] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3824 	cls_loss 0.1701 	com_loss 0.1434 	keep_loss 0.0720 	loss 0.7680 	
+[04/02 20:48:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [87][1000/1737]  
+[04/02 20:48:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3813 	cls_loss 0.1716 	com_loss 0.1447 	keep_loss 0.0732 	loss 0.7708 	
+[04/02 20:52:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [87][1500/1737]  
+[04/02 20:52:45] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3816 	cls_loss 0.1715 	com_loss 0.1446 	keep_loss 0.0731 	loss 0.7709 	
+[04/02 20:54:35] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 87, total time 811.27, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 20:55:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [87]  
+[04/02 20:55:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54691
+[04/02 20:55:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44794
+[04/02 20:59:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [88][500/1737]  
+[04/02 20:59:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3862 	cls_loss 0.1764 	com_loss 0.1490 	keep_loss 0.0747 	loss 0.7863 	
+[04/02 21:03:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [88][1000/1737]  
+[04/02 21:03:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3859 	cls_loss 0.1741 	com_loss 0.1470 	keep_loss 0.0741 	loss 0.7812 	
+[04/02 21:06:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [88][1500/1737]  
+[04/02 21:06:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3839 	cls_loss 0.1733 	com_loss 0.1459 	keep_loss 0.0736 	loss 0.7767 	
+[04/02 21:08:51] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 88, total time 810.36, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 21:12:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [89][500/1737]  
+[04/02 21:12:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3838 	cls_loss 0.1711 	com_loss 0.1442 	keep_loss 0.0740 	loss 0.7731 	
+[04/02 21:16:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [89][1000/1737]  
+[04/02 21:16:39] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3827 	cls_loss 0.1712 	com_loss 0.1438 	keep_loss 0.0735 	loss 0.7712 	
+[04/02 21:20:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [89][1500/1737]  
+[04/02 21:20:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3820 	cls_loss 0.1720 	com_loss 0.1445 	keep_loss 0.0736 	loss 0.7721 	
+[04/02 21:22:18] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 89, total time 806.88, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 21:26:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [90][500/1737]  
+[04/02 21:26:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3852 	cls_loss 0.1704 	com_loss 0.1428 	keep_loss 0.0727 	loss 0.7711 	
+[04/02 21:30:08] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [90][1000/1737]  
+[04/02 21:30:08] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3842 	cls_loss 0.1715 	com_loss 0.1441 	keep_loss 0.0728 	loss 0.7726 	
+[04/02 21:34:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [90][1500/1737]  
+[04/02 21:34:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3835 	cls_loss 0.1724 	com_loss 0.1455 	keep_loss 0.0736 	loss 0.7751 	
+[04/02 21:35:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 90, total time 820.47, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 21:36:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [90]  
+[04/02 21:36:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54554
+[04/02 21:36:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44710
+[04/02 21:40:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [91][500/1737]  
+[04/02 21:40:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3874 	cls_loss 0.1738 	com_loss 0.1456 	keep_loss 0.0738 	loss 0.7805 	
+[04/02 21:44:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [91][1000/1737]  
+[04/02 21:44:31] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3873 	cls_loss 0.1731 	com_loss 0.1448 	keep_loss 0.0734 	loss 0.7786 	
+[04/02 21:48:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [91][1500/1737]  
+[04/02 21:48:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3870 	cls_loss 0.1726 	com_loss 0.1442 	keep_loss 0.0734 	loss 0.7771 	
+[04/02 21:50:12] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 91, total time 808.59, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 21:54:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [92][500/1737]  
+[04/02 21:54:09] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3856 	cls_loss 0.1735 	com_loss 0.1450 	keep_loss 0.0740 	loss 0.7782 	
+[04/02 21:58:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [92][1000/1737]  
+[04/02 21:58:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3833 	cls_loss 0.1733 	com_loss 0.1447 	keep_loss 0.0739 	loss 0.7752 	
+[04/02 22:01:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [92][1500/1737]  
+[04/02 22:01:55] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3812 	cls_loss 0.1736 	com_loss 0.1452 	keep_loss 0.0739 	loss 0.7739 	
+[04/02 22:03:46] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 92, total time 813.69, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 22:07:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [93][500/1737]  
+[04/02 22:07:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3862 	cls_loss 0.1721 	com_loss 0.1445 	keep_loss 0.0725 	loss 0.7753 	
+[04/02 22:11:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [93][1000/1737]  
+[04/02 22:11:33] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3823 	cls_loss 0.1722 	com_loss 0.1437 	keep_loss 0.0731 	loss 0.7713 	
+[04/02 22:15:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [93][1500/1737]  
+[04/02 22:15:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3833 	cls_loss 0.1725 	com_loss 0.1441 	keep_loss 0.0732 	loss 0.7731 	
+[04/02 22:17:20] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 93, total time 814.12, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 22:18:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [93]  
+[04/02 22:18:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54638
+[04/02 22:18:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44931
+[04/02 22:22:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [94][500/1737]  
+[04/02 22:22:04] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3754 	cls_loss 0.1711 	com_loss 0.1453 	keep_loss 0.0739 	loss 0.7658 	
+[04/02 22:25:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [94][1000/1737]  
+[04/02 22:25:53] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3791 	cls_loss 0.1707 	com_loss 0.1438 	keep_loss 0.0731 	loss 0.7667 	
+[04/02 22:29:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [94][1500/1737]  
+[04/02 22:29:49] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3804 	cls_loss 0.1704 	com_loss 0.1434 	keep_loss 0.0730 	loss 0.7672 	
+[04/02 22:31:41] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 94, total time 815.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 22:35:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [95][500/1737]  
+[04/02 22:35:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3854 	cls_loss 0.1721 	com_loss 0.1454 	keep_loss 0.0729 	loss 0.7758 	
+[04/02 22:39:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [95][1000/1737]  
+[04/02 22:39:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3828 	cls_loss 0.1715 	com_loss 0.1435 	keep_loss 0.0730 	loss 0.7707 	
+[04/02 22:43:14] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [95][1500/1737]  
+[04/02 22:43:14] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3826 	cls_loss 0.1710 	com_loss 0.1434 	keep_loss 0.0731 	loss 0.7701 	
+[04/02 22:45:07] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 95, total time 806.02, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 22:49:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [96][500/1737]  
+[04/02 22:49:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3799 	cls_loss 0.1675 	com_loss 0.1403 	keep_loss 0.0722 	loss 0.7598 	
+[04/02 22:52:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [96][1000/1737]  
+[04/02 22:52:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3827 	cls_loss 0.1705 	com_loss 0.1422 	keep_loss 0.0731 	loss 0.7685 	
+[04/02 22:56:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [96][1500/1737]  
+[04/02 22:56:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3831 	cls_loss 0.1712 	com_loss 0.1430 	keep_loss 0.0729 	loss 0.7701 	
+[04/02 22:58:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 96, total time 817.42, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 22:59:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [96]  
+[04/02 22:59:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54680
+[04/02 22:59:29] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44836
+[04/02 23:03:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [97][500/1737]  
+[04/02 23:03:21] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3806 	cls_loss 0.1709 	com_loss 0.1440 	keep_loss 0.0730 	loss 0.7685 	
+[04/02 23:07:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [97][1000/1737]  
+[04/02 23:07:13] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3831 	cls_loss 0.1710 	com_loss 0.1435 	keep_loss 0.0729 	loss 0.7706 	
+[04/02 23:11:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [97][1500/1737]  
+[04/02 23:11:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3833 	cls_loss 0.1712 	com_loss 0.1436 	keep_loss 0.0730 	loss 0.7710 	
+[04/02 23:13:03] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 97, total time 814.05, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 23:17:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [98][500/1737]  
+[04/02 23:17:00] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3866 	cls_loss 0.1723 	com_loss 0.1452 	keep_loss 0.0726 	loss 0.7767 	
+[04/02 23:20:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [98][1000/1737]  
+[04/02 23:20:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3849 	cls_loss 0.1717 	com_loss 0.1444 	keep_loss 0.0724 	loss 0.7735 	
+[04/02 23:24:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [98][1500/1737]  
+[04/02 23:24:59] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3825 	cls_loss 0.1705 	com_loss 0.1431 	keep_loss 0.0724 	loss 0.7685 	
+[04/02 23:26:52] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 98, total time 829.14, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 23:30:50] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [99][500/1737]  
+[04/02 23:30:50] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3866 	cls_loss 0.1728 	com_loss 0.1441 	keep_loss 0.0730 	loss 0.7764 	
+[04/02 23:34:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [99][1000/1737]  
+[04/02 23:34:44] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3870 	cls_loss 0.1728 	com_loss 0.1437 	keep_loss 0.0733 	loss 0.7768 	
+[04/02 23:38:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [99][1500/1737]  
+[04/02 23:38:34] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3855 	cls_loss 0.1729 	com_loss 0.1444 	keep_loss 0.0736 	loss 0.7764 	
+[04/02 23:40:23] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 99, total time 811.18, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 23:41:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Eval: [99]  
+[04/02 23:41:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.25: Top-1: 0.54659
+[04/02 23:41:10] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: 3dcnn Acc0.50: Top-1: 0.44657
+[04/02 23:45:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [100][500/1737]  
+[04/02 23:45:05] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3867 	cls_loss 0.1738 	com_loss 0.1460 	keep_loss 0.0743 	loss 0.7807 	
+[04/02 23:48:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [100][1000/1737]  
+[04/02 23:48:58] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3850 	cls_loss 0.1737 	com_loss 0.1458 	keep_loss 0.0740 	loss 0.7785 	
+[04/02 23:52:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [100][1500/1737]  
+[04/02 23:52:54] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3845 	cls_loss 0.1732 	com_loss 0.1448 	keep_loss 0.0737 	loss 0.7762 	
+[04/02 23:54:47] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 100, total time 817.74, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/02 23:58:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [101][500/1737]  
+[04/02 23:58:42] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3810 	cls_loss 0.1708 	com_loss 0.1420 	keep_loss 0.0721 	loss 0.7658 	
+[04/03 00:02:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [101][1000/1737]  
+[04/03 00:02:32] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3806 	cls_loss 0.1723 	com_loss 0.1442 	keep_loss 0.0730 	loss 0.7701 	
+[04/03 00:06:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: Train: [101][1500/1737]  
+[04/03 00:06:22] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: bbox_loss 0.3813 	cls_loss 0.1718 	com_loss 0.1441 	keep_loss 0.0732 	loss 0.7703 	
+[04/03 00:08:15] TGEA_comEA_gnd_RB_t0p10_n1200 INFO: epoch 101, total time 807.37, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010

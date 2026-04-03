@@ -1,0 +1,44 @@
+[03/30 15:42:15] test_TGEA_comEA_gnd INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/TGEA_comEA/test_TGEA_comEA_gnd/scanrefer/2026-03-30_15-42-15/config.json
+[03/30 15:42:15] test_TGEA_comEA_gnd INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 1, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 1.785714285714286e-05, 'keep_trans_lr': 1.785714285714286e-05, 'text_encoder_lr': 3.5714285714285716e-07, 'box_select_lr': 1.4285714285714287e-05, 'seg_lr': 3.5714285714285718e-06, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'checkpoint_path': '/root/lxy/TSP3D_ori/scripts/experiments/TGEA_comEA/TGEA_comEA_gnd/scanrefer/2026-03-25_21-37-35/ckpt_epoch_222.pth', 'load_optimizer': False, 'load_scheduler': False, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/TGEA_comEA/test_TGEA_comEA_gnd/scanrefer/2026-03-30_15-42-15', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': True, 'eval_train': False, 'pp_checkpoint': None, 'reduce_lr': False, 'use_seg': False, 'use_refine': True, 'use_external_attn_bi_layer': [0, 2], 'use_text_guided_external_attn_bi_layer': [0, 2], 'use_film_text_guided_external_attn_bi_layer': [0, 2], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False}
+[03/30 15:43:25] test_TGEA_comEA_gnd INFO: length of testing dataset: 9508
+[03/30 15:44:05] test_TGEA_comEA_gnd INFO: Eval: [500/9508]  
+[03/30 15:44:05] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:44:36] test_TGEA_comEA_gnd INFO: Eval: [1000/9508]  
+[03/30 15:44:36] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:45:07] test_TGEA_comEA_gnd INFO: Eval: [1500/9508]  
+[03/30 15:45:07] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:45:39] test_TGEA_comEA_gnd INFO: Eval: [2000/9508]  
+[03/30 15:45:39] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:46:12] test_TGEA_comEA_gnd INFO: Eval: [2500/9508]  
+[03/30 15:46:12] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:46:44] test_TGEA_comEA_gnd INFO: Eval: [3000/9508]  
+[03/30 15:46:44] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:47:16] test_TGEA_comEA_gnd INFO: Eval: [3500/9508]  
+[03/30 15:47:16] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:47:47] test_TGEA_comEA_gnd INFO: Eval: [4000/9508]  
+[03/30 15:47:47] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:48:16] test_TGEA_comEA_gnd INFO: Eval: [4500/9508]  
+[03/30 15:48:16] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:48:45] test_TGEA_comEA_gnd INFO: Eval: [5000/9508]  
+[03/30 15:48:45] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:49:15] test_TGEA_comEA_gnd INFO: Eval: [5500/9508]  
+[03/30 15:49:15] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:49:43] test_TGEA_comEA_gnd INFO: Eval: [6000/9508]  
+[03/30 15:49:43] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:50:16] test_TGEA_comEA_gnd INFO: Eval: [6500/9508]  
+[03/30 15:50:16] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:50:48] test_TGEA_comEA_gnd INFO: Eval: [7000/9508]  
+[03/30 15:50:48] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:51:21] test_TGEA_comEA_gnd INFO: Eval: [7500/9508]  
+[03/30 15:51:21] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:51:53] test_TGEA_comEA_gnd INFO: Eval: [8000/9508]  
+[03/30 15:51:53] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:52:25] test_TGEA_comEA_gnd INFO: Eval: [8500/9508]  
+[03/30 15:52:25] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:52:57] test_TGEA_comEA_gnd INFO: Eval: [9000/9508]  
+[03/30 15:52:57] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:53:29] test_TGEA_comEA_gnd INFO: Eval: [9500/9508]  
+[03/30 15:53:29] test_TGEA_comEA_gnd INFO: loss 0.0000 	
+[03/30 15:53:30] test_TGEA_comEA_gnd INFO: Eval: [223]  
+[03/30 15:53:30] test_TGEA_comEA_gnd INFO: 3dcnn Acc0.25: Top-1: 0.55248
+[03/30 15:53:30] test_TGEA_comEA_gnd INFO: 3dcnn Acc0.50: Top-1: 0.45057

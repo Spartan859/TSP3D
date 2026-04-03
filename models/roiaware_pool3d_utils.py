@@ -1,8 +1,36 @@
+import importlib
+import os
+import warnings
+
 import torch
 import torch.nn as nn
 from torch.autograd import Function
 
-from .pool3d import roiaware_pool3d_cuda
+
+def _select_pool3d_module():
+    override = os.getenv("POOL3D_VARIANT", "").strip().lower()
+    if override in {"4090", "rtx4090", "pool3d_4090"}:
+        module_path = ".pool3d_4090.roiaware_pool3d_cuda"
+    elif override in {"h20", "pool3d", "pool3d_h20"}:
+        module_path = ".pool3d.roiaware_pool3d_cuda"
+    else:
+        module_path = ".pool3d.roiaware_pool3d_cuda"
+        if torch.cuda.is_available():
+            device_name = torch.cuda.get_device_name(torch.cuda.current_device()).lower()
+            if "4090" in device_name:
+                module_path = ".pool3d_4090.roiaware_pool3d_cuda"
+            elif "h20" in device_name:
+                module_path = ".pool3d.roiaware_pool3d_cuda"
+            else:
+                warnings.warn(
+                    "Unknown GPU type for pool3d selection; defaulting to pool3d.",
+                    RuntimeWarning,
+                )
+
+    return importlib.import_module(module_path, package=__package__)
+
+
+roiaware_pool3d_cuda = _select_pool3d_module()
 
 
 class RoIAwarePool3dFunction(Function):

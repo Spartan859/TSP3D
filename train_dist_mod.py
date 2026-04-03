@@ -117,6 +117,8 @@ class TrainTester(BaseTrainTester):
             use_external_attn_bi_layer=args.use_external_attn_bi_layer,
             use_text_guided_external_attn_bi_layer=args.use_text_guided_external_attn_bi_layer,
             use_film_text_guided_external_attn_bi_layer=args.use_film_text_guided_external_attn_bi_layer,
+            com_threshold=args.com_threshold,
+            num_samples_com=args.num_samples_com,
             mink_conv1_stride=args.mink_conv1_stride
         )
         return model
@@ -164,7 +166,14 @@ class TrainTester(BaseTrainTester):
         # NOTE Main eval branch
         test_loader = tqdm(test_loader)
         inf_speeds, vis_back_speeds, text_back_speeds, fuiosn_speeds, head_speeds = [],[],[],[],[]
+        fps_enabled = bool(getattr(args, 'measure_fps', False))
+        fps_warmup_iters = max(int(getattr(args, 'fps_warmup_iters', 20)), 0)
+        fps_max_iters = int(getattr(args, 'fps_max_iters', -1))
+        total_fps_samples = 0
+        total_fps_time = 0.0
         for batch_idx, batch_data in enumerate(test_loader):
+            if fps_max_iters > 0 and batch_idx >= fps_max_iters:
+                break
             # note forward and compute loss
             stat_dict, end_points, inf_speed, backbone_time, detail_time  = self._main_eval_branch(     
                 batch_idx, batch_data, test_loader, model, stat_dict,
@@ -175,6 +184,10 @@ class TrainTester(BaseTrainTester):
             text_back_speeds.append(detail_time[1])
             fuiosn_speeds.append(detail_time[2])
             head_speeds.append(detail_time[3])
+            if fps_enabled and batch_idx >= fps_warmup_iters:
+                batch_size = int(batch_data['point_clouds'].shape[0])
+                total_fps_samples += batch_size
+                total_fps_time += float(inf_speed)
             if evaluator is not None:
                 for prefix in prefixes:
                     # note only consider the last layer
@@ -200,6 +213,18 @@ class TrainTester(BaseTrainTester):
             print('inf: ', np.array(inf_speeds).mean(),'vis_back_speeds: ', np.array(vis_back_speeds).mean(),
                 'text_back_speeds: ', np.array(text_back_speeds).mean(),'fuiosn_speeds: ', np.array(fuiosn_speeds).mean(),
                 'head_speeds: ', np.array(head_speeds).mean())
+            if fps_enabled:
+                if total_fps_samples > 0 and total_fps_time > 0:
+                    fps = total_fps_samples / total_fps_time
+                    avg_latency_ms = (total_fps_time / total_fps_samples) * 1000.0
+                    self.logger.info(
+                        f'FPS(single-card): {fps:.3f} | Avg latency: {avg_latency_ms:.3f} ms/sample '
+                        f'| warmup_iters={fps_warmup_iters} | measured_samples={total_fps_samples}'
+                    )
+                else:
+                    self.logger.info(
+                        'FPS(single-card): N/A (no measured samples; reduce --fps_warmup_iters or increase eval iters).'
+                    )
 
         return None
        

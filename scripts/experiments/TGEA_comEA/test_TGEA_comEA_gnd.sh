@@ -1,4 +1,5 @@
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH}"
+export PYTHONWARNINGS=default
 
 if [[ "$@" == *"-m"* ]]; then
     mode="mini"
@@ -45,7 +46,7 @@ fi
 log_dir="$(dirname "$(readlink -f "$0")")/${EXP_NAME}"
 mkdir -p "${log_dir}"
 
-NPROC_PER_NODE=4
+NPROC_PER_NODE=1
 CVD_START=0
 BASE_BS=28
 CUR_BS=1
@@ -135,7 +136,11 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --use_text_guided_external_attn_bi_layer 0 2\
     --use_film_text_guided_external_attn_bi_layer 0 2\
     --use_refine \
-    --eval
+    --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/TGEA_comEA/TGEA_comEA_gnd/scanrefer/2026-03-25_21-37-35/ckpt_epoch_222.pth \
+    --eval \
+    --measure_fps \
+    --fps_warmup_iters 20 \
+    --fps_max_iters -1
     # --use_seg \
     # --use_seg_external_self_attn \
     # --clip_norm 1.0 \

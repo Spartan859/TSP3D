@@ -1,0 +1,2 @@
+## com_trans使用EA，扫描com_threshold和num_samples_com两个超参
+scripts/experiments/TGEA_comEA/TGEA_comEA_gnd_routeB_grid.sh
