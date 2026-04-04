@@ -1,0 +1,22 @@
+[04/04 20:03:31] ori INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/FP32/ori/scanrefer/2026-04-04_20-03-28/config.json
+[04/04 20:03:31] ori INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 32, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'off', 'tf32_cudnn': 'on', 'checkpoint_path': None, 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/FP32/ori/scanrefer/2026-04-04_20-03-28', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [], 'use_text_guided_external_attn_bi_layer': [], 'use_film_text_guided_external_attn_bi_layer': [], 'use_external_attn_bi_layer0': False, 'use_text_guided_external_attn_bi_layer0': False, 'use_film_text_guided_external_attn_bi_layer0': False, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400}
+[04/04 20:10:00] ori INFO: length of training dataset: 48655
+[04/04 20:10:00] ori INFO: length of testing dataset: 9508
+[04/04 20:14:52] ori INFO: Train: [1][500/1737]  
+[04/04 20:14:52] ori INFO: bbox_loss 0.8452 	cls_loss 0.7733 	com_loss 0.5018 	keep_loss 0.2238 	loss 2.3442 	
+[04/04 20:19:16] ori INFO: Train: [1][1000/1737]  
+[04/04 20:19:16] ori INFO: bbox_loss 0.8145 	cls_loss 0.6278 	com_loss 0.4752 	keep_loss 0.2166 	loss 2.1341 	
+[04/04 20:23:46] ori INFO: Train: [1][1500/1737]  
+[04/04 20:23:46] ori INFO: bbox_loss 0.7859 	cls_loss 0.5706 	com_loss 0.4587 	keep_loss 0.2096 	loss 2.0248 	
+[04/04 20:25:52] ori INFO: epoch 1, total time 945.02, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 20:30:29] ori INFO: Train: [2][500/1737]  
+[04/04 20:30:29] ori INFO: bbox_loss 0.6736 	cls_loss 0.4381 	com_loss 0.4059 	keep_loss 0.1867 	loss 1.7044 	
+[04/04 20:34:57] ori INFO: Train: [2][1000/1737]  
+[04/04 20:34:57] ori INFO: bbox_loss 0.6619 	cls_loss 0.4299 	com_loss 0.3992 	keep_loss 0.1841 	loss 1.6751 	
+[04/04 20:39:27] ori INFO: Train: [2][1500/1737]  
+[04/04 20:39:27] ori INFO: bbox_loss 0.6516 	cls_loss 0.4223 	com_loss 0.3925 	keep_loss 0.1812 	loss 1.6475 	
+[04/04 20:41:38] ori INFO: epoch 2, total time 945.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 20:46:26] ori INFO: Train: [3][500/1737]  
+[04/04 20:46:26] ori INFO: bbox_loss 0.6007 	cls_loss 0.3842 	com_loss 0.3610 	keep_loss 0.1659 	loss 1.5117 	
+[04/04 20:51:01] ori INFO: Train: [3][1000/1737]  
+[04/04 20:51:01] ori INFO: bbox_loss 0.5929 	cls_loss 0.3794 	com_loss 0.3564 	keep_loss 0.1627 	loss 1.4914 	

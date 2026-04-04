@@ -1,0 +1,94 @@
+[04/04 13:54:54] ori INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/A100/ori/scanrefer/2026-04-04_13-54-51/config.json
+[04/04 13:54:54] ori INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 32, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'checkpoint_path': None, 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/A100/ori/scanrefer/2026-04-04_13-54-51', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [], 'use_text_guided_external_attn_bi_layer': [], 'use_film_text_guided_external_attn_bi_layer': [], 'use_external_attn_bi_layer0': False, 'use_text_guided_external_attn_bi_layer0': False, 'use_film_text_guided_external_attn_bi_layer0': False, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400}
+[04/04 14:00:37] ori INFO: length of training dataset: 48655
+[04/04 14:00:37] ori INFO: length of testing dataset: 9508
+[04/04 14:05:47] ori INFO: Train: [1][500/1737]  
+[04/04 14:05:47] ori INFO: bbox_loss 0.8473 	cls_loss 0.7658 	com_loss 0.4847 	keep_loss 0.2252 	loss 2.3231 	
+[04/04 14:09:58] ori INFO: Train: [1][1000/1737]  
+[04/04 14:09:58] ori INFO: bbox_loss 0.8120 	cls_loss 0.6248 	com_loss 0.4657 	keep_loss 0.2163 	loss 2.1188 	
+[04/04 14:14:15] ori INFO: Train: [1][1500/1737]  
+[04/04 14:14:15] ori INFO: bbox_loss 0.7788 	cls_loss 0.5658 	com_loss 0.4498 	keep_loss 0.2072 	loss 2.0016 	
+[04/04 14:16:17] ori INFO: epoch 1, total time 898.15, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 14:20:45] ori INFO: Train: [2][500/1737]  
+[04/04 14:20:45] ori INFO: bbox_loss 0.6555 	cls_loss 0.4275 	com_loss 0.3977 	keep_loss 0.1794 	loss 1.6601 	
+[04/04 14:24:59] ori INFO: Train: [2][1000/1737]  
+[04/04 14:24:59] ori INFO: bbox_loss 0.6403 	cls_loss 0.4166 	com_loss 0.3879 	keep_loss 0.1751 	loss 1.6198 	
+[04/04 14:29:17] ori INFO: Train: [2][1500/1737]  
+[04/04 14:29:17] ori INFO: bbox_loss 0.6309 	cls_loss 0.4079 	com_loss 0.3803 	keep_loss 0.1717 	loss 1.5908 	
+[04/04 14:31:23] ori INFO: epoch 2, total time 905.97, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 14:35:56] ori INFO: Train: [3][500/1737]  
+[04/04 14:35:56] ori INFO: bbox_loss 0.5915 	cls_loss 0.3752 	com_loss 0.3536 	keep_loss 0.1581 	loss 1.4785 	
+[04/04 14:40:11] ori INFO: Train: [3][1000/1737]  
+[04/04 14:40:11] ori INFO: bbox_loss 0.5856 	cls_loss 0.3692 	com_loss 0.3496 	keep_loss 0.1552 	loss 1.4595 	
+[04/04 14:44:25] ori INFO: Train: [3][1500/1737]  
+[04/04 14:44:25] ori INFO: bbox_loss 0.5803 	cls_loss 0.3651 	com_loss 0.3468 	keep_loss 0.1531 	loss 1.4453 	
+[04/04 14:46:26] ori INFO: epoch 3, total time 903.20, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 14:47:32] ori INFO: Eval: [3]  
+[04/04 14:47:32] ori INFO: 3dcnn Acc0.25: Top-1: 0.33035
+[04/04 14:47:32] ori INFO: 3dcnn Acc0.50: Top-1: 0.23717
+[04/04 14:51:59] ori INFO: Train: [4][500/1737]  
+[04/04 14:51:59] ori INFO: bbox_loss 0.5539 	cls_loss 0.3414 	com_loss 0.3278 	keep_loss 0.1436 	loss 1.3666 	
+[04/04 14:56:12] ori INFO: Train: [4][1000/1737]  
+[04/04 14:56:12] ori INFO: bbox_loss 0.5551 	cls_loss 0.3400 	com_loss 0.3261 	keep_loss 0.1417 	loss 1.3629 	
+[04/04 15:00:30] ori INFO: Train: [4][1500/1737]  
+[04/04 15:00:30] ori INFO: bbox_loss 0.5530 	cls_loss 0.3390 	com_loss 0.3261 	keep_loss 0.1411 	loss 1.3592 	
+[04/04 15:02:33] ori INFO: epoch 4, total time 901.10, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 15:07:03] ori INFO: Train: [5][500/1737]  
+[04/04 15:07:03] ori INFO: bbox_loss 0.5367 	cls_loss 0.3266 	com_loss 0.3153 	keep_loss 0.1353 	loss 1.3139 	
+[04/04 15:11:20] ori INFO: Train: [5][1000/1737]  
+[04/04 15:11:20] ori INFO: bbox_loss 0.5355 	cls_loss 0.3245 	com_loss 0.3128 	keep_loss 0.1341 	loss 1.3071 	
+[04/04 15:15:37] ori INFO: Train: [5][1500/1737]  
+[04/04 15:15:37] ori INFO: bbox_loss 0.5351 	cls_loss 0.3240 	com_loss 0.3125 	keep_loss 0.1344 	loss 1.3060 	
+[04/04 15:17:38] ori INFO: epoch 5, total time 904.99, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 15:22:06] ori INFO: Train: [6][500/1737]  
+[04/04 15:22:06] ori INFO: bbox_loss 0.5272 	cls_loss 0.3160 	com_loss 0.3049 	keep_loss 0.1294 	loss 1.2775 	
+[04/04 15:26:28] ori INFO: Train: [6][1000/1737]  
+[04/04 15:26:28] ori INFO: bbox_loss 0.5279 	cls_loss 0.3155 	com_loss 0.3050 	keep_loss 0.1300 	loss 1.2784 	
+[04/04 15:30:45] ori INFO: Train: [6][1500/1737]  
+[04/04 15:30:45] ori INFO: bbox_loss 0.5236 	cls_loss 0.3139 	com_loss 0.3030 	keep_loss 0.1294 	loss 1.2700 	
+[04/04 15:32:47] ori INFO: epoch 6, total time 909.08, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 15:33:50] ori INFO: Eval: [6]  
+[04/04 15:33:50] ori INFO: 3dcnn Acc0.25: Top-1: 0.41271
+[04/04 15:33:50] ori INFO: 3dcnn Acc0.50: Top-1: 0.29775
+[04/04 15:38:15] ori INFO: Train: [7][500/1737]  
+[04/04 15:38:15] ori INFO: bbox_loss 0.5182 	cls_loss 0.3042 	com_loss 0.2922 	keep_loss 0.1265 	loss 1.2411 	
+[04/04 15:42:27] ori INFO: Train: [7][1000/1737]  
+[04/04 15:42:27] ori INFO: bbox_loss 0.5133 	cls_loss 0.3033 	com_loss 0.2917 	keep_loss 0.1261 	loss 1.2344 	
+[04/04 15:46:40] ori INFO: Train: [7][1500/1737]  
+[04/04 15:46:40] ori INFO: bbox_loss 0.5112 	cls_loss 0.3019 	com_loss 0.2906 	keep_loss 0.1253 	loss 1.2291 	
+[04/04 15:48:41] ori INFO: epoch 7, total time 890.35, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 15:53:11] ori INFO: Train: [8][500/1737]  
+[04/04 15:53:11] ori INFO: bbox_loss 0.5053 	cls_loss 0.2933 	com_loss 0.2807 	keep_loss 0.1217 	loss 1.2010 	
+[04/04 15:57:31] ori INFO: Train: [8][1000/1737]  
+[04/04 15:57:31] ori INFO: bbox_loss 0.5015 	cls_loss 0.2923 	com_loss 0.2814 	keep_loss 0.1222 	loss 1.1974 	
+[04/04 16:01:46] ori INFO: Train: [8][1500/1737]  
+[04/04 16:01:46] ori INFO: bbox_loss 0.4999 	cls_loss 0.2927 	com_loss 0.2816 	keep_loss 0.1220 	loss 1.1963 	
+[04/04 16:03:47] ori INFO: epoch 8, total time 905.98, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 16:08:15] ori INFO: Train: [9][500/1737]  
+[04/04 16:08:15] ori INFO: bbox_loss 0.4892 	cls_loss 0.2859 	com_loss 0.2739 	keep_loss 0.1200 	loss 1.1689 	
+[04/04 16:12:35] ori INFO: Train: [9][1000/1737]  
+[04/04 16:12:35] ori INFO: bbox_loss 0.4896 	cls_loss 0.2866 	com_loss 0.2750 	keep_loss 0.1202 	loss 1.1715 	
+[04/04 16:16:53] ori INFO: Train: [9][1500/1737]  
+[04/04 16:16:53] ori INFO: bbox_loss 0.4911 	cls_loss 0.2862 	com_loss 0.2748 	keep_loss 0.1200 	loss 1.1720 	
+[04/04 16:19:00] ori INFO: epoch 9, total time 913.20, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 16:20:05] ori INFO: Eval: [9]  
+[04/04 16:20:05] ori INFO: 3dcnn Acc0.25: Top-1: 0.44363
+[04/04 16:20:05] ori INFO: 3dcnn Acc0.50: Top-1: 0.32993
+[04/04 16:24:36] ori INFO: Train: [10][500/1737]  
+[04/04 16:24:36] ori INFO: bbox_loss 0.4885 	cls_loss 0.2782 	com_loss 0.2670 	keep_loss 0.1164 	loss 1.1501 	
+[04/04 16:28:55] ori INFO: Train: [10][1000/1737]  
+[04/04 16:28:55] ori INFO: bbox_loss 0.4874 	cls_loss 0.2776 	com_loss 0.2670 	keep_loss 0.1159 	loss 1.1478 	
+[04/04 16:33:15] ori INFO: Train: [10][1500/1737]  
+[04/04 16:33:15] ori INFO: bbox_loss 0.4841 	cls_loss 0.2775 	com_loss 0.2665 	keep_loss 0.1164 	loss 1.1444 	
+[04/04 16:35:23] ori INFO: epoch 10, total time 917.49, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 16:39:56] ori INFO: Train: [11][500/1737]  
+[04/04 16:39:56] ori INFO: bbox_loss 0.4879 	cls_loss 0.2765 	com_loss 0.2651 	keep_loss 0.1152 	loss 1.1446 	
+[04/04 16:44:15] ori INFO: Train: [11][1000/1737]  
+[04/04 16:44:15] ori INFO: bbox_loss 0.4831 	cls_loss 0.2754 	com_loss 0.2644 	keep_loss 0.1146 	loss 1.1375 	
+[04/04 16:48:28] ori INFO: Train: [11][1500/1737]  
+[04/04 16:48:28] ori INFO: bbox_loss 0.4812 	cls_loss 0.2751 	com_loss 0.2638 	keep_loss 0.1149 	loss 1.1351 	
+[04/04 16:50:30] ori INFO: epoch 11, total time 907.49, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/04 16:55:00] ori INFO: Train: [12][500/1737]  
+[04/04 16:55:00] ori INFO: bbox_loss 0.4724 	cls_loss 0.2707 	com_loss 0.2604 	keep_loss 0.1136 	loss 1.1171 	
+[04/04 16:59:20] ori INFO: Train: [12][1000/1737]  
+[04/04 16:59:20] ori INFO: bbox_loss 0.4751 	cls_loss 0.2715 	com_loss 0.2609 	keep_loss 0.1138 	loss 1.1213 	
