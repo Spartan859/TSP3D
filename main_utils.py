@@ -98,6 +98,14 @@ def parse_option():
     parser.add_argument('--syncbn', action='store_true')
     parser.add_argument('--warmup-epoch', type=int, default=-1)
     parser.add_argument('--warmup-multiplier', type=int, default=100)
+    parser.add_argument('--enable_tf32', action='store_true',
+                        help='Enable TF32 for matmul/cudnn on Ampere+ GPUs.')
+    parser.add_argument('--tf32_matmul', type=str, default='default',
+                        choices=['default', 'on', 'off'],
+                        help='Control torch.backends.cuda.matmul.allow_tf32 independently.')
+    parser.add_argument('--tf32_cudnn', type=str, default='default',
+                        choices=['default', 'on', 'off'],
+                        help='Control torch.backends.cudnn.allow_tf32 independently.')
 
     # io
     parser.add_argument('--checkpoint_path', default=None,
@@ -169,6 +177,14 @@ def parse_option():
         args.use_text_guided_external_attn_bi_layer.append(0)
     if args.use_film_text_guided_external_attn_bi_layer0 and 0 not in args.use_film_text_guided_external_attn_bi_layer:
         args.use_film_text_guided_external_attn_bi_layer.append(0)
+
+    # Backward compatibility: --enable_tf32 turns on both controls
+    # only when they are not explicitly specified.
+    if args.enable_tf32:
+        if args.tf32_matmul == 'default':
+            args.tf32_matmul = 'on'
+        if args.tf32_cudnn == 'default':
+            args.tf32_cudnn = 'on'
 
     args.use_external_attn_bi_layer0 = 0 in args.use_external_attn_bi_layer
     args.use_text_guided_external_attn_bi_layer0 = 0 in args.use_text_guided_external_attn_bi_layer

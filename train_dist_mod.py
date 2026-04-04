@@ -376,5 +376,26 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = True
     torch.backends.cudnn.deterministic = True
 
+    if opt.tf32_matmul != 'default':
+        torch.backends.cuda.matmul.allow_tf32 = (opt.tf32_matmul == 'on')
+        if opt.tf32_matmul == 'on':
+            torch.set_float32_matmul_precision('high')
+        else:
+            torch.set_float32_matmul_precision('highest')
+
+    if opt.tf32_cudnn != 'default':
+        torch.backends.cudnn.allow_tf32 = (opt.tf32_cudnn == 'on')
+
+    if dist.get_rank() == 0:
+        print(
+            'TF32 config -> '
+            f'enable_tf32_arg={opt.enable_tf32}, '
+            f'tf32_matmul_arg={opt.tf32_matmul}, '
+            f'tf32_cudnn_arg={opt.tf32_cudnn}, '
+            f'matmul.allow_tf32={torch.backends.cuda.matmul.allow_tf32}, '
+            f'cudnn.allow_tf32={torch.backends.cudnn.allow_tf32}, '
+            f'float32_matmul_precision={torch.get_float32_matmul_precision()}'
+        )
+
     train_tester = TrainTester(opt)
     ckpt_path = train_tester.main(opt)

@@ -80,6 +80,7 @@ BASE_BOX_SELECT_LR=4e-4
 # BASE_BOX_SELECT_LR=4e-5
 BASE_SEG_LR=1e-4
 MASTER_PORT_DEFAULT=11022
+ENABLE_TF32="${ENABLE_TF32:-1}"
 
 lr_scale() {
     python - "$1" "$BASE_BS" "$CUR_BS" <<'PY'
@@ -137,6 +138,12 @@ echo log_dir: "${log_dir}"
 
 master_port="${custom_master_port:-${MASTER_PORT_DEFAULT}}"
 echo master_port: ${master_port}
+echo enable_tf32: ${ENABLE_TF32}
+
+tf32_args=()
+if [[ "${ENABLE_TF32}" == "1" ]]; then
+    tf32_args+=(--enable_tf32)
+fi
 
 TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
@@ -159,6 +166,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --checkpoint_path /root/lxy/TSP3D/scripts/experiments/A100/ori/scanrefer/2026-04-04_07-17-06/ckpt_epoch_24.pth \
     --load_optimizer \
     --load_scheduler \
+    "${tf32_args[@]}" \
     "${train_extra_args[@]}" \
     # --use_external_attn_bi_layer 0 2\
     # --use_text_guided_external_attn_bi_layer 0 2\
