@@ -9,7 +9,7 @@ fi
 data_root="/root/lxy/TSP3D/data"
 
 NPROC_PER_NODE=4
-CVD_START=4
+CVD_START=0
 BASE_BS=28
 CUR_BS=28
 BASE_LR=5e-4
