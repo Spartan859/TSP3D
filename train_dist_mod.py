@@ -166,11 +166,20 @@ class TrainTester(BaseTrainTester):
         # NOTE Main eval branch
         test_loader = tqdm(test_loader)
         inf_speeds, vis_back_speeds, text_back_speeds, fuiosn_speeds, head_speeds = [],[],[],[],[]
+        ext_bi0_speeds, ext_bi1_speeds, ext_bi2_speeds, ext_total_speeds = [], [], [], []
         fps_enabled = bool(getattr(args, 'measure_fps', False))
         fps_warmup_iters = max(int(getattr(args, 'fps_warmup_iters', 20)), 0)
         fps_max_iters = int(getattr(args, 'fps_max_iters', -1))
         total_fps_samples = 0
         total_fps_time = 0.0
+        total_ext_module_time = 0.0
+        mem_allocated_mb = []
+        mem_reserved_mb = []
+        max_allocated_mb = 0.0
+        max_reserved_mb = 0.0
+        mem_device = torch.cuda.current_device() if torch.cuda.is_available() else None
+        if mem_device is not None:
+            torch.cuda.reset_peak_memory_stats(mem_device)
         for batch_idx, batch_data in enumerate(test_loader):
             if fps_max_iters > 0 and batch_idx >= fps_max_iters:
                 break
@@ -184,10 +193,28 @@ class TrainTester(BaseTrainTester):
             text_back_speeds.append(detail_time[1])
             fuiosn_speeds.append(detail_time[2])
             head_speeds.append(detail_time[3])
+            head_module = model.module.head if hasattr(model, 'module') else model.head
+            ext_profile = getattr(head_module, 'last_external_attn_profile', None)
+            if ext_profile is None:
+                ext_profile = {'bi_layer0': 0.0, 'bi_layer1': 0.0, 'bi_layer2': 0.0, 'total': 0.0}
+            ext_bi0_speeds.append(float(ext_profile.get('bi_layer0', 0.0)))
+            ext_bi1_speeds.append(float(ext_profile.get('bi_layer1', 0.0)))
+            ext_bi2_speeds.append(float(ext_profile.get('bi_layer2', 0.0)))
+            ext_total_speeds.append(float(ext_profile.get('total', 0.0)))
             if fps_enabled and batch_idx >= fps_warmup_iters:
                 batch_size = int(batch_data['point_clouds'].shape[0])
                 total_fps_samples += batch_size
                 total_fps_time += float(inf_speed)
+                total_ext_module_time += float(ext_profile.get('total', 0.0))
+            if mem_device is not None and batch_idx >= fps_warmup_iters:
+                cur_allocated_mb = torch.cuda.memory_allocated(mem_device) / (1024.0 ** 2)
+                cur_reserved_mb = torch.cuda.memory_reserved(mem_device) / (1024.0 ** 2)
+                cur_max_allocated_mb = torch.cuda.max_memory_allocated(mem_device) / (1024.0 ** 2)
+                cur_max_reserved_mb = torch.cuda.max_memory_reserved(mem_device) / (1024.0 ** 2)
+                mem_allocated_mb.append(cur_allocated_mb)
+                mem_reserved_mb.append(cur_reserved_mb)
+                max_allocated_mb = max(max_allocated_mb, cur_max_allocated_mb)
+                max_reserved_mb = max(max_reserved_mb, cur_max_reserved_mb)
             if evaluator is not None:
                 for prefix in prefixes:
                     # note only consider the last layer
@@ -213,6 +240,26 @@ class TrainTester(BaseTrainTester):
             print('inf: ', np.array(inf_speeds).mean(),'vis_back_speeds: ', np.array(vis_back_speeds).mean(),
                 'text_back_speeds: ', np.array(text_back_speeds).mean(),'fuiosn_speeds: ', np.array(fuiosn_speeds).mean(),
                 'head_speeds: ', np.array(head_speeds).mean())
+            self.logger.info(
+                'External-attn-affected module time(s): '
+                f'bi_layer0={np.array(ext_bi0_speeds).mean():.6f}, '
+                f'bi_layer1={np.array(ext_bi1_speeds).mean():.6f}, '
+                f'bi_layer2={np.array(ext_bi2_speeds).mean():.6f}, '
+                f'total={np.array(ext_total_speeds).mean():.6f}'
+            )
+            if len(mem_allocated_mb) > 0:
+                self.logger.info(
+                    'GPU memory(MiB): '
+                    f'avg_allocated={np.mean(mem_allocated_mb):.2f}, '
+                    f'avg_reserved={np.mean(mem_reserved_mb):.2f}, '
+                    f'peak_allocated={max_allocated_mb:.2f}, '
+                    f'peak_reserved={max_reserved_mb:.2f}, '
+                    f'warmup_iters={fps_warmup_iters}'
+                )
+            elif mem_device is not None:
+                self.logger.info(
+                    'GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).'
+                )
             if fps_enabled:
                 if total_fps_samples > 0 and total_fps_time > 0:
                     fps = total_fps_samples / total_fps_time
@@ -221,6 +268,13 @@ class TrainTester(BaseTrainTester):
                         f'FPS(single-card): {fps:.3f} | Avg latency: {avg_latency_ms:.3f} ms/sample '
                         f'| warmup_iters={fps_warmup_iters} | measured_samples={total_fps_samples}'
                     )
+                    if total_ext_module_time > 0:
+                        ext_fps = total_fps_samples / total_ext_module_time
+                        ext_ratio = total_ext_module_time / total_fps_time
+                        self.logger.info(
+                            f'External-attn-affected path FPS(eqv): {ext_fps:.3f} '
+                            f'| time_ratio={ext_ratio:.4f} of end-to-end measured inference'
+                        )
                 else:
                     self.logger.info(
                         'FPS(single-card): N/A (no measured samples; reduce --fps_warmup_iters or increase eval iters).'

@@ -1521,6 +1521,12 @@ class TSPHead(nn.Module):
         x = inputs[-1]
         bbox_preds, cls_preds, points = [], [], []
         keep_scores = None
+        self.last_external_attn_profile = {
+            'bi_layer0': 0.0,
+            'bi_layer1': 0.0,
+            'bi_layer2': 0.0,
+            'total': 0.0,
+        }
         
         for i in range(len(inputs) - 1, -1, -1):
             if i ==1:
@@ -1580,12 +1586,20 @@ class TSPHead(nn.Module):
                         sampled_coords.append(padded_coords)
                 sampled_features = torch.stack(sampled_features)
                 sampled_coords = torch.stack(sampled_coords)
+                if torch.cuda.is_available():
+                    torch.cuda.synchronize()
+                ext_start = time.time()
                 sampled_features, text_feats = self.com_trans(
                     vis_feats=sampled_features.contiguous(),
                     pos_feats=self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous(),
                     padding_mask=sampled_coords[:, :,0] == -1,
                     text_feats=text_feats,
                     text_padding_mask=text_attention_mask)
+                if torch.cuda.is_available():
+                    torch.cuda.synchronize()
+                ext_dt = time.time() - ext_start
+                self.last_external_attn_profile['bi_layer2'] += ext_dt
+                self.last_external_attn_profile['total'] += ext_dt
                 
                 com_pred = self.com_cls(sampled_features.transpose(1, 2).contiguous()).transpose(1, 2).contiguous()
                 valid_mask = sampled_coords[:, :,0] != -1
@@ -1636,12 +1650,20 @@ class TSPHead(nn.Module):
                         sampled_coords.append(x.coordinates[permutation])                        
                 sampled_features = torch.stack(sampled_features)
                 sampled_coords = torch.stack(sampled_coords)
+                if torch.cuda.is_available():
+                    torch.cuda.synchronize()
+                ext_start = time.time()
                 sampled_features, text_feats = self.keep_trans[i-1](
                     vis_feats=sampled_features.contiguous(),
                     pos_feats=self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous(),
                     padding_mask=sampled_coords[:, :,0] == -1,
                     text_feats=text_feats,
                     text_padding_mask=text_attention_mask)
+                if torch.cuda.is_available():
+                    torch.cuda.synchronize()
+                ext_dt = time.time() - ext_start
+                self.last_external_attn_profile[f'bi_layer{i-1}'] += ext_dt
+                self.last_external_attn_profile['total'] += ext_dt
                 
                 valid_mask = sampled_coords[:, :,0] != -1
                 sampled_features = sampled_features[valid_mask]

@@ -1,0 +1,1119 @@
+[04/06 01:15:50] EA02_num_sps_com_800 INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/TF32/EA02_num_sps_com_800/scanrefer/2026-04-06_01-15-47/config.json
+[04/06 01:15:50] EA02_num_sps_com_800 INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 32, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 100], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'on', 'tf32_cudnn': 'on', 'checkpoint_path': None, 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/TF32/EA02_num_sps_com_800/scanrefer/2026-04-06_01-15-47', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [0, 2], 'use_text_guided_external_attn_bi_layer': [0, 2], 'use_film_text_guided_external_attn_bi_layer': [0, 2], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 800}
+[04/06 01:21:36] EA02_num_sps_com_800 INFO: length of training dataset: 48655
+[04/06 01:21:36] EA02_num_sps_com_800 INFO: length of testing dataset: 9508
+[04/06 01:26:15] EA02_num_sps_com_800 INFO: Train: [1][500/1737]  
+[04/06 01:26:15] EA02_num_sps_com_800 INFO: bbox_loss 0.8405 	cls_loss 0.8219 	com_loss 0.4058 	keep_loss 0.2197 	loss 2.2878 	
+[04/06 01:30:08] EA02_num_sps_com_800 INFO: Train: [1][1000/1737]  
+[04/06 01:30:08] EA02_num_sps_com_800 INFO: bbox_loss 0.8164 	cls_loss 0.6550 	com_loss 0.3892 	keep_loss 0.2138 	loss 2.0743 	
+[04/06 01:34:00] EA02_num_sps_com_800 INFO: Train: [1][1500/1737]  
+[04/06 01:34:00] EA02_num_sps_com_800 INFO: bbox_loss 0.7914 	cls_loss 0.5873 	com_loss 0.3777 	keep_loss 0.2071 	loss 1.9634 	
+[04/06 01:35:51] EA02_num_sps_com_800 INFO: epoch 1, total time 826.93, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 01:39:53] EA02_num_sps_com_800 INFO: Train: [2][500/1737]  
+[04/06 01:39:53] EA02_num_sps_com_800 INFO: bbox_loss 0.6762 	cls_loss 0.4304 	com_loss 0.3431 	keep_loss 0.1839 	loss 1.6336 	
+[04/06 01:43:43] EA02_num_sps_com_800 INFO: Train: [2][1000/1737]  
+[04/06 01:43:43] EA02_num_sps_com_800 INFO: bbox_loss 0.6613 	cls_loss 0.4213 	com_loss 0.3372 	keep_loss 0.1803 	loss 1.6001 	
+[04/06 01:47:35] EA02_num_sps_com_800 INFO: Train: [2][1500/1737]  
+[04/06 01:47:35] EA02_num_sps_com_800 INFO: bbox_loss 0.6509 	cls_loss 0.4139 	com_loss 0.3324 	keep_loss 0.1774 	loss 1.5747 	
+[04/06 01:49:27] EA02_num_sps_com_800 INFO: epoch 2, total time 816.02, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 01:53:33] EA02_num_sps_com_800 INFO: Train: [3][500/1737]  
+[04/06 01:53:33] EA02_num_sps_com_800 INFO: bbox_loss 0.6090 	cls_loss 0.3848 	com_loss 0.3142 	keep_loss 0.1645 	loss 1.4725 	
+[04/06 01:57:29] EA02_num_sps_com_800 INFO: Train: [3][1000/1737]  
+[04/06 01:57:29] EA02_num_sps_com_800 INFO: bbox_loss 0.6031 	cls_loss 0.3797 	com_loss 0.3113 	keep_loss 0.1620 	loss 1.4561 	
+[04/06 02:01:20] EA02_num_sps_com_800 INFO: Train: [3][1500/1737]  
+[04/06 02:01:20] EA02_num_sps_com_800 INFO: bbox_loss 0.5967 	cls_loss 0.3750 	com_loss 0.3092 	keep_loss 0.1603 	loss 1.4412 	
+[04/06 02:03:13] EA02_num_sps_com_800 INFO: epoch 3, total time 825.88, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 02:04:11] EA02_num_sps_com_800 INFO: Eval: [3]  
+[04/06 02:04:11] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.30416
+[04/06 02:04:11] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.21729
+[04/06 02:08:15] EA02_num_sps_com_800 INFO: Train: [4][500/1737]  
+[04/06 02:08:15] EA02_num_sps_com_800 INFO: bbox_loss 0.5701 	cls_loss 0.3509 	com_loss 0.2959 	keep_loss 0.1499 	loss 1.3668 	
+[04/06 02:12:08] EA02_num_sps_com_800 INFO: Train: [4][1000/1737]  
+[04/06 02:12:08] EA02_num_sps_com_800 INFO: bbox_loss 0.5690 	cls_loss 0.3486 	com_loss 0.2938 	keep_loss 0.1477 	loss 1.3591 	
+[04/06 02:16:02] EA02_num_sps_com_800 INFO: Train: [4][1500/1737]  
+[04/06 02:16:02] EA02_num_sps_com_800 INFO: bbox_loss 0.5661 	cls_loss 0.3474 	com_loss 0.2931 	keep_loss 0.1474 	loss 1.3540 	
+[04/06 02:17:58] EA02_num_sps_com_800 INFO: epoch 4, total time 826.35, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 02:21:58] EA02_num_sps_com_800 INFO: Train: [5][500/1737]  
+[04/06 02:21:58] EA02_num_sps_com_800 INFO: bbox_loss 0.5456 	cls_loss 0.3335 	com_loss 0.2823 	keep_loss 0.1413 	loss 1.3027 	
+[04/06 02:25:47] EA02_num_sps_com_800 INFO: Train: [5][1000/1737]  
+[04/06 02:25:47] EA02_num_sps_com_800 INFO: bbox_loss 0.5439 	cls_loss 0.3315 	com_loss 0.2792 	keep_loss 0.1389 	loss 1.2935 	
+[04/06 02:29:40] EA02_num_sps_com_800 INFO: Train: [5][1500/1737]  
+[04/06 02:29:40] EA02_num_sps_com_800 INFO: bbox_loss 0.5431 	cls_loss 0.3303 	com_loss 0.2784 	keep_loss 0.1386 	loss 1.2904 	
+[04/06 02:31:32] EA02_num_sps_com_800 INFO: epoch 5, total time 814.42, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 02:35:41] EA02_num_sps_com_800 INFO: Train: [6][500/1737]  
+[04/06 02:35:41] EA02_num_sps_com_800 INFO: bbox_loss 0.5338 	cls_loss 0.3205 	com_loss 0.2698 	keep_loss 0.1336 	loss 1.2577 	
+[04/06 02:39:36] EA02_num_sps_com_800 INFO: Train: [6][1000/1737]  
+[04/06 02:39:36] EA02_num_sps_com_800 INFO: bbox_loss 0.5344 	cls_loss 0.3201 	com_loss 0.2699 	keep_loss 0.1335 	loss 1.2579 	
+[04/06 02:43:29] EA02_num_sps_com_800 INFO: Train: [6][1500/1737]  
+[04/06 02:43:29] EA02_num_sps_com_800 INFO: bbox_loss 0.5303 	cls_loss 0.3183 	com_loss 0.2691 	keep_loss 0.1330 	loss 1.2507 	
+[04/06 02:45:21] EA02_num_sps_com_800 INFO: epoch 6, total time 828.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 02:46:18] EA02_num_sps_com_800 INFO: Eval: [6]  
+[04/06 02:46:18] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.39735
+[04/06 02:46:18] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.29281
+[04/06 02:50:25] EA02_num_sps_com_800 INFO: Train: [7][500/1737]  
+[04/06 02:50:25] EA02_num_sps_com_800 INFO: bbox_loss 0.5215 	cls_loss 0.3087 	com_loss 0.2598 	keep_loss 0.1292 	loss 1.2192 	
+[04/06 02:54:22] EA02_num_sps_com_800 INFO: Train: [7][1000/1737]  
+[04/06 02:54:22] EA02_num_sps_com_800 INFO: bbox_loss 0.5172 	cls_loss 0.3073 	com_loss 0.2603 	keep_loss 0.1292 	loss 1.2140 	
+[04/06 02:58:27] EA02_num_sps_com_800 INFO: Train: [7][1500/1737]  
+[04/06 02:58:27] EA02_num_sps_com_800 INFO: bbox_loss 0.5148 	cls_loss 0.3056 	com_loss 0.2595 	keep_loss 0.1285 	loss 1.2084 	
+[04/06 03:00:22] EA02_num_sps_com_800 INFO: epoch 7, total time 844.05, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 03:04:34] EA02_num_sps_com_800 INFO: Train: [8][500/1737]  
+[04/06 03:04:34] EA02_num_sps_com_800 INFO: bbox_loss 0.5096 	cls_loss 0.2962 	com_loss 0.2504 	keep_loss 0.1234 	loss 1.1796 	
+[04/06 03:08:32] EA02_num_sps_com_800 INFO: Train: [8][1000/1737]  
+[04/06 03:08:32] EA02_num_sps_com_800 INFO: bbox_loss 0.5068 	cls_loss 0.2969 	com_loss 0.2524 	keep_loss 0.1243 	loss 1.1805 	
+[04/06 03:12:35] EA02_num_sps_com_800 INFO: Train: [8][1500/1737]  
+[04/06 03:12:35] EA02_num_sps_com_800 INFO: bbox_loss 0.5049 	cls_loss 0.2965 	com_loss 0.2522 	keep_loss 0.1241 	loss 1.1778 	
+[04/06 03:14:30] EA02_num_sps_com_800 INFO: epoch 8, total time 847.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 03:18:38] EA02_num_sps_com_800 INFO: Train: [9][500/1737]  
+[04/06 03:18:38] EA02_num_sps_com_800 INFO: bbox_loss 0.4949 	cls_loss 0.2908 	com_loss 0.2480 	keep_loss 0.1219 	loss 1.1556 	
+[04/06 03:22:33] EA02_num_sps_com_800 INFO: Train: [9][1000/1737]  
+[04/06 03:22:33] EA02_num_sps_com_800 INFO: bbox_loss 0.4956 	cls_loss 0.2909 	com_loss 0.2477 	keep_loss 0.1223 	loss 1.1566 	
+[04/06 03:26:28] EA02_num_sps_com_800 INFO: Train: [9][1500/1737]  
+[04/06 03:26:28] EA02_num_sps_com_800 INFO: bbox_loss 0.4966 	cls_loss 0.2909 	com_loss 0.2471 	keep_loss 0.1222 	loss 1.1568 	
+[04/06 03:28:23] EA02_num_sps_com_800 INFO: epoch 9, total time 832.48, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 03:29:20] EA02_num_sps_com_800 INFO: Eval: [9]  
+[04/06 03:29:20] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.44142
+[04/06 03:29:20] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.32394
+[04/06 03:33:37] EA02_num_sps_com_800 INFO: Train: [10][500/1737]  
+[04/06 03:33:37] EA02_num_sps_com_800 INFO: bbox_loss 0.4931 	cls_loss 0.2825 	com_loss 0.2402 	keep_loss 0.1173 	loss 1.1332 	
+[04/06 03:37:34] EA02_num_sps_com_800 INFO: Train: [10][1000/1737]  
+[04/06 03:37:34] EA02_num_sps_com_800 INFO: bbox_loss 0.4916 	cls_loss 0.2812 	com_loss 0.2394 	keep_loss 0.1174 	loss 1.1295 	
+[04/06 03:41:27] EA02_num_sps_com_800 INFO: Train: [10][1500/1737]  
+[04/06 03:41:27] EA02_num_sps_com_800 INFO: bbox_loss 0.4884 	cls_loss 0.2811 	com_loss 0.2398 	keep_loss 0.1181 	loss 1.1274 	
+[04/06 03:43:19] EA02_num_sps_com_800 INFO: epoch 10, total time 838.73, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 03:47:23] EA02_num_sps_com_800 INFO: Train: [11][500/1737]  
+[04/06 03:47:23] EA02_num_sps_com_800 INFO: bbox_loss 0.4936 	cls_loss 0.2811 	com_loss 0.2389 	keep_loss 0.1172 	loss 1.1308 	
+[04/06 03:51:18] EA02_num_sps_com_800 INFO: Train: [11][1000/1737]  
+[04/06 03:51:18] EA02_num_sps_com_800 INFO: bbox_loss 0.4882 	cls_loss 0.2788 	com_loss 0.2386 	keep_loss 0.1167 	loss 1.1223 	
+[04/06 03:55:21] EA02_num_sps_com_800 INFO: Train: [11][1500/1737]  
+[04/06 03:55:21] EA02_num_sps_com_800 INFO: bbox_loss 0.4865 	cls_loss 0.2787 	com_loss 0.2379 	keep_loss 0.1174 	loss 1.1205 	
+[04/06 03:57:18] EA02_num_sps_com_800 INFO: epoch 11, total time 838.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 04:01:23] EA02_num_sps_com_800 INFO: Train: [12][500/1737]  
+[04/06 04:01:23] EA02_num_sps_com_800 INFO: bbox_loss 0.4785 	cls_loss 0.2753 	com_loss 0.2345 	keep_loss 0.1160 	loss 1.1044 	
+[04/06 04:05:15] EA02_num_sps_com_800 INFO: Train: [12][1000/1737]  
+[04/06 04:05:15] EA02_num_sps_com_800 INFO: bbox_loss 0.4813 	cls_loss 0.2755 	com_loss 0.2353 	keep_loss 0.1163 	loss 1.1084 	
+[04/06 04:09:08] EA02_num_sps_com_800 INFO: Train: [12][1500/1737]  
+[04/06 04:09:08] EA02_num_sps_com_800 INFO: bbox_loss 0.4807 	cls_loss 0.2755 	com_loss 0.2347 	keep_loss 0.1159 	loss 1.1069 	
+[04/06 04:11:02] EA02_num_sps_com_800 INFO: epoch 12, total time 823.83, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 04:11:56] EA02_num_sps_com_800 INFO: Eval: [12]  
+[04/06 04:11:56] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.46845
+[04/06 04:11:56] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.35507
+[04/06 04:16:05] EA02_num_sps_com_800 INFO: Train: [13][500/1737]  
+[04/06 04:16:05] EA02_num_sps_com_800 INFO: bbox_loss 0.4771 	cls_loss 0.2706 	com_loss 0.2301 	keep_loss 0.1143 	loss 1.0921 	
+[04/06 04:20:02] EA02_num_sps_com_800 INFO: Train: [13][1000/1737]  
+[04/06 04:20:02] EA02_num_sps_com_800 INFO: bbox_loss 0.4754 	cls_loss 0.2685 	com_loss 0.2287 	keep_loss 0.1136 	loss 1.0863 	
+[04/06 04:23:55] EA02_num_sps_com_800 INFO: Train: [13][1500/1737]  
+[04/06 04:23:55] EA02_num_sps_com_800 INFO: bbox_loss 0.4770 	cls_loss 0.2679 	com_loss 0.2272 	keep_loss 0.1132 	loss 1.0853 	
+[04/06 04:25:51] EA02_num_sps_com_800 INFO: epoch 13, total time 834.28, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 04:29:57] EA02_num_sps_com_800 INFO: Train: [14][500/1737]  
+[04/06 04:29:57] EA02_num_sps_com_800 INFO: bbox_loss 0.4666 	cls_loss 0.2606 	com_loss 0.2204 	keep_loss 0.1108 	loss 1.0584 	
+[04/06 04:33:49] EA02_num_sps_com_800 INFO: Train: [14][1000/1737]  
+[04/06 04:33:49] EA02_num_sps_com_800 INFO: bbox_loss 0.4704 	cls_loss 0.2625 	com_loss 0.2229 	keep_loss 0.1109 	loss 1.0666 	
+[04/06 04:37:43] EA02_num_sps_com_800 INFO: Train: [14][1500/1737]  
+[04/06 04:37:43] EA02_num_sps_com_800 INFO: bbox_loss 0.4703 	cls_loss 0.2631 	com_loss 0.2235 	keep_loss 0.1111 	loss 1.0680 	
+[04/06 04:39:36] EA02_num_sps_com_800 INFO: epoch 14, total time 825.76, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 04:43:46] EA02_num_sps_com_800 INFO: Train: [15][500/1737]  
+[04/06 04:43:46] EA02_num_sps_com_800 INFO: bbox_loss 0.4639 	cls_loss 0.2607 	com_loss 0.2207 	keep_loss 0.1103 	loss 1.0556 	
+[04/06 04:47:39] EA02_num_sps_com_800 INFO: Train: [15][1000/1737]  
+[04/06 04:47:39] EA02_num_sps_com_800 INFO: bbox_loss 0.4655 	cls_loss 0.2605 	com_loss 0.2216 	keep_loss 0.1102 	loss 1.0578 	
+[04/06 04:51:34] EA02_num_sps_com_800 INFO: Train: [15][1500/1737]  
+[04/06 04:51:34] EA02_num_sps_com_800 INFO: bbox_loss 0.4660 	cls_loss 0.2603 	com_loss 0.2222 	keep_loss 0.1101 	loss 1.0586 	
+[04/06 04:53:30] EA02_num_sps_com_800 INFO: epoch 15, total time 833.49, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 04:54:26] EA02_num_sps_com_800 INFO: Eval: [15]  
+[04/06 04:54:26] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.47202
+[04/06 04:54:26] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.36285
+[04/06 04:58:31] EA02_num_sps_com_800 INFO: Train: [16][500/1737]  
+[04/06 04:58:31] EA02_num_sps_com_800 INFO: bbox_loss 0.4657 	cls_loss 0.2575 	com_loss 0.2190 	keep_loss 0.1093 	loss 1.0515 	
+[04/06 05:02:33] EA02_num_sps_com_800 INFO: Train: [16][1000/1737]  
+[04/06 05:02:33] EA02_num_sps_com_800 INFO: bbox_loss 0.4633 	cls_loss 0.2578 	com_loss 0.2182 	keep_loss 0.1086 	loss 1.0479 	
+[04/06 05:06:25] EA02_num_sps_com_800 INFO: Train: [16][1500/1737]  
+[04/06 05:06:25] EA02_num_sps_com_800 INFO: bbox_loss 0.4634 	cls_loss 0.2577 	com_loss 0.2180 	keep_loss 0.1089 	loss 1.0480 	
+[04/06 05:08:18] EA02_num_sps_com_800 INFO: epoch 16, total time 831.91, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 05:12:31] EA02_num_sps_com_800 INFO: Train: [17][500/1737]  
+[04/06 05:12:31] EA02_num_sps_com_800 INFO: bbox_loss 0.4591 	cls_loss 0.2522 	com_loss 0.2157 	keep_loss 0.1063 	loss 1.0334 	
+[04/06 05:16:27] EA02_num_sps_com_800 INFO: Train: [17][1000/1737]  
+[04/06 05:16:27] EA02_num_sps_com_800 INFO: bbox_loss 0.4630 	cls_loss 0.2533 	com_loss 0.2152 	keep_loss 0.1069 	loss 1.0384 	
+[04/06 05:20:18] EA02_num_sps_com_800 INFO: Train: [17][1500/1737]  
+[04/06 05:20:18] EA02_num_sps_com_800 INFO: bbox_loss 0.4620 	cls_loss 0.2536 	com_loss 0.2157 	keep_loss 0.1074 	loss 1.0387 	
+[04/06 05:22:10] EA02_num_sps_com_800 INFO: epoch 17, total time 831.81, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 05:26:18] EA02_num_sps_com_800 INFO: Train: [18][500/1737]  
+[04/06 05:26:18] EA02_num_sps_com_800 INFO: bbox_loss 0.4591 	cls_loss 0.2512 	com_loss 0.2127 	keep_loss 0.1047 	loss 1.0277 	
+[04/06 05:30:14] EA02_num_sps_com_800 INFO: Train: [18][1000/1737]  
+[04/06 05:30:14] EA02_num_sps_com_800 INFO: bbox_loss 0.4565 	cls_loss 0.2516 	com_loss 0.2134 	keep_loss 0.1063 	loss 1.0278 	
+[04/06 05:34:11] EA02_num_sps_com_800 INFO: Train: [18][1500/1737]  
+[04/06 05:34:11] EA02_num_sps_com_800 INFO: bbox_loss 0.4561 	cls_loss 0.2516 	com_loss 0.2137 	keep_loss 0.1066 	loss 1.0280 	
+[04/06 05:36:04] EA02_num_sps_com_800 INFO: epoch 18, total time 834.22, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 05:37:02] EA02_num_sps_com_800 INFO: Eval: [18]  
+[04/06 05:37:02] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.48580
+[04/06 05:37:02] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.38441
+[04/06 05:41:09] EA02_num_sps_com_800 INFO: Train: [19][500/1737]  
+[04/06 05:41:09] EA02_num_sps_com_800 INFO: bbox_loss 0.4552 	cls_loss 0.2464 	com_loss 0.2089 	keep_loss 0.1053 	loss 1.0158 	
+[04/06 05:45:04] EA02_num_sps_com_800 INFO: Train: [19][1000/1737]  
+[04/06 05:45:04] EA02_num_sps_com_800 INFO: bbox_loss 0.4547 	cls_loss 0.2464 	com_loss 0.2086 	keep_loss 0.1044 	loss 1.0140 	
+[04/06 05:49:00] EA02_num_sps_com_800 INFO: Train: [19][1500/1737]  
+[04/06 05:49:00] EA02_num_sps_com_800 INFO: bbox_loss 0.4527 	cls_loss 0.2470 	com_loss 0.2090 	keep_loss 0.1048 	loss 1.0136 	
+[04/06 05:50:59] EA02_num_sps_com_800 INFO: epoch 19, total time 837.60, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 05:55:12] EA02_num_sps_com_800 INFO: Train: [20][500/1737]  
+[04/06 05:55:12] EA02_num_sps_com_800 INFO: bbox_loss 0.4491 	cls_loss 0.2470 	com_loss 0.2104 	keep_loss 0.1044 	loss 1.0109 	
+[04/06 05:59:09] EA02_num_sps_com_800 INFO: Train: [20][1000/1737]  
+[04/06 05:59:09] EA02_num_sps_com_800 INFO: bbox_loss 0.4511 	cls_loss 0.2454 	com_loss 0.2080 	keep_loss 0.1034 	loss 1.0079 	
+[04/06 06:03:01] EA02_num_sps_com_800 INFO: Train: [20][1500/1737]  
+[04/06 06:03:01] EA02_num_sps_com_800 INFO: bbox_loss 0.4506 	cls_loss 0.2446 	com_loss 0.2072 	keep_loss 0.1032 	loss 1.0057 	
+[04/06 06:04:56] EA02_num_sps_com_800 INFO: epoch 20, total time 836.54, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 06:09:03] EA02_num_sps_com_800 INFO: Train: [21][500/1737]  
+[04/06 06:09:03] EA02_num_sps_com_800 INFO: bbox_loss 0.4526 	cls_loss 0.2462 	com_loss 0.2080 	keep_loss 0.1057 	loss 1.0125 	
+[04/06 06:12:57] EA02_num_sps_com_800 INFO: Train: [21][1000/1737]  
+[04/06 06:12:57] EA02_num_sps_com_800 INFO: bbox_loss 0.4519 	cls_loss 0.2455 	com_loss 0.2073 	keep_loss 0.1048 	loss 1.0094 	
+[04/06 06:16:55] EA02_num_sps_com_800 INFO: Train: [21][1500/1737]  
+[04/06 06:16:55] EA02_num_sps_com_800 INFO: bbox_loss 0.4520 	cls_loss 0.2442 	com_loss 0.2073 	keep_loss 0.1043 	loss 1.0078 	
+[04/06 06:18:49] EA02_num_sps_com_800 INFO: epoch 21, total time 832.74, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 06:19:48] EA02_num_sps_com_800 INFO: Eval: [21]  
+[04/06 06:19:48] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.50242
+[04/06 06:19:48] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.39840
+[04/06 06:23:55] EA02_num_sps_com_800 INFO: Train: [22][500/1737]  
+[04/06 06:23:55] EA02_num_sps_com_800 INFO: bbox_loss 0.4524 	cls_loss 0.2435 	com_loss 0.2065 	keep_loss 0.1033 	loss 1.0057 	
+[04/06 06:27:47] EA02_num_sps_com_800 INFO: Train: [22][1000/1737]  
+[04/06 06:27:47] EA02_num_sps_com_800 INFO: bbox_loss 0.4513 	cls_loss 0.2423 	com_loss 0.2050 	keep_loss 0.1023 	loss 1.0008 	
+[04/06 06:31:39] EA02_num_sps_com_800 INFO: Train: [22][1500/1737]  
+[04/06 06:31:39] EA02_num_sps_com_800 INFO: bbox_loss 0.4504 	cls_loss 0.2425 	com_loss 0.2049 	keep_loss 0.1027 	loss 1.0006 	
+[04/06 06:33:32] EA02_num_sps_com_800 INFO: epoch 22, total time 824.60, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 06:37:44] EA02_num_sps_com_800 INFO: Train: [23][500/1737]  
+[04/06 06:37:44] EA02_num_sps_com_800 INFO: bbox_loss 0.4464 	cls_loss 0.2386 	com_loss 0.2024 	keep_loss 0.1023 	loss 0.9898 	
+[04/06 06:41:41] EA02_num_sps_com_800 INFO: Train: [23][1000/1737]  
+[04/06 06:41:41] EA02_num_sps_com_800 INFO: bbox_loss 0.4443 	cls_loss 0.2390 	com_loss 0.2027 	keep_loss 0.1021 	loss 0.9881 	
+[04/06 06:45:36] EA02_num_sps_com_800 INFO: Train: [23][1500/1737]  
+[04/06 06:45:36] EA02_num_sps_com_800 INFO: bbox_loss 0.4448 	cls_loss 0.2394 	com_loss 0.2030 	keep_loss 0.1020 	loss 0.9892 	
+[04/06 06:47:27] EA02_num_sps_com_800 INFO: epoch 23, total time 834.41, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 06:51:35] EA02_num_sps_com_800 INFO: Train: [24][500/1737]  
+[04/06 06:51:35] EA02_num_sps_com_800 INFO: bbox_loss 0.4439 	cls_loss 0.2359 	com_loss 0.1988 	keep_loss 0.1009 	loss 0.9795 	
+[04/06 06:55:28] EA02_num_sps_com_800 INFO: Train: [24][1000/1737]  
+[04/06 06:55:28] EA02_num_sps_com_800 INFO: bbox_loss 0.4445 	cls_loss 0.2369 	com_loss 0.2001 	keep_loss 0.1005 	loss 0.9819 	
+[04/06 06:59:20] EA02_num_sps_com_800 INFO: Train: [24][1500/1737]  
+[04/06 06:59:20] EA02_num_sps_com_800 INFO: bbox_loss 0.4450 	cls_loss 0.2364 	com_loss 0.1998 	keep_loss 0.1001 	loss 0.9813 	
+[04/06 07:01:18] EA02_num_sps_com_800 INFO: epoch 24, total time 831.84, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 07:02:14] EA02_num_sps_com_800 INFO: Eval: [24]  
+[04/06 07:02:14] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.50263
+[04/06 07:02:14] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.39156
+[04/06 07:06:28] EA02_num_sps_com_800 INFO: Train: [25][500/1737]  
+[04/06 07:06:28] EA02_num_sps_com_800 INFO: bbox_loss 0.4381 	cls_loss 0.2324 	com_loss 0.1961 	keep_loss 0.1005 	loss 0.9672 	
+[04/06 07:10:20] EA02_num_sps_com_800 INFO: Train: [25][1000/1737]  
+[04/06 07:10:20] EA02_num_sps_com_800 INFO: bbox_loss 0.4403 	cls_loss 0.2335 	com_loss 0.1977 	keep_loss 0.1004 	loss 0.9719 	
+[04/06 07:14:12] EA02_num_sps_com_800 INFO: Train: [25][1500/1737]  
+[04/06 07:14:12] EA02_num_sps_com_800 INFO: bbox_loss 0.4409 	cls_loss 0.2346 	com_loss 0.1981 	keep_loss 0.1003 	loss 0.9740 	
+[04/06 07:16:02] EA02_num_sps_com_800 INFO: epoch 25, total time 827.94, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 07:20:08] EA02_num_sps_com_800 INFO: Train: [26][500/1737]  
+[04/06 07:20:08] EA02_num_sps_com_800 INFO: bbox_loss 0.4373 	cls_loss 0.2324 	com_loss 0.1963 	keep_loss 0.0996 	loss 0.9657 	
+[04/06 07:23:58] EA02_num_sps_com_800 INFO: Train: [26][1000/1737]  
+[04/06 07:23:58] EA02_num_sps_com_800 INFO: bbox_loss 0.4404 	cls_loss 0.2340 	com_loss 0.1977 	keep_loss 0.0993 	loss 0.9714 	
+[04/06 07:27:50] EA02_num_sps_com_800 INFO: Train: [26][1500/1737]  
+[04/06 07:27:50] EA02_num_sps_com_800 INFO: bbox_loss 0.4413 	cls_loss 0.2338 	com_loss 0.1971 	keep_loss 0.0992 	loss 0.9714 	
+[04/06 07:29:41] EA02_num_sps_com_800 INFO: epoch 26, total time 818.88, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 07:33:47] EA02_num_sps_com_800 INFO: Train: [27][500/1737]  
+[04/06 07:33:47] EA02_num_sps_com_800 INFO: bbox_loss 0.4404 	cls_loss 0.2281 	com_loss 0.1909 	keep_loss 0.0988 	loss 0.9582 	
+[04/06 07:37:41] EA02_num_sps_com_800 INFO: Train: [27][1000/1737]  
+[04/06 07:37:41] EA02_num_sps_com_800 INFO: bbox_loss 0.4417 	cls_loss 0.2304 	com_loss 0.1936 	keep_loss 0.0993 	loss 0.9650 	
+[04/06 07:41:37] EA02_num_sps_com_800 INFO: Train: [27][1500/1737]  
+[04/06 07:41:37] EA02_num_sps_com_800 INFO: bbox_loss 0.4418 	cls_loss 0.2320 	com_loss 0.1951 	keep_loss 0.0998 	loss 0.9688 	
+[04/06 07:43:29] EA02_num_sps_com_800 INFO: epoch 27, total time 827.60, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 07:44:24] EA02_num_sps_com_800 INFO: Eval: [27]  
+[04/06 07:44:24] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.51115
+[04/06 07:44:24] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.40135
+[04/06 07:48:30] EA02_num_sps_com_800 INFO: Train: [28][500/1737]  
+[04/06 07:48:30] EA02_num_sps_com_800 INFO: bbox_loss 0.4339 	cls_loss 0.2258 	com_loss 0.1903 	keep_loss 0.0980 	loss 0.9481 	
+[04/06 07:52:27] EA02_num_sps_com_800 INFO: Train: [28][1000/1737]  
+[04/06 07:52:27] EA02_num_sps_com_800 INFO: bbox_loss 0.4377 	cls_loss 0.2268 	com_loss 0.1912 	keep_loss 0.0975 	loss 0.9533 	
+[04/06 07:56:23] EA02_num_sps_com_800 INFO: Train: [28][1500/1737]  
+[04/06 07:56:23] EA02_num_sps_com_800 INFO: bbox_loss 0.4367 	cls_loss 0.2274 	com_loss 0.1914 	keep_loss 0.0973 	loss 0.9528 	
+[04/06 07:58:17] EA02_num_sps_com_800 INFO: epoch 28, total time 833.18, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 08:02:21] EA02_num_sps_com_800 INFO: Train: [29][500/1737]  
+[04/06 08:02:21] EA02_num_sps_com_800 INFO: bbox_loss 0.4398 	cls_loss 0.2293 	com_loss 0.1922 	keep_loss 0.0960 	loss 0.9573 	
+[04/06 08:06:13] EA02_num_sps_com_800 INFO: Train: [29][1000/1737]  
+[04/06 08:06:13] EA02_num_sps_com_800 INFO: bbox_loss 0.4391 	cls_loss 0.2291 	com_loss 0.1917 	keep_loss 0.0963 	loss 0.9563 	
+[04/06 08:10:11] EA02_num_sps_com_800 INFO: Train: [29][1500/1737]  
+[04/06 08:10:11] EA02_num_sps_com_800 INFO: bbox_loss 0.4383 	cls_loss 0.2291 	com_loss 0.1918 	keep_loss 0.0967 	loss 0.9559 	
+[04/06 08:12:05] EA02_num_sps_com_800 INFO: epoch 29, total time 828.27, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 08:16:16] EA02_num_sps_com_800 INFO: Train: [30][500/1737]  
+[04/06 08:16:16] EA02_num_sps_com_800 INFO: bbox_loss 0.4303 	cls_loss 0.2237 	com_loss 0.1892 	keep_loss 0.0963 	loss 0.9395 	
+[04/06 08:20:08] EA02_num_sps_com_800 INFO: Train: [30][1000/1737]  
+[04/06 08:20:08] EA02_num_sps_com_800 INFO: bbox_loss 0.4318 	cls_loss 0.2255 	com_loss 0.1897 	keep_loss 0.0971 	loss 0.9442 	
+[04/06 08:24:02] EA02_num_sps_com_800 INFO: Train: [30][1500/1737]  
+[04/06 08:24:02] EA02_num_sps_com_800 INFO: bbox_loss 0.4335 	cls_loss 0.2271 	com_loss 0.1903 	keep_loss 0.0978 	loss 0.9487 	
+[04/06 08:25:54] EA02_num_sps_com_800 INFO: epoch 30, total time 829.14, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 08:26:48] EA02_num_sps_com_800 INFO: Eval: [30]  
+[04/06 08:26:48] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.50599
+[04/06 08:26:48] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.39377
+[04/06 08:30:54] EA02_num_sps_com_800 INFO: Train: [31][500/1737]  
+[04/06 08:30:54] EA02_num_sps_com_800 INFO: bbox_loss 0.4328 	cls_loss 0.2256 	com_loss 0.1886 	keep_loss 0.0955 	loss 0.9426 	
+[04/06 08:34:46] EA02_num_sps_com_800 INFO: Train: [31][1000/1737]  
+[04/06 08:34:46] EA02_num_sps_com_800 INFO: bbox_loss 0.4327 	cls_loss 0.2252 	com_loss 0.1887 	keep_loss 0.0956 	loss 0.9422 	
+[04/06 08:38:52] EA02_num_sps_com_800 INFO: Train: [31][1500/1737]  
+[04/06 08:38:52] EA02_num_sps_com_800 INFO: bbox_loss 0.4328 	cls_loss 0.2251 	com_loss 0.1888 	keep_loss 0.0957 	loss 0.9423 	
+[04/06 08:40:45] EA02_num_sps_com_800 INFO: epoch 31, total time 836.13, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 08:44:53] EA02_num_sps_com_800 INFO: Train: [32][500/1737]  
+[04/06 08:44:53] EA02_num_sps_com_800 INFO: bbox_loss 0.4342 	cls_loss 0.2265 	com_loss 0.1896 	keep_loss 0.0965 	loss 0.9468 	
+[04/06 08:48:49] EA02_num_sps_com_800 INFO: Train: [32][1000/1737]  
+[04/06 08:48:49] EA02_num_sps_com_800 INFO: bbox_loss 0.4325 	cls_loss 0.2257 	com_loss 0.1888 	keep_loss 0.0964 	loss 0.9432 	
+[04/06 08:52:46] EA02_num_sps_com_800 INFO: Train: [32][1500/1737]  
+[04/06 08:52:46] EA02_num_sps_com_800 INFO: bbox_loss 0.4295 	cls_loss 0.2246 	com_loss 0.1888 	keep_loss 0.0960 	loss 0.9390 	
+[04/06 08:54:42] EA02_num_sps_com_800 INFO: epoch 32, total time 837.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 08:58:48] EA02_num_sps_com_800 INFO: Train: [33][500/1737]  
+[04/06 08:58:48] EA02_num_sps_com_800 INFO: bbox_loss 0.4293 	cls_loss 0.2203 	com_loss 0.1848 	keep_loss 0.0951 	loss 0.9295 	
+[04/06 09:02:47] EA02_num_sps_com_800 INFO: Train: [33][1000/1737]  
+[04/06 09:02:47] EA02_num_sps_com_800 INFO: bbox_loss 0.4276 	cls_loss 0.2207 	com_loss 0.1856 	keep_loss 0.0948 	loss 0.9287 	
+[04/06 09:06:40] EA02_num_sps_com_800 INFO: Train: [33][1500/1737]  
+[04/06 09:06:40] EA02_num_sps_com_800 INFO: bbox_loss 0.4289 	cls_loss 0.2210 	com_loss 0.1857 	keep_loss 0.0949 	loss 0.9305 	
+[04/06 09:08:31] EA02_num_sps_com_800 INFO: epoch 33, total time 829.24, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 09:09:23] EA02_num_sps_com_800 INFO: Eval: [33]  
+[04/06 09:09:23] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.51651
+[04/06 09:09:23] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.40597
+[04/06 09:13:39] EA02_num_sps_com_800 INFO: Train: [34][500/1737]  
+[04/06 09:13:39] EA02_num_sps_com_800 INFO: bbox_loss 0.4301 	cls_loss 0.2212 	com_loss 0.1862 	keep_loss 0.0951 	loss 0.9326 	
+[04/06 09:17:38] EA02_num_sps_com_800 INFO: Train: [34][1000/1737]  
+[04/06 09:17:38] EA02_num_sps_com_800 INFO: bbox_loss 0.4301 	cls_loss 0.2208 	com_loss 0.1850 	keep_loss 0.0950 	loss 0.9310 	
+[04/06 09:21:38] EA02_num_sps_com_800 INFO: Train: [34][1500/1737]  
+[04/06 09:21:38] EA02_num_sps_com_800 INFO: bbox_loss 0.4284 	cls_loss 0.2211 	com_loss 0.1853 	keep_loss 0.0948 	loss 0.9297 	
+[04/06 09:23:34] EA02_num_sps_com_800 INFO: epoch 34, total time 850.65, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 09:27:42] EA02_num_sps_com_800 INFO: Train: [35][500/1737]  
+[04/06 09:27:42] EA02_num_sps_com_800 INFO: bbox_loss 0.4257 	cls_loss 0.2198 	com_loss 0.1856 	keep_loss 0.0932 	loss 0.9243 	
+[04/06 09:31:34] EA02_num_sps_com_800 INFO: Train: [35][1000/1737]  
+[04/06 09:31:34] EA02_num_sps_com_800 INFO: bbox_loss 0.4271 	cls_loss 0.2194 	com_loss 0.1847 	keep_loss 0.0933 	loss 0.9245 	
+[04/06 09:35:25] EA02_num_sps_com_800 INFO: Train: [35][1500/1737]  
+[04/06 09:35:25] EA02_num_sps_com_800 INFO: bbox_loss 0.4255 	cls_loss 0.2199 	com_loss 0.1849 	keep_loss 0.0937 	loss 0.9241 	
+[04/06 09:37:18] EA02_num_sps_com_800 INFO: epoch 35, total time 824.27, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 09:41:27] EA02_num_sps_com_800 INFO: Train: [36][500/1737]  
+[04/06 09:41:27] EA02_num_sps_com_800 INFO: bbox_loss 0.4311 	cls_loss 0.2178 	com_loss 0.1806 	keep_loss 0.0932 	loss 0.9227 	
+[04/06 09:45:28] EA02_num_sps_com_800 INFO: Train: [36][1000/1737]  
+[04/06 09:45:28] EA02_num_sps_com_800 INFO: bbox_loss 0.4273 	cls_loss 0.2185 	com_loss 0.1820 	keep_loss 0.0934 	loss 0.9212 	
+[04/06 09:49:28] EA02_num_sps_com_800 INFO: Train: [36][1500/1737]  
+[04/06 09:49:28] EA02_num_sps_com_800 INFO: bbox_loss 0.4262 	cls_loss 0.2182 	com_loss 0.1823 	keep_loss 0.0935 	loss 0.9202 	
+[04/06 09:51:21] EA02_num_sps_com_800 INFO: epoch 36, total time 843.00, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 09:52:15] EA02_num_sps_com_800 INFO: Eval: [36]  
+[04/06 09:52:15] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.51967
+[04/06 09:52:15] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.41239
+[04/06 09:56:21] EA02_num_sps_com_800 INFO: Train: [37][500/1737]  
+[04/06 09:56:21] EA02_num_sps_com_800 INFO: bbox_loss 0.4206 	cls_loss 0.2105 	com_loss 0.1789 	keep_loss 0.0915 	loss 0.9014 	
+[04/06 10:00:11] EA02_num_sps_com_800 INFO: Train: [37][1000/1737]  
+[04/06 10:00:11] EA02_num_sps_com_800 INFO: bbox_loss 0.4241 	cls_loss 0.2150 	com_loss 0.1813 	keep_loss 0.0927 	loss 0.9130 	
+[04/06 10:04:02] EA02_num_sps_com_800 INFO: Train: [37][1500/1737]  
+[04/06 10:04:02] EA02_num_sps_com_800 INFO: bbox_loss 0.4244 	cls_loss 0.2158 	com_loss 0.1812 	keep_loss 0.0927 	loss 0.9140 	
+[04/06 10:05:55] EA02_num_sps_com_800 INFO: epoch 37, total time 820.21, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 10:10:04] EA02_num_sps_com_800 INFO: Train: [38][500/1737]  
+[04/06 10:10:04] EA02_num_sps_com_800 INFO: bbox_loss 0.4206 	cls_loss 0.2139 	com_loss 0.1784 	keep_loss 0.0918 	loss 0.9046 	
+[04/06 10:13:54] EA02_num_sps_com_800 INFO: Train: [38][1000/1737]  
+[04/06 10:13:54] EA02_num_sps_com_800 INFO: bbox_loss 0.4213 	cls_loss 0.2146 	com_loss 0.1790 	keep_loss 0.0919 	loss 0.9068 	
+[04/06 10:17:46] EA02_num_sps_com_800 INFO: Train: [38][1500/1737]  
+[04/06 10:17:46] EA02_num_sps_com_800 INFO: bbox_loss 0.4212 	cls_loss 0.2151 	com_loss 0.1801 	keep_loss 0.0924 	loss 0.9089 	
+[04/06 10:19:38] EA02_num_sps_com_800 INFO: epoch 38, total time 822.68, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 10:23:48] EA02_num_sps_com_800 INFO: Train: [39][500/1737]  
+[04/06 10:23:48] EA02_num_sps_com_800 INFO: bbox_loss 0.4154 	cls_loss 0.2123 	com_loss 0.1776 	keep_loss 0.0918 	loss 0.8972 	
+[04/06 10:27:43] EA02_num_sps_com_800 INFO: Train: [39][1000/1737]  
+[04/06 10:27:43] EA02_num_sps_com_800 INFO: bbox_loss 0.4171 	cls_loss 0.2118 	com_loss 0.1777 	keep_loss 0.0916 	loss 0.8982 	
+[04/06 10:31:40] EA02_num_sps_com_800 INFO: Train: [39][1500/1737]  
+[04/06 10:31:40] EA02_num_sps_com_800 INFO: bbox_loss 0.4173 	cls_loss 0.2118 	com_loss 0.1777 	keep_loss 0.0915 	loss 0.8983 	
+[04/06 10:33:31] EA02_num_sps_com_800 INFO: epoch 39, total time 833.02, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 10:34:25] EA02_num_sps_com_800 INFO: Eval: [39]  
+[04/06 10:34:25] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.52619
+[04/06 10:34:25] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.41933
+[04/06 10:38:37] EA02_num_sps_com_800 INFO: Train: [40][500/1737]  
+[04/06 10:38:37] EA02_num_sps_com_800 INFO: bbox_loss 0.4199 	cls_loss 0.2110 	com_loss 0.1765 	keep_loss 0.0899 	loss 0.8973 	
+[04/06 10:42:33] EA02_num_sps_com_800 INFO: Train: [40][1000/1737]  
+[04/06 10:42:33] EA02_num_sps_com_800 INFO: bbox_loss 0.4207 	cls_loss 0.2118 	com_loss 0.1768 	keep_loss 0.0907 	loss 0.8999 	
+[04/06 10:46:30] EA02_num_sps_com_800 INFO: Train: [40][1500/1737]  
+[04/06 10:46:30] EA02_num_sps_com_800 INFO: bbox_loss 0.4218 	cls_loss 0.2123 	com_loss 0.1768 	keep_loss 0.0907 	loss 0.9016 	
+[04/06 10:48:24] EA02_num_sps_com_800 INFO: epoch 40, total time 839.16, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 10:52:32] EA02_num_sps_com_800 INFO: Train: [41][500/1737]  
+[04/06 10:52:32] EA02_num_sps_com_800 INFO: bbox_loss 0.4189 	cls_loss 0.2113 	com_loss 0.1773 	keep_loss 0.0898 	loss 0.8972 	
+[04/06 10:56:33] EA02_num_sps_com_800 INFO: Train: [41][1000/1737]  
+[04/06 10:56:33] EA02_num_sps_com_800 INFO: bbox_loss 0.4201 	cls_loss 0.2135 	com_loss 0.1779 	keep_loss 0.0912 	loss 0.9026 	
+[04/06 11:00:29] EA02_num_sps_com_800 INFO: Train: [41][1500/1737]  
+[04/06 11:00:29] EA02_num_sps_com_800 INFO: bbox_loss 0.4191 	cls_loss 0.2131 	com_loss 0.1772 	keep_loss 0.0912 	loss 0.9006 	
+[04/06 11:02:23] EA02_num_sps_com_800 INFO: epoch 41, total time 838.81, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 11:06:33] EA02_num_sps_com_800 INFO: Train: [42][500/1737]  
+[04/06 11:06:33] EA02_num_sps_com_800 INFO: bbox_loss 0.4115 	cls_loss 0.2073 	com_loss 0.1728 	keep_loss 0.0905 	loss 0.8822 	
+[04/06 11:10:28] EA02_num_sps_com_800 INFO: Train: [42][1000/1737]  
+[04/06 11:10:28] EA02_num_sps_com_800 INFO: bbox_loss 0.4169 	cls_loss 0.2093 	com_loss 0.1740 	keep_loss 0.0905 	loss 0.8906 	
+[04/06 11:14:26] EA02_num_sps_com_800 INFO: Train: [42][1500/1737]  
+[04/06 11:14:26] EA02_num_sps_com_800 INFO: bbox_loss 0.4177 	cls_loss 0.2102 	com_loss 0.1746 	keep_loss 0.0911 	loss 0.8936 	
+[04/06 11:16:18] EA02_num_sps_com_800 INFO: epoch 42, total time 835.37, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 11:17:12] EA02_num_sps_com_800 INFO: Eval: [42]  
+[04/06 11:17:12] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.52451
+[04/06 11:17:12] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.41744
+[04/06 11:21:22] EA02_num_sps_com_800 INFO: Train: [43][500/1737]  
+[04/06 11:21:22] EA02_num_sps_com_800 INFO: bbox_loss 0.4137 	cls_loss 0.2120 	com_loss 0.1765 	keep_loss 0.0903 	loss 0.8925 	
+[04/06 11:25:13] EA02_num_sps_com_800 INFO: Train: [43][1000/1737]  
+[04/06 11:25:13] EA02_num_sps_com_800 INFO: bbox_loss 0.4153 	cls_loss 0.2096 	com_loss 0.1743 	keep_loss 0.0897 	loss 0.8889 	
+[04/06 11:29:02] EA02_num_sps_com_800 INFO: Train: [43][1500/1737]  
+[04/06 11:29:02] EA02_num_sps_com_800 INFO: bbox_loss 0.4151 	cls_loss 0.2096 	com_loss 0.1747 	keep_loss 0.0901 	loss 0.8895 	
+[04/06 11:30:54] EA02_num_sps_com_800 INFO: epoch 43, total time 822.72, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 11:35:04] EA02_num_sps_com_800 INFO: Train: [44][500/1737]  
+[04/06 11:35:04] EA02_num_sps_com_800 INFO: bbox_loss 0.4162 	cls_loss 0.2035 	com_loss 0.1711 	keep_loss 0.0880 	loss 0.8787 	
+[04/06 11:38:56] EA02_num_sps_com_800 INFO: Train: [44][1000/1737]  
+[04/06 11:38:56] EA02_num_sps_com_800 INFO: bbox_loss 0.4146 	cls_loss 0.2067 	com_loss 0.1728 	keep_loss 0.0887 	loss 0.8828 	
+[04/06 11:42:44] EA02_num_sps_com_800 INFO: Train: [44][1500/1737]  
+[04/06 11:42:44] EA02_num_sps_com_800 INFO: bbox_loss 0.4120 	cls_loss 0.2072 	com_loss 0.1736 	keep_loss 0.0891 	loss 0.8819 	
+[04/06 11:44:37] EA02_num_sps_com_800 INFO: epoch 44, total time 822.32, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 11:48:48] EA02_num_sps_com_800 INFO: Train: [45][500/1737]  
+[04/06 11:48:48] EA02_num_sps_com_800 INFO: bbox_loss 0.4107 	cls_loss 0.2054 	com_loss 0.1712 	keep_loss 0.0889 	loss 0.8762 	
+[04/06 11:52:41] EA02_num_sps_com_800 INFO: Train: [45][1000/1737]  
+[04/06 11:52:41] EA02_num_sps_com_800 INFO: bbox_loss 0.4117 	cls_loss 0.2066 	com_loss 0.1722 	keep_loss 0.0893 	loss 0.8798 	
+[04/06 11:56:38] EA02_num_sps_com_800 INFO: Train: [45][1500/1737]  
+[04/06 11:56:38] EA02_num_sps_com_800 INFO: bbox_loss 0.4128 	cls_loss 0.2081 	com_loss 0.1733 	keep_loss 0.0895 	loss 0.8838 	
+[04/06 11:58:29] EA02_num_sps_com_800 INFO: epoch 45, total time 831.90, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 11:59:24] EA02_num_sps_com_800 INFO: Eval: [45]  
+[04/06 11:59:24] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.52756
+[04/06 11:59:24] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.42007
+[04/06 12:03:30] EA02_num_sps_com_800 INFO: Train: [46][500/1737]  
+[04/06 12:03:30] EA02_num_sps_com_800 INFO: bbox_loss 0.4183 	cls_loss 0.2078 	com_loss 0.1714 	keep_loss 0.0893 	loss 0.8869 	
+[04/06 12:07:22] EA02_num_sps_com_800 INFO: Train: [46][1000/1737]  
+[04/06 12:07:22] EA02_num_sps_com_800 INFO: bbox_loss 0.4147 	cls_loss 0.2065 	com_loss 0.1718 	keep_loss 0.0893 	loss 0.8822 	
+[04/06 12:11:22] EA02_num_sps_com_800 INFO: Train: [46][1500/1737]  
+[04/06 12:11:22] EA02_num_sps_com_800 INFO: bbox_loss 0.4152 	cls_loss 0.2067 	com_loss 0.1723 	keep_loss 0.0890 	loss 0.8832 	
+[04/06 12:13:18] EA02_num_sps_com_800 INFO: epoch 46, total time 834.31, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 12:17:26] EA02_num_sps_com_800 INFO: Train: [47][500/1737]  
+[04/06 12:17:26] EA02_num_sps_com_800 INFO: bbox_loss 0.4177 	cls_loss 0.2035 	com_loss 0.1675 	keep_loss 0.0873 	loss 0.8759 	
+[04/06 12:21:27] EA02_num_sps_com_800 INFO: Train: [47][1000/1737]  
+[04/06 12:21:27] EA02_num_sps_com_800 INFO: bbox_loss 0.4161 	cls_loss 0.2043 	com_loss 0.1691 	keep_loss 0.0884 	loss 0.8779 	
+[04/06 12:25:22] EA02_num_sps_com_800 INFO: Train: [47][1500/1737]  
+[04/06 12:25:22] EA02_num_sps_com_800 INFO: bbox_loss 0.4140 	cls_loss 0.2044 	com_loss 0.1699 	keep_loss 0.0886 	loss 0.8769 	
+[04/06 12:27:14] EA02_num_sps_com_800 INFO: epoch 47, total time 836.31, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 12:31:19] EA02_num_sps_com_800 INFO: Train: [48][500/1737]  
+[04/06 12:31:19] EA02_num_sps_com_800 INFO: bbox_loss 0.4115 	cls_loss 0.2035 	com_loss 0.1672 	keep_loss 0.0879 	loss 0.8701 	
+[04/06 12:35:12] EA02_num_sps_com_800 INFO: Train: [48][1000/1737]  
+[04/06 12:35:12] EA02_num_sps_com_800 INFO: bbox_loss 0.4134 	cls_loss 0.2065 	com_loss 0.1712 	keep_loss 0.0888 	loss 0.8798 	
+[04/06 12:39:02] EA02_num_sps_com_800 INFO: Train: [48][1500/1737]  
+[04/06 12:39:02] EA02_num_sps_com_800 INFO: bbox_loss 0.4125 	cls_loss 0.2066 	com_loss 0.1718 	keep_loss 0.0885 	loss 0.8795 	
+[04/06 12:40:57] EA02_num_sps_com_800 INFO: epoch 48, total time 822.76, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 12:41:52] EA02_num_sps_com_800 INFO: Eval: [48]  
+[04/06 12:41:52] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.52472
+[04/06 12:41:52] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.41628
+[04/06 12:46:05] EA02_num_sps_com_800 INFO: Train: [49][500/1737]  
+[04/06 12:46:05] EA02_num_sps_com_800 INFO: bbox_loss 0.4089 	cls_loss 0.1998 	com_loss 0.1670 	keep_loss 0.0852 	loss 0.8609 	
+[04/06 12:49:58] EA02_num_sps_com_800 INFO: Train: [49][1000/1737]  
+[04/06 12:49:58] EA02_num_sps_com_800 INFO: bbox_loss 0.4115 	cls_loss 0.2027 	com_loss 0.1693 	keep_loss 0.0873 	loss 0.8709 	
+[04/06 12:53:54] EA02_num_sps_com_800 INFO: Train: [49][1500/1737]  
+[04/06 12:53:54] EA02_num_sps_com_800 INFO: bbox_loss 0.4115 	cls_loss 0.2030 	com_loss 0.1698 	keep_loss 0.0874 	loss 0.8717 	
+[04/06 12:55:47] EA02_num_sps_com_800 INFO: epoch 49, total time 835.27, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 13:00:01] EA02_num_sps_com_800 INFO: Train: [50][500/1737]  
+[04/06 13:00:01] EA02_num_sps_com_800 INFO: bbox_loss 0.4085 	cls_loss 0.2002 	com_loss 0.1687 	keep_loss 0.0873 	loss 0.8647 	
+[04/06 13:03:58] EA02_num_sps_com_800 INFO: Train: [50][1000/1737]  
+[04/06 13:03:58] EA02_num_sps_com_800 INFO: bbox_loss 0.4095 	cls_loss 0.2018 	com_loss 0.1692 	keep_loss 0.0875 	loss 0.8680 	
+[04/06 13:07:57] EA02_num_sps_com_800 INFO: Train: [50][1500/1737]  
+[04/06 13:07:57] EA02_num_sps_com_800 INFO: bbox_loss 0.4105 	cls_loss 0.2025 	com_loss 0.1695 	keep_loss 0.0878 	loss 0.8703 	
+[04/06 13:09:50] EA02_num_sps_com_800 INFO: epoch 50, total time 843.45, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/06 13:14:00] EA02_num_sps_com_800 INFO: Train: [51][500/1737]  
+[04/06 13:14:00] EA02_num_sps_com_800 INFO: bbox_loss 0.4089 	cls_loss 0.2005 	com_loss 0.1653 	keep_loss 0.0851 	loss 0.8598 	
+[04/06 13:17:56] EA02_num_sps_com_800 INFO: Train: [51][1000/1737]  
+[04/06 13:17:56] EA02_num_sps_com_800 INFO: bbox_loss 0.4101 	cls_loss 0.2008 	com_loss 0.1666 	keep_loss 0.0866 	loss 0.8641 	
+[04/06 13:21:53] EA02_num_sps_com_800 INFO: Train: [51][1500/1737]  
+[04/06 13:21:53] EA02_num_sps_com_800 INFO: bbox_loss 0.4107 	cls_loss 0.2023 	com_loss 0.1679 	keep_loss 0.0871 	loss 0.8681 	
+[04/06 13:23:47] EA02_num_sps_com_800 INFO: epoch 51, total time 836.31, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 13:24:41] EA02_num_sps_com_800 INFO: Eval: [51]  
+[04/06 13:24:41] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.52345
+[04/06 13:24:41] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.42732
+[04/06 13:28:53] EA02_num_sps_com_800 INFO: Train: [52][500/1737]  
+[04/06 13:28:53] EA02_num_sps_com_800 INFO: bbox_loss 0.3970 	cls_loss 0.1926 	com_loss 0.1588 	keep_loss 0.0847 	loss 0.8332 	
+[04/06 13:32:51] EA02_num_sps_com_800 INFO: Train: [52][1000/1737]  
+[04/06 13:32:51] EA02_num_sps_com_800 INFO: bbox_loss 0.4007 	cls_loss 0.1930 	com_loss 0.1590 	keep_loss 0.0839 	loss 0.8366 	
+[04/06 13:36:45] EA02_num_sps_com_800 INFO: Train: [52][1500/1737]  
+[04/06 13:36:45] EA02_num_sps_com_800 INFO: bbox_loss 0.4004 	cls_loss 0.1915 	com_loss 0.1570 	keep_loss 0.0829 	loss 0.8317 	
+[04/06 13:38:39] EA02_num_sps_com_800 INFO: epoch 52, total time 838.26, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 13:42:45] EA02_num_sps_com_800 INFO: Train: [53][500/1737]  
+[04/06 13:42:45] EA02_num_sps_com_800 INFO: bbox_loss 0.3963 	cls_loss 0.1863 	com_loss 0.1510 	keep_loss 0.0809 	loss 0.8144 	
+[04/06 13:46:37] EA02_num_sps_com_800 INFO: Train: [53][1000/1737]  
+[04/06 13:46:37] EA02_num_sps_com_800 INFO: bbox_loss 0.3978 	cls_loss 0.1874 	com_loss 0.1526 	keep_loss 0.0813 	loss 0.8191 	
+[04/06 13:50:36] EA02_num_sps_com_800 INFO: Train: [53][1500/1737]  
+[04/06 13:50:36] EA02_num_sps_com_800 INFO: bbox_loss 0.3947 	cls_loss 0.1872 	com_loss 0.1527 	keep_loss 0.0814 	loss 0.8160 	
+[04/06 13:52:30] EA02_num_sps_com_800 INFO: epoch 53, total time 831.47, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 13:56:39] EA02_num_sps_com_800 INFO: Train: [54][500/1737]  
+[04/06 13:56:39] EA02_num_sps_com_800 INFO: bbox_loss 0.3925 	cls_loss 0.1868 	com_loss 0.1525 	keep_loss 0.0801 	loss 0.8119 	
+[04/06 14:00:32] EA02_num_sps_com_800 INFO: Train: [54][1000/1737]  
+[04/06 14:00:32] EA02_num_sps_com_800 INFO: bbox_loss 0.3913 	cls_loss 0.1860 	com_loss 0.1514 	keep_loss 0.0802 	loss 0.8089 	
+[04/06 14:04:23] EA02_num_sps_com_800 INFO: Train: [54][1500/1737]  
+[04/06 14:04:23] EA02_num_sps_com_800 INFO: bbox_loss 0.3919 	cls_loss 0.1853 	com_loss 0.1506 	keep_loss 0.0802 	loss 0.8080 	
+[04/06 14:06:14] EA02_num_sps_com_800 INFO: epoch 54, total time 824.10, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 14:07:09] EA02_num_sps_com_800 INFO: Eval: [54]  
+[04/06 14:07:09] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54260
+[04/06 14:07:09] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44342
+[04/06 14:11:18] EA02_num_sps_com_800 INFO: Train: [55][500/1737]  
+[04/06 14:11:18] EA02_num_sps_com_800 INFO: bbox_loss 0.3938 	cls_loss 0.1856 	com_loss 0.1501 	keep_loss 0.0793 	loss 0.8087 	
+[04/06 14:15:11] EA02_num_sps_com_800 INFO: Train: [55][1000/1737]  
+[04/06 14:15:11] EA02_num_sps_com_800 INFO: bbox_loss 0.3924 	cls_loss 0.1848 	com_loss 0.1503 	keep_loss 0.0795 	loss 0.8071 	
+[04/06 14:19:08] EA02_num_sps_com_800 INFO: Train: [55][1500/1737]  
+[04/06 14:19:08] EA02_num_sps_com_800 INFO: bbox_loss 0.3933 	cls_loss 0.1843 	com_loss 0.1495 	keep_loss 0.0795 	loss 0.8066 	
+[04/06 14:21:00] EA02_num_sps_com_800 INFO: epoch 55, total time 830.72, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 14:25:04] EA02_num_sps_com_800 INFO: Train: [56][500/1737]  
+[04/06 14:25:04] EA02_num_sps_com_800 INFO: bbox_loss 0.3950 	cls_loss 0.1809 	com_loss 0.1448 	keep_loss 0.0773 	loss 0.7980 	
+[04/06 14:29:00] EA02_num_sps_com_800 INFO: Train: [56][1000/1737]  
+[04/06 14:29:00] EA02_num_sps_com_800 INFO: bbox_loss 0.3941 	cls_loss 0.1839 	com_loss 0.1485 	keep_loss 0.0785 	loss 0.8050 	
+[04/06 14:32:57] EA02_num_sps_com_800 INFO: Train: [56][1500/1737]  
+[04/06 14:32:57] EA02_num_sps_com_800 INFO: bbox_loss 0.3942 	cls_loss 0.1838 	com_loss 0.1485 	keep_loss 0.0788 	loss 0.8054 	
+[04/06 14:34:53] EA02_num_sps_com_800 INFO: epoch 56, total time 833.03, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 14:38:58] EA02_num_sps_com_800 INFO: Train: [57][500/1737]  
+[04/06 14:38:58] EA02_num_sps_com_800 INFO: bbox_loss 0.3883 	cls_loss 0.1824 	com_loss 0.1473 	keep_loss 0.0785 	loss 0.7965 	
+[04/06 14:42:53] EA02_num_sps_com_800 INFO: Train: [57][1000/1737]  
+[04/06 14:42:53] EA02_num_sps_com_800 INFO: bbox_loss 0.3907 	cls_loss 0.1828 	com_loss 0.1475 	keep_loss 0.0787 	loss 0.7997 	
+[04/06 14:46:47] EA02_num_sps_com_800 INFO: Train: [57][1500/1737]  
+[04/06 14:46:47] EA02_num_sps_com_800 INFO: bbox_loss 0.3938 	cls_loss 0.1836 	com_loss 0.1480 	keep_loss 0.0793 	loss 0.8046 	
+[04/06 14:48:38] EA02_num_sps_com_800 INFO: epoch 57, total time 825.76, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 14:49:35] EA02_num_sps_com_800 INFO: Eval: [57]  
+[04/06 14:49:35] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54501
+[04/06 14:49:35] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44562
+[04/06 14:53:42] EA02_num_sps_com_800 INFO: Train: [58][500/1737]  
+[04/06 14:53:42] EA02_num_sps_com_800 INFO: bbox_loss 0.3892 	cls_loss 0.1819 	com_loss 0.1459 	keep_loss 0.0787 	loss 0.7957 	
+[04/06 14:57:40] EA02_num_sps_com_800 INFO: Train: [58][1000/1737]  
+[04/06 14:57:40] EA02_num_sps_com_800 INFO: bbox_loss 0.3910 	cls_loss 0.1819 	com_loss 0.1469 	keep_loss 0.0786 	loss 0.7983 	
+[04/06 15:01:41] EA02_num_sps_com_800 INFO: Train: [58][1500/1737]  
+[04/06 15:01:41] EA02_num_sps_com_800 INFO: bbox_loss 0.3916 	cls_loss 0.1829 	com_loss 0.1472 	keep_loss 0.0779 	loss 0.7997 	
+[04/06 15:03:34] EA02_num_sps_com_800 INFO: epoch 58, total time 839.09, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 15:07:40] EA02_num_sps_com_800 INFO: Train: [59][500/1737]  
+[04/06 15:07:40] EA02_num_sps_com_800 INFO: bbox_loss 0.3938 	cls_loss 0.1817 	com_loss 0.1469 	keep_loss 0.0779 	loss 0.8003 	
+[04/06 15:11:34] EA02_num_sps_com_800 INFO: Train: [59][1000/1737]  
+[04/06 15:11:34] EA02_num_sps_com_800 INFO: bbox_loss 0.3926 	cls_loss 0.1812 	com_loss 0.1462 	keep_loss 0.0773 	loss 0.7973 	
+[04/06 15:15:27] EA02_num_sps_com_800 INFO: Train: [59][1500/1737]  
+[04/06 15:15:27] EA02_num_sps_com_800 INFO: bbox_loss 0.3915 	cls_loss 0.1802 	com_loss 0.1452 	keep_loss 0.0771 	loss 0.7940 	
+[04/06 15:17:21] EA02_num_sps_com_800 INFO: epoch 59, total time 827.05, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 15:21:30] EA02_num_sps_com_800 INFO: Train: [60][500/1737]  
+[04/06 15:21:30] EA02_num_sps_com_800 INFO: bbox_loss 0.3843 	cls_loss 0.1783 	com_loss 0.1433 	keep_loss 0.0774 	loss 0.7833 	
+[04/06 15:25:25] EA02_num_sps_com_800 INFO: Train: [60][1000/1737]  
+[04/06 15:25:25] EA02_num_sps_com_800 INFO: bbox_loss 0.3875 	cls_loss 0.1795 	com_loss 0.1445 	keep_loss 0.0775 	loss 0.7891 	
+[04/06 15:29:17] EA02_num_sps_com_800 INFO: Train: [60][1500/1737]  
+[04/06 15:29:17] EA02_num_sps_com_800 INFO: bbox_loss 0.3896 	cls_loss 0.1805 	com_loss 0.1452 	keep_loss 0.0771 	loss 0.7925 	
+[04/06 15:31:10] EA02_num_sps_com_800 INFO: epoch 60, total time 829.49, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 15:32:04] EA02_num_sps_com_800 INFO: Eval: [60]  
+[04/06 15:32:04] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55017
+[04/06 15:32:04] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44857
+[04/06 15:36:14] EA02_num_sps_com_800 INFO: Train: [61][500/1737]  
+[04/06 15:36:14] EA02_num_sps_com_800 INFO: bbox_loss 0.3817 	cls_loss 0.1772 	com_loss 0.1419 	keep_loss 0.0767 	loss 0.7775 	
+[04/06 15:40:08] EA02_num_sps_com_800 INFO: Train: [61][1000/1737]  
+[04/06 15:40:08] EA02_num_sps_com_800 INFO: bbox_loss 0.3863 	cls_loss 0.1781 	com_loss 0.1433 	keep_loss 0.0766 	loss 0.7843 	
+[04/06 15:44:01] EA02_num_sps_com_800 INFO: Train: [61][1500/1737]  
+[04/06 15:44:01] EA02_num_sps_com_800 INFO: bbox_loss 0.3880 	cls_loss 0.1786 	com_loss 0.1440 	keep_loss 0.0764 	loss 0.7870 	
+[04/06 15:45:53] EA02_num_sps_com_800 INFO: epoch 61, total time 829.76, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 15:50:02] EA02_num_sps_com_800 INFO: Train: [62][500/1737]  
+[04/06 15:50:02] EA02_num_sps_com_800 INFO: bbox_loss 0.3874 	cls_loss 0.1811 	com_loss 0.1473 	keep_loss 0.0774 	loss 0.7933 	
+[04/06 15:53:59] EA02_num_sps_com_800 INFO: Train: [62][1000/1737]  
+[04/06 15:53:59] EA02_num_sps_com_800 INFO: bbox_loss 0.3849 	cls_loss 0.1794 	com_loss 0.1451 	keep_loss 0.0770 	loss 0.7865 	
+[04/06 15:57:57] EA02_num_sps_com_800 INFO: Train: [62][1500/1737]  
+[04/06 15:57:57] EA02_num_sps_com_800 INFO: bbox_loss 0.3867 	cls_loss 0.1802 	com_loss 0.1454 	keep_loss 0.0766 	loss 0.7889 	
+[04/06 15:59:50] EA02_num_sps_com_800 INFO: epoch 62, total time 836.25, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 16:03:55] EA02_num_sps_com_800 INFO: Train: [63][500/1737]  
+[04/06 16:03:55] EA02_num_sps_com_800 INFO: bbox_loss 0.3897 	cls_loss 0.1783 	com_loss 0.1426 	keep_loss 0.0764 	loss 0.7870 	
+[04/06 16:07:46] EA02_num_sps_com_800 INFO: Train: [63][1000/1737]  
+[04/06 16:07:46] EA02_num_sps_com_800 INFO: bbox_loss 0.3896 	cls_loss 0.1787 	com_loss 0.1435 	keep_loss 0.0758 	loss 0.7876 	
+[04/06 16:11:43] EA02_num_sps_com_800 INFO: Train: [63][1500/1737]  
+[04/06 16:11:43] EA02_num_sps_com_800 INFO: bbox_loss 0.3896 	cls_loss 0.1786 	com_loss 0.1431 	keep_loss 0.0756 	loss 0.7868 	
+[04/06 16:13:35] EA02_num_sps_com_800 INFO: epoch 63, total time 825.22, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 16:14:28] EA02_num_sps_com_800 INFO: Eval: [63]  
+[04/06 16:14:28] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54680
+[04/06 16:14:28] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44384
+[04/06 16:18:41] EA02_num_sps_com_800 INFO: Train: [64][500/1737]  
+[04/06 16:18:41] EA02_num_sps_com_800 INFO: bbox_loss 0.3934 	cls_loss 0.1779 	com_loss 0.1412 	keep_loss 0.0747 	loss 0.7873 	
+[04/06 16:22:33] EA02_num_sps_com_800 INFO: Train: [64][1000/1737]  
+[04/06 16:22:33] EA02_num_sps_com_800 INFO: bbox_loss 0.3903 	cls_loss 0.1776 	com_loss 0.1413 	keep_loss 0.0752 	loss 0.7843 	
+[04/06 16:26:26] EA02_num_sps_com_800 INFO: Train: [64][1500/1737]  
+[04/06 16:26:26] EA02_num_sps_com_800 INFO: bbox_loss 0.3896 	cls_loss 0.1775 	com_loss 0.1417 	keep_loss 0.0753 	loss 0.7842 	
+[04/06 16:28:18] EA02_num_sps_com_800 INFO: epoch 64, total time 829.71, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 16:32:28] EA02_num_sps_com_800 INFO: Train: [65][500/1737]  
+[04/06 16:32:28] EA02_num_sps_com_800 INFO: bbox_loss 0.3909 	cls_loss 0.1753 	com_loss 0.1393 	keep_loss 0.0759 	loss 0.7815 	
+[04/06 16:36:26] EA02_num_sps_com_800 INFO: Train: [65][1000/1737]  
+[04/06 16:36:26] EA02_num_sps_com_800 INFO: bbox_loss 0.3869 	cls_loss 0.1765 	com_loss 0.1412 	keep_loss 0.0759 	loss 0.7805 	
+[04/06 16:40:19] EA02_num_sps_com_800 INFO: Train: [65][1500/1737]  
+[04/06 16:40:19] EA02_num_sps_com_800 INFO: bbox_loss 0.3858 	cls_loss 0.1772 	com_loss 0.1421 	keep_loss 0.0761 	loss 0.7811 	
+[04/06 16:42:10] EA02_num_sps_com_800 INFO: epoch 65, total time 831.55, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 16:46:22] EA02_num_sps_com_800 INFO: Train: [66][500/1737]  
+[04/06 16:46:22] EA02_num_sps_com_800 INFO: bbox_loss 0.3870 	cls_loss 0.1771 	com_loss 0.1426 	keep_loss 0.0750 	loss 0.7817 	
+[04/06 16:50:19] EA02_num_sps_com_800 INFO: Train: [66][1000/1737]  
+[04/06 16:50:19] EA02_num_sps_com_800 INFO: bbox_loss 0.3887 	cls_loss 0.1779 	com_loss 0.1425 	keep_loss 0.0758 	loss 0.7850 	
+[04/06 16:54:14] EA02_num_sps_com_800 INFO: Train: [66][1500/1737]  
+[04/06 16:54:14] EA02_num_sps_com_800 INFO: bbox_loss 0.3878 	cls_loss 0.1778 	com_loss 0.1427 	keep_loss 0.0760 	loss 0.7843 	
+[04/06 16:56:07] EA02_num_sps_com_800 INFO: epoch 66, total time 837.47, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 16:57:01] EA02_num_sps_com_800 INFO: Eval: [66]  
+[04/06 16:57:01] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54764
+[04/06 16:57:01] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44363
+[04/06 17:01:12] EA02_num_sps_com_800 INFO: Train: [67][500/1737]  
+[04/06 17:01:12] EA02_num_sps_com_800 INFO: bbox_loss 0.3843 	cls_loss 0.1742 	com_loss 0.1398 	keep_loss 0.0744 	loss 0.7727 	
+[04/06 17:05:08] EA02_num_sps_com_800 INFO: Train: [67][1000/1737]  
+[04/06 17:05:08] EA02_num_sps_com_800 INFO: bbox_loss 0.3866 	cls_loss 0.1769 	com_loss 0.1421 	keep_loss 0.0754 	loss 0.7810 	
+[04/06 17:08:57] EA02_num_sps_com_800 INFO: Train: [67][1500/1737]  
+[04/06 17:08:57] EA02_num_sps_com_800 INFO: bbox_loss 0.3867 	cls_loss 0.1766 	com_loss 0.1416 	keep_loss 0.0756 	loss 0.7805 	
+[04/06 17:10:48] EA02_num_sps_com_800 INFO: epoch 67, total time 826.83, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 17:14:53] EA02_num_sps_com_800 INFO: Train: [68][500/1737]  
+[04/06 17:14:53] EA02_num_sps_com_800 INFO: bbox_loss 0.3879 	cls_loss 0.1767 	com_loss 0.1428 	keep_loss 0.0748 	loss 0.7822 	
+[04/06 17:18:44] EA02_num_sps_com_800 INFO: Train: [68][1000/1737]  
+[04/06 17:18:44] EA02_num_sps_com_800 INFO: bbox_loss 0.3892 	cls_loss 0.1771 	com_loss 0.1418 	keep_loss 0.0756 	loss 0.7836 	
+[04/06 17:22:36] EA02_num_sps_com_800 INFO: Train: [68][1500/1737]  
+[04/06 17:22:36] EA02_num_sps_com_800 INFO: bbox_loss 0.3869 	cls_loss 0.1763 	com_loss 0.1416 	keep_loss 0.0754 	loss 0.7802 	
+[04/06 17:24:34] EA02_num_sps_com_800 INFO: epoch 68, total time 826.30, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 17:28:46] EA02_num_sps_com_800 INFO: Train: [69][500/1737]  
+[04/06 17:28:46] EA02_num_sps_com_800 INFO: bbox_loss 0.3840 	cls_loss 0.1764 	com_loss 0.1409 	keep_loss 0.0760 	loss 0.7772 	
+[04/06 17:32:39] EA02_num_sps_com_800 INFO: Train: [69][1000/1737]  
+[04/06 17:32:39] EA02_num_sps_com_800 INFO: bbox_loss 0.3838 	cls_loss 0.1743 	com_loss 0.1395 	keep_loss 0.0751 	loss 0.7727 	
+[04/06 17:36:30] EA02_num_sps_com_800 INFO: Train: [69][1500/1737]  
+[04/06 17:36:30] EA02_num_sps_com_800 INFO: bbox_loss 0.3853 	cls_loss 0.1753 	com_loss 0.1399 	keep_loss 0.0748 	loss 0.7753 	
+[04/06 17:38:21] EA02_num_sps_com_800 INFO: epoch 69, total time 826.88, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 17:39:14] EA02_num_sps_com_800 INFO: Eval: [69]  
+[04/06 17:39:14] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54554
+[04/06 17:39:14] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44447
+[04/06 17:43:26] EA02_num_sps_com_800 INFO: Train: [70][500/1737]  
+[04/06 17:43:26] EA02_num_sps_com_800 INFO: bbox_loss 0.3924 	cls_loss 0.1775 	com_loss 0.1413 	keep_loss 0.0749 	loss 0.7860 	
+[04/06 17:47:23] EA02_num_sps_com_800 INFO: Train: [70][1000/1737]  
+[04/06 17:47:23] EA02_num_sps_com_800 INFO: bbox_loss 0.3892 	cls_loss 0.1761 	com_loss 0.1407 	keep_loss 0.0750 	loss 0.7810 	
+[04/06 17:51:26] EA02_num_sps_com_800 INFO: Train: [70][1500/1737]  
+[04/06 17:51:26] EA02_num_sps_com_800 INFO: bbox_loss 0.3868 	cls_loss 0.1760 	com_loss 0.1404 	keep_loss 0.0754 	loss 0.7786 	
+[04/06 17:53:22] EA02_num_sps_com_800 INFO: epoch 70, total time 848.19, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 17:57:31] EA02_num_sps_com_800 INFO: Train: [71][500/1737]  
+[04/06 17:57:31] EA02_num_sps_com_800 INFO: bbox_loss 0.3887 	cls_loss 0.1775 	com_loss 0.1416 	keep_loss 0.0757 	loss 0.7834 	
+[04/06 18:01:26] EA02_num_sps_com_800 INFO: Train: [71][1000/1737]  
+[04/06 18:01:26] EA02_num_sps_com_800 INFO: bbox_loss 0.3867 	cls_loss 0.1764 	com_loss 0.1408 	keep_loss 0.0755 	loss 0.7794 	
+[04/06 18:05:23] EA02_num_sps_com_800 INFO: Train: [71][1500/1737]  
+[04/06 18:05:23] EA02_num_sps_com_800 INFO: bbox_loss 0.3874 	cls_loss 0.1774 	com_loss 0.1417 	keep_loss 0.0756 	loss 0.7822 	
+[04/06 18:07:16] EA02_num_sps_com_800 INFO: epoch 71, total time 834.39, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 18:11:26] EA02_num_sps_com_800 INFO: Train: [72][500/1737]  
+[04/06 18:11:26] EA02_num_sps_com_800 INFO: bbox_loss 0.3900 	cls_loss 0.1736 	com_loss 0.1384 	keep_loss 0.0749 	loss 0.7769 	
+[04/06 18:15:23] EA02_num_sps_com_800 INFO: Train: [72][1000/1737]  
+[04/06 18:15:23] EA02_num_sps_com_800 INFO: bbox_loss 0.3866 	cls_loss 0.1738 	com_loss 0.1389 	keep_loss 0.0747 	loss 0.7740 	
+[04/06 18:19:19] EA02_num_sps_com_800 INFO: Train: [72][1500/1737]  
+[04/06 18:19:19] EA02_num_sps_com_800 INFO: bbox_loss 0.3860 	cls_loss 0.1742 	com_loss 0.1394 	keep_loss 0.0747 	loss 0.7744 	
+[04/06 18:21:11] EA02_num_sps_com_800 INFO: epoch 72, total time 835.21, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 18:22:06] EA02_num_sps_com_800 INFO: Eval: [72]  
+[04/06 18:22:06] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54628
+[04/06 18:22:06] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44331
+[04/06 18:26:15] EA02_num_sps_com_800 INFO: Train: [73][500/1737]  
+[04/06 18:26:15] EA02_num_sps_com_800 INFO: bbox_loss 0.3874 	cls_loss 0.1746 	com_loss 0.1385 	keep_loss 0.0749 	loss 0.7754 	
+[04/06 18:30:08] EA02_num_sps_com_800 INFO: Train: [73][1000/1737]  
+[04/06 18:30:08] EA02_num_sps_com_800 INFO: bbox_loss 0.3872 	cls_loss 0.1740 	com_loss 0.1378 	keep_loss 0.0745 	loss 0.7735 	
+[04/06 18:34:01] EA02_num_sps_com_800 INFO: Train: [73][1500/1737]  
+[04/06 18:34:01] EA02_num_sps_com_800 INFO: bbox_loss 0.3856 	cls_loss 0.1748 	com_loss 0.1393 	keep_loss 0.0747 	loss 0.7744 	
+[04/06 18:35:53] EA02_num_sps_com_800 INFO: epoch 73, total time 827.72, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 18:40:10] EA02_num_sps_com_800 INFO: Train: [74][500/1737]  
+[04/06 18:40:10] EA02_num_sps_com_800 INFO: bbox_loss 0.3864 	cls_loss 0.1731 	com_loss 0.1391 	keep_loss 0.0741 	loss 0.7726 	
+[04/06 18:44:09] EA02_num_sps_com_800 INFO: Train: [74][1000/1737]  
+[04/06 18:44:09] EA02_num_sps_com_800 INFO: bbox_loss 0.3869 	cls_loss 0.1747 	com_loss 0.1404 	keep_loss 0.0746 	loss 0.7767 	
+[04/06 18:48:00] EA02_num_sps_com_800 INFO: Train: [74][1500/1737]  
+[04/06 18:48:00] EA02_num_sps_com_800 INFO: bbox_loss 0.3872 	cls_loss 0.1750 	com_loss 0.1409 	keep_loss 0.0746 	loss 0.7776 	
+[04/06 18:49:53] EA02_num_sps_com_800 INFO: epoch 74, total time 839.20, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 18:53:57] EA02_num_sps_com_800 INFO: Train: [75][500/1737]  
+[04/06 18:53:57] EA02_num_sps_com_800 INFO: bbox_loss 0.3843 	cls_loss 0.1782 	com_loss 0.1425 	keep_loss 0.0752 	loss 0.7802 	
+[04/06 18:57:49] EA02_num_sps_com_800 INFO: Train: [75][1000/1737]  
+[04/06 18:57:49] EA02_num_sps_com_800 INFO: bbox_loss 0.3859 	cls_loss 0.1749 	com_loss 0.1400 	keep_loss 0.0747 	loss 0.7755 	
+[04/06 19:01:39] EA02_num_sps_com_800 INFO: Train: [75][1500/1737]  
+[04/06 19:01:39] EA02_num_sps_com_800 INFO: bbox_loss 0.3884 	cls_loss 0.1758 	com_loss 0.1404 	keep_loss 0.0748 	loss 0.7795 	
+[04/06 19:03:34] EA02_num_sps_com_800 INFO: epoch 75, total time 821.95, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 19:04:27] EA02_num_sps_com_800 INFO: Eval: [75]  
+[04/06 19:04:27] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54828
+[04/06 19:04:27] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44552
+[04/06 19:08:46] EA02_num_sps_com_800 INFO: Train: [76][500/1737]  
+[04/06 19:08:46] EA02_num_sps_com_800 INFO: bbox_loss 0.3887 	cls_loss 0.1706 	com_loss 0.1337 	keep_loss 0.0727 	loss 0.7657 	
+[04/06 19:12:44] EA02_num_sps_com_800 INFO: Train: [76][1000/1737]  
+[04/06 19:12:44] EA02_num_sps_com_800 INFO: bbox_loss 0.3873 	cls_loss 0.1712 	com_loss 0.1352 	keep_loss 0.0732 	loss 0.7669 	
+[04/06 19:16:37] EA02_num_sps_com_800 INFO: Train: [76][1500/1737]  
+[04/06 19:16:37] EA02_num_sps_com_800 INFO: bbox_loss 0.3859 	cls_loss 0.1723 	com_loss 0.1365 	keep_loss 0.0732 	loss 0.7680 	
+[04/06 19:18:29] EA02_num_sps_com_800 INFO: epoch 76, total time 841.27, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 19:22:49] EA02_num_sps_com_800 INFO: Train: [77][500/1737]  
+[04/06 19:22:49] EA02_num_sps_com_800 INFO: bbox_loss 0.3832 	cls_loss 0.1730 	com_loss 0.1369 	keep_loss 0.0730 	loss 0.7661 	
+[04/06 19:26:47] EA02_num_sps_com_800 INFO: Train: [77][1000/1737]  
+[04/06 19:26:47] EA02_num_sps_com_800 INFO: bbox_loss 0.3830 	cls_loss 0.1727 	com_loss 0.1377 	keep_loss 0.0733 	loss 0.7667 	
+[04/06 19:30:43] EA02_num_sps_com_800 INFO: Train: [77][1500/1737]  
+[04/06 19:30:43] EA02_num_sps_com_800 INFO: bbox_loss 0.3823 	cls_loss 0.1738 	com_loss 0.1390 	keep_loss 0.0737 	loss 0.7688 	
+[04/06 19:32:38] EA02_num_sps_com_800 INFO: epoch 77, total time 849.59, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 19:36:42] EA02_num_sps_com_800 INFO: Train: [78][500/1737]  
+[04/06 19:36:42] EA02_num_sps_com_800 INFO: bbox_loss 0.3825 	cls_loss 0.1734 	com_loss 0.1394 	keep_loss 0.0745 	loss 0.7698 	
+[04/06 19:40:34] EA02_num_sps_com_800 INFO: Train: [78][1000/1737]  
+[04/06 19:40:34] EA02_num_sps_com_800 INFO: bbox_loss 0.3826 	cls_loss 0.1731 	com_loss 0.1386 	keep_loss 0.0736 	loss 0.7679 	
+[04/06 19:44:31] EA02_num_sps_com_800 INFO: Train: [78][1500/1737]  
+[04/06 19:44:31] EA02_num_sps_com_800 INFO: bbox_loss 0.3835 	cls_loss 0.1741 	com_loss 0.1390 	keep_loss 0.0736 	loss 0.7703 	
+[04/06 19:46:25] EA02_num_sps_com_800 INFO: epoch 78, total time 826.56, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 19:47:18] EA02_num_sps_com_800 INFO: Eval: [78]  
+[04/06 19:47:18] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54733
+[04/06 19:47:18] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44468
+[04/06 19:51:34] EA02_num_sps_com_800 INFO: Train: [79][500/1737]  
+[04/06 19:51:34] EA02_num_sps_com_800 INFO: bbox_loss 0.3855 	cls_loss 0.1702 	com_loss 0.1347 	keep_loss 0.0733 	loss 0.7637 	
+[04/06 19:55:33] EA02_num_sps_com_800 INFO: Train: [79][1000/1737]  
+[04/06 19:55:33] EA02_num_sps_com_800 INFO: bbox_loss 0.3857 	cls_loss 0.1710 	com_loss 0.1352 	keep_loss 0.0734 	loss 0.7653 	
+[04/06 19:59:29] EA02_num_sps_com_800 INFO: Train: [79][1500/1737]  
+[04/06 19:59:29] EA02_num_sps_com_800 INFO: bbox_loss 0.3843 	cls_loss 0.1707 	com_loss 0.1352 	keep_loss 0.0734 	loss 0.7636 	
+[04/06 20:01:22] EA02_num_sps_com_800 INFO: epoch 79, total time 844.30, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 20:05:29] EA02_num_sps_com_800 INFO: Train: [80][500/1737]  
+[04/06 20:05:29] EA02_num_sps_com_800 INFO: bbox_loss 0.3835 	cls_loss 0.1719 	com_loss 0.1368 	keep_loss 0.0733 	loss 0.7655 	
+[04/06 20:09:24] EA02_num_sps_com_800 INFO: Train: [80][1000/1737]  
+[04/06 20:09:24] EA02_num_sps_com_800 INFO: bbox_loss 0.3852 	cls_loss 0.1721 	com_loss 0.1368 	keep_loss 0.0733 	loss 0.7674 	
+[04/06 20:13:18] EA02_num_sps_com_800 INFO: Train: [80][1500/1737]  
+[04/06 20:13:18] EA02_num_sps_com_800 INFO: bbox_loss 0.3844 	cls_loss 0.1729 	com_loss 0.1375 	keep_loss 0.0736 	loss 0.7683 	
+[04/06 20:15:12] EA02_num_sps_com_800 INFO: epoch 80, total time 829.43, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 20:19:25] EA02_num_sps_com_800 INFO: Train: [81][500/1737]  
+[04/06 20:19:25] EA02_num_sps_com_800 INFO: bbox_loss 0.3852 	cls_loss 0.1696 	com_loss 0.1355 	keep_loss 0.0720 	loss 0.7623 	
+[04/06 20:23:19] EA02_num_sps_com_800 INFO: Train: [81][1000/1737]  
+[04/06 20:23:19] EA02_num_sps_com_800 INFO: bbox_loss 0.3843 	cls_loss 0.1699 	com_loss 0.1356 	keep_loss 0.0722 	loss 0.7619 	
+[04/06 20:27:15] EA02_num_sps_com_800 INFO: Train: [81][1500/1737]  
+[04/06 20:27:15] EA02_num_sps_com_800 INFO: bbox_loss 0.3817 	cls_loss 0.1700 	com_loss 0.1356 	keep_loss 0.0727 	loss 0.7599 	
+[04/06 20:29:11] EA02_num_sps_com_800 INFO: epoch 81, total time 839.16, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 20:30:06] EA02_num_sps_com_800 INFO: Eval: [81]  
+[04/06 20:30:06] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54775
+[04/06 20:30:06] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44394
+[04/06 20:34:17] EA02_num_sps_com_800 INFO: Train: [82][500/1737]  
+[04/06 20:34:17] EA02_num_sps_com_800 INFO: bbox_loss 0.3807 	cls_loss 0.1714 	com_loss 0.1379 	keep_loss 0.0724 	loss 0.7624 	
+[04/06 20:38:14] EA02_num_sps_com_800 INFO: Train: [82][1000/1737]  
+[04/06 20:38:14] EA02_num_sps_com_800 INFO: bbox_loss 0.3846 	cls_loss 0.1726 	com_loss 0.1374 	keep_loss 0.0736 	loss 0.7683 	
+[04/06 20:42:07] EA02_num_sps_com_800 INFO: Train: [82][1500/1737]  
+[04/06 20:42:07] EA02_num_sps_com_800 INFO: bbox_loss 0.3833 	cls_loss 0.1712 	com_loss 0.1363 	keep_loss 0.0730 	loss 0.7638 	
+[04/06 20:43:59] EA02_num_sps_com_800 INFO: epoch 82, total time 832.60, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 20:48:13] EA02_num_sps_com_800 INFO: Train: [83][500/1737]  
+[04/06 20:48:13] EA02_num_sps_com_800 INFO: bbox_loss 0.3773 	cls_loss 0.1705 	com_loss 0.1362 	keep_loss 0.0731 	loss 0.7570 	
+[04/06 20:52:13] EA02_num_sps_com_800 INFO: Train: [83][1000/1737]  
+[04/06 20:52:13] EA02_num_sps_com_800 INFO: bbox_loss 0.3801 	cls_loss 0.1715 	com_loss 0.1374 	keep_loss 0.0735 	loss 0.7625 	
+[04/06 20:56:13] EA02_num_sps_com_800 INFO: Train: [83][1500/1737]  
+[04/06 20:56:13] EA02_num_sps_com_800 INFO: bbox_loss 0.3819 	cls_loss 0.1717 	com_loss 0.1374 	keep_loss 0.0734 	loss 0.7644 	
+[04/06 20:58:08] EA02_num_sps_com_800 INFO: epoch 83, total time 848.96, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 21:02:20] EA02_num_sps_com_800 INFO: Train: [84][500/1737]  
+[04/06 21:02:20] EA02_num_sps_com_800 INFO: bbox_loss 0.3860 	cls_loss 0.1717 	com_loss 0.1370 	keep_loss 0.0730 	loss 0.7676 	
+[04/06 21:06:16] EA02_num_sps_com_800 INFO: Train: [84][1000/1737]  
+[04/06 21:06:16] EA02_num_sps_com_800 INFO: bbox_loss 0.3828 	cls_loss 0.1701 	com_loss 0.1354 	keep_loss 0.0737 	loss 0.7620 	
+[04/06 21:10:12] EA02_num_sps_com_800 INFO: Train: [84][1500/1737]  
+[04/06 21:10:12] EA02_num_sps_com_800 INFO: bbox_loss 0.3844 	cls_loss 0.1701 	com_loss 0.1352 	keep_loss 0.0734 	loss 0.7631 	
+[04/06 21:12:05] EA02_num_sps_com_800 INFO: epoch 84, total time 837.17, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 21:12:59] EA02_num_sps_com_800 INFO: Eval: [84]  
+[04/06 21:12:59] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55122
+[04/06 21:12:59] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.45141
+[04/06 21:17:12] EA02_num_sps_com_800 INFO: Train: [85][500/1737]  
+[04/06 21:17:12] EA02_num_sps_com_800 INFO: bbox_loss 0.3839 	cls_loss 0.1686 	com_loss 0.1336 	keep_loss 0.0714 	loss 0.7576 	
+[04/06 21:21:08] EA02_num_sps_com_800 INFO: Train: [85][1000/1737]  
+[04/06 21:21:08] EA02_num_sps_com_800 INFO: bbox_loss 0.3847 	cls_loss 0.1702 	com_loss 0.1341 	keep_loss 0.0719 	loss 0.7609 	
+[04/06 21:25:10] EA02_num_sps_com_800 INFO: Train: [85][1500/1737]  
+[04/06 21:25:10] EA02_num_sps_com_800 INFO: bbox_loss 0.3842 	cls_loss 0.1706 	com_loss 0.1353 	keep_loss 0.0721 	loss 0.7622 	
+[04/06 21:27:05] EA02_num_sps_com_800 INFO: epoch 85, total time 846.07, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 21:31:17] EA02_num_sps_com_800 INFO: Train: [86][500/1737]  
+[04/06 21:31:17] EA02_num_sps_com_800 INFO: bbox_loss 0.3811 	cls_loss 0.1692 	com_loss 0.1351 	keep_loss 0.0726 	loss 0.7580 	
+[04/06 21:35:12] EA02_num_sps_com_800 INFO: Train: [86][1000/1737]  
+[04/06 21:35:12] EA02_num_sps_com_800 INFO: bbox_loss 0.3797 	cls_loss 0.1701 	com_loss 0.1356 	keep_loss 0.0730 	loss 0.7584 	
+[04/06 21:39:06] EA02_num_sps_com_800 INFO: Train: [86][1500/1737]  
+[04/06 21:39:06] EA02_num_sps_com_800 INFO: bbox_loss 0.3798 	cls_loss 0.1701 	com_loss 0.1353 	keep_loss 0.0727 	loss 0.7579 	
+[04/06 21:40:58] EA02_num_sps_com_800 INFO: epoch 86, total time 832.94, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 21:45:12] EA02_num_sps_com_800 INFO: Train: [87][500/1737]  
+[04/06 21:45:12] EA02_num_sps_com_800 INFO: bbox_loss 0.3864 	cls_loss 0.1687 	com_loss 0.1341 	keep_loss 0.0717 	loss 0.7610 	
+[04/06 21:49:10] EA02_num_sps_com_800 INFO: Train: [87][1000/1737]  
+[04/06 21:49:10] EA02_num_sps_com_800 INFO: bbox_loss 0.3834 	cls_loss 0.1684 	com_loss 0.1340 	keep_loss 0.0719 	loss 0.7576 	
+[04/06 21:53:09] EA02_num_sps_com_800 INFO: Train: [87][1500/1737]  
+[04/06 21:53:09] EA02_num_sps_com_800 INFO: bbox_loss 0.3823 	cls_loss 0.1686 	com_loss 0.1340 	keep_loss 0.0720 	loss 0.7568 	
+[04/06 21:54:58] EA02_num_sps_com_800 INFO: epoch 87, total time 840.41, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 21:55:51] EA02_num_sps_com_800 INFO: Eval: [87]  
+[04/06 21:55:51] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54954
+[04/06 21:55:51] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44678
+[04/06 22:00:04] EA02_num_sps_com_800 INFO: Train: [88][500/1737]  
+[04/06 22:00:04] EA02_num_sps_com_800 INFO: bbox_loss 0.3830 	cls_loss 0.1724 	com_loss 0.1378 	keep_loss 0.0735 	loss 0.7667 	
+[04/06 22:03:57] EA02_num_sps_com_800 INFO: Train: [88][1000/1737]  
+[04/06 22:03:57] EA02_num_sps_com_800 INFO: bbox_loss 0.3821 	cls_loss 0.1717 	com_loss 0.1369 	keep_loss 0.0729 	loss 0.7636 	
+[04/06 22:07:48] EA02_num_sps_com_800 INFO: Train: [88][1500/1737]  
+[04/06 22:07:48] EA02_num_sps_com_800 INFO: bbox_loss 0.3814 	cls_loss 0.1705 	com_loss 0.1357 	keep_loss 0.0724 	loss 0.7601 	
+[04/06 22:09:47] EA02_num_sps_com_800 INFO: epoch 88, total time 835.19, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 22:13:55] EA02_num_sps_com_800 INFO: Train: [89][500/1737]  
+[04/06 22:13:55] EA02_num_sps_com_800 INFO: bbox_loss 0.3842 	cls_loss 0.1680 	com_loss 0.1337 	keep_loss 0.0715 	loss 0.7574 	
+[04/06 22:17:45] EA02_num_sps_com_800 INFO: Train: [89][1000/1737]  
+[04/06 22:17:45] EA02_num_sps_com_800 INFO: bbox_loss 0.3826 	cls_loss 0.1680 	com_loss 0.1334 	keep_loss 0.0714 	loss 0.7554 	
+[04/06 22:21:39] EA02_num_sps_com_800 INFO: Train: [89][1500/1737]  
+[04/06 22:21:39] EA02_num_sps_com_800 INFO: bbox_loss 0.3829 	cls_loss 0.1688 	com_loss 0.1342 	keep_loss 0.0720 	loss 0.7579 	
+[04/06 22:23:32] EA02_num_sps_com_800 INFO: epoch 89, total time 825.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 22:27:43] EA02_num_sps_com_800 INFO: Train: [90][500/1737]  
+[04/06 22:27:43] EA02_num_sps_com_800 INFO: bbox_loss 0.3851 	cls_loss 0.1698 	com_loss 0.1351 	keep_loss 0.0721 	loss 0.7622 	
+[04/06 22:31:37] EA02_num_sps_com_800 INFO: Train: [90][1000/1737]  
+[04/06 22:31:37] EA02_num_sps_com_800 INFO: bbox_loss 0.3819 	cls_loss 0.1689 	com_loss 0.1347 	keep_loss 0.0718 	loss 0.7574 	
+[04/06 22:35:31] EA02_num_sps_com_800 INFO: Train: [90][1500/1737]  
+[04/06 22:35:31] EA02_num_sps_com_800 INFO: bbox_loss 0.3827 	cls_loss 0.1697 	com_loss 0.1348 	keep_loss 0.0724 	loss 0.7596 	
+[04/06 22:37:25] EA02_num_sps_com_800 INFO: epoch 90, total time 833.54, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 22:38:19] EA02_num_sps_com_800 INFO: Eval: [90]  
+[04/06 22:38:19] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54785
+[04/06 22:38:19] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44741
+[04/06 22:42:28] EA02_num_sps_com_800 INFO: Train: [91][500/1737]  
+[04/06 22:42:28] EA02_num_sps_com_800 INFO: bbox_loss 0.3843 	cls_loss 0.1691 	com_loss 0.1341 	keep_loss 0.0723 	loss 0.7597 	
+[04/06 22:46:21] EA02_num_sps_com_800 INFO: Train: [91][1000/1737]  
+[04/06 22:46:21] EA02_num_sps_com_800 INFO: bbox_loss 0.3826 	cls_loss 0.1680 	com_loss 0.1326 	keep_loss 0.0725 	loss 0.7558 	
+[04/06 22:50:18] EA02_num_sps_com_800 INFO: Train: [91][1500/1737]  
+[04/06 22:50:18] EA02_num_sps_com_800 INFO: bbox_loss 0.3835 	cls_loss 0.1681 	com_loss 0.1328 	keep_loss 0.0724 	loss 0.7568 	
+[04/06 22:52:09] EA02_num_sps_com_800 INFO: epoch 91, total time 830.15, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 22:56:24] EA02_num_sps_com_800 INFO: Train: [92][500/1737]  
+[04/06 22:56:24] EA02_num_sps_com_800 INFO: bbox_loss 0.3854 	cls_loss 0.1697 	com_loss 0.1348 	keep_loss 0.0725 	loss 0.7625 	
+[04/06 23:00:15] EA02_num_sps_com_800 INFO: Train: [92][1000/1737]  
+[04/06 23:00:15] EA02_num_sps_com_800 INFO: bbox_loss 0.3834 	cls_loss 0.1692 	com_loss 0.1346 	keep_loss 0.0723 	loss 0.7594 	
+[04/06 23:04:09] EA02_num_sps_com_800 INFO: Train: [92][1500/1737]  
+[04/06 23:04:09] EA02_num_sps_com_800 INFO: bbox_loss 0.3811 	cls_loss 0.1692 	com_loss 0.1343 	keep_loss 0.0724 	loss 0.7570 	
+[04/06 23:06:03] EA02_num_sps_com_800 INFO: epoch 92, total time 833.53, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 23:10:10] EA02_num_sps_com_800 INFO: Train: [93][500/1737]  
+[04/06 23:10:10] EA02_num_sps_com_800 INFO: bbox_loss 0.3848 	cls_loss 0.1687 	com_loss 0.1336 	keep_loss 0.0709 	loss 0.7579 	
+[04/06 23:14:07] EA02_num_sps_com_800 INFO: Train: [93][1000/1737]  
+[04/06 23:14:07] EA02_num_sps_com_800 INFO: bbox_loss 0.3833 	cls_loss 0.1694 	com_loss 0.1342 	keep_loss 0.0716 	loss 0.7585 	
+[04/06 23:18:04] EA02_num_sps_com_800 INFO: Train: [93][1500/1737]  
+[04/06 23:18:04] EA02_num_sps_com_800 INFO: bbox_loss 0.3843 	cls_loss 0.1699 	com_loss 0.1346 	keep_loss 0.0717 	loss 0.7606 	
+[04/06 23:19:57] EA02_num_sps_com_800 INFO: epoch 93, total time 834.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 23:20:51] EA02_num_sps_com_800 INFO: Eval: [93]  
+[04/06 23:20:51] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54764
+[04/06 23:20:51] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44931
+[04/06 23:25:05] EA02_num_sps_com_800 INFO: Train: [94][500/1737]  
+[04/06 23:25:05] EA02_num_sps_com_800 INFO: bbox_loss 0.3796 	cls_loss 0.1664 	com_loss 0.1318 	keep_loss 0.0705 	loss 0.7483 	
+[04/06 23:29:00] EA02_num_sps_com_800 INFO: Train: [94][1000/1737]  
+[04/06 23:29:00] EA02_num_sps_com_800 INFO: bbox_loss 0.3822 	cls_loss 0.1678 	com_loss 0.1329 	keep_loss 0.0707 	loss 0.7536 	
+[04/06 23:32:55] EA02_num_sps_com_800 INFO: Train: [94][1500/1737]  
+[04/06 23:32:55] EA02_num_sps_com_800 INFO: bbox_loss 0.3826 	cls_loss 0.1678 	com_loss 0.1326 	keep_loss 0.0708 	loss 0.7537 	
+[04/06 23:34:48] EA02_num_sps_com_800 INFO: epoch 94, total time 837.34, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 23:38:55] EA02_num_sps_com_800 INFO: Train: [95][500/1737]  
+[04/06 23:38:55] EA02_num_sps_com_800 INFO: bbox_loss 0.3836 	cls_loss 0.1668 	com_loss 0.1324 	keep_loss 0.0708 	loss 0.7536 	
+[04/06 23:42:52] EA02_num_sps_com_800 INFO: Train: [95][1000/1737]  
+[04/06 23:42:52] EA02_num_sps_com_800 INFO: bbox_loss 0.3820 	cls_loss 0.1655 	com_loss 0.1309 	keep_loss 0.0704 	loss 0.7488 	
+[04/06 23:46:50] EA02_num_sps_com_800 INFO: Train: [95][1500/1737]  
+[04/06 23:46:50] EA02_num_sps_com_800 INFO: bbox_loss 0.3800 	cls_loss 0.1655 	com_loss 0.1313 	keep_loss 0.0708 	loss 0.7476 	
+[04/06 23:48:44] EA02_num_sps_com_800 INFO: epoch 95, total time 835.75, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/06 23:52:55] EA02_num_sps_com_800 INFO: Train: [96][500/1737]  
+[04/06 23:52:55] EA02_num_sps_com_800 INFO: bbox_loss 0.3804 	cls_loss 0.1649 	com_loss 0.1304 	keep_loss 0.0699 	loss 0.7456 	
+[04/06 23:56:49] EA02_num_sps_com_800 INFO: Train: [96][1000/1737]  
+[04/06 23:56:49] EA02_num_sps_com_800 INFO: bbox_loss 0.3813 	cls_loss 0.1665 	com_loss 0.1316 	keep_loss 0.0709 	loss 0.7502 	
+[04/07 00:00:41] EA02_num_sps_com_800 INFO: Train: [96][1500/1737]  
+[04/07 00:00:41] EA02_num_sps_com_800 INFO: bbox_loss 0.3811 	cls_loss 0.1673 	com_loss 0.1325 	keep_loss 0.0712 	loss 0.7521 	
+[04/07 00:02:35] EA02_num_sps_com_800 INFO: epoch 96, total time 831.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/07 00:03:28] EA02_num_sps_com_800 INFO: Eval: [96]  
+[04/07 00:03:28] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54828
+[04/07 00:03:28] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44594
+[04/07 00:07:45] EA02_num_sps_com_800 INFO: Train: [97][500/1737]  
+[04/07 00:07:45] EA02_num_sps_com_800 INFO: bbox_loss 0.3784 	cls_loss 0.1662 	com_loss 0.1332 	keep_loss 0.0702 	loss 0.7479 	
+[04/07 00:11:41] EA02_num_sps_com_800 INFO: Train: [97][1000/1737]  
+[04/07 00:11:41] EA02_num_sps_com_800 INFO: bbox_loss 0.3802 	cls_loss 0.1660 	com_loss 0.1322 	keep_loss 0.0713 	loss 0.7497 	
+[04/07 00:15:34] EA02_num_sps_com_800 INFO: Train: [97][1500/1737]  
+[04/07 00:15:34] EA02_num_sps_com_800 INFO: bbox_loss 0.3809 	cls_loss 0.1659 	com_loss 0.1321 	keep_loss 0.0715 	loss 0.7504 	
+[04/07 00:17:25] EA02_num_sps_com_800 INFO: epoch 97, total time 837.27, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/07 00:21:32] EA02_num_sps_com_800 INFO: Train: [98][500/1737]  
+[04/07 00:21:32] EA02_num_sps_com_800 INFO: bbox_loss 0.3806 	cls_loss 0.1656 	com_loss 0.1308 	keep_loss 0.0706 	loss 0.7476 	
+[04/07 00:25:25] EA02_num_sps_com_800 INFO: Train: [98][1000/1737]  
+[04/07 00:25:25] EA02_num_sps_com_800 INFO: bbox_loss 0.3795 	cls_loss 0.1647 	com_loss 0.1306 	keep_loss 0.0706 	loss 0.7454 	
+[04/07 00:29:18] EA02_num_sps_com_800 INFO: Train: [98][1500/1737]  
+[04/07 00:29:18] EA02_num_sps_com_800 INFO: bbox_loss 0.3793 	cls_loss 0.1650 	com_loss 0.1304 	keep_loss 0.0707 	loss 0.7454 	
+[04/07 00:31:12] EA02_num_sps_com_800 INFO: epoch 98, total time 826.67, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/07 00:35:22] EA02_num_sps_com_800 INFO: Train: [99][500/1737]  
+[04/07 00:35:22] EA02_num_sps_com_800 INFO: bbox_loss 0.3791 	cls_loss 0.1666 	com_loss 0.1322 	keep_loss 0.0712 	loss 0.7491 	
+[04/07 00:39:22] EA02_num_sps_com_800 INFO: Train: [99][1000/1737]  
+[04/07 00:39:22] EA02_num_sps_com_800 INFO: bbox_loss 0.3823 	cls_loss 0.1668 	com_loss 0.1317 	keep_loss 0.0717 	loss 0.7525 	
+[04/07 00:43:19] EA02_num_sps_com_800 INFO: Train: [99][1500/1737]  
+[04/07 00:43:19] EA02_num_sps_com_800 INFO: bbox_loss 0.3814 	cls_loss 0.1668 	com_loss 0.1319 	keep_loss 0.0717 	loss 0.7518 	
+[04/07 00:45:16] EA02_num_sps_com_800 INFO: epoch 99, total time 843.38, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/07 00:46:09] EA02_num_sps_com_800 INFO: Eval: [99]  
+[04/07 00:46:09] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.54386
+[04/07 00:46:09] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44236
+[04/07 00:50:21] EA02_num_sps_com_800 INFO: Train: [100][500/1737]  
+[04/07 00:50:21] EA02_num_sps_com_800 INFO: bbox_loss 0.3850 	cls_loss 0.1687 	com_loss 0.1346 	keep_loss 0.0720 	loss 0.7603 	
+[04/07 00:54:18] EA02_num_sps_com_800 INFO: Train: [100][1000/1737]  
+[04/07 00:54:18] EA02_num_sps_com_800 INFO: bbox_loss 0.3826 	cls_loss 0.1695 	com_loss 0.1353 	keep_loss 0.0720 	loss 0.7593 	
+[04/07 00:58:13] EA02_num_sps_com_800 INFO: Train: [100][1500/1737]  
+[04/07 00:58:13] EA02_num_sps_com_800 INFO: bbox_loss 0.3824 	cls_loss 0.1683 	com_loss 0.1337 	keep_loss 0.0718 	loss 0.7561 	
+[04/07 01:00:06] EA02_num_sps_com_800 INFO: epoch 100, total time 837.13, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[04/07 01:04:10] EA02_num_sps_com_800 INFO: Train: [101][500/1737]  
+[04/07 01:04:10] EA02_num_sps_com_800 INFO: bbox_loss 0.3798 	cls_loss 0.1646 	com_loss 0.1295 	keep_loss 0.0700 	loss 0.7439 	
+[04/07 01:08:06] EA02_num_sps_com_800 INFO: Train: [101][1000/1737]  
+[04/07 01:08:06] EA02_num_sps_com_800 INFO: bbox_loss 0.3783 	cls_loss 0.1658 	com_loss 0.1316 	keep_loss 0.0709 	loss 0.7466 	
+[04/07 01:11:59] EA02_num_sps_com_800 INFO: Train: [101][1500/1737]  
+[04/07 01:11:59] EA02_num_sps_com_800 INFO: bbox_loss 0.3793 	cls_loss 0.1651 	com_loss 0.1309 	keep_loss 0.0708 	loss 0.7461 	
+[04/07 01:13:56] EA02_num_sps_com_800 INFO: epoch 101, total time 830.41, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 01:18:07] EA02_num_sps_com_800 INFO: Train: [102][500/1737]  
+[04/07 01:18:07] EA02_num_sps_com_800 INFO: bbox_loss 0.3792 	cls_loss 0.1669 	com_loss 0.1333 	keep_loss 0.0714 	loss 0.7508 	
+[04/07 01:21:57] EA02_num_sps_com_800 INFO: Train: [102][1000/1737]  
+[04/07 01:21:57] EA02_num_sps_com_800 INFO: bbox_loss 0.3795 	cls_loss 0.1655 	com_loss 0.1312 	keep_loss 0.0711 	loss 0.7473 	
+[04/07 01:25:53] EA02_num_sps_com_800 INFO: Train: [102][1500/1737]  
+[04/07 01:25:53] EA02_num_sps_com_800 INFO: bbox_loss 0.3789 	cls_loss 0.1653 	com_loss 0.1310 	keep_loss 0.0711 	loss 0.7463 	
+[04/07 01:27:45] EA02_num_sps_com_800 INFO: epoch 102, total time 828.96, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 01:28:39] EA02_num_sps_com_800 INFO: Eval: [102]  
+[04/07 01:28:39] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55090
+[04/07 01:28:39] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44636
+[04/07 01:32:48] EA02_num_sps_com_800 INFO: Train: [103][500/1737]  
+[04/07 01:32:48] EA02_num_sps_com_800 INFO: bbox_loss 0.3829 	cls_loss 0.1653 	com_loss 0.1301 	keep_loss 0.0704 	loss 0.7487 	
+[04/07 01:36:46] EA02_num_sps_com_800 INFO: Train: [103][1000/1737]  
+[04/07 01:36:46] EA02_num_sps_com_800 INFO: bbox_loss 0.3820 	cls_loss 0.1653 	com_loss 0.1297 	keep_loss 0.0701 	loss 0.7471 	
+[04/07 01:40:45] EA02_num_sps_com_800 INFO: Train: [103][1500/1737]  
+[04/07 01:40:45] EA02_num_sps_com_800 INFO: bbox_loss 0.3808 	cls_loss 0.1652 	com_loss 0.1299 	keep_loss 0.0704 	loss 0.7462 	
+[04/07 01:42:37] EA02_num_sps_com_800 INFO: epoch 103, total time 838.05, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 01:46:51] EA02_num_sps_com_800 INFO: Train: [104][500/1737]  
+[04/07 01:46:51] EA02_num_sps_com_800 INFO: bbox_loss 0.3828 	cls_loss 0.1650 	com_loss 0.1302 	keep_loss 0.0704 	loss 0.7485 	
+[04/07 01:50:45] EA02_num_sps_com_800 INFO: Train: [104][1000/1737]  
+[04/07 01:50:45] EA02_num_sps_com_800 INFO: bbox_loss 0.3798 	cls_loss 0.1639 	com_loss 0.1286 	keep_loss 0.0700 	loss 0.7423 	
+[04/07 01:54:38] EA02_num_sps_com_800 INFO: Train: [104][1500/1737]  
+[04/07 01:54:38] EA02_num_sps_com_800 INFO: bbox_loss 0.3799 	cls_loss 0.1641 	com_loss 0.1289 	keep_loss 0.0701 	loss 0.7431 	
+[04/07 01:56:34] EA02_num_sps_com_800 INFO: epoch 104, total time 837.04, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 02:00:42] EA02_num_sps_com_800 INFO: Train: [105][500/1737]  
+[04/07 02:00:42] EA02_num_sps_com_800 INFO: bbox_loss 0.3812 	cls_loss 0.1647 	com_loss 0.1299 	keep_loss 0.0692 	loss 0.7451 	
+[04/07 02:04:41] EA02_num_sps_com_800 INFO: Train: [105][1000/1737]  
+[04/07 02:04:41] EA02_num_sps_com_800 INFO: bbox_loss 0.3821 	cls_loss 0.1647 	com_loss 0.1291 	keep_loss 0.0697 	loss 0.7456 	
+[04/07 02:08:38] EA02_num_sps_com_800 INFO: Train: [105][1500/1737]  
+[04/07 02:08:38] EA02_num_sps_com_800 INFO: bbox_loss 0.3781 	cls_loss 0.1641 	com_loss 0.1289 	keep_loss 0.0702 	loss 0.7412 	
+[04/07 02:10:30] EA02_num_sps_com_800 INFO: epoch 105, total time 836.06, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 02:11:23] EA02_num_sps_com_800 INFO: Eval: [105]  
+[04/07 02:11:23] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55416
+[04/07 02:11:23] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.45004
+[04/07 02:15:35] EA02_num_sps_com_800 INFO: Train: [106][500/1737]  
+[04/07 02:15:35] EA02_num_sps_com_800 INFO: bbox_loss 0.3834 	cls_loss 0.1698 	com_loss 0.1346 	keep_loss 0.0705 	loss 0.7583 	
+[04/07 02:19:27] EA02_num_sps_com_800 INFO: Train: [106][1000/1737]  
+[04/07 02:19:27] EA02_num_sps_com_800 INFO: bbox_loss 0.3797 	cls_loss 0.1673 	com_loss 0.1315 	keep_loss 0.0700 	loss 0.7485 	
+[04/07 02:23:22] EA02_num_sps_com_800 INFO: Train: [106][1500/1737]  
+[04/07 02:23:22] EA02_num_sps_com_800 INFO: bbox_loss 0.3789 	cls_loss 0.1664 	com_loss 0.1310 	keep_loss 0.0701 	loss 0.7463 	
+[04/07 02:25:18] EA02_num_sps_com_800 INFO: epoch 106, total time 835.73, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 02:29:27] EA02_num_sps_com_800 INFO: Train: [107][500/1737]  
+[04/07 02:29:27] EA02_num_sps_com_800 INFO: bbox_loss 0.3749 	cls_loss 0.1651 	com_loss 0.1313 	keep_loss 0.0705 	loss 0.7419 	
+[04/07 02:33:20] EA02_num_sps_com_800 INFO: Train: [107][1000/1737]  
+[04/07 02:33:20] EA02_num_sps_com_800 INFO: bbox_loss 0.3777 	cls_loss 0.1649 	com_loss 0.1298 	keep_loss 0.0705 	loss 0.7428 	
+[04/07 02:37:11] EA02_num_sps_com_800 INFO: Train: [107][1500/1737]  
+[04/07 02:37:11] EA02_num_sps_com_800 INFO: bbox_loss 0.3789 	cls_loss 0.1647 	com_loss 0.1294 	keep_loss 0.0704 	loss 0.7434 	
+[04/07 02:39:06] EA02_num_sps_com_800 INFO: epoch 107, total time 827.99, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 02:43:17] EA02_num_sps_com_800 INFO: Train: [108][500/1737]  
+[04/07 02:43:17] EA02_num_sps_com_800 INFO: bbox_loss 0.3790 	cls_loss 0.1645 	com_loss 0.1304 	keep_loss 0.0708 	loss 0.7447 	
+[04/07 02:47:16] EA02_num_sps_com_800 INFO: Train: [108][1000/1737]  
+[04/07 02:47:16] EA02_num_sps_com_800 INFO: bbox_loss 0.3780 	cls_loss 0.1651 	com_loss 0.1306 	keep_loss 0.0706 	loss 0.7443 	
+[04/07 02:51:09] EA02_num_sps_com_800 INFO: Train: [108][1500/1737]  
+[04/07 02:51:09] EA02_num_sps_com_800 INFO: bbox_loss 0.3775 	cls_loss 0.1646 	com_loss 0.1298 	keep_loss 0.0701 	loss 0.7420 	
+[04/07 02:53:00] EA02_num_sps_com_800 INFO: epoch 108, total time 833.82, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 02:53:53] EA02_num_sps_com_800 INFO: Eval: [108]  
+[04/07 02:53:53] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55343
+[04/07 02:53:53] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44867
+[04/07 02:57:59] EA02_num_sps_com_800 INFO: Train: [109][500/1737]  
+[04/07 02:57:59] EA02_num_sps_com_800 INFO: bbox_loss 0.3781 	cls_loss 0.1646 	com_loss 0.1290 	keep_loss 0.0697 	loss 0.7414 	
+[04/07 03:01:52] EA02_num_sps_com_800 INFO: Train: [109][1000/1737]  
+[04/07 03:01:52] EA02_num_sps_com_800 INFO: bbox_loss 0.3783 	cls_loss 0.1658 	com_loss 0.1295 	keep_loss 0.0701 	loss 0.7437 	
+[04/07 03:05:53] EA02_num_sps_com_800 INFO: Train: [109][1500/1737]  
+[04/07 03:05:53] EA02_num_sps_com_800 INFO: bbox_loss 0.3783 	cls_loss 0.1658 	com_loss 0.1297 	keep_loss 0.0706 	loss 0.7444 	
+[04/07 03:07:45] EA02_num_sps_com_800 INFO: epoch 109, total time 832.47, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 03:11:52] EA02_num_sps_com_800 INFO: Train: [110][500/1737]  
+[04/07 03:11:52] EA02_num_sps_com_800 INFO: bbox_loss 0.3798 	cls_loss 0.1618 	com_loss 0.1255 	keep_loss 0.0688 	loss 0.7359 	
+[04/07 03:15:49] EA02_num_sps_com_800 INFO: Train: [110][1000/1737]  
+[04/07 03:15:49] EA02_num_sps_com_800 INFO: bbox_loss 0.3799 	cls_loss 0.1627 	com_loss 0.1272 	keep_loss 0.0692 	loss 0.7390 	
+[04/07 03:19:42] EA02_num_sps_com_800 INFO: Train: [110][1500/1737]  
+[04/07 03:19:42] EA02_num_sps_com_800 INFO: bbox_loss 0.3789 	cls_loss 0.1627 	com_loss 0.1276 	keep_loss 0.0694 	loss 0.7387 	
+[04/07 03:21:34] EA02_num_sps_com_800 INFO: epoch 110, total time 828.51, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 03:25:41] EA02_num_sps_com_800 INFO: Train: [111][500/1737]  
+[04/07 03:25:41] EA02_num_sps_com_800 INFO: bbox_loss 0.3789 	cls_loss 0.1637 	com_loss 0.1288 	keep_loss 0.0695 	loss 0.7410 	
+[04/07 03:29:36] EA02_num_sps_com_800 INFO: Train: [111][1000/1737]  
+[04/07 03:29:36] EA02_num_sps_com_800 INFO: bbox_loss 0.3781 	cls_loss 0.1628 	com_loss 0.1278 	keep_loss 0.0691 	loss 0.7378 	
+[04/07 03:33:36] EA02_num_sps_com_800 INFO: Train: [111][1500/1737]  
+[04/07 03:33:36] EA02_num_sps_com_800 INFO: bbox_loss 0.3769 	cls_loss 0.1633 	com_loss 0.1283 	keep_loss 0.0695 	loss 0.7380 	
+[04/07 03:35:31] EA02_num_sps_com_800 INFO: epoch 111, total time 837.19, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 03:36:25] EA02_num_sps_com_800 INFO: Eval: [111]  
+[04/07 03:36:25] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55143
+[04/07 03:36:25] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44867
+[04/07 03:40:36] EA02_num_sps_com_800 INFO: Train: [112][500/1737]  
+[04/07 03:40:36] EA02_num_sps_com_800 INFO: bbox_loss 0.3770 	cls_loss 0.1627 	com_loss 0.1276 	keep_loss 0.0704 	loss 0.7377 	
+[04/07 03:44:28] EA02_num_sps_com_800 INFO: Train: [112][1000/1737]  
+[04/07 03:44:28] EA02_num_sps_com_800 INFO: bbox_loss 0.3756 	cls_loss 0.1623 	com_loss 0.1272 	keep_loss 0.0698 	loss 0.7349 	
+[04/07 03:48:23] EA02_num_sps_com_800 INFO: Train: [112][1500/1737]  
+[04/07 03:48:23] EA02_num_sps_com_800 INFO: bbox_loss 0.3764 	cls_loss 0.1619 	com_loss 0.1274 	keep_loss 0.0699 	loss 0.7357 	
+[04/07 03:50:15] EA02_num_sps_com_800 INFO: epoch 112, total time 830.21, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 03:54:25] EA02_num_sps_com_800 INFO: Train: [113][500/1737]  
+[04/07 03:54:25] EA02_num_sps_com_800 INFO: bbox_loss 0.3745 	cls_loss 0.1602 	com_loss 0.1249 	keep_loss 0.0688 	loss 0.7284 	
+[04/07 03:58:22] EA02_num_sps_com_800 INFO: Train: [113][1000/1737]  
+[04/07 03:58:22] EA02_num_sps_com_800 INFO: bbox_loss 0.3779 	cls_loss 0.1629 	com_loss 0.1279 	keep_loss 0.0697 	loss 0.7385 	
+[04/07 04:02:13] EA02_num_sps_com_800 INFO: Train: [113][1500/1737]  
+[04/07 04:02:13] EA02_num_sps_com_800 INFO: bbox_loss 0.3767 	cls_loss 0.1639 	com_loss 0.1289 	keep_loss 0.0699 	loss 0.7395 	
+[04/07 04:04:05] EA02_num_sps_com_800 INFO: epoch 113, total time 830.38, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 04:08:13] EA02_num_sps_com_800 INFO: Train: [114][500/1737]  
+[04/07 04:08:13] EA02_num_sps_com_800 INFO: bbox_loss 0.3718 	cls_loss 0.1622 	com_loss 0.1281 	keep_loss 0.0694 	loss 0.7316 	
+[04/07 04:12:08] EA02_num_sps_com_800 INFO: Train: [114][1000/1737]  
+[04/07 04:12:08] EA02_num_sps_com_800 INFO: bbox_loss 0.3776 	cls_loss 0.1632 	com_loss 0.1283 	keep_loss 0.0698 	loss 0.7389 	
+[04/07 04:16:09] EA02_num_sps_com_800 INFO: Train: [114][1500/1737]  
+[04/07 04:16:09] EA02_num_sps_com_800 INFO: bbox_loss 0.3767 	cls_loss 0.1633 	com_loss 0.1285 	keep_loss 0.0702 	loss 0.7388 	
+[04/07 04:18:01] EA02_num_sps_com_800 INFO: epoch 114, total time 835.32, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 04:18:53] EA02_num_sps_com_800 INFO: Eval: [114]  
+[04/07 04:18:53] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55290
+[04/07 04:18:53] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44952
+[04/07 04:22:59] EA02_num_sps_com_800 INFO: Train: [115][500/1737]  
+[04/07 04:22:59] EA02_num_sps_com_800 INFO: bbox_loss 0.3796 	cls_loss 0.1603 	com_loss 0.1256 	keep_loss 0.0690 	loss 0.7344 	
+[04/07 04:26:54] EA02_num_sps_com_800 INFO: Train: [115][1000/1737]  
+[04/07 04:26:54] EA02_num_sps_com_800 INFO: bbox_loss 0.3789 	cls_loss 0.1619 	com_loss 0.1262 	keep_loss 0.0689 	loss 0.7360 	
+[04/07 04:30:50] EA02_num_sps_com_800 INFO: Train: [115][1500/1737]  
+[04/07 04:30:50] EA02_num_sps_com_800 INFO: bbox_loss 0.3799 	cls_loss 0.1628 	com_loss 0.1269 	keep_loss 0.0691 	loss 0.7386 	
+[04/07 04:32:44] EA02_num_sps_com_800 INFO: epoch 115, total time 830.71, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 04:36:52] EA02_num_sps_com_800 INFO: Train: [116][500/1737]  
+[04/07 04:36:52] EA02_num_sps_com_800 INFO: bbox_loss 0.3785 	cls_loss 0.1620 	com_loss 0.1278 	keep_loss 0.0693 	loss 0.7376 	
+[04/07 04:40:48] EA02_num_sps_com_800 INFO: Train: [116][1000/1737]  
+[04/07 04:40:48] EA02_num_sps_com_800 INFO: bbox_loss 0.3780 	cls_loss 0.1627 	com_loss 0.1290 	keep_loss 0.0695 	loss 0.7393 	
+[04/07 04:44:43] EA02_num_sps_com_800 INFO: Train: [116][1500/1737]  
+[04/07 04:44:43] EA02_num_sps_com_800 INFO: bbox_loss 0.3786 	cls_loss 0.1632 	com_loss 0.1288 	keep_loss 0.0696 	loss 0.7403 	
+[04/07 04:46:38] EA02_num_sps_com_800 INFO: epoch 116, total time 834.07, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 04:50:50] EA02_num_sps_com_800 INFO: Train: [117][500/1737]  
+[04/07 04:50:50] EA02_num_sps_com_800 INFO: bbox_loss 0.3787 	cls_loss 0.1658 	com_loss 0.1304 	keep_loss 0.0715 	loss 0.7464 	
+[04/07 04:54:50] EA02_num_sps_com_800 INFO: Train: [117][1000/1737]  
+[04/07 04:54:50] EA02_num_sps_com_800 INFO: bbox_loss 0.3773 	cls_loss 0.1635 	com_loss 0.1274 	keep_loss 0.0701 	loss 0.7383 	
+[04/07 04:58:46] EA02_num_sps_com_800 INFO: Train: [117][1500/1737]  
+[04/07 04:58:46] EA02_num_sps_com_800 INFO: bbox_loss 0.3775 	cls_loss 0.1636 	com_loss 0.1278 	keep_loss 0.0700 	loss 0.7389 	
+[04/07 05:00:38] EA02_num_sps_com_800 INFO: epoch 117, total time 839.96, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 05:01:30] EA02_num_sps_com_800 INFO: Eval: [117]  
+[04/07 05:01:30] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55227
+[04/07 05:01:30] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.45036
+[04/07 05:05:43] EA02_num_sps_com_800 INFO: Train: [118][500/1737]  
+[04/07 05:05:43] EA02_num_sps_com_800 INFO: bbox_loss 0.3744 	cls_loss 0.1611 	com_loss 0.1268 	keep_loss 0.0691 	loss 0.7314 	
+[04/07 05:09:41] EA02_num_sps_com_800 INFO: Train: [118][1000/1737]  
+[04/07 05:09:41] EA02_num_sps_com_800 INFO: bbox_loss 0.3752 	cls_loss 0.1614 	com_loss 0.1272 	keep_loss 0.0690 	loss 0.7328 	
+[04/07 05:13:36] EA02_num_sps_com_800 INFO: Train: [118][1500/1737]  
+[04/07 05:13:36] EA02_num_sps_com_800 INFO: bbox_loss 0.3760 	cls_loss 0.1620 	com_loss 0.1276 	keep_loss 0.0694 	loss 0.7351 	
+[04/07 05:15:32] EA02_num_sps_com_800 INFO: epoch 118, total time 842.17, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 05:19:39] EA02_num_sps_com_800 INFO: Train: [119][500/1737]  
+[04/07 05:19:39] EA02_num_sps_com_800 INFO: bbox_loss 0.3784 	cls_loss 0.1656 	com_loss 0.1314 	keep_loss 0.0709 	loss 0.7463 	
+[04/07 05:23:38] EA02_num_sps_com_800 INFO: Train: [119][1000/1737]  
+[04/07 05:23:38] EA02_num_sps_com_800 INFO: bbox_loss 0.3768 	cls_loss 0.1642 	com_loss 0.1298 	keep_loss 0.0697 	loss 0.7405 	
+[04/07 05:27:45] EA02_num_sps_com_800 INFO: Train: [119][1500/1737]  
+[04/07 05:27:45] EA02_num_sps_com_800 INFO: bbox_loss 0.3774 	cls_loss 0.1638 	com_loss 0.1294 	keep_loss 0.0699 	loss 0.7405 	
+[04/07 05:29:39] EA02_num_sps_com_800 INFO: epoch 119, total time 846.97, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 05:33:50] EA02_num_sps_com_800 INFO: Train: [120][500/1737]  
+[04/07 05:33:50] EA02_num_sps_com_800 INFO: bbox_loss 0.3784 	cls_loss 0.1638 	com_loss 0.1282 	keep_loss 0.0712 	loss 0.7416 	
+[04/07 05:37:52] EA02_num_sps_com_800 INFO: Train: [120][1000/1737]  
+[04/07 05:37:52] EA02_num_sps_com_800 INFO: bbox_loss 0.3825 	cls_loss 0.1649 	com_loss 0.1291 	keep_loss 0.0711 	loss 0.7475 	
+[04/07 05:41:46] EA02_num_sps_com_800 INFO: Train: [120][1500/1737]  
+[04/07 05:41:46] EA02_num_sps_com_800 INFO: bbox_loss 0.3806 	cls_loss 0.1640 	com_loss 0.1285 	keep_loss 0.0703 	loss 0.7433 	
+[04/07 05:43:39] EA02_num_sps_com_800 INFO: epoch 120, total time 839.96, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 05:44:33] EA02_num_sps_com_800 INFO: Eval: [120]  
+[04/07 05:44:33] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55248
+[04/07 05:44:33] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.45067
+[04/07 05:48:44] EA02_num_sps_com_800 INFO: Train: [121][500/1737]  
+[04/07 05:48:44] EA02_num_sps_com_800 INFO: bbox_loss 0.3805 	cls_loss 0.1642 	com_loss 0.1290 	keep_loss 0.0701 	loss 0.7438 	
+[04/07 05:52:36] EA02_num_sps_com_800 INFO: Train: [121][1000/1737]  
+[04/07 05:52:36] EA02_num_sps_com_800 INFO: bbox_loss 0.3777 	cls_loss 0.1636 	com_loss 0.1290 	keep_loss 0.0707 	loss 0.7410 	
+[04/07 05:56:33] EA02_num_sps_com_800 INFO: Train: [121][1500/1737]  
+[04/07 05:56:33] EA02_num_sps_com_800 INFO: bbox_loss 0.3783 	cls_loss 0.1639 	com_loss 0.1291 	keep_loss 0.0701 	loss 0.7413 	
+[04/07 05:58:28] EA02_num_sps_com_800 INFO: epoch 121, total time 834.74, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 06:02:32] EA02_num_sps_com_800 INFO: Train: [122][500/1737]  
+[04/07 06:02:32] EA02_num_sps_com_800 INFO: bbox_loss 0.3765 	cls_loss 0.1629 	com_loss 0.1284 	keep_loss 0.0713 	loss 0.7392 	
+[04/07 06:06:31] EA02_num_sps_com_800 INFO: Train: [122][1000/1737]  
+[04/07 06:06:31] EA02_num_sps_com_800 INFO: bbox_loss 0.3794 	cls_loss 0.1637 	com_loss 0.1285 	keep_loss 0.0715 	loss 0.7431 	
+[04/07 06:10:28] EA02_num_sps_com_800 INFO: Train: [122][1500/1737]  
+[04/07 06:10:28] EA02_num_sps_com_800 INFO: bbox_loss 0.3788 	cls_loss 0.1636 	com_loss 0.1277 	keep_loss 0.0706 	loss 0.7407 	
+[04/07 06:12:25] EA02_num_sps_com_800 INFO: epoch 122, total time 837.36, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 06:16:35] EA02_num_sps_com_800 INFO: Train: [123][500/1737]  
+[04/07 06:16:35] EA02_num_sps_com_800 INFO: bbox_loss 0.3815 	cls_loss 0.1608 	com_loss 0.1250 	keep_loss 0.0694 	loss 0.7367 	
+[04/07 06:20:30] EA02_num_sps_com_800 INFO: Train: [123][1000/1737]  
+[04/07 06:20:30] EA02_num_sps_com_800 INFO: bbox_loss 0.3807 	cls_loss 0.1626 	com_loss 0.1270 	keep_loss 0.0694 	loss 0.7397 	
+[04/07 06:24:27] EA02_num_sps_com_800 INFO: Train: [123][1500/1737]  
+[04/07 06:24:27] EA02_num_sps_com_800 INFO: bbox_loss 0.3822 	cls_loss 0.1639 	com_loss 0.1281 	keep_loss 0.0700 	loss 0.7441 	
+[04/07 06:26:22] EA02_num_sps_com_800 INFO: epoch 123, total time 836.93, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 06:27:16] EA02_num_sps_com_800 INFO: Eval: [123]  
+[04/07 06:27:16] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55343
+[04/07 06:27:16] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44878
+[04/07 06:31:24] EA02_num_sps_com_800 INFO: Train: [124][500/1737]  
+[04/07 06:31:24] EA02_num_sps_com_800 INFO: bbox_loss 0.3711 	cls_loss 0.1591 	com_loss 0.1256 	keep_loss 0.0691 	loss 0.7248 	
+[04/07 06:35:17] EA02_num_sps_com_800 INFO: Train: [124][1000/1737]  
+[04/07 06:35:17] EA02_num_sps_com_800 INFO: bbox_loss 0.3745 	cls_loss 0.1614 	com_loss 0.1273 	keep_loss 0.0694 	loss 0.7327 	
+[04/07 06:39:11] EA02_num_sps_com_800 INFO: Train: [124][1500/1737]  
+[04/07 06:39:11] EA02_num_sps_com_800 INFO: bbox_loss 0.3763 	cls_loss 0.1613 	com_loss 0.1264 	keep_loss 0.0692 	loss 0.7332 	
+[04/07 06:41:02] EA02_num_sps_com_800 INFO: epoch 124, total time 826.68, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 06:45:05] EA02_num_sps_com_800 INFO: Train: [125][500/1737]  
+[04/07 06:45:05] EA02_num_sps_com_800 INFO: bbox_loss 0.3721 	cls_loss 0.1614 	com_loss 0.1274 	keep_loss 0.0692 	loss 0.7301 	
+[04/07 06:48:58] EA02_num_sps_com_800 INFO: Train: [125][1000/1737]  
+[04/07 06:48:58] EA02_num_sps_com_800 INFO: bbox_loss 0.3743 	cls_loss 0.1631 	com_loss 0.1273 	keep_loss 0.0697 	loss 0.7343 	
+[04/07 06:52:52] EA02_num_sps_com_800 INFO: Train: [125][1500/1737]  
+[04/07 06:52:52] EA02_num_sps_com_800 INFO: bbox_loss 0.3748 	cls_loss 0.1633 	com_loss 0.1280 	keep_loss 0.0698 	loss 0.7358 	
+[04/07 06:54:43] EA02_num_sps_com_800 INFO: epoch 125, total time 821.12, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 06:58:59] EA02_num_sps_com_800 INFO: Train: [126][500/1737]  
+[04/07 06:58:59] EA02_num_sps_com_800 INFO: bbox_loss 0.3744 	cls_loss 0.1610 	com_loss 0.1269 	keep_loss 0.0696 	loss 0.7318 	
+[04/07 07:02:58] EA02_num_sps_com_800 INFO: Train: [126][1000/1737]  
+[04/07 07:02:58] EA02_num_sps_com_800 INFO: bbox_loss 0.3783 	cls_loss 0.1619 	com_loss 0.1272 	keep_loss 0.0688 	loss 0.7363 	
+[04/07 07:06:48] EA02_num_sps_com_800 INFO: Train: [126][1500/1737]  
+[04/07 07:06:48] EA02_num_sps_com_800 INFO: bbox_loss 0.3773 	cls_loss 0.1611 	com_loss 0.1268 	keep_loss 0.0690 	loss 0.7343 	
+[04/07 07:08:39] EA02_num_sps_com_800 INFO: epoch 126, total time 835.56, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 07:09:33] EA02_num_sps_com_800 INFO: Eval: [126]  
+[04/07 07:09:33] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55164
+[04/07 07:09:33] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44867
+[04/07 07:13:43] EA02_num_sps_com_800 INFO: Train: [127][500/1737]  
+[04/07 07:13:43] EA02_num_sps_com_800 INFO: bbox_loss 0.3802 	cls_loss 0.1634 	com_loss 0.1275 	keep_loss 0.0702 	loss 0.7412 	
+[04/07 07:17:42] EA02_num_sps_com_800 INFO: Train: [127][1000/1737]  
+[04/07 07:17:42] EA02_num_sps_com_800 INFO: bbox_loss 0.3804 	cls_loss 0.1637 	com_loss 0.1277 	keep_loss 0.0703 	loss 0.7421 	
+[04/07 07:21:35] EA02_num_sps_com_800 INFO: Train: [127][1500/1737]  
+[04/07 07:21:35] EA02_num_sps_com_800 INFO: bbox_loss 0.3805 	cls_loss 0.1634 	com_loss 0.1272 	keep_loss 0.0697 	loss 0.7408 	
+[04/07 07:23:26] EA02_num_sps_com_800 INFO: epoch 127, total time 832.68, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 07:27:34] EA02_num_sps_com_800 INFO: Train: [128][500/1737]  
+[04/07 07:27:34] EA02_num_sps_com_800 INFO: bbox_loss 0.3807 	cls_loss 0.1642 	com_loss 0.1289 	keep_loss 0.0700 	loss 0.7438 	
+[04/07 07:31:27] EA02_num_sps_com_800 INFO: Train: [128][1000/1737]  
+[04/07 07:31:27] EA02_num_sps_com_800 INFO: bbox_loss 0.3776 	cls_loss 0.1635 	com_loss 0.1286 	keep_loss 0.0697 	loss 0.7395 	
+[04/07 07:35:22] EA02_num_sps_com_800 INFO: Train: [128][1500/1737]  
+[04/07 07:35:22] EA02_num_sps_com_800 INFO: bbox_loss 0.3771 	cls_loss 0.1627 	com_loss 0.1281 	keep_loss 0.0693 	loss 0.7372 	
+[04/07 07:37:15] EA02_num_sps_com_800 INFO: epoch 128, total time 828.52, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 07:41:22] EA02_num_sps_com_800 INFO: Train: [129][500/1737]  
+[04/07 07:41:22] EA02_num_sps_com_800 INFO: bbox_loss 0.3774 	cls_loss 0.1633 	com_loss 0.1286 	keep_loss 0.0687 	loss 0.7380 	
+[04/07 07:45:22] EA02_num_sps_com_800 INFO: Train: [129][1000/1737]  
+[04/07 07:45:22] EA02_num_sps_com_800 INFO: bbox_loss 0.3784 	cls_loss 0.1626 	com_loss 0.1277 	keep_loss 0.0688 	loss 0.7375 	
+[04/07 07:49:19] EA02_num_sps_com_800 INFO: Train: [129][1500/1737]  
+[04/07 07:49:19] EA02_num_sps_com_800 INFO: bbox_loss 0.3761 	cls_loss 0.1622 	com_loss 0.1273 	keep_loss 0.0690 	loss 0.7346 	
+[04/07 07:51:13] EA02_num_sps_com_800 INFO: epoch 129, total time 838.84, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 07:52:07] EA02_num_sps_com_800 INFO: Eval: [129]  
+[04/07 07:52:07] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55248
+[04/07 07:52:07] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.45015
+[04/07 07:56:11] EA02_num_sps_com_800 INFO: Train: [130][500/1737]  
+[04/07 07:56:11] EA02_num_sps_com_800 INFO: bbox_loss 0.3772 	cls_loss 0.1640 	com_loss 0.1290 	keep_loss 0.0700 	loss 0.7401 	
+[04/07 08:00:08] EA02_num_sps_com_800 INFO: Train: [130][1000/1737]  
+[04/07 08:00:08] EA02_num_sps_com_800 INFO: bbox_loss 0.3797 	cls_loss 0.1645 	com_loss 0.1289 	keep_loss 0.0702 	loss 0.7433 	
+[04/07 08:04:01] EA02_num_sps_com_800 INFO: Train: [130][1500/1737]  
+[04/07 08:04:01] EA02_num_sps_com_800 INFO: bbox_loss 0.3799 	cls_loss 0.1638 	com_loss 0.1284 	keep_loss 0.0700 	loss 0.7422 	
+[04/07 08:05:56] EA02_num_sps_com_800 INFO: epoch 130, total time 829.02, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 08:10:08] EA02_num_sps_com_800 INFO: Train: [131][500/1737]  
+[04/07 08:10:08] EA02_num_sps_com_800 INFO: bbox_loss 0.3807 	cls_loss 0.1658 	com_loss 0.1293 	keep_loss 0.0700 	loss 0.7458 	
+[04/07 08:14:06] EA02_num_sps_com_800 INFO: Train: [131][1000/1737]  
+[04/07 08:14:06] EA02_num_sps_com_800 INFO: bbox_loss 0.3795 	cls_loss 0.1654 	com_loss 0.1292 	keep_loss 0.0698 	loss 0.7439 	
+[04/07 08:17:59] EA02_num_sps_com_800 INFO: Train: [131][1500/1737]  
+[04/07 08:17:59] EA02_num_sps_com_800 INFO: bbox_loss 0.3794 	cls_loss 0.1646 	com_loss 0.1293 	keep_loss 0.0699 	loss 0.7432 	
+[04/07 08:19:54] EA02_num_sps_com_800 INFO: epoch 131, total time 838.49, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 08:24:04] EA02_num_sps_com_800 INFO: Train: [132][500/1737]  
+[04/07 08:24:04] EA02_num_sps_com_800 INFO: bbox_loss 0.3812 	cls_loss 0.1624 	com_loss 0.1266 	keep_loss 0.0693 	loss 0.7395 	
+[04/07 08:27:59] EA02_num_sps_com_800 INFO: Train: [132][1000/1737]  
+[04/07 08:27:59] EA02_num_sps_com_800 INFO: bbox_loss 0.3805 	cls_loss 0.1621 	com_loss 0.1269 	keep_loss 0.0695 	loss 0.7390 	
+[04/07 08:31:54] EA02_num_sps_com_800 INFO: Train: [132][1500/1737]  
+[04/07 08:31:54] EA02_num_sps_com_800 INFO: bbox_loss 0.3807 	cls_loss 0.1622 	com_loss 0.1268 	keep_loss 0.0695 	loss 0.7393 	
+[04/07 08:33:49] EA02_num_sps_com_800 INFO: epoch 132, total time 834.31, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 08:34:42] EA02_num_sps_com_800 INFO: Eval: [132]  
+[04/07 08:34:42] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55364
+[04/07 08:34:42] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.45057
+[04/07 08:39:05] EA02_num_sps_com_800 INFO: Train: [133][500/1737]  
+[04/07 08:39:05] EA02_num_sps_com_800 INFO: bbox_loss 0.3812 	cls_loss 0.1654 	com_loss 0.1304 	keep_loss 0.0699 	loss 0.7469 	
+[04/07 08:43:04] EA02_num_sps_com_800 INFO: Train: [133][1000/1737]  
+[04/07 08:43:04] EA02_num_sps_com_800 INFO: bbox_loss 0.3798 	cls_loss 0.1639 	com_loss 0.1286 	keep_loss 0.0696 	loss 0.7419 	
+[04/07 08:46:59] EA02_num_sps_com_800 INFO: Train: [133][1500/1737]  
+[04/07 08:46:59] EA02_num_sps_com_800 INFO: bbox_loss 0.3781 	cls_loss 0.1634 	com_loss 0.1283 	keep_loss 0.0698 	loss 0.7395 	
+[04/07 08:48:53] EA02_num_sps_com_800 INFO: epoch 133, total time 850.68, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 08:52:59] EA02_num_sps_com_800 INFO: Train: [134][500/1737]  
+[04/07 08:52:59] EA02_num_sps_com_800 INFO: bbox_loss 0.3783 	cls_loss 0.1630 	com_loss 0.1272 	keep_loss 0.0698 	loss 0.7383 	
+[04/07 08:56:55] EA02_num_sps_com_800 INFO: Train: [134][1000/1737]  
+[04/07 08:56:55] EA02_num_sps_com_800 INFO: bbox_loss 0.3732 	cls_loss 0.1639 	com_loss 0.1284 	keep_loss 0.0699 	loss 0.7354 	
+[04/07 09:00:54] EA02_num_sps_com_800 INFO: Train: [134][1500/1737]  
+[04/07 09:00:54] EA02_num_sps_com_800 INFO: bbox_loss 0.3756 	cls_loss 0.1636 	com_loss 0.1280 	keep_loss 0.0695 	loss 0.7366 	
+[04/07 09:02:45] EA02_num_sps_com_800 INFO: epoch 134, total time 832.74, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 09:06:50] EA02_num_sps_com_800 INFO: Train: [135][500/1737]  
+[04/07 09:06:50] EA02_num_sps_com_800 INFO: bbox_loss 0.3799 	cls_loss 0.1608 	com_loss 0.1263 	keep_loss 0.0676 	loss 0.7346 	
+[04/07 09:10:44] EA02_num_sps_com_800 INFO: Train: [135][1000/1737]  
+[04/07 09:10:44] EA02_num_sps_com_800 INFO: bbox_loss 0.3795 	cls_loss 0.1615 	com_loss 0.1260 	keep_loss 0.0685 	loss 0.7355 	
+[04/07 09:14:39] EA02_num_sps_com_800 INFO: Train: [135][1500/1737]  
+[04/07 09:14:39] EA02_num_sps_com_800 INFO: bbox_loss 0.3788 	cls_loss 0.1625 	com_loss 0.1272 	keep_loss 0.0690 	loss 0.7375 	
+[04/07 09:16:32] EA02_num_sps_com_800 INFO: epoch 135, total time 826.65, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 09:17:24] EA02_num_sps_com_800 INFO: Eval: [135]  
+[04/07 09:17:24] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55280
+[04/07 09:17:24] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44846
+[04/07 09:21:25] EA02_num_sps_com_800 INFO: Train: [136][500/1737]  
+[04/07 09:21:25] EA02_num_sps_com_800 INFO: bbox_loss 0.3777 	cls_loss 0.1628 	com_loss 0.1284 	keep_loss 0.0698 	loss 0.7387 	
+[04/07 09:25:24] EA02_num_sps_com_800 INFO: Train: [136][1000/1737]  
+[04/07 09:25:24] EA02_num_sps_com_800 INFO: bbox_loss 0.3750 	cls_loss 0.1620 	com_loss 0.1274 	keep_loss 0.0700 	loss 0.7344 	
+[04/07 09:29:16] EA02_num_sps_com_800 INFO: Train: [136][1500/1737]  
+[04/07 09:29:16] EA02_num_sps_com_800 INFO: bbox_loss 0.3766 	cls_loss 0.1621 	com_loss 0.1274 	keep_loss 0.0696 	loss 0.7358 	
+[04/07 09:31:07] EA02_num_sps_com_800 INFO: epoch 136, total time 823.34, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 09:35:12] EA02_num_sps_com_800 INFO: Train: [137][500/1737]  
+[04/07 09:35:12] EA02_num_sps_com_800 INFO: bbox_loss 0.3732 	cls_loss 0.1608 	com_loss 0.1265 	keep_loss 0.0694 	loss 0.7300 	
+[04/07 09:39:05] EA02_num_sps_com_800 INFO: Train: [137][1000/1737]  
+[04/07 09:39:05] EA02_num_sps_com_800 INFO: bbox_loss 0.3770 	cls_loss 0.1614 	com_loss 0.1262 	keep_loss 0.0690 	loss 0.7336 	
+[04/07 09:43:00] EA02_num_sps_com_800 INFO: Train: [137][1500/1737]  
+[04/07 09:43:00] EA02_num_sps_com_800 INFO: bbox_loss 0.3768 	cls_loss 0.1613 	com_loss 0.1260 	keep_loss 0.0691 	loss 0.7331 	
+[04/07 09:44:55] EA02_num_sps_com_800 INFO: epoch 137, total time 827.34, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 09:49:09] EA02_num_sps_com_800 INFO: Train: [138][500/1737]  
+[04/07 09:49:09] EA02_num_sps_com_800 INFO: bbox_loss 0.3727 	cls_loss 0.1600 	com_loss 0.1263 	keep_loss 0.0690 	loss 0.7280 	
+[04/07 09:53:06] EA02_num_sps_com_800 INFO: Train: [138][1000/1737]  
+[04/07 09:53:06] EA02_num_sps_com_800 INFO: bbox_loss 0.3751 	cls_loss 0.1618 	com_loss 0.1277 	keep_loss 0.0691 	loss 0.7337 	
+[04/07 09:57:01] EA02_num_sps_com_800 INFO: Train: [138][1500/1737]  
+[04/07 09:57:01] EA02_num_sps_com_800 INFO: bbox_loss 0.3759 	cls_loss 0.1609 	com_loss 0.1265 	keep_loss 0.0689 	loss 0.7322 	
+[04/07 09:58:54] EA02_num_sps_com_800 INFO: epoch 138, total time 839.30, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 09:59:47] EA02_num_sps_com_800 INFO: Eval: [138]  
+[04/07 09:59:47] EA02_num_sps_com_800 INFO: 3dcnn Acc0.25: Top-1: 0.55238
+[04/07 09:59:47] EA02_num_sps_com_800 INFO: 3dcnn Acc0.50: Top-1: 0.44794
+[04/07 10:03:54] EA02_num_sps_com_800 INFO: Train: [139][500/1737]  
+[04/07 10:03:54] EA02_num_sps_com_800 INFO: bbox_loss 0.3751 	cls_loss 0.1619 	com_loss 0.1288 	keep_loss 0.0686 	loss 0.7344 	
+[04/07 10:07:48] EA02_num_sps_com_800 INFO: Train: [139][1000/1737]  
+[04/07 10:07:48] EA02_num_sps_com_800 INFO: bbox_loss 0.3750 	cls_loss 0.1624 	com_loss 0.1286 	keep_loss 0.0684 	loss 0.7344 	
+[04/07 10:11:45] EA02_num_sps_com_800 INFO: Train: [139][1500/1737]  
+[04/07 10:11:45] EA02_num_sps_com_800 INFO: bbox_loss 0.3753 	cls_loss 0.1630 	com_loss 0.1284 	keep_loss 0.0687 	loss 0.7353 	
+[04/07 10:13:37] EA02_num_sps_com_800 INFO: epoch 139, total time 829.22, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/07 10:17:49] EA02_num_sps_com_800 INFO: Train: [140][500/1737]  
+[04/07 10:17:49] EA02_num_sps_com_800 INFO: bbox_loss 0.3771 	cls_loss 0.1623 	com_loss 0.1264 	keep_loss 0.0699 	loss 0.7359 	
+[04/07 10:21:49] EA02_num_sps_com_800 INFO: Train: [140][1000/1737]  
+[04/07 10:21:49] EA02_num_sps_com_800 INFO: bbox_loss 0.3775 	cls_loss 0.1629 	com_loss 0.1281 	keep_loss 0.0698 	loss 0.7384 	

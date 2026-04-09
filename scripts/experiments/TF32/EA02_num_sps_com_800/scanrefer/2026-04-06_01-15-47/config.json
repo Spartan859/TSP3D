@@ -25,7 +25,7 @@
   "butd_gt": false,
   "butd_cls": false,
   "augment_det": true,
-  "num_workers": 8,
+  "num_workers": 32,
   "start_epoch": 1,
   "max_epoch": 400,
   "optimizer": "adamW",
@@ -34,11 +34,11 @@
   "keep_trans_lr": 0.0005,
   "text_encoder_lr": 1e-05,
   "box_select_lr": 0.0004,
-  "seg_lr": 0.001,
+  "seg_lr": 0.0001,
   "lr_scheduler": "step",
   "lr_decay_epochs": [
     50,
-    75
+    100
   ],
   "lr_decay_rate": 0.1,
   "clip_norm": 0.1,
@@ -46,10 +46,13 @@
   "syncbn": false,
   "warmup_epoch": -1,
   "warmup_multiplier": 100,
+  "enable_tf32": false,
+  "tf32_matmul": "on",
+  "tf32_cudnn": "on",
   "checkpoint_path": null,
-  "load_optimizer": false,
-  "load_scheduler": false,
-  "log_dir": "/root/lxy/TSP3D/scripts/experiments/20260216/scanrefer/2026-04-04_07-09-42",
+  "load_optimizer": true,
+  "load_scheduler": true,
+  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/TF32/EA02_num_sps_com_800/scanrefer/2026-04-06_01-15-47",
   "print_freq": 500,
   "save_freq": 3,
   "val_freq": 3,
@@ -70,13 +73,16 @@
   "use_seg": false,
   "use_refine": false,
   "use_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_text_guided_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_film_text_guided_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_external_attn_bi_layer0": true,
   "use_text_guided_external_attn_bi_layer0": true,
@@ -84,5 +90,5 @@
   "mink_conv1_stride": 2,
   "use_seg_external_self_attn": false,
   "com_threshold": 0.15,
-  "num_samples_com": 2400
+  "num_samples_com": 800
 }
