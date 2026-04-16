@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Compiled extensions
+*.so
+*.o
+*.obj
+*.a
+
+# Logs
+*.log

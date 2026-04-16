@@ -1,9 +1,9 @@
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH}"
 
 # Configurable parameters
-NPROC_PER_NODE=4
+NPROC_PER_NODE=1
 BASE_BS=28
-CUR_BS=28
+CUR_BS=1
 BASE_LR=5e-4
 BASE_KEEP_TRANS_LR=5e-4
 BASE_TEXT_ENCODER_LR=1e-5
@@ -19,7 +19,7 @@ GPU_FREE_MEM_THRESHOLD=1024
 GPU_FREE_UTIL_THRESHOLD=10
 TF32_MATMUL=on
 TF32_CUDNN=on
-EXTERNAL_ATTN_COEF=4
+EXTERNAL_ATTN_COEF=2
 CVD=""
 
 data_root="/root/lxy/TSP3D/data"
@@ -202,6 +202,11 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --external_attn_coef ${EXTERNAL_ATTN_COEF}\
     --com_threshold 0.15\
     --num_samples_com 2400\
+    --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/TF32/EA02_num_sps_com_2400_coef2/scanrefer/2026-04-09_02-27-36/ckpt_epoch_3.pth \
+    --eval \
+    --measure_fps \
+    --fps_warmup_iters 20 \
+    --fps_max_iters -1
     # --use_refine \
     # --use_seg \
     # --use_seg_external_self_attn \

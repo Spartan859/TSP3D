@@ -119,6 +119,7 @@ class TrainTester(BaseTrainTester):
             use_film_text_guided_external_attn_bi_layer=args.use_film_text_guided_external_attn_bi_layer,
             com_threshold=args.com_threshold,
             num_samples_com=args.num_samples_com,
+            external_attn_coef=args.external_attn_coef,
             mink_conv1_stride=args.mink_conv1_stride
         )
         return model
@@ -416,6 +417,11 @@ if __name__ == '__main__':
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
     
     opt = parse_option()
+
+    if opt.use_deterministic_algorithms and "CUBLAS_WORKSPACE_CONFIG" not in os.environ:
+        # Required by some CUDA/cuBLAS paths for deterministic GEMM behavior.
+        os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
+
     if opt.local_rank is None:
         opt.local_rank = int(os.environ.get("LOCAL_RANK", 0))
         print("LOCAL_RANK", opt.local_rank)
@@ -427,8 +433,11 @@ if __name__ == '__main__':
     
     # cudnn
     torch.backends.cudnn.enabled = True
-    torch.backends.cudnn.benchmark = True
-    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = bool(opt.cudnn_benchmark)
+    torch.backends.cudnn.deterministic = not bool(opt.disable_cudnn_deterministic)
+
+    if opt.use_deterministic_algorithms:
+        torch.use_deterministic_algorithms(True, warn_only=opt.deterministic_warn_only)
 
     if opt.tf32_matmul != 'default':
         torch.backends.cuda.matmul.allow_tf32 = (opt.tf32_matmul == 'on')
@@ -446,10 +455,16 @@ if __name__ == '__main__':
             f'enable_tf32_arg={opt.enable_tf32}, '
             f'tf32_matmul_arg={opt.tf32_matmul}, '
             f'tf32_cudnn_arg={opt.tf32_cudnn}, '
+            f'use_deterministic_algorithms={opt.use_deterministic_algorithms}, '
+            f'deterministic_warn_only={opt.deterministic_warn_only}, '
+            f'cudnn.benchmark={torch.backends.cudnn.benchmark}, '
+            f'cudnn.deterministic={torch.backends.cudnn.deterministic}, '
             f'matmul.allow_tf32={torch.backends.cuda.matmul.allow_tf32}, '
             f'cudnn.allow_tf32={torch.backends.cudnn.allow_tf32}, '
             f'float32_matmul_precision={torch.get_float32_matmul_precision()}'
         )
+        if torch.backends.cudnn.benchmark and torch.backends.cudnn.deterministic:
+            print('Warning: both cudnn.benchmark=True and cudnn.deterministic=True are enabled; this may reduce reproducibility and can hurt performance predictability.')
 
     train_tester = TrainTester(opt)
     ckpt_path = train_tester.main(opt)

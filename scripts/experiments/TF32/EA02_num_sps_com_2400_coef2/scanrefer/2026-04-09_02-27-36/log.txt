@@ -1,0 +1,43 @@
+[04/09 02:27:39] EA02_num_sps_com_2400_coef2 INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/TF32/EA02_num_sps_com_2400_coef2/scanrefer/2026-04-09_02-27-36/config.json
+[04/09 02:27:39] EA02_num_sps_com_2400_coef2 INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 32, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 100], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'on', 'tf32_cudnn': 'on', 'checkpoint_path': None, 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/TF32/EA02_num_sps_com_2400_coef2/scanrefer/2026-04-09_02-27-36', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [0, 2], 'use_text_guided_external_attn_bi_layer': [0, 2], 'use_film_text_guided_external_attn_bi_layer': [0, 2], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 2}
+[04/09 02:33:55] EA02_num_sps_com_2400_coef2 INFO: length of training dataset: 48655
+[04/09 02:33:55] EA02_num_sps_com_2400_coef2 INFO: length of testing dataset: 9508
+[04/09 02:38:12] EA02_num_sps_com_2400_coef2 INFO: Train: [1][500/1737]  
+[04/09 02:38:12] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.8314 	cls_loss 0.7034 	com_loss 0.4789 	keep_loss 0.2227 	loss 2.2364 	
+[04/09 02:42:10] EA02_num_sps_com_2400_coef2 INFO: Train: [1][1000/1737]  
+[04/09 02:42:10] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.7962 	cls_loss 0.5886 	com_loss 0.4578 	keep_loss 0.2140 	loss 2.0566 	
+[04/09 02:46:14] EA02_num_sps_com_2400_coef2 INFO: Train: [1][1500/1737]  
+[04/09 02:46:14] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.7669 	cls_loss 0.5408 	com_loss 0.4425 	keep_loss 0.2071 	loss 1.9572 	
+[04/09 02:48:10] EA02_num_sps_com_2400_coef2 INFO: epoch 1, total time 852.42, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/09 02:52:26] EA02_num_sps_com_2400_coef2 INFO: Train: [2][500/1737]  
+[04/09 02:52:26] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.6527 	cls_loss 0.4248 	com_loss 0.3939 	keep_loss 0.1838 	loss 1.6552 	
+[04/09 02:56:31] EA02_num_sps_com_2400_coef2 INFO: Train: [2][1000/1737]  
+[04/09 02:56:31] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.6402 	cls_loss 0.4154 	com_loss 0.3851 	keep_loss 0.1794 	loss 1.6202 	
+[04/09 03:00:34] EA02_num_sps_com_2400_coef2 INFO: Train: [2][1500/1737]  
+[04/09 03:00:34] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.6309 	cls_loss 0.4074 	com_loss 0.3783 	keep_loss 0.1758 	loss 1.5924 	
+[04/09 03:02:32] EA02_num_sps_com_2400_coef2 INFO: epoch 2, total time 862.83, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/09 03:06:49] EA02_num_sps_com_2400_coef2 INFO: Train: [3][500/1737]  
+[04/09 03:06:49] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.5887 	cls_loss 0.3749 	com_loss 0.3506 	keep_loss 0.1607 	loss 1.4750 	
+[04/09 03:10:53] EA02_num_sps_com_2400_coef2 INFO: Train: [3][1000/1737]  
+[04/09 03:10:53] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.5838 	cls_loss 0.3702 	com_loss 0.3467 	keep_loss 0.1577 	loss 1.4584 	
+[04/09 03:14:52] EA02_num_sps_com_2400_coef2 INFO: Train: [3][1500/1737]  
+[04/09 03:14:52] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.5780 	cls_loss 0.3658 	com_loss 0.3433 	keep_loss 0.1558 	loss 1.4429 	
+[04/09 03:16:47] EA02_num_sps_com_2400_coef2 INFO: epoch 3, total time 854.14, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/09 03:17:48] EA02_num_sps_com_2400_coef2 INFO: Eval: [3]  
+[04/09 03:17:48] EA02_num_sps_com_2400_coef2 INFO: 3dcnn Acc0.25: Top-1: 0.31647
+[04/09 03:17:48] EA02_num_sps_com_2400_coef2 INFO: 3dcnn Acc0.50: Top-1: 0.22802
+[04/09 03:17:48] EA02_num_sps_com_2400_coef2 INFO: External-attn-affected module time(s): bi_layer0=0.020149, bi_layer1=0.007948, bi_layer2=0.011749, total=0.039846
+[04/09 03:17:48] EA02_num_sps_com_2400_coef2 INFO: GPU memory(MiB): avg_allocated=1083.58, avg_reserved=2731.71, peak_allocated=2614.32, peak_reserved=8588.00, warmup_iters=20
+[04/09 03:22:02] EA02_num_sps_com_2400_coef2 INFO: Train: [4][500/1737]  
+[04/09 03:22:02] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.5533 	cls_loss 0.3423 	com_loss 0.3258 	keep_loss 0.1446 	loss 1.3660 	
+[04/09 03:26:05] EA02_num_sps_com_2400_coef2 INFO: Train: [4][1000/1737]  
+[04/09 03:26:05] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.5537 	cls_loss 0.3398 	com_loss 0.3236 	keep_loss 0.1431 	loss 1.3603 	
+[04/09 03:30:09] EA02_num_sps_com_2400_coef2 INFO: Train: [4][1500/1737]  
+[04/09 03:30:09] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.5512 	cls_loss 0.3393 	com_loss 0.3230 	keep_loss 0.1428 	loss 1.3562 	
+[04/09 03:32:05] EA02_num_sps_com_2400_coef2 INFO: epoch 4, total time 856.67, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/09 03:36:21] EA02_num_sps_com_2400_coef2 INFO: Train: [5][500/1737]  
+[04/09 03:36:21] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.5322 	cls_loss 0.3265 	com_loss 0.3128 	keep_loss 0.1371 	loss 1.3086 	
+[04/09 03:40:23] EA02_num_sps_com_2400_coef2 INFO: Train: [5][1000/1737]  
+[04/09 03:40:23] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.5323 	cls_loss 0.3259 	com_loss 0.3111 	keep_loss 0.1358 	loss 1.3051 	
+[04/09 03:44:23] EA02_num_sps_com_2400_coef2 INFO: Train: [5][1500/1737]  
+[04/09 03:44:23] EA02_num_sps_com_2400_coef2 INFO: bbox_loss 0.5319 	cls_loss 0.3248 	com_loss 0.3102 	keep_loss 0.1358 	loss 1.3027 	

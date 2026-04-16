@@ -138,6 +138,14 @@ def parse_option():
                         help='Max eval iterations to include for FPS; -1 means full loader.')
     parser.add_argument('--pp_checkpoint', default=None)    # pointnet checkpoint
     parser.add_argument('--reduce_lr', action='store_true')
+    parser.add_argument('--cudnn_benchmark', action='store_true',
+                        help='Enable cuDNN benchmark autotune for speed (may reduce reproducibility).')
+    parser.add_argument('--disable_cudnn_deterministic', action='store_true',
+                        help='Disable cuDNN deterministic mode.')
+    parser.add_argument('--use_deterministic_algorithms', action='store_true',
+                        help='Enable torch deterministic algorithms for stricter reproducibility.')
+    parser.add_argument('--deterministic_warn_only', action='store_true',
+                        help='With --use_deterministic_algorithms, warn instead of raising on nondeterministic ops.')
     parser.add_argument('--use_seg', action='store_true')
     parser.add_argument('--use_refine', action='store_true')
     parser.add_argument('--use_external_attn_bi_layer', type=int, nargs='+', default=[],
@@ -158,10 +166,14 @@ def parse_option():
                         help='Threshold for completion branch voxel selection.')
     parser.add_argument('--num_samples_com', type=int, default=2400,
                         help='Number of sampled voxels per scene for completion branch attention.')
+    parser.add_argument('--external_attn_coef', type=int, default=4,
+                        help='Expansion coefficient used in ExternalMultiheadAttention.')
 
     args, _ = parser.parse_known_args()
 
     args.eval = args.eval or args.eval_train
+    if args.external_attn_coef <= 0:
+        parser.error('--external_attn_coef must be a positive integer.')
 
     valid_bi_layers = {0, 1, 2}
     args.use_external_attn_bi_layer = sorted(

@@ -117,7 +117,7 @@ class CrossAttentionLayer(nn.Module):
 class TransformerEncoderLayerNoFFN(nn.Module):
     """TransformerEncoderLayer but without FFN."""
 
-    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False):
+    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False, external_attn_coef=4):
         """Intialize same as Transformer (without FFN params)."""
         super().__init__()
         self.use_text_guided_external_attn = use_text_guided_external_attn
@@ -127,7 +127,8 @@ class TransformerEncoderLayerNoFFN(nn.Module):
                 d_model,
                 nhead,
                 attn_drop=dropout,
-                use_film_text_guided_external_attn=use_film_text_guided_external_attn
+                use_film_text_guided_external_attn=use_film_text_guided_external_attn,
+                coef=external_attn_coef
             )
         else:
             self.self_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
@@ -169,9 +170,9 @@ class TransformerEncoderLayerNoFFN(nn.Module):
 class PosTransformerEncoderLayerNoFFN(TransformerEncoderLayerNoFFN):
     """TransformerEncoderLayerNoFFN but additionaly add pos_embed in query."""
 
-    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False):
+    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False, external_attn_coef=4):
         """Intialize same as parent class."""
-        super().__init__(d_model, nhead, dropout, use_external_attn, use_text_guided_external_attn, use_film_text_guided_external_attn)
+        super().__init__(d_model, nhead, dropout, use_external_attn, use_text_guided_external_attn, use_film_text_guided_external_attn, external_attn_coef)
 
     def forward(self, src, pos, src_mask=None, src_key_padding_mask=None, text_feat=None):
         """
@@ -217,7 +218,8 @@ class BiEncoderLayer(nn.Module):
                  use_butd_enc_attn=False,
                  use_external_attn=False,
                  use_text_guided_external_attn=False,
-                 use_film_text_guided_external_attn=False):
+                 use_film_text_guided_external_attn=False,
+                 external_attn_coef=4):
         """Initialize layers, d_model is the encoder dimension."""
         super().__init__()
         self.use_text_guided_external_attn = use_text_guided_external_attn
@@ -244,7 +246,8 @@ class BiEncoderLayer(nn.Module):
                 dropout=dropout,
                 use_external_attn=use_external_attn,
                 use_text_guided_external_attn=use_text_guided_external_attn,
-                use_film_text_guided_external_attn=use_film_text_guided_external_attn
+                use_film_text_guided_external_attn=use_film_text_guided_external_attn,
+                external_attn_coef=external_attn_coef
             )
         else:
             self.self_attention_visual = None
@@ -299,12 +302,14 @@ class BiEncoderLayer(nn.Module):
 
 
 class ExternalMultiheadAttention(nn.Module):
-    def __init__(self, embed_dim, num_heads=8, attn_drop=0., proj_drop=0., batch_first=False, use_film_text_guided_external_attn=False):
+    def __init__(self, embed_dim, num_heads=8, attn_drop=0., proj_drop=0., batch_first=False, use_film_text_guided_external_attn=False, coef=4):
         super().__init__()
         self.embed_dim = embed_dim
         self.num_heads = num_heads
         self.use_film_text_guided_external_attn = use_film_text_guided_external_attn
-        self.coef = 4
+        if coef <= 0:
+            raise ValueError(f"coef must be positive, got {coef}")
+        self.coef = coef
         self.trans_dims = nn.Linear(embed_dim, embed_dim * self.coef)
         self.num_heads_eff = self.num_heads * self.coef
         self.k = 256 // self.coef
