@@ -13,13 +13,14 @@ BASE_BOX_SELECT_LR=4e-4
 # BASE_TEXT_ENCODER_LR=1e-6
 # BASE_BOX_SELECT_LR=4e-5
 BASE_SEG_LR=1e-4
+RNG_SEED=42
 MASTER_PORT_DEFAULT=11022
 MASTER_PORT_MAX=12022
 GPU_FREE_MEM_THRESHOLD=1024
 GPU_FREE_UTIL_THRESHOLD=10
-TF32_MATMUL=on
-TF32_CUDNN=on
-CVD="4,5,6,7"
+TF32_MATMUL=default
+TF32_CUDNN=default
+CVD=""
 
 data_root="/root/lxy/TSP3D/data"
 
@@ -198,6 +199,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --use_external_attn_bi_layer 0\
     --use_text_guided_external_attn_bi_layer 0\
     --use_film_text_guided_external_attn_bi_layer 0\
+    --rng_seed ${RNG_SEED}\
     # --com_threshold 0.15\
     # --num_samples_com 1800\
     # --use_refine \

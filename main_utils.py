@@ -33,8 +33,30 @@ from tqdm import tqdm
 from get_gt import get_gt
 from datetime import datetime 
 
+def set_random_seed(seed):
+    """Set random seeds for python, numpy and torch."""
+    seed = int(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+
 def parse_option():
     """Parse cmd arguments."""
+    def str2bool(value):
+        if isinstance(value, bool):
+            return value
+        normalized = value.lower()
+        if normalized in ('true', '1', 'yes', 'y', 'on'):
+            return True
+        if normalized in ('false', '0', 'no', 'n', 'off'):
+            return False
+        raise argparse.ArgumentTypeError(
+            f"Invalid boolean value: {value}. Use true/false."
+        )
+
     parser = argparse.ArgumentParser()
     # Model
     parser.add_argument('--num_target', type=int, default=256,
@@ -138,11 +160,11 @@ def parse_option():
                         help='Max eval iterations to include for FPS; -1 means full loader.')
     parser.add_argument('--pp_checkpoint', default=None)    # pointnet checkpoint
     parser.add_argument('--reduce_lr', action='store_true')
-    parser.add_argument('--cudnn_benchmark', action='store_true',
+    parser.add_argument('--cudnn_benchmark', type=str2bool, default=True,
                         help='Enable cuDNN benchmark autotune for speed (may reduce reproducibility).')
-    parser.add_argument('--disable_cudnn_deterministic', action='store_true',
-                        help='Disable cuDNN deterministic mode.')
-    parser.add_argument('--use_deterministic_algorithms', action='store_true',
+    parser.add_argument('--cudnn_deterministic', type=str2bool, default=True,
+                        help='Enable cuDNN deterministic mode.')
+    parser.add_argument('--use_deterministic_algorithms', type=str2bool, default=False,
                         help='Enable torch deterministic algorithms for stricter reproducibility.')
     parser.add_argument('--deterministic_warn_only', action='store_true',
                         help='With --use_deterministic_algorithms, warn instead of raising on nondeterministic ops.')
@@ -316,22 +338,25 @@ class BaseTrainTester:
     # BRIEF dataloader.
     def get_loaders(self, args):
         """Initialize data loaders."""
+        base_seed = int(args.rng_seed)
+        rank = dist.get_rank() if dist.is_available() and dist.is_initialized() else 0
+
         def seed_worker(worker_id):
-            worker_seed = torch.initial_seed() % 2**32
+            worker_seed = (base_seed + rank * 100000 + worker_id) % (2**32)
             np.random.seed(worker_seed)
             random.seed(worker_seed)
-            np.random.seed(np.random.get_state()[1][0] + worker_id)
+            torch.manual_seed(worker_seed)
 
         # Datasets
         train_dataset, test_dataset = self.get_datasets(args)
         # Samplers and loaders
         g = torch.Generator()
-        g.manual_seed(0)
+        g.manual_seed(base_seed + rank)
 
         if args.eval:
             train_loader = None
         else:
-            train_sampler = DistributedSampler(train_dataset)
+            train_sampler = DistributedSampler(train_dataset, seed=base_seed)
             train_loader = DataLoader(
                 train_dataset,
                 batch_size=args.batch_size,
@@ -344,7 +369,7 @@ class BaseTrainTester:
                 generator=g
             )
         
-        test_sampler = DistributedSampler(test_dataset, shuffle=False)
+        test_sampler = DistributedSampler(test_dataset, shuffle=False, seed=base_seed)
         test_loader = DataLoader(
             test_dataset,
             batch_size=args.batch_size,

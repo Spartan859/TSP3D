@@ -16,7 +16,7 @@ import numpy as np
 import torch
 import torch.distributed as dist
 
-from main_utils import parse_option, BaseTrainTester
+from main_utils import parse_option, BaseTrainTester, set_random_seed
 from data.model_util_scannet import ScannetDatasetConfig
 from src.joint_det_dataset import Joint3DDataset
 from src.grounding_evaluator import GroundingEvaluator
@@ -430,11 +430,12 @@ if __name__ == '__main__':
     torch.cuda.set_device(opt.local_rank)
     # https://github.com/open-mmlab/mmcv/issues/1969#issuecomment-1304721237
     torch.distributed.init_process_group(backend='nccl', init_method='env://', timeout=datetime.timedelta(seconds=5400))  
+    set_random_seed(opt.rng_seed + opt.local_rank)
     
     # cudnn
     torch.backends.cudnn.enabled = True
     torch.backends.cudnn.benchmark = bool(opt.cudnn_benchmark)
-    torch.backends.cudnn.deterministic = not bool(opt.disable_cudnn_deterministic)
+    torch.backends.cudnn.deterministic = bool(opt.cudnn_deterministic)
 
     if opt.use_deterministic_algorithms:
         torch.use_deterministic_algorithms(True, warn_only=opt.deterministic_warn_only)
