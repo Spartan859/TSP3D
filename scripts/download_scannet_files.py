@@ -8,6 +8,8 @@ import os
 
 from tqdm import tqdm
 
+TQDM_NCOLS = 60
+
 
 def get_scan_ids():
     """Load the .csv files and return a set of scan_ids."""
@@ -35,7 +37,7 @@ def download_scan_id(scan_id):
 def main():
     """Download all necessary files for all scan_ids."""
     scan_ids = get_scan_ids()
-    for scan_id in tqdm(scan_ids):
+    for scan_id in tqdm(scan_ids, ncols=TQDM_NCOLS):
         download_scan_id(scan_id)
 
 

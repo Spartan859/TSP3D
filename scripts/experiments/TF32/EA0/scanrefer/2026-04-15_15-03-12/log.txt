@@ -1198,3 +1198,657 @@
 [04/17 00:23:26] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45120
 [04/17 00:23:26] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007108, bi_layer1=0.005214, bi_layer2=0.014050, total=0.026373
 [04/17 00:23:26] EA0 INFO: GPU memory(MiB): avg_allocated=1212.04, avg_reserved=15996.00, peak_allocated=4407.41, peak_reserved=15996.00, warmup_iters=20
+[04/17 00:27:47] EA0 INFO: Train: [139][500/1737]  
+[04/17 00:27:47] EA0 INFO: bbox_loss 0.3739 	cls_loss 0.1599 	com_loss 0.1443 	keep_loss 0.0680 	loss 0.7461 	
+[04/17 00:32:03] EA0 INFO: Train: [139][1000/1737]  
+[04/17 00:32:03] EA0 INFO: bbox_loss 0.3743 	cls_loss 0.1604 	com_loss 0.1443 	keep_loss 0.0677 	loss 0.7467 	
+[04/17 00:36:12] EA0 INFO: Train: [139][1500/1737]  
+[04/17 00:36:12] EA0 INFO: bbox_loss 0.3750 	cls_loss 0.1604 	com_loss 0.1440 	keep_loss 0.0679 	loss 0.7473 	
+[04/17 00:38:11] EA0 INFO: epoch 139, total time 885.16, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 00:42:27] EA0 INFO: Train: [140][500/1737]  
+[04/17 00:42:27] EA0 INFO: bbox_loss 0.3759 	cls_loss 0.1587 	com_loss 0.1412 	keep_loss 0.0674 	loss 0.7432 	
+[04/17 00:46:34] EA0 INFO: Train: [140][1000/1737]  
+[04/17 00:46:34] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1598 	com_loss 0.1428 	keep_loss 0.0678 	loss 0.7465 	
+[04/17 00:50:40] EA0 INFO: Train: [140][1500/1737]  
+[04/17 00:50:40] EA0 INFO: bbox_loss 0.3751 	cls_loss 0.1595 	com_loss 0.1427 	keep_loss 0.0677 	loss 0.7450 	
+[04/17 00:52:38] EA0 INFO: epoch 140, total time 866.82, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 00:57:02] EA0 INFO: Train: [141][500/1737]  
+[04/17 00:57:02] EA0 INFO: bbox_loss 0.3737 	cls_loss 0.1598 	com_loss 0.1445 	keep_loss 0.0688 	loss 0.7468 	
+[04/17 01:01:08] EA0 INFO: Train: [141][1000/1737]  
+[04/17 01:01:08] EA0 INFO: bbox_loss 0.3739 	cls_loss 0.1602 	com_loss 0.1441 	keep_loss 0.0688 	loss 0.7470 	
+[04/17 01:05:12] EA0 INFO: Train: [141][1500/1737]  
+[04/17 01:05:12] EA0 INFO: bbox_loss 0.3749 	cls_loss 0.1606 	com_loss 0.1445 	keep_loss 0.0690 	loss 0.7489 	
+[04/17 01:07:09] EA0 INFO: epoch 141, total time 871.09, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 01:08:09] EA0 INFO: Eval: [141]  
+[04/17 01:08:09] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55395
+[04/17 01:08:09] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45057
+[04/17 01:08:09] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006983, bi_layer1=0.004917, bi_layer2=0.014002, total=0.025902
+[04/17 01:08:09] EA0 INFO: GPU memory(MiB): avg_allocated=1206.02, avg_reserved=15998.00, peak_allocated=4397.78, peak_reserved=15998.00, warmup_iters=20
+[04/17 01:12:31] EA0 INFO: Train: [142][500/1737]  
+[04/17 01:12:31] EA0 INFO: bbox_loss 0.3728 	cls_loss 0.1576 	com_loss 0.1420 	keep_loss 0.0676 	loss 0.7399 	
+[04/17 01:16:41] EA0 INFO: Train: [142][1000/1737]  
+[04/17 01:16:41] EA0 INFO: bbox_loss 0.3744 	cls_loss 0.1584 	com_loss 0.1425 	keep_loss 0.0675 	loss 0.7428 	
+[04/17 01:20:50] EA0 INFO: Train: [142][1500/1737]  
+[04/17 01:20:50] EA0 INFO: bbox_loss 0.3748 	cls_loss 0.1595 	com_loss 0.1436 	keep_loss 0.0674 	loss 0.7453 	
+[04/17 01:22:48] EA0 INFO: epoch 142, total time 879.28, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 01:27:09] EA0 INFO: Train: [143][500/1737]  
+[04/17 01:27:09] EA0 INFO: bbox_loss 0.3720 	cls_loss 0.1580 	com_loss 0.1419 	keep_loss 0.0681 	loss 0.7400 	
+[04/17 01:31:19] EA0 INFO: Train: [143][1000/1737]  
+[04/17 01:31:19] EA0 INFO: bbox_loss 0.3738 	cls_loss 0.1590 	com_loss 0.1425 	keep_loss 0.0683 	loss 0.7437 	
+[04/17 01:35:28] EA0 INFO: Train: [143][1500/1737]  
+[04/17 01:35:28] EA0 INFO: bbox_loss 0.3741 	cls_loss 0.1585 	com_loss 0.1421 	keep_loss 0.0679 	loss 0.7425 	
+[04/17 01:37:26] EA0 INFO: epoch 143, total time 877.67, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 01:41:45] EA0 INFO: Train: [144][500/1737]  
+[04/17 01:41:45] EA0 INFO: bbox_loss 0.3786 	cls_loss 0.1597 	com_loss 0.1425 	keep_loss 0.0674 	loss 0.7482 	
+[04/17 01:45:56] EA0 INFO: Train: [144][1000/1737]  
+[04/17 01:45:56] EA0 INFO: bbox_loss 0.3776 	cls_loss 0.1590 	com_loss 0.1426 	keep_loss 0.0681 	loss 0.7473 	
+[04/17 01:50:01] EA0 INFO: Train: [144][1500/1737]  
+[04/17 01:50:01] EA0 INFO: bbox_loss 0.3783 	cls_loss 0.1597 	com_loss 0.1427 	keep_loss 0.0683 	loss 0.7489 	
+[04/17 01:52:01] EA0 INFO: epoch 144, total time 874.74, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 01:53:03] EA0 INFO: Eval: [144]  
+[04/17 01:53:03] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55364
+[04/17 01:53:03] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45309
+[04/17 01:53:03] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007049, bi_layer1=0.005022, bi_layer2=0.014007, total=0.026078
+[04/17 01:53:03] EA0 INFO: GPU memory(MiB): avg_allocated=1213.38, avg_reserved=15998.00, peak_allocated=4408.97, peak_reserved=15998.00, warmup_iters=20
+[04/17 01:57:22] EA0 INFO: Train: [145][500/1737]  
+[04/17 01:57:22] EA0 INFO: bbox_loss 0.3697 	cls_loss 0.1591 	com_loss 0.1421 	keep_loss 0.0687 	loss 0.7396 	
+[04/17 02:01:29] EA0 INFO: Train: [145][1000/1737]  
+[04/17 02:01:29] EA0 INFO: bbox_loss 0.3726 	cls_loss 0.1598 	com_loss 0.1436 	keep_loss 0.0686 	loss 0.7447 	
+[04/17 02:05:43] EA0 INFO: Train: [145][1500/1737]  
+[04/17 02:05:43] EA0 INFO: bbox_loss 0.3746 	cls_loss 0.1596 	com_loss 0.1434 	keep_loss 0.0682 	loss 0.7458 	
+[04/17 02:07:47] EA0 INFO: epoch 145, total time 884.12, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 02:12:03] EA0 INFO: Train: [146][500/1737]  
+[04/17 02:12:03] EA0 INFO: bbox_loss 0.3785 	cls_loss 0.1592 	com_loss 0.1426 	keep_loss 0.0681 	loss 0.7485 	
+[04/17 02:16:09] EA0 INFO: Train: [146][1000/1737]  
+[04/17 02:16:09] EA0 INFO: bbox_loss 0.3784 	cls_loss 0.1603 	com_loss 0.1430 	keep_loss 0.0683 	loss 0.7499 	
+[04/17 02:20:16] EA0 INFO: Train: [146][1500/1737]  
+[04/17 02:20:16] EA0 INFO: bbox_loss 0.3781 	cls_loss 0.1605 	com_loss 0.1437 	keep_loss 0.0682 	loss 0.7505 	
+[04/17 02:22:13] EA0 INFO: epoch 146, total time 865.94, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 02:26:32] EA0 INFO: Train: [147][500/1737]  
+[04/17 02:26:32] EA0 INFO: bbox_loss 0.3743 	cls_loss 0.1601 	com_loss 0.1442 	keep_loss 0.0682 	loss 0.7468 	
+[04/17 02:30:43] EA0 INFO: Train: [147][1000/1737]  
+[04/17 02:30:43] EA0 INFO: bbox_loss 0.3759 	cls_loss 0.1598 	com_loss 0.1439 	keep_loss 0.0682 	loss 0.7478 	
+[04/17 02:34:45] EA0 INFO: Train: [147][1500/1737]  
+[04/17 02:34:45] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1594 	com_loss 0.1428 	keep_loss 0.0679 	loss 0.7461 	
+[04/17 02:36:42] EA0 INFO: epoch 147, total time 868.94, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 02:37:42] EA0 INFO: Eval: [147]  
+[04/17 02:37:42] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55196
+[04/17 02:37:42] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.44962
+[04/17 02:37:42] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007000, bi_layer1=0.005094, bi_layer2=0.014031, total=0.026126
+[04/17 02:37:42] EA0 INFO: GPU memory(MiB): avg_allocated=1216.07, avg_reserved=15998.00, peak_allocated=4413.31, peak_reserved=15998.00, warmup_iters=20
+[04/17 02:41:58] EA0 INFO: Train: [148][500/1737]  
+[04/17 02:41:58] EA0 INFO: bbox_loss 0.3794 	cls_loss 0.1607 	com_loss 0.1450 	keep_loss 0.0681 	loss 0.7532 	
+[04/17 02:46:07] EA0 INFO: Train: [148][1000/1737]  
+[04/17 02:46:07] EA0 INFO: bbox_loss 0.3786 	cls_loss 0.1598 	com_loss 0.1437 	keep_loss 0.0675 	loss 0.7495 	
+[04/17 02:50:14] EA0 INFO: Train: [148][1500/1737]  
+[04/17 02:50:14] EA0 INFO: bbox_loss 0.3783 	cls_loss 0.1604 	com_loss 0.1441 	keep_loss 0.0675 	loss 0.7502 	
+[04/17 02:52:11] EA0 INFO: epoch 148, total time 869.82, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 02:56:33] EA0 INFO: Train: [149][500/1737]  
+[04/17 02:56:33] EA0 INFO: bbox_loss 0.3782 	cls_loss 0.1585 	com_loss 0.1421 	keep_loss 0.0678 	loss 0.7466 	
+[04/17 03:00:43] EA0 INFO: Train: [149][1000/1737]  
+[04/17 03:00:43] EA0 INFO: bbox_loss 0.3796 	cls_loss 0.1606 	com_loss 0.1441 	keep_loss 0.0680 	loss 0.7523 	
+[04/17 03:04:52] EA0 INFO: Train: [149][1500/1737]  
+[04/17 03:04:52] EA0 INFO: bbox_loss 0.3781 	cls_loss 0.1597 	com_loss 0.1427 	keep_loss 0.0680 	loss 0.7485 	
+[04/17 03:06:48] EA0 INFO: epoch 149, total time 876.88, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 03:11:06] EA0 INFO: Train: [150][500/1737]  
+[04/17 03:11:06] EA0 INFO: bbox_loss 0.3758 	cls_loss 0.1587 	com_loss 0.1419 	keep_loss 0.0673 	loss 0.7437 	
+[04/17 03:15:11] EA0 INFO: Train: [150][1000/1737]  
+[04/17 03:15:11] EA0 INFO: bbox_loss 0.3759 	cls_loss 0.1586 	com_loss 0.1420 	keep_loss 0.0677 	loss 0.7442 	
+[04/17 03:19:23] EA0 INFO: Train: [150][1500/1737]  
+[04/17 03:19:23] EA0 INFO: bbox_loss 0.3762 	cls_loss 0.1589 	com_loss 0.1423 	keep_loss 0.0678 	loss 0.7453 	
+[04/17 03:21:20] EA0 INFO: epoch 150, total time 871.47, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 03:22:20] EA0 INFO: Eval: [150]  
+[04/17 03:22:20] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55185
+[04/17 03:22:20] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45120
+[04/17 03:22:20] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007064, bi_layer1=0.004925, bi_layer2=0.013964, total=0.025953
+[04/17 03:22:20] EA0 INFO: GPU memory(MiB): avg_allocated=1220.38, avg_reserved=16002.00, peak_allocated=4412.01, peak_reserved=16002.00, warmup_iters=20
+[04/17 03:26:39] EA0 INFO: Train: [151][500/1737]  
+[04/17 03:26:39] EA0 INFO: bbox_loss 0.3788 	cls_loss 0.1586 	com_loss 0.1423 	keep_loss 0.0683 	loss 0.7480 	
+[04/17 03:30:45] EA0 INFO: Train: [151][1000/1737]  
+[04/17 03:30:45] EA0 INFO: bbox_loss 0.3799 	cls_loss 0.1599 	com_loss 0.1431 	keep_loss 0.0687 	loss 0.7516 	
+[04/17 03:34:53] EA0 INFO: Train: [151][1500/1737]  
+[04/17 03:34:53] EA0 INFO: bbox_loss 0.3797 	cls_loss 0.1591 	com_loss 0.1425 	keep_loss 0.0681 	loss 0.7494 	
+[04/17 03:36:50] EA0 INFO: epoch 151, total time 870.69, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 03:41:07] EA0 INFO: Train: [152][500/1737]  
+[04/17 03:41:07] EA0 INFO: bbox_loss 0.3786 	cls_loss 0.1595 	com_loss 0.1433 	keep_loss 0.0677 	loss 0.7491 	
+[04/17 03:45:18] EA0 INFO: Train: [152][1000/1737]  
+[04/17 03:45:18] EA0 INFO: bbox_loss 0.3798 	cls_loss 0.1600 	com_loss 0.1432 	keep_loss 0.0679 	loss 0.7509 	
+[04/17 03:49:26] EA0 INFO: Train: [152][1500/1737]  
+[04/17 03:49:26] EA0 INFO: bbox_loss 0.3777 	cls_loss 0.1601 	com_loss 0.1431 	keep_loss 0.0681 	loss 0.7490 	
+[04/17 03:51:24] EA0 INFO: epoch 152, total time 873.94, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 03:55:47] EA0 INFO: Train: [153][500/1737]  
+[04/17 03:55:47] EA0 INFO: bbox_loss 0.3736 	cls_loss 0.1556 	com_loss 0.1401 	keep_loss 0.0668 	loss 0.7361 	
+[04/17 03:59:53] EA0 INFO: Train: [153][1000/1737]  
+[04/17 03:59:53] EA0 INFO: bbox_loss 0.3766 	cls_loss 0.1589 	com_loss 0.1424 	keep_loss 0.0678 	loss 0.7457 	
+[04/17 04:04:04] EA0 INFO: Train: [153][1500/1737]  
+[04/17 04:04:04] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1588 	com_loss 0.1425 	keep_loss 0.0678 	loss 0.7451 	
+[04/17 04:06:03] EA0 INFO: epoch 153, total time 878.81, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 04:07:06] EA0 INFO: Eval: [153]  
+[04/17 04:07:06] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55343
+[04/17 04:07:06] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45183
+[04/17 04:07:06] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007185, bi_layer1=0.005170, bi_layer2=0.014064, total=0.026419
+[04/17 04:07:06] EA0 INFO: GPU memory(MiB): avg_allocated=1222.18, avg_reserved=16016.00, peak_allocated=4418.35, peak_reserved=16016.00, warmup_iters=20
+[04/17 04:11:27] EA0 INFO: Train: [154][500/1737]  
+[04/17 04:11:27] EA0 INFO: bbox_loss 0.3787 	cls_loss 0.1576 	com_loss 0.1415 	keep_loss 0.0670 	loss 0.7447 	
+[04/17 04:15:36] EA0 INFO: Train: [154][1000/1737]  
+[04/17 04:15:36] EA0 INFO: bbox_loss 0.3779 	cls_loss 0.1578 	com_loss 0.1418 	keep_loss 0.0673 	loss 0.7446 	
+[04/17 04:19:42] EA0 INFO: Train: [154][1500/1737]  
+[04/17 04:19:42] EA0 INFO: bbox_loss 0.3775 	cls_loss 0.1594 	com_loss 0.1427 	keep_loss 0.0676 	loss 0.7471 	
+[04/17 04:21:40] EA0 INFO: epoch 154, total time 874.43, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 04:26:01] EA0 INFO: Train: [155][500/1737]  
+[04/17 04:26:01] EA0 INFO: bbox_loss 0.3781 	cls_loss 0.1600 	com_loss 0.1443 	keep_loss 0.0678 	loss 0.7501 	
+[04/17 04:30:08] EA0 INFO: Train: [155][1000/1737]  
+[04/17 04:30:08] EA0 INFO: bbox_loss 0.3770 	cls_loss 0.1597 	com_loss 0.1439 	keep_loss 0.0674 	loss 0.7481 	
+[04/17 04:34:17] EA0 INFO: Train: [155][1500/1737]  
+[04/17 04:34:17] EA0 INFO: bbox_loss 0.3774 	cls_loss 0.1601 	com_loss 0.1438 	keep_loss 0.0678 	loss 0.7490 	
+[04/17 04:36:14] EA0 INFO: epoch 155, total time 873.57, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 04:40:39] EA0 INFO: Train: [156][500/1737]  
+[04/17 04:40:39] EA0 INFO: bbox_loss 0.3754 	cls_loss 0.1612 	com_loss 0.1446 	keep_loss 0.0694 	loss 0.7506 	
+[04/17 04:44:47] EA0 INFO: Train: [156][1000/1737]  
+[04/17 04:44:47] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1593 	com_loss 0.1429 	keep_loss 0.0681 	loss 0.7463 	
+[04/17 04:48:53] EA0 INFO: Train: [156][1500/1737]  
+[04/17 04:48:53] EA0 INFO: bbox_loss 0.3766 	cls_loss 0.1599 	com_loss 0.1432 	keep_loss 0.0678 	loss 0.7475 	
+[04/17 04:50:51] EA0 INFO: epoch 156, total time 877.46, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 04:51:50] EA0 INFO: Eval: [156]  
+[04/17 04:51:50] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55164
+[04/17 04:51:50] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45067
+[04/17 04:51:50] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006984, bi_layer1=0.004848, bi_layer2=0.014007, total=0.025838
+[04/17 04:51:50] EA0 INFO: GPU memory(MiB): avg_allocated=1223.65, avg_reserved=16016.00, peak_allocated=4416.66, peak_reserved=16016.00, warmup_iters=20
+[04/17 04:56:06] EA0 INFO: Train: [157][500/1737]  
+[04/17 04:56:06] EA0 INFO: bbox_loss 0.3805 	cls_loss 0.1625 	com_loss 0.1453 	keep_loss 0.0691 	loss 0.7573 	
+[04/17 05:00:13] EA0 INFO: Train: [157][1000/1737]  
+[04/17 05:00:13] EA0 INFO: bbox_loss 0.3787 	cls_loss 0.1604 	com_loss 0.1432 	keep_loss 0.0683 	loss 0.7506 	
+[04/17 05:04:22] EA0 INFO: Train: [157][1500/1737]  
+[04/17 05:04:22] EA0 INFO: bbox_loss 0.3769 	cls_loss 0.1598 	com_loss 0.1434 	keep_loss 0.0683 	loss 0.7483 	
+[04/17 05:06:21] EA0 INFO: epoch 157, total time 870.85, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 05:10:42] EA0 INFO: Train: [158][500/1737]  
+[04/17 05:10:42] EA0 INFO: bbox_loss 0.3806 	cls_loss 0.1593 	com_loss 0.1426 	keep_loss 0.0681 	loss 0.7506 	
+[04/17 05:14:47] EA0 INFO: Train: [158][1000/1737]  
+[04/17 05:14:47] EA0 INFO: bbox_loss 0.3767 	cls_loss 0.1588 	com_loss 0.1419 	keep_loss 0.0673 	loss 0.7447 	
+[04/17 05:18:51] EA0 INFO: Train: [158][1500/1737]  
+[04/17 05:18:51] EA0 INFO: bbox_loss 0.3790 	cls_loss 0.1596 	com_loss 0.1428 	keep_loss 0.0675 	loss 0.7490 	
+[04/17 05:20:48] EA0 INFO: epoch 158, total time 867.64, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 05:25:09] EA0 INFO: Train: [159][500/1737]  
+[04/17 05:25:09] EA0 INFO: bbox_loss 0.3834 	cls_loss 0.1620 	com_loss 0.1458 	keep_loss 0.0673 	loss 0.7585 	
+[04/17 05:29:19] EA0 INFO: Train: [159][1000/1737]  
+[04/17 05:29:19] EA0 INFO: bbox_loss 0.3802 	cls_loss 0.1598 	com_loss 0.1432 	keep_loss 0.0677 	loss 0.7509 	
+[04/17 05:33:21] EA0 INFO: Train: [159][1500/1737]  
+[04/17 05:33:21] EA0 INFO: bbox_loss 0.3789 	cls_loss 0.1590 	com_loss 0.1425 	keep_loss 0.0676 	loss 0.7480 	
+[04/17 05:35:19] EA0 INFO: epoch 159, total time 870.53, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 05:36:18] EA0 INFO: Eval: [159]  
+[04/17 05:36:18] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55196
+[04/17 05:36:18] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.44952
+[04/17 05:36:18] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007039, bi_layer1=0.004981, bi_layer2=0.014020, total=0.026040
+[04/17 05:36:18] EA0 INFO: GPU memory(MiB): avg_allocated=1224.18, avg_reserved=16016.00, peak_allocated=4420.54, peak_reserved=16016.00, warmup_iters=20
+[04/17 05:40:37] EA0 INFO: Train: [160][500/1737]  
+[04/17 05:40:37] EA0 INFO: bbox_loss 0.3720 	cls_loss 0.1566 	com_loss 0.1407 	keep_loss 0.0674 	loss 0.7366 	
+[04/17 05:44:45] EA0 INFO: Train: [160][1000/1737]  
+[04/17 05:44:45] EA0 INFO: bbox_loss 0.3739 	cls_loss 0.1564 	com_loss 0.1408 	keep_loss 0.0671 	loss 0.7383 	
+[04/17 05:48:52] EA0 INFO: Train: [160][1500/1737]  
+[04/17 05:48:52] EA0 INFO: bbox_loss 0.3746 	cls_loss 0.1568 	com_loss 0.1411 	keep_loss 0.0673 	loss 0.7397 	
+[04/17 05:50:50] EA0 INFO: epoch 160, total time 872.43, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 05:55:12] EA0 INFO: Train: [161][500/1737]  
+[04/17 05:55:12] EA0 INFO: bbox_loss 0.3780 	cls_loss 0.1608 	com_loss 0.1443 	keep_loss 0.0684 	loss 0.7516 	
+[04/17 05:59:18] EA0 INFO: Train: [161][1000/1737]  
+[04/17 05:59:18] EA0 INFO: bbox_loss 0.3782 	cls_loss 0.1593 	com_loss 0.1430 	keep_loss 0.0680 	loss 0.7486 	
+[04/17 06:03:25] EA0 INFO: Train: [161][1500/1737]  
+[04/17 06:03:25] EA0 INFO: bbox_loss 0.3780 	cls_loss 0.1588 	com_loss 0.1424 	keep_loss 0.0681 	loss 0.7473 	
+[04/17 06:05:23] EA0 INFO: epoch 161, total time 873.04, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 06:09:42] EA0 INFO: Train: [162][500/1737]  
+[04/17 06:09:42] EA0 INFO: bbox_loss 0.3701 	cls_loss 0.1580 	com_loss 0.1418 	keep_loss 0.0664 	loss 0.7364 	
+[04/17 06:13:48] EA0 INFO: Train: [162][1000/1737]  
+[04/17 06:13:48] EA0 INFO: bbox_loss 0.3747 	cls_loss 0.1579 	com_loss 0.1416 	keep_loss 0.0669 	loss 0.7411 	
+[04/17 06:17:58] EA0 INFO: Train: [162][1500/1737]  
+[04/17 06:17:58] EA0 INFO: bbox_loss 0.3759 	cls_loss 0.1587 	com_loss 0.1421 	keep_loss 0.0674 	loss 0.7442 	
+[04/17 06:19:58] EA0 INFO: epoch 162, total time 874.81, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 06:20:58] EA0 INFO: Eval: [162]  
+[04/17 06:20:58] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55175
+[04/17 06:20:58] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45183
+[04/17 06:20:58] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007074, bi_layer1=0.005237, bi_layer2=0.014049, total=0.026359
+[04/17 06:20:58] EA0 INFO: GPU memory(MiB): avg_allocated=1228.16, avg_reserved=16016.00, peak_allocated=4422.53, peak_reserved=16016.00, warmup_iters=20
+[04/17 06:25:26] EA0 INFO: Train: [163][500/1737]  
+[04/17 06:25:26] EA0 INFO: bbox_loss 0.3741 	cls_loss 0.1585 	com_loss 0.1399 	keep_loss 0.0669 	loss 0.7395 	
+[04/17 06:29:40] EA0 INFO: Train: [163][1000/1737]  
+[04/17 06:29:40] EA0 INFO: bbox_loss 0.3757 	cls_loss 0.1584 	com_loss 0.1414 	keep_loss 0.0677 	loss 0.7432 	
+[04/17 06:33:45] EA0 INFO: Train: [163][1500/1737]  
+[04/17 06:33:45] EA0 INFO: bbox_loss 0.3755 	cls_loss 0.1589 	com_loss 0.1420 	keep_loss 0.0679 	loss 0.7443 	
+[04/17 06:35:41] EA0 INFO: epoch 163, total time 883.16, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 06:40:02] EA0 INFO: Train: [164][500/1737]  
+[04/17 06:40:02] EA0 INFO: bbox_loss 0.3805 	cls_loss 0.1590 	com_loss 0.1409 	keep_loss 0.0674 	loss 0.7478 	
+[04/17 06:44:11] EA0 INFO: Train: [164][1000/1737]  
+[04/17 06:44:11] EA0 INFO: bbox_loss 0.3790 	cls_loss 0.1595 	com_loss 0.1417 	keep_loss 0.0675 	loss 0.7477 	
+[04/17 06:48:17] EA0 INFO: Train: [164][1500/1737]  
+[04/17 06:48:17] EA0 INFO: bbox_loss 0.3775 	cls_loss 0.1586 	com_loss 0.1412 	keep_loss 0.0672 	loss 0.7445 	
+[04/17 06:50:14] EA0 INFO: epoch 164, total time 872.50, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 06:54:38] EA0 INFO: Train: [165][500/1737]  
+[04/17 06:54:38] EA0 INFO: bbox_loss 0.3762 	cls_loss 0.1588 	com_loss 0.1422 	keep_loss 0.0668 	loss 0.7439 	
+[04/17 06:58:49] EA0 INFO: Train: [165][1000/1737]  
+[04/17 06:58:49] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1589 	com_loss 0.1416 	keep_loss 0.0672 	loss 0.7437 	
+[04/17 07:02:57] EA0 INFO: Train: [165][1500/1737]  
+[04/17 07:02:57] EA0 INFO: bbox_loss 0.3783 	cls_loss 0.1603 	com_loss 0.1425 	keep_loss 0.0676 	loss 0.7487 	
+[04/17 07:04:55] EA0 INFO: epoch 165, total time 881.10, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 07:05:54] EA0 INFO: Eval: [165]  
+[04/17 07:05:54] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55248
+[04/17 07:05:54] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45057
+[04/17 07:05:54] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006987, bi_layer1=0.004997, bi_layer2=0.014048, total=0.026032
+[04/17 07:05:54] EA0 INFO: GPU memory(MiB): avg_allocated=1232.74, avg_reserved=16016.00, peak_allocated=4424.89, peak_reserved=16016.00, warmup_iters=20
+[04/17 07:10:18] EA0 INFO: Train: [166][500/1737]  
+[04/17 07:10:18] EA0 INFO: bbox_loss 0.3809 	cls_loss 0.1615 	com_loss 0.1444 	keep_loss 0.0676 	loss 0.7544 	
+[04/17 07:14:35] EA0 INFO: Train: [166][1000/1737]  
+[04/17 07:14:35] EA0 INFO: bbox_loss 0.3780 	cls_loss 0.1599 	com_loss 0.1427 	keep_loss 0.0679 	loss 0.7484 	
+[04/17 07:18:40] EA0 INFO: Train: [166][1500/1737]  
+[04/17 07:18:40] EA0 INFO: bbox_loss 0.3777 	cls_loss 0.1588 	com_loss 0.1416 	keep_loss 0.0675 	loss 0.7455 	
+[04/17 07:20:37] EA0 INFO: epoch 166, total time 882.82, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 07:24:57] EA0 INFO: Train: [167][500/1737]  
+[04/17 07:24:57] EA0 INFO: bbox_loss 0.3804 	cls_loss 0.1598 	com_loss 0.1442 	keep_loss 0.0672 	loss 0.7516 	
+[04/17 07:29:07] EA0 INFO: Train: [167][1000/1737]  
+[04/17 07:29:07] EA0 INFO: bbox_loss 0.3793 	cls_loss 0.1588 	com_loss 0.1428 	keep_loss 0.0676 	loss 0.7485 	
+[04/17 07:33:18] EA0 INFO: Train: [167][1500/1737]  
+[04/17 07:33:18] EA0 INFO: bbox_loss 0.3780 	cls_loss 0.1583 	com_loss 0.1424 	keep_loss 0.0677 	loss 0.7464 	
+[04/17 07:35:21] EA0 INFO: epoch 167, total time 883.58, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 07:39:46] EA0 INFO: Train: [168][500/1737]  
+[04/17 07:39:46] EA0 INFO: bbox_loss 0.3769 	cls_loss 0.1596 	com_loss 0.1432 	keep_loss 0.0678 	loss 0.7475 	
+[04/17 07:43:51] EA0 INFO: Train: [168][1000/1737]  
+[04/17 07:43:51] EA0 INFO: bbox_loss 0.3784 	cls_loss 0.1589 	com_loss 0.1421 	keep_loss 0.0678 	loss 0.7471 	
+[04/17 07:47:54] EA0 INFO: Train: [168][1500/1737]  
+[04/17 07:47:54] EA0 INFO: bbox_loss 0.3777 	cls_loss 0.1596 	com_loss 0.1427 	keep_loss 0.0679 	loss 0.7479 	
+[04/17 07:49:53] EA0 INFO: epoch 168, total time 871.87, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 07:50:53] EA0 INFO: Eval: [168]  
+[04/17 07:50:53] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55048
+[04/17 07:50:53] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45025
+[04/17 07:50:53] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007029, bi_layer1=0.005009, bi_layer2=0.014009, total=0.026048
+[04/17 07:50:53] EA0 INFO: GPU memory(MiB): avg_allocated=1236.32, avg_reserved=16024.00, peak_allocated=4430.38, peak_reserved=16024.00, warmup_iters=20
+[04/17 07:55:15] EA0 INFO: Train: [169][500/1737]  
+[04/17 07:55:15] EA0 INFO: bbox_loss 0.3765 	cls_loss 0.1570 	com_loss 0.1407 	keep_loss 0.0666 	loss 0.7407 	
+[04/17 07:59:29] EA0 INFO: Train: [169][1000/1737]  
+[04/17 07:59:29] EA0 INFO: bbox_loss 0.3779 	cls_loss 0.1587 	com_loss 0.1424 	keep_loss 0.0675 	loss 0.7464 	
+[04/17 08:03:35] EA0 INFO: Train: [169][1500/1737]  
+[04/17 08:03:35] EA0 INFO: bbox_loss 0.3778 	cls_loss 0.1580 	com_loss 0.1419 	keep_loss 0.0675 	loss 0.7451 	
+[04/17 08:05:34] EA0 INFO: epoch 169, total time 881.05, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 08:09:55] EA0 INFO: Train: [170][500/1737]  
+[04/17 08:09:55] EA0 INFO: bbox_loss 0.3772 	cls_loss 0.1576 	com_loss 0.1416 	keep_loss 0.0670 	loss 0.7433 	
+[04/17 08:14:02] EA0 INFO: Train: [170][1000/1737]  
+[04/17 08:14:02] EA0 INFO: bbox_loss 0.3773 	cls_loss 0.1570 	com_loss 0.1406 	keep_loss 0.0667 	loss 0.7416 	
+[04/17 08:18:11] EA0 INFO: Train: [170][1500/1737]  
+[04/17 08:18:11] EA0 INFO: bbox_loss 0.3761 	cls_loss 0.1572 	com_loss 0.1407 	keep_loss 0.0674 	loss 0.7414 	
+[04/17 08:20:10] EA0 INFO: epoch 170, total time 876.50, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 08:24:35] EA0 INFO: Train: [171][500/1737]  
+[04/17 08:24:35] EA0 INFO: bbox_loss 0.3726 	cls_loss 0.1576 	com_loss 0.1432 	keep_loss 0.0676 	loss 0.7409 	
+[04/17 08:28:45] EA0 INFO: Train: [171][1000/1737]  
+[04/17 08:28:45] EA0 INFO: bbox_loss 0.3753 	cls_loss 0.1577 	com_loss 0.1422 	keep_loss 0.0674 	loss 0.7427 	
+[04/17 08:32:50] EA0 INFO: Train: [171][1500/1737]  
+[04/17 08:32:50] EA0 INFO: bbox_loss 0.3764 	cls_loss 0.1583 	com_loss 0.1424 	keep_loss 0.0673 	loss 0.7444 	
+[04/17 08:34:48] EA0 INFO: epoch 171, total time 878.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 08:35:46] EA0 INFO: Eval: [171]  
+[04/17 08:35:46] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55164
+[04/17 08:35:46] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45130
+[04/17 08:35:46] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007167, bi_layer1=0.004999, bi_layer2=0.014026, total=0.026192
+[04/17 08:35:46] EA0 INFO: GPU memory(MiB): avg_allocated=1237.62, avg_reserved=16032.00, peak_allocated=4429.18, peak_reserved=16032.00, warmup_iters=20
+[04/17 08:40:08] EA0 INFO: Train: [172][500/1737]  
+[04/17 08:40:08] EA0 INFO: bbox_loss 0.3787 	cls_loss 0.1607 	com_loss 0.1432 	keep_loss 0.0679 	loss 0.7505 	
+[04/17 08:44:17] EA0 INFO: Train: [172][1000/1737]  
+[04/17 08:44:17] EA0 INFO: bbox_loss 0.3776 	cls_loss 0.1597 	com_loss 0.1429 	keep_loss 0.0677 	loss 0.7478 	
+[04/17 08:48:28] EA0 INFO: Train: [172][1500/1737]  
+[04/17 08:48:28] EA0 INFO: bbox_loss 0.3772 	cls_loss 0.1595 	com_loss 0.1430 	keep_loss 0.0680 	loss 0.7478 	
+[04/17 08:50:26] EA0 INFO: epoch 172, total time 879.75, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 08:54:45] EA0 INFO: Train: [173][500/1737]  
+[04/17 08:54:45] EA0 INFO: bbox_loss 0.3756 	cls_loss 0.1589 	com_loss 0.1423 	keep_loss 0.0682 	loss 0.7450 	
+[04/17 08:58:50] EA0 INFO: Train: [173][1000/1737]  
+[04/17 08:58:50] EA0 INFO: bbox_loss 0.3785 	cls_loss 0.1586 	com_loss 0.1424 	keep_loss 0.0676 	loss 0.7471 	
+[04/17 09:02:55] EA0 INFO: Train: [173][1500/1737]  
+[04/17 09:02:55] EA0 INFO: bbox_loss 0.3781 	cls_loss 0.1590 	com_loss 0.1423 	keep_loss 0.0679 	loss 0.7473 	
+[04/17 09:04:57] EA0 INFO: epoch 173, total time 870.74, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 09:09:17] EA0 INFO: Train: [174][500/1737]  
+[04/17 09:09:17] EA0 INFO: bbox_loss 0.3765 	cls_loss 0.1566 	com_loss 0.1402 	keep_loss 0.0665 	loss 0.7398 	
+[04/17 09:13:26] EA0 INFO: Train: [174][1000/1737]  
+[04/17 09:13:26] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1568 	com_loss 0.1403 	keep_loss 0.0667 	loss 0.7398 	
+[04/17 09:17:29] EA0 INFO: Train: [174][1500/1737]  
+[04/17 09:17:29] EA0 INFO: bbox_loss 0.3754 	cls_loss 0.1575 	com_loss 0.1414 	keep_loss 0.0669 	loss 0.7412 	
+[04/17 09:19:28] EA0 INFO: epoch 174, total time 871.22, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 09:20:26] EA0 INFO: Eval: [174]  
+[04/17 09:20:26] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55311
+[04/17 09:20:26] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45141
+[04/17 09:20:26] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007137, bi_layer1=0.005026, bi_layer2=0.014013, total=0.026177
+[04/17 09:20:26] EA0 INFO: GPU memory(MiB): avg_allocated=1239.86, avg_reserved=16032.00, peak_allocated=4435.35, peak_reserved=16032.00, warmup_iters=20
+[04/17 09:24:52] EA0 INFO: Train: [175][500/1737]  
+[04/17 09:24:52] EA0 INFO: bbox_loss 0.3768 	cls_loss 0.1593 	com_loss 0.1430 	keep_loss 0.0679 	loss 0.7469 	
+[04/17 09:29:00] EA0 INFO: Train: [175][1000/1737]  
+[04/17 09:29:00] EA0 INFO: bbox_loss 0.3773 	cls_loss 0.1586 	com_loss 0.1426 	keep_loss 0.0679 	loss 0.7464 	
+[04/17 09:33:03] EA0 INFO: Train: [175][1500/1737]  
+[04/17 09:33:03] EA0 INFO: bbox_loss 0.3775 	cls_loss 0.1588 	com_loss 0.1424 	keep_loss 0.0678 	loss 0.7465 	
+[04/17 09:35:01] EA0 INFO: epoch 175, total time 874.79, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 09:39:21] EA0 INFO: Train: [176][500/1737]  
+[04/17 09:39:21] EA0 INFO: bbox_loss 0.3740 	cls_loss 0.1583 	com_loss 0.1405 	keep_loss 0.0673 	loss 0.7400 	
+[04/17 09:43:27] EA0 INFO: Train: [176][1000/1737]  
+[04/17 09:43:27] EA0 INFO: bbox_loss 0.3712 	cls_loss 0.1572 	com_loss 0.1403 	keep_loss 0.0674 	loss 0.7361 	
+[04/17 09:47:33] EA0 INFO: Train: [176][1500/1737]  
+[04/17 09:47:33] EA0 INFO: bbox_loss 0.3722 	cls_loss 0.1573 	com_loss 0.1409 	keep_loss 0.0676 	loss 0.7380 	
+[04/17 09:49:29] EA0 INFO: epoch 176, total time 868.55, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 09:53:51] EA0 INFO: Train: [177][500/1737]  
+[04/17 09:53:51] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1584 	com_loss 0.1418 	keep_loss 0.0678 	loss 0.7440 	
+[04/17 09:57:58] EA0 INFO: Train: [177][1000/1737]  
+[04/17 09:57:58] EA0 INFO: bbox_loss 0.3770 	cls_loss 0.1576 	com_loss 0.1408 	keep_loss 0.0675 	loss 0.7429 	
+[04/17 10:02:05] EA0 INFO: Train: [177][1500/1737]  
+[04/17 10:02:05] EA0 INFO: bbox_loss 0.3785 	cls_loss 0.1584 	com_loss 0.1421 	keep_loss 0.0674 	loss 0.7465 	
+[04/17 10:04:05] EA0 INFO: epoch 177, total time 876.08, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 10:05:06] EA0 INFO: Eval: [177]  
+[04/17 10:05:06] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55353
+[04/17 10:05:06] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45036
+[04/17 10:05:06] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007214, bi_layer1=0.005150, bi_layer2=0.014065, total=0.026428
+[04/17 10:05:06] EA0 INFO: GPU memory(MiB): avg_allocated=1241.37, avg_reserved=16032.00, peak_allocated=4436.50, peak_reserved=16032.00, warmup_iters=20
+[04/17 10:09:30] EA0 INFO: Train: [178][500/1737]  
+[04/17 10:09:30] EA0 INFO: bbox_loss 0.3744 	cls_loss 0.1596 	com_loss 0.1432 	keep_loss 0.0681 	loss 0.7454 	
+[04/17 10:13:39] EA0 INFO: Train: [178][1000/1737]  
+[04/17 10:13:39] EA0 INFO: bbox_loss 0.3741 	cls_loss 0.1575 	com_loss 0.1409 	keep_loss 0.0673 	loss 0.7398 	
+[04/17 10:17:42] EA0 INFO: Train: [178][1500/1737]  
+[04/17 10:17:42] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1582 	com_loss 0.1419 	keep_loss 0.0675 	loss 0.7436 	
+[04/17 10:19:43] EA0 INFO: epoch 178, total time 876.25, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 10:24:10] EA0 INFO: Train: [179][500/1737]  
+[04/17 10:24:10] EA0 INFO: bbox_loss 0.3748 	cls_loss 0.1579 	com_loss 0.1427 	keep_loss 0.0673 	loss 0.7427 	
+[04/17 10:28:15] EA0 INFO: Train: [179][1000/1737]  
+[04/17 10:28:15] EA0 INFO: bbox_loss 0.3751 	cls_loss 0.1593 	com_loss 0.1428 	keep_loss 0.0675 	loss 0.7447 	
+[04/17 10:32:23] EA0 INFO: Train: [179][1500/1737]  
+[04/17 10:32:23] EA0 INFO: bbox_loss 0.3759 	cls_loss 0.1597 	com_loss 0.1430 	keep_loss 0.0674 	loss 0.7460 	
+[04/17 10:34:22] EA0 INFO: epoch 179, total time 879.21, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 10:38:41] EA0 INFO: Train: [180][500/1737]  
+[04/17 10:38:41] EA0 INFO: bbox_loss 0.3765 	cls_loss 0.1568 	com_loss 0.1402 	keep_loss 0.0674 	loss 0.7410 	
+[04/17 10:42:49] EA0 INFO: Train: [180][1000/1737]  
+[04/17 10:42:49] EA0 INFO: bbox_loss 0.3788 	cls_loss 0.1583 	com_loss 0.1414 	keep_loss 0.0674 	loss 0.7460 	
+[04/17 10:46:55] EA0 INFO: Train: [180][1500/1737]  
+[04/17 10:46:55] EA0 INFO: bbox_loss 0.3787 	cls_loss 0.1587 	com_loss 0.1422 	keep_loss 0.0679 	loss 0.7475 	
+[04/17 10:48:52] EA0 INFO: epoch 180, total time 870.17, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 10:49:51] EA0 INFO: Eval: [180]  
+[04/17 10:49:51] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55196
+[04/17 10:49:51] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45246
+[04/17 10:49:51] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006969, bi_layer1=0.005082, bi_layer2=0.014017, total=0.026069
+[04/17 10:49:51] EA0 INFO: GPU memory(MiB): avg_allocated=1247.62, avg_reserved=16034.00, peak_allocated=4439.90, peak_reserved=16034.00, warmup_iters=20
+[04/17 10:54:12] EA0 INFO: Train: [181][500/1737]  
+[04/17 10:54:12] EA0 INFO: bbox_loss 0.3808 	cls_loss 0.1591 	com_loss 0.1434 	keep_loss 0.0678 	loss 0.7510 	
+[04/17 10:58:19] EA0 INFO: Train: [181][1000/1737]  
+[04/17 10:58:19] EA0 INFO: bbox_loss 0.3787 	cls_loss 0.1592 	com_loss 0.1430 	keep_loss 0.0676 	loss 0.7485 	
+[04/17 11:02:21] EA0 INFO: Train: [181][1500/1737]  
+[04/17 11:02:21] EA0 INFO: bbox_loss 0.3788 	cls_loss 0.1589 	com_loss 0.1422 	keep_loss 0.0675 	loss 0.7474 	
+[04/17 11:04:18] EA0 INFO: epoch 181, total time 867.38, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 11:08:36] EA0 INFO: Train: [182][500/1737]  
+[04/17 11:08:36] EA0 INFO: bbox_loss 0.3778 	cls_loss 0.1593 	com_loss 0.1421 	keep_loss 0.0689 	loss 0.7481 	
+[04/17 11:12:40] EA0 INFO: Train: [182][1000/1737]  
+[04/17 11:12:40] EA0 INFO: bbox_loss 0.3773 	cls_loss 0.1586 	com_loss 0.1416 	keep_loss 0.0683 	loss 0.7458 	
+[04/17 11:16:45] EA0 INFO: Train: [182][1500/1737]  
+[04/17 11:16:45] EA0 INFO: bbox_loss 0.3780 	cls_loss 0.1595 	com_loss 0.1428 	keep_loss 0.0684 	loss 0.7487 	
+[04/17 11:18:44] EA0 INFO: epoch 182, total time 865.22, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 11:23:03] EA0 INFO: Train: [183][500/1737]  
+[04/17 11:23:03] EA0 INFO: bbox_loss 0.3781 	cls_loss 0.1582 	com_loss 0.1410 	keep_loss 0.0672 	loss 0.7445 	
+[04/17 11:27:12] EA0 INFO: Train: [183][1000/1737]  
+[04/17 11:27:12] EA0 INFO: bbox_loss 0.3754 	cls_loss 0.1575 	com_loss 0.1408 	keep_loss 0.0671 	loss 0.7408 	
+[04/17 11:31:21] EA0 INFO: Train: [183][1500/1737]  
+[04/17 11:31:21] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1576 	com_loss 0.1407 	keep_loss 0.0671 	loss 0.7415 	
+[04/17 11:33:22] EA0 INFO: epoch 183, total time 878.42, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 11:34:21] EA0 INFO: Eval: [183]  
+[04/17 11:34:21] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55048
+[04/17 11:34:21] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.44920
+[04/17 11:34:21] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007099, bi_layer1=0.005175, bi_layer2=0.014058, total=0.026333
+[04/17 11:34:21] EA0 INFO: GPU memory(MiB): avg_allocated=1248.35, avg_reserved=16034.00, peak_allocated=4440.98, peak_reserved=16034.00, warmup_iters=20
+[04/17 11:38:40] EA0 INFO: Train: [184][500/1737]  
+[04/17 11:38:40] EA0 INFO: bbox_loss 0.3693 	cls_loss 0.1541 	com_loss 0.1381 	keep_loss 0.0670 	loss 0.7286 	
+[04/17 11:42:45] EA0 INFO: Train: [184][1000/1737]  
+[04/17 11:42:45] EA0 INFO: bbox_loss 0.3728 	cls_loss 0.1563 	com_loss 0.1399 	keep_loss 0.0672 	loss 0.7361 	
+[04/17 11:46:51] EA0 INFO: Train: [184][1500/1737]  
+[04/17 11:46:51] EA0 INFO: bbox_loss 0.3724 	cls_loss 0.1565 	com_loss 0.1402 	keep_loss 0.0674 	loss 0.7366 	
+[04/17 11:48:50] EA0 INFO: epoch 184, total time 869.57, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 11:53:10] EA0 INFO: Train: [185][500/1737]  
+[04/17 11:53:10] EA0 INFO: bbox_loss 0.3762 	cls_loss 0.1568 	com_loss 0.1404 	keep_loss 0.0674 	loss 0.7408 	
+[04/17 11:57:18] EA0 INFO: Train: [185][1000/1737]  
+[04/17 11:57:18] EA0 INFO: bbox_loss 0.3761 	cls_loss 0.1576 	com_loss 0.1413 	keep_loss 0.0679 	loss 0.7429 	
+[04/17 12:01:27] EA0 INFO: Train: [185][1500/1737]  
+[04/17 12:01:27] EA0 INFO: bbox_loss 0.3745 	cls_loss 0.1570 	com_loss 0.1412 	keep_loss 0.0678 	loss 0.7404 	
+[04/17 12:03:25] EA0 INFO: epoch 185, total time 874.99, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 12:07:44] EA0 INFO: Train: [186][500/1737]  
+[04/17 12:07:44] EA0 INFO: bbox_loss 0.3761 	cls_loss 0.1592 	com_loss 0.1424 	keep_loss 0.0672 	loss 0.7448 	
+[04/17 12:11:58] EA0 INFO: Train: [186][1000/1737]  
+[04/17 12:11:58] EA0 INFO: bbox_loss 0.3775 	cls_loss 0.1587 	com_loss 0.1416 	keep_loss 0.0680 	loss 0.7459 	
+[04/17 12:15:59] EA0 INFO: Train: [186][1500/1737]  
+[04/17 12:15:59] EA0 INFO: bbox_loss 0.3769 	cls_loss 0.1587 	com_loss 0.1418 	keep_loss 0.0675 	loss 0.7449 	
+[04/17 12:17:58] EA0 INFO: epoch 186, total time 872.97, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 12:18:56] EA0 INFO: Eval: [186]  
+[04/17 12:18:56] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.54943
+[04/17 12:18:56] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.44899
+[04/17 12:18:56] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007035, bi_layer1=0.005099, bi_layer2=0.014020, total=0.026153
+[04/17 12:18:56] EA0 INFO: GPU memory(MiB): avg_allocated=1251.06, avg_reserved=16034.00, peak_allocated=4442.37, peak_reserved=16034.00, warmup_iters=20
+[04/17 12:23:20] EA0 INFO: Train: [187][500/1737]  
+[04/17 12:23:20] EA0 INFO: bbox_loss 0.3765 	cls_loss 0.1569 	com_loss 0.1413 	keep_loss 0.0676 	loss 0.7423 	
+[04/17 12:27:31] EA0 INFO: Train: [187][1000/1737]  
+[04/17 12:27:31] EA0 INFO: bbox_loss 0.3751 	cls_loss 0.1570 	com_loss 0.1412 	keep_loss 0.0675 	loss 0.7409 	
+[04/17 12:31:37] EA0 INFO: Train: [187][1500/1737]  
+[04/17 12:31:37] EA0 INFO: bbox_loss 0.3763 	cls_loss 0.1587 	com_loss 0.1425 	keep_loss 0.0677 	loss 0.7453 	
+[04/17 12:33:42] EA0 INFO: epoch 187, total time 885.82, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 12:38:06] EA0 INFO: Train: [188][500/1737]  
+[04/17 12:38:06] EA0 INFO: bbox_loss 0.3779 	cls_loss 0.1569 	com_loss 0.1395 	keep_loss 0.0666 	loss 0.7409 	
+[04/17 12:42:12] EA0 INFO: Train: [188][1000/1737]  
+[04/17 12:42:12] EA0 INFO: bbox_loss 0.3767 	cls_loss 0.1593 	com_loss 0.1419 	keep_loss 0.0676 	loss 0.7455 	
+[04/17 12:46:15] EA0 INFO: Train: [188][1500/1737]  
+[04/17 12:46:15] EA0 INFO: bbox_loss 0.3753 	cls_loss 0.1589 	com_loss 0.1417 	keep_loss 0.0673 	loss 0.7432 	
+[04/17 12:48:13] EA0 INFO: epoch 188, total time 870.75, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 12:52:37] EA0 INFO: Train: [189][500/1737]  
+[04/17 12:52:37] EA0 INFO: bbox_loss 0.3763 	cls_loss 0.1551 	com_loss 0.1383 	keep_loss 0.0663 	loss 0.7360 	
+[04/17 12:56:43] EA0 INFO: Train: [189][1000/1737]  
+[04/17 12:56:43] EA0 INFO: bbox_loss 0.3731 	cls_loss 0.1553 	com_loss 0.1385 	keep_loss 0.0668 	loss 0.7337 	
+[04/17 13:00:49] EA0 INFO: Train: [189][1500/1737]  
+[04/17 13:00:49] EA0 INFO: bbox_loss 0.3751 	cls_loss 0.1568 	com_loss 0.1397 	keep_loss 0.0671 	loss 0.7387 	
+[04/17 13:02:48] EA0 INFO: epoch 189, total time 875.07, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 13:03:47] EA0 INFO: Eval: [189]  
+[04/17 13:03:47] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55143
+[04/17 13:03:47] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45109
+[04/17 13:03:47] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007107, bi_layer1=0.005253, bi_layer2=0.014053, total=0.026413
+[04/17 13:03:47] EA0 INFO: GPU memory(MiB): avg_allocated=1254.87, avg_reserved=16044.00, peak_allocated=4449.10, peak_reserved=16044.00, warmup_iters=20
+[04/17 13:08:12] EA0 INFO: Train: [190][500/1737]  
+[04/17 13:08:12] EA0 INFO: bbox_loss 0.3736 	cls_loss 0.1550 	com_loss 0.1389 	keep_loss 0.0663 	loss 0.7337 	
+[04/17 13:12:19] EA0 INFO: Train: [190][1000/1737]  
+[04/17 13:12:19] EA0 INFO: bbox_loss 0.3749 	cls_loss 0.1566 	com_loss 0.1405 	keep_loss 0.0667 	loss 0.7387 	
+[04/17 13:16:25] EA0 INFO: Train: [190][1500/1737]  
+[04/17 13:16:25] EA0 INFO: bbox_loss 0.3752 	cls_loss 0.1571 	com_loss 0.1407 	keep_loss 0.0670 	loss 0.7400 	
+[04/17 13:18:22] EA0 INFO: epoch 190, total time 875.73, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 13:22:44] EA0 INFO: Train: [191][500/1737]  
+[04/17 13:22:44] EA0 INFO: bbox_loss 0.3782 	cls_loss 0.1581 	com_loss 0.1409 	keep_loss 0.0680 	loss 0.7452 	
+[04/17 13:26:52] EA0 INFO: Train: [191][1000/1737]  
+[04/17 13:26:52] EA0 INFO: bbox_loss 0.3769 	cls_loss 0.1588 	com_loss 0.1419 	keep_loss 0.0675 	loss 0.7450 	
+[04/17 13:31:06] EA0 INFO: Train: [191][1500/1737]  
+[04/17 13:31:06] EA0 INFO: bbox_loss 0.3777 	cls_loss 0.1593 	com_loss 0.1426 	keep_loss 0.0672 	loss 0.7468 	
+[04/17 13:33:07] EA0 INFO: epoch 191, total time 885.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 13:37:29] EA0 INFO: Train: [192][500/1737]  
+[04/17 13:37:29] EA0 INFO: bbox_loss 0.3763 	cls_loss 0.1569 	com_loss 0.1397 	keep_loss 0.0673 	loss 0.7402 	
+[04/17 13:41:41] EA0 INFO: Train: [192][1000/1737]  
+[04/17 13:41:41] EA0 INFO: bbox_loss 0.3748 	cls_loss 0.1575 	com_loss 0.1403 	keep_loss 0.0677 	loss 0.7402 	
+[04/17 13:45:50] EA0 INFO: Train: [192][1500/1737]  
+[04/17 13:45:50] EA0 INFO: bbox_loss 0.3754 	cls_loss 0.1578 	com_loss 0.1411 	keep_loss 0.0676 	loss 0.7419 	
+[04/17 13:47:47] EA0 INFO: epoch 192, total time 880.00, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 13:48:47] EA0 INFO: Eval: [192]  
+[04/17 13:48:47] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.54996
+[04/17 13:48:47] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.44931
+[04/17 13:48:47] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007079, bi_layer1=0.005072, bi_layer2=0.014033, total=0.026184
+[04/17 13:48:47] EA0 INFO: GPU memory(MiB): avg_allocated=1257.23, avg_reserved=16056.00, peak_allocated=4447.48, peak_reserved=16056.00, warmup_iters=20
+[04/17 13:53:17] EA0 INFO: Train: [193][500/1737]  
+[04/17 13:53:17] EA0 INFO: bbox_loss 0.3757 	cls_loss 0.1580 	com_loss 0.1413 	keep_loss 0.0688 	loss 0.7438 	
+[04/17 13:57:25] EA0 INFO: Train: [193][1000/1737]  
+[04/17 13:57:25] EA0 INFO: bbox_loss 0.3727 	cls_loss 0.1570 	com_loss 0.1404 	keep_loss 0.0683 	loss 0.7384 	
+[04/17 14:01:32] EA0 INFO: Train: [193][1500/1737]  
+[04/17 14:01:32] EA0 INFO: bbox_loss 0.3753 	cls_loss 0.1580 	com_loss 0.1416 	keep_loss 0.0679 	loss 0.7428 	
+[04/17 14:03:31] EA0 INFO: epoch 193, total time 883.58, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 14:07:54] EA0 INFO: Train: [194][500/1737]  
+[04/17 14:07:54] EA0 INFO: bbox_loss 0.3803 	cls_loss 0.1586 	com_loss 0.1411 	keep_loss 0.0675 	loss 0.7474 	
+[04/17 14:12:03] EA0 INFO: Train: [194][1000/1737]  
+[04/17 14:12:03] EA0 INFO: bbox_loss 0.3778 	cls_loss 0.1587 	com_loss 0.1419 	keep_loss 0.0672 	loss 0.7456 	
+[04/17 14:16:09] EA0 INFO: Train: [194][1500/1737]  
+[04/17 14:16:09] EA0 INFO: bbox_loss 0.3783 	cls_loss 0.1587 	com_loss 0.1423 	keep_loss 0.0675 	loss 0.7468 	
+[04/17 14:18:07] EA0 INFO: epoch 194, total time 876.13, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 14:22:24] EA0 INFO: Train: [195][500/1737]  
+[04/17 14:22:24] EA0 INFO: bbox_loss 0.3760 	cls_loss 0.1585 	com_loss 0.1418 	keep_loss 0.0670 	loss 0.7433 	
+[04/17 14:26:28] EA0 INFO: Train: [195][1000/1737]  
+[04/17 14:26:28] EA0 INFO: bbox_loss 0.3750 	cls_loss 0.1586 	com_loss 0.1428 	keep_loss 0.0673 	loss 0.7436 	
+[04/17 14:30:32] EA0 INFO: Train: [195][1500/1737]  
+[04/17 14:30:32] EA0 INFO: bbox_loss 0.3744 	cls_loss 0.1578 	com_loss 0.1414 	keep_loss 0.0671 	loss 0.7407 	
+[04/17 14:32:33] EA0 INFO: epoch 195, total time 865.98, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 14:33:34] EA0 INFO: Eval: [195]  
+[04/17 14:33:34] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55143
+[04/17 14:33:34] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45257
+[04/17 14:33:34] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007182, bi_layer1=0.005165, bi_layer2=0.014065, total=0.026412
+[04/17 14:33:34] EA0 INFO: GPU memory(MiB): avg_allocated=1258.65, avg_reserved=16056.00, peak_allocated=4454.89, peak_reserved=16056.00, warmup_iters=20
+[04/17 14:38:00] EA0 INFO: Train: [196][500/1737]  
+[04/17 14:38:00] EA0 INFO: bbox_loss 0.3736 	cls_loss 0.1568 	com_loss 0.1408 	keep_loss 0.0665 	loss 0.7377 	
+[04/17 14:42:09] EA0 INFO: Train: [196][1000/1737]  
+[04/17 14:42:09] EA0 INFO: bbox_loss 0.3743 	cls_loss 0.1570 	com_loss 0.1410 	keep_loss 0.0671 	loss 0.7394 	
+[04/17 14:46:16] EA0 INFO: Train: [196][1500/1737]  
+[04/17 14:46:16] EA0 INFO: bbox_loss 0.3750 	cls_loss 0.1571 	com_loss 0.1407 	keep_loss 0.0670 	loss 0.7398 	
+[04/17 14:48:15] EA0 INFO: epoch 196, total time 881.77, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 14:52:35] EA0 INFO: Train: [197][500/1737]  
+[04/17 14:52:35] EA0 INFO: bbox_loss 0.3737 	cls_loss 0.1564 	com_loss 0.1402 	keep_loss 0.0659 	loss 0.7362 	
+[04/17 14:56:44] EA0 INFO: Train: [197][1000/1737]  
+[04/17 14:56:44] EA0 INFO: bbox_loss 0.3763 	cls_loss 0.1578 	com_loss 0.1414 	keep_loss 0.0669 	loss 0.7425 	
+[04/17 15:00:49] EA0 INFO: Train: [197][1500/1737]  
+[04/17 15:00:49] EA0 INFO: bbox_loss 0.3756 	cls_loss 0.1576 	com_loss 0.1414 	keep_loss 0.0669 	loss 0.7415 	
+[04/17 15:02:46] EA0 INFO: epoch 197, total time 870.41, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 15:07:05] EA0 INFO: Train: [198][500/1737]  
+[04/17 15:07:05] EA0 INFO: bbox_loss 0.3746 	cls_loss 0.1569 	com_loss 0.1407 	keep_loss 0.0665 	loss 0.7387 	
+[04/17 15:11:14] EA0 INFO: Train: [198][1000/1737]  
+[04/17 15:11:14] EA0 INFO: bbox_loss 0.3736 	cls_loss 0.1563 	com_loss 0.1403 	keep_loss 0.0668 	loss 0.7371 	
+[04/17 15:15:20] EA0 INFO: Train: [198][1500/1737]  
+[04/17 15:15:20] EA0 INFO: bbox_loss 0.3747 	cls_loss 0.1572 	com_loss 0.1407 	keep_loss 0.0671 	loss 0.7397 	
+[04/17 15:17:18] EA0 INFO: epoch 198, total time 872.19, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 15:18:16] EA0 INFO: Eval: [198]  
+[04/17 15:18:16] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55164
+[04/17 15:18:16] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45057
+[04/17 15:18:16] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006993, bi_layer1=0.005053, bi_layer2=0.014014, total=0.026060
+[04/17 15:18:16] EA0 INFO: GPU memory(MiB): avg_allocated=1263.19, avg_reserved=16056.00, peak_allocated=4458.60, peak_reserved=16056.00, warmup_iters=20
+[04/17 15:22:38] EA0 INFO: Train: [199][500/1737]  
+[04/17 15:22:38] EA0 INFO: bbox_loss 0.3790 	cls_loss 0.1586 	com_loss 0.1413 	keep_loss 0.0677 	loss 0.7465 	
+[04/17 15:26:49] EA0 INFO: Train: [199][1000/1737]  
+[04/17 15:26:49] EA0 INFO: bbox_loss 0.3782 	cls_loss 0.1591 	com_loss 0.1423 	keep_loss 0.0678 	loss 0.7475 	
+[04/17 15:30:55] EA0 INFO: Train: [199][1500/1737]  
+[04/17 15:30:55] EA0 INFO: bbox_loss 0.3764 	cls_loss 0.1587 	com_loss 0.1421 	keep_loss 0.0676 	loss 0.7448 	
+[04/17 15:32:55] EA0 INFO: epoch 199, total time 879.09, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 15:37:20] EA0 INFO: Train: [200][500/1737]  
+[04/17 15:37:20] EA0 INFO: bbox_loss 0.3767 	cls_loss 0.1596 	com_loss 0.1422 	keep_loss 0.0675 	loss 0.7459 	
+[04/17 15:41:26] EA0 INFO: Train: [200][1000/1737]  
+[04/17 15:41:26] EA0 INFO: bbox_loss 0.3771 	cls_loss 0.1590 	com_loss 0.1422 	keep_loss 0.0675 	loss 0.7459 	
+[04/17 15:45:30] EA0 INFO: Train: [200][1500/1737]  
+[04/17 15:45:30] EA0 INFO: bbox_loss 0.3775 	cls_loss 0.1593 	com_loss 0.1424 	keep_loss 0.0675 	loss 0.7467 	
+[04/17 15:47:28] EA0 INFO: epoch 200, total time 872.52, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 15:51:54] EA0 INFO: Train: [201][500/1737]  
+[04/17 15:51:54] EA0 INFO: bbox_loss 0.3771 	cls_loss 0.1576 	com_loss 0.1419 	keep_loss 0.0671 	loss 0.7437 	
+[04/17 15:55:58] EA0 INFO: Train: [201][1000/1737]  
+[04/17 15:55:58] EA0 INFO: bbox_loss 0.3753 	cls_loss 0.1571 	com_loss 0.1415 	keep_loss 0.0671 	loss 0.7410 	
+[04/17 15:59:57] EA0 INFO: Train: [201][1500/1737]  
+[04/17 15:59:57] EA0 INFO: bbox_loss 0.3746 	cls_loss 0.1565 	com_loss 0.1407 	keep_loss 0.0669 	loss 0.7387 	
+[04/17 16:01:58] EA0 INFO: epoch 201, total time 870.44, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 16:02:57] EA0 INFO: Eval: [201]  
+[04/17 16:02:57] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55101
+[04/17 16:02:57] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.44889
+[04/17 16:02:57] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006933, bi_layer1=0.005008, bi_layer2=0.014028, total=0.025969
+[04/17 16:02:57] EA0 INFO: GPU memory(MiB): avg_allocated=1265.86, avg_reserved=16056.00, peak_allocated=4459.96, peak_reserved=16056.00, warmup_iters=20
+[04/17 16:07:20] EA0 INFO: Train: [202][500/1737]  
+[04/17 16:07:20] EA0 INFO: bbox_loss 0.3765 	cls_loss 0.1575 	com_loss 0.1410 	keep_loss 0.0672 	loss 0.7422 	
+[04/17 16:11:23] EA0 INFO: Train: [202][1000/1737]  
+[04/17 16:11:23] EA0 INFO: bbox_loss 0.3764 	cls_loss 0.1574 	com_loss 0.1405 	keep_loss 0.0670 	loss 0.7414 	
+[04/17 16:15:29] EA0 INFO: Train: [202][1500/1737]  
+[04/17 16:15:29] EA0 INFO: bbox_loss 0.3750 	cls_loss 0.1565 	com_loss 0.1398 	keep_loss 0.0670 	loss 0.7383 	
+[04/17 16:17:27] EA0 INFO: epoch 202, total time 870.55, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 16:21:48] EA0 INFO: Train: [203][500/1737]  
+[04/17 16:21:48] EA0 INFO: bbox_loss 0.3755 	cls_loss 0.1571 	com_loss 0.1412 	keep_loss 0.0666 	loss 0.7404 	
+[04/17 16:25:54] EA0 INFO: Train: [203][1000/1737]  
+[04/17 16:25:54] EA0 INFO: bbox_loss 0.3729 	cls_loss 0.1567 	com_loss 0.1411 	keep_loss 0.0661 	loss 0.7367 	
+[04/17 16:30:01] EA0 INFO: Train: [203][1500/1737]  
+[04/17 16:30:01] EA0 INFO: bbox_loss 0.3737 	cls_loss 0.1569 	com_loss 0.1410 	keep_loss 0.0665 	loss 0.7381 	
+[04/17 16:31:59] EA0 INFO: epoch 203, total time 871.59, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 16:36:20] EA0 INFO: Train: [204][500/1737]  
+[04/17 16:36:20] EA0 INFO: bbox_loss 0.3745 	cls_loss 0.1566 	com_loss 0.1401 	keep_loss 0.0664 	loss 0.7375 	
+[04/17 16:40:30] EA0 INFO: Train: [204][1000/1737]  
+[04/17 16:40:30] EA0 INFO: bbox_loss 0.3734 	cls_loss 0.1556 	com_loss 0.1382 	keep_loss 0.0663 	loss 0.7335 	
+[04/17 16:44:42] EA0 INFO: Train: [204][1500/1737]  
+[04/17 16:44:42] EA0 INFO: bbox_loss 0.3726 	cls_loss 0.1563 	com_loss 0.1393 	keep_loss 0.0667 	loss 0.7350 	
+[04/17 16:46:44] EA0 INFO: epoch 204, total time 885.39, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 16:47:43] EA0 INFO: Eval: [204]  
+[04/17 16:47:43] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55290
+[04/17 16:47:43] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45204
+[04/17 16:47:43] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006951, bi_layer1=0.005056, bi_layer2=0.014000, total=0.026007
+[04/17 16:47:43] EA0 INFO: GPU memory(MiB): avg_allocated=1264.46, avg_reserved=16062.00, peak_allocated=4454.41, peak_reserved=16062.00, warmup_iters=20
+[04/17 16:52:09] EA0 INFO: Train: [205][500/1737]  
+[04/17 16:52:09] EA0 INFO: bbox_loss 0.3773 	cls_loss 0.1599 	com_loss 0.1417 	keep_loss 0.0677 	loss 0.7467 	
+[04/17 16:56:16] EA0 INFO: Train: [205][1000/1737]  
+[04/17 16:56:16] EA0 INFO: bbox_loss 0.3765 	cls_loss 0.1592 	com_loss 0.1415 	keep_loss 0.0676 	loss 0.7449 	
+[04/17 17:00:23] EA0 INFO: Train: [205][1500/1737]  
+[04/17 17:00:23] EA0 INFO: bbox_loss 0.3750 	cls_loss 0.1581 	com_loss 0.1409 	keep_loss 0.0672 	loss 0.7412 	
+[04/17 17:02:24] EA0 INFO: epoch 205, total time 881.70, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 17:06:49] EA0 INFO: Train: [206][500/1737]  
+[04/17 17:06:49] EA0 INFO: bbox_loss 0.3757 	cls_loss 0.1583 	com_loss 0.1413 	keep_loss 0.0682 	loss 0.7435 	
+[04/17 17:10:50] EA0 INFO: Train: [206][1000/1737]  
+[04/17 17:10:50] EA0 INFO: bbox_loss 0.3757 	cls_loss 0.1567 	com_loss 0.1392 	keep_loss 0.0675 	loss 0.7391 	
+[04/17 17:14:54] EA0 INFO: Train: [206][1500/1737]  
+[04/17 17:14:54] EA0 INFO: bbox_loss 0.3758 	cls_loss 0.1572 	com_loss 0.1401 	keep_loss 0.0676 	loss 0.7407 	
+[04/17 17:16:54] EA0 INFO: epoch 206, total time 869.31, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 17:21:14] EA0 INFO: Train: [207][500/1737]  
+[04/17 17:21:14] EA0 INFO: bbox_loss 0.3752 	cls_loss 0.1560 	com_loss 0.1402 	keep_loss 0.0665 	loss 0.7379 	
+[04/17 17:25:23] EA0 INFO: Train: [207][1000/1737]  
+[04/17 17:25:23] EA0 INFO: bbox_loss 0.3747 	cls_loss 0.1555 	com_loss 0.1392 	keep_loss 0.0661 	loss 0.7355 	
+[04/17 17:29:31] EA0 INFO: Train: [207][1500/1737]  
+[04/17 17:29:31] EA0 INFO: bbox_loss 0.3740 	cls_loss 0.1563 	com_loss 0.1399 	keep_loss 0.0666 	loss 0.7368 	
+[04/17 17:31:30] EA0 INFO: epoch 207, total time 876.95, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 17:32:31] EA0 INFO: Eval: [207]  
+[04/17 17:32:31] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55217
+[04/17 17:32:31] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45257
+[04/17 17:32:31] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006871, bi_layer1=0.004819, bi_layer2=0.014002, total=0.025692
+[04/17 17:32:31] EA0 INFO: GPU memory(MiB): avg_allocated=1274.23, avg_reserved=16062.00, peak_allocated=4469.06, peak_reserved=16062.00, warmup_iters=20
+[04/17 17:36:53] EA0 INFO: Train: [208][500/1737]  
+[04/17 17:36:53] EA0 INFO: bbox_loss 0.3706 	cls_loss 0.1577 	com_loss 0.1407 	keep_loss 0.0668 	loss 0.7357 	
+[04/17 17:41:03] EA0 INFO: Train: [208][1000/1737]  
+[04/17 17:41:03] EA0 INFO: bbox_loss 0.3747 	cls_loss 0.1573 	com_loss 0.1403 	keep_loss 0.0666 	loss 0.7390 	
+[04/17 17:45:08] EA0 INFO: Train: [208][1500/1737]  
+[04/17 17:45:08] EA0 INFO: bbox_loss 0.3747 	cls_loss 0.1567 	com_loss 0.1398 	keep_loss 0.0666 	loss 0.7378 	
+[04/17 17:47:07] EA0 INFO: epoch 208, total time 875.78, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 17:51:29] EA0 INFO: Train: [209][500/1737]  
+[04/17 17:51:29] EA0 INFO: bbox_loss 0.3747 	cls_loss 0.1556 	com_loss 0.1393 	keep_loss 0.0666 	loss 0.7362 	
+[04/17 17:55:36] EA0 INFO: Train: [209][1000/1737]  
+[04/17 17:55:36] EA0 INFO: bbox_loss 0.3759 	cls_loss 0.1559 	com_loss 0.1392 	keep_loss 0.0666 	loss 0.7376 	
+[04/17 17:59:38] EA0 INFO: Train: [209][1500/1737]  
+[04/17 17:59:38] EA0 INFO: bbox_loss 0.3745 	cls_loss 0.1561 	com_loss 0.1393 	keep_loss 0.0667 	loss 0.7365 	
+[04/17 18:01:35] EA0 INFO: epoch 209, total time 867.79, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 18:05:54] EA0 INFO: Train: [210][500/1737]  
+[04/17 18:05:54] EA0 INFO: bbox_loss 0.3733 	cls_loss 0.1575 	com_loss 0.1415 	keep_loss 0.0682 	loss 0.7405 	
+[04/17 18:09:58] EA0 INFO: Train: [210][1000/1737]  
+[04/17 18:09:58] EA0 INFO: bbox_loss 0.3744 	cls_loss 0.1570 	com_loss 0.1409 	keep_loss 0.0675 	loss 0.7399 	
+[04/17 18:14:07] EA0 INFO: Train: [210][1500/1737]  
+[04/17 18:14:07] EA0 INFO: bbox_loss 0.3737 	cls_loss 0.1576 	com_loss 0.1414 	keep_loss 0.0674 	loss 0.7401 	
+[04/17 18:16:07] EA0 INFO: epoch 210, total time 872.40, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 18:17:06] EA0 INFO: Eval: [210]  
+[04/17 18:17:06] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55280
+[04/17 18:17:06] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45109
+[04/17 18:17:06] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007055, bi_layer1=0.005090, bi_layer2=0.014026, total=0.026170
+[04/17 18:17:06] EA0 INFO: GPU memory(MiB): avg_allocated=1271.22, avg_reserved=16070.00, peak_allocated=4462.44, peak_reserved=16070.00, warmup_iters=20
+[04/17 18:21:31] EA0 INFO: Train: [211][500/1737]  
+[04/17 18:21:31] EA0 INFO: bbox_loss 0.3792 	cls_loss 0.1557 	com_loss 0.1393 	keep_loss 0.0680 	loss 0.7422 	
+[04/17 18:25:41] EA0 INFO: Train: [211][1000/1737]  
+[04/17 18:25:41] EA0 INFO: bbox_loss 0.3781 	cls_loss 0.1576 	com_loss 0.1407 	keep_loss 0.0676 	loss 0.7440 	
+[04/17 18:29:51] EA0 INFO: Train: [211][1500/1737]  
+[04/17 18:29:51] EA0 INFO: bbox_loss 0.3773 	cls_loss 0.1579 	com_loss 0.1408 	keep_loss 0.0675 	loss 0.7435 	
+[04/17 18:31:51] EA0 INFO: epoch 211, total time 885.04, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 18:36:12] EA0 INFO: Train: [212][500/1737]  
+[04/17 18:36:12] EA0 INFO: bbox_loss 0.3714 	cls_loss 0.1557 	com_loss 0.1402 	keep_loss 0.0666 	loss 0.7339 	
+[04/17 18:40:17] EA0 INFO: Train: [212][1000/1737]  
+[04/17 18:40:17] EA0 INFO: bbox_loss 0.3752 	cls_loss 0.1588 	com_loss 0.1424 	keep_loss 0.0673 	loss 0.7436 	
+[04/17 18:44:29] EA0 INFO: Train: [212][1500/1737]  
+[04/17 18:44:29] EA0 INFO: bbox_loss 0.3759 	cls_loss 0.1587 	com_loss 0.1417 	keep_loss 0.0670 	loss 0.7433 	
+[04/17 18:46:28] EA0 INFO: epoch 212, total time 876.68, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 18:50:51] EA0 INFO: Train: [213][500/1737]  
+[04/17 18:50:51] EA0 INFO: bbox_loss 0.3815 	cls_loss 0.1575 	com_loss 0.1419 	keep_loss 0.0671 	loss 0.7480 	
+[04/17 18:55:02] EA0 INFO: Train: [213][1000/1737]  
+[04/17 18:55:02] EA0 INFO: bbox_loss 0.3759 	cls_loss 0.1568 	com_loss 0.1409 	keep_loss 0.0671 	loss 0.7407 	
+[04/17 18:59:11] EA0 INFO: Train: [213][1500/1737]  
+[04/17 18:59:11] EA0 INFO: bbox_loss 0.3752 	cls_loss 0.1576 	com_loss 0.1413 	keep_loss 0.0670 	loss 0.7410 	
+[04/17 19:01:10] EA0 INFO: epoch 213, total time 881.97, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[04/17 19:02:09] EA0 INFO: Eval: [213]  
+[04/17 19:02:09] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.55133
+[04/17 19:02:09] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.45183
+[04/17 19:02:09] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006975, bi_layer1=0.005052, bi_layer2=0.014014, total=0.026040
+[04/17 19:02:09] EA0 INFO: GPU memory(MiB): avg_allocated=1275.65, avg_reserved=16070.00, peak_allocated=4469.62, peak_reserved=16070.00, warmup_iters=20
+[04/17 19:06:32] EA0 INFO: Train: [214][500/1737]  
+[04/17 19:06:32] EA0 INFO: bbox_loss 0.3764 	cls_loss 0.1585 	com_loss 0.1408 	keep_loss 0.0681 	loss 0.7438 	
+[04/17 19:10:43] EA0 INFO: Train: [214][1000/1737]  
+[04/17 19:10:43] EA0 INFO: bbox_loss 0.3765 	cls_loss 0.1577 	com_loss 0.1408 	keep_loss 0.0676 	loss 0.7425 	
