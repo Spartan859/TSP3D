@@ -33,7 +33,9 @@ class BeaUTyDETR(nn.Module):
                  com_threshold=0.15,
                  num_samples_com=2400,
                  external_attn_coef=4,
-                 mink_conv1_stride=2):
+                 mink_conv1_stride=2,
+                 top_pts_threshold=None,
+                 top_pts_threshold_det=None):
         """Initialize layers."""
         super().__init__()
 
@@ -70,7 +72,9 @@ class BeaUTyDETR(nn.Module):
             use_film_text_guided_external_attn_bi_layer=use_film_text_guided_external_attn_bi_layer,
             com_threshold=com_threshold,
             num_samples_com=num_samples_com,
-            external_attn_coef=external_attn_coef
+            external_attn_coef=external_attn_coef,
+            top_pts_threshold=top_pts_threshold,
+            top_pts_threshold_det=top_pts_threshold_det
         )
         self.target_pool = None
         if mink_conv1_stride > 1:

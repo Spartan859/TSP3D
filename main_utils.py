@@ -33,6 +33,8 @@ from tqdm import tqdm
 from get_gt import get_gt
 from datetime import datetime 
 
+TQDM_NCOLS = 60
+
 def set_random_seed(seed):
     """Set random seeds for python, numpy and torch."""
     seed = int(seed)
@@ -190,12 +192,26 @@ def parse_option():
                         help='Number of sampled voxels per scene for completion branch attention.')
     parser.add_argument('--external_attn_coef', type=int, default=4,
                         help='Expansion coefficient used in ExternalMultiheadAttention.')
+    parser.add_argument('--top_pts_threshold', type=int, default=None,
+                        help='Top-k candidate points per box for assigner. '
+                             'Default: 32 when use_seg=False, 24 when use_seg=True.')
+    parser.add_argument('--top_pts_threshold_det', type=int, default=None,
+                        help='Top-k candidate points per box in multi-box scenes for assigner. '
+                             'Default: 32 when use_seg=False, 8 when use_seg=True.')
 
     args, _ = parser.parse_known_args()
 
     args.eval = args.eval or args.eval_train
     if args.external_attn_coef <= 0:
         parser.error('--external_attn_coef must be a positive integer.')
+    if args.top_pts_threshold is None:
+        args.top_pts_threshold = 24 if args.use_seg else 32
+    if args.top_pts_threshold_det is None:
+        args.top_pts_threshold_det = 8 if args.use_seg else 32
+    if args.top_pts_threshold <= 0:
+        parser.error('--top_pts_threshold must be a positive integer.')
+    if args.top_pts_threshold_det <= 0:
+        parser.error('--top_pts_threshold_det must be a positive integer.')
 
     valid_bi_layers = {0, 1, 2}
     args.use_external_attn_bi_layer = sorted(
@@ -643,7 +659,7 @@ class BaseTrainTester:
         model.train()  # set model to training mode
 
         # Loop over batches
-        train_loader = tqdm(train_loader)
+        train_loader = tqdm(train_loader, ncols=TQDM_NCOLS)
         for batch_idx, batch_data in enumerate(train_loader):
             gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas = get_gt(batch_data)
             # Move to GPU

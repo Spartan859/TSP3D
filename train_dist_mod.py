@@ -31,6 +31,8 @@ st = ipdb.set_trace
 
 import numpy as np
 
+TQDM_NCOLS = 60
+
 class TrainTester(BaseTrainTester):
     """Train/test a language grounder."""
 
@@ -120,7 +122,9 @@ class TrainTester(BaseTrainTester):
             com_threshold=args.com_threshold,
             num_samples_com=args.num_samples_com,
             external_attn_coef=args.external_attn_coef,
-            mink_conv1_stride=args.mink_conv1_stride
+            mink_conv1_stride=args.mink_conv1_stride,
+            top_pts_threshold=args.top_pts_threshold,
+            top_pts_threshold_det=args.top_pts_threshold_det
         )
         return model
 
@@ -165,7 +169,7 @@ class TrainTester(BaseTrainTester):
         )
 
         # NOTE Main eval branch
-        test_loader = tqdm(test_loader)
+        test_loader = tqdm(test_loader, ncols=TQDM_NCOLS)
         inf_speeds, vis_back_speeds, text_back_speeds, fuiosn_speeds, head_speeds = [],[],[],[],[]
         ext_bi0_speeds, ext_bi1_speeds, ext_bi2_speeds, ext_total_speeds = [], [], [], []
         fps_enabled = bool(getattr(args, 'measure_fps', False))
@@ -339,7 +343,7 @@ class TrainTester(BaseTrainTester):
             25, 27, 29, 31, 32, 34, 36, 38, 39, 41, 42, 44, 45
         ])  # 18 token span
 
-        test_loader = tqdm(test_loader)
+        test_loader = tqdm(test_loader, ncols=TQDM_NCOLS)
         for batch_idx, batch_data in enumerate(test_loader):
             # note eval
             stat_dict, end_points = self._main_eval_branch(
