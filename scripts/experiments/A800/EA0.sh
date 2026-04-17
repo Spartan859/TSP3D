@@ -17,8 +17,8 @@ MASTER_PORT_DEFAULT=11022
 MASTER_PORT_MAX=12022
 GPU_FREE_MEM_THRESHOLD=1024
 GPU_FREE_UTIL_THRESHOLD=10
-TF32_MATMUL=on
-TF32_CUDNN=on
+TF32_MATMUL=default
+TF32_CUDNN=default
 CVD="4,5,6,7"
 
 data_root="${PWD}/data"
@@ -183,7 +183,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --text_encoder_lr=$(lr_scale "${BASE_TEXT_ENCODER_LR}") \
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
-    --voxel_size=0.01 --num_workers=32 \
+    --voxel_size=0.01 --num_workers=8 \
     --dataset scanrefer --test_dataset scanrefer \
     --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \

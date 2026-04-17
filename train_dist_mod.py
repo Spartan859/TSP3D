@@ -442,10 +442,11 @@ if __name__ == '__main__':
 
     if opt.tf32_matmul != 'default':
         torch.backends.cuda.matmul.allow_tf32 = (opt.tf32_matmul == 'on')
+        _set_float32_matmul_precision = getattr(torch, 'set_float32_matmul_precision', lambda *args, **kwargs: None)
         if opt.tf32_matmul == 'on':
-            torch.set_float32_matmul_precision('high')
+            _set_float32_matmul_precision('high')
         else:
-            torch.set_float32_matmul_precision('highest')
+            _set_float32_matmul_precision('highest')
 
     if opt.tf32_cudnn != 'default':
         torch.backends.cudnn.allow_tf32 = (opt.tf32_cudnn == 'on')

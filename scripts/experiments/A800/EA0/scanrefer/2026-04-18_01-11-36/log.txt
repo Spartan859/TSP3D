@@ -1,0 +1,25 @@
+[04/18 01:11:41] EA0 INFO: Full config saved to /mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/A800/EA0/scanrefer/2026-04-18_01-11-36/config.json
+[04/18 01:11:41] EA0 INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/mnt/share/algorithm/kimi/cache/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 32, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'default', 'tf32_cudnn': 'default', 'checkpoint_path': None, 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/A800/EA0/scanrefer/2026-04-18_01-11-36', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'cudnn_benchmark': True, 'cudnn_deterministic': True, 'use_deterministic_algorithms': False, 'deterministic_warn_only': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [0], 'use_text_guided_external_attn_bi_layer': [0], 'use_film_text_guided_external_attn_bi_layer': [0], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 4}
+[04/18 01:18:03] EA0 INFO: length of training dataset: 48655
+[04/18 01:18:03] EA0 INFO: length of testing dataset: 9508
+[04/18 01:23:11] EA0 INFO: Train: [1][500/1737]  
+[04/18 01:23:11] EA0 INFO: bbox_loss 0.8333 	cls_loss 0.7091 	com_loss 0.5091 	keep_loss 0.2213 	loss 2.2728 	
+[04/18 01:28:00] EA0 INFO: Train: [1][1000/1737]  
+[04/18 01:28:00] EA0 INFO: bbox_loss 0.7817 	cls_loss 0.5809 	com_loss 0.4670 	keep_loss 0.2062 	loss 2.0357 	
+[04/18 01:32:38] EA0 INFO: Train: [1][1500/1737]  
+[04/18 01:32:38] EA0 INFO: bbox_loss 0.7436 	cls_loss 0.5293 	com_loss 0.4442 	keep_loss 0.1968 	loss 1.9139 	
+[04/18 01:34:46] EA0 INFO: epoch 1, total time 1002.03, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/18 01:39:41] EA0 INFO: Train: [2][500/1737]  
+[04/18 01:39:41] EA0 INFO: bbox_loss 0.6189 	cls_loss 0.3927 	com_loss 0.3692 	keep_loss 0.1628 	loss 1.5436 	
+[04/18 01:44:34] EA0 INFO: Train: [2][1000/1737]  
+[04/18 01:44:34] EA0 INFO: bbox_loss 0.6127 	cls_loss 0.3868 	com_loss 0.3638 	keep_loss 0.1597 	loss 1.5231 	
+[04/18 01:49:12] EA0 INFO: Train: [2][1500/1737]  
+[04/18 01:49:12] EA0 INFO: bbox_loss 0.6055 	cls_loss 0.3809 	com_loss 0.3596 	keep_loss 0.1571 	loss 1.5032 	
+[04/18 01:51:21] EA0 INFO: epoch 2, total time 994.59, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[04/18 01:56:14] EA0 INFO: Train: [3][500/1737]  
+[04/18 01:56:14] EA0 INFO: bbox_loss 0.5760 	cls_loss 0.3561 	com_loss 0.3413 	keep_loss 0.1470 	loss 1.4204 	
+[04/18 02:00:52] EA0 INFO: Train: [3][1000/1737]  
+[04/18 02:00:52] EA0 INFO: bbox_loss 0.5705 	cls_loss 0.3520 	com_loss 0.3375 	keep_loss 0.1454 	loss 1.4055 	
+[04/18 02:05:30] EA0 INFO: Train: [3][1500/1737]  
+[04/18 02:05:30] EA0 INFO: bbox_loss 0.5652 	cls_loss 0.3486 	com_loss 0.3350 	keep_loss 0.1442 	loss 1.3930 	
+[04/18 02:07:38] EA0 INFO: epoch 3, total time 977.04, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000

@@ -1,0 +1,18 @@
+# Minimal runtime requirements for TSP3D (avoid heavy/conflicting packages)
+numpy
+scipy
+scikit-learn
+h5py
+pillow
+open3d==0.18.0
+opencv-python
+matplotlib
+tqdm
+pandas
+pycocotools
+easydict
+tensorboard
+pybind11
+ninja
+wheel
+setuptools

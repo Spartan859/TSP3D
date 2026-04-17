@@ -183,7 +183,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --text_encoder_lr=$(lr_scale "${BASE_TEXT_ENCODER_LR}") \
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
-    --voxel_size=0.01 --num_workers=32 \
+    --voxel_size=0.01 --num_workers=8 \
     --dataset scanrefer --test_dataset scanrefer \
     --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \
