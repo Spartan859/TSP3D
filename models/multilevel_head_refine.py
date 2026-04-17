@@ -236,7 +236,7 @@ class TSPHead(nn.Module):
                  n_reg_outs=6,
                  voxel_size=.01,
                  pts_prune_threshold=(1200,4000),
-                 top_pts_threshold=32,
+                 top_pts_threshold=None,
                  volume_threshold=27,
                  r=(13,13),
                  assign_type='volume',
@@ -255,7 +255,8 @@ class TSPHead(nn.Module):
                  use_external_attn_bi_layer=(),
                  use_text_guided_external_attn_bi_layer=(),
                  use_film_text_guided_external_attn_bi_layer=(),
-                 external_attn_coef=4):
+                 external_attn_coef=4,
+                 top_pts_threshold_det=None):
         super(TSPHead, self).__init__()
         self.voxel_size = voxel_size
         self.pts_prune_threshold = pts_prune_threshold
@@ -273,8 +274,15 @@ class TSPHead(nn.Module):
         self.use_text_guided_external_attn_bi_layer = set(use_text_guided_external_attn_bi_layer)
         self.use_film_text_guided_external_attn_bi_layer = set(use_film_text_guided_external_attn_bi_layer)
         self.external_attn_coef = external_attn_coef
-        # self.assigner = TR3DAssigner(top_pts_threshold=32, label2level=[0])
-        self.assigner = TR3DAssigner(top_pts_threshold=24, top_pts_threshold_det=8, label2level=[0])
+        if top_pts_threshold is None:
+            top_pts_threshold = 24 if use_seg else 32
+        if top_pts_threshold_det is None:
+            top_pts_threshold_det = 8 if use_seg else 32
+        self.assigner = TR3DAssigner(
+            top_pts_threshold=top_pts_threshold,
+            top_pts_threshold_det=top_pts_threshold_det,
+            label2level=[0]
+        )
         self.bbox_loss = AxisAlignedIoULoss2(mode='diou', reduction='none')
         self.cls_loss = FocalLoss(reduction='none')
         self.com_loss = FocalLoss(reduction='none')
