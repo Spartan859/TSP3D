@@ -462,7 +462,7 @@ if __name__ == '__main__':
             f'cudnn.deterministic={torch.backends.cudnn.deterministic}, '
             f'matmul.allow_tf32={torch.backends.cuda.matmul.allow_tf32}, '
             f'cudnn.allow_tf32={torch.backends.cudnn.allow_tf32}, '
-            f'float32_matmul_precision={torch.get_float32_matmul_precision()}'
+            f'float32_matmul_precision={getattr(torch, "get_float32_matmul_precision", lambda: "N/A")()}'
         )
         if torch.backends.cudnn.benchmark and torch.backends.cudnn.deterministic:
             print('Warning: both cudnn.benchmark=True and cudnn.deterministic=True are enabled; this may reduce reproducibility and can hurt performance predictability.')
