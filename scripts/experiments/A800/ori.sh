@@ -21,7 +21,7 @@ TF32_MATMUL=default
 TF32_CUDNN=default
 CVD=""
 
-data_root="/root/lxy/TSP3D/data"
+data_root="${PWD}/data"
 
 auto_find_free_port() {
     local start=${1:-${MASTER_PORT_DEFAULT}}
@@ -174,7 +174,6 @@ echo master_port: ${master_port}
 
 TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distributed.launch --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
     train_dist_mod.py \
-
     --use_color \
     --weight_decay 0.0005 \
     --data_root ${data_root}/ \
