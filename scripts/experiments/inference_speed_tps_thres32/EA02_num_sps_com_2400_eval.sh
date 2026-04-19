@@ -1,9 +1,9 @@
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH}"
 
 # Configurable parameters
-NPROC_PER_NODE=4
+NPROC_PER_NODE=1
 BASE_BS=28
-CUR_BS=28
+CUR_BS=1
 BASE_LR=5e-4
 BASE_KEEP_TRANS_LR=5e-4
 BASE_TEXT_ENCODER_LR=1e-5
@@ -19,9 +19,10 @@ GPU_FREE_MEM_THRESHOLD=1024
 GPU_FREE_UTIL_THRESHOLD=10
 TF32_MATMUL=default
 TF32_CUDNN=default
+EXTERNAL_ATTN_COEF=4
 CVD=""
 
-data_root="${PWD}/data"
+data_root="/root/lxy/TSP3D/data"
 
 auto_find_free_port() {
     local start=${1:-${MASTER_PORT_DEFAULT}}
@@ -172,7 +173,8 @@ fi
 
 echo master_port: ${master_port}
 
-TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distributed.launch --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
+TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
+    --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
     train_dist_mod.py \
     --use_color \
     --weight_decay 0.0005 \
@@ -188,24 +190,30 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \
     --augment_det \
-    --lr_decay_epochs 50 75\
+    --lr_decay_epochs 50 100\
     --load_optimizer \
     --load_scheduler \
     --tf32_matmul ${TF32_MATMUL} \
     --tf32_cudnn ${TF32_CUDNN} \
     "${train_extra_args[@]}" \
-    # --use_external_attn_bi_layer 0 2\
-    # --use_text_guided_external_attn_bi_layer 0 2\
-    # --use_film_text_guided_external_attn_bi_layer 0 2\
-    # --com_threshold 0.15\
-    # --num_samples_com 1800\
+    --use_external_attn_bi_layer 0 2\
+    --use_text_guided_external_attn_bi_layer 0 2\
+    --use_film_text_guided_external_attn_bi_layer 0 2\
+    --external_attn_coef ${EXTERNAL_ATTN_COEF}\
+    --com_threshold 0.15\
+    --num_samples_com 2400\
+    --eval \
+    --measure_fps \
+    --fps_warmup_iters 20 \
+    --fps_max_iters -1 \
+    --checkpoint_path /share/lxy/TSP3D_ori/scripts/experiments/TF32/EA02_num_sps_com_2400/scanrefer/2026-04-18_17-51-17/ckpt_epoch_96.pth \
     # --use_refine \
     # --use_seg \
     # --use_seg_external_self_attn \
     
 if [[ "${OCCUPY_GPU_AFTER_TRAIN:-0}" == "1" ]]; then
     echo "Post-train GPU occupy enabled (OCCUPY_GPU_AFTER_TRAIN=1)."
-    python -m torch.distributed.launch --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
+    torchrun --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
 else
     echo "Skip post-train GPU occupy (set OCCUPY_GPU_AFTER_TRAIN=1 to enable)."
 fi

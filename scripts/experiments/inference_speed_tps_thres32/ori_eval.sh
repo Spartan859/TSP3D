@@ -1,9 +1,9 @@
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH}"
 
 # Configurable parameters
-NPROC_PER_NODE=4
+NPROC_PER_NODE=1
 BASE_BS=28
-CUR_BS=28
+CUR_BS=1
 BASE_LR=5e-4
 BASE_KEEP_TRANS_LR=5e-4
 BASE_TEXT_ENCODER_LR=1e-5
@@ -194,6 +194,12 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --tf32_matmul ${TF32_MATMUL} \
     --tf32_cudnn ${TF32_CUDNN} \
     "${train_extra_args[@]}" \
+    --eval \
+    --measure_fps \
+    --fps_warmup_iters 20 \
+    --fps_max_iters -1 \
+    --checkpoint_path /share/lxy/TSP3D_ori/scripts/experiments/TF32/ori/scanrefer/2026-04-19_04-49-09/ckpt_epoch_60.pth \
+    # --checkpoint_path /share/lxy/TSP3D_ori/ckpt_scanrefer.pth \
     # --use_external_attn_bi_layer 0 2\
     # --use_text_guided_external_attn_bi_layer 0 2\
     # --use_film_text_guided_external_attn_bi_layer 0 2\

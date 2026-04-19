@@ -72,6 +72,12 @@ class Joint3DDataset(Dataset):
             and len(dataset_dict.keys()) > 1
             and self.split == 'train'
         )
+        self.wildrefer_mode = (
+            (self.split == 'train' and 'wildrefer' in dataset_dict and len(dataset_dict.keys()) == 1)
+            or (self.split != 'train' and test_dataset == 'wildrefer')
+        )
+        if self.split == 'train' and 'wildrefer' in dataset_dict and len(dataset_dict.keys()) > 1:
+            raise ValueError('wildrefer currently supports standalone training only (no mixed dataset training).')
         self.augment_det = augment_det
         self.wo_obj_name = wo_obj_name
 
@@ -113,10 +119,13 @@ class Joint3DDataset(Dataset):
         print('Loading %s files, take a breath!' % split)
         
         # step 3. generate or load train/val_v3scans.pkl
-        if not os.path.exists(f'{self.data_path}/{split}_v3scans.pkl'):
-            save_data(f'{data_path}/{split}_v3scans.pkl', split, data_path)
-        self.scans = unpickle_data(f'{self.data_path}/{split}_v3scans.pkl')
-        self.scans = list(self.scans)[0]
+        if not self.wildrefer_mode:
+            if not os.path.exists(f'{self.data_path}/{split}_v3scans.pkl'):
+                save_data(f'{data_path}/{split}_v3scans.pkl', split, data_path)
+            self.scans = unpickle_data(f'{self.data_path}/{split}_v3scans.pkl')
+            self.scans = list(self.scans)[0]
+        else:
+            self.scans = {}
         
         # step 4. load text dataset
         if self.split != 'train':
@@ -160,11 +169,62 @@ class Joint3DDataset(Dataset):
             'sr3d': self.load_sr3d_annos,
             'sr3d+': self.load_sr3dplus_annos,
             'scanrefer': self.load_scanrefer_annos, # scanrefer
-            'scannet': self.load_scannet_annos      # scannet detection augmentation
+            'scannet': self.load_scannet_annos,      # scannet detection augmentation
+            'wildrefer': self.load_wildrefer_annos
         }
         annos = loaders[dset]()
         if self.overfit:
             annos = annos[:128]
+        return annos
+
+    def load_wildrefer_annos(self):
+        """Load annotations of WildRefer (LifeRefer + STRefer)."""
+        split = 'train' if self.split == 'train' else 'test'
+        base = os.path.join(self.data_path, 'WildRefer')
+
+        def _find_json_file(file_name):
+            candidates = [
+                os.path.join(base, file_name),
+                os.path.join(base, 'downloads', 'json', file_name),
+                os.path.join(self.data_path, file_name)
+            ]
+            for candidate in candidates:
+                if os.path.exists(candidate):
+                    return candidate
+            raise FileNotFoundError(f'WildRefer annotation not found: {file_name}')
+
+        file_names = [
+            f'strefer_{split}.json',
+            f'liferefer_{split}.json'
+        ]
+        annos = []
+        for file_name in file_names:
+            with open(_find_json_file(file_name)) as f:
+                reader = json.load(f)
+            for anno in reader:
+                description = str(anno['language']['description']).lower()
+                tokens = [t for t in description.replace(',', ' ').replace('.', ' ').split() if t]
+                target_name = tokens[0] if len(tokens) > 0 else 'object'
+                bbox = np.array(anno['point_cloud']['bbox'], dtype=np.float32).reshape(-1)[:6]
+                scene_id = str(anno['scene_id'])
+                point_cloud_name = str(anno['point_cloud']['point_cloud_name'])
+                group_id = str(anno.get('group_id', 'wildrefer'))
+                annos.append({
+                    'scan_id': f'{group_id}:{scene_id}:{point_cloud_name}',
+                    'target_id': 0,
+                    'distractor_ids': [],
+                    'utterance': description,
+                    'target': target_name,
+                    'anchors': [],
+                    'anchor_ids': [],
+                    'dataset': 'wildrefer',
+                    'target_cat': 17,
+                    'wildrefer_scene_id': scene_id,
+                    'wildrefer_group_id': group_id,
+                    'wildrefer_point_cloud_name': point_cloud_name,
+                    'wildrefer_bbox': bbox
+                })
+
         return annos
 
     def load_sr3dplus_annos(self):
@@ -884,6 +944,8 @@ class Joint3DDataset(Dataset):
 
         # step Read annotation and point clouds
         anno = self.annos[index]
+        if anno['dataset'] == 'wildrefer':
+            return self._get_wildrefer_item(anno, language_dataset)
         scan = self.scans[anno['scan_id']]
         scan.pc = np.copy(scan.orig_pc)
 
@@ -1062,6 +1124,117 @@ class Joint3DDataset(Dataset):
             )
         })
 
+        return ret_dict
+
+    def _get_wildrefer_point_cloud_path(self, anno):
+        scene_id = anno['wildrefer_scene_id']
+        point_cloud_name = anno['wildrefer_point_cloud_name']
+        base = os.path.join(self.data_path, 'WildRefer')
+        candidates = [
+            os.path.join(base, 'STRefer', 'points_rgbd', scene_id, f'{point_cloud_name}.npy'),
+            os.path.join(base, 'LifeRefer', 'points_rgbd', scene_id, f'{point_cloud_name}.npy'),
+            os.path.join(base, 'src', 'STRefer', 'points_rgbd', scene_id, f'{point_cloud_name}.npy'),
+            os.path.join(base, 'src', 'LifeRefer', 'points_rgbd', scene_id, f'{point_cloud_name}.npy'),
+        ]
+        for candidate in candidates:
+            if os.path.exists(candidate):
+                return candidate
+        raise FileNotFoundError(
+            f'WildRefer point cloud not found for scene={scene_id}, frame={point_cloud_name}. '
+            f'Checked: {candidates}'
+        )
+
+    def _get_wildrefer_item(self, anno, language_dataset):
+        point_cloud_path = self._get_wildrefer_point_cloud_path(anno)
+        scene = np.load(point_cloud_path).astype(np.float32)
+        xyz = scene[:, :3]
+        og_color = scene[:, 3:6].astype(np.float32)
+        if og_color.max() > 1.0:
+            og_color = og_color / 255.0
+
+        point_cloud = xyz
+        if self.use_color:
+            point_cloud = np.concatenate((point_cloud, og_color - self.mean_rgb), 1)
+        if self.use_height:
+            floor_height = np.percentile(xyz[:, 2], 0.99)
+            height = np.expand_dims(xyz[:, 2] - floor_height, 1)
+            point_cloud = np.concatenate([point_cloud, height], 1)
+
+        gt_bboxes = np.zeros((MAX_NUM_OBJ, 6), dtype=np.float32)
+        gt_bboxes[0] = np.array(anno['wildrefer_bbox'], dtype=np.float32)
+        box_label_mask = np.zeros(MAX_NUM_OBJ, dtype=np.float32)
+        box_label_mask[0] = 1
+
+        center = gt_bboxes[0, :3]
+        size = np.clip(gt_bboxes[0, 3:], a_min=1e-3, a_max=None)
+        min_corner = center - size * 0.5
+        max_corner = center + size * 0.5
+        inside = np.all((xyz >= min_corner) & (xyz <= max_corner), axis=1)
+        point_instance_label = -np.ones(len(xyz), dtype=np.int64)
+        point_instance_label[inside] = 0
+        gt_masks = np.zeros((MAX_NUM_OBJ, len(xyz)), dtype=np.float32)
+        gt_masks[0, inside] = 1
+
+        class_ids = np.zeros((MAX_NUM_OBJ,), dtype=np.int64)
+        all_bboxes = np.zeros((MAX_NUM_OBJ, 6), dtype=np.float32)
+        all_bboxes[0] = gt_bboxes[0]
+        all_bbox_label_mask = np.array([False] * MAX_NUM_OBJ)
+        all_bbox_label_mask[0] = True
+
+        tokens_positive, positive_map, modify_positive_map, pron_positive_map, \
+            other_entity_map, auxi_entity_positive_map, rel_positive_map = self._get_token_positive_map(anno)
+        auxi_box = np.zeros((1, 6), dtype=np.float32)
+
+        all_detected_bboxes = np.zeros((MAX_NUM_OBJ, 6), dtype=np.float32)
+        all_detected_bbox_label_mask = np.array([False] * MAX_NUM_OBJ)
+        detected_class_ids = np.zeros((MAX_NUM_OBJ,), dtype=np.int64)
+        detected_logits = np.zeros((MAX_NUM_OBJ, NUM_CLASSES), dtype=np.float32)
+        if self.butd_gt or self.butd_cls:
+            all_detected_bboxes = all_bboxes.copy()
+            all_detected_bbox_label_mask = all_bbox_label_mask.copy()
+            detected_class_ids = class_ids.copy()
+
+        _labels = np.zeros(MAX_NUM_OBJ, dtype=np.int64)
+        ret_dict = {
+            'box_label_mask': box_label_mask.astype(np.float32),
+            'center_label': gt_bboxes[:, :3].astype(np.float32),
+            'sem_cls_label': _labels.astype(np.int64),
+            'size_gts': gt_bboxes[:, 3:].astype(np.float32),
+            'gt_masks': gt_masks.astype(np.float32),
+        }
+        ret_dict.update({
+            "scan_ids": anno['scan_id'],
+            "point_clouds": point_cloud.astype(np.float32),
+            "og_color": og_color.astype(np.float32),
+            "utterances": ' '.join(anno['utterance'].replace(',', ' ,').split()),
+            'target_cat': anno['target_cat'],
+            "language_dataset": language_dataset,
+            "tokens_positive": tokens_positive.astype(np.int64),
+            "positive_map": positive_map.astype(np.float32),
+            "modify_positive_map": modify_positive_map.astype(np.float32),
+            "pron_positive_map": pron_positive_map.astype(np.float32),
+            "other_entity_map": other_entity_map.astype(np.float32),
+            "rel_positive_map": rel_positive_map.astype(np.float32),
+            "auxi_entity_positive_map": auxi_entity_positive_map.astype(np.float32),
+            "auxi_box": auxi_box.astype(np.float32),
+            "relation": "none",
+            "target_name": anno['target'],
+            "target_id": 0,
+            "point_instance_label": point_instance_label.astype(np.int64),
+            "all_bboxes": all_bboxes.astype(np.float32),
+            "all_bbox_label_mask": all_bbox_label_mask.astype(np.bool8),
+            "all_class_ids": class_ids.astype(np.int64),
+            "distractor_ids": np.array([-1] * 32).astype(int),
+            "anchor_ids": np.array([-1] * 32).astype(int),
+            "all_detected_boxes": all_detected_bboxes.astype(np.float32),
+            "all_detected_bbox_label_mask": all_detected_bbox_label_mask.astype(np.bool8),
+            "all_detected_class_ids": detected_class_ids.astype(np.int64),
+            "all_detected_logits": detected_logits.astype(np.float32),
+            "is_view_dep": self._is_view_dep(anno['utterance']),
+            "is_hard": False,
+            "is_unique": True,
+            "target_cid": 0
+        })
         return ret_dict
 
     @staticmethod

@@ -1,0 +1,48 @@
+[04/19 11:23:26] ori_eval INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/inference_speed_tps_thres32/ori_eval/scanrefer/2026-04-19_11-23-25/config.json
+[04/19 11:23:26] ori_eval INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 1, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/share/lxy/TSP3D_ori/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 1.785714285714286e-05, 'keep_trans_lr': 1.785714285714286e-05, 'text_encoder_lr': 3.5714285714285716e-07, 'box_select_lr': 1.4285714285714287e-05, 'seg_lr': 3.5714285714285718e-06, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'default', 'tf32_cudnn': 'default', 'checkpoint_path': '/share/lxy/TSP3D_ori/scripts/experiments/TF32/ori/scanrefer/2026-04-19_04-49-09/ckpt_epoch_60.pth', 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/inference_speed_tps_thres32/ori_eval/scanrefer/2026-04-19_11-23-25', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': True, 'eval_train': False, 'measure_fps': True, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'cudnn_benchmark': True, 'cudnn_deterministic': True, 'use_deterministic_algorithms': False, 'deterministic_warn_only': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [], 'use_text_guided_external_attn_bi_layer': [], 'use_film_text_guided_external_attn_bi_layer': [], 'use_external_attn_bi_layer0': False, 'use_text_guided_external_attn_bi_layer0': False, 'use_film_text_guided_external_attn_bi_layer0': False, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 4, 'top_pts_threshold': 32, 'top_pts_threshold_det': 32}
+[04/19 11:24:35] ori_eval INFO: length of testing dataset: 9508
+[04/19 11:25:14] ori_eval INFO: Eval: [500/9508]  
+[04/19 11:25:14] ori_eval INFO: loss 0.0000 	
+[04/19 11:25:42] ori_eval INFO: Eval: [1000/9508]  
+[04/19 11:25:42] ori_eval INFO: loss 0.0000 	
+[04/19 11:26:10] ori_eval INFO: Eval: [1500/9508]  
+[04/19 11:26:10] ori_eval INFO: loss 0.0000 	
+[04/19 11:26:40] ori_eval INFO: Eval: [2000/9508]  
+[04/19 11:26:40] ori_eval INFO: loss 0.0000 	
+[04/19 11:27:13] ori_eval INFO: Eval: [2500/9508]  
+[04/19 11:27:13] ori_eval INFO: loss 0.0000 	
+[04/19 11:27:46] ori_eval INFO: Eval: [3000/9508]  
+[04/19 11:27:46] ori_eval INFO: loss 0.0000 	
+[04/19 11:28:19] ori_eval INFO: Eval: [3500/9508]  
+[04/19 11:28:19] ori_eval INFO: loss 0.0000 	
+[04/19 11:28:49] ori_eval INFO: Eval: [4000/9508]  
+[04/19 11:28:49] ori_eval INFO: loss 0.0000 	
+[04/19 11:29:20] ori_eval INFO: Eval: [4500/9508]  
+[04/19 11:29:20] ori_eval INFO: loss 0.0000 	
+[04/19 11:29:51] ori_eval INFO: Eval: [5000/9508]  
+[04/19 11:29:51] ori_eval INFO: loss 0.0000 	
+[04/19 11:30:23] ori_eval INFO: Eval: [5500/9508]  
+[04/19 11:30:23] ori_eval INFO: loss 0.0000 	
+[04/19 11:30:54] ori_eval INFO: Eval: [6000/9508]  
+[04/19 11:30:54] ori_eval INFO: loss 0.0000 	
+[04/19 11:31:25] ori_eval INFO: Eval: [6500/9508]  
+[04/19 11:31:25] ori_eval INFO: loss 0.0000 	
+[04/19 11:31:56] ori_eval INFO: Eval: [7000/9508]  
+[04/19 11:31:56] ori_eval INFO: loss 0.0000 	
+[04/19 11:32:28] ori_eval INFO: Eval: [7500/9508]  
+[04/19 11:32:28] ori_eval INFO: loss 0.0000 	
+[04/19 11:33:00] ori_eval INFO: Eval: [8000/9508]  
+[04/19 11:33:00] ori_eval INFO: loss 0.0000 	
+[04/19 11:33:31] ori_eval INFO: Eval: [8500/9508]  
+[04/19 11:33:31] ori_eval INFO: loss 0.0000 	
+[04/19 11:34:02] ori_eval INFO: Eval: [9000/9508]  
+[04/19 11:34:02] ori_eval INFO: loss 0.0000 	
+[04/19 11:34:33] ori_eval INFO: Eval: [9500/9508]  
+[04/19 11:34:33] ori_eval INFO: loss 0.0000 	
+[04/19 11:34:33] ori_eval INFO: Eval: [61]  
+[04/19 11:34:33] ori_eval INFO: 3dcnn Acc0.25: Top-1: 0.55353
+[04/19 11:34:33] ori_eval INFO: 3dcnn Acc0.50: Top-1: 0.45088
+[04/19 11:34:33] ori_eval INFO: External-attn-affected module time(s): bi_layer0=0.009304, bi_layer1=0.003863, bi_layer2=0.005399, total=0.018565
+[04/19 11:34:33] ori_eval INFO: GPU memory(MiB): avg_allocated=645.45, avg_reserved=1558.82, peak_allocated=2025.74, peak_reserved=6862.00, warmup_iters=20
+[04/19 11:34:33] ori_eval INFO: FPS(single-card): 17.104 | Avg latency: 58.465 ms/sample | warmup_iters=20 | measured_samples=9488
+[04/19 11:34:33] ori_eval INFO: External-attn-affected path FPS(eqv): 54.026 | time_ratio=0.3166 of end-to-end measured inference

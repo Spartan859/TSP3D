@@ -4,15 +4,19 @@ export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH}"
 NPROC_PER_NODE=4
 BASE_BS=28
 CUR_BS=28
-BASE_LR=5e-4
-BASE_KEEP_TRANS_LR=5e-4
-BASE_TEXT_ENCODER_LR=1e-5
-BASE_BOX_SELECT_LR=4e-4
-# BASE_LR=5e-5
-# BASE_KEEP_TRANS_LR=5e-5
-# BASE_TEXT_ENCODER_LR=1e-6
-# BASE_BOX_SELECT_LR=4e-5
+# --- for grounding ------
+# BASE_LR=5e-4
+# BASE_KEEP_TRANS_LR=5e-4
+# BASE_TEXT_ENCODER_LR=1e-5
+# BASE_BOX_SELECT_LR=4e-4
+# ------------------------
+# --- for segmentation ---
+BASE_LR=5e-5
+BASE_KEEP_TRANS_LR=5e-5
+BASE_TEXT_ENCODER_LR=1e-6
+BASE_BOX_SELECT_LR=4e-5
 BASE_SEG_LR=1e-4
+# ------------------------
 MASTER_PORT_DEFAULT=11022
 MASTER_PORT_MAX=12022
 GPU_FREE_MEM_THRESHOLD=1024
@@ -188,20 +192,21 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \
     --augment_det \
-    --lr_decay_epochs 50 75\
+    --lr_decay_epochs 30\
     --load_optimizer \
     --load_scheduler \
     --tf32_matmul ${TF32_MATMUL} \
     --tf32_cudnn ${TF32_CUDNN} \
     "${train_extra_args[@]}" \
-    # --use_external_attn_bi_layer 0 2\
-    # --use_text_guided_external_attn_bi_layer 0 2\
-    # --use_film_text_guided_external_attn_bi_layer 0 2\
+    --use_external_attn_bi_layer 0\
+    --use_text_guided_external_attn_bi_layer 0\
+    --use_film_text_guided_external_attn_bi_layer 0\
+    --use_refine \
+    --use_seg \
+    --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/20260216/scanrefer/2026-02-16_11-14-34/ckpt_epoch_204.pth \
+    # --use_seg_external_self_attn \
     # --com_threshold 0.15\
     # --num_samples_com 1800\
-    # --use_refine \
-    # --use_seg \
-    # --use_seg_external_self_attn \
     
 if [[ "${OCCUPY_GPU_AFTER_TRAIN:-0}" == "1" ]]; then
     echo "Post-train GPU occupy enabled (OCCUPY_GPU_AFTER_TRAIN=1)."

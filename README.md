@@ -66,7 +66,8 @@ The final required files are as follows:
 │	│	│	├── sr3d.csv
 │	│	│	└── ...
 │	├── [5] roberta-base/     # roberta pretrained language model
-│	├── [6] checkpoints/      # We will release the trained models
+│	├── [6] WildRefer/        # WildRefer json + extracted point clouds
+│	├── [7] checkpoints/      # We will release the trained models
 ```
 
 + **[1] [2] Prepare ScanNet Point Clouds Data**
@@ -104,6 +105,25 @@ The final required files are as follows:
   rm -rf pytorch_model.bin
   wget https://huggingface.co/roberta-base/resolve/main/pytorch_model.bin
   ```
++ **[6] WildRefer**:
+  + Clone WildRefer repo to inspect metadata:
+    ```
+    cd [DATA_ROOT]
+    git clone https://github.com/4DVLab/WildRefer.git WildRefer/repo
+    ```
+  + Download annotations from Google Drive folder `1UTyHTC3ixU9ATKxdJxK-ob6SGqUpA_r1` and place them under:
+    ```
+    [DATA_ROOT]/WildRefer/downloads/json/
+      ├── liferefer_train.json
+      ├── liferefer_test.json
+      ├── strefer_train.json
+      └── strefer_test.json
+    ```
+  + Download the two large zip files from Google Drive folder `1g5OgIT3svL6TPXcusPPsigsnP_Yi1JT7`, then extract so that point clouds are available at one of:
+    - `[DATA_ROOT]/WildRefer/STRefer/points_rgbd/...`
+    - `[DATA_ROOT]/WildRefer/LifeRefer/points_rgbd/...`
+    - `[DATA_ROOT]/WildRefer/src/STRefer/points_rgbd/...`
+    - `[DATA_ROOT]/WildRefer/src/LifeRefer/points_rgbd/...`
 
 
 ### 3. Training
@@ -120,6 +140,10 @@ The final required files are as follows:
 + For **NR3D** training
   ```
   sh scripts/train_nr3d.sh
+  ```
++ For **WildRefer** training
+  ```
+  sh scripts/train_wildrefer.sh
   ```
 
 ### 4. Evaluation
@@ -140,6 +164,10 @@ The final required files are as follows:
 + For **NR3D** evaluation
   ```
   sh scripts/test_nr3d.sh
+  ```
++ For **WildRefer** evaluation
+  ```
+  sh scripts/test_wildrefer.sh
   ```
 
 ## Main Results

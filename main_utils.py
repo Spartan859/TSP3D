@@ -643,6 +643,12 @@ class BaseTrainTester:
                     stat_dict[key] += end_points[key].item()
         return stat_dict
 
+    @staticmethod
+    def _tqdm_newline(progress_bar):
+        # Ensure logger output starts on a fresh line instead of sharing tqdm's dynamic line.
+        if progress_bar is not None:
+            progress_bar.write("")
+
 
     # BRIEF Training
     def train_one_epoch(self, epoch, train_loader, model,
@@ -687,6 +693,7 @@ class BaseTrainTester:
 
             # print loss
             if (batch_idx + 1) % args.print_freq == 0:
+                self._tqdm_newline(train_loader)
                 # Terminal logs
                 self.logger.info(
                     f'Train: [{epoch}][{batch_idx + 1}/{len(train_loader)}]  '  # Train: [30][2000/2432]
@@ -733,6 +740,7 @@ class BaseTrainTester:
 
         stat_dict = self._accumulate_stats(stat_dict, losses)
         if (batch_idx + 1) % args.print_freq == 0:
+            self._tqdm_newline(test_loader)
             self.logger.info(f'Eval: [{batch_idx + 1}/{len(test_loader)}]  ')
             self.logger.info(''.join([
                 f'{key} {stat_dict[key] / (float(batch_idx + 1)):.4f} \t'

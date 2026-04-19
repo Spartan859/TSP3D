@@ -17,11 +17,11 @@ MASTER_PORT_DEFAULT=11022
 MASTER_PORT_MAX=12022
 GPU_FREE_MEM_THRESHOLD=1024
 GPU_FREE_UTIL_THRESHOLD=10
-TF32_MATMUL=on
-TF32_CUDNN=on
+TF32_MATMUL=default
+TF32_CUDNN=default
 CVD="4,5,6,7"
 
-data_root="/root/lxy/TSP3D/data"
+data_root="${PWD}/data"
 
 auto_find_free_port() {
     local start=${1:-${MASTER_PORT_DEFAULT}}
@@ -172,8 +172,7 @@ fi
 
 echo master_port: ${master_port}
 
-TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
-    --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
+TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distributed.launch --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
     train_dist_mod.py \
     --use_color \
     --weight_decay 0.0005 \
@@ -184,7 +183,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --text_encoder_lr=$(lr_scale "${BASE_TEXT_ENCODER_LR}") \
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
-    --voxel_size=0.01 --num_workers=32 \
+    --voxel_size=0.01 --num_workers=8 \
     --dataset scanrefer --test_dataset scanrefer \
     --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \
@@ -206,7 +205,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     
 if [[ "${OCCUPY_GPU_AFTER_TRAIN:-0}" == "1" ]]; then
     echo "Post-train GPU occupy enabled (OCCUPY_GPU_AFTER_TRAIN=1)."
-    torchrun --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
+    python -m torch.distributed.launch --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
 else
     echo "Skip post-train GPU occupy (set OCCUPY_GPU_AFTER_TRAIN=1 to enable)."
 fi

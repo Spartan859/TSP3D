@@ -49,8 +49,10 @@ class TrainTester(BaseTrainTester):
         dataset_dict = {}  # dict to use multiple datasets
         for dset in args.dataset:
             dataset_dict[dset] = 1
-        if args.joint_det:
+        if args.joint_det and 'wildrefer' not in dataset_dict:
             dataset_dict['scannet'] = 10
+        elif args.joint_det and 'wildrefer' in dataset_dict:
+            print('Warning: --joint_det is ignored for wildrefer dataset.')
         print('Loading datasets:', sorted(list(dataset_dict.keys())))
 
         if args.eval:
