@@ -256,7 +256,8 @@ class TSPHead(nn.Module):
                  use_text_guided_external_attn_bi_layer=(),
                  use_film_text_guided_external_attn_bi_layer=(),
                  external_attn_coef=4,
-                 top_pts_threshold_det=None):
+                 top_pts_threshold_det=None,
+                 measure_fps_detail=False):
         super(TSPHead, self).__init__()
         self.voxel_size = voxel_size
         self.pts_prune_threshold = pts_prune_threshold
@@ -274,6 +275,7 @@ class TSPHead(nn.Module):
         self.use_text_guided_external_attn_bi_layer = set(use_text_guided_external_attn_bi_layer)
         self.use_film_text_guided_external_attn_bi_layer = set(use_film_text_guided_external_attn_bi_layer)
         self.external_attn_coef = external_attn_coef
+        self.measure_fps_detail = bool(measure_fps_detail)
         if top_pts_threshold is None:
             top_pts_threshold = 24 if use_seg else 32
         if top_pts_threshold_det is None:
@@ -301,6 +303,22 @@ class TSPHead(nn.Module):
         self.min_pts_threshold = 16
         self.max_seg_bbox = 36
         self._init_layers(in_channels, out_channels, n_reg_outs, n_classes)
+
+    def _profile_begin(self):
+        if self.measure_fps_detail and torch.cuda.is_available():
+            start_event = torch.cuda.Event(enable_timing=True)
+            end_event = torch.cuda.Event(enable_timing=True)
+            start_event.record()
+            return ("cuda", start_event, end_event)
+        return ("cpu", time.perf_counter())
+
+    def _profile_end(self, handle):
+        if handle[0] == "cuda":
+            _, start_event, end_event = handle
+            end_event.record()
+            end_event.synchronize()
+            return float(start_event.elapsed_time(end_event)) / 1000.0
+        return float(time.perf_counter() - handle[1])
 
 
     @staticmethod
@@ -1536,6 +1554,7 @@ class TSPHead(nn.Module):
         x = inputs[-1]
         bbox_preds, cls_preds, points = [], [], []
         keep_scores = None
+        self.last_stage_profile = {}
         self.last_external_attn_profile = {
             'bi_layer0': 0.0,
             'bi_layer1': 0.0,
@@ -1545,11 +1564,15 @@ class TSPHead(nn.Module):
         
         for i in range(len(inputs) - 1, -1, -1):
             if i ==1:
-                logger.info("Forward test layer %s: x points=%s", i, int(x.features.shape[0]))
-                x = self._prune_inference(x, prune_inference,i)
+                if self.measure_fps_detail:
+                    logger.info("Forward test layer %s: x points=%s", i, int(x.features.shape[0]))
+                stage_handle = self._profile_begin()
+                x = self._prune_inference(x, prune_inference, i)
+                self.last_stage_profile[f'prune_layer{i}'] = self._profile_end(stage_handle)
                 
                 if x != None:
-                    logger.info("After prune layer %s: x points=%s", i, int(x.features.shape[0]))
+                    if self.measure_fps_detail:
+                        logger.info("After prune layer %s: x points=%s", i, int(x.features.shape[0]))
                     x = self.__getattr__(f'up_block_{i + 1}')(x)
                     coords = x.coordinates.float()
                     x_level_features = inputs[i].features_at_coordinates(coords)
@@ -1562,11 +1585,15 @@ class TSPHead(nn.Module):
                     pdb.set_trace()
                     break
             elif i ==0:
-                logger.info("Forward test layer %s: x points=%s", i, int(x.features.shape[0]))
-                x = self._prune_inference(x, prune_inference,i)
+                if self.measure_fps_detail:
+                    logger.info("Forward test layer %s: x points=%s", i, int(x.features.shape[0]))
+                stage_handle = self._profile_begin()
+                x = self._prune_inference(x, prune_inference, i)
+                self.last_stage_profile[f'prune_layer{i}'] = self._profile_end(stage_handle)
                 
                 if x != None:
-                    logger.info("After prune layer %s: x points=%s", i, int(x.features.shape[0]))
+                    if self.measure_fps_detail:
+                        logger.info("After prune layer %s: x points=%s", i, int(x.features.shape[0]))
                     x = self.__getattr__(f'up_block_{i + 1}')(x)
                     coords = x.coordinates.float()
                     x_level_features = inputs[i].features_at_coordinates(coords)
@@ -1601,18 +1628,15 @@ class TSPHead(nn.Module):
                         sampled_coords.append(padded_coords)
                 sampled_features = torch.stack(sampled_features)
                 sampled_coords = torch.stack(sampled_coords)
-                if torch.cuda.is_available():
-                    torch.cuda.synchronize()
-                ext_start = time.time()
+                ext_handle = self._profile_begin()
                 sampled_features, text_feats = self.com_trans(
                     vis_feats=sampled_features.contiguous(),
                     pos_feats=self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous(),
                     padding_mask=sampled_coords[:, :,0] == -1,
                     text_feats=text_feats,
                     text_padding_mask=text_attention_mask)
-                if torch.cuda.is_available():
-                    torch.cuda.synchronize()
-                ext_dt = time.time() - ext_start
+                ext_dt = self._profile_end(ext_handle)
+                self.last_stage_profile['com_trans'] = ext_dt
                 self.last_external_attn_profile['bi_layer2'] += ext_dt
                 self.last_external_attn_profile['total'] += ext_dt
                 
@@ -1665,18 +1689,15 @@ class TSPHead(nn.Module):
                         sampled_coords.append(x.coordinates[permutation])                        
                 sampled_features = torch.stack(sampled_features)
                 sampled_coords = torch.stack(sampled_coords)
-                if torch.cuda.is_available():
-                    torch.cuda.synchronize()
-                ext_start = time.time()
+                ext_handle = self._profile_begin()
                 sampled_features, text_feats = self.keep_trans[i-1](
                     vis_feats=sampled_features.contiguous(),
                     pos_feats=self.pos_embed(sampled_coords[:,:,1:]*self.voxel_size).transpose(1, 2).contiguous(),
                     padding_mask=sampled_coords[:, :,0] == -1,
                     text_feats=text_feats,
                     text_padding_mask=text_attention_mask)
-                if torch.cuda.is_available():
-                    torch.cuda.synchronize()
-                ext_dt = time.time() - ext_start
+                ext_dt = self._profile_end(ext_handle)
+                self.last_stage_profile[f'keep_trans_layer{i-1}'] = ext_dt
                 self.last_external_attn_profile[f'bi_layer{i-1}'] += ext_dt
                 self.last_external_attn_profile['total'] += ext_dt
                 
@@ -1692,7 +1713,7 @@ class TSPHead(nn.Module):
             x = self.__getattr__(f'lateral_block_{i}')(x)
             if i == 0:
                 out = self.__getattr__(f'out_block_{i}')(x)
-        start_time = time.time()
+        start_time = time.perf_counter()
         out = self.fuse(out, text_feats[:, 0])
         bbox_pred, cls_pred, point = self._forward_single(out)
         results = self._get_bboxes([bbox_pred], [cls_pred], [point], img_metas)
@@ -1785,7 +1806,8 @@ class TSPHead(nn.Module):
             #     targets_list.append(target)
         else:
             seg_masks = None
-        head_time = time.time() - start_time
+        head_time = time.perf_counter() - start_time
+        self.last_stage_profile['head_post'] = head_time
         return results, head_time, seg_masks
 
     def _get_instances(self, cls_preds, idxs, v2r, r2scene, scores, labels, inverse_mapping, img_metas):

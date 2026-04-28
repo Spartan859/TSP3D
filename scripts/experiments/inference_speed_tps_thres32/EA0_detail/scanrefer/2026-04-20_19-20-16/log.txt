@@ -1,0 +1,50 @@
+[04/20 19:20:20] EA0_detail INFO: Full config saved to /mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/inference_speed_tps_thres32/EA0_detail/scanrefer/2026-04-20_19-20-16/config.json
+[04/20 19:20:20] EA0_detail INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 1, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/mnt/share/algorithm/kimi/cache/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 1.785714285714286e-05, 'keep_trans_lr': 1.785714285714286e-05, 'text_encoder_lr': 3.5714285714285716e-07, 'box_select_lr': 1.4285714285714287e-05, 'seg_lr': 3.5714285714285718e-06, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'syncbn': False, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'default', 'tf32_cudnn': 'default', 'checkpoint_path': '/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/TF32/EA0/scanrefer/2026-04-18_17-45-08/ckpt_epoch_96.pth', 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/inference_speed_tps_thres32/EA0_detail/scanrefer/2026-04-20_19-20-16', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 0, 'debug': False, 'eval': True, 'eval_train': False, 'measure_fps': True, 'measure_fps_detail': True, 'fps_warmup_iters': 100, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'cudnn_benchmark': False, 'cudnn_deterministic': True, 'use_deterministic_algorithms': False, 'deterministic_warn_only': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [0], 'use_text_guided_external_attn_bi_layer': [0], 'use_film_text_guided_external_attn_bi_layer': [0], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 4, 'top_pts_threshold': 32, 'top_pts_threshold_det': 32, 'gpu_mem_limit_gb': 0.0}
+[04/20 19:21:33] EA0_detail INFO: length of testing dataset: 9508
+[04/20 19:22:11] EA0_detail INFO: Eval: [500/9508]  
+[04/20 19:22:11] EA0_detail INFO: loss 0.0000 	
+[04/20 19:22:46] EA0_detail INFO: Eval: [1000/9508]  
+[04/20 19:22:46] EA0_detail INFO: loss 0.0000 	
+[04/20 19:23:19] EA0_detail INFO: Eval: [1500/9508]  
+[04/20 19:23:19] EA0_detail INFO: loss 0.0000 	
+[04/20 19:23:53] EA0_detail INFO: Eval: [2000/9508]  
+[04/20 19:23:53] EA0_detail INFO: loss 0.0000 	
+[04/20 19:24:27] EA0_detail INFO: Eval: [2500/9508]  
+[04/20 19:24:27] EA0_detail INFO: loss 0.0000 	
+[04/20 19:25:01] EA0_detail INFO: Eval: [3000/9508]  
+[04/20 19:25:01] EA0_detail INFO: loss 0.0000 	
+[04/20 19:25:35] EA0_detail INFO: Eval: [3500/9508]  
+[04/20 19:25:35] EA0_detail INFO: loss 0.0000 	
+[04/20 19:26:09] EA0_detail INFO: Eval: [4000/9508]  
+[04/20 19:26:09] EA0_detail INFO: loss 0.0000 	
+[04/20 19:26:42] EA0_detail INFO: Eval: [4500/9508]  
+[04/20 19:26:42] EA0_detail INFO: loss 0.0000 	
+[04/20 19:27:16] EA0_detail INFO: Eval: [5000/9508]  
+[04/20 19:27:16] EA0_detail INFO: loss 0.0000 	
+[04/20 19:27:50] EA0_detail INFO: Eval: [5500/9508]  
+[04/20 19:27:50] EA0_detail INFO: loss 0.0000 	
+[04/20 19:28:24] EA0_detail INFO: Eval: [6000/9508]  
+[04/20 19:28:24] EA0_detail INFO: loss 0.0000 	
+[04/20 19:28:57] EA0_detail INFO: Eval: [6500/9508]  
+[04/20 19:28:57] EA0_detail INFO: loss 0.0000 	
+[04/20 19:29:31] EA0_detail INFO: Eval: [7000/9508]  
+[04/20 19:29:31] EA0_detail INFO: loss 0.0000 	
+[04/20 19:30:06] EA0_detail INFO: Eval: [7500/9508]  
+[04/20 19:30:06] EA0_detail INFO: loss 0.0000 	
+[04/20 19:30:40] EA0_detail INFO: Eval: [8000/9508]  
+[04/20 19:30:40] EA0_detail INFO: loss 0.0000 	
+[04/20 19:31:14] EA0_detail INFO: Eval: [8500/9508]  
+[04/20 19:31:14] EA0_detail INFO: loss 0.0000 	
+[04/20 19:31:48] EA0_detail INFO: Eval: [9000/9508]  
+[04/20 19:31:48] EA0_detail INFO: loss 0.0000 	
+[04/20 19:32:22] EA0_detail INFO: Eval: [9500/9508]  
+[04/20 19:32:22] EA0_detail INFO: loss 0.0000 	
+[04/20 19:32:23] EA0_detail INFO: Eval: [97]  
+[04/20 19:32:23] EA0_detail INFO: 3dcnn Acc0.25: Top-1: 0.56079
+[04/20 19:32:23] EA0_detail INFO: 3dcnn Acc0.50: Top-1: 0.45677
+[04/20 19:32:23] EA0_detail INFO: Timing(s): inf=0.064637, visual=0.022681, text=0.009772, fusion_wo_head=0.030483, head=0.001074
+[04/20 19:32:23] EA0_detail INFO: External-attn-affected module time(s): bi_layer0=0.005123, bi_layer1=0.005506, bi_layer2=0.004317, total=0.014946
+[04/20 19:32:23] EA0_detail INFO: Detailed stage time(s): com_trans=0.004317, head_post=0.001074, keep_trans_layer0=0.005123, keep_trans_layer1=0.005506, prune_layer0=0.000833, prune_layer1=0.001425
+[04/20 19:32:23] EA0_detail INFO: GPU memory(MiB): avg_allocated=639.53, avg_reserved=1262.48, peak_allocated=1108.59, peak_reserved=1264.00, warmup_iters=100
+[04/20 19:32:23] EA0_detail INFO: FPS(single-card): 15.484 | Avg latency: 64.582 ms/sample | warmup_iters=100 | measured_samples=9408
+[04/20 19:32:23] EA0_detail INFO: External-attn-affected path FPS(eqv): 66.916 | time_ratio=0.2314 of end-to-end measured inference

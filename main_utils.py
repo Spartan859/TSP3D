@@ -156,6 +156,8 @@ def parse_option():
     parser.add_argument('--eval_train', action='store_true')
     parser.add_argument('--measure_fps', action='store_true',
                         help='Measure inference FPS during eval (single-card recommended).')
+    parser.add_argument('--measure_fps_detail', action='store_true',
+                        help='Enable detailed per-stage inference timing (adds profiling overhead).')
     parser.add_argument('--fps_warmup_iters', type=int, default=20,
                         help='Number of warmup eval iterations excluded from FPS stats.')
     parser.add_argument('--fps_max_iters', type=int, default=-1,
@@ -198,6 +200,8 @@ def parse_option():
     parser.add_argument('--top_pts_threshold_det', type=int, default=None,
                         help='Top-k candidate points per box in multi-box scenes for assigner. '
                              'Default: 32 when use_seg=False, 8 when use_seg=True.')
+    parser.add_argument('--gpu_mem_limit_gb', type=float, default=0.0,
+                        help='Per-process GPU memory limit in GiB. 0 disables the limit.')
 
     args, _ = parser.parse_known_args()
 

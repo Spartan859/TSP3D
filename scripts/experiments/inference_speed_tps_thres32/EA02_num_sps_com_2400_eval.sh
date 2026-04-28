@@ -173,7 +173,7 @@ fi
 
 echo master_port: ${master_port}
 
-TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
+TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distributed.launch \
     --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
     train_dist_mod.py \
     --use_color \
@@ -204,16 +204,16 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --num_samples_com 2400\
     --eval \
     --measure_fps \
-    --fps_warmup_iters 20 \
+    --fps_warmup_iters 100 \
     --fps_max_iters -1 \
-    --checkpoint_path /share/lxy/TSP3D_ori/scripts/experiments/TF32/EA02_num_sps_com_2400/scanrefer/2026-04-18_17-51-17/ckpt_epoch_96.pth \
+    --checkpoint_path ${PWD}/scripts/experiments/TF32/EA02_num_sps_com_2400/scanrefer/2026-04-18_17-51-17/ckpt_epoch_96.pth \
     # --use_refine \
     # --use_seg \
     # --use_seg_external_self_attn \
     
 if [[ "${OCCUPY_GPU_AFTER_TRAIN:-0}" == "1" ]]; then
     echo "Post-train GPU occupy enabled (OCCUPY_GPU_AFTER_TRAIN=1)."
-    torchrun --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
+    python -m torch.distributed.launch --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
 else
     echo "Skip post-train GPU occupy (set OCCUPY_GPU_AFTER_TRAIN=1 to enable)."
 fi

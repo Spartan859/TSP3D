@@ -126,7 +126,8 @@ class TrainTester(BaseTrainTester):
             external_attn_coef=args.external_attn_coef,
             mink_conv1_stride=args.mink_conv1_stride,
             top_pts_threshold=args.top_pts_threshold,
-            top_pts_threshold_det=args.top_pts_threshold_det
+            top_pts_threshold_det=args.top_pts_threshold_det,
+            measure_fps_detail=args.measure_fps_detail
         )
         return model
 
@@ -172,8 +173,10 @@ class TrainTester(BaseTrainTester):
 
         # NOTE Main eval branch
         test_loader = tqdm(test_loader, ncols=TQDM_NCOLS)
-        inf_speeds, vis_back_speeds, text_back_speeds, fuiosn_speeds, head_speeds = [],[],[],[],[]
+        inf_speeds, vis_back_speeds, text_back_speeds, fusion_speeds, head_speeds = [], [], [], [], []
         ext_bi0_speeds, ext_bi1_speeds, ext_bi2_speeds, ext_total_speeds = [], [], [], []
+        stage_profile_sums = {}
+        stage_profile_counts = {}
         fps_enabled = bool(getattr(args, 'measure_fps', False))
         fps_warmup_iters = max(int(getattr(args, 'fps_warmup_iters', 20)), 0)
         fps_max_iters = int(getattr(args, 'fps_max_iters', -1))
@@ -198,7 +201,7 @@ class TrainTester(BaseTrainTester):
             inf_speeds.append(inf_speed)
             vis_back_speeds.append(detail_time[0])
             text_back_speeds.append(detail_time[1])
-            fuiosn_speeds.append(detail_time[2])
+            fusion_speeds.append(detail_time[2])
             head_speeds.append(detail_time[3])
             head_module = model.module.head if hasattr(model, 'module') else model.head
             ext_profile = getattr(head_module, 'last_external_attn_profile', None)
@@ -208,6 +211,12 @@ class TrainTester(BaseTrainTester):
             ext_bi1_speeds.append(float(ext_profile.get('bi_layer1', 0.0)))
             ext_bi2_speeds.append(float(ext_profile.get('bi_layer2', 0.0)))
             ext_total_speeds.append(float(ext_profile.get('total', 0.0)))
+            if getattr(args, 'measure_fps_detail', False):
+                stage_profile = getattr(head_module, 'last_stage_profile', None)
+                if stage_profile is not None:
+                    for key, value in stage_profile.items():
+                        stage_profile_sums[key] = stage_profile_sums.get(key, 0.0) + float(value)
+                        stage_profile_counts[key] = stage_profile_counts.get(key, 0) + 1
             if fps_enabled and batch_idx >= fps_warmup_iters:
                 batch_size = int(batch_data['point_clouds'].shape[0])
                 total_fps_samples += batch_size
@@ -244,9 +253,14 @@ class TrainTester(BaseTrainTester):
                 if args.use_seg:        
                     self.logger.info('Acc_mask0.25' + ' ' +  str(evaluator.dets['overall_mask'] / evaluator.gts['mask_3dcnn']))  
                     self.logger.info('Acc_mask0.50' + ' ' +  str(evaluator.dets['overall50_mask'] / evaluator.gts['mask_3dcnn']))
-            print('inf: ', np.array(inf_speeds).mean(),'vis_back_speeds: ', np.array(vis_back_speeds).mean(),
-                'text_back_speeds: ', np.array(text_back_speeds).mean(),'fuiosn_speeds: ', np.array(fuiosn_speeds).mean(),
-                'head_speeds: ', np.array(head_speeds).mean())
+            self.logger.info(
+                'Timing(s): '
+                f'inf={np.array(inf_speeds).mean():.6f}, '
+                f'visual={np.array(vis_back_speeds).mean():.6f}, '
+                f'text={np.array(text_back_speeds).mean():.6f}, '
+                f'fusion_wo_head={np.array(fusion_speeds).mean():.6f}, '
+                f'head={np.array(head_speeds).mean():.6f}'
+            )
             self.logger.info(
                 'External-attn-affected module time(s): '
                 f'bi_layer0={np.array(ext_bi0_speeds).mean():.6f}, '
@@ -254,6 +268,12 @@ class TrainTester(BaseTrainTester):
                 f'bi_layer2={np.array(ext_bi2_speeds).mean():.6f}, '
                 f'total={np.array(ext_total_speeds).mean():.6f}'
             )
+            if getattr(args, 'measure_fps_detail', False) and len(stage_profile_sums) > 0:
+                detail_items = []
+                for key in sorted(stage_profile_sums.keys()):
+                    mean_val = stage_profile_sums[key] / max(stage_profile_counts.get(key, 1), 1)
+                    detail_items.append(f'{key}={mean_val:.6f}')
+                self.logger.info('Detailed stage time(s): ' + ', '.join(detail_items))
             if len(mem_allocated_mb) > 0:
                 self.logger.info(
                     'GPU memory(MiB): '
@@ -434,6 +454,25 @@ if __name__ == '__main__':
     
     # distributed 
     torch.cuda.set_device(opt.local_rank)
+    if opt.gpu_mem_limit_gb > 0:
+        total_mem_gb = (
+            torch.cuda.get_device_properties(opt.local_rank).total_memory
+            / (1024 ** 3)
+        )
+        mem_fraction = min(opt.gpu_mem_limit_gb / total_mem_gb, 1.0)
+        set_mem_fraction = getattr(torch.cuda, 'set_per_process_memory_fraction', None)
+        if set_mem_fraction is None:
+            if opt.local_rank == 0:
+                print('Warning: torch.cuda.set_per_process_memory_fraction is unavailable in this PyTorch build.')
+        else:
+            set_mem_fraction(mem_fraction, device=opt.local_rank)
+            if opt.local_rank == 0:
+                print(
+                    'GPU memory cap -> '
+                    f'limit_gb={opt.gpu_mem_limit_gb}, '
+                    f'total_gb={total_mem_gb:.2f}, '
+                    f'mem_fraction={mem_fraction:.4f}'
+                )
     # https://github.com/open-mmlab/mmcv/issues/1969#issuecomment-1304721237
     torch.distributed.init_process_group(backend='nccl', init_method='env://', timeout=datetime.timedelta(seconds=5400))  
     set_random_seed(opt.rng_seed + opt.local_rank)
@@ -444,7 +483,8 @@ if __name__ == '__main__':
     torch.backends.cudnn.deterministic = bool(opt.cudnn_deterministic)
 
     if opt.use_deterministic_algorithms:
-        torch.use_deterministic_algorithms(True, warn_only=opt.deterministic_warn_only)
+        # torch.use_deterministic_algorithms(True, warn_only=opt.deterministic_warn_only)
+        torch.use_deterministic_algorithms(True)
 
     if opt.tf32_matmul != 'default':
         torch.backends.cuda.matmul.allow_tf32 = (opt.tf32_matmul == 'on')

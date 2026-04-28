@@ -196,9 +196,9 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     "${train_extra_args[@]}" \
     --eval \
     --measure_fps \
-    --fps_warmup_iters 20 \
+    --fps_warmup_iters 100 \
     --fps_max_iters -1 \
-    --checkpoint_path /share/lxy/TSP3D_ori/scripts/experiments/TF32/ori/scanrefer/2026-04-19_04-49-09/ckpt_epoch_60.pth \
+    --checkpoint_path ${PWD}/scripts/experiments/TF32/ori/scanrefer/2026-04-19_04-49-09/ckpt_epoch_60.pth \
     # --checkpoint_path /share/lxy/TSP3D_ori/ckpt_scanrefer.pth \
     # --use_external_attn_bi_layer 0 2\
     # --use_text_guided_external_attn_bi_layer 0 2\

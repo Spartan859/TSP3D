@@ -35,7 +35,8 @@ class BeaUTyDETR(nn.Module):
                  external_attn_coef=4,
                  mink_conv1_stride=2,
                  top_pts_threshold=None,
-                 top_pts_threshold_det=None):
+                 top_pts_threshold_det=None,
+                 measure_fps_detail=False):
         """Initialize layers."""
         super().__init__()
 
@@ -74,7 +75,8 @@ class BeaUTyDETR(nn.Module):
             num_samples_com=num_samples_com,
             external_attn_coef=external_attn_coef,
             top_pts_threshold=top_pts_threshold,
-            top_pts_threshold_det=top_pts_threshold_det
+            top_pts_threshold_det=top_pts_threshold_det,
+            measure_fps_detail=measure_fps_detail
         )
         self.target_pool = None
         if mink_conv1_stride > 1:
