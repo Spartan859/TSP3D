@@ -1,0 +1,13 @@
+## 3dcnn Acc0.25: 246
+```
+[02/26 12:25:24] TGEA012 INFO: Eval: [246]  
+[02/26 12:25:24] TGEA012 INFO: 3dcnn Acc0.25: Top-1: 0.54459
+[02/26 12:25:24] TGEA012 INFO: 3dcnn Acc0.50: Top-1: 0.44973
+```
+
+## 3dcnn Acc0.50: 87
+```
+[02/25 00:02:05] TGEA012 INFO: Eval: [87]  
+[02/25 00:02:05] TGEA012 INFO: 3dcnn Acc0.25: Top-1: 0.54207
+[02/25 00:02:05] TGEA012 INFO: 3dcnn Acc0.50: Top-1: 0.45088
+```

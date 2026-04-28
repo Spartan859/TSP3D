@@ -26,6 +26,12 @@ METRIC_PATTERNS = {
     'mask0.25': re.compile(r"Acc_mask0\.25\s*([0-9]*\.?[0-9]+)"),
     'mask0.50': re.compile(r"Acc_mask0\.50\s*([0-9]*\.?[0-9]+)")
 }
+METRIC_TITLES = {
+    'acc0.25': '3dcnn Acc0.25',
+    'acc0.50': '3dcnn Acc0.50',
+    'mask0.25': 'Acc_mask0.25',
+    'mask0.50': 'Acc_mask0.50'
+}
 
 EPOCH_PATTERN = re.compile(r"\[?(?:[0-9]{2}/[0-9]{2})\s+[0-9]{2}:[0-9]{2}:[0-9]{2}\]?\s+logs INFO: (?:Eval: \[(?P<epoch>\d+)\]|epoch\s+(?P<epoch2>\d+))")
 # The log layout may vary; we'll also search for lines that say "Eval: [<epoch>]" and capture epoch.
@@ -95,6 +101,81 @@ def select_best_epochs(epoch_metrics: dict):
     return best_epochs
 
 
+def select_best_epoch_per_metric(epoch_metrics: dict):
+    """Return metric -> best epoch (tie-break by latest epoch)."""
+    best_per_metric = {}
+    for metric in METRIC_PATTERNS.keys():
+        items = []
+        for epoch, metrics in epoch_metrics.items():
+            if metric in metrics:
+                items.append((epoch, metrics[metric]))
+        if not items:
+            continue
+        items_sorted = sorted(items, key=lambda x: (x[1], x[0]))
+        best_per_metric[metric] = items_sorted[-1][0]
+    return best_per_metric
+
+
+def parse_eval_blocks(log_path: Path):
+    """Return {epoch: {'eval': str|None, 'metrics': [str, ...]}} from log."""
+    if not log_path.exists():
+        return {}
+    blocks = {}
+    current_eval_epoch = None
+    with log_path.open('r', encoding='utf-8', errors='ignore') as f:
+        for raw_line in f:
+            line = raw_line.rstrip('\n')
+            m_eval = EVAL_EPOCH_LINE.search(line)
+            if m_eval:
+                current_eval_epoch = int(m_eval.group('epoch'))
+                blocks.setdefault(current_eval_epoch, {'eval': None, 'metrics': []})
+                blocks[current_eval_epoch]['eval'] = line
+                continue
+
+            if current_eval_epoch is None:
+                continue
+            for patt in METRIC_PATTERNS.values():
+                if patt.search(line):
+                    blocks.setdefault(current_eval_epoch, {'eval': None, 'metrics': []})
+                    blocks[current_eval_epoch]['metrics'].append(line)
+                    break
+    return blocks
+
+
+def write_best_markdown(folder: Path, log_path: Path, epoch_metrics: dict):
+    """Write best.md under folder with best epoch snippets for each metric."""
+    best_md_path = folder / 'best.md'
+    best_per_metric = select_best_epoch_per_metric(epoch_metrics)
+    eval_blocks = parse_eval_blocks(log_path)
+
+    if not best_per_metric:
+        best_md_path.write_text('# No best metrics found\n', encoding='utf-8')
+        return
+
+    lines = []
+    for metric in METRIC_PATTERNS.keys():
+        if metric not in best_per_metric:
+            continue
+        epoch = best_per_metric[metric]
+        title = METRIC_TITLES.get(metric, metric)
+        lines.append(f'## {title}: {epoch}')
+        lines.append('```')
+
+        block = eval_blocks.get(epoch, {})
+        eval_line = block.get('eval')
+        metric_lines = block.get('metrics', [])
+        if eval_line:
+            lines.append(eval_line)
+        if metric_lines:
+            lines.extend(metric_lines)
+        if not eval_line and not metric_lines:
+            lines.append(f'(No matching Eval block lines found in log for epoch {epoch})')
+        lines.append('```')
+        lines.append('')
+
+    best_md_path.write_text('\n'.join(lines).rstrip() + '\n', encoding='utf-8')
+
+
 def find_pth_files(folder: Path):
     return sorted([p for p in folder.glob('*.pth')])
 
@@ -111,6 +192,8 @@ def epoch_from_pth(p: Path):
 def process_folder(folder: Path, apply: bool = False, dry_run: bool = True):
     log_path = folder / 'log.txt'
     epoch_metrics = parse_log_for_metrics(log_path)
+    if epoch_metrics:
+        write_best_markdown(folder, log_path, epoch_metrics)
     if not epoch_metrics:
         # If no metrics parsed, delete entire folder (or dry-run report)
         if dry_run:
