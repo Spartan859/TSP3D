@@ -474,6 +474,9 @@ class BaseTrainTester:
     # BRIEF main training/testing
     def main(self, args):
         """Run main training/testing pipeline."""
+        # Check checkpoint path exists (assert moved earlier than dataset load)
+        if args.checkpoint_path:
+            assert os.path.isfile(args.checkpoint_path), f"Checkpoint path {args.checkpoint_path} does not exist."
         # Get loaders
         train_loader, test_loader = self.get_loaders(args)
         if not args.eval:
@@ -511,9 +514,8 @@ class BaseTrainTester:
             broadcast_buffers=False  , find_unused_parameters=False
         )
 
-        # Check for a checkpoint
+        # Check for a checkpoint (file existence asserted earlier)
         if args.checkpoint_path:
-            assert os.path.isfile(args.checkpoint_path)
             load_checkpoint(args, model, optimizer, scheduler)
         
         # ##############################################
