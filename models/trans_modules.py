@@ -312,7 +312,7 @@ class ExternalMultiheadAttention(nn.Module):
         self.coef = coef
         self.trans_dims = nn.Linear(embed_dim, embed_dim * self.coef)
         self.num_heads_eff = self.num_heads * self.coef
-        self.k = 256 // self.coef
+        self.k = embed_dim // self.coef
         self.linear_0 = nn.Linear(embed_dim * self.coef // self.num_heads_eff, self.k)
         self.linear_1 = nn.Linear(self.k, embed_dim * self.coef // self.num_heads_eff)
         self.attn_drop = nn.Dropout(attn_drop)
@@ -347,16 +347,10 @@ class ExternalMultiheadAttention(nn.Module):
         x = query
         if not self.batch_first:
             x = x.transpose(0, 1)  # (B, N, C)
-        if key_padding_mask is not None:
-            if key_padding_mask.shape[0] != x.shape[0] or key_padding_mask.shape[1] != x.shape[1]:
-                raise ValueError(f"key_padding_mask shape {key_padding_mask.shape} does not match input shape {(x.shape[0], x.shape[1])}")
-            mask = (~key_padding_mask).unsqueeze(-1).float()  # (B, N, 1)
-            x = x * mask
-        B, N, C = x.shape
+        B, N, _ = x.shape
         x = self.trans_dims(x)  # B, N, C'
-        # import pdb;pdb.set_trace()
         x = x.view(B, N, self.num_heads_eff, -1).permute(0, 2, 1, 3)
-        attn = self.linear_0(x)
+        attn = self.linear_0(x)  # B, num_heads_eff, N, k
         if text_feat is not None:
             if text_feat.dim() == 3:
                 text_feat = text_feat.mean(dim=1)
@@ -367,7 +361,13 @@ class ExternalMultiheadAttention(nn.Module):
             else:
                 gate = self.text_mlp(text_feat).view(B, 1, 1, self.k)
                 attn = attn * gate
+        # apply padding mask after FiLM to avoid (1+gamma)*(-inf) = nan when gamma→-1
+        if key_padding_mask is not None:
+            if key_padding_mask.shape[0] != B or key_padding_mask.shape[1] != N:
+                raise ValueError(f"key_padding_mask shape {key_padding_mask.shape} does not match input shape {(B, N)}")
+            attn = attn.masked_fill(key_padding_mask.unsqueeze(1).unsqueeze(-1), float('-inf'))
         attn = attn.softmax(dim=-2)
+        attn = attn.nan_to_num(0.0)  # all-padding sample → softmax(-inf) = nan, fallback to zero
         attn = attn / (1e-9 + attn.sum(dim=-1, keepdim=True))
         attn = self.attn_drop(attn)
         x = self.linear_1(attn).permute(0, 2, 1, 3).reshape(B, N, -1)
