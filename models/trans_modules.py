@@ -117,7 +117,7 @@ class CrossAttentionLayer(nn.Module):
 class TransformerEncoderLayerNoFFN(nn.Module):
     """TransformerEncoderLayer but without FFN."""
 
-    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False, external_attn_coef=4):
+    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False, external_attn_coef=4, external_attn_k=None):
         """Intialize same as Transformer (without FFN params)."""
         super().__init__()
         self.use_text_guided_external_attn = use_text_guided_external_attn
@@ -128,7 +128,8 @@ class TransformerEncoderLayerNoFFN(nn.Module):
                 nhead,
                 attn_drop=dropout,
                 use_film_text_guided_external_attn=use_film_text_guided_external_attn,
-                coef=external_attn_coef
+                coef=external_attn_coef,
+                k=external_attn_k
             )
         else:
             self.self_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
@@ -170,9 +171,9 @@ class TransformerEncoderLayerNoFFN(nn.Module):
 class PosTransformerEncoderLayerNoFFN(TransformerEncoderLayerNoFFN):
     """TransformerEncoderLayerNoFFN but additionaly add pos_embed in query."""
 
-    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False, external_attn_coef=4):
+    def __init__(self, d_model, nhead, dropout, use_external_attn=False, use_text_guided_external_attn=False, use_film_text_guided_external_attn=False, external_attn_coef=4, external_attn_k=None):
         """Intialize same as parent class."""
-        super().__init__(d_model, nhead, dropout, use_external_attn, use_text_guided_external_attn, use_film_text_guided_external_attn, external_attn_coef)
+        super().__init__(d_model, nhead, dropout, use_external_attn, use_text_guided_external_attn, use_film_text_guided_external_attn, external_attn_coef, external_attn_k=external_attn_k)
 
     def forward(self, src, pos, src_mask=None, src_key_padding_mask=None, text_feat=None):
         """
@@ -219,7 +220,8 @@ class BiEncoderLayer(nn.Module):
                  use_external_attn=False,
                  use_text_guided_external_attn=False,
                  use_film_text_guided_external_attn=False,
-                 external_attn_coef=4):
+                 external_attn_coef=4,
+                 external_attn_k=None):
         """Initialize layers, d_model is the encoder dimension."""
         super().__init__()
         self.use_text_guided_external_attn = use_text_guided_external_attn
@@ -247,7 +249,8 @@ class BiEncoderLayer(nn.Module):
                 use_external_attn=use_external_attn,
                 use_text_guided_external_attn=use_text_guided_external_attn,
                 use_film_text_guided_external_attn=use_film_text_guided_external_attn,
-                external_attn_coef=external_attn_coef
+                external_attn_coef=external_attn_coef,
+                external_attn_k=external_attn_k
             )
         else:
             self.self_attention_visual = None
@@ -302,7 +305,7 @@ class BiEncoderLayer(nn.Module):
 
 
 class ExternalMultiheadAttention(nn.Module):
-    def __init__(self, embed_dim, num_heads=8, attn_drop=0., proj_drop=0., batch_first=False, use_film_text_guided_external_attn=False, coef=4):
+    def __init__(self, embed_dim, num_heads=8, attn_drop=0., proj_drop=0., batch_first=False, use_film_text_guided_external_attn=False, coef=4, k=None):
         super().__init__()
         self.embed_dim = embed_dim
         self.num_heads = num_heads
@@ -312,7 +315,7 @@ class ExternalMultiheadAttention(nn.Module):
         self.coef = coef
         self.trans_dims = nn.Linear(embed_dim, embed_dim * self.coef)
         self.num_heads_eff = self.num_heads * self.coef
-        self.k = embed_dim // self.coef
+        self.k = k if k is not None else (embed_dim // self.coef)
         self.linear_0 = nn.Linear(embed_dim * self.coef // self.num_heads_eff, self.k)
         self.linear_1 = nn.Linear(self.k, embed_dim * self.coef // self.num_heads_eff)
         self.attn_drop = nn.Dropout(attn_drop)

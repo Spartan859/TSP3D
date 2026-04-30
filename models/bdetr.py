@@ -33,6 +33,7 @@ class BeaUTyDETR(nn.Module):
                  com_threshold=0.15,
                  num_samples_com=2400,
                  external_attn_coef=4,
+                 external_attn_k=None,
                  mink_conv1_stride=2,
                  top_pts_threshold=None,
                  top_pts_threshold_det=None,
@@ -74,6 +75,7 @@ class BeaUTyDETR(nn.Module):
             com_threshold=com_threshold,
             num_samples_com=num_samples_com,
             external_attn_coef=external_attn_coef,
+            external_attn_k=external_attn_k,
             top_pts_threshold=top_pts_threshold,
             top_pts_threshold_det=top_pts_threshold_det,
             measure_fps_detail=measure_fps_detail

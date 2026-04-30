@@ -124,6 +124,13 @@ class TrainTester(BaseTrainTester):
             com_threshold=args.com_threshold,
             num_samples_com=args.num_samples_com,
             external_attn_coef=args.external_attn_coef,
+            external_attn_k=dict(
+                bi_layer0=args.external_attn_k_keep0 or None,
+                bi_layer1=args.external_attn_k_keep1 or None,
+                com_trans=args.external_attn_k_com or None,
+                seg_128=args.external_attn_k_seg128 or None,
+                seg_64=args.external_attn_k_seg64 or None,
+            ),
             mink_conv1_stride=args.mink_conv1_stride,
             top_pts_threshold=args.top_pts_threshold,
             top_pts_threshold_det=args.top_pts_threshold_det,

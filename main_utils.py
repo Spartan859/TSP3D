@@ -194,6 +194,16 @@ def parse_option():
                         help='Number of sampled voxels per scene for completion branch attention.')
     parser.add_argument('--external_attn_coef', type=int, default=4,
                         help='Expansion coefficient used in ExternalMultiheadAttention.')
+    parser.add_argument('--external_attn_k_keep0', type=int, default=64,
+                        help='EA memory size (k) for keep_trans[0] (bi_layer0). Use 0 for embed_dim//coef.')
+    parser.add_argument('--external_attn_k_keep1', type=int, default=64,
+                        help='EA memory size (k) for keep_trans[1] (bi_layer1). Use 0 for embed_dim//coef.')
+    parser.add_argument('--external_attn_k_com', type=int, default=64,
+                        help='EA memory size (k) for com_trans. Use 0 for embed_dim//coef.')
+    parser.add_argument('--external_attn_k_seg128', type=int, default=64,
+                        help='EA memory size (k) for seg_self_attn_128. Use 0 for embed_dim//coef.')
+    parser.add_argument('--external_attn_k_seg64', type=int, default=64,
+                        help='EA memory size (k) for seg_self_attn_64. Use 0 for embed_dim//coef.')
     parser.add_argument('--top_pts_threshold', type=int, default=None,
                         help='Top-k candidate points per box for assigner. '
                              'Default: 32 when use_seg=False, 24 when use_seg=True.')
