@@ -119,7 +119,6 @@ def parse_option():
     parser.add_argument('--clip_norm', default=0.1, type=float,
                         help='gradient clipping max norm')
     parser.add_argument('--bn_momentum', type=float, default=0.1)
-    parser.add_argument('--syncbn', action='store_true')
     parser.add_argument('--warmup-epoch', type=int, default=-1)
     parser.add_argument('--warmup-multiplier', type=int, default=100)
     parser.add_argument('--enable_tf32', action='store_true',
