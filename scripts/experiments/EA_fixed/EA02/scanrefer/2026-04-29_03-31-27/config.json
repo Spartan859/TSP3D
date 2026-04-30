@@ -52,7 +52,7 @@
   "checkpoint_path": null,
   "load_optimizer": true,
   "load_scheduler": true,
-  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/TF32/EA0_fixed/scanrefer/2026-04-16_22-55-24",
+  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/EA_fixed/EA02/scanrefer/2026-04-29_03-31-27",
   "print_freq": 500,
   "save_freq": 3,
   "val_freq": 3,
@@ -66,6 +66,7 @@
   "eval": false,
   "eval_train": false,
   "measure_fps": false,
+  "measure_fps_detail": false,
   "fps_warmup_iters": 20,
   "fps_max_iters": -1,
   "pp_checkpoint": null,
@@ -77,13 +78,16 @@
   "use_seg": false,
   "use_refine": false,
   "use_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_text_guided_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_film_text_guided_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_external_attn_bi_layer0": true,
   "use_text_guided_external_attn_bi_layer0": true,
@@ -92,5 +96,8 @@
   "use_seg_external_self_attn": false,
   "com_threshold": 0.15,
   "num_samples_com": 2400,
-  "external_attn_coef": 4
+  "external_attn_coef": 4,
+  "top_pts_threshold": 32,
+  "top_pts_threshold_det": 32,
+  "gpu_mem_limit_gb": 0.0
 }
