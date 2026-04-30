@@ -1,0 +1,146 @@
+<mxfile host="65bd71144e">
+    <diagram name="FiLM Text-Guided External Attention" id="1">
+        <mxGraphModel dx="1744" dy="1094" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="1" shadow="0">
+            <root>
+                <mxCell id="2"/>
+                <mxCell id="3" parent="2"/>
+                <mxCell id="4" value="FiLM Text-Guided Multi-Head External Attention" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=17;fontStyle=1;" parent="3" vertex="1">
+                    <mxGeometry x="300" y="20" width="700" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Visual Input \(F \in \mathbb{R}^{B \times N \times C}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" parent="3" vertex="1">
+                    <mxGeometry x="340" y="80" width="280" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="\(W_{in}\): Linear\((C \to C \cdot \text{coef})\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="3" vertex="1">
+                    <mxGeometry x="340" y="165" width="280" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="5" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Split Heads&#xa;\(\text{view} \to \text{permute} \Rightarrow F_i \in \mathbb{R}^{B \times H&#39; \times N \times C/H}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="320" y="250" width="320" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="6" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Shared \(M_k \in \mathbb{R}^{S \times C/H}\)&#xa;(Linear, no bias)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" parent="3" vertex="1">
+                    <mxGeometry x="60" y="350" width="200" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="\(\tilde{A} = F_i M_k^T \in \mathbb{R}^{B \times H&#39; \times N \times S}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" parent="3" vertex="1">
+                    <mxGeometry x="320" y="355" width="320" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="8" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="10" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Padding Mask&#xa;\(\tilde{A}_{n}=-\infty\) if padding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="320" y="445" width="320" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="11" target="14" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Text Features \(T \in \mathbb{R}^{B \times L \times C}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" parent="3" vertex="1">
+                    <mxGeometry x="1000" y="80" width="280" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Mean Pool (over valid tokens)&#xa;\(t = \text{mean}(T) \in \mathbb{R}^{B \times C}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1000" y="165" width="280" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="16" target="17" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="\(\text{MLP}_\gamma\): Linear\(\to\)ReLU\(\to\)Linear&#xa;\(\gamma = \text{MLP}_\gamma(t) \in \mathbb{R}^{B \times S}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="880" y="270" width="260" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="17" target="19" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="\(\text{MLP}_\beta\): Linear\(\to\)ReLU\(\to\)Linear&#xa;\(\beta = \text{MLP}_\beta(t) \in \mathbb{R}^{B \times S}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1160" y="270" width="260" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="17" target="21" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="FiLM Modulation&#xa;\(\hat{A} = (1 + \gamma) \odot \tilde{A} + \beta\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" parent="3" vertex="1">
+                    <mxGeometry x="320" y="545" width="320" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="14" target="23" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="3" source="19" target="23" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" style="edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;" parent="3" source="21" target="23" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1290" y="584"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="Double Normalization&#xa;col softmax: \(\bar{a}_{n,s} = \exp(\hat{A}_{n,s})/\sum_{n&#39;}\exp(\hat{A}_{n&#39;,s})\)&#xa;row L1 norm: \(a_{n,s} = \bar{a}_{n,s}/\sum_{s&#39;}\bar{a}_{n,s&#39;}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="290" y="650" width="380" height="75" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="23" target="27" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="\(A \in \mathbb{R}^{B \times H&#39; \times N \times S}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="3" vertex="1">
+                    <mxGeometry x="340" y="775" width="280" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="27" target="29" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Shared \(M_v \in \mathbb{R}^{S \times C/H}\)&#xa;(Linear, no bias)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" parent="3" vertex="1">
+                    <mxGeometry x="760" y="865" width="200" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="\(\text{out}_i = A M_v \in \mathbb{R}^{B \times H&#39; \times N \times C/H}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" parent="3" vertex="1">
+                    <mxGeometry x="320" y="870" width="320" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="29" target="32" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="31" target="32" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="Concat Heads + \(W_o\) (Linear)&#xa;\(\text{reshape} \to [B,N,C \cdot \text{coef}] \to W_o \to [B,N,C]\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="310" y="960" width="340" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="32" target="35" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Output \(F_{out} \in \mathbb{R}^{B \times N \times C}\)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" parent="3" vertex="1">
+                    <mxGeometry x="350" y="1060" width="260" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" style="edgeStyle=orthogonalEdgeStyle;" parent="3" source="35" target="37" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="Legend" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=13;fontStyle=1;" parent="3" vertex="1">
+                    <mxGeometry x="1260" y="628" width="80" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="Input / Output" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1260" y="663" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Linear / Projection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1260" y="703" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="Shared External Memory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1260" y="743" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="Intermediate tensor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1260" y="783" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="Reshape / Norm / Mask" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1260" y="823" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="Matrix multiply / FiLM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1260" y="863" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="FiLM: \(\hat{A} = (1+\gamma)\odot\tilde{A}+\beta\)&#xa;vs gate-only: \(\hat{A} = \sigma(\cdot)\odot\tilde{A}\)&#xa;\(\gamma,\beta\) allow scale &gt; 1 and shift,&#xa;enabling both enhancement and suppression" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1230" y="928" width="240" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="\(H&#39; = H \cdot \text{coef}\), \(S = C / \text{coef}\)&#xa;padding mask applied before softmax (\(-\infty\))" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;" parent="3" vertex="1">
+                    <mxGeometry x="1230" y="1028" width="240" height="55" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
