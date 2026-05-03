@@ -1,0 +1,41 @@
+[04/30 22:01:46] EA02_only_fix_com INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/EA_fixed/EA02_only_fix_com/scanrefer/2026-04-30_22-01-38/config.json
+[04/30 22:01:46] EA02_only_fix_com INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 7, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 32, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.001, 'keep_trans_lr': 0.001, 'text_encoder_lr': 2e-05, 'box_select_lr': 0.0008, 'seg_lr': 0.0002, 'lr_scheduler': 'step', 'lr_decay_epochs': [50, 75], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'default', 'tf32_cudnn': 'default', 'checkpoint_path': None, 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/EA_fixed/EA02_only_fix_com/scanrefer/2026-04-30_22-01-38', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 42, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'measure_fps_detail': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'cudnn_benchmark': True, 'cudnn_deterministic': True, 'use_deterministic_algorithms': False, 'deterministic_warn_only': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [0, 2], 'use_text_guided_external_attn_bi_layer': [0, 2], 'use_film_text_guided_external_attn_bi_layer': [0, 2], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 4, 'external_attn_k_keep0': 64, 'external_attn_k_keep1': 64, 'external_attn_k_com': 0, 'external_attn_k_seg128': 64, 'external_attn_k_seg64': 64, 'top_pts_threshold': 32, 'top_pts_threshold_det': 32, 'gpu_mem_limit_gb': 0.0}
+[04/30 22:01:50] EA02_only_fix_com INFO: length of training dataset: 115
+[04/30 22:01:50] EA02_only_fix_com INFO: length of testing dataset: 76
+[04/30 22:02:12] EA02_only_fix_com INFO: epoch 1, total time 5.14, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:15] EA02_only_fix_com INFO: epoch 2, total time 3.43, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:19] EA02_only_fix_com INFO: epoch 3, total time 3.57, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:22] EA02_only_fix_com INFO: Eval: [3]  
+[04/30 22:02:22] EA02_only_fix_com INFO: 3dcnn Acc0.25: Top-1: 0.00000
+[04/30 22:02:22] EA02_only_fix_com INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[04/30 22:02:22] EA02_only_fix_com INFO: Timing(s): inf=0.137548, visual=0.042596, text=0.009338, fusion_wo_head=0.072881, head=0.011436
+[04/30 22:02:22] EA02_only_fix_com INFO: External-attn-affected module time(s): bi_layer0=0.013325, bi_layer1=0.027307, bi_layer2=0.009146, total=0.049779
+[04/30 22:02:22] EA02_only_fix_com INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[04/30 22:02:26] EA02_only_fix_com INFO: epoch 4, total time 3.44, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:29] EA02_only_fix_com INFO: epoch 5, total time 3.77, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:33] EA02_only_fix_com INFO: epoch 6, total time 3.49, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:36] EA02_only_fix_com INFO: Eval: [6]  
+[04/30 22:02:36] EA02_only_fix_com INFO: 3dcnn Acc0.25: Top-1: 0.00000
+[04/30 22:02:36] EA02_only_fix_com INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[04/30 22:02:36] EA02_only_fix_com INFO: Timing(s): inf=0.118923, visual=0.038484, text=0.007978, fusion_wo_head=0.068658, head=0.002629
+[04/30 22:02:36] EA02_only_fix_com INFO: External-attn-affected module time(s): bi_layer0=0.021772, bi_layer1=0.004322, bi_layer2=0.004492, total=0.030585
+[04/30 22:02:36] EA02_only_fix_com INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[04/30 22:02:40] EA02_only_fix_com INFO: epoch 7, total time 3.36, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:43] EA02_only_fix_com INFO: epoch 8, total time 3.52, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:47] EA02_only_fix_com INFO: epoch 9, total time 4.20, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:51] EA02_only_fix_com INFO: Eval: [9]  
+[04/30 22:02:51] EA02_only_fix_com INFO: 3dcnn Acc0.25: Top-1: 0.00000
+[04/30 22:02:51] EA02_only_fix_com INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[04/30 22:02:51] EA02_only_fix_com INFO: Timing(s): inf=0.211969, visual=0.041296, text=0.008682, fusion_wo_head=0.157400, head=0.003362
+[04/30 22:02:51] EA02_only_fix_com INFO: External-attn-affected module time(s): bi_layer0=0.025126, bi_layer1=0.004581, bi_layer2=0.004840, total=0.034547
+[04/30 22:02:51] EA02_only_fix_com INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[04/30 22:02:54] EA02_only_fix_com INFO: epoch 10, total time 3.38, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:02:58] EA02_only_fix_com INFO: epoch 11, total time 3.61, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:03:01] EA02_only_fix_com INFO: epoch 12, total time 3.50, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[04/30 22:03:05] EA02_only_fix_com INFO: Eval: [12]  
+[04/30 22:03:05] EA02_only_fix_com INFO: 3dcnn Acc0.25: Top-1: 0.00000
+[04/30 22:03:05] EA02_only_fix_com INFO: 3dcnn Acc0.50: Top-1: 0.00000
+[04/30 22:03:05] EA02_only_fix_com INFO: Timing(s): inf=0.201518, visual=0.039373, text=0.008477, fusion_wo_head=0.149406, head=0.002975
+[04/30 22:03:05] EA02_only_fix_com INFO: External-attn-affected module time(s): bi_layer0=0.019934, bi_layer1=0.004418, bi_layer2=0.004556, total=0.028907
+[04/30 22:03:05] EA02_only_fix_com INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[04/30 22:03:09] EA02_only_fix_com INFO: epoch 13, total time 3.42, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
