@@ -37,6 +37,8 @@ class BeaUTyDETR(nn.Module):
                  mink_conv1_stride=2,
                  top_pts_threshold=None,
                  top_pts_threshold_det=None,
+                 prune_threshold=(0.3, 0.7),
+                 test_cfg=None,
                  measure_fps_detail=False):
         """Initialize layers."""
         super().__init__()
@@ -78,6 +80,8 @@ class BeaUTyDETR(nn.Module):
             external_attn_k=external_attn_k,
             top_pts_threshold=top_pts_threshold,
             top_pts_threshold_det=top_pts_threshold_det,
+            prune_threshold=prune_threshold,
+            **(dict(test_cfg=test_cfg) if test_cfg is not None else {}),
             measure_fps_detail=measure_fps_detail
         )
         self.target_pool = None

@@ -211,6 +211,17 @@ def parse_option():
                              'Default: 32 when use_seg=False, 8 when use_seg=True.')
     parser.add_argument('--gpu_mem_limit_gb', type=float, default=0.0,
                         help='Per-process GPU memory limit in GiB. 0 disables the limit.')
+    parser.add_argument('--prune_threshold_0', type=float, default=0.3,
+                        help='Inference pruning threshold for UNet decoder layer 0. '
+                             'Points with (1-sigmoid(keep_score)) > threshold are kept.')
+    parser.add_argument('--prune_threshold_1', type=float, default=0.7,
+                        help='Inference pruning threshold for UNet decoder layer 1.')
+    parser.add_argument('--nms_pre', type=int, default=1,
+                        help='Top-k candidates before NMS at inference. 1 = take best box directly.')
+    parser.add_argument('--nms_iou_thr', type=float, default=0.5,
+                        help='IoU threshold for NMS (only used when --nms_pre > 1).')
+    parser.add_argument('--nms_score_thr', type=float, default=0.01,
+                        help='Score threshold for NMS filtering (only used when --nms_pre > 1).')
 
     args, _ = parser.parse_known_args()
 
@@ -722,20 +733,19 @@ class BaseTrainTester:
 
     # BRIEF eval 
     @torch.no_grad()
-    def _main_eval_branch(self, batch_idx, batch_data, test_loader, model,
+    @staticmethod
+    def _main_eval_branch(batch_idx, batch_data, test_loader, model,
                           stat_dict,
-                          criterion, set_criterion, args):
+                          criterion, set_criterion, args, logger=None):
         # Move to GPU
         gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas = get_gt(batch_data)
-        batch_data = self._to_gpu(batch_data)
-        # inputs = self._get_inputs_contra(batch_data)
-        inputs = self._get_inputs(batch_data)
+        batch_data = BaseTrainTester._to_gpu(batch_data)
+        inputs = BaseTrainTester._get_inputs(batch_data)
         if "train" not in inputs:
             inputs.update({"train": False})
         else:
             inputs["train"] = False
-            
-        
+
         # STEP Forward pass
         if torch.cuda.is_available():
             torch.cuda.synchronize()
@@ -746,18 +756,18 @@ class BaseTrainTester:
             torch.cuda.synchronize()
         end_time = time.time()
         inf_time = end_time - start_time
-        
-        end_points = {'bbox_results': bbox_results, 'gt_bboxes_3d':gt_bboxes_3d, "seg_pred": seg_masks, "seg_gt":gt_masks}
+
+        end_points = {'bbox_results': bbox_results, 'gt_bboxes_3d': gt_bboxes_3d, "seg_pred": seg_masks, "seg_gt": gt_masks}
         # STEP Compute loss
         for key in batch_data:
             assert (key not in end_points)
             end_points[key] = batch_data[key]
 
-        stat_dict = self._accumulate_stats(stat_dict, losses)
-        if (batch_idx + 1) % args.print_freq == 0:
-            self._tqdm_newline(test_loader)
-            self.logger.info(f'Eval: [{batch_idx + 1}/{len(test_loader)}]  ')
-            self.logger.info(''.join([
+        stat_dict = BaseTrainTester._accumulate_stats(stat_dict, losses)
+        if (batch_idx + 1) % args.print_freq == 0 and logger is not None:
+            BaseTrainTester._tqdm_newline(test_loader)
+            logger.info(f'Eval: [{batch_idx + 1}/{len(test_loader)}]  ')
+            logger.info(''.join([
                 f'{key} {stat_dict[key] / (float(batch_idx + 1)):.4f} \t'
                 for key in sorted(stat_dict.keys())
                 if 'loss' in key

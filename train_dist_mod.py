@@ -134,6 +134,12 @@ class TrainTester(BaseTrainTester):
             mink_conv1_stride=args.mink_conv1_stride,
             top_pts_threshold=args.top_pts_threshold,
             top_pts_threshold_det=args.top_pts_threshold_det,
+            prune_threshold=(args.prune_threshold_0, args.prune_threshold_1),
+            test_cfg=dict(
+                nms_pre=args.nms_pre,
+                iou_thr=args.nms_iou_thr,
+                score_thr=args.nms_score_thr,
+            ),
             measure_fps_detail=args.measure_fps_detail
         )
         return model
@@ -149,171 +155,229 @@ class TrainTester(BaseTrainTester):
         }
 
 
-    # BRIEF only eval one epoch.
+    @staticmethod
     @torch.no_grad()
-    def evaluate_one_epoch(self, epoch, test_loader,
-                           model, criterion, set_criterion, args):
+    def evaluate_grounding(test_loader, model, args):
         """
-        Eval grounding after a single epoch.
+        Core grounding eval loop. Returns a metrics dict with accuracy,
+        timing, and memory stats. No logging side-effects.
 
-        Some of the args:
-            model: a nn.Module that returns end_points (dict)
-            criterion: a function that returns (loss, end_points)
+        Keys always present:
+            acc0.25, acc0.50, elapsed_s,
+            avg_inf_s, avg_latency_ms, fps (fps=0 when measure_fps disabled),
+            ext_bi0_ms, ext_bi1_ms, ext_bi2_ms, ext_total_ms,
+            mem_avg_alloc_mib, mem_avg_res_mib,
+            mem_peak_alloc_mib, mem_peak_res_mib,
+            timing_visual_s, timing_text_s, timing_fusion_s, timing_head_s,
+            stage_profile (dict, populated when measure_fps_detail=True)
         """
-        # [Option] Object detection evaluation on ScanNet dataset.
-        if args.test_dataset == 'scannet':      
-            return self.evaluate_one_epoch_det(
-                epoch, test_loader, model,
-                criterion, set_criterion, args
-            )
+        import time as _time
 
-        stat_dict = {}
-        model.eval()  # set model to eval mode (for bn and dp)
-        prefixes = ['3dcnn']
-
+        model.eval()
         evaluator = GroundingEvaluator(
-            only_root=True, thresholds=[0.25, 0.5],     
-            topks=[1], prefixes=prefixes,
+            only_root=True, thresholds=[0.25, 0.5],
+            topks=[1], prefixes=['3dcnn'],
             filter_non_gt_boxes=args.butd_cls,
-            use_seg=args.use_seg
+            use_seg=args.use_seg,
         )
 
-        # NOTE Main eval branch
-        test_loader = tqdm(test_loader, ncols=TQDM_NCOLS)
-        inf_speeds, vis_back_speeds, text_back_speeds, fusion_speeds, head_speeds = [], [], [], [], []
-        ext_bi0_speeds, ext_bi1_speeds, ext_bi2_speeds, ext_total_speeds = [], [], [], []
-        stage_profile_sums = {}
-        stage_profile_counts = {}
-        fps_enabled = bool(getattr(args, 'measure_fps', False))
+        fps_enabled      = bool(getattr(args, 'measure_fps', False))
         fps_warmup_iters = max(int(getattr(args, 'fps_warmup_iters', 20)), 0)
-        fps_max_iters = int(getattr(args, 'fps_max_iters', -1))
+        fps_max_iters    = int(getattr(args, 'fps_max_iters', -1))
+
+        inf_speeds, vis_speeds, text_speeds, fusion_speeds, head_speeds = [], [], [], [], []
+        ext_bi0, ext_bi1, ext_bi2, ext_total = [], [], [], []
+        stage_profile_sums, stage_profile_counts = {}, {}
         total_fps_samples = 0
-        total_fps_time = 0.0
-        total_ext_module_time = 0.0
-        mem_allocated_mb = []
-        mem_reserved_mb = []
-        max_allocated_mb = 0.0
-        max_reserved_mb = 0.0
+        total_fps_time    = 0.0
+        total_ext_time    = 0.0
+
+        mem_allocated_mb, mem_reserved_mb = [], []
+        max_allocated_mb = max_reserved_mb = 0.0
         mem_device = torch.cuda.current_device() if torch.cuda.is_available() else None
         if mem_device is not None:
             torch.cuda.reset_peak_memory_stats(mem_device)
-        for batch_idx, batch_data in enumerate(test_loader):
+
+        stat_dict = {}
+        t_wall0 = _time.time()
+
+        pbar = tqdm(test_loader, ncols=TQDM_NCOLS, leave=False)
+        for batch_idx, batch_data in enumerate(pbar):
             if fps_max_iters > 0 and batch_idx >= fps_max_iters:
                 break
-            # note forward and compute loss
-            stat_dict, end_points, inf_speed, backbone_time, detail_time  = self._main_eval_branch(     
-                batch_idx, batch_data, test_loader, model, stat_dict,
-                criterion, set_criterion, args
-            )
+
+            stat_dict, end_points, inf_speed, backbone_time, detail_time = \
+                TrainTester._main_eval_branch(
+                    batch_idx, batch_data, pbar, model,
+                    stat_dict, None, None, args
+                )
+
             inf_speeds.append(inf_speed)
-            vis_back_speeds.append(detail_time[0])
-            text_back_speeds.append(detail_time[1])
+            vis_speeds.append(detail_time[0])
+            text_speeds.append(detail_time[1])
             fusion_speeds.append(detail_time[2])
             head_speeds.append(detail_time[3])
+
             head_module = model.module.head if hasattr(model, 'module') else model.head
-            ext_profile = getattr(head_module, 'last_external_attn_profile', None)
-            if ext_profile is None:
-                ext_profile = {'bi_layer0': 0.0, 'bi_layer1': 0.0, 'bi_layer2': 0.0, 'total': 0.0}
-            ext_bi0_speeds.append(float(ext_profile.get('bi_layer0', 0.0)))
-            ext_bi1_speeds.append(float(ext_profile.get('bi_layer1', 0.0)))
-            ext_bi2_speeds.append(float(ext_profile.get('bi_layer2', 0.0)))
-            ext_total_speeds.append(float(ext_profile.get('total', 0.0)))
+            ext_profile = getattr(head_module, 'last_external_attn_profile', None) or \
+                          {'bi_layer0': 0.0, 'bi_layer1': 0.0, 'bi_layer2': 0.0, 'total': 0.0}
+            ext_bi0.append(float(ext_profile.get('bi_layer0', 0.0)))
+            ext_bi1.append(float(ext_profile.get('bi_layer1', 0.0)))
+            ext_bi2.append(float(ext_profile.get('bi_layer2', 0.0)))
+            ext_total.append(float(ext_profile.get('total', 0.0)))
+
             if getattr(args, 'measure_fps_detail', False):
                 stage_profile = getattr(head_module, 'last_stage_profile', None)
                 if stage_profile is not None:
                     for key, value in stage_profile.items():
-                        stage_profile_sums[key] = stage_profile_sums.get(key, 0.0) + float(value)
+                        stage_profile_sums[key]   = stage_profile_sums.get(key, 0.0)  + float(value)
                         stage_profile_counts[key] = stage_profile_counts.get(key, 0) + 1
+
             if fps_enabled and batch_idx >= fps_warmup_iters:
                 batch_size = int(batch_data['point_clouds'].shape[0])
                 total_fps_samples += batch_size
-                total_fps_time += float(inf_speed)
-                total_ext_module_time += float(ext_profile.get('total', 0.0))
+                total_fps_time    += float(inf_speed)
+                total_ext_time    += float(ext_profile.get('total', 0.0))
+
             if mem_device is not None and batch_idx >= fps_warmup_iters:
-                cur_allocated_mb = torch.cuda.memory_allocated(mem_device) / (1024.0 ** 2)
-                cur_reserved_mb = torch.cuda.memory_reserved(mem_device) / (1024.0 ** 2)
-                cur_max_allocated_mb = torch.cuda.max_memory_allocated(mem_device) / (1024.0 ** 2)
-                cur_max_reserved_mb = torch.cuda.max_memory_reserved(mem_device) / (1024.0 ** 2)
-                mem_allocated_mb.append(cur_allocated_mb)
-                mem_reserved_mb.append(cur_reserved_mb)
-                max_allocated_mb = max(max_allocated_mb, cur_max_allocated_mb)
-                max_reserved_mb = max(max_reserved_mb, cur_max_reserved_mb)
-            if evaluator is not None:
-                for prefix in prefixes:
-                    # note only consider the last layer
-                    if prefix != '3dcnn':
-                        continue
+                mem_allocated_mb.append(torch.cuda.memory_allocated(mem_device) / (1024.0 ** 2))
+                mem_reserved_mb.append(torch.cuda.memory_reserved(mem_device)   / (1024.0 ** 2))
+                max_allocated_mb = max(max_allocated_mb,
+                                       torch.cuda.max_memory_allocated(mem_device) / (1024.0 ** 2))
+                max_reserved_mb  = max(max_reserved_mb,
+                                       torch.cuda.max_memory_reserved(mem_device)  / (1024.0 ** 2))
 
-                    # evaluation
-                    evaluator.evaluate(end_points, prefix)      
+            evaluator.evaluate(end_points, '3dcnn')
 
+        elapsed = _time.time() - t_wall0
         evaluator.synchronize_between_processes()
-        if dist.get_rank() == 0:
-            if evaluator is not None:
 
-                evaluator.print_stats()
-                self.logger.info(f'Eval: [{epoch}]  ')
-                for t in evaluator.thresholds:
-                    self.logger.info(''.join([
-                        f"{'3dcnn'} Acc{t:.2f}: ", f"Top-{1}: {evaluator.dets[('3dcnn', t, 1, 'bbf')] / max(evaluator.gts[('3dcnn', t, 1, 'bbf')], 1):.5f}"
-                    ]))   
-                if args.use_seg:        
-                    self.logger.info('Acc_mask0.25' + ' ' +  str(evaluator.dets['overall_mask'] / evaluator.gts['mask_3dcnn']))  
-                    self.logger.info('Acc_mask0.50' + ' ' +  str(evaluator.dets['overall50_mask'] / evaluator.gts['mask_3dcnn']))
-            self.logger.info(
-                'Timing(s): '
-                f'inf={np.array(inf_speeds).mean():.6f}, '
-                f'visual={np.array(vis_back_speeds).mean():.6f}, '
-                f'text={np.array(text_back_speeds).mean():.6f}, '
-                f'fusion_wo_head={np.array(fusion_speeds).mean():.6f}, '
-                f'head={np.array(head_speeds).mean():.6f}'
-            )
-            self.logger.info(
-                'External-attn-affected module time(s): '
-                f'bi_layer0={np.array(ext_bi0_speeds).mean():.6f}, '
-                f'bi_layer1={np.array(ext_bi1_speeds).mean():.6f}, '
-                f'bi_layer2={np.array(ext_bi2_speeds).mean():.6f}, '
-                f'total={np.array(ext_total_speeds).mean():.6f}'
-            )
-            if getattr(args, 'measure_fps_detail', False) and len(stage_profile_sums) > 0:
-                detail_items = []
-                for key in sorted(stage_profile_sums.keys()):
-                    mean_val = stage_profile_sums[key] / max(stage_profile_counts.get(key, 1), 1)
-                    detail_items.append(f'{key}={mean_val:.6f}')
-                self.logger.info('Detailed stage time(s): ' + ', '.join(detail_items))
-            if len(mem_allocated_mb) > 0:
-                self.logger.info(
-                    'GPU memory(MiB): '
-                    f'avg_allocated={np.mean(mem_allocated_mb):.2f}, '
-                    f'avg_reserved={np.mean(mem_reserved_mb):.2f}, '
-                    f'peak_allocated={max_allocated_mb:.2f}, '
-                    f'peak_reserved={max_reserved_mb:.2f}, '
-                    f'warmup_iters={fps_warmup_iters}'
-                )
-            elif mem_device is not None:
-                self.logger.info(
-                    'GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).'
-                )
-            if fps_enabled:
-                if total_fps_samples > 0 and total_fps_time > 0:
-                    fps = total_fps_samples / total_fps_time
-                    avg_latency_ms = (total_fps_time / total_fps_samples) * 1000.0
-                    self.logger.info(
-                        f'FPS(single-card): {fps:.3f} | Avg latency: {avg_latency_ms:.3f} ms/sample '
-                        f'| warmup_iters={fps_warmup_iters} | measured_samples={total_fps_samples}'
-                    )
-                    if total_ext_module_time > 0:
-                        ext_fps = total_fps_samples / total_ext_module_time
-                        ext_ratio = total_ext_module_time / total_fps_time
-                        self.logger.info(
-                            f'External-attn-affected path FPS(eqv): {ext_fps:.3f} '
-                            f'| time_ratio={ext_ratio:.4f} of end-to-end measured inference'
-                        )
-                else:
-                    self.logger.info(
-                        'FPS(single-card): N/A (no measured samples; reduce --fps_warmup_iters or increase eval iters).'
-                    )
+        dets = evaluator.dets
+        gts  = evaluator.gts
+        acc25 = dets[('3dcnn', 0.25, 1, 'bbf')] / max(gts[('3dcnn', 0.25, 1, 'bbf')], 1)
+        acc50 = dets[('3dcnn', 0.50, 1, 'bbf')] / max(gts[('3dcnn', 0.50, 1, 'bbf')], 1)
 
+        avg_inf = float(np.mean(inf_speeds)) if inf_speeds else 0.0
+        fps_val = (total_fps_samples / total_fps_time) if (fps_enabled and total_fps_time > 0) else 0.0
+
+        stage_profile_means = {
+            k: stage_profile_sums[k] / max(stage_profile_counts.get(k, 1), 1)
+            for k in stage_profile_sums
+        }
+
+        metrics = {
+            'acc0.25':            float(acc25),
+            'acc0.50':            float(acc50),
+            'elapsed_s':          round(elapsed, 3),
+            'avg_inf_s':          round(avg_inf, 6),
+            'avg_latency_ms':     round(avg_inf * 1000, 3),
+            'fps':                round(fps_val, 3),
+            'ext_bi0_ms':         round(float(np.mean(ext_bi0))   * 1000, 3) if ext_bi0   else 0.0,
+            'ext_bi1_ms':         round(float(np.mean(ext_bi1))   * 1000, 3) if ext_bi1   else 0.0,
+            'ext_bi2_ms':         round(float(np.mean(ext_bi2))   * 1000, 3) if ext_bi2   else 0.0,
+            'ext_total_ms':       round(float(np.mean(ext_total)) * 1000, 3) if ext_total else 0.0,
+            'mem_avg_alloc_mib':  round(float(np.mean(mem_allocated_mb)), 2) if mem_allocated_mb else 0.0,
+            'mem_avg_res_mib':    round(float(np.mean(mem_reserved_mb)),  2) if mem_reserved_mb  else 0.0,
+            'mem_peak_alloc_mib': round(max_allocated_mb, 2),
+            'mem_peak_res_mib':   round(max_reserved_mb,  2),
+            'timing_visual_s':    round(float(np.mean(vis_speeds)),    6) if vis_speeds    else 0.0,
+            'timing_text_s':      round(float(np.mean(text_speeds)),   6) if text_speeds   else 0.0,
+            'timing_fusion_s':    round(float(np.mean(fusion_speeds)), 6) if fusion_speeds else 0.0,
+            'timing_head_s':      round(float(np.mean(head_speeds)),   6) if head_speeds   else 0.0,
+            'stage_profile':      stage_profile_means,
+            # pass through for evaluate_one_epoch logging
+            '_evaluator':         evaluator,
+            '_fps_enabled':       fps_enabled,
+            '_fps_warmup_iters':  fps_warmup_iters,
+            '_total_fps_samples': total_fps_samples,
+            '_total_fps_time':    total_fps_time,
+            '_total_ext_time':    total_ext_time,
+            '_mem_device_avail':  mem_device is not None,
+            '_mem_measured':      len(mem_allocated_mb) > 0,
+        }
+        if args.use_seg:
+            metrics['acc_mask0.25'] = evaluator.dets['overall_mask']  / max(evaluator.gts['mask_3dcnn'], 1e-14)
+            metrics['acc_mask0.50'] = evaluator.dets['overall50_mask'] / max(evaluator.gts['mask_3dcnn'], 1e-14)
+        return metrics
+
+    # BRIEF only eval one epoch.
+    @torch.no_grad()
+    def evaluate_one_epoch(self, epoch, test_loader,
+                           model, criterion, set_criterion, args):
+        """Eval grounding after a single epoch."""
+        if args.test_dataset == 'scannet':
+            return self.evaluate_one_epoch_det(
+                epoch, test_loader, model, criterion, set_criterion, args
+            )
+
+        m = TrainTester.evaluate_grounding(test_loader, model, args)
+
+        if dist.get_rank() != 0:
+            return None
+
+        evaluator        = m['_evaluator']
+        fps_enabled      = m['_fps_enabled']
+        fps_warmup_iters = m['_fps_warmup_iters']
+
+        evaluator.print_stats()
+        self.logger.info(f'Eval: [{epoch}]  ')
+        for t in evaluator.thresholds:
+            self.logger.info(
+                f"3dcnn Acc{t:.2f}: Top-1: "
+                f"{evaluator.dets[('3dcnn', t, 1, 'bbf')] / max(evaluator.gts[('3dcnn', t, 1, 'bbf')], 1):.5f}"
+            )
+        if args.use_seg:
+            self.logger.info('Acc_mask0.25 ' + str(evaluator.dets['overall_mask']   / evaluator.gts['mask_3dcnn']))
+            self.logger.info('Acc_mask0.50 ' + str(evaluator.dets['overall50_mask'] / evaluator.gts['mask_3dcnn']))
+
+        self.logger.info(
+            'Timing(s): '
+            f"inf={m['avg_inf_s']:.6f}, "
+            f"visual={m['timing_visual_s']:.6f}, "
+            f"text={m['timing_text_s']:.6f}, "
+            f"fusion_wo_head={m['timing_fusion_s']:.6f}, "
+            f"head={m['timing_head_s']:.6f}"
+        )
+        self.logger.info(
+            'External-attn-affected module time(s): '
+            f"bi_layer0={m['ext_bi0_ms']/1000:.6f}, "
+            f"bi_layer1={m['ext_bi1_ms']/1000:.6f}, "
+            f"bi_layer2={m['ext_bi2_ms']/1000:.6f}, "
+            f"total={m['ext_total_ms']/1000:.6f}"
+        )
+        if m['stage_profile']:
+            detail_items = [f"{k}={v:.6f}" for k, v in sorted(m['stage_profile'].items())]
+            self.logger.info('Detailed stage time(s): ' + ', '.join(detail_items))
+        if m['_mem_measured']:
+            self.logger.info(
+                'GPU memory(MiB): '
+                f"avg_allocated={m['mem_avg_alloc_mib']:.2f}, "
+                f"avg_reserved={m['mem_avg_res_mib']:.2f}, "
+                f"peak_allocated={m['mem_peak_alloc_mib']:.2f}, "
+                f"peak_reserved={m['mem_peak_res_mib']:.2f}, "
+                f'warmup_iters={fps_warmup_iters}'
+            )
+        elif m['_mem_device_avail']:
+            self.logger.info(
+                'GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).'
+            )
+        if fps_enabled:
+            if m['_total_fps_samples'] > 0 and m['_total_fps_time'] > 0:
+                self.logger.info(
+                    f"FPS(single-card): {m['fps']:.3f} | Avg latency: {m['avg_latency_ms']:.3f} ms/sample "
+                    f"| warmup_iters={fps_warmup_iters} | measured_samples={m['_total_fps_samples']}"
+                )
+                if m['_total_ext_time'] > 0:
+                    ext_fps   = m['_total_fps_samples'] / m['_total_ext_time']
+                    ext_ratio = m['_total_ext_time'] / m['_total_fps_time']
+                    self.logger.info(
+                        f'External-attn-affected path FPS(eqv): {ext_fps:.3f} '
+                        f'| time_ratio={ext_ratio:.4f} of end-to-end measured inference'
+                    )
+            else:
+                self.logger.info(
+                    'FPS(single-card): N/A (no measured samples; reduce --fps_warmup_iters or increase eval iters).'
+                )
         return None
        
     # BRIEF Scannet detection evalution
@@ -375,9 +439,9 @@ class TrainTester(BaseTrainTester):
         test_loader = tqdm(test_loader, ncols=TQDM_NCOLS)
         for batch_idx, batch_data in enumerate(test_loader):
             # note eval
-            stat_dict, end_points = self._main_eval_branch(
+            stat_dict, end_points, _, _, _ = TrainTester._main_eval_branch(
                 batch_idx, batch_data, test_loader, model, stat_dict,
-                criterion, set_criterion, args
+                criterion, set_criterion, args, logger=self.logger
             )
 
             # step score   contrast
