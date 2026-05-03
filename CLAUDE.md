@@ -72,7 +72,7 @@ bash scripts/experiments/EA_fixed/EA0.sh --checkpoint_path /path/to/ckpt.pth --e
 ## 目录速查
 
 - `scripts/experiments/` — 按实验分组的训练脚本；`EA_fixed/` 是当前主力，`inference_speed/` 是速度测试
-- `EVAL_PARAMS.md` — 免重训就能调的评估期参数（NMS/completion/pruning 阈值等）
+- `EVAL_PARAMS.md` — 免重训就能调的评估期参数（`--com_threshold`、`--prune_threshold_0/1`、`--nms_pre` 等），含扫描建议和命令模板
 - `experiments.md` — 推理速度对比表 + 日志路径
 - `TSP3D_method_explanation.md` — TSP3D 原方法说明
 - `multihead_external_attention.md/.drawio` — 原版 MEA 公式 + 图
