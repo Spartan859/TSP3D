@@ -20,6 +20,7 @@ from main_utils import parse_option, BaseTrainTester, set_random_seed
 from data.model_util_scannet import ScannetDatasetConfig
 from src.joint_det_dataset import Joint3DDataset
 from src.grounding_evaluator import GroundingEvaluator
+from src.wildrefer_official_eval import cal_accuracy as wildrefer_cal_accuracy
 from models import BeaUTyDETR
 from models import APCalculator, parse_predictions, parse_groundtruths
 
@@ -211,6 +212,9 @@ class TrainTester(BaseTrainTester):
 
         mem_allocated_mb, mem_reserved_mb = [], []
         max_allocated_mb = max_reserved_mb = 0.0
+        collect_wildrefer_official = args.test_dataset in {'strefer', 'liferefer'}
+        wildrefer_pred_boxes = []
+        wildrefer_gt_boxes = []
         mem_device = torch.cuda.current_device() if torch.cuda.is_available() else None
         if mem_device is not None:
             torch.cuda.reset_peak_memory_stats(mem_device)
@@ -264,6 +268,19 @@ class TrainTester(BaseTrainTester):
                 max_reserved_mb  = max(max_reserved_mb,
                                        torch.cuda.max_memory_reserved(mem_device)  / (1024.0 ** 2))
 
+            if collect_wildrefer_official:
+                for bid in range(len(end_points['bbox_results'])):
+                    scores = end_points['bbox_results'][bid]['scores_3d']
+                    bboxes = end_points['bbox_results'][bid]['bboxes_3d']
+                    bboxes = torch.cat([bboxes.gravity_center, bboxes.dims], dim=1)
+                    pred_box = np.zeros((7,), dtype=np.float32)
+                    if scores.numel() > 0:
+                        best_idx = int(torch.argmax(scores).item())
+                        pred_box[:6] = bboxes[best_idx].detach().cpu().numpy().astype(np.float32)
+                    gt_box = end_points['wildrefer_bbox7'][bid].detach().cpu().numpy().astype(np.float32)
+                    wildrefer_pred_boxes.append(pred_box)
+                    wildrefer_gt_boxes.append(gt_box)
+
             evaluator.evaluate(end_points, '3dcnn')
 
         elapsed = _time.time() - t_wall0
@@ -282,9 +299,27 @@ class TrainTester(BaseTrainTester):
             for k in stage_profile_sums
         }
 
+        if collect_wildrefer_official:
+            if dist.is_initialized():
+                gathered_pred = [None for _ in range(dist.get_world_size())]
+                gathered_gt = [None for _ in range(dist.get_world_size())]
+                dist.all_gather_object(gathered_pred, wildrefer_pred_boxes)
+                dist.all_gather_object(gathered_gt, wildrefer_gt_boxes)
+                merged_pred = [item for rank_list in gathered_pred for item in rank_list]
+                merged_gt = [item for rank_list in gathered_gt for item in rank_list]
+            else:
+                merged_pred = wildrefer_pred_boxes
+                merged_gt = wildrefer_gt_boxes
+            official_acc25, official_acc50, official_miou = wildrefer_cal_accuracy(merged_pred, merged_gt)
+        else:
+            official_acc25, official_acc50, official_miou = 0.0, 0.0, 0.0
+
         metrics = {
             'acc0.25':            float(acc25),
             'acc0.50':            float(acc50),
+            'official_acc0.25':   float(official_acc25),
+            'official_acc0.50':   float(official_acc50),
+            'official_miou':      float(official_miou),
             'elapsed_s':          round(elapsed, 3),
             'avg_inf_s':          round(avg_inf, 6),
             'avg_latency_ms':     round(avg_inf * 1000, 3),
@@ -342,6 +377,11 @@ class TrainTester(BaseTrainTester):
             self.logger.info(
                 f"3dcnn Acc{t:.2f}: Top-1: "
                 f"{evaluator.dets[('3dcnn', t, 1, 'bbf')] / max(evaluator.gts[('3dcnn', t, 1, 'bbf')], 1):.5f}"
+            )
+        if args.test_dataset in {'strefer', 'liferefer'}:
+            self.logger.info(
+                "WildRefer-official Acc0.25: %.5f | Acc0.50: %.5f | mIoU: %.5f"
+                % (m['official_acc0.25'], m['official_acc0.50'], m['official_miou'])
             )
         if args.use_seg:
             self.logger.info('Acc_mask0.25 ' + str(evaluator.dets['overall_mask']   / evaluator.gts['mask_3dcnn']))

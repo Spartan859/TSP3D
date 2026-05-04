@@ -209,7 +209,10 @@ class Joint3DDataset(Dataset):
                 description = str(anno['language']['description']).lower()
                 tokens = [t for t in description.replace(',', ' ').replace('.', ' ').split() if t]
                 target_name = tokens[0] if len(tokens) > 0 else 'object'
-                bbox = np.array(anno['point_cloud']['bbox'], dtype=np.float32).reshape(-1)[:6]
+                bbox_raw = np.array(anno['point_cloud']['bbox'], dtype=np.float32).reshape(-1)
+                bbox = bbox_raw[:6]
+                bbox7 = np.zeros((7,), dtype=np.float32)
+                bbox7[:min(7, len(bbox_raw))] = bbox_raw[:min(7, len(bbox_raw))]
                 scene_id = str(anno['scene_id'])
                 point_cloud_name = str(anno['point_cloud']['point_cloud_name'])
                 group_id = str(anno.get('group_id', dataset_name))
@@ -226,7 +229,8 @@ class Joint3DDataset(Dataset):
                     'wildrefer_scene_id': scene_id,
                     'wildrefer_group_id': group_id,
                     'wildrefer_point_cloud_name': point_cloud_name,
-                    'wildrefer_bbox': bbox
+                    'wildrefer_bbox': bbox,
+                    'wildrefer_bbox7': bbox7
                 })
 
         return annos
@@ -1239,6 +1243,7 @@ class Joint3DDataset(Dataset):
             "relation": "none",
             "target_name": anno['target'],
             "target_id": 0,
+            "wildrefer_bbox7": np.array(anno['wildrefer_bbox7'], dtype=np.float32),
             "point_instance_label": point_instance_label.astype(np.int64),
             "all_bboxes": all_bboxes.astype(np.float32),
             "all_bbox_label_mask": all_bbox_label_mask.astype(np.bool8),

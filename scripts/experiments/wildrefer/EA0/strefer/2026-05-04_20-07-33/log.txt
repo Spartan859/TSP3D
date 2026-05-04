@@ -4,3 +4,29 @@
 [05/04 20:07:37] EA0 INFO: length of testing dataset: 1066
 [05/04 20:09:12] EA0 INFO: epoch 1, total time 80.44, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
 [05/04 20:10:33] EA0 INFO: epoch 2, total time 80.98, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/04 20:11:52] EA0 INFO: epoch 3, total time 78.24, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/04 20:12:07] EA0 INFO: Eval: [3]  
+[05/04 20:12:07] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.20037
+[05/04 20:12:07] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.17135
+[05/04 20:12:07] EA0 INFO: Timing(s): inf=0.116345, visual=0.037774, text=0.006532, fusion_wo_head=0.066988, head=0.003492
+[05/04 20:12:07] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.013724, bi_layer1=0.015635, bi_layer2=0.005724, total=0.035083
+[05/04 20:12:07] EA0 INFO: GPU memory(MiB): avg_allocated=947.42, avg_reserved=6586.32, peak_allocated=3797.38, peak_reserved=15598.00, warmup_iters=20
+[05/04 20:13:33] EA0 INFO: epoch 4, total time 86.73, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/04 20:14:59] EA0 INFO: epoch 5, total time 85.83, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/04 20:16:21] EA0 INFO: epoch 6, total time 81.50, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/04 20:16:36] EA0 INFO: Eval: [6]  
+[05/04 20:16:36] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.21255
+[05/04 20:16:36] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.17697
+[05/04 20:16:36] EA0 INFO: Timing(s): inf=0.113596, visual=0.043230, text=0.007162, fusion_wo_head=0.057885, head=0.003599
+[05/04 20:16:36] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.014648, bi_layer1=0.004594, bi_layer2=0.005461, total=0.024703
+[05/04 20:16:36] EA0 INFO: GPU memory(MiB): avg_allocated=950.31, avg_reserved=6460.32, peak_allocated=3801.02, peak_reserved=15014.00, warmup_iters=20
+[05/04 20:17:58] EA0 INFO: epoch 7, total time 81.64, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/04 20:19:23] EA0 INFO: epoch 8, total time 85.31, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/04 20:20:44] EA0 INFO: epoch 9, total time 81.00, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/04 20:20:59] EA0 INFO: Eval: [9]  
+[05/04 20:20:59] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.20693
+[05/04 20:20:59] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.17509
+[05/04 20:20:59] EA0 INFO: Timing(s): inf=0.103952, visual=0.038212, text=0.006556, fusion_wo_head=0.054183, head=0.003416
+[05/04 20:20:59] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.012985, bi_layer1=0.004130, bi_layer2=0.005028, total=0.022142
+[05/04 20:20:59] EA0 INFO: GPU memory(MiB): avg_allocated=949.48, avg_reserved=7784.00, peak_allocated=3803.13, peak_reserved=14764.00, warmup_iters=20
+[05/04 20:22:24] EA0 INFO: epoch 10, total time 84.95, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000

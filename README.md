@@ -177,6 +177,7 @@ The final required files are as follows:
   ```
   sh scripts/test_liferefer.sh
   ```
++ For `strefer`/`liferefer` evaluation, logs additionally report `WildRefer-official Acc0.25/Acc0.50/mIoU` (computed with the same box-IoU formula used in the official WildRefer repository) for direct comparison.
 
 ## Main Results
 + We provide the checkpoints for quick reproduction of the results reported in the paper.
