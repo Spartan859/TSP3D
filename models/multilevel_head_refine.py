@@ -256,9 +256,13 @@ class TSPHead(nn.Module):
                  use_text_guided_external_attn_bi_layer=(),
                  use_film_text_guided_external_attn_bi_layer=(),
                  external_attn_coef=4,
+                 external_attn_k=None,
                  top_pts_threshold_det=None,
                  measure_fps_detail=False):
         super(TSPHead, self).__init__()
+        if external_attn_k is None:
+            external_attn_k = {}
+        self.external_attn_k = external_attn_k
         self.voxel_size = voxel_size
         self.pts_prune_threshold = pts_prune_threshold
         self.assign_type = assign_type
@@ -372,7 +376,8 @@ class TSPHead(nn.Module):
             use_external_attn=0 in self.use_external_attn_bi_layer,
             use_text_guided_external_attn=0 in self.use_text_guided_external_attn_bi_layer,
             use_film_text_guided_external_attn=0 in self.use_film_text_guided_external_attn_bi_layer,
-            external_attn_coef=self.external_attn_coef
+            external_attn_coef=self.external_attn_coef,
+            external_attn_k=self.external_attn_k.get('bi_layer0')
         )
         bi_layer1 = BiEncoderLayer(
             128, dropout=0.1, activation="relu",
@@ -382,7 +387,8 @@ class TSPHead(nn.Module):
             use_external_attn=1 in self.use_external_attn_bi_layer,
             use_text_guided_external_attn=1 in self.use_text_guided_external_attn_bi_layer,
             use_film_text_guided_external_attn=1 in self.use_film_text_guided_external_attn_bi_layer,
-            external_attn_coef=self.external_attn_coef
+            external_attn_coef=self.external_attn_coef,
+            external_attn_k=self.external_attn_k.get('bi_layer1')
         )
         bi_layer2 = BiEncoderLayer(
             128, dropout=0.1, activation="relu",
@@ -392,7 +398,8 @@ class TSPHead(nn.Module):
             use_external_attn=2 in self.use_external_attn_bi_layer,
             use_text_guided_external_attn=2 in self.use_text_guided_external_attn_bi_layer,
             use_film_text_guided_external_attn=2 in self.use_film_text_guided_external_attn_bi_layer,
-            external_attn_coef=self.external_attn_coef
+            external_attn_coef=self.external_attn_coef,
+            external_attn_k=self.external_attn_k.get('com_trans')
         )
         # pdb.set_trace()
         self.keep_trans = nn.ModuleList([BiEncoder(bi_layer0, 2), BiEncoder(bi_layer1, 2)])
@@ -428,7 +435,8 @@ class TSPHead(nn.Module):
                 use_external_attn=True,
                 use_text_guided_external_attn=True,
                 use_film_text_guided_external_attn=True,
-                external_attn_coef=self.external_attn_coef)
+                external_attn_coef=self.external_attn_coef,
+                external_attn_k=self.external_attn_k.get('seg_128'))
             self.seg_self_attn_64 = PosTransformerEncoderLayerNoFFN(
                 d_model=64,
                 nhead=8,
@@ -436,7 +444,8 @@ class TSPHead(nn.Module):
                 use_external_attn=True,
                 use_text_guided_external_attn=True,
                 use_film_text_guided_external_attn=True,
-                external_attn_coef=self.external_attn_coef)
+                external_attn_coef=self.external_attn_coef,
+                external_attn_k=self.external_attn_k.get('seg_64'))
 
         if self.use_seg:
 
