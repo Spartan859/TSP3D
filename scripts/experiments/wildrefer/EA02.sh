@@ -22,7 +22,7 @@ TF32_MATMUL=default
 TF32_CUDNN=default
 CVD=""
 
-data_root="/root/lxy/TSP3D/data"
+data_root="${PWD}/data"
 
 auto_find_free_port() {
     local start=${1:-${MASTER_PORT_DEFAULT}}
@@ -146,7 +146,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
     --voxel_size=0.01 --num_workers=32 \
-    --dataset scanrefer --test_dataset scanrefer \
+    --dataset wildrefer --test_dataset wildrefer \
     --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \
     --augment_det \
@@ -165,6 +165,8 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --external_attn_k_com 0\
     --external_attn_k_seg128 64\
     --external_attn_k_seg64 64\
+    --prune_threshold_0 0.35\
+    --prune_threshold_1 0.35\
     # --com_threshold 0.15\
     # --num_samples_com 1800\
     # --use_refine \

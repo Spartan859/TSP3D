@@ -148,11 +148,14 @@ class TrainTester(BaseTrainTester):
     @staticmethod
     def _get_inputs(batch_data):
         # print(batch_data['utterances'])
-        return {
+        inputs = {
             'point_clouds': batch_data['point_clouds'].float(), # ([B, 50000, 6]) xyz + colour
             'text': batch_data['utterances'],                   # list[B]  text
             'target_cat': batch_data['target_cat']
         }
+        if 'point_valid_mask' in batch_data:
+            inputs['point_valid_mask'] = batch_data['point_valid_mask']
+        return inputs
 
 
     @staticmethod

@@ -19,7 +19,7 @@ import time
 import numpy as np
 import torch
 import torch.optim as optim
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, default_collate
 from torch.utils.data.distributed import DistributedSampler
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel
@@ -381,6 +381,101 @@ class BaseTrainTester:
         base_seed = int(args.rng_seed)
         rank = dist.get_rank() if dist.is_available() and dist.is_initialized() else 0
 
+        variable_point_keys = {'point_clouds', 'og_color', 'point_instance_label'}
+
+        def _safe_tensorize(item):
+            if torch.is_tensor(item):
+                return item
+            if isinstance(item, np.ndarray):
+                # Avoid numpy-backed non-resizable storages in worker-side default_collate.
+                return torch.as_tensor(item)
+            return item
+
+        def _pad_pointwise(batch_values, fill_value=0):
+            tensors = [_safe_tensorize(v) for v in batch_values]
+            lengths = [int(t.shape[0]) for t in tensors]
+            max_points = max(lengths) if lengths else 0
+            out_shape = (len(tensors), max_points) + tuple(tensors[0].shape[1:])
+            out = tensors[0].new_full(out_shape, fill_value)
+            valid_mask = torch.zeros((len(tensors), max_points), dtype=torch.bool)
+            for b, t in enumerate(tensors):
+                n = int(t.shape[0])
+                out[b, :n] = t
+                valid_mask[b, :n] = True
+            return out, valid_mask, lengths
+
+        def _pad_gt_masks(batch_values):
+            tensors = [_safe_tensorize(v) for v in batch_values]
+            num_obj = int(tensors[0].shape[0])
+            for t in tensors:
+                if t.ndim != 2 or int(t.shape[0]) != num_obj:
+                    raise RuntimeError(
+                        f"Unexpected gt_masks shape {tuple(t.shape)}; expected [MAX_NUM_OBJ, num_points] "
+                        f"with MAX_NUM_OBJ={num_obj}."
+                    )
+            lengths = [int(t.shape[1]) for t in tensors]
+            max_points = max(lengths) if lengths else 0
+            out = tensors[0].new_zeros((len(tensors), num_obj, max_points))
+            valid_mask = torch.zeros((len(tensors), max_points), dtype=torch.bool)
+            for b, t in enumerate(tensors):
+                n = int(t.shape[1])
+                out[b, :, :n] = t
+                valid_mask[b, :n] = True
+            return out, valid_mask, lengths
+
+        def safe_collate_fn(batch):
+            if len(batch) == 0:
+                return {}
+            if not isinstance(batch[0], dict):
+                return default_collate([_safe_tensorize(item) for item in batch])
+            first_keys = set(batch[0].keys())
+            for i, sample in enumerate(batch):
+                if not isinstance(sample, dict):
+                    raise RuntimeError(f"Mixed batch types in collate: got {type(sample)} at index {i}.")
+                if set(sample.keys()) != first_keys:
+                    raise RuntimeError(
+                        f"Inconsistent keys in batch at index {i}. "
+                        f"Expected {sorted(first_keys)}, got {sorted(sample.keys())}."
+                    )
+
+            collated = {}
+            point_valid_mask = None
+            point_lengths = None
+            for key in batch[0]:
+                values = [sample[key] for sample in batch]
+                try:
+                    if key in variable_point_keys:
+                        fill_value = -1 if key == 'point_instance_label' else 0
+                        padded, valid_mask, lengths = _pad_pointwise(values, fill_value=fill_value)
+                        collated[key] = padded
+                        if point_lengths is None:
+                            point_lengths = lengths
+                            point_valid_mask = valid_mask
+                        elif point_lengths != lengths:
+                            raise RuntimeError(
+                                f"Inconsistent point-wise lengths for key '{key}'. "
+                                f"Expected {point_lengths}, got {lengths}."
+                            )
+                    elif key == 'gt_masks':
+                        padded, valid_mask, lengths = _pad_gt_masks(values)
+                        collated[key] = padded
+                        if point_lengths is None:
+                            point_lengths = lengths
+                            point_valid_mask = valid_mask
+                        elif point_lengths != lengths:
+                            raise RuntimeError(
+                                f"Inconsistent point-wise lengths for key '{key}'. "
+                                f"Expected {point_lengths}, got {lengths}."
+                            )
+                    else:
+                        collated[key] = default_collate([_safe_tensorize(v) for v in values])
+                except Exception as e:
+                    raise RuntimeError(f"Collate failed for key '{key}': {e}") from e
+
+            if point_valid_mask is not None:
+                collated['point_valid_mask'] = point_valid_mask
+            return collated
+
         def seed_worker(worker_id):
             worker_seed = (base_seed + rank * 100000 + worker_id) % (2**32)
             np.random.seed(worker_seed)
@@ -406,7 +501,8 @@ class BaseTrainTester:
                 pin_memory=True,
                 sampler=train_sampler,
                 drop_last=True,
-                generator=g
+                generator=g,
+                collate_fn=safe_collate_fn
             )
         
         test_sampler = DistributedSampler(test_dataset, shuffle=False, seed=base_seed)
@@ -419,7 +515,8 @@ class BaseTrainTester:
             pin_memory=True,
             sampler=test_sampler,
             drop_last=False,
-            generator=g
+            generator=g,
+            collate_fn=safe_collate_fn
         )
         return train_loader, test_loader
 
@@ -613,11 +710,14 @@ class BaseTrainTester:
 
     @staticmethod
     def _get_inputs(batch_data):
-        return {
+        inputs = {
             'point_clouds': batch_data['point_clouds'].float(),
             'text': batch_data['utterances'],
             'target_cat': batch_data['target_cat']
         }
+        if 'point_valid_mask' in batch_data:
+            inputs['point_valid_mask'] = batch_data['point_valid_mask']
+        return inputs
         
     @staticmethod
     def _get_inputs_contra(batch_data):
@@ -642,11 +742,14 @@ class BaseTrainTester:
             }
             for b in range(gt_labels.shape[0])
         ]       
-        return {
+        inputs = {
             'point_clouds': batch_data['point_clouds'].float(),
             'text': batch_data['utterances'],
             'target':target
         }
+        if 'point_valid_mask' in batch_data:
+            inputs['point_valid_mask'] = batch_data['point_valid_mask']
+        return inputs
 
     @staticmethod
     def _compute_loss(end_points, criterion, set_criterion, args):

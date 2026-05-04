@@ -118,6 +118,17 @@ class BeaUTyDETR(nn.Module):
         """
         # STEP 1. vision and text encoding
         points = inputs['point_clouds']
+        if isinstance(points, torch.Tensor):
+            point_valid_mask = inputs.get('point_valid_mask', None)
+            if point_valid_mask is not None:
+                points = [points[b][point_valid_mask[b].bool()] for b in range(points.shape[0])]
+            else:
+                points = [p for p in points]
+        elif isinstance(points, (list, tuple)):
+            points = list(points)
+        else:
+            raise TypeError(f"Unsupported point_clouds type: {type(points)}")
+
         start_time = time.time()
         coordinates, features = ME.utils.batch_sparse_collate(
                 [(p[:, :3] / self.voxel_size, p[:, 0:] if p.shape[1] > 3 else p[:, :3]) for p in points],
@@ -154,7 +165,7 @@ class BeaUTyDETR(nn.Module):
         start_time = time.time()
         tokenized = self.tokenizer.batch_encode_plus(
             inputs['text'], padding="longest", return_tensors="pt"
-        ).to(inputs['point_clouds'].device)
+        ).to(points[0].device)
         
         encoded_text = self.text_encoder(**tokenized)
         text_feats = self.text_projector(encoded_text.last_hidden_state) 

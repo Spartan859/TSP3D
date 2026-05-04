@@ -993,6 +993,9 @@ class TSPHead(nn.Module):
         bbox_preds = torch.cat(bbox_preds)
         cls_preds = torch.cat(cls_preds)
         points = torch.cat(points)
+        pos_bbox_preds_format = bbox_preds.new_zeros((0, bbox_preds.shape[1]))
+        score = cls_preds.new_zeros((0, cls_preds.shape[1]))
+        label = gt_labels.new_zeros((0,), dtype=gt_labels.dtype)
 
         # cls loss
         n_classes = cls_preds.shape[1]
@@ -1105,10 +1108,13 @@ class TSPHead(nn.Module):
             )
         # pdb.set_trace()
         loss_dict = dict(
-            bbox_loss=self.bbox_loss_weight * torch.mean(torch.cat(bbox_losses)),
-            cls_loss=torch.sum(torch.cat(cls_losses)) / torch.sum(torch.cat(pos_masks)),
+            bbox_loss=self.bbox_loss_weight * (
+                torch.mean(torch.cat(bbox_losses))
+                if len(bbox_losses) > 0 else torch.sum(torch.cat(cls_losses)) * 0.0
+            ),
+            cls_loss=torch.sum(torch.cat(cls_losses)) / torch.sum(torch.cat(pos_masks)).clamp(min=1).float(),
             keep_loss=self.keep_loss_weight * keep_losses / len(img_metas),
-            com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com)),
+            com_loss=torch.sum(torch.cat(com_losses)) / torch.sum(torch.cat(pos_masks_com)).clamp(min=1).float(),
         )
         # pdb.set_trace()
         if self.use_seg:

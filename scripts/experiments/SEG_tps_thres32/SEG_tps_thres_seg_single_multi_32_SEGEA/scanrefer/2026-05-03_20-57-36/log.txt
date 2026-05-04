@@ -209,3 +209,28 @@
 [05/04 11:13:44] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: bbox_loss 0.4064 	cls_loss 0.1288 	com_loss 0.1079 	keep_loss 0.0627 	loss 2.2477 	refine_bbox_loss 1.4224 	refine_score_loss 0.0000 	seg_loss 0.0731 	seg_loss_dice 0.0464 	
 [05/04 11:24:54] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Train: [226][1000/1737]  
 [05/04 11:24:54] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: bbox_loss 0.4103 	cls_loss 0.1282 	com_loss 0.1082 	keep_loss 0.0625 	loss 2.2689 	refine_bbox_loss 1.4398 	refine_score_loss 0.0000 	seg_loss 0.0735 	seg_loss_dice 0.0465 	
+[05/04 11:36:09] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Train: [226][1500/1737]  
+[05/04 11:36:09] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: bbox_loss 0.4117 	cls_loss 0.1287 	com_loss 0.1088 	keep_loss 0.0623 	loss 2.2882 	refine_bbox_loss 1.4568 	refine_score_loss 0.0000 	seg_loss 0.0734 	seg_loss_dice 0.0465 	
+[05/04 11:41:37] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: epoch 226, total time 2350.01, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[05/04 11:53:01] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Train: [227][500/1737]  
+[05/04 11:53:01] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: bbox_loss 0.4082 	cls_loss 0.1276 	com_loss 0.1088 	keep_loss 0.0629 	loss 2.3002 	refine_bbox_loss 1.4743 	refine_score_loss 0.0000 	seg_loss 0.0726 	seg_loss_dice 0.0459 	
+[05/04 12:04:14] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Train: [227][1000/1737]  
+[05/04 12:04:14] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: bbox_loss 0.4076 	cls_loss 0.1283 	com_loss 0.1094 	keep_loss 0.0628 	loss 2.2468 	refine_bbox_loss 1.4198 	refine_score_loss 0.0000 	seg_loss 0.0728 	seg_loss_dice 0.0461 	
+[05/04 12:15:34] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Train: [227][1500/1737]  
+[05/04 12:15:34] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: bbox_loss 0.4086 	cls_loss 0.1291 	com_loss 0.1101 	keep_loss 0.0632 	loss 2.2702 	refine_bbox_loss 1.4407 	refine_score_loss 0.0000 	seg_loss 0.0724 	seg_loss_dice 0.0459 	
+[05/04 12:21:16] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: epoch 227, total time 2379.79, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[05/04 12:32:33] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Train: [228][500/1737]  
+[05/04 12:32:33] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: bbox_loss 0.4099 	cls_loss 0.1270 	com_loss 0.1087 	keep_loss 0.0616 	loss 2.3129 	refine_bbox_loss 1.4875 	refine_score_loss 0.0000 	seg_loss 0.0717 	seg_loss_dice 0.0464 	
+[05/04 12:43:57] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Train: [228][1000/1737]  
+[05/04 12:43:57] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: bbox_loss 0.4091 	cls_loss 0.1285 	com_loss 0.1096 	keep_loss 0.0624 	loss 2.2682 	refine_bbox_loss 1.4413 	refine_score_loss 0.0000 	seg_loss 0.0713 	seg_loss_dice 0.0460 	
+[05/04 12:55:13] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Train: [228][1500/1737]  
+[05/04 12:55:13] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: bbox_loss 0.4088 	cls_loss 0.1285 	com_loss 0.1094 	keep_loss 0.0622 	loss 2.2720 	refine_bbox_loss 1.4456 	refine_score_loss 0.0000 	seg_loss 0.0716 	seg_loss_dice 0.0460 	
+[05/04 13:00:38] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: epoch 228, total time 2361.52, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0001000
+[05/04 13:01:53] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Eval: [228]  
+[05/04 13:01:53] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: 3dcnn Acc0.25: Top-1: 0.55511
+[05/04 13:01:53] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: 3dcnn Acc0.50: Top-1: 0.47770
+[05/04 13:01:53] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Acc_mask0.25 0.5739377366428271
+[05/04 13:01:53] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Acc_mask0.50 0.49495161968868323
+[05/04 13:01:53] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: Timing(s): inf=0.183804, visual=0.042739, text=0.007321, fusion_wo_head=0.059703, head=0.072555
+[05/04 13:01:53] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: External-attn-affected module time(s): bi_layer0=0.009004, bi_layer1=0.007784, bi_layer2=0.005543, total=0.022330
+[05/04 13:01:53] SEG_tps_thres_seg_single_multi_32_SEGEA INFO: GPU memory(MiB): avg_allocated=1409.78, avg_reserved=10590.70, peak_allocated=4599.78, peak_reserved=29952.00, warmup_iters=20
