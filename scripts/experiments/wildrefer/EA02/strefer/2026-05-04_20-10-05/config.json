@@ -10,12 +10,12 @@
   "use_contrastive_align": false,
   "use_soft_token_loss": false,
   "detect_intermediate": true,
-  "joint_det": true,
+  "joint_det": false,
   "batch_size": 7,
   "dataset": [
-    "sr3d"
+    "strefer"
   ],
-  "test_dataset": "sr3d",
+  "test_dataset": "strefer",
   "data_root": "/share/lxy/TSP3D_ori/data/",
   "use_height": false,
   "use_color": true,
@@ -51,7 +51,7 @@
   "checkpoint_path": null,
   "load_optimizer": true,
   "load_scheduler": true,
-  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/sr3d/EA0/sr3d/2026-05-04_13-39-39",
+  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/wildrefer/EA02/strefer/2026-05-04_20-10-05",
   "print_freq": 500,
   "save_freq": 3,
   "val_freq": 3,
@@ -77,13 +77,16 @@
   "use_seg": false,
   "use_refine": false,
   "use_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_text_guided_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_film_text_guided_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_external_attn_bi_layer0": true,
   "use_text_guided_external_attn_bi_layer0": true,
@@ -95,14 +98,14 @@
   "external_attn_coef": 4,
   "external_attn_k_keep0": 64,
   "external_attn_k_keep1": 64,
-  "external_attn_k_com": 64,
+  "external_attn_k_com": 0,
   "external_attn_k_seg128": 64,
   "external_attn_k_seg64": 64,
   "top_pts_threshold": 32,
   "top_pts_threshold_det": 32,
   "gpu_mem_limit_gb": 0.0,
-  "prune_threshold_0": 0.3,
-  "prune_threshold_1": 0.7,
+  "prune_threshold_0": 0.35,
+  "prune_threshold_1": 0.35,
   "nms_pre": 1,
   "nms_iou_thr": 0.5,
   "nms_score_thr": 0.01

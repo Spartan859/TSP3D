@@ -38,6 +38,7 @@ NUM_CLASSES = 485
 DC = ScannetDatasetConfig(NUM_CLASSES)
 DC18 = ScannetDatasetConfig(18)
 MAX_NUM_OBJ = 132
+WILDREFER_DATASETS = {'strefer', 'liferefer'}
 
 
 class Joint3DDataset(Dataset):
@@ -72,12 +73,17 @@ class Joint3DDataset(Dataset):
             and len(dataset_dict.keys()) > 1
             and self.split == 'train'
         )
+        selected_wildrefer_dsets = set(dataset_dict.keys()).intersection(WILDREFER_DATASETS)
         self.wildrefer_mode = (
-            (self.split == 'train' and 'wildrefer' in dataset_dict and len(dataset_dict.keys()) == 1)
-            or (self.split != 'train' and test_dataset == 'wildrefer')
+            (self.split == 'train' and len(selected_wildrefer_dsets) == 1 and len(dataset_dict.keys()) == 1)
+            or (self.split != 'train' and test_dataset in WILDREFER_DATASETS)
         )
-        if self.split == 'train' and 'wildrefer' in dataset_dict and len(dataset_dict.keys()) > 1:
-            raise ValueError('wildrefer currently supports standalone training only (no mixed dataset training).')
+        if self.split == 'train' and selected_wildrefer_dsets:
+            if len(selected_wildrefer_dsets) != 1 or len(dataset_dict.keys()) != 1:
+                raise ValueError(
+                    'strefer/liferefer currently support standalone training only '
+                    '(single dataset, no mixed training).'
+                )
         self.augment_det = augment_det
         self.wo_obj_name = wo_obj_name
 
@@ -170,15 +176,16 @@ class Joint3DDataset(Dataset):
             'sr3d+': self.load_sr3dplus_annos,
             'scanrefer': self.load_scanrefer_annos, # scanrefer
             'scannet': self.load_scannet_annos,      # scannet detection augmentation
-            'wildrefer': self.load_wildrefer_annos
+            'strefer': self.load_strefer_annos,
+            'liferefer': self.load_liferefer_annos
         }
         annos = loaders[dset]()
         if self.overfit:
             annos = annos[:128]
         return annos
 
-    def load_wildrefer_annos(self):
-        """Load annotations of WildRefer (LifeRefer + STRefer)."""
+    def _load_wildrefer_annos(self, dataset_name):
+        """Load annotations of a WildRefer split dataset."""
         split = 'train' if self.split == 'train' else 'test'
         base = os.path.join(self.data_path, 'WildRefer')
 
@@ -193,10 +200,7 @@ class Joint3DDataset(Dataset):
                     return candidate
             raise FileNotFoundError(f'WildRefer annotation not found: {file_name}')
 
-        file_names = [
-            f'strefer_{split}.json',
-            f'liferefer_{split}.json'
-        ]
+        file_names = [f'{dataset_name}_{split}.json']
         annos = []
         for file_name in file_names:
             with open(_find_json_file(file_name)) as f:
@@ -208,16 +212,16 @@ class Joint3DDataset(Dataset):
                 bbox = np.array(anno['point_cloud']['bbox'], dtype=np.float32).reshape(-1)[:6]
                 scene_id = str(anno['scene_id'])
                 point_cloud_name = str(anno['point_cloud']['point_cloud_name'])
-                group_id = str(anno.get('group_id', 'wildrefer'))
+                group_id = str(anno.get('group_id', dataset_name))
                 annos.append({
-                    'scan_id': f'{group_id}:{scene_id}:{point_cloud_name}',
+                    'scan_id': f'{dataset_name}:{group_id}:{scene_id}:{point_cloud_name}',
                     'target_id': 0,
                     'distractor_ids': [],
                     'utterance': description,
                     'target': target_name,
                     'anchors': [],
                     'anchor_ids': [],
-                    'dataset': 'wildrefer',
+                    'dataset': dataset_name,
                     'target_cat': 17,
                     'wildrefer_scene_id': scene_id,
                     'wildrefer_group_id': group_id,
@@ -226,6 +230,12 @@ class Joint3DDataset(Dataset):
                 })
 
         return annos
+
+    def load_strefer_annos(self):
+        return self._load_wildrefer_annos('strefer')
+
+    def load_liferefer_annos(self):
+        return self._load_wildrefer_annos('liferefer')
 
     def load_sr3dplus_annos(self):
         """Load annotations of sr3d/sr3d+."""
@@ -944,7 +954,7 @@ class Joint3DDataset(Dataset):
 
         # step Read annotation and point clouds
         anno = self.annos[index]
-        if anno['dataset'] == 'wildrefer':
+        if anno['dataset'] in WILDREFER_DATASETS:
             return self._get_wildrefer_item(anno, language_dataset)
         scan = self.scans[anno['scan_id']]
         scan.pc = np.copy(scan.orig_pc)
@@ -1127,20 +1137,29 @@ class Joint3DDataset(Dataset):
         return ret_dict
 
     def _get_wildrefer_point_cloud_path(self, anno):
+        dataset_name = anno['dataset']
         scene_id = anno['wildrefer_scene_id']
         point_cloud_name = anno['wildrefer_point_cloud_name']
         base = os.path.join(self.data_path, 'WildRefer')
-        candidates = [
-            os.path.join(base, 'STRefer', 'points_rgbd', scene_id, f'{point_cloud_name}.npy'),
-            os.path.join(base, 'LifeRefer', 'points_rgbd', scene_id, f'{point_cloud_name}.npy'),
-            os.path.join(base, 'src', 'STRefer', 'points_rgbd', scene_id, f'{point_cloud_name}.npy'),
-            os.path.join(base, 'src', 'LifeRefer', 'points_rgbd', scene_id, f'{point_cloud_name}.npy'),
-        ]
+        if dataset_name == 'strefer':
+            source_dirs = ['STRefer']
+        elif dataset_name == 'liferefer':
+            source_dirs = ['LifeRefer']
+        else:
+            raise ValueError(f'Unsupported WildRefer dataset: {dataset_name}')
+        candidates = []
+        for source_dir in source_dirs:
+            candidates.append(
+                os.path.join(base, source_dir, 'points_rgbd', scene_id, f'{point_cloud_name}.npy')
+            )
+            candidates.append(
+                os.path.join(base, 'src', source_dir, 'points_rgbd', scene_id, f'{point_cloud_name}.npy')
+            )
         for candidate in candidates:
             if os.path.exists(candidate):
                 return candidate
         raise FileNotFoundError(
-            f'WildRefer point cloud not found for scene={scene_id}, frame={point_cloud_name}. '
+            f'WildRefer point cloud not found for dataset={dataset_name}, scene={scene_id}, frame={point_cloud_name}. '
             f'Checked: {candidates}'
         )
 

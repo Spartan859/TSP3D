@@ -376,6 +376,7 @@ class ExternalMultiheadAttention(nn.Module):
         x = self.linear_1(attn).permute(0, 2, 1, 3).reshape(B, N, -1)
         x = self.proj(x)
         x = self.proj_drop(x)
+        x = torch.nan_to_num(x, nan=0.0, posinf=1e4, neginf=-1e4)
         attn_output_weights = None
         if not self.batch_first:
             x = x.transpose(0, 1)  # (N, B, C)

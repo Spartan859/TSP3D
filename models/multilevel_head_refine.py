@@ -585,7 +585,7 @@ class TSPHead(nn.Module):
 
     def _forward_single(self, x: ME.SparseTensor):
         reg_final = self.bbox_conv(x).features
-        reg_distance = torch.exp(reg_final[:, 3:6])
+        reg_distance = torch.exp(reg_final[:, 3:6].clamp(min=-10.0, max=10.0))
         reg_angle = reg_final[:, 6:]
         bbox_pred = torch.cat((reg_final[:, :3], reg_distance, reg_angle), dim=1)
         scores = self.cls_conv(x)
@@ -972,7 +972,8 @@ class TSPHead(nn.Module):
         scale = bbox_pred[:, 3] + bbox_pred[:, 4]
         q = torch.exp(
             torch.sqrt(
-                torch.pow(bbox_pred[:, 6], 2) + torch.pow(bbox_pred[:, 7], 2)))
+                torch.pow(bbox_pred[:, 6], 2) + torch.pow(bbox_pred[:, 7], 2)
+            ).clamp(max=10.0))
         alpha = 0.5 * torch.atan2(bbox_pred[:, 6], bbox_pred[:, 7])
         return torch.stack(
             (x_center, y_center, z_center, scale / (1 + q), scale /
@@ -1418,7 +1419,7 @@ class TSPHead(nn.Module):
         roi_size = rois[:, 3:6].clamp(min=1e-6)
 
         pred_ctr = roi_ctr + delta[:, :3] * roi_size
-        pred_size = roi_size * torch.exp(delta[:, 3:6])
+        pred_size = roi_size * torch.exp(delta[:, 3:6].clamp(min=-10.0, max=10.0))
 
         # pred_ctr = roi_ctr + delta[:, :3] 
         # pred_size = torch.exp(delta[:, 3:6])

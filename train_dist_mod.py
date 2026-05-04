@@ -46,13 +46,27 @@ class TrainTester(BaseTrainTester):
     def get_datasets(args):
         """Initialize datasets."""
 
+        wildrefer_dsets = {'strefer', 'liferefer'}
         dataset_dict = {}  # dict to use multiple datasets
         for dset in args.dataset:
             dataset_dict[dset] = 1
-        if args.joint_det and 'wildrefer' not in dataset_dict:
+        if args.test_dataset in wildrefer_dsets and (
+            len(dataset_dict) != 1 or args.test_dataset not in dataset_dict
+        ):
+            raise ValueError(
+                "For strefer/liferefer runs, use matching single-dataset args: "
+                "--dataset <strefer|liferefer> --test_dataset <same>."
+            )
+        selected_wildrefer = [d for d in dataset_dict if d in wildrefer_dsets]
+        if selected_wildrefer and (len(dataset_dict) != 1 or len(selected_wildrefer) != 1):
+            raise ValueError(
+                'strefer/liferefer currently support standalone training only '
+                '(single dataset, no mixed training).'
+            )
+        if args.joint_det and not selected_wildrefer:
             dataset_dict['scannet'] = 10
-        elif args.joint_det and 'wildrefer' in dataset_dict:
-            print('Warning: --joint_det is ignored for wildrefer dataset.')
+        elif args.joint_det and selected_wildrefer:
+            print(f'Warning: --joint_det is ignored for {selected_wildrefer[0]} dataset.')
         print('Loading datasets:', sorted(list(dataset_dict.keys())))
 
         if args.eval:

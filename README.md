@@ -141,9 +141,13 @@ The final required files are as follows:
   ```
   sh scripts/train_nr3d.sh
   ```
-+ For **WildRefer** training
++ For **STRefer** training
   ```
-  sh scripts/train_wildrefer.sh
+  sh scripts/train_strefer.sh
+  ```
++ For **LifeRefer** training
+  ```
+  sh scripts/train_liferefer.sh
   ```
 
 ### 4. Evaluation
@@ -165,9 +169,13 @@ The final required files are as follows:
   ```
   sh scripts/test_nr3d.sh
   ```
-+ For **WildRefer** evaluation
++ For **STRefer** evaluation
   ```
-  sh scripts/test_wildrefer.sh
+  sh scripts/test_strefer.sh
+  ```
++ For **LifeRefer** evaluation
+  ```
+  sh scripts/test_liferefer.sh
   ```
 
 ## Main Results

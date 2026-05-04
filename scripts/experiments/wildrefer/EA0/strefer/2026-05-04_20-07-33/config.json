@@ -10,12 +10,12 @@
   "use_contrastive_align": false,
   "use_soft_token_loss": false,
   "detect_intermediate": true,
-  "joint_det": true,
+  "joint_det": false,
   "batch_size": 7,
   "dataset": [
-    "wildrefer"
+    "strefer"
   ],
-  "test_dataset": "wildrefer",
+  "test_dataset": "strefer",
   "data_root": "/share/lxy/TSP3D_ori/data/",
   "use_height": false,
   "use_color": true,
@@ -37,8 +37,7 @@
   "seg_lr": 0.0001,
   "lr_scheduler": "step",
   "lr_decay_epochs": [
-    50,
-    75
+    400
   ],
   "lr_decay_rate": 0.1,
   "clip_norm": 0.1,
@@ -51,7 +50,7 @@
   "checkpoint_path": null,
   "load_optimizer": true,
   "load_scheduler": true,
-  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/wildrefer/EA0/wildrefer/2026-05-04_14-05-14",
+  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/wildrefer/EA0/strefer/2026-05-04_20-07-33",
   "print_freq": 500,
   "save_freq": 3,
   "val_freq": 3,
@@ -101,8 +100,8 @@
   "top_pts_threshold": 32,
   "top_pts_threshold_det": 32,
   "gpu_mem_limit_gb": 0.0,
-  "prune_threshold_0": 0.3,
-  "prune_threshold_1": 0.7,
+  "prune_threshold_0": 0.35,
+  "prune_threshold_1": 0.35,
   "nms_pre": 1,
   "nms_iou_thr": 0.5,
   "nms_score_thr": 0.01

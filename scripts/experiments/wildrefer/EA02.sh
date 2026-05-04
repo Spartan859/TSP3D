@@ -21,6 +21,7 @@ GPU_FREE_UTIL_THRESHOLD=10
 TF32_MATMUL=default
 TF32_CUDNN=default
 CVD=""
+DATASET="strefer"
 
 data_root="${PWD}/data"
 
@@ -146,11 +147,11 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
     --voxel_size=0.01 --num_workers=32 \
-    --dataset wildrefer --test_dataset wildrefer \
-    --detect_intermediate --joint_det \
+    --dataset ${DATASET} --test_dataset ${DATASET} \
+    --detect_intermediate \
     --log_dir "${log_dir}" \
     --augment_det \
-    --lr_decay_epochs 50 75\
+    --lr_decay_epochs 400\
     --load_optimizer \
     --load_scheduler \
     --tf32_matmul ${TF32_MATMUL} \
@@ -162,7 +163,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --rng_seed ${RNG_SEED}\
     --external_attn_k_keep0 64\
     --external_attn_k_keep1 64\
-    --external_attn_k_com 0\
+    --external_attn_k_com 64\
     --external_attn_k_seg128 64\
     --external_attn_k_seg64 64\
     --prune_threshold_0 0.35\

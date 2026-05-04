@@ -225,6 +225,22 @@ def parse_option():
 
     args, _ = parser.parse_known_args()
 
+    if 'wildrefer' in args.dataset or args.test_dataset == 'wildrefer':
+        parser.error("Dataset name 'wildrefer' is not supported. Use 'strefer' or 'liferefer'.")
+
+    valid_datasets = {'scanrefer', 'sr3d', 'sr3d+', 'nr3d', 'scannet', 'strefer', 'liferefer'}
+    unknown_train_datasets = sorted(set(args.dataset) - valid_datasets)
+    if unknown_train_datasets:
+        parser.error(
+            f"Unsupported dataset(s): {unknown_train_datasets}. "
+            f"Valid options: {sorted(valid_datasets)}"
+        )
+    if args.test_dataset not in valid_datasets:
+        parser.error(
+            f"Unsupported --test_dataset '{args.test_dataset}'. "
+            f"Valid options: {sorted(valid_datasets)}"
+        )
+
     args.eval = args.eval or args.eval_train
     if args.external_attn_coef <= 0:
         parser.error('--external_attn_coef must be a positive integer.')
@@ -804,6 +820,17 @@ class BaseTrainTester:
             
             losses = model(inputs, gt_bboxes_3d, gt_labels_3d, gt_all_bbox_new, auxi_bbox, gt_masks, img_metas, epoch)
             loss = losses['loss']
+            if not torch.isfinite(loss):
+                self._tqdm_newline(train_loader)
+                self.logger.warning(
+                    f"Skip non-finite loss at epoch {epoch}, iter {batch_idx + 1}: "
+                    + ', '.join(
+                        f"{k}={float(v.detach().cpu()) if torch.is_tensor(v) and v.numel() == 1 else v}"
+                        for k, v in losses.items() if 'loss' in k
+                    )
+                )
+                optimizer.zero_grad(set_to_none=True)
+                continue
 
             optimizer.zero_grad()
             loss.backward()
@@ -812,6 +839,14 @@ class BaseTrainTester:
                 grad_total_norm = torch.nn.utils.clip_grad_norm_(
                     model.parameters(), args.clip_norm
                 )
+                if not torch.isfinite(grad_total_norm):
+                    self._tqdm_newline(train_loader)
+                    self.logger.warning(
+                        f"Skip optimizer step due to non-finite grad norm at "
+                        f"epoch {epoch}, iter {batch_idx + 1}: grad_norm={grad_total_norm}"
+                    )
+                    optimizer.zero_grad(set_to_none=True)
+                    continue
                 stat_dict['grad_norm'] = grad_total_norm
             
             optimizer.step()
