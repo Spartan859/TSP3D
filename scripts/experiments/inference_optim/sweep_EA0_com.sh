@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Sweep prune_threshold_1 for the 20260216 / epoch-204 checkpoint.
+# Sweep com_threshold and num_samples_com for the 20260216 / epoch-204 checkpoint.
 #
 # Architecture flags are copied verbatim from:
 #   scripts/experiments/20260216/text_guided_EA_FiLM_totalB28.sh
 #
 # Usage:
-#   bash scripts/experiments/inference_optim/sweep_EA0_pts1.sh
-#   CVD=2 bash scripts/experiments/inference_optim/sweep_EA0_pts1.sh
+#   bash scripts/experiments/inference_optim/sweep_EA0_com.sh
+#   CVD=2 bash scripts/experiments/inference_optim/sweep_EA0_com.sh
 
 set -euo pipefail
 
@@ -62,7 +62,7 @@ python scripts/experiments/inference_optim/sweep.py \
     --use_external_attn_bi_layer0 \
     --use_text_guided_external_attn_bi_layer0 \
     --use_film_text_guided_external_attn_bi_layer0 \
-    --sweep_params '{"prune_threshold_0":[0.25,0.3,0.35,0.4], "prune_threshold_1":[0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6]}' \
+    --sweep_params '{"com_threshold":[0.05,0.10,0.15,0.20,0.30,0.50], "num_samples_com":[1200,2400,3600,4800,9600]}' \
     --sweep_mode grid \
     --output_jsonl "${OUTPUT_JSONL}"
 

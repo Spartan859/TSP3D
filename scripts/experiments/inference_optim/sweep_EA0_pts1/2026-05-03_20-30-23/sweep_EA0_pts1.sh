@@ -62,7 +62,7 @@ python scripts/experiments/inference_optim/sweep.py \
     --use_external_attn_bi_layer0 \
     --use_text_guided_external_attn_bi_layer0 \
     --use_film_text_guided_external_attn_bi_layer0 \
-    --sweep_params '{"prune_threshold_0":[0.25,0.3,0.35,0.4], "prune_threshold_1":[0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6]}' \
+    --sweep_params '{"prune_threshold_0":[0.25,0.3,0.35,0.4], "prune_threshold_1":[0.4,0.5,0.6,0.7,0.8,0.9]}' \
     --sweep_mode grid \
     --output_jsonl "${OUTPUT_JSONL}"
 
