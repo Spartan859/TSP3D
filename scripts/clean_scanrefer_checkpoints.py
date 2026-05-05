@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Clean .pth checkpoints in each folder under outputs/logs/scanrefer.
+Clean .pth checkpoints by discovering run folders from checkpoint files under a root path.
 Rules:
  1. Parse log.txt for these metrics lines (example):
     "3dcnn Acc0.25: Top-1: 0.56077"
@@ -244,22 +244,11 @@ def process_folder(folder: Path, apply: bool = False, dry_run: bool = True):
                 print(f"    Failed to delete {p.name}: {e}")
 
 
-def find_scanrefer_dirs(rootp: Path):
-    scanrefer_dirs = []
-    if rootp.is_dir() and rootp.name == 'scanrefer':
-        scanrefer_dirs.append(rootp)
-    for p in rootp.rglob('scanrefer'):
-        if p.is_dir():
-            scanrefer_dirs.append(p)
-    # de-duplicate while preserving order
-    seen = set()
-    unique = []
-    for p in scanrefer_dirs:
-        if p in seen:
-            continue
-        seen.add(p)
-        unique.append(p)
-    return unique
+def find_run_dirs_from_pth(rootp: Path):
+    run_dirs = sorted({p.parent for p in rootp.rglob('*.pth') if p.is_file()})
+    with_log = [d for d in run_dirs if (d / 'log.txt').exists()]
+    without_log = [d for d in run_dirs if not (d / 'log.txt').exists()]
+    return with_log, without_log
 
 
 def main(root: str, apply: bool = False):
@@ -267,23 +256,27 @@ def main(root: str, apply: bool = False):
     if not rootp.exists():
         print(f"Root {root} does not exist")
         return
-    scanrefer_dirs = find_scanrefer_dirs(rootp)
-    if not scanrefer_dirs:
-        print(f"No scanrefer directories found under {root}")
+    run_dirs, skipped_no_log = find_run_dirs_from_pth(rootp)
+    if not run_dirs:
+        print(f"No processable run directories found under {root} (need .pth and log.txt in same folder)")
+        if skipped_no_log:
+            print(f"Skipped {len(skipped_no_log)} directories without log.txt")
         return
-    print("Found scanrefer directories:")
-    for p in scanrefer_dirs:
+    print(f"Found {len(run_dirs)} processable run directories:")
+    for p in run_dirs:
         print(f"  {p}")
-    for scanrefer_dir in scanrefer_dirs:
-        for sub in sorted(scanrefer_dir.iterdir()):
-            if not sub.is_dir():
-                continue
-            process_folder(sub, apply=apply, dry_run=not apply)
+    if skipped_no_log:
+        print(f"Skipped {len(skipped_no_log)} directories without log.txt")
+    for run_dir in run_dirs:
+        if not run_dir.exists():
+            print(f"Skipping missing run directory: {run_dir}")
+            continue
+        process_folder(run_dir, apply=apply, dry_run=not apply)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--root', type=str, default='outputs/logs/scanrefer', help='Root path containing scanrefer run folders')
+    parser.add_argument('--root', type=str, default='outputs/logs', help='Root path to recursively discover run folders from .pth files')
     parser.add_argument('--apply', action='store_true', help='Actually delete files; default is dry-run')
     args = parser.parse_args()
 
