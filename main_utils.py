@@ -19,7 +19,11 @@ import time
 import numpy as np
 import torch
 import torch.optim as optim
-from torch.utils.data import DataLoader, default_collate
+from torch.utils.data import DataLoader
+try:
+    from torch.utils.data import default_collate
+except ImportError:
+    from torch.utils.data._utils.collate import default_collate
 from torch.utils.data.distributed import DistributedSampler
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel
