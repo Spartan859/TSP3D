@@ -810,27 +810,39 @@ class TSPHead(nn.Module):
         with torch.no_grad():
             prune_mask = scores.new_zeros(
                 (len(scores)), dtype=torch.bool)
-
+            threshold = self.prune_threshold[layer_id]
             for permutation in x.decomposition_permutations:
                 score = scores[permutation].sigmoid()
                 score = 1 - score
-                mask = score > self.prune_threshold[layer_id]
+                mask = score > threshold
                 mask = mask.reshape([len(score)])
-                prune_mask[permutation[mask]] = True                 
-        kept = int(prune_mask.sum().item())
-        if kept != 0:
-            x = self.pruning(x, prune_mask)
-        else:
-            logger.warning(
-                "Prune inference removed all points at layer %s (threshold=%s, scores_range=[%.6f, %.6f]).",
-                layer_id,
-                self.prune_threshold[layer_id],
-                float(scores.min().item()) if scores.numel() else float("nan"),
-                float(scores.max().item()) if scores.numel() else float("nan"),
-            )
-            x = None
+                prune_mask[permutation[mask]] = True
 
-        return x
+            kept = int(prune_mask.sum().item())
+            if kept == 0 and scores.numel() > 0:
+                logger.warning(
+                    "Prune inference removed all points at layer %s (threshold=%s, scores_range=[%.6f, %.6f]); applying per-sample Top-1 fallback.",
+                    layer_id,
+                    threshold,
+                    float(scores.min().item()),
+                    float(scores.max().item()),
+                )
+                for permutation in x.decomposition_permutations:
+                    if len(permutation) == 0:
+                        continue
+                    score = 1 - scores[permutation].sigmoid()
+                    score = score.reshape([len(score)])
+                    top_idx = torch.argmax(score)
+                    prune_mask[permutation[top_idx]] = True
+                kept = int(prune_mask.sum().item())
+
+        if kept == 0:
+            logger.warning(
+                "Prune inference fallback failed at layer %s; keeping original tensor unchanged.",
+                layer_id,
+            )
+            return x
+        return self.pruning(x, prune_mask)
 
 
     def _prune_training(self, x, scores, layer_id):
@@ -1598,7 +1610,6 @@ class TSPHead(nn.Module):
                     x = x + x_level
                 else:
                     logger.warning("Forward test stopped at layer %s: x is None after pruning.", i)
-                    pdb.set_trace()
                     break
             elif i ==0:
                 if self.measure_fps_detail:
@@ -1619,7 +1630,6 @@ class TSPHead(nn.Module):
                     x_ori = x + x_level
                 else:
                     logger.warning("Forward test stopped at layer %s: x is None after pruning.", i)
-                    pdb.set_trace()
                     break
         
                 sampled_coords,sampled_features, original_indices = [],[],[]
