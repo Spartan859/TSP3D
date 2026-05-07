@@ -133,7 +133,13 @@ fi
 
 echo master_port: ${master_port}
 
-TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
+if command -v torchrun >/dev/null 2>&1; then
+    dist_launch_cmd=(torchrun)
+else
+    dist_launch_cmd=(python -m torch.distributed.launch)
+fi
+
+TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}" \
     --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
     train_dist_mod.py \
     --use_color \
@@ -145,7 +151,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --text_encoder_lr=$(lr_scale "${BASE_TEXT_ENCODER_LR}") \
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
-    --voxel_size=0.01 --num_workers=32 \
+    --voxel_size=0.01 --num_workers=8 \
     --dataset sr3d --test_dataset sr3d \
     --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \

@@ -104,7 +104,9 @@ class Joint3DDataset(Dataset):
             'data/meta_data/scannetv2-labels.combined.tsv',
             label_from='raw_category',
             label_to='nyu40class'
-        )   
+        )
+        # mapping from raw category names to compact label ids (used by several loaders)
+        self.raw2label = self._get_raw2label()
 
         self.multiview_path = os.path.join(
             f'{self.data_path}/scanrefer_2d_feats',
@@ -265,7 +267,8 @@ class Joint3DDataset(Dataset):
                     'target': line[headers['instance_type']],
                     'anchors': eval(line[headers['anchors_types']]),
                     'anchor_ids': eval(line[headers['anchor_ids']]),
-                    'dataset': dset
+                    'dataset': dset,
+                    'target_cat': self.raw2label.get(line[headers['instance_type']], 17)
                 }
                 for line in csv_reader
                 if line[headers['scan_id']] in scan_ids
@@ -297,7 +300,8 @@ class Joint3DDataset(Dataset):
                     'utterance': line[headers['utterance']],
                     'anchor_ids': [],
                     'anchors': [],
-                    'dataset': 'nr3d'
+                    'dataset': 'nr3d',
+                    'target_cat': self.raw2label.get(line[headers['instance_type']], 17)
                 }
                 for line in csv_reader
                 if line[headers['scan_id']] in scan_ids
@@ -783,7 +787,7 @@ class Joint3DDataset(Dataset):
         else:  # referit dataset
             tids = [anno['target_id']]
             # TODO SR3D: anchor object
-            if self.detect_intermediate:
+            if self.detect_intermediate and self.split == 'train':
                 # tids += anno.get('anchor_ids', [])    # BUTD-DETR
                 # EDA
                 if anno['auxi_entity'] is not None and len(anno['anchor_ids']):

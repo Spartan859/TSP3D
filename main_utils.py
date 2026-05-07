@@ -874,8 +874,8 @@ class BaseTrainTester:
 
 
     # BRIEF eval 
-    @torch.no_grad()
     @staticmethod
+    @torch.no_grad()
     def _main_eval_branch(batch_idx, batch_data, test_loader, model,
                           stat_dict,
                           criterion, set_criterion, args, logger=None):
