@@ -156,7 +156,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}"
     --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \
     --augment_det \
-    --lr_decay_epochs 50 75\
+    --lr_decay_epochs 30 40\
     --load_optimizer \
     --load_scheduler \
     --tf32_matmul ${TF32_MATMUL} \

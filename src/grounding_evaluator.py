@@ -247,15 +247,14 @@ class GroundingEvaluator:
             num_obj = 1
             gt_bboxes = end_points['gt_bboxes_3d'][bid]
             gt_bboxes = torch.cat([gt_bboxes.gravity_center, gt_bboxes.dims], dim=1)
+            # Keep evaluator aligned with referent-only metrics (multi/unique stats use found[0]).
+            gt_bboxes = gt_bboxes[:num_obj]
             scores = end_points['bbox_results'][bid]['scores_3d']
             bboxes = end_points['bbox_results'][bid]['bboxes_3d']
             bboxes = torch.cat([bboxes.gravity_center, bboxes.dims], dim=1)
             if scores.shape[0]>4:
                 _, top = torch.topk(scores, 5)
                 pbox = bboxes[top]
-                top = top.reshape(1,-1)
-                gt_bboxes = end_points['gt_bboxes_3d'][bid]
-                gt_bboxes = torch.cat([gt_bboxes.gravity_center, gt_bboxes.dims], dim=1)
             else:
                 padded_tensor = torch.zeros(5-bboxes.shape[0], 6, device=bboxes.device)
                 pbox = torch.cat([bboxes, padded_tensor], dim=0)

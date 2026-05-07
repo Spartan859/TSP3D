@@ -37,8 +37,8 @@
   "seg_lr": 0.0001,
   "lr_scheduler": "step",
   "lr_decay_epochs": [
-    0,
-    10
+    30,
+    40
   ],
   "lr_decay_rate": 0.1,
   "clip_norm": 0.1,
@@ -48,10 +48,10 @@
   "enable_tf32": false,
   "tf32_matmul": "default",
   "tf32_cudnn": "default",
-  "checkpoint_path": "/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/sr3d/EA0/sr3d/2026-05-06_01-07-51/ckpt_epoch_39.pth",
+  "checkpoint_path": null,
   "load_optimizer": true,
   "load_scheduler": true,
-  "log_dir": "/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/sr3d/EA0-continue/sr3d/2026-05-06_20-27-12",
+  "log_dir": "/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/sr3d/EA02/sr3d/2026-05-08_04-45-07",
   "print_freq": 500,
   "save_freq": 3,
   "val_freq": 3,
@@ -77,13 +77,16 @@
   "use_seg": false,
   "use_refine": false,
   "use_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_text_guided_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_film_text_guided_external_attn_bi_layer": [
-    0
+    0,
+    2
   ],
   "use_external_attn_bi_layer0": true,
   "use_text_guided_external_attn_bi_layer0": true,

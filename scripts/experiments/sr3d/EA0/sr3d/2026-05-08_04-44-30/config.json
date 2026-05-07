@@ -37,8 +37,8 @@
   "seg_lr": 0.0001,
   "lr_scheduler": "step",
   "lr_decay_epochs": [
-    50,
-    75
+    30,
+    40
   ],
   "lr_decay_rate": 0.1,
   "clip_norm": 0.1,
@@ -51,7 +51,7 @@
   "checkpoint_path": null,
   "load_optimizer": true,
   "load_scheduler": true,
-  "log_dir": "/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/sr3d/EA0/sr3d/2026-05-06_01-07-51",
+  "log_dir": "/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/sr3d/EA0/sr3d/2026-05-08_04-44-30",
   "print_freq": 500,
   "save_freq": 3,
   "val_freq": 3,

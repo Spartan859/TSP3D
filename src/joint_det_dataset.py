@@ -955,7 +955,7 @@ class Joint3DDataset(Dataset):
         else:  # referit dataset
             tids = [anno['target_id']]
             # TODO SR3D: anchor object
-            if self.detect_intermediate and self.split == 'train':
+            if self.detect_intermediate:
                 # tids += anno.get('anchor_ids', [])    # BUTD-DETR
                 # EDA
                 if anno['auxi_entity'] is not None and len(anno['anchor_ids']):
