@@ -151,9 +151,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --detect_intermediate \
     --log_dir "${log_dir}" \
     --augment_det \
-    --lr_decay_epochs 35 400\
-    --load_optimizer \
-    --load_scheduler \
+    --lr_decay_epochs 0 400\
     --tf32_matmul ${TF32_MATMUL} \
     --tf32_cudnn ${TF32_CUDNN} \
     "${train_extra_args[@]}" \
@@ -168,7 +166,9 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --external_attn_k_seg64 64\
     --prune_threshold_0 0.35\
     --prune_threshold_1 0.35\
-    --checkpoint_path ${PWD}/scripts/experiments/wildrefer/EA02/strefer/2026-05-04_20-11-19/ckpt_epoch_33.pth\
+    --checkpoint_path ${PWD}/scripts/experiments/TF32/EA02_num_sps_com_2400/scanrefer/2026-04-18_17-51-17/ckpt_epoch_294.pth\
+    # --load_optimizer \
+    # --load_scheduler \
     # --com_threshold 0.15\
     # --num_samples_com 1800\
     # --use_refine \
