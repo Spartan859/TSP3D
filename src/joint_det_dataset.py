@@ -78,6 +78,9 @@ class Joint3DDataset(Dataset):
             (self.split == 'train' and len(selected_wildrefer_dsets) == 1 and len(dataset_dict.keys()) == 1)
             or (self.split != 'train' and test_dataset in WILDREFER_DATASETS)
         )
+        self.wildrefer_frame_num = 3
+        self._wildrefer_meta = {}
+        self._wildrefer_spacy_nlp = None
         if self.split == 'train' and selected_wildrefer_dsets:
             if len(selected_wildrefer_dsets) != 1 or len(dataset_dict.keys()) != 1:
                 raise ValueError(
@@ -186,6 +189,7 @@ class Joint3DDataset(Dataset):
 
     def _load_wildrefer_annos(self, dataset_name):
         """Load annotations of a WildRefer split dataset."""
+        self._load_wildrefer_meta(dataset_name)
         split = 'train' if self.split == 'train' else 'test'
         base = os.path.join(self.data_path, 'WildRefer')
 
@@ -207,21 +211,20 @@ class Joint3DDataset(Dataset):
                 reader = json.load(f)
             for anno in reader:
                 description = str(anno['language']['description']).lower()
-                tokens = [t for t in description.replace(',', ' ').replace('.', ' ').split() if t]
-                target_name = tokens[0] if len(tokens) > 0 else 'object'
                 bbox_raw = np.array(anno['point_cloud']['bbox'], dtype=np.float32).reshape(-1)
                 bbox = bbox_raw[:6]
                 bbox7 = np.zeros((7,), dtype=np.float32)
                 bbox7[:min(7, len(bbox_raw))] = bbox_raw[:min(7, len(bbox_raw))]
                 scene_id = str(anno['scene_id'])
                 point_cloud_name = str(anno['point_cloud']['point_cloud_name'])
+                image_name = str(anno['image'].get('image_name', point_cloud_name))
                 group_id = str(anno.get('group_id', dataset_name))
                 annos.append({
                     'scan_id': f'{dataset_name}:{group_id}:{scene_id}:{point_cloud_name}',
                     'target_id': 0,
                     'distractor_ids': [],
                     'utterance': description,
-                    'target': target_name,
+                    'target': 'object',
                     'anchors': [],
                     'anchor_ids': [],
                     'dataset': dataset_name,
@@ -229,8 +232,10 @@ class Joint3DDataset(Dataset):
                     'wildrefer_scene_id': scene_id,
                     'wildrefer_group_id': group_id,
                     'wildrefer_point_cloud_name': point_cloud_name,
+                    'wildrefer_image_name': image_name,
                     'wildrefer_bbox': bbox,
-                    'wildrefer_bbox7': bbox7
+                    'wildrefer_bbox7': bbox7,
+                    'wildrefer_ann_id': str(anno['language'].get('ann_id', '0'))
                 })
 
         return annos
@@ -240,6 +245,169 @@ class Joint3DDataset(Dataset):
 
     def load_liferefer_annos(self):
         return self._load_wildrefer_annos('liferefer')
+
+    def _get_wildrefer_source_dir(self, dataset_name):
+        if dataset_name == 'strefer':
+            return 'STRefer'
+        if dataset_name == 'liferefer':
+            return 'LifeRefer'
+        raise ValueError(f'Unsupported WildRefer dataset: {dataset_name}')
+
+    def _get_wildrefer_root(self, dataset_name):
+        source_dir = self._get_wildrefer_source_dir(dataset_name)
+        base_candidates = [os.path.join(self.data_path, 'WildRefer'), self.data_path]
+        for base in base_candidates:
+            for root in (os.path.join(base, 'src', source_dir), os.path.join(base, source_dir)):
+                if os.path.isdir(root):
+                    return root
+        raise FileNotFoundError(
+            f'WildRefer root not found for dataset={dataset_name}. '
+            f'Checked bases: {base_candidates}'
+        )
+
+    def _load_wildrefer_meta(self, dataset_name):
+        if dataset_name in self._wildrefer_meta:
+            return self._wildrefer_meta[dataset_name]
+        root = self._get_wildrefer_root(dataset_name)
+        if dataset_name == 'strefer':
+            find_previous_file = 'find_previous_strefer.json'
+            points2image_file = 'points2image_strefer.json'
+        else:
+            find_previous_file = 'find_previous_liferefer.json'
+            points2image_file = None
+
+        find_previous_path = os.path.join(root, find_previous_file)
+        if not os.path.exists(find_previous_path):
+            raise FileNotFoundError(f'Missing WildRefer metadata: {find_previous_path}')
+        with open(find_previous_path) as f:
+            find_previous = json.load(f)
+
+        points2image = None
+        if points2image_file is not None:
+            points2image_path = os.path.join(root, points2image_file)
+            if not os.path.exists(points2image_path):
+                raise FileNotFoundError(f'Missing WildRefer metadata: {points2image_path}')
+            with open(points2image_path) as f:
+                points2image = json.load(f)
+
+        self._wildrefer_meta[dataset_name] = {
+            'root': root,
+            'find_previous': find_previous,
+            'points2image': points2image
+        }
+        return self._wildrefer_meta[dataset_name]
+
+    def _get_wildrefer_spacy_nlp(self):
+        if self._wildrefer_spacy_nlp is None:
+            try:
+                import spacy
+            except ImportError as exc:
+                raise ImportError(
+                    "spaCy is required for WildRefer token alignment. "
+                    "Install with `pip install spacy` and `python -m spacy download en_core_web_sm`."
+                ) from exc
+            try:
+                self._wildrefer_spacy_nlp = spacy.load('en_core_web_sm')
+            except OSError as exc:
+                raise OSError(
+                    "spaCy model 'en_core_web_sm' is required for WildRefer token alignment. "
+                    "Install with `python -m spacy download en_core_web_sm`."
+                ) from exc
+        return self._wildrefer_spacy_nlp
+
+    def _get_wildrefer_token_positive_map(self, utterance):
+        caption_clean = ' '.join(utterance.replace(',', ' ,').split())
+        caption = ' ' + caption_clean + ' '
+        tokens_positive = np.zeros((MAX_NUM_OBJ, 2))
+        nlp = self._get_wildrefer_spacy_nlp()
+        doc = nlp(caption)
+
+        cat_names = []
+        for token in doc:
+            if token.dep_ == 'nsubj':
+                cat_names.append(token.text)
+                break
+        if len(cat_names) <= 0:
+            for token in doc:
+                if token.dep_ == 'ROOT':
+                    cat_names.append(token.text)
+                    break
+        if len(cat_names) <= 0:
+            words = [w for w in caption_clean.split() if w]
+            if words:
+                cat_names.append(words[0])
+
+        for c, cat_name in enumerate(cat_names):
+            start_span = caption.find(' ' + cat_name + ' ')
+            span_len = len(cat_name)
+            if start_span < 0:
+                start_span = caption.find(' ' + cat_name)
+                if start_span >= 0:
+                    span_len = len(caption[start_span + 1:].split()[0])
+            if start_span < 0:
+                start_span = caption.find(cat_name)
+                if start_span >= 0:
+                    orig_start = start_span
+                    while start_span > 0 and caption[start_span - 1] != ' ':
+                        start_span -= 1
+                    span_len = len(cat_name) + orig_start - start_span
+                    while start_span + span_len < len(caption) and caption[start_span + span_len] != ' ':
+                        span_len += 1
+            if start_span < 0:
+                continue
+            end_span = start_span + span_len
+            tokens_positive[c][0] = start_span
+            tokens_positive[c][1] = end_span
+
+        tokenized = self.tokenizer.batch_encode_plus(
+            [caption_clean], padding="longest", return_tensors="pt"
+        )
+        positive_map = np.zeros((MAX_NUM_OBJ, 256))
+        if len(cat_names) > 0:
+            gt_map = get_positive_map(tokenized, tokens_positive[:len(cat_names)])
+            positive_map[:len(cat_names)] = gt_map
+        target_name = cat_names[0] if len(cat_names) > 0 else 'object'
+        return tokens_positive, positive_map, target_name
+
+    def _wildrefer_random_sampling(self, pc, num_sample=30000):
+        replace = pc.shape[0] < num_sample
+        choices = np.random.choice(pc.shape[0], num_sample, replace=replace)
+        return pc[choices], choices
+
+    def _get_wildrefer_temporal_scenes(self, anno):
+        dataset_name = anno['dataset']
+        meta = self._load_wildrefer_meta(dataset_name)
+        scene_id = anno['wildrefer_scene_id']
+        point_cloud_name = anno['wildrefer_point_cloud_name']
+
+        scenes = []
+        dynamic_mask = []
+        for _ in range(self.wildrefer_frame_num):
+            if point_cloud_name:
+                point_cloud_path = self._get_wildrefer_point_cloud_path(anno, point_cloud_name=point_cloud_name)
+                scene = np.load(point_cloud_path).astype(np.float32)
+                if scene.shape[1] < 6:
+                    raise ValueError(
+                        f'Invalid WildRefer point cloud shape {scene.shape} at {point_cloud_path}. '
+                        'Expected Nx6 [x,y,z,r,g,b].'
+                    )
+                scene[:, 3:6] = scene[:, 3:6] / 255.0
+                sampled_scene, _ = self._wildrefer_random_sampling(scene, 30000)
+                scenes.append(sampled_scene)
+                dynamic_mask.append(1)
+
+                prev_name = meta['find_previous'].get(scene_id, {}).get(point_cloud_name)
+                if prev_name is None:
+                    point_cloud_name = None
+                else:
+                    point_cloud_name = str(prev_name)
+                    if dataset_name == 'strefer':
+                        # Keep the official STRefer point->image lookup step for temporal traversal.
+                        _ = str(meta['points2image'].get(scene_id, {}).get(point_cloud_name, point_cloud_name))
+            else:
+                scenes.append(np.zeros((30000, 6), dtype=np.float32))
+                dynamic_mask.append(0)
+        return np.stack(scenes, axis=0), np.array(dynamic_mask, dtype=np.int64)
 
     def load_sr3dplus_annos(self):
         """Load annotations of sr3d/sr3d+."""
@@ -1140,40 +1308,24 @@ class Joint3DDataset(Dataset):
 
         return ret_dict
 
-    def _get_wildrefer_point_cloud_path(self, anno):
+    def _get_wildrefer_point_cloud_path(self, anno, point_cloud_name=None):
         dataset_name = anno['dataset']
         scene_id = anno['wildrefer_scene_id']
-        point_cloud_name = anno['wildrefer_point_cloud_name']
-        base = os.path.join(self.data_path, 'WildRefer')
-        if dataset_name == 'strefer':
-            source_dirs = ['STRefer']
-        elif dataset_name == 'liferefer':
-            source_dirs = ['LifeRefer']
-        else:
-            raise ValueError(f'Unsupported WildRefer dataset: {dataset_name}')
-        candidates = []
-        for source_dir in source_dirs:
-            candidates.append(
-                os.path.join(base, source_dir, 'points_rgbd', scene_id, f'{point_cloud_name}.npy')
-            )
-            candidates.append(
-                os.path.join(base, 'src', source_dir, 'points_rgbd', scene_id, f'{point_cloud_name}.npy')
-            )
-        for candidate in candidates:
-            if os.path.exists(candidate):
-                return candidate
+        frame_name = point_cloud_name if point_cloud_name is not None else anno['wildrefer_point_cloud_name']
+        root = self._load_wildrefer_meta(dataset_name)['root']
+        candidate = os.path.join(root, 'points_rgbd', scene_id, f'{frame_name}.npy')
+        if os.path.exists(candidate):
+            return candidate
         raise FileNotFoundError(
-            f'WildRefer point cloud not found for dataset={dataset_name}, scene={scene_id}, frame={point_cloud_name}. '
-            f'Checked: {candidates}'
+            f'WildRefer point cloud not found for dataset={dataset_name}, scene={scene_id}, frame={frame_name}. '
+            f'Checked: {[candidate]}'
         )
 
     def _get_wildrefer_item(self, anno, language_dataset):
-        point_cloud_path = self._get_wildrefer_point_cloud_path(anno)
-        scene = np.load(point_cloud_path).astype(np.float32)
+        scenes, dynamic_mask = self._get_wildrefer_temporal_scenes(anno)
+        scene = scenes[0]
         xyz = scene[:, :3]
         og_color = scene[:, 3:6].astype(np.float32)
-        if og_color.max() > 1.0:
-            og_color = og_color / 255.0
 
         point_cloud = xyz
         if self.use_color:
@@ -1183,16 +1335,18 @@ class Joint3DDataset(Dataset):
             height = np.expand_dims(xyz[:, 2] - floor_height, 1)
             point_cloud = np.concatenate([point_cloud, height], 1)
 
+        target_bbox7 = np.array(anno['wildrefer_bbox7'], dtype=np.float32)
         gt_bboxes = np.zeros((MAX_NUM_OBJ, 6), dtype=np.float32)
-        gt_bboxes[0] = np.array(anno['wildrefer_bbox'], dtype=np.float32)
+        gt_bboxes[0] = target_bbox7[:6]
         box_label_mask = np.zeros(MAX_NUM_OBJ, dtype=np.float32)
         box_label_mask[0] = 1
 
-        center = gt_bboxes[0, :3]
-        size = np.clip(gt_bboxes[0, 3:], a_min=1e-3, a_max=None)
-        min_corner = center - size * 0.5
-        max_corner = center + size * 0.5
-        inside = np.all((xyz >= min_corner) & (xyz <= max_corner), axis=1)
+        box_corners = my_compute_box_3d(
+            target_bbox7[0:3],
+            np.clip(target_bbox7[3:6], a_min=1e-3, a_max=None),
+            target_bbox7[6]
+        )
+        _, inside = extract_pc_in_box3d(xyz.copy(), box_corners)
         point_instance_label = -np.ones(len(xyz), dtype=np.int64)
         point_instance_label[inside] = 0
         gt_masks = np.zeros((MAX_NUM_OBJ, len(xyz)), dtype=np.float32)
@@ -1204,8 +1358,12 @@ class Joint3DDataset(Dataset):
         all_bbox_label_mask = np.array([False] * MAX_NUM_OBJ)
         all_bbox_label_mask[0] = True
 
-        tokens_positive, positive_map, modify_positive_map, pron_positive_map, \
-            other_entity_map, auxi_entity_positive_map, rel_positive_map = self._get_token_positive_map(anno)
+        tokens_positive, positive_map, target_name = self._get_wildrefer_token_positive_map(anno['utterance'])
+        modify_positive_map = np.zeros((MAX_NUM_OBJ, 256))
+        pron_positive_map = np.zeros((MAX_NUM_OBJ, 256))
+        other_entity_map = np.zeros((MAX_NUM_OBJ, 256))
+        auxi_entity_positive_map = np.zeros((MAX_NUM_OBJ, 256))
+        rel_positive_map = np.zeros((MAX_NUM_OBJ, 256))
         auxi_box = np.zeros((1, 6), dtype=np.float32)
 
         all_detected_bboxes = np.zeros((MAX_NUM_OBJ, 6), dtype=np.float32)
@@ -1229,9 +1387,10 @@ class Joint3DDataset(Dataset):
             "scan_ids": anno['scan_id'],
             "point_clouds": point_cloud.astype(np.float32),
             "og_color": og_color.astype(np.float32),
-            "utterances": ' '.join(anno['utterance'].replace(',', ' ,').split()),
+            "utterances": ' '.join(anno['utterance'].replace(',', ' ,').replace('.', ' .').split()) + ' not mentioned',
             'target_cat': anno['target_cat'],
             "language_dataset": language_dataset,
+            "wildrefer_dynamic_mask": dynamic_mask.astype(np.int64),
             "tokens_positive": tokens_positive.astype(np.int64),
             "positive_map": positive_map.astype(np.float32),
             "modify_positive_map": modify_positive_map.astype(np.float32),
@@ -1241,9 +1400,9 @@ class Joint3DDataset(Dataset):
             "auxi_entity_positive_map": auxi_entity_positive_map.astype(np.float32),
             "auxi_box": auxi_box.astype(np.float32),
             "relation": "none",
-            "target_name": anno['target'],
+            "target_name": target_name,
             "target_id": 0,
-            "wildrefer_bbox7": np.array(anno['wildrefer_bbox7'], dtype=np.float32),
+            "wildrefer_bbox7": target_bbox7,
             "point_instance_label": point_instance_label.astype(np.int64),
             "all_bboxes": all_bboxes.astype(np.float32),
             "all_bbox_label_mask": all_bbox_label_mask.astype(np.bool8),
@@ -1396,6 +1555,40 @@ def get_positive_map(tokenized, tokens_positive):
 
     positive_map = positive_map / (positive_map.sum(-1)[:, None] + 1e-12)
     return positive_map.numpy()
+
+
+def rotz(t):
+    c = np.cos(t)
+    s = np.sin(t)
+    return np.array([[c, -s, 0], [s, c, 0], [0, 0, 1]])
+
+
+def my_compute_box_3d(center, size, heading_angle):
+    rot = rotz(-1 * heading_angle)
+    length, width, height = size
+    length /= 2
+    width /= 2
+    height /= 2
+    x_corners = [-length, length, length, -length, -length, length, length, -length]
+    y_corners = [width, width, -width, -width, width, width, -width, -width]
+    z_corners = [height, height, height, height, -height, -height, -height, -height]
+    corners_3d = np.dot(rot, np.vstack([x_corners, y_corners, z_corners]))
+    corners_3d[0, :] += center[0]
+    corners_3d[1, :] += center[1]
+    corners_3d[2, :] += center[2]
+    return np.transpose(corners_3d)
+
+
+def in_hull(points, hull):
+    from scipy.spatial import Delaunay
+    if not isinstance(hull, Delaunay):
+        hull = Delaunay(hull)
+    return hull.find_simplex(points) >= 0
+
+
+def extract_pc_in_box3d(pc, box3d):
+    box3d_roi_inds = in_hull(pc[:, 0:3], box3d)
+    return pc[box3d_roi_inds, :], box3d_roi_inds
 
 
 def rot_x(pc, theta):

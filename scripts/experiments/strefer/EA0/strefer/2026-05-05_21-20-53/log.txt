@@ -1,0 +1,1343 @@
+[05/05 21:20:56] EA0 INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/strefer/EA0/strefer/2026-05-05_21-20-53/config.json
+[05/05 21:20:56] EA0 INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': False, 'batch_size': 7, 'dataset': ['strefer'], 'test_dataset': 'strefer', 'data_root': '/share/lxy/TSP3D_ori/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [400], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'default', 'tf32_cudnn': 'default', 'checkpoint_path': None, 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/strefer/EA0/strefer/2026-05-05_21-20-53', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 42, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'measure_fps_detail': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'cudnn_benchmark': True, 'cudnn_deterministic': True, 'use_deterministic_algorithms': False, 'deterministic_warn_only': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [0], 'use_text_guided_external_attn_bi_layer': [0], 'use_film_text_guided_external_attn_bi_layer': [0], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 4, 'external_attn_k_keep0': 64, 'external_attn_k_keep1': 64, 'external_attn_k_com': 64, 'external_attn_k_seg128': 64, 'external_attn_k_seg64': 64, 'top_pts_threshold': 32, 'top_pts_threshold_det': 32, 'gpu_mem_limit_gb': 0.0, 'prune_threshold_0': 0.35, 'prune_threshold_1': 0.35, 'nms_pre': 1, 'nms_iou_thr': 0.5, 'nms_score_thr': 0.01}
+[05/05 21:20:58] EA0 INFO: length of training dataset: 4392
+[05/05 21:20:58] EA0 INFO: length of testing dataset: 1066
+[05/05 21:22:45] EA0 INFO: epoch 1, total time 91.18, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:23:58] EA0 INFO: epoch 2, total time 72.62, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:25:09] EA0 INFO: epoch 3, total time 70.89, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:25:28] EA0 INFO: Eval: [3]  
+[05/05 21:25:28] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.19944
+[05/05 21:25:28] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.12640
+[05/05 21:25:28] EA0 INFO: WildRefer-official Acc0.25: 0.20040 | Acc0.50: 0.13200 | mIoU: 0.11900
+[05/05 21:25:28] EA0 INFO: Timing(s): inf=0.117584, visual=0.036043, text=0.006892, fusion_wo_head=0.069493, head=0.003591
+[05/05 21:25:28] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.013968, bi_layer1=0.017595, bi_layer2=0.005908, total=0.037471
+[05/05 21:25:28] EA0 INFO: GPU memory(MiB): avg_allocated=996.52, avg_reserved=5650.32, peak_allocated=3857.66, peak_reserved=15488.00, warmup_iters=20
+[05/05 21:26:40] EA0 INFO: epoch 4, total time 71.87, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:27:52] EA0 INFO: epoch 5, total time 71.72, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:29:07] EA0 INFO: epoch 6, total time 75.19, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:29:21] EA0 INFO: Eval: [6]  
+[05/05 21:29:21] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.21536
+[05/05 21:29:21] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.17978
+[05/05 21:29:21] EA0 INFO: WildRefer-official Acc0.25: 0.21540 | Acc0.50: 0.18070 | mIoU: 0.13700
+[05/05 21:29:21] EA0 INFO: Timing(s): inf=0.100014, visual=0.035007, text=0.006665, fusion_wo_head=0.053647, head=0.003132
+[05/05 21:29:21] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.013492, bi_layer1=0.004148, bi_layer2=0.005515, total=0.023155
+[05/05 21:29:21] EA0 INFO: GPU memory(MiB): avg_allocated=996.44, avg_reserved=6620.32, peak_allocated=3862.08, peak_reserved=14924.00, warmup_iters=20
+[05/05 21:30:33] EA0 INFO: epoch 7, total time 71.82, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:31:47] EA0 INFO: epoch 8, total time 73.48, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:32:58] EA0 INFO: epoch 9, total time 71.21, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:33:12] EA0 INFO: Eval: [9]  
+[05/05 21:33:12] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.30243
+[05/05 21:33:12] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.27060
+[05/05 21:33:12] EA0 INFO: WildRefer-official Acc0.25: 0.30240 | Acc0.50: 0.26970 | mIoU: 0.19450
+[05/05 21:33:12] EA0 INFO: Timing(s): inf=0.099699, visual=0.035072, text=0.006670, fusion_wo_head=0.053016, head=0.003304
+[05/05 21:33:12] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.012900, bi_layer1=0.004332, bi_layer2=0.005353, total=0.022585
+[05/05 21:33:12] EA0 INFO: GPU memory(MiB): avg_allocated=997.09, avg_reserved=7726.32, peak_allocated=3861.08, peak_reserved=14758.00, warmup_iters=20
+[05/05 21:34:23] EA0 INFO: epoch 10, total time 71.18, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:35:37] EA0 INFO: epoch 11, total time 73.87, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:36:49] EA0 INFO: epoch 12, total time 72.75, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:37:03] EA0 INFO: Eval: [12]  
+[05/05 21:37:03] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36049
+[05/05 21:37:03] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.32865
+[05/05 21:37:03] EA0 INFO: WildRefer-official Acc0.25: 0.36050 | Acc0.50: 0.32960 | mIoU: 0.23700
+[05/05 21:37:03] EA0 INFO: Timing(s): inf=0.099467, visual=0.034562, text=0.006603, fusion_wo_head=0.053560, head=0.003157
+[05/05 21:37:03] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.013346, bi_layer1=0.004354, bi_layer2=0.005246, total=0.022946
+[05/05 21:37:03] EA0 INFO: GPU memory(MiB): avg_allocated=996.48, avg_reserved=7644.32, peak_allocated=3861.95, peak_reserved=15256.00, warmup_iters=20
+[05/05 21:38:16] EA0 INFO: epoch 13, total time 73.62, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:39:30] EA0 INFO: epoch 14, total time 73.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:40:43] EA0 INFO: epoch 15, total time 73.46, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:40:57] EA0 INFO: Eval: [15]  
+[05/05 21:40:57] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.35393
+[05/05 21:40:57] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.33801
+[05/05 21:40:57] EA0 INFO: WildRefer-official Acc0.25: 0.35490 | Acc0.50: 0.33900 | mIoU: 0.24000
+[05/05 21:40:57] EA0 INFO: Timing(s): inf=0.100046, visual=0.035862, text=0.006872, fusion_wo_head=0.052520, head=0.003213
+[05/05 21:40:57] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.012527, bi_layer1=0.004214, bi_layer2=0.005127, total=0.021868
+[05/05 21:40:57] EA0 INFO: GPU memory(MiB): avg_allocated=995.61, avg_reserved=7714.00, peak_allocated=3863.45, peak_reserved=15328.00, warmup_iters=20
+[05/05 21:42:10] EA0 INFO: epoch 16, total time 72.50, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:43:23] EA0 INFO: epoch 17, total time 72.89, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:44:35] EA0 INFO: epoch 18, total time 72.69, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:44:50] EA0 INFO: Eval: [18]  
+[05/05 21:44:50] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.35206
+[05/05 21:44:50] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.33708
+[05/05 21:44:50] EA0 INFO: WildRefer-official Acc0.25: 0.35300 | Acc0.50: 0.32960 | mIoU: 0.23470
+[05/05 21:44:50] EA0 INFO: Timing(s): inf=0.104689, visual=0.036158, text=0.006957, fusion_wo_head=0.056468, head=0.003491
+[05/05 21:44:50] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.013987, bi_layer1=0.004421, bi_layer2=0.005641, total=0.024049
+[05/05 21:44:50] EA0 INFO: GPU memory(MiB): avg_allocated=995.48, avg_reserved=7760.32, peak_allocated=3863.72, peak_reserved=15328.00, warmup_iters=20
+[05/05 21:46:07] EA0 INFO: epoch 19, total time 76.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:47:27] EA0 INFO: epoch 20, total time 79.84, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:48:39] EA0 INFO: epoch 21, total time 72.29, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:48:54] EA0 INFO: Eval: [21]  
+[05/05 21:48:54] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.30524
+[05/05 21:48:54] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.28090
+[05/05 21:48:54] EA0 INFO: WildRefer-official Acc0.25: 0.30620 | Acc0.50: 0.27900 | mIoU: 0.20250
+[05/05 21:48:54] EA0 INFO: Timing(s): inf=0.103262, visual=0.037184, text=0.006990, fusion_wo_head=0.053898, head=0.003556
+[05/05 21:48:54] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.011928, bi_layer1=0.004714, bi_layer2=0.005421, total=0.022063
+[05/05 21:48:54] EA0 INFO: GPU memory(MiB): avg_allocated=995.13, avg_reserved=7760.32, peak_allocated=3860.23, peak_reserved=15444.00, warmup_iters=20
+[05/05 21:50:05] EA0 INFO: epoch 22, total time 71.04, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:51:17] EA0 INFO: epoch 23, total time 72.36, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:52:30] EA0 INFO: epoch 24, total time 73.07, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:52:44] EA0 INFO: Eval: [24]  
+[05/05 21:52:44] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38202
+[05/05 21:52:44] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35768
+[05/05 21:52:44] EA0 INFO: WildRefer-official Acc0.25: 0.38300 | Acc0.50: 0.35490 | mIoU: 0.25690
+[05/05 21:52:44] EA0 INFO: Timing(s): inf=0.103956, visual=0.036879, text=0.007439, fusion_wo_head=0.054175, head=0.003708
+[05/05 21:52:44] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.011912, bi_layer1=0.004576, bi_layer2=0.005163, total=0.021651
+[05/05 21:52:44] EA0 INFO: GPU memory(MiB): avg_allocated=994.89, avg_reserved=6814.00, peak_allocated=3861.02, peak_reserved=14210.00, warmup_iters=20
+[05/05 21:53:55] EA0 INFO: epoch 25, total time 70.75, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:55:07] EA0 INFO: epoch 26, total time 71.97, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:56:19] EA0 INFO: epoch 27, total time 72.21, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:56:33] EA0 INFO: Eval: [27]  
+[05/05 21:56:33] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.35206
+[05/05 21:56:33] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.33052
+[05/05 21:56:33] EA0 INFO: WildRefer-official Acc0.25: 0.35300 | Acc0.50: 0.33050 | mIoU: 0.23630
+[05/05 21:56:33] EA0 INFO: Timing(s): inf=0.100858, visual=0.036856, text=0.006810, fusion_wo_head=0.052343, head=0.003189
+[05/05 21:56:33] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.010830, bi_layer1=0.004375, bi_layer2=0.004939, total=0.020144
+[05/05 21:56:33] EA0 INFO: GPU memory(MiB): avg_allocated=996.28, avg_reserved=7742.32, peak_allocated=3860.64, peak_reserved=15442.00, warmup_iters=20
+[05/05 21:57:46] EA0 INFO: epoch 28, total time 72.35, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 21:58:59] EA0 INFO: epoch 29, total time 72.81, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:00:12] EA0 INFO: epoch 30, total time 73.63, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:00:26] EA0 INFO: Eval: [30]  
+[05/05 22:00:26] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.30712
+[05/05 22:00:26] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.29213
+[05/05 22:00:26] EA0 INFO: WildRefer-official Acc0.25: 0.30710 | Acc0.50: 0.29030 | mIoU: 0.20330
+[05/05 22:00:26] EA0 INFO: Timing(s): inf=0.098472, visual=0.034694, text=0.006975, fusion_wo_head=0.051927, head=0.003180
+[05/05 22:00:26] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.011597, bi_layer1=0.004417, bi_layer2=0.005014, total=0.021028
+[05/05 22:00:26] EA0 INFO: GPU memory(MiB): avg_allocated=999.36, avg_reserved=7742.32, peak_allocated=3862.86, peak_reserved=15270.00, warmup_iters=20
+[05/05 22:01:38] EA0 INFO: epoch 31, total time 72.02, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:02:51] EA0 INFO: epoch 32, total time 72.95, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:04:04] EA0 INFO: epoch 33, total time 72.67, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:04:18] EA0 INFO: Eval: [33]  
+[05/05 22:04:18] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.35768
+[05/05 22:04:18] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.32584
+[05/05 22:04:18] EA0 INFO: WildRefer-official Acc0.25: 0.35770 | Acc0.50: 0.32680 | mIoU: 0.23660
+[05/05 22:04:18] EA0 INFO: Timing(s): inf=0.100670, visual=0.036443, text=0.006965, fusion_wo_head=0.052191, head=0.003438
+[05/05 22:04:18] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.010759, bi_layer1=0.004437, bi_layer2=0.004919, total=0.020116
+[05/05 22:04:18] EA0 INFO: GPU memory(MiB): avg_allocated=997.67, avg_reserved=6510.53, peak_allocated=3862.53, peak_reserved=15272.00, warmup_iters=20
+[05/05 22:05:32] EA0 INFO: epoch 34, total time 73.45, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:06:45] EA0 INFO: epoch 35, total time 73.19, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:07:58] EA0 INFO: epoch 36, total time 73.19, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:08:13] EA0 INFO: Eval: [36]  
+[05/05 22:08:13] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.33521
+[05/05 22:08:13] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.31648
+[05/05 22:08:13] EA0 INFO: WildRefer-official Acc0.25: 0.33430 | Acc0.50: 0.31460 | mIoU: 0.22380
+[05/05 22:08:13] EA0 INFO: Timing(s): inf=0.102240, visual=0.037281, text=0.007148, fusion_wo_head=0.052601, head=0.003528
+[05/05 22:08:13] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.010935, bi_layer1=0.004553, bi_layer2=0.005225, total=0.020712
+[05/05 22:08:13] EA0 INFO: GPU memory(MiB): avg_allocated=996.34, avg_reserved=5844.42, peak_allocated=3858.21, peak_reserved=14810.00, warmup_iters=20
+[05/05 22:09:25] EA0 INFO: epoch 37, total time 71.69, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:10:37] EA0 INFO: epoch 38, total time 72.02, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:11:49] EA0 INFO: epoch 39, total time 71.45, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:12:03] EA0 INFO: Eval: [39]  
+[05/05 22:12:03] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36517
+[05/05 22:12:03] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.34831
+[05/05 22:12:03] EA0 INFO: WildRefer-official Acc0.25: 0.36520 | Acc0.50: 0.34550 | mIoU: 0.24800
+[05/05 22:12:03] EA0 INFO: Timing(s): inf=0.101070, visual=0.036309, text=0.007107, fusion_wo_head=0.052304, head=0.003684
+[05/05 22:12:03] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.010324, bi_layer1=0.004579, bi_layer2=0.005038, total=0.019941
+[05/05 22:12:03] EA0 INFO: GPU memory(MiB): avg_allocated=998.23, avg_reserved=6712.32, peak_allocated=3865.13, peak_reserved=14490.00, warmup_iters=20
+[05/05 22:13:17] EA0 INFO: epoch 40, total time 73.64, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:14:29] EA0 INFO: epoch 41, total time 71.83, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:15:41] EA0 INFO: epoch 42, total time 72.55, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:15:55] EA0 INFO: Eval: [42]  
+[05/05 22:15:55] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.35955
+[05/05 22:15:55] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.34176
+[05/05 22:15:55] EA0 INFO: WildRefer-official Acc0.25: 0.35960 | Acc0.50: 0.33800 | mIoU: 0.24220
+[05/05 22:15:55] EA0 INFO: Timing(s): inf=0.103102, visual=0.036920, text=0.007469, fusion_wo_head=0.053360, head=0.003634
+[05/05 22:15:55] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.010865, bi_layer1=0.004737, bi_layer2=0.005241, total=0.020843
+[05/05 22:15:55] EA0 INFO: GPU memory(MiB): avg_allocated=997.35, avg_reserved=7914.42, peak_allocated=3860.87, peak_reserved=14918.00, warmup_iters=20
+[05/05 22:17:08] EA0 INFO: epoch 43, total time 72.55, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:18:21] EA0 INFO: epoch 44, total time 73.01, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:19:34] EA0 INFO: epoch 45, total time 72.83, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:19:48] EA0 INFO: Eval: [45]  
+[05/05 22:19:48] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36330
+[05/05 22:19:48] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.33895
+[05/05 22:19:48] EA0 INFO: WildRefer-official Acc0.25: 0.36330 | Acc0.50: 0.33800 | mIoU: 0.23940
+[05/05 22:19:48] EA0 INFO: Timing(s): inf=0.098094, visual=0.034728, text=0.007029, fusion_wo_head=0.051334, head=0.003306
+[05/05 22:19:48] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.011068, bi_layer1=0.004355, bi_layer2=0.004829, total=0.020252
+[05/05 22:19:48] EA0 INFO: GPU memory(MiB): avg_allocated=998.03, avg_reserved=6668.42, peak_allocated=3859.42, peak_reserved=14238.00, warmup_iters=20
+[05/05 22:21:00] EA0 INFO: epoch 46, total time 72.32, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:22:12] EA0 INFO: epoch 47, total time 71.74, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:23:25] EA0 INFO: epoch 48, total time 72.44, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:23:39] EA0 INFO: Eval: [48]  
+[05/05 22:23:39] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.42135
+[05/05 22:23:39] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40169
+[05/05 22:23:39] EA0 INFO: WildRefer-official Acc0.25: 0.42230 | Acc0.50: 0.39700 | mIoU: 0.28230
+[05/05 22:23:39] EA0 INFO: Timing(s): inf=0.102954, visual=0.038972, text=0.007118, fusion_wo_head=0.051629, head=0.003563
+[05/05 22:23:39] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.009682, bi_layer1=0.004532, bi_layer2=0.004682, total=0.018896
+[05/05 22:23:39] EA0 INFO: GPU memory(MiB): avg_allocated=999.25, avg_reserved=6372.84, peak_allocated=3862.54, peak_reserved=14930.00, warmup_iters=20
+[05/05 22:24:53] EA0 INFO: epoch 49, total time 73.93, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:26:06] EA0 INFO: epoch 50, total time 72.69, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:27:16] EA0 INFO: epoch 51, total time 70.78, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:27:30] EA0 INFO: Eval: [51]  
+[05/05 22:27:30] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.34831
+[05/05 22:27:30] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.32865
+[05/05 22:27:30] EA0 INFO: WildRefer-official Acc0.25: 0.34830 | Acc0.50: 0.32770 | mIoU: 0.23450
+[05/05 22:27:30] EA0 INFO: Timing(s): inf=0.119948, visual=0.045067, text=0.007193, fusion_wo_head=0.062611, head=0.003226
+[05/05 22:27:30] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.014091, bi_layer1=0.004340, bi_layer2=0.004564, total=0.022996
+[05/05 22:27:30] EA0 INFO: GPU memory(MiB): avg_allocated=999.26, avg_reserved=6930.21, peak_allocated=3861.98, peak_reserved=14852.00, warmup_iters=20
+[05/05 22:28:42] EA0 INFO: epoch 52, total time 71.47, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:29:55] EA0 INFO: epoch 53, total time 72.74, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:31:07] EA0 INFO: epoch 54, total time 72.01, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:31:20] EA0 INFO: Eval: [54]  
+[05/05 22:31:20] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.35768
+[05/05 22:31:20] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.34363
+[05/05 22:31:20] EA0 INFO: WildRefer-official Acc0.25: 0.35770 | Acc0.50: 0.34080 | mIoU: 0.24340
+[05/05 22:31:20] EA0 INFO: Timing(s): inf=0.100290, visual=0.036708, text=0.007248, fusion_wo_head=0.051115, head=0.003515
+[05/05 22:31:20] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.009246, bi_layer1=0.004669, bi_layer2=0.004922, total=0.018837
+[05/05 22:31:20] EA0 INFO: GPU memory(MiB): avg_allocated=998.34, avg_reserved=5326.00, peak_allocated=3863.91, peak_reserved=14330.00, warmup_iters=20
+[05/05 22:32:34] EA0 INFO: epoch 55, total time 73.19, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:33:46] EA0 INFO: epoch 56, total time 72.53, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:34:59] EA0 INFO: epoch 57, total time 73.15, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:35:12] EA0 INFO: Eval: [57]  
+[05/05 22:35:12] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40637
+[05/05 22:35:12] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39045
+[05/05 22:35:12] EA0 INFO: WildRefer-official Acc0.25: 0.40640 | Acc0.50: 0.38860 | mIoU: 0.27410
+[05/05 22:35:12] EA0 INFO: Timing(s): inf=0.101206, visual=0.037327, text=0.006994, fusion_wo_head=0.051672, head=0.003488
+[05/05 22:35:12] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.009690, bi_layer1=0.004526, bi_layer2=0.004923, total=0.019139
+[05/05 22:35:12] EA0 INFO: GPU memory(MiB): avg_allocated=1001.73, avg_reserved=6978.63, peak_allocated=3868.25, peak_reserved=14610.00, warmup_iters=20
+[05/05 22:36:24] EA0 INFO: epoch 58, total time 71.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:37:37] EA0 INFO: epoch 59, total time 73.42, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:38:50] EA0 INFO: epoch 60, total time 73.36, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:39:04] EA0 INFO: Eval: [60]  
+[05/05 22:39:04] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.33427
+[05/05 22:39:04] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.32022
+[05/05 22:39:04] EA0 INFO: WildRefer-official Acc0.25: 0.33520 | Acc0.50: 0.31740 | mIoU: 0.22700
+[05/05 22:39:04] EA0 INFO: Timing(s): inf=0.096954, visual=0.034859, text=0.006884, fusion_wo_head=0.050290, head=0.003238
+[05/05 22:39:04] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.010070, bi_layer1=0.004388, bi_layer2=0.004955, total=0.019412
+[05/05 22:39:04] EA0 INFO: GPU memory(MiB): avg_allocated=999.79, avg_reserved=6706.42, peak_allocated=3866.89, peak_reserved=14570.00, warmup_iters=20
+[05/05 22:40:17] EA0 INFO: epoch 61, total time 72.74, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:41:29] EA0 INFO: epoch 62, total time 72.46, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:42:42] EA0 INFO: epoch 63, total time 73.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:42:56] EA0 INFO: Eval: [63]  
+[05/05 22:42:56] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.28464
+[05/05 22:42:56] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.26873
+[05/05 22:42:56] EA0 INFO: WildRefer-official Acc0.25: 0.28460 | Acc0.50: 0.26690 | mIoU: 0.19270
+[05/05 22:42:56] EA0 INFO: Timing(s): inf=0.099397, visual=0.036066, text=0.007443, fusion_wo_head=0.050634, head=0.003438
+[05/05 22:42:56] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.009611, bi_layer1=0.004466, bi_layer2=0.005073, total=0.019150
+[05/05 22:42:56] EA0 INFO: GPU memory(MiB): avg_allocated=999.65, avg_reserved=6707.37, peak_allocated=3860.54, peak_reserved=15336.00, warmup_iters=20
+[05/05 22:44:08] EA0 INFO: epoch 64, total time 71.61, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:45:21] EA0 INFO: epoch 65, total time 73.35, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:46:34] EA0 INFO: epoch 66, total time 72.88, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:46:49] EA0 INFO: Eval: [66]  
+[05/05 22:46:49] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.26966
+[05/05 22:46:49] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.26030
+[05/05 22:46:49] EA0 INFO: WildRefer-official Acc0.25: 0.26970 | Acc0.50: 0.25560 | mIoU: 0.18300
+[05/05 22:46:49] EA0 INFO: Timing(s): inf=0.095791, visual=0.034853, text=0.007047, fusion_wo_head=0.048891, head=0.003307
+[05/05 22:46:49] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.008605, bi_layer1=0.004458, bi_layer2=0.004518, total=0.017582
+[05/05 22:46:49] EA0 INFO: GPU memory(MiB): avg_allocated=999.75, avg_reserved=9172.32, peak_allocated=3861.15, peak_reserved=15338.00, warmup_iters=20
+[05/05 22:48:03] EA0 INFO: epoch 67, total time 73.81, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:49:15] EA0 INFO: epoch 68, total time 72.72, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:50:30] EA0 INFO: epoch 69, total time 75.24, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:50:45] EA0 INFO: Eval: [69]  
+[05/05 22:50:45] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.31554
+[05/05 22:50:45] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.29775
+[05/05 22:50:45] EA0 INFO: WildRefer-official Acc0.25: 0.31550 | Acc0.50: 0.29400 | mIoU: 0.21160
+[05/05 22:50:45] EA0 INFO: Timing(s): inf=0.098337, visual=0.036952, text=0.007164, fusion_wo_head=0.048917, head=0.003631
+[05/05 22:50:45] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007198, bi_layer1=0.004741, bi_layer2=0.004524, total=0.016463
+[05/05 22:50:45] EA0 INFO: GPU memory(MiB): avg_allocated=999.68, avg_reserved=6518.63, peak_allocated=3863.15, peak_reserved=15338.00, warmup_iters=20
+[05/05 22:51:57] EA0 INFO: epoch 70, total time 71.96, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:53:12] EA0 INFO: epoch 71, total time 74.95, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:54:25] EA0 INFO: epoch 72, total time 72.66, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:54:40] EA0 INFO: Eval: [72]  
+[05/05 22:54:40] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.30243
+[05/05 22:54:40] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.28558
+[05/05 22:54:40] EA0 INFO: WildRefer-official Acc0.25: 0.30240 | Acc0.50: 0.28460 | mIoU: 0.20420
+[05/05 22:54:40] EA0 INFO: Timing(s): inf=0.097332, visual=0.037415, text=0.007056, fusion_wo_head=0.047740, head=0.003397
+[05/05 22:54:40] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007031, bi_layer1=0.004445, bi_layer2=0.004509, total=0.015985
+[05/05 22:54:40] EA0 INFO: GPU memory(MiB): avg_allocated=1001.88, avg_reserved=9141.16, peak_allocated=3864.07, peak_reserved=15328.00, warmup_iters=20
+[05/05 22:55:54] EA0 INFO: epoch 73, total time 74.03, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:57:06] EA0 INFO: epoch 74, total time 72.34, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:58:20] EA0 INFO: epoch 75, total time 73.70, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 22:58:33] EA0 INFO: Eval: [75]  
+[05/05 22:58:33] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37547
+[05/05 22:58:33] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36330
+[05/05 22:58:33] EA0 INFO: WildRefer-official Acc0.25: 0.37550 | Acc0.50: 0.36050 | mIoU: 0.25460
+[05/05 22:58:33] EA0 INFO: Timing(s): inf=0.116126, visual=0.039298, text=0.007684, fusion_wo_head=0.063871, head=0.003582
+[05/05 22:58:33] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.010922, bi_layer1=0.004901, bi_layer2=0.004677, total=0.020500
+[05/05 22:58:33] EA0 INFO: GPU memory(MiB): avg_allocated=999.97, avg_reserved=6676.63, peak_allocated=3863.84, peak_reserved=15308.00, warmup_iters=20
+[05/05 22:59:45] EA0 INFO: epoch 76, total time 72.24, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:00:56] EA0 INFO: epoch 77, total time 71.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:02:09] EA0 INFO: epoch 78, total time 73.20, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:02:23] EA0 INFO: Eval: [78]  
+[05/05 23:02:23] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.35393
+[05/05 23:02:23] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.34270
+[05/05 23:02:23] EA0 INFO: WildRefer-official Acc0.25: 0.35390 | Acc0.50: 0.33900 | mIoU: 0.24310
+[05/05 23:02:23] EA0 INFO: Timing(s): inf=0.097434, visual=0.035787, text=0.007199, fusion_wo_head=0.049301, head=0.003378
+[05/05 23:02:23] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.008552, bi_layer1=0.004443, bi_layer2=0.004876, total=0.017870
+[05/05 23:02:23] EA0 INFO: GPU memory(MiB): avg_allocated=1002.34, avg_reserved=6676.21, peak_allocated=3864.06, peak_reserved=15306.00, warmup_iters=20
+[05/05 23:03:38] EA0 INFO: epoch 79, total time 75.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:04:53] EA0 INFO: epoch 80, total time 74.32, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:06:05] EA0 INFO: epoch 81, total time 71.85, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:06:19] EA0 INFO: Eval: [81]  
+[05/05 23:06:19] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36985
+[05/05 23:06:19] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35581
+[05/05 23:06:19] EA0 INFO: WildRefer-official Acc0.25: 0.36990 | Acc0.50: 0.35210 | mIoU: 0.25160
+[05/05 23:06:19] EA0 INFO: Timing(s): inf=0.098754, visual=0.036722, text=0.007244, fusion_wo_head=0.049315, head=0.003747
+[05/05 23:06:19] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007571, bi_layer1=0.004863, bi_layer2=0.004596, total=0.017030
+[05/05 23:06:19] EA0 INFO: GPU memory(MiB): avg_allocated=1003.89, avg_reserved=7731.79, peak_allocated=3867.53, peak_reserved=15368.00, warmup_iters=20
+[05/05 23:07:32] EA0 INFO: epoch 82, total time 72.55, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:08:44] EA0 INFO: epoch 83, total time 72.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:09:58] EA0 INFO: epoch 84, total time 74.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:10:13] EA0 INFO: Eval: [84]  
+[05/05 23:10:13] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36423
+[05/05 23:10:13] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.34644
+[05/05 23:10:13] EA0 INFO: WildRefer-official Acc0.25: 0.36420 | Acc0.50: 0.34080 | mIoU: 0.24660
+[05/05 23:10:13] EA0 INFO: Timing(s): inf=0.100963, visual=0.037428, text=0.007795, fusion_wo_head=0.050377, head=0.003703
+[05/05 23:10:13] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.008611, bi_layer1=0.004650, bi_layer2=0.004937, total=0.018199
+[05/05 23:10:13] EA0 INFO: GPU memory(MiB): avg_allocated=1002.62, avg_reserved=7752.00, peak_allocated=3865.79, peak_reserved=15324.00, warmup_iters=20
+[05/05 23:11:26] EA0 INFO: epoch 85, total time 72.99, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:12:39] EA0 INFO: epoch 86, total time 72.59, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:13:54] EA0 INFO: epoch 87, total time 75.06, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:14:08] EA0 INFO: Eval: [87]  
+[05/05 23:14:08] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40637
+[05/05 23:14:08] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38951
+[05/05 23:14:08] EA0 INFO: WildRefer-official Acc0.25: 0.40640 | Acc0.50: 0.38580 | mIoU: 0.27650
+[05/05 23:14:08] EA0 INFO: Timing(s): inf=0.099688, visual=0.037007, text=0.007459, fusion_wo_head=0.049739, head=0.003660
+[05/05 23:14:08] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007965, bi_layer1=0.004812, bi_layer2=0.004658, total=0.017435
+[05/05 23:14:08] EA0 INFO: GPU memory(MiB): avg_allocated=1001.24, avg_reserved=7775.58, peak_allocated=3864.19, peak_reserved=15382.00, warmup_iters=20
+[05/05 23:15:20] EA0 INFO: epoch 88, total time 71.70, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:16:36] EA0 INFO: epoch 89, total time 76.55, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:17:52] EA0 INFO: epoch 90, total time 75.96, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:18:06] EA0 INFO: Eval: [90]  
+[05/05 23:18:06] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.30993
+[05/05 23:18:06] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.30618
+[05/05 23:18:06] EA0 INFO: WildRefer-official Acc0.25: 0.31090 | Acc0.50: 0.30340 | mIoU: 0.21550
+[05/05 23:18:06] EA0 INFO: Timing(s): inf=0.105707, visual=0.036556, text=0.008362, fusion_wo_head=0.055261, head=0.003743
+[05/05 23:18:06] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.012029, bi_layer1=0.005126, bi_layer2=0.005531, total=0.022687
+[05/05 23:18:06] EA0 INFO: GPU memory(MiB): avg_allocated=1001.41, avg_reserved=9002.32, peak_allocated=3859.35, peak_reserved=14288.00, warmup_iters=20
+[05/05 23:19:22] EA0 INFO: epoch 91, total time 75.76, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:20:39] EA0 INFO: epoch 92, total time 77.37, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:21:55] EA0 INFO: epoch 93, total time 76.42, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:22:09] EA0 INFO: Eval: [93]  
+[05/05 23:22:09] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38577
+[05/05 23:22:09] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36891
+[05/05 23:22:09] EA0 INFO: WildRefer-official Acc0.25: 0.38480 | Acc0.50: 0.36700 | mIoU: 0.26270
+[05/05 23:22:09] EA0 INFO: Timing(s): inf=0.099259, visual=0.036782, text=0.007746, fusion_wo_head=0.049303, head=0.003581
+[05/05 23:22:09] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007127, bi_layer1=0.004799, bi_layer2=0.004648, total=0.016574
+[05/05 23:22:09] EA0 INFO: GPU memory(MiB): avg_allocated=1002.64, avg_reserved=6526.00, peak_allocated=3864.17, peak_reserved=15152.00, warmup_iters=20
+[05/05 23:23:21] EA0 INFO: epoch 94, total time 71.96, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:24:36] EA0 INFO: epoch 95, total time 74.92, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:25:47] EA0 INFO: epoch 96, total time 70.91, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:26:01] EA0 INFO: Eval: [96]  
+[05/05 23:26:01] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.33895
+[05/05 23:26:01] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.32772
+[05/05 23:26:01] EA0 INFO: WildRefer-official Acc0.25: 0.33900 | Acc0.50: 0.32490 | mIoU: 0.23240
+[05/05 23:26:01] EA0 INFO: Timing(s): inf=0.093429, visual=0.034994, text=0.007159, fusion_wo_head=0.046288, head=0.003222
+[05/05 23:26:01] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006530, bi_layer1=0.004434, bi_layer2=0.004358, total=0.015321
+[05/05 23:26:01] EA0 INFO: GPU memory(MiB): avg_allocated=1001.06, avg_reserved=7909.05, peak_allocated=3862.62, peak_reserved=15308.00, warmup_iters=20
+[05/05 23:27:15] EA0 INFO: epoch 97, total time 73.96, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:28:28] EA0 INFO: epoch 98, total time 73.20, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:29:42] EA0 INFO: epoch 99, total time 73.47, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:29:57] EA0 INFO: Eval: [99]  
+[05/05 23:29:57] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39045
+[05/05 23:29:57] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36798
+[05/05 23:29:57] EA0 INFO: WildRefer-official Acc0.25: 0.38950 | Acc0.50: 0.36610 | mIoU: 0.26170
+[05/05 23:29:57] EA0 INFO: Timing(s): inf=0.097620, visual=0.036508, text=0.007163, fusion_wo_head=0.048683, head=0.003531
+[05/05 23:29:57] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007386, bi_layer1=0.004596, bi_layer2=0.004431, total=0.016412
+[05/05 23:29:57] EA0 INFO: GPU memory(MiB): avg_allocated=1001.73, avg_reserved=7890.63, peak_allocated=3862.54, peak_reserved=15306.00, warmup_iters=20
+[05/05 23:31:09] EA0 INFO: epoch 100, total time 72.22, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:32:22] EA0 INFO: epoch 101, total time 72.94, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:33:36] EA0 INFO: epoch 102, total time 73.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:33:50] EA0 INFO: Eval: [102]  
+[05/05 23:33:50] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41479
+[05/05 23:33:50] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39139
+[05/05 23:33:50] EA0 INFO: WildRefer-official Acc0.25: 0.41480 | Acc0.50: 0.39140 | mIoU: 0.28010
+[05/05 23:33:50] EA0 INFO: Timing(s): inf=0.097376, visual=0.037390, text=0.007214, fusion_wo_head=0.047574, head=0.003499
+[05/05 23:33:50] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006589, bi_layer1=0.004625, bi_layer2=0.004344, total=0.015558
+[05/05 23:33:50] EA0 INFO: GPU memory(MiB): avg_allocated=1002.26, avg_reserved=8049.68, peak_allocated=3864.26, peak_reserved=15442.00, warmup_iters=20
+[05/05 23:35:01] EA0 INFO: epoch 103, total time 71.78, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:36:14] EA0 INFO: epoch 104, total time 72.48, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:37:27] EA0 INFO: epoch 105, total time 73.37, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:37:41] EA0 INFO: Eval: [105]  
+[05/05 23:37:41] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38202
+[05/05 23:37:41] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36798
+[05/05 23:37:41] EA0 INFO: WildRefer-official Acc0.25: 0.38200 | Acc0.50: 0.36420 | mIoU: 0.25930
+[05/05 23:37:41] EA0 INFO: Timing(s): inf=0.094586, visual=0.035813, text=0.007378, fusion_wo_head=0.046210, head=0.003363
+[05/05 23:37:41] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005531, bi_layer1=0.004671, bi_layer2=0.004410, total=0.014612
+[05/05 23:37:41] EA0 INFO: GPU memory(MiB): avg_allocated=1002.64, avg_reserved=8179.68, peak_allocated=3865.86, peak_reserved=15442.00, warmup_iters=20
+[05/05 23:38:52] EA0 INFO: epoch 106, total time 71.33, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:40:05] EA0 INFO: epoch 107, total time 73.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:41:18] EA0 INFO: epoch 108, total time 72.90, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:41:32] EA0 INFO: Eval: [108]  
+[05/05 23:41:32] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36236
+[05/05 23:41:32] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.34831
+[05/05 23:41:32] EA0 INFO: WildRefer-official Acc0.25: 0.36140 | Acc0.50: 0.34550 | mIoU: 0.24690
+[05/05 23:41:32] EA0 INFO: Timing(s): inf=0.100483, visual=0.037266, text=0.006906, fusion_wo_head=0.051180, head=0.003389
+[05/05 23:41:32] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006597, bi_layer1=0.004410, bi_layer2=0.004296, total=0.015303
+[05/05 23:41:32] EA0 INFO: GPU memory(MiB): avg_allocated=1002.93, avg_reserved=8970.53, peak_allocated=3871.09, peak_reserved=15444.00, warmup_iters=20
+[05/05 23:42:45] EA0 INFO: epoch 109, total time 72.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:44:01] EA0 INFO: epoch 110, total time 76.29, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:45:15] EA0 INFO: epoch 111, total time 73.97, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:45:29] EA0 INFO: Eval: [111]  
+[05/05 23:45:29] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40543
+[05/05 23:45:29] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39232
+[05/05 23:45:29] EA0 INFO: WildRefer-official Acc0.25: 0.40640 | Acc0.50: 0.38860 | mIoU: 0.27670
+[05/05 23:45:29] EA0 INFO: Timing(s): inf=0.109082, visual=0.039902, text=0.007151, fusion_wo_head=0.057103, head=0.003268
+[05/05 23:45:29] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007553, bi_layer1=0.004316, bi_layer2=0.004315, total=0.016184
+[05/05 23:45:29] EA0 INFO: GPU memory(MiB): avg_allocated=1004.16, avg_reserved=8969.26, peak_allocated=3867.81, peak_reserved=15136.00, warmup_iters=20
+[05/05 23:46:42] EA0 INFO: epoch 112, total time 72.38, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:47:54] EA0 INFO: epoch 113, total time 72.46, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:49:08] EA0 INFO: epoch 114, total time 73.84, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:49:22] EA0 INFO: Eval: [114]  
+[05/05 23:49:22] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.42322
+[05/05 23:49:22] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40169
+[05/05 23:49:22] EA0 INFO: WildRefer-official Acc0.25: 0.42320 | Acc0.50: 0.40070 | mIoU: 0.28790
+[05/05 23:49:22] EA0 INFO: Timing(s): inf=0.093866, visual=0.035122, text=0.007261, fusion_wo_head=0.046302, head=0.003415
+[05/05 23:49:22] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006487, bi_layer1=0.004503, bi_layer2=0.004265, total=0.015255
+[05/05 23:49:22] EA0 INFO: GPU memory(MiB): avg_allocated=1004.76, avg_reserved=8975.05, peak_allocated=3865.36, peak_reserved=15138.00, warmup_iters=20
+[05/05 23:50:36] EA0 INFO: epoch 115, total time 74.48, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:51:49] EA0 INFO: epoch 116, total time 72.79, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:53:02] EA0 INFO: epoch 117, total time 72.87, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:53:17] EA0 INFO: Eval: [117]  
+[05/05 23:53:17] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40449
+[05/05 23:53:17] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38109
+[05/05 23:53:17] EA0 INFO: WildRefer-official Acc0.25: 0.40450 | Acc0.50: 0.37920 | mIoU: 0.27310
+[05/05 23:53:17] EA0 INFO: Timing(s): inf=0.092366, visual=0.034690, text=0.007032, fusion_wo_head=0.045679, head=0.003245
+[05/05 23:53:17] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005811, bi_layer1=0.004505, bi_layer2=0.004249, total=0.014566
+[05/05 23:53:17] EA0 INFO: GPU memory(MiB): avg_allocated=1004.74, avg_reserved=6509.16, peak_allocated=3867.03, peak_reserved=15138.00, warmup_iters=20
+[05/05 23:54:29] EA0 INFO: epoch 118, total time 72.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:55:42] EA0 INFO: epoch 119, total time 73.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:56:55] EA0 INFO: epoch 120, total time 72.85, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:57:10] EA0 INFO: Eval: [120]  
+[05/05 23:57:10] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38296
+[05/05 23:57:10] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36704
+[05/05 23:57:10] EA0 INFO: WildRefer-official Acc0.25: 0.38300 | Acc0.50: 0.36330 | mIoU: 0.25890
+[05/05 23:57:10] EA0 INFO: Timing(s): inf=0.098671, visual=0.036920, text=0.007401, fusion_wo_head=0.048959, head=0.003578
+[05/05 23:57:10] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006831, bi_layer1=0.004713, bi_layer2=0.004776, total=0.016320
+[05/05 23:57:10] EA0 INFO: GPU memory(MiB): avg_allocated=1003.26, avg_reserved=6378.00, peak_allocated=3865.10, peak_reserved=15136.00, warmup_iters=20
+[05/05 23:58:22] EA0 INFO: epoch 121, total time 72.08, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/05 23:59:36] EA0 INFO: epoch 122, total time 73.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:00:49] EA0 INFO: epoch 123, total time 73.22, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:01:03] EA0 INFO: Eval: [123]  
+[05/06 00:01:03] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37828
+[05/06 00:01:03] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36236
+[05/06 00:01:03] EA0 INFO: WildRefer-official Acc0.25: 0.37830 | Acc0.50: 0.35860 | mIoU: 0.25540
+[05/06 00:01:03] EA0 INFO: Timing(s): inf=0.097947, visual=0.037117, text=0.007209, fusion_wo_head=0.048345, head=0.003595
+[05/06 00:01:03] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006834, bi_layer1=0.004691, bi_layer2=0.004486, total=0.016011
+[05/06 00:01:03] EA0 INFO: GPU memory(MiB): avg_allocated=1005.91, avg_reserved=9240.32, peak_allocated=3868.16, peak_reserved=15074.00, warmup_iters=20
+[05/06 00:02:15] EA0 INFO: epoch 124, total time 71.95, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:03:27] EA0 INFO: epoch 125, total time 71.98, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:04:40] EA0 INFO: epoch 126, total time 72.46, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:04:54] EA0 INFO: Eval: [126]  
+[05/06 00:04:54] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41573
+[05/06 00:04:54] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40262
+[05/06 00:04:54] EA0 INFO: WildRefer-official Acc0.25: 0.41570 | Acc0.50: 0.40170 | mIoU: 0.28250
+[05/06 00:04:54] EA0 INFO: Timing(s): inf=0.095279, visual=0.035134, text=0.007269, fusion_wo_head=0.047648, head=0.003505
+[05/06 00:04:54] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006408, bi_layer1=0.004552, bi_layer2=0.004279, total=0.015239
+[05/06 00:04:54] EA0 INFO: GPU memory(MiB): avg_allocated=1004.46, avg_reserved=6769.58, peak_allocated=3866.55, peak_reserved=15398.00, warmup_iters=20
+[05/06 00:06:05] EA0 INFO: epoch 127, total time 71.73, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:07:18] EA0 INFO: epoch 128, total time 72.76, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:08:34] EA0 INFO: epoch 129, total time 75.28, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:08:48] EA0 INFO: Eval: [129]  
+[05/06 00:08:48] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40824
+[05/06 00:08:48] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39139
+[05/06 00:08:48] EA0 INFO: WildRefer-official Acc0.25: 0.40820 | Acc0.50: 0.39140 | mIoU: 0.27580
+[05/06 00:08:48] EA0 INFO: Timing(s): inf=0.093149, visual=0.034587, text=0.007081, fusion_wo_head=0.046471, head=0.003300
+[05/06 00:08:48] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006067, bi_layer1=0.004657, bi_layer2=0.004281, total=0.015006
+[05/06 00:08:48] EA0 INFO: GPU memory(MiB): avg_allocated=1006.66, avg_reserved=6568.11, peak_allocated=3867.88, peak_reserved=15398.00, warmup_iters=20
+[05/06 00:10:01] EA0 INFO: epoch 130, total time 73.00, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:11:14] EA0 INFO: epoch 131, total time 73.31, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:12:28] EA0 INFO: epoch 132, total time 74.15, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:12:42] EA0 INFO: Eval: [132]  
+[05/06 00:12:42] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40169
+[05/06 00:12:42] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38296
+[05/06 00:12:42] EA0 INFO: WildRefer-official Acc0.25: 0.40170 | Acc0.50: 0.38010 | mIoU: 0.27450
+[05/06 00:12:42] EA0 INFO: Timing(s): inf=0.093360, visual=0.035481, text=0.006814, fusion_wo_head=0.046177, head=0.003211
+[05/06 00:12:42] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006567, bi_layer1=0.004436, bi_layer2=0.004423, total=0.015427
+[05/06 00:12:42] EA0 INFO: GPU memory(MiB): avg_allocated=1005.37, avg_reserved=7956.84, peak_allocated=3866.80, peak_reserved=15374.00, warmup_iters=20
+[05/06 00:13:56] EA0 INFO: epoch 133, total time 73.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:15:11] EA0 INFO: epoch 134, total time 75.00, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:16:23] EA0 INFO: epoch 135, total time 72.09, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:16:36] EA0 INFO: Eval: [135]  
+[05/06 00:16:36] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40169
+[05/06 00:16:36] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38577
+[05/06 00:16:36] EA0 INFO: WildRefer-official Acc0.25: 0.40170 | Acc0.50: 0.38300 | mIoU: 0.27370
+[05/06 00:16:36] EA0 INFO: Timing(s): inf=0.113542, visual=0.048377, text=0.007593, fusion_wo_head=0.052107, head=0.003695
+[05/06 00:16:36] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007399, bi_layer1=0.004630, bi_layer2=0.004694, total=0.016723
+[05/06 00:16:36] EA0 INFO: GPU memory(MiB): avg_allocated=1005.18, avg_reserved=7803.79, peak_allocated=3867.59, peak_reserved=15354.00, warmup_iters=20
+[05/06 00:17:51] EA0 INFO: epoch 136, total time 74.83, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:19:04] EA0 INFO: epoch 137, total time 72.78, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:20:18] EA0 INFO: epoch 138, total time 73.66, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:20:32] EA0 INFO: Eval: [138]  
+[05/06 00:20:32] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41667
+[05/06 00:20:32] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40262
+[05/06 00:20:32] EA0 INFO: WildRefer-official Acc0.25: 0.41670 | Acc0.50: 0.39790 | mIoU: 0.28330
+[05/06 00:20:32] EA0 INFO: Timing(s): inf=0.111915, visual=0.049205, text=0.007326, fusion_wo_head=0.049968, head=0.003589
+[05/06 00:20:32] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007462, bi_layer1=0.004671, bi_layer2=0.004398, total=0.016531
+[05/06 00:20:32] EA0 INFO: GPU memory(MiB): avg_allocated=1006.54, avg_reserved=9174.63, peak_allocated=3868.89, peak_reserved=15356.00, warmup_iters=20
+[05/06 00:21:45] EA0 INFO: epoch 139, total time 73.72, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:22:59] EA0 INFO: epoch 140, total time 73.93, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:24:12] EA0 INFO: epoch 141, total time 72.74, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:24:26] EA0 INFO: Eval: [141]  
+[05/06 00:24:26] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38670
+[05/06 00:24:26] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37921
+[05/06 00:24:26] EA0 INFO: WildRefer-official Acc0.25: 0.38670 | Acc0.50: 0.37640 | mIoU: 0.26370
+[05/06 00:24:26] EA0 INFO: Timing(s): inf=0.097069, visual=0.036759, text=0.007157, fusion_wo_head=0.047722, head=0.003719
+[05/06 00:24:26] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006377, bi_layer1=0.004650, bi_layer2=0.004791, total=0.015818
+[05/06 00:24:26] EA0 INFO: GPU memory(MiB): avg_allocated=1006.83, avg_reserved=7941.16, peak_allocated=3868.69, peak_reserved=15336.00, warmup_iters=20
+[05/06 00:25:40] EA0 INFO: epoch 142, total time 73.41, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:26:51] EA0 INFO: epoch 143, total time 71.81, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:28:05] EA0 INFO: epoch 144, total time 73.16, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:28:19] EA0 INFO: Eval: [144]  
+[05/06 00:28:19] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37734
+[05/06 00:28:19] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36517
+[05/06 00:28:19] EA0 INFO: WildRefer-official Acc0.25: 0.37730 | Acc0.50: 0.36240 | mIoU: 0.25810
+[05/06 00:28:19] EA0 INFO: Timing(s): inf=0.094673, visual=0.035403, text=0.007135, fusion_wo_head=0.047240, head=0.003189
+[05/06 00:28:19] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.007000, bi_layer1=0.004426, bi_layer2=0.004296, total=0.015722
+[05/06 00:28:19] EA0 INFO: GPU memory(MiB): avg_allocated=1005.43, avg_reserved=6726.63, peak_allocated=3866.15, peak_reserved=15396.00, warmup_iters=20
+[05/06 00:29:33] EA0 INFO: epoch 145, total time 73.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:30:47] EA0 INFO: epoch 146, total time 73.34, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:32:00] EA0 INFO: epoch 147, total time 73.85, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:32:16] EA0 INFO: Eval: [147]  
+[05/06 00:32:16] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36891
+[05/06 00:32:16] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35581
+[05/06 00:32:16] EA0 INFO: WildRefer-official Acc0.25: 0.36890 | Acc0.50: 0.35110 | mIoU: 0.25100
+[05/06 00:32:16] EA0 INFO: Timing(s): inf=0.092904, visual=0.035298, text=0.007041, fusion_wo_head=0.045685, head=0.003199
+[05/06 00:32:16] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006112, bi_layer1=0.004550, bi_layer2=0.004228, total=0.014890
+[05/06 00:32:16] EA0 INFO: GPU memory(MiB): avg_allocated=1005.34, avg_reserved=7959.05, peak_allocated=3866.54, peak_reserved=15356.00, warmup_iters=20
+[05/06 00:33:30] EA0 INFO: epoch 148, total time 73.42, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:34:44] EA0 INFO: epoch 149, total time 74.16, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:35:56] EA0 INFO: epoch 150, total time 71.86, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:36:10] EA0 INFO: Eval: [150]  
+[05/06 00:36:10] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37172
+[05/06 00:36:10] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36330
+[05/06 00:36:10] EA0 INFO: WildRefer-official Acc0.25: 0.37170 | Acc0.50: 0.35580 | mIoU: 0.25530
+[05/06 00:36:10] EA0 INFO: Timing(s): inf=0.097514, visual=0.036631, text=0.007318, fusion_wo_head=0.048059, head=0.003721
+[05/06 00:36:10] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005854, bi_layer1=0.004731, bi_layer2=0.004620, total=0.015205
+[05/06 00:36:10] EA0 INFO: GPU memory(MiB): avg_allocated=1006.88, avg_reserved=8058.53, peak_allocated=3870.19, peak_reserved=15356.00, warmup_iters=20
+[05/06 00:37:22] EA0 INFO: epoch 151, total time 71.98, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:38:36] EA0 INFO: epoch 152, total time 74.40, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:39:50] EA0 INFO: epoch 153, total time 73.49, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:40:04] EA0 INFO: Eval: [153]  
+[05/06 00:40:04] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38577
+[05/06 00:40:04] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37079
+[05/06 00:40:04] EA0 INFO: WildRefer-official Acc0.25: 0.38580 | Acc0.50: 0.36800 | mIoU: 0.26230
+[05/06 00:40:04] EA0 INFO: Timing(s): inf=0.098398, visual=0.037412, text=0.007493, fusion_wo_head=0.048105, head=0.003661
+[05/06 00:40:04] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005706, bi_layer1=0.004852, bi_layer2=0.004808, total=0.015366
+[05/06 00:40:04] EA0 INFO: GPU memory(MiB): avg_allocated=1008.22, avg_reserved=8210.42, peak_allocated=3871.40, peak_reserved=15474.00, warmup_iters=20
+[05/06 00:41:17] EA0 INFO: epoch 154, total time 73.47, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:42:31] EA0 INFO: epoch 155, total time 74.05, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:43:45] EA0 INFO: epoch 156, total time 73.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:43:59] EA0 INFO: Eval: [156]  
+[05/06 00:43:59] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41760
+[05/06 00:43:59] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40262
+[05/06 00:43:59] EA0 INFO: WildRefer-official Acc0.25: 0.41760 | Acc0.50: 0.39890 | mIoU: 0.28240
+[05/06 00:43:59] EA0 INFO: Timing(s): inf=0.093195, visual=0.034798, text=0.007231, fusion_wo_head=0.046070, head=0.003299
+[05/06 00:43:59] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006358, bi_layer1=0.004437, bi_layer2=0.004286, total=0.015082
+[05/06 00:43:59] EA0 INFO: GPU memory(MiB): avg_allocated=1007.81, avg_reserved=6672.95, peak_allocated=3868.36, peak_reserved=15474.00, warmup_iters=20
+[05/06 00:45:11] EA0 INFO: epoch 157, total time 72.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:46:23] EA0 INFO: epoch 158, total time 71.87, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:47:37] EA0 INFO: epoch 159, total time 74.00, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:47:52] EA0 INFO: Eval: [159]  
+[05/06 00:47:52] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38858
+[05/06 00:47:52] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36891
+[05/06 00:47:52] EA0 INFO: WildRefer-official Acc0.25: 0.38860 | Acc0.50: 0.36700 | mIoU: 0.26000
+[05/06 00:47:52] EA0 INFO: Timing(s): inf=0.096714, visual=0.036646, text=0.007414, fusion_wo_head=0.047324, head=0.003588
+[05/06 00:47:52] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005767, bi_layer1=0.004899, bi_layer2=0.004302, total=0.014969
+[05/06 00:47:52] EA0 INFO: GPU memory(MiB): avg_allocated=1005.94, avg_reserved=8336.74, peak_allocated=3870.01, peak_reserved=15342.00, warmup_iters=20
+[05/06 00:49:03] EA0 INFO: epoch 160, total time 70.89, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:50:15] EA0 INFO: epoch 161, total time 71.61, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:51:27] EA0 INFO: epoch 162, total time 72.63, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:51:43] EA0 INFO: Eval: [162]  
+[05/06 00:51:43] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41386
+[05/06 00:51:43] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39607
+[05/06 00:51:43] EA0 INFO: WildRefer-official Acc0.25: 0.41390 | Acc0.50: 0.39230 | mIoU: 0.27980
+[05/06 00:51:43] EA0 INFO: Timing(s): inf=0.093703, visual=0.035217, text=0.007491, fusion_wo_head=0.045813, head=0.003360
+[05/06 00:51:43] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005698, bi_layer1=0.004525, bi_layer2=0.004312, total=0.014534
+[05/06 00:51:43] EA0 INFO: GPU memory(MiB): avg_allocated=1005.44, avg_reserved=5640.74, peak_allocated=3865.01, peak_reserved=15498.00, warmup_iters=20
+[05/06 00:52:55] EA0 INFO: epoch 163, total time 72.60, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:54:08] EA0 INFO: epoch 164, total time 72.27, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:55:19] EA0 INFO: epoch 165, total time 71.56, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:55:33] EA0 INFO: Eval: [165]  
+[05/06 00:55:33] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41292
+[05/06 00:55:33] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39700
+[05/06 00:55:33] EA0 INFO: WildRefer-official Acc0.25: 0.41290 | Acc0.50: 0.39420 | mIoU: 0.28110
+[05/06 00:55:33] EA0 INFO: Timing(s): inf=0.102555, visual=0.037376, text=0.006947, fusion_wo_head=0.053233, head=0.003291
+[05/06 00:55:33] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005325, bi_layer1=0.004356, bi_layer2=0.004279, total=0.013960
+[05/06 00:55:33] EA0 INFO: GPU memory(MiB): avg_allocated=1009.58, avg_reserved=7146.00, peak_allocated=3869.51, peak_reserved=14570.00, warmup_iters=20
+[05/06 00:56:45] EA0 INFO: epoch 166, total time 71.79, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:57:57] EA0 INFO: epoch 167, total time 72.85, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:59:12] EA0 INFO: epoch 168, total time 74.15, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 00:59:26] EA0 INFO: Eval: [168]  
+[05/06 00:59:26] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39232
+[05/06 00:59:26] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38015
+[05/06 00:59:26] EA0 INFO: WildRefer-official Acc0.25: 0.39230 | Acc0.50: 0.37920 | mIoU: 0.26750
+[05/06 00:59:26] EA0 INFO: Timing(s): inf=0.097640, visual=0.036824, text=0.007474, fusion_wo_head=0.047916, head=0.003603
+[05/06 00:59:26] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006103, bi_layer1=0.004693, bi_layer2=0.004656, total=0.015452
+[05/06 00:59:26] EA0 INFO: GPU memory(MiB): avg_allocated=1007.08, avg_reserved=12670.53, peak_allocated=3869.11, peak_reserved=14538.00, warmup_iters=20
+[05/06 01:00:39] EA0 INFO: epoch 169, total time 73.31, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:01:53] EA0 INFO: epoch 170, total time 73.63, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:03:07] EA0 INFO: epoch 171, total time 74.14, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:03:22] EA0 INFO: Eval: [171]  
+[05/06 01:03:22] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40262
+[05/06 01:03:22] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39139
+[05/06 01:03:22] EA0 INFO: WildRefer-official Acc0.25: 0.40260 | Acc0.50: 0.38760 | mIoU: 0.27650
+[05/06 01:03:22] EA0 INFO: Timing(s): inf=0.092788, visual=0.034741, text=0.007347, fusion_wo_head=0.045591, head=0.003331
+[05/06 01:03:22] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005236, bi_layer1=0.004528, bi_layer2=0.004137, total=0.013901
+[05/06 01:03:22] EA0 INFO: GPU memory(MiB): avg_allocated=1008.36, avg_reserved=13845.37, peak_allocated=3869.54, peak_reserved=14448.00, warmup_iters=20
+[05/06 01:04:37] EA0 INFO: epoch 172, total time 74.34, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:05:49] EA0 INFO: epoch 173, total time 72.87, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:07:04] EA0 INFO: epoch 174, total time 74.09, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:07:18] EA0 INFO: Eval: [174]  
+[05/06 01:07:18] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41011
+[05/06 01:07:18] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39419
+[05/06 01:07:18] EA0 INFO: WildRefer-official Acc0.25: 0.41010 | Acc0.50: 0.39040 | mIoU: 0.27830
+[05/06 01:07:18] EA0 INFO: Timing(s): inf=0.093366, visual=0.034974, text=0.007225, fusion_wo_head=0.045986, head=0.003386
+[05/06 01:07:18] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005799, bi_layer1=0.004434, bi_layer2=0.004110, total=0.014343
+[05/06 01:07:18] EA0 INFO: GPU memory(MiB): avg_allocated=1007.86, avg_reserved=5622.53, peak_allocated=3868.98, peak_reserved=14860.00, warmup_iters=20
+[05/06 01:08:29] EA0 INFO: epoch 175, total time 71.61, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:09:42] EA0 INFO: epoch 176, total time 72.38, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:10:54] EA0 INFO: epoch 177, total time 72.37, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:11:09] EA0 INFO: Eval: [177]  
+[05/06 01:11:09] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38109
+[05/06 01:11:09] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36704
+[05/06 01:11:09] EA0 INFO: WildRefer-official Acc0.25: 0.38110 | Acc0.50: 0.36420 | mIoU: 0.25810
+[05/06 01:11:09] EA0 INFO: Timing(s): inf=0.094289, visual=0.034986, text=0.007162, fusion_wo_head=0.046925, head=0.003481
+[05/06 01:11:09] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006322, bi_layer1=0.004583, bi_layer2=0.004184, total=0.015089
+[05/06 01:11:09] EA0 INFO: GPU memory(MiB): avg_allocated=1008.36, avg_reserved=6626.84, peak_allocated=3870.47, peak_reserved=15462.00, warmup_iters=20
+[05/06 01:12:23] EA0 INFO: epoch 178, total time 73.86, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:13:36] EA0 INFO: epoch 179, total time 73.07, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:14:50] EA0 INFO: epoch 180, total time 74.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:15:03] EA0 INFO: Eval: [180]  
+[05/06 01:15:03] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40169
+[05/06 01:15:03] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38951
+[05/06 01:15:03] EA0 INFO: WildRefer-official Acc0.25: 0.40170 | Acc0.50: 0.38390 | mIoU: 0.27520
+[05/06 01:15:03] EA0 INFO: Timing(s): inf=0.095342, visual=0.036531, text=0.007230, fusion_wo_head=0.046414, head=0.003425
+[05/06 01:15:03] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006199, bi_layer1=0.004565, bi_layer2=0.004167, total=0.014931
+[05/06 01:15:03] EA0 INFO: GPU memory(MiB): avg_allocated=1008.54, avg_reserved=6952.32, peak_allocated=3875.65, peak_reserved=14882.00, warmup_iters=20
+[05/06 01:16:15] EA0 INFO: epoch 181, total time 71.40, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:17:27] EA0 INFO: epoch 182, total time 72.18, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:18:37] EA0 INFO: epoch 183, total time 69.97, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:18:51] EA0 INFO: Eval: [183]  
+[05/06 01:18:51] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41573
+[05/06 01:18:51] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40543
+[05/06 01:18:51] EA0 INFO: WildRefer-official Acc0.25: 0.41570 | Acc0.50: 0.39980 | mIoU: 0.28240
+[05/06 01:18:51] EA0 INFO: Timing(s): inf=0.093713, visual=0.035255, text=0.006927, fusion_wo_head=0.046418, head=0.003365
+[05/06 01:18:51] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006418, bi_layer1=0.004408, bi_layer2=0.004235, total=0.015061
+[05/06 01:18:51] EA0 INFO: GPU memory(MiB): avg_allocated=1010.79, avg_reserved=6808.32, peak_allocated=3873.40, peak_reserved=15076.00, warmup_iters=20
+[05/06 01:20:04] EA0 INFO: epoch 184, total time 72.22, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:21:14] EA0 INFO: epoch 185, total time 70.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:22:24] EA0 INFO: epoch 186, total time 70.52, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:22:38] EA0 INFO: Eval: [186]  
+[05/06 01:22:38] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41386
+[05/06 01:22:38] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39888
+[05/06 01:22:38] EA0 INFO: WildRefer-official Acc0.25: 0.41390 | Acc0.50: 0.39700 | mIoU: 0.28080
+[05/06 01:22:38] EA0 INFO: Timing(s): inf=0.101769, visual=0.042353, text=0.007212, fusion_wo_head=0.047083, head=0.003425
+[05/06 01:22:38] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005619, bi_layer1=0.004488, bi_layer2=0.004363, total=0.014469
+[05/06 01:22:38] EA0 INFO: GPU memory(MiB): avg_allocated=1012.08, avg_reserved=7994.74, peak_allocated=3875.63, peak_reserved=15400.00, warmup_iters=20
+[05/06 01:23:50] EA0 INFO: epoch 187, total time 72.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:25:06] EA0 INFO: epoch 188, total time 75.35, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:26:19] EA0 INFO: epoch 189, total time 73.43, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:26:34] EA0 INFO: Eval: [189]  
+[05/06 01:26:34] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40449
+[05/06 01:26:34] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39139
+[05/06 01:26:34] EA0 INFO: WildRefer-official Acc0.25: 0.40450 | Acc0.50: 0.38480 | mIoU: 0.27510
+[05/06 01:26:34] EA0 INFO: Timing(s): inf=0.106641, visual=0.040765, text=0.007479, fusion_wo_head=0.052797, head=0.003694
+[05/06 01:26:34] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005516, bi_layer1=0.004905, bi_layer2=0.004363, total=0.014785
+[05/06 01:26:34] EA0 INFO: GPU memory(MiB): avg_allocated=1009.33, avg_reserved=6766.00, peak_allocated=3873.48, peak_reserved=15388.00, warmup_iters=20
+[05/06 01:27:46] EA0 INFO: epoch 190, total time 72.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:28:58] EA0 INFO: epoch 191, total time 71.82, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:30:12] EA0 INFO: epoch 192, total time 74.29, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:30:26] EA0 INFO: Eval: [192]  
+[05/06 01:30:26] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36423
+[05/06 01:30:26] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35674
+[05/06 01:30:26] EA0 INFO: WildRefer-official Acc0.25: 0.36420 | Acc0.50: 0.35670 | mIoU: 0.24970
+[05/06 01:30:26] EA0 INFO: Timing(s): inf=0.096266, visual=0.036384, text=0.007154, fusion_wo_head=0.047396, head=0.003603
+[05/06 01:30:26] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005467, bi_layer1=0.004587, bi_layer2=0.004285, total=0.014339
+[05/06 01:30:26] EA0 INFO: GPU memory(MiB): avg_allocated=1009.79, avg_reserved=12653.05, peak_allocated=3873.29, peak_reserved=15390.00, warmup_iters=20
+[05/06 01:31:39] EA0 INFO: epoch 193, total time 72.16, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:32:50] EA0 INFO: epoch 194, total time 71.25, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:34:02] EA0 INFO: epoch 195, total time 71.85, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:34:18] EA0 INFO: Eval: [195]  
+[05/06 01:34:18] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37921
+[05/06 01:34:18] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36704
+[05/06 01:34:18] EA0 INFO: WildRefer-official Acc0.25: 0.37920 | Acc0.50: 0.36330 | mIoU: 0.25960
+[05/06 01:34:18] EA0 INFO: Timing(s): inf=0.093103, visual=0.034581, text=0.007146, fusion_wo_head=0.046262, head=0.003427
+[05/06 01:34:18] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006376, bi_layer1=0.004335, bi_layer2=0.004195, total=0.014905
+[05/06 01:34:18] EA0 INFO: GPU memory(MiB): avg_allocated=1011.63, avg_reserved=7937.68, peak_allocated=3872.13, peak_reserved=15508.00, warmup_iters=20
+[05/06 01:35:31] EA0 INFO: epoch 196, total time 72.94, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:36:44] EA0 INFO: epoch 197, total time 73.29, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:37:58] EA0 INFO: epoch 198, total time 74.09, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:38:13] EA0 INFO: Eval: [198]  
+[05/06 01:38:13] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.42041
+[05/06 01:38:13] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40730
+[05/06 01:38:13] EA0 INFO: WildRefer-official Acc0.25: 0.42040 | Acc0.50: 0.40360 | mIoU: 0.28580
+[05/06 01:38:13] EA0 INFO: Timing(s): inf=0.098090, visual=0.037961, text=0.007488, fusion_wo_head=0.047323, head=0.003516
+[05/06 01:38:13] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006273, bi_layer1=0.004743, bi_layer2=0.004425, total=0.015442
+[05/06 01:38:13] EA0 INFO: GPU memory(MiB): avg_allocated=1013.50, avg_reserved=7809.68, peak_allocated=3878.55, peak_reserved=15334.00, warmup_iters=20
+[05/06 01:39:28] EA0 INFO: epoch 199, total time 74.07, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:40:47] EA0 INFO: epoch 200, total time 79.14, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:41:58] EA0 INFO: epoch 201, total time 71.66, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:42:14] EA0 INFO: Eval: [201]  
+[05/06 01:42:14] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41011
+[05/06 01:42:14] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39513
+[05/06 01:42:14] EA0 INFO: WildRefer-official Acc0.25: 0.41010 | Acc0.50: 0.39330 | mIoU: 0.27910
+[05/06 01:42:14] EA0 INFO: Timing(s): inf=0.098682, visual=0.037385, text=0.007706, fusion_wo_head=0.048145, head=0.003656
+[05/06 01:42:14] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006154, bi_layer1=0.004894, bi_layer2=0.004562, total=0.015610
+[05/06 01:42:14] EA0 INFO: GPU memory(MiB): avg_allocated=1010.09, avg_reserved=6706.42, peak_allocated=3871.55, peak_reserved=15332.00, warmup_iters=20
+[05/06 01:43:26] EA0 INFO: epoch 202, total time 71.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:44:39] EA0 INFO: epoch 203, total time 73.34, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:45:53] EA0 INFO: epoch 204, total time 74.19, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:46:08] EA0 INFO: Eval: [204]  
+[05/06 01:46:08] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41292
+[05/06 01:46:08] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40356
+[05/06 01:46:08] EA0 INFO: WildRefer-official Acc0.25: 0.41290 | Acc0.50: 0.40070 | mIoU: 0.28470
+[05/06 01:46:08] EA0 INFO: Timing(s): inf=0.093248, visual=0.035731, text=0.007186, fusion_wo_head=0.044760, head=0.003834
+[05/06 01:46:08] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005132, bi_layer1=0.004603, bi_layer2=0.004105, total=0.013839
+[05/06 01:46:08] EA0 INFO: GPU memory(MiB): avg_allocated=1011.82, avg_reserved=12739.47, peak_allocated=3873.74, peak_reserved=15334.00, warmup_iters=20
+[05/06 01:47:21] EA0 INFO: epoch 205, total time 72.84, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:48:45] EA0 INFO: epoch 206, total time 84.50, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:50:00] EA0 INFO: epoch 207, total time 74.27, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:50:14] EA0 INFO: Eval: [207]  
+[05/06 01:50:14] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41760
+[05/06 01:50:14] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40075
+[05/06 01:50:14] EA0 INFO: WildRefer-official Acc0.25: 0.41760 | Acc0.50: 0.39890 | mIoU: 0.28410
+[05/06 01:50:14] EA0 INFO: Timing(s): inf=0.097492, visual=0.036804, text=0.007694, fusion_wo_head=0.047619, head=0.003551
+[05/06 01:50:14] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005998, bi_layer1=0.004984, bi_layer2=0.004607, total=0.015589
+[05/06 01:50:14] EA0 INFO: GPU memory(MiB): avg_allocated=1012.01, avg_reserved=7813.79, peak_allocated=3870.56, peak_reserved=15334.00, warmup_iters=20
+[05/06 01:51:27] EA0 INFO: epoch 208, total time 73.19, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:52:40] EA0 INFO: epoch 209, total time 72.50, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:53:55] EA0 INFO: epoch 210, total time 74.81, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:54:09] EA0 INFO: Eval: [210]  
+[05/06 01:54:09] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41948
+[05/06 01:54:09] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40543
+[05/06 01:54:09] EA0 INFO: WildRefer-official Acc0.25: 0.41950 | Acc0.50: 0.40260 | mIoU: 0.28530
+[05/06 01:54:09] EA0 INFO: Timing(s): inf=0.096853, visual=0.036858, text=0.007530, fusion_wo_head=0.046915, head=0.003708
+[05/06 01:54:09] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005382, bi_layer1=0.004655, bi_layer2=0.004389, total=0.014426
+[05/06 01:54:09] EA0 INFO: GPU memory(MiB): avg_allocated=1013.29, avg_reserved=14916.21, peak_allocated=3876.67, peak_reserved=15374.00, warmup_iters=20
+[05/06 01:55:21] EA0 INFO: epoch 211, total time 72.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:56:35] EA0 INFO: epoch 212, total time 73.66, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:57:48] EA0 INFO: epoch 213, total time 72.56, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 01:58:02] EA0 INFO: Eval: [213]  
+[05/06 01:58:02] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.42322
+[05/06 01:58:02] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40730
+[05/06 01:58:02] EA0 INFO: WildRefer-official Acc0.25: 0.42420 | Acc0.50: 0.40540 | mIoU: 0.28860
+[05/06 01:58:02] EA0 INFO: Timing(s): inf=0.099573, visual=0.037488, text=0.007688, fusion_wo_head=0.048747, head=0.003792
+[05/06 01:58:02] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006067, bi_layer1=0.005032, bi_layer2=0.004564, total=0.015663
+[05/06 01:58:02] EA0 INFO: GPU memory(MiB): avg_allocated=1011.22, avg_reserved=9728.00, peak_allocated=3872.21, peak_reserved=15310.00, warmup_iters=20
+[05/06 01:59:14] EA0 INFO: epoch 214, total time 72.16, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:00:28] EA0 INFO: epoch 215, total time 73.72, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:01:41] EA0 INFO: epoch 216, total time 73.32, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:01:57] EA0 INFO: Eval: [216]  
+[05/06 02:01:57] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38390
+[05/06 02:01:57] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36704
+[05/06 02:01:57] EA0 INFO: WildRefer-official Acc0.25: 0.38390 | Acc0.50: 0.36330 | mIoU: 0.25990
+[05/06 02:01:57] EA0 INFO: Timing(s): inf=0.091308, visual=0.034879, text=0.007111, fusion_wo_head=0.044214, head=0.003394
+[05/06 02:01:57] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004660, bi_layer1=0.004391, bi_layer2=0.004018, total=0.013069
+[05/06 02:01:57] EA0 INFO: GPU memory(MiB): avg_allocated=1012.77, avg_reserved=14920.00, peak_allocated=3873.21, peak_reserved=14920.00, warmup_iters=20
+[05/06 02:03:10] EA0 INFO: epoch 217, total time 72.70, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:04:24] EA0 INFO: epoch 218, total time 73.56, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:05:37] EA0 INFO: epoch 219, total time 73.61, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:05:53] EA0 INFO: Eval: [219]  
+[05/06 02:05:53] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38577
+[05/06 02:05:53] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37360
+[05/06 02:05:53] EA0 INFO: WildRefer-official Acc0.25: 0.38580 | Acc0.50: 0.37080 | mIoU: 0.26460
+[05/06 02:05:53] EA0 INFO: Timing(s): inf=0.096872, visual=0.036795, text=0.008071, fusion_wo_head=0.046765, head=0.003456
+[05/06 02:05:53] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005715, bi_layer1=0.004852, bi_layer2=0.004177, total=0.014744
+[05/06 02:05:53] EA0 INFO: GPU memory(MiB): avg_allocated=1014.45, avg_reserved=13512.63, peak_allocated=3876.09, peak_reserved=14924.00, warmup_iters=20
+[05/06 02:07:04] EA0 INFO: epoch 220, total time 71.15, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:08:17] EA0 INFO: epoch 221, total time 72.53, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:09:31] EA0 INFO: epoch 222, total time 74.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:09:45] EA0 INFO: Eval: [222]  
+[05/06 02:09:45] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40169
+[05/06 02:09:45] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38483
+[05/06 02:09:45] EA0 INFO: WildRefer-official Acc0.25: 0.40170 | Acc0.50: 0.38300 | mIoU: 0.27290
+[05/06 02:09:45] EA0 INFO: Timing(s): inf=0.098088, visual=0.037256, text=0.007757, fusion_wo_head=0.047562, head=0.003699
+[05/06 02:09:45] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005482, bi_layer1=0.004872, bi_layer2=0.004595, total=0.014948
+[05/06 02:09:45] EA0 INFO: GPU memory(MiB): avg_allocated=1012.84, avg_reserved=13849.79, peak_allocated=3873.24, peak_reserved=14384.00, warmup_iters=20
+[05/06 02:10:59] EA0 INFO: epoch 223, total time 74.10, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:12:12] EA0 INFO: epoch 224, total time 73.03, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:13:26] EA0 INFO: epoch 225, total time 73.78, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:13:40] EA0 INFO: Eval: [225]  
+[05/06 02:13:40] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38577
+[05/06 02:13:40] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37360
+[05/06 02:13:40] EA0 INFO: WildRefer-official Acc0.25: 0.38580 | Acc0.50: 0.37080 | mIoU: 0.26510
+[05/06 02:13:40] EA0 INFO: Timing(s): inf=0.096500, visual=0.036612, text=0.007306, fusion_wo_head=0.047086, head=0.003740
+[05/06 02:13:40] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005032, bi_layer1=0.004606, bi_layer2=0.004312, total=0.013949
+[05/06 02:13:40] EA0 INFO: GPU memory(MiB): avg_allocated=1012.86, avg_reserved=14648.00, peak_allocated=3874.83, peak_reserved=14648.00, warmup_iters=20
+[05/06 02:14:53] EA0 INFO: epoch 226, total time 72.14, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:16:06] EA0 INFO: epoch 227, total time 73.92, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:17:19] EA0 INFO: epoch 228, total time 72.05, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:17:33] EA0 INFO: Eval: [228]  
+[05/06 02:17:33] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38764
+[05/06 02:17:33] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37453
+[05/06 02:17:33] EA0 INFO: WildRefer-official Acc0.25: 0.38760 | Acc0.50: 0.37080 | mIoU: 0.26680
+[05/06 02:17:33] EA0 INFO: Timing(s): inf=0.111680, visual=0.042978, text=0.007371, fusion_wo_head=0.055642, head=0.003811
+[05/06 02:17:33] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004921, bi_layer1=0.004523, bi_layer2=0.010752, total=0.020196
+[05/06 02:17:33] EA0 INFO: GPU memory(MiB): avg_allocated=1012.25, avg_reserved=14650.00, peak_allocated=3871.61, peak_reserved=14650.00, warmup_iters=20
+[05/06 02:18:47] EA0 INFO: epoch 229, total time 73.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:19:59] EA0 INFO: epoch 230, total time 72.67, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:21:13] EA0 INFO: epoch 231, total time 74.06, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:21:29] EA0 INFO: Eval: [231]  
+[05/06 02:21:29] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37360
+[05/06 02:21:29] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35581
+[05/06 02:21:29] EA0 INFO: WildRefer-official Acc0.25: 0.37360 | Acc0.50: 0.35580 | mIoU: 0.25470
+[05/06 02:21:29] EA0 INFO: Timing(s): inf=0.106067, visual=0.036736, text=0.007184, fusion_wo_head=0.056809, head=0.003611
+[05/06 02:21:29] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004968, bi_layer1=0.004739, bi_layer2=0.004252, total=0.013959
+[05/06 02:21:29] EA0 INFO: GPU memory(MiB): avg_allocated=1014.69, avg_reserved=14650.00, peak_allocated=3876.99, peak_reserved=14650.00, warmup_iters=20
+[05/06 02:22:44] EA0 INFO: epoch 232, total time 74.88, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:23:55] EA0 INFO: epoch 233, total time 71.96, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:25:08] EA0 INFO: epoch 234, total time 72.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:25:23] EA0 INFO: Eval: [234]  
+[05/06 02:25:23] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38202
+[05/06 02:25:23] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37172
+[05/06 02:25:23] EA0 INFO: WildRefer-official Acc0.25: 0.38200 | Acc0.50: 0.36800 | mIoU: 0.26030
+[05/06 02:25:23] EA0 INFO: Timing(s): inf=0.097125, visual=0.037012, text=0.007428, fusion_wo_head=0.047191, head=0.003662
+[05/06 02:25:23] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005530, bi_layer1=0.004656, bi_layer2=0.004420, total=0.014606
+[05/06 02:25:23] EA0 INFO: GPU memory(MiB): avg_allocated=1014.59, avg_reserved=14113.58, peak_allocated=3875.98, peak_reserved=14650.00, warmup_iters=20
+[05/06 02:26:35] EA0 INFO: epoch 235, total time 72.82, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:27:48] EA0 INFO: epoch 236, total time 72.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:29:00] EA0 INFO: epoch 237, total time 71.75, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:29:14] EA0 INFO: Eval: [237]  
+[05/06 02:29:14] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40262
+[05/06 02:29:14] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39045
+[05/06 02:29:14] EA0 INFO: WildRefer-official Acc0.25: 0.40260 | Acc0.50: 0.38200 | mIoU: 0.27350
+[05/06 02:29:14] EA0 INFO: Timing(s): inf=0.096730, visual=0.037472, text=0.007324, fusion_wo_head=0.046577, head=0.003591
+[05/06 02:29:14] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005060, bi_layer1=0.004647, bi_layer2=0.004334, total=0.014041
+[05/06 02:29:14] EA0 INFO: GPU memory(MiB): avg_allocated=1015.24, avg_reserved=14994.00, peak_allocated=3877.57, peak_reserved=14994.00, warmup_iters=20
+[05/06 02:30:27] EA0 INFO: epoch 238, total time 73.28, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:31:41] EA0 INFO: epoch 239, total time 73.64, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:32:54] EA0 INFO: epoch 240, total time 73.29, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:33:09] EA0 INFO: Eval: [240]  
+[05/06 02:33:09] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40075
+[05/06 02:33:09] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38670
+[05/06 02:33:09] EA0 INFO: WildRefer-official Acc0.25: 0.40070 | Acc0.50: 0.38390 | mIoU: 0.27350
+[05/06 02:33:09] EA0 INFO: Timing(s): inf=0.098100, visual=0.036878, text=0.007650, fusion_wo_head=0.048174, head=0.003617
+[05/06 02:33:09] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005769, bi_layer1=0.004883, bi_layer2=0.004605, total=0.015258
+[05/06 02:33:09] EA0 INFO: GPU memory(MiB): avg_allocated=1014.98, avg_reserved=8522.32, peak_allocated=3876.78, peak_reserved=14996.00, warmup_iters=20
+[05/06 02:34:23] EA0 INFO: epoch 241, total time 74.38, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:35:36] EA0 INFO: epoch 242, total time 73.28, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:36:49] EA0 INFO: epoch 243, total time 72.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:37:05] EA0 INFO: Eval: [243]  
+[05/06 02:37:05] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41105
+[05/06 02:37:05] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39794
+[05/06 02:37:05] EA0 INFO: WildRefer-official Acc0.25: 0.41100 | Acc0.50: 0.39510 | mIoU: 0.27950
+[05/06 02:37:05] EA0 INFO: Timing(s): inf=0.093357, visual=0.035264, text=0.007119, fusion_wo_head=0.045719, head=0.003457
+[05/06 02:37:05] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005577, bi_layer1=0.004649, bi_layer2=0.004113, total=0.014340
+[05/06 02:37:05] EA0 INFO: GPU memory(MiB): avg_allocated=1016.45, avg_reserved=8092.74, peak_allocated=3876.82, peak_reserved=15414.00, warmup_iters=20
+[05/06 02:38:19] EA0 INFO: epoch 244, total time 74.27, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:39:32] EA0 INFO: epoch 245, total time 72.53, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:40:45] EA0 INFO: epoch 246, total time 73.08, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:41:00] EA0 INFO: Eval: [246]  
+[05/06 02:41:00] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36985
+[05/06 02:41:00] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35861
+[05/06 02:41:00] EA0 INFO: WildRefer-official Acc0.25: 0.36990 | Acc0.50: 0.35580 | mIoU: 0.25350
+[05/06 02:41:00] EA0 INFO: Timing(s): inf=0.096249, visual=0.036971, text=0.007267, fusion_wo_head=0.046595, head=0.003646
+[05/06 02:41:00] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005508, bi_layer1=0.004544, bi_layer2=0.004432, total=0.014484
+[05/06 02:41:00] EA0 INFO: GPU memory(MiB): avg_allocated=1016.32, avg_reserved=13554.95, peak_allocated=3876.69, peak_reserved=15376.00, warmup_iters=20
+[05/06 02:42:14] EA0 INFO: epoch 247, total time 74.41, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:43:27] EA0 INFO: epoch 248, total time 72.74, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:44:42] EA0 INFO: epoch 249, total time 75.01, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:44:56] EA0 INFO: Eval: [249]  
+[05/06 02:44:56] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.41386
+[05/06 02:44:56] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39607
+[05/06 02:44:56] EA0 INFO: WildRefer-official Acc0.25: 0.41390 | Acc0.50: 0.39140 | mIoU: 0.28070
+[05/06 02:44:56] EA0 INFO: Timing(s): inf=0.099821, visual=0.038040, text=0.007724, fusion_wo_head=0.048439, head=0.003728
+[05/06 02:44:56] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005762, bi_layer1=0.004715, bi_layer2=0.004387, total=0.014864
+[05/06 02:44:56] EA0 INFO: GPU memory(MiB): avg_allocated=1014.23, avg_reserved=14443.37, peak_allocated=3874.49, peak_reserved=15354.00, warmup_iters=20
+[05/06 02:46:16] EA0 INFO: epoch 250, total time 79.53, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:47:30] EA0 INFO: epoch 251, total time 74.10, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:48:46] EA0 INFO: epoch 252, total time 76.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:49:01] EA0 INFO: Eval: [252]  
+[05/06 02:49:01] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38858
+[05/06 02:49:01] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37547
+[05/06 02:49:01] EA0 INFO: WildRefer-official Acc0.25: 0.38860 | Acc0.50: 0.37080 | mIoU: 0.26490
+[05/06 02:49:01] EA0 INFO: Timing(s): inf=0.096303, visual=0.036485, text=0.007296, fusion_wo_head=0.047200, head=0.003601
+[05/06 02:49:01] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005756, bi_layer1=0.004637, bi_layer2=0.004377, total=0.014770
+[05/06 02:49:01] EA0 INFO: GPU memory(MiB): avg_allocated=1016.73, avg_reserved=6690.53, peak_allocated=3877.88, peak_reserved=15318.00, warmup_iters=20
+[05/06 02:50:15] EA0 INFO: epoch 253, total time 73.65, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:51:30] EA0 INFO: epoch 254, total time 74.86, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:52:42] EA0 INFO: epoch 255, total time 72.45, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:52:59] EA0 INFO: Eval: [255]  
+[05/06 02:52:59] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39607
+[05/06 02:52:59] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38390
+[05/06 02:52:59] EA0 INFO: WildRefer-official Acc0.25: 0.39610 | Acc0.50: 0.38110 | mIoU: 0.27040
+[05/06 02:52:59] EA0 INFO: Timing(s): inf=0.095702, visual=0.037037, text=0.007088, fusion_wo_head=0.046256, head=0.003639
+[05/06 02:52:59] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005200, bi_layer1=0.004518, bi_layer2=0.004255, total=0.013973
+[05/06 02:52:59] EA0 INFO: GPU memory(MiB): avg_allocated=1015.74, avg_reserved=15472.00, peak_allocated=3877.22, peak_reserved=15472.00, warmup_iters=20
+[05/06 02:54:12] EA0 INFO: epoch 256, total time 72.72, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:55:25] EA0 INFO: epoch 257, total time 73.16, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:56:46] EA0 INFO: epoch 258, total time 81.31, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:57:00] EA0 INFO: Eval: [258]  
+[05/06 02:57:00] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40356
+[05/06 02:57:00] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39045
+[05/06 02:57:00] EA0 INFO: WildRefer-official Acc0.25: 0.40360 | Acc0.50: 0.38580 | mIoU: 0.27620
+[05/06 02:57:00] EA0 INFO: Timing(s): inf=0.096078, visual=0.037056, text=0.007301, fusion_wo_head=0.046358, head=0.003518
+[05/06 02:57:00] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005778, bi_layer1=0.004527, bi_layer2=0.004316, total=0.014622
+[05/06 02:57:00] EA0 INFO: GPU memory(MiB): avg_allocated=1016.05, avg_reserved=8080.74, peak_allocated=3875.26, peak_reserved=15474.00, warmup_iters=20
+[05/06 02:58:21] EA0 INFO: epoch 259, total time 81.18, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 02:59:36] EA0 INFO: epoch 260, total time 74.29, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:00:51] EA0 INFO: epoch 261, total time 75.40, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:01:05] EA0 INFO: Eval: [261]  
+[05/06 03:01:05] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38577
+[05/06 03:01:05] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37453
+[05/06 03:01:05] EA0 INFO: WildRefer-official Acc0.25: 0.38580 | Acc0.50: 0.37360 | mIoU: 0.26460
+[05/06 03:01:05] EA0 INFO: Timing(s): inf=0.093883, visual=0.035746, text=0.006962, fusion_wo_head=0.046156, head=0.003261
+[05/06 03:01:05] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005871, bi_layer1=0.004625, bi_layer2=0.004242, total=0.014737
+[05/06 03:01:05] EA0 INFO: GPU memory(MiB): avg_allocated=1016.24, avg_reserved=9036.11, peak_allocated=3875.75, peak_reserved=14284.00, warmup_iters=20
+[05/06 03:02:19] EA0 INFO: epoch 262, total time 74.02, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:03:33] EA0 INFO: epoch 263, total time 73.93, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:04:48] EA0 INFO: epoch 264, total time 75.47, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:05:03] EA0 INFO: Eval: [264]  
+[05/06 03:05:03] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39513
+[05/06 03:05:03] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37921
+[05/06 03:05:03] EA0 INFO: WildRefer-official Acc0.25: 0.39510 | Acc0.50: 0.37730 | mIoU: 0.26870
+[05/06 03:05:03] EA0 INFO: Timing(s): inf=0.092045, visual=0.035250, text=0.007005, fusion_wo_head=0.044719, head=0.003334
+[05/06 03:05:03] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004746, bi_layer1=0.004367, bi_layer2=0.004216, total=0.013329
+[05/06 03:05:03] EA0 INFO: GPU memory(MiB): avg_allocated=1015.21, avg_reserved=15322.00, peak_allocated=3879.01, peak_reserved=15322.00, warmup_iters=20
+[05/06 03:06:18] EA0 INFO: epoch 265, total time 74.61, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:07:32] EA0 INFO: epoch 266, total time 74.72, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:08:46] EA0 INFO: epoch 267, total time 73.18, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:09:00] EA0 INFO: Eval: [267]  
+[05/06 03:09:00] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39419
+[05/06 03:09:00] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38015
+[05/06 03:09:00] EA0 INFO: WildRefer-official Acc0.25: 0.39420 | Acc0.50: 0.37920 | mIoU: 0.26760
+[05/06 03:09:00] EA0 INFO: Timing(s): inf=0.094850, visual=0.036845, text=0.007246, fusion_wo_head=0.045645, head=0.003376
+[05/06 03:09:00] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005050, bi_layer1=0.004547, bi_layer2=0.004124, total=0.013721
+[05/06 03:09:00] EA0 INFO: GPU memory(MiB): avg_allocated=1016.73, avg_reserved=15322.00, peak_allocated=3876.33, peak_reserved=15322.00, warmup_iters=20
+[05/06 03:10:13] EA0 INFO: epoch 268, total time 73.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:11:24] EA0 INFO: epoch 269, total time 71.56, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:12:36] EA0 INFO: epoch 270, total time 72.01, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:12:52] EA0 INFO: Eval: [270]  
+[05/06 03:12:52] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38577
+[05/06 03:12:52] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37172
+[05/06 03:12:52] EA0 INFO: WildRefer-official Acc0.25: 0.38580 | Acc0.50: 0.36610 | mIoU: 0.26120
+[05/06 03:12:52] EA0 INFO: Timing(s): inf=0.091861, visual=0.034583, text=0.007081, fusion_wo_head=0.045200, head=0.003278
+[05/06 03:12:52] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005524, bi_layer1=0.004367, bi_layer2=0.004150, total=0.014041
+[05/06 03:12:52] EA0 INFO: GPU memory(MiB): avg_allocated=1016.08, avg_reserved=7926.95, peak_allocated=3877.17, peak_reserved=15322.00, warmup_iters=20
+[05/06 03:14:04] EA0 INFO: epoch 271, total time 71.92, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:15:16] EA0 INFO: epoch 272, total time 72.09, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:16:28] EA0 INFO: epoch 273, total time 72.56, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:16:43] EA0 INFO: Eval: [273]  
+[05/06 03:16:43] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38577
+[05/06 03:16:43] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36985
+[05/06 03:16:43] EA0 INFO: WildRefer-official Acc0.25: 0.38580 | Acc0.50: 0.36800 | mIoU: 0.26270
+[05/06 03:16:43] EA0 INFO: Timing(s): inf=0.097683, visual=0.037121, text=0.007276, fusion_wo_head=0.047831, head=0.003701
+[05/06 03:16:43] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006567, bi_layer1=0.004597, bi_layer2=0.004485, total=0.015648
+[05/06 03:16:43] EA0 INFO: GPU memory(MiB): avg_allocated=1018.29, avg_reserved=6695.05, peak_allocated=3879.61, peak_reserved=15476.00, warmup_iters=20
+[05/06 03:17:55] EA0 INFO: epoch 274, total time 72.16, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:19:09] EA0 INFO: epoch 275, total time 74.01, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:20:24] EA0 INFO: epoch 276, total time 74.37, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:20:38] EA0 INFO: Eval: [276]  
+[05/06 03:20:38] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39981
+[05/06 03:20:38] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38483
+[05/06 03:20:38] EA0 INFO: WildRefer-official Acc0.25: 0.39980 | Acc0.50: 0.37830 | mIoU: 0.27110
+[05/06 03:20:38] EA0 INFO: Timing(s): inf=0.106452, visual=0.039990, text=0.007695, fusion_wo_head=0.053304, head=0.003641
+[05/06 03:20:38] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005263, bi_layer1=0.004724, bi_layer2=0.004544, total=0.014532
+[05/06 03:20:38] EA0 INFO: GPU memory(MiB): avg_allocated=1014.19, avg_reserved=15342.00, peak_allocated=3874.02, peak_reserved=15342.00, warmup_iters=20
+[05/06 03:21:51] EA0 INFO: epoch 277, total time 72.27, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:23:07] EA0 INFO: epoch 278, total time 76.56, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:24:21] EA0 INFO: epoch 279, total time 74.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:24:36] EA0 INFO: Eval: [279]  
+[05/06 03:24:36] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40543
+[05/06 03:24:36] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38858
+[05/06 03:24:36] EA0 INFO: WildRefer-official Acc0.25: 0.40540 | Acc0.50: 0.38480 | mIoU: 0.27650
+[05/06 03:24:36] EA0 INFO: Timing(s): inf=0.104025, visual=0.039651, text=0.007771, fusion_wo_head=0.050726, head=0.004032
+[05/06 03:24:36] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005131, bi_layer1=0.004887, bi_layer2=0.004452, total=0.014470
+[05/06 03:24:36] EA0 INFO: GPU memory(MiB): avg_allocated=1016.42, avg_reserved=15342.00, peak_allocated=3878.85, peak_reserved=15342.00, warmup_iters=20
+[05/06 03:25:49] EA0 INFO: epoch 280, total time 72.97, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:27:03] EA0 INFO: epoch 281, total time 74.14, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:28:16] EA0 INFO: epoch 282, total time 72.77, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:28:32] EA0 INFO: Eval: [282]  
+[05/06 03:28:32] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38858
+[05/06 03:28:32] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37266
+[05/06 03:28:32] EA0 INFO: WildRefer-official Acc0.25: 0.38860 | Acc0.50: 0.36990 | mIoU: 0.26550
+[05/06 03:28:32] EA0 INFO: Timing(s): inf=0.107579, visual=0.045444, text=0.007327, fusion_wo_head=0.049228, head=0.003727
+[05/06 03:28:32] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004969, bi_layer1=0.004522, bi_layer2=0.004395, total=0.013887
+[05/06 03:28:32] EA0 INFO: GPU memory(MiB): avg_allocated=1020.19, avg_reserved=15342.00, peak_allocated=3883.99, peak_reserved=15342.00, warmup_iters=20
+[05/06 03:29:46] EA0 INFO: epoch 283, total time 74.57, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:30:59] EA0 INFO: epoch 284, total time 72.84, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:32:14] EA0 INFO: epoch 285, total time 74.86, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:32:29] EA0 INFO: Eval: [285]  
+[05/06 03:32:29] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38015
+[05/06 03:32:29] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36517
+[05/06 03:32:29] EA0 INFO: WildRefer-official Acc0.25: 0.38010 | Acc0.50: 0.36330 | mIoU: 0.25960
+[05/06 03:32:29] EA0 INFO: Timing(s): inf=0.103801, visual=0.036429, text=0.007560, fusion_wo_head=0.054607, head=0.003382
+[05/06 03:32:29] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005604, bi_layer1=0.004756, bi_layer2=0.004296, total=0.014657
+[05/06 03:32:29] EA0 INFO: GPU memory(MiB): avg_allocated=1018.37, avg_reserved=12164.74, peak_allocated=3878.85, peak_reserved=15344.00, warmup_iters=20
+[05/06 03:33:42] EA0 INFO: epoch 286, total time 72.48, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:34:56] EA0 INFO: epoch 287, total time 74.49, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:36:10] EA0 INFO: epoch 288, total time 73.94, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:36:25] EA0 INFO: Eval: [288]  
+[05/06 03:36:25] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38577
+[05/06 03:36:25] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37172
+[05/06 03:36:25] EA0 INFO: WildRefer-official Acc0.25: 0.38580 | Acc0.50: 0.36700 | mIoU: 0.26220
+[05/06 03:36:25] EA0 INFO: Timing(s): inf=0.096183, visual=0.036655, text=0.007306, fusion_wo_head=0.046924, head=0.003528
+[05/06 03:36:25] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005481, bi_layer1=0.004908, bi_layer2=0.004343, total=0.014732
+[05/06 03:36:25] EA0 INFO: GPU memory(MiB): avg_allocated=1016.78, avg_reserved=5468.00, peak_allocated=3877.56, peak_reserved=15342.00, warmup_iters=20
+[05/06 03:37:49] EA0 INFO: epoch 289, total time 84.03, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:39:04] EA0 INFO: epoch 290, total time 74.35, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:40:18] EA0 INFO: epoch 291, total time 73.96, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:40:32] EA0 INFO: Eval: [291]  
+[05/06 03:40:32] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37828
+[05/06 03:40:32] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36517
+[05/06 03:40:32] EA0 INFO: WildRefer-official Acc0.25: 0.37830 | Acc0.50: 0.36140 | mIoU: 0.25810
+[05/06 03:40:32] EA0 INFO: Timing(s): inf=0.109477, visual=0.045037, text=0.007287, fusion_wo_head=0.052048, head=0.003375
+[05/06 03:40:32] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004961, bi_layer1=0.004428, bi_layer2=0.004258, total=0.013647
+[05/06 03:40:32] EA0 INFO: GPU memory(MiB): avg_allocated=1017.07, avg_reserved=15324.00, peak_allocated=3877.92, peak_reserved=15324.00, warmup_iters=20
+[05/06 03:41:44] EA0 INFO: epoch 292, total time 71.83, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:42:58] EA0 INFO: epoch 293, total time 74.46, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:44:13] EA0 INFO: epoch 294, total time 74.50, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:44:28] EA0 INFO: Eval: [294]  
+[05/06 03:44:28] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39794
+[05/06 03:44:28] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38390
+[05/06 03:44:28] EA0 INFO: WildRefer-official Acc0.25: 0.39790 | Acc0.50: 0.38200 | mIoU: 0.27110
+[05/06 03:44:28] EA0 INFO: Timing(s): inf=0.110169, visual=0.037273, text=0.007705, fusion_wo_head=0.059757, head=0.003599
+[05/06 03:44:28] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.008790, bi_layer1=0.004980, bi_layer2=0.004463, total=0.018233
+[05/06 03:44:28] EA0 INFO: GPU memory(MiB): avg_allocated=1020.27, avg_reserved=11301.16, peak_allocated=3880.97, peak_reserved=15324.00, warmup_iters=20
+[05/06 03:45:41] EA0 INFO: epoch 295, total time 72.20, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:46:54] EA0 INFO: epoch 296, total time 73.01, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:48:08] EA0 INFO: epoch 297, total time 74.57, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:48:23] EA0 INFO: Eval: [297]  
+[05/06 03:48:23] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37360
+[05/06 03:48:23] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35487
+[05/06 03:48:23] EA0 INFO: WildRefer-official Acc0.25: 0.37360 | Acc0.50: 0.35020 | mIoU: 0.25340
+[05/06 03:48:23] EA0 INFO: Timing(s): inf=0.097336, visual=0.037325, text=0.007427, fusion_wo_head=0.047132, head=0.003691
+[05/06 03:48:23] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005043, bi_layer1=0.004773, bi_layer2=0.004282, total=0.014097
+[05/06 03:48:23] EA0 INFO: GPU memory(MiB): avg_allocated=1020.28, avg_reserved=15346.00, peak_allocated=3881.90, peak_reserved=15346.00, warmup_iters=20
+[05/06 03:49:38] EA0 INFO: epoch 298, total time 74.50, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:50:51] EA0 INFO: epoch 299, total time 73.37, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:52:05] EA0 INFO: epoch 300, total time 73.96, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:52:19] EA0 INFO: Eval: [300]  
+[05/06 03:52:19] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40543
+[05/06 03:52:19] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.39045
+[05/06 03:52:19] EA0 INFO: WildRefer-official Acc0.25: 0.40540 | Acc0.50: 0.38860 | mIoU: 0.27700
+[05/06 03:52:19] EA0 INFO: Timing(s): inf=0.096964, visual=0.037428, text=0.007320, fusion_wo_head=0.046864, head=0.003576
+[05/06 03:52:19] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005237, bi_layer1=0.004796, bi_layer2=0.004336, total=0.014369
+[05/06 03:52:19] EA0 INFO: GPU memory(MiB): avg_allocated=1021.06, avg_reserved=15348.00, peak_allocated=3880.41, peak_reserved=15348.00, warmup_iters=20
+[05/06 03:53:34] EA0 INFO: epoch 301, total time 74.52, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:54:48] EA0 INFO: epoch 302, total time 74.37, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:56:01] EA0 INFO: epoch 303, total time 72.45, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:56:17] EA0 INFO: Eval: [303]  
+[05/06 03:56:17] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37266
+[05/06 03:56:17] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36330
+[05/06 03:56:17] EA0 INFO: WildRefer-official Acc0.25: 0.37270 | Acc0.50: 0.35960 | mIoU: 0.25700
+[05/06 03:56:17] EA0 INFO: Timing(s): inf=0.095695, visual=0.036033, text=0.007346, fusion_wo_head=0.046996, head=0.003521
+[05/06 03:56:17] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005946, bi_layer1=0.004540, bi_layer2=0.004297, total=0.014782
+[05/06 03:56:17] EA0 INFO: GPU memory(MiB): avg_allocated=1018.67, avg_reserved=12880.95, peak_allocated=3880.94, peak_reserved=15348.00, warmup_iters=20
+[05/06 03:57:30] EA0 INFO: epoch 304, total time 73.64, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:58:44] EA0 INFO: epoch 305, total time 73.79, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 03:59:57] EA0 INFO: epoch 306, total time 73.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:00:12] EA0 INFO: Eval: [306]  
+[05/06 04:00:12] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39888
+[05/06 04:00:12] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38764
+[05/06 04:00:12] EA0 INFO: WildRefer-official Acc0.25: 0.39890 | Acc0.50: 0.38300 | mIoU: 0.27530
+[05/06 04:00:12] EA0 INFO: Timing(s): inf=0.094158, visual=0.035485, text=0.007170, fusion_wo_head=0.046332, head=0.003444
+[05/06 04:00:12] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006023, bi_layer1=0.004521, bi_layer2=0.004369, total=0.014914
+[05/06 04:00:12] EA0 INFO: GPU memory(MiB): avg_allocated=1019.63, avg_reserved=6700.53, peak_allocated=3883.05, peak_reserved=15480.00, warmup_iters=20
+[05/06 04:01:25] EA0 INFO: epoch 307, total time 72.89, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:02:39] EA0 INFO: epoch 308, total time 74.47, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:03:53] EA0 INFO: epoch 309, total time 73.36, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:04:09] EA0 INFO: Eval: [309]  
+[05/06 04:04:09] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.42135
+[05/06 04:04:09] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.40637
+[05/06 04:04:09] EA0 INFO: WildRefer-official Acc0.25: 0.42130 | Acc0.50: 0.40070 | mIoU: 0.28710
+[05/06 04:04:09] EA0 INFO: Timing(s): inf=0.098588, visual=0.037868, text=0.007870, fusion_wo_head=0.047330, head=0.003603
+[05/06 04:04:09] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005147, bi_layer1=0.005000, bi_layer2=0.004737, total=0.014884
+[05/06 04:04:09] EA0 INFO: GPU memory(MiB): avg_allocated=1020.91, avg_reserved=15482.00, peak_allocated=3882.31, peak_reserved=15482.00, warmup_iters=20
+[05/06 04:05:33] EA0 INFO: epoch 310, total time 83.72, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:06:46] EA0 INFO: epoch 311, total time 73.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:08:00] EA0 INFO: epoch 312, total time 73.84, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:08:16] EA0 INFO: Eval: [312]  
+[05/06 04:08:16] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39419
+[05/06 04:08:16] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38109
+[05/06 04:08:16] EA0 INFO: WildRefer-official Acc0.25: 0.39420 | Acc0.50: 0.37640 | mIoU: 0.26840
+[05/06 04:08:16] EA0 INFO: Timing(s): inf=0.092515, visual=0.035278, text=0.007024, fusion_wo_head=0.044902, head=0.003629
+[05/06 04:08:16] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005453, bi_layer1=0.004386, bi_layer2=0.004132, total=0.013970
+[05/06 04:08:16] EA0 INFO: GPU memory(MiB): avg_allocated=1019.44, avg_reserved=10420.63, peak_allocated=3881.63, peak_reserved=15482.00, warmup_iters=20
+[05/06 04:09:27] EA0 INFO: epoch 313, total time 71.67, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:10:42] EA0 INFO: epoch 314, total time 75.22, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:11:57] EA0 INFO: epoch 315, total time 74.18, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:12:11] EA0 INFO: Eval: [315]  
+[05/06 04:12:11] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39326
+[05/06 04:12:11] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38109
+[05/06 04:12:11] EA0 INFO: WildRefer-official Acc0.25: 0.39330 | Acc0.50: 0.37830 | mIoU: 0.27020
+[05/06 04:12:11] EA0 INFO: Timing(s): inf=0.092408, visual=0.035363, text=0.007165, fusion_wo_head=0.044844, head=0.003311
+[05/06 04:12:11] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005109, bi_layer1=0.004453, bi_layer2=0.004160, total=0.013723
+[05/06 04:12:11] EA0 INFO: GPU memory(MiB): avg_allocated=1021.55, avg_reserved=13945.26, peak_allocated=3883.29, peak_reserved=15504.00, warmup_iters=20
+[05/06 04:13:25] EA0 INFO: epoch 316, total time 74.06, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:14:39] EA0 INFO: epoch 317, total time 73.85, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:15:53] EA0 INFO: epoch 318, total time 73.93, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:16:09] EA0 INFO: Eval: [318]  
+[05/06 04:16:09] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38577
+[05/06 04:16:09] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37266
+[05/06 04:16:09] EA0 INFO: WildRefer-official Acc0.25: 0.38580 | Acc0.50: 0.36800 | mIoU: 0.26340
+[05/06 04:16:09] EA0 INFO: Timing(s): inf=0.096794, visual=0.036835, text=0.007712, fusion_wo_head=0.046877, head=0.003528
+[05/06 04:16:09] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005511, bi_layer1=0.004635, bi_layer2=0.004457, total=0.014604
+[05/06 04:16:09] EA0 INFO: GPU memory(MiB): avg_allocated=1020.84, avg_reserved=14983.58, peak_allocated=3883.66, peak_reserved=15504.00, warmup_iters=20
+[05/06 04:17:23] EA0 INFO: epoch 319, total time 73.69, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:18:37] EA0 INFO: epoch 320, total time 74.32, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:19:56] EA0 INFO: epoch 321, total time 78.82, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:20:12] EA0 INFO: Eval: [321]  
+[05/06 04:20:12] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39607
+[05/06 04:20:12] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38483
+[05/06 04:20:12] EA0 INFO: WildRefer-official Acc0.25: 0.39610 | Acc0.50: 0.37920 | mIoU: 0.27150
+[05/06 04:20:12] EA0 INFO: Timing(s): inf=0.098245, visual=0.037081, text=0.007334, fusion_wo_head=0.048344, head=0.003689
+[05/06 04:20:12] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005771, bi_layer1=0.004802, bi_layer2=0.004655, total=0.015229
+[05/06 04:20:12] EA0 INFO: GPU memory(MiB): avg_allocated=1021.18, avg_reserved=6702.63, peak_allocated=3882.92, peak_reserved=15480.00, warmup_iters=20
+[05/06 04:21:32] EA0 INFO: epoch 322, total time 80.39, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:22:47] EA0 INFO: epoch 323, total time 74.63, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:24:02] EA0 INFO: epoch 324, total time 74.99, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:24:17] EA0 INFO: Eval: [324]  
+[05/06 04:24:17] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37453
+[05/06 04:24:17] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35674
+[05/06 04:24:17] EA0 INFO: WildRefer-official Acc0.25: 0.37450 | Acc0.50: 0.35390 | mIoU: 0.25520
+[05/06 04:24:17] EA0 INFO: Timing(s): inf=0.097325, visual=0.035740, text=0.007549, fusion_wo_head=0.048740, head=0.003431
+[05/06 04:24:17] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006851, bi_layer1=0.004798, bi_layer2=0.004637, total=0.016286
+[05/06 04:24:17] EA0 INFO: GPU memory(MiB): avg_allocated=1022.06, avg_reserved=9168.32, peak_allocated=3880.15, peak_reserved=15480.00, warmup_iters=20
+[05/06 04:25:32] EA0 INFO: epoch 325, total time 74.73, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:26:45] EA0 INFO: epoch 326, total time 72.87, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:27:59] EA0 INFO: epoch 327, total time 74.46, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:28:14] EA0 INFO: Eval: [327]  
+[05/06 04:28:14] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37547
+[05/06 04:28:14] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36517
+[05/06 04:28:14] EA0 INFO: WildRefer-official Acc0.25: 0.37550 | Acc0.50: 0.36240 | mIoU: 0.25730
+[05/06 04:28:14] EA0 INFO: Timing(s): inf=0.091806, visual=0.035754, text=0.007038, fusion_wo_head=0.044041, head=0.003281
+[05/06 04:28:14] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004672, bi_layer1=0.004376, bi_layer2=0.004081, total=0.013129
+[05/06 04:28:14] EA0 INFO: GPU memory(MiB): avg_allocated=1021.92, avg_reserved=15330.00, peak_allocated=3879.82, peak_reserved=15330.00, warmup_iters=20
+[05/06 04:29:28] EA0 INFO: epoch 328, total time 74.01, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:30:43] EA0 INFO: epoch 329, total time 74.22, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:31:57] EA0 INFO: epoch 330, total time 74.39, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:32:12] EA0 INFO: Eval: [330]  
+[05/06 04:32:12] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39607
+[05/06 04:32:12] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38109
+[05/06 04:32:12] EA0 INFO: WildRefer-official Acc0.25: 0.39610 | Acc0.50: 0.37830 | mIoU: 0.26900
+[05/06 04:32:12] EA0 INFO: Timing(s): inf=0.092038, visual=0.034974, text=0.007129, fusion_wo_head=0.044722, head=0.003477
+[05/06 04:32:12] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004640, bi_layer1=0.004334, bi_layer2=0.004010, total=0.012984
+[05/06 04:32:12] EA0 INFO: GPU memory(MiB): avg_allocated=1022.94, avg_reserved=15330.00, peak_allocated=3883.76, peak_reserved=15330.00, warmup_iters=20
+[05/06 04:33:25] EA0 INFO: epoch 331, total time 73.01, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:34:39] EA0 INFO: epoch 332, total time 73.61, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:35:53] EA0 INFO: epoch 333, total time 74.35, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:36:08] EA0 INFO: Eval: [333]  
+[05/06 04:36:08] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.35112
+[05/06 04:36:08] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.34270
+[05/06 04:36:08] EA0 INFO: WildRefer-official Acc0.25: 0.35110 | Acc0.50: 0.33990 | mIoU: 0.24190
+[05/06 04:36:08] EA0 INFO: Timing(s): inf=0.099398, visual=0.037352, text=0.007560, fusion_wo_head=0.048818, head=0.003769
+[05/06 04:36:08] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006206, bi_layer1=0.004813, bi_layer2=0.004472, total=0.015492
+[05/06 04:36:08] EA0 INFO: GPU memory(MiB): avg_allocated=1021.41, avg_reserved=6702.63, peak_allocated=3882.44, peak_reserved=15332.00, warmup_iters=20
+[05/06 04:37:21] EA0 INFO: epoch 334, total time 73.31, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:38:35] EA0 INFO: epoch 335, total time 74.38, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:39:48] EA0 INFO: epoch 336, total time 72.35, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:40:04] EA0 INFO: Eval: [336]  
+[05/06 04:40:04] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39700
+[05/06 04:40:04] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38202
+[05/06 04:40:04] EA0 INFO: WildRefer-official Acc0.25: 0.39700 | Acc0.50: 0.37920 | mIoU: 0.27120
+[05/06 04:40:04] EA0 INFO: Timing(s): inf=0.097116, visual=0.036968, text=0.007489, fusion_wo_head=0.047149, head=0.003693
+[05/06 04:40:04] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005534, bi_layer1=0.004636, bi_layer2=0.004422, total=0.014592
+[05/06 04:40:04] EA0 INFO: GPU memory(MiB): avg_allocated=1020.45, avg_reserved=11112.63, peak_allocated=3881.07, peak_reserved=15334.00, warmup_iters=20
+[05/06 04:41:16] EA0 INFO: epoch 337, total time 72.15, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:42:30] EA0 INFO: epoch 338, total time 73.91, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:43:42] EA0 INFO: epoch 339, total time 71.67, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:43:58] EA0 INFO: Eval: [339]  
+[05/06 04:43:58] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39513
+[05/06 04:43:58] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38015
+[05/06 04:43:58] EA0 INFO: WildRefer-official Acc0.25: 0.39510 | Acc0.50: 0.37550 | mIoU: 0.26870
+[05/06 04:43:58] EA0 INFO: Timing(s): inf=0.092418, visual=0.035413, text=0.007108, fusion_wo_head=0.044553, head=0.003528
+[05/06 04:43:58] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004747, bi_layer1=0.004457, bi_layer2=0.004042, total=0.013246
+[05/06 04:43:58] EA0 INFO: GPU memory(MiB): avg_allocated=1022.01, avg_reserved=15332.00, peak_allocated=3884.89, peak_reserved=15332.00, warmup_iters=20
+[05/06 04:45:11] EA0 INFO: epoch 340, total time 73.69, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:46:26] EA0 INFO: epoch 341, total time 74.22, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:47:39] EA0 INFO: epoch 342, total time 73.69, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:47:54] EA0 INFO: Eval: [342]  
+[05/06 04:47:54] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39794
+[05/06 04:47:54] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38483
+[05/06 04:47:54] EA0 INFO: WildRefer-official Acc0.25: 0.39790 | Acc0.50: 0.38200 | mIoU: 0.27350
+[05/06 04:47:54] EA0 INFO: Timing(s): inf=0.097377, visual=0.036653, text=0.007437, fusion_wo_head=0.047840, head=0.003671
+[05/06 04:47:54] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005896, bi_layer1=0.004739, bi_layer2=0.004401, total=0.015036
+[05/06 04:47:54] EA0 INFO: GPU memory(MiB): avg_allocated=1022.82, avg_reserved=6708.00, peak_allocated=3883.85, peak_reserved=15332.00, warmup_iters=20
+[05/06 04:49:07] EA0 INFO: epoch 343, total time 72.76, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:50:21] EA0 INFO: epoch 344, total time 73.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:51:35] EA0 INFO: epoch 345, total time 74.57, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:51:51] EA0 INFO: Eval: [345]  
+[05/06 04:51:51] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40262
+[05/06 04:51:51] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38858
+[05/06 04:51:51] EA0 INFO: WildRefer-official Acc0.25: 0.40260 | Acc0.50: 0.38670 | mIoU: 0.27390
+[05/06 04:51:51] EA0 INFO: Timing(s): inf=0.098326, visual=0.038081, text=0.007513, fusion_wo_head=0.047139, head=0.003809
+[05/06 04:51:51] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005092, bi_layer1=0.004712, bi_layer2=0.004635, total=0.014440
+[05/06 04:51:51] EA0 INFO: GPU memory(MiB): avg_allocated=1023.67, avg_reserved=14296.00, peak_allocated=3887.22, peak_reserved=14296.00, warmup_iters=20
+[05/06 04:53:05] EA0 INFO: epoch 346, total time 74.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:54:18] EA0 INFO: epoch 347, total time 73.34, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:55:33] EA0 INFO: epoch 348, total time 74.87, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:55:48] EA0 INFO: Eval: [348]  
+[05/06 04:55:48] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40262
+[05/06 04:55:48] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38390
+[05/06 04:55:48] EA0 INFO: WildRefer-official Acc0.25: 0.40260 | Acc0.50: 0.37830 | mIoU: 0.27320
+[05/06 04:55:48] EA0 INFO: Timing(s): inf=0.092814, visual=0.035128, text=0.007218, fusion_wo_head=0.045467, head=0.003269
+[05/06 04:55:48] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005551, bi_layer1=0.004584, bi_layer2=0.004182, total=0.014318
+[05/06 04:55:48] EA0 INFO: GPU memory(MiB): avg_allocated=1021.14, avg_reserved=6750.95, peak_allocated=3881.16, peak_reserved=15528.00, warmup_iters=20
+[05/06 04:57:03] EA0 INFO: epoch 349, total time 75.07, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:58:16] EA0 INFO: epoch 350, total time 72.78, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:59:31] EA0 INFO: epoch 351, total time 75.62, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 04:59:45] EA0 INFO: Eval: [351]  
+[05/06 04:59:45] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39419
+[05/06 04:59:45] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38109
+[05/06 04:59:45] EA0 INFO: WildRefer-official Acc0.25: 0.39420 | Acc0.50: 0.37730 | mIoU: 0.26790
+[05/06 04:59:45] EA0 INFO: Timing(s): inf=0.096410, visual=0.036829, text=0.007300, fusion_wo_head=0.046999, head=0.003525
+[05/06 04:59:45] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005640, bi_layer1=0.004561, bi_layer2=0.004215, total=0.014416
+[05/06 04:59:45] EA0 INFO: GPU memory(MiB): avg_allocated=1023.26, avg_reserved=14223.26, peak_allocated=3884.17, peak_reserved=14826.00, warmup_iters=20
+[05/06 05:00:58] EA0 INFO: epoch 352, total time 72.68, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:02:12] EA0 INFO: epoch 353, total time 73.81, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:03:26] EA0 INFO: epoch 354, total time 74.14, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:03:41] EA0 INFO: Eval: [354]  
+[05/06 05:03:41] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.42603
+[05/06 05:03:41] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.41386
+[05/06 05:03:41] EA0 INFO: WildRefer-official Acc0.25: 0.42600 | Acc0.50: 0.40730 | mIoU: 0.28990
+[05/06 05:03:41] EA0 INFO: Timing(s): inf=0.101087, visual=0.038659, text=0.008099, fusion_wo_head=0.048501, head=0.003926
+[05/06 05:03:41] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005333, bi_layer1=0.004844, bi_layer2=0.004591, total=0.014768
+[05/06 05:03:41] EA0 INFO: GPU memory(MiB): avg_allocated=1022.51, avg_reserved=15100.00, peak_allocated=3884.86, peak_reserved=15100.00, warmup_iters=20
+[05/06 05:04:55] EA0 INFO: epoch 355, total time 74.31, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:06:08] EA0 INFO: epoch 356, total time 73.29, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:07:24] EA0 INFO: epoch 357, total time 75.50, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:07:39] EA0 INFO: Eval: [357]  
+[05/06 05:07:39] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38764
+[05/06 05:07:39] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36704
+[05/06 05:07:39] EA0 INFO: WildRefer-official Acc0.25: 0.38760 | Acc0.50: 0.36240 | mIoU: 0.26220
+[05/06 05:07:39] EA0 INFO: Timing(s): inf=0.106118, visual=0.040358, text=0.007315, fusion_wo_head=0.052884, head=0.003775
+[05/06 05:07:39] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006010, bi_layer1=0.004687, bi_layer2=0.004642, total=0.015339
+[05/06 05:07:39] EA0 INFO: GPU memory(MiB): avg_allocated=1024.18, avg_reserved=8750.84, peak_allocated=3885.28, peak_reserved=15100.00, warmup_iters=20
+[05/06 05:08:52] EA0 INFO: epoch 358, total time 72.30, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:10:06] EA0 INFO: epoch 359, total time 74.00, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:11:20] EA0 INFO: epoch 360, total time 74.81, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:11:35] EA0 INFO: Eval: [360]  
+[05/06 05:11:35] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37640
+[05/06 05:11:35] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35955
+[05/06 05:11:35] EA0 INFO: WildRefer-official Acc0.25: 0.37640 | Acc0.50: 0.35490 | mIoU: 0.25720
+[05/06 05:11:35] EA0 INFO: Timing(s): inf=0.107312, visual=0.038783, text=0.007369, fusion_wo_head=0.055671, head=0.003752
+[05/06 05:11:35] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005680, bi_layer1=0.004550, bi_layer2=0.004420, total=0.014650
+[05/06 05:11:35] EA0 INFO: GPU memory(MiB): avg_allocated=1026.46, avg_reserved=9771.37, peak_allocated=3887.21, peak_reserved=14888.00, warmup_iters=20
+[05/06 05:12:48] EA0 INFO: epoch 361, total time 73.20, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:14:01] EA0 INFO: epoch 362, total time 72.76, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:15:13] EA0 INFO: epoch 363, total time 72.51, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:15:30] EA0 INFO: Eval: [363]  
+[05/06 05:15:30] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37453
+[05/06 05:15:30] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36798
+[05/06 05:15:30] EA0 INFO: WildRefer-official Acc0.25: 0.37450 | Acc0.50: 0.36050 | mIoU: 0.25610
+[05/06 05:15:30] EA0 INFO: Timing(s): inf=0.121316, visual=0.041600, text=0.007092, fusion_wo_head=0.067322, head=0.003586
+[05/06 05:15:30] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.006192, bi_layer1=0.004716, bi_layer2=0.004451, total=0.015359
+[05/06 05:15:30] EA0 INFO: GPU memory(MiB): avg_allocated=1024.34, avg_reserved=6781.68, peak_allocated=3884.48, peak_reserved=14808.00, warmup_iters=20
+[05/06 05:16:43] EA0 INFO: epoch 364, total time 72.87, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:17:56] EA0 INFO: epoch 365, total time 72.62, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:19:10] EA0 INFO: epoch 366, total time 73.93, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:19:24] EA0 INFO: Eval: [366]  
+[05/06 05:19:24] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38109
+[05/06 05:19:24] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36798
+[05/06 05:19:24] EA0 INFO: WildRefer-official Acc0.25: 0.38110 | Acc0.50: 0.36330 | mIoU: 0.26020
+[05/06 05:19:24] EA0 INFO: Timing(s): inf=0.095510, visual=0.036628, text=0.007246, fusion_wo_head=0.046378, head=0.003559
+[05/06 05:19:24] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005021, bi_layer1=0.004630, bi_layer2=0.004694, total=0.014345
+[05/06 05:19:24] EA0 INFO: GPU memory(MiB): avg_allocated=1025.34, avg_reserved=14996.00, peak_allocated=3888.00, peak_reserved=14996.00, warmup_iters=20
+[05/06 05:20:37] EA0 INFO: epoch 367, total time 73.25, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:21:51] EA0 INFO: epoch 368, total time 74.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:23:06] EA0 INFO: epoch 369, total time 74.68, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:23:21] EA0 INFO: Eval: [369]  
+[05/06 05:23:21] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38951
+[05/06 05:23:21] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37640
+[05/06 05:23:21] EA0 INFO: WildRefer-official Acc0.25: 0.38950 | Acc0.50: 0.37170 | mIoU: 0.26670
+[05/06 05:23:21] EA0 INFO: Timing(s): inf=0.094402, visual=0.036611, text=0.007016, fusion_wo_head=0.045512, head=0.003602
+[05/06 05:23:21] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004874, bi_layer1=0.004563, bi_layer2=0.004273, total=0.013710
+[05/06 05:23:21] EA0 INFO: GPU memory(MiB): avg_allocated=1027.58, avg_reserved=14998.00, peak_allocated=3890.34, peak_reserved=14998.00, warmup_iters=20
+[05/06 05:24:36] EA0 INFO: epoch 370, total time 75.06, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:25:51] EA0 INFO: epoch 371, total time 74.44, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:27:06] EA0 INFO: epoch 372, total time 75.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:27:20] EA0 INFO: Eval: [372]  
+[05/06 05:27:20] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39981
+[05/06 05:27:20] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38390
+[05/06 05:27:20] EA0 INFO: WildRefer-official Acc0.25: 0.39980 | Acc0.50: 0.38010 | mIoU: 0.26960
+[05/06 05:27:20] EA0 INFO: Timing(s): inf=0.096946, visual=0.037199, text=0.007540, fusion_wo_head=0.046778, head=0.003641
+[05/06 05:27:20] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005099, bi_layer1=0.004811, bi_layer2=0.004264, total=0.014174
+[05/06 05:27:20] EA0 INFO: GPU memory(MiB): avg_allocated=1024.16, avg_reserved=14998.00, peak_allocated=3884.67, peak_reserved=14998.00, warmup_iters=20
+[05/06 05:28:36] EA0 INFO: epoch 373, total time 75.46, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:29:49] EA0 INFO: epoch 374, total time 73.28, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:31:02] EA0 INFO: epoch 375, total time 73.47, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:31:17] EA0 INFO: Eval: [375]  
+[05/06 05:31:17] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.42509
+[05/06 05:31:17] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.41105
+[05/06 05:31:17] EA0 INFO: WildRefer-official Acc0.25: 0.42510 | Acc0.50: 0.40540 | mIoU: 0.28960
+[05/06 05:31:17] EA0 INFO: Timing(s): inf=0.095031, visual=0.036486, text=0.007411, fusion_wo_head=0.045707, head=0.003615
+[05/06 05:31:17] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004885, bi_layer1=0.004697, bi_layer2=0.004344, total=0.013927
+[05/06 05:31:17] EA0 INFO: GPU memory(MiB): avg_allocated=1026.14, avg_reserved=14998.00, peak_allocated=3889.76, peak_reserved=14998.00, warmup_iters=20
+[05/06 05:32:32] EA0 INFO: epoch 376, total time 75.08, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:33:46] EA0 INFO: epoch 377, total time 73.47, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:34:59] EA0 INFO: epoch 378, total time 73.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:35:15] EA0 INFO: Eval: [378]  
+[05/06 05:35:15] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39513
+[05/06 05:35:15] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37921
+[05/06 05:35:15] EA0 INFO: WildRefer-official Acc0.25: 0.39510 | Acc0.50: 0.37450 | mIoU: 0.27030
+[05/06 05:35:15] EA0 INFO: Timing(s): inf=0.091698, visual=0.034819, text=0.007100, fusion_wo_head=0.044742, head=0.003296
+[05/06 05:35:15] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005108, bi_layer1=0.004385, bi_layer2=0.004133, total=0.013626
+[05/06 05:35:15] EA0 INFO: GPU memory(MiB): avg_allocated=1028.33, avg_reserved=8268.00, peak_allocated=3890.59, peak_reserved=14998.00, warmup_iters=20
+[05/06 05:36:27] EA0 INFO: epoch 379, total time 71.92, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:37:40] EA0 INFO: epoch 380, total time 73.96, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:38:54] EA0 INFO: epoch 381, total time 73.76, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:39:09] EA0 INFO: Eval: [381]  
+[05/06 05:39:09] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38202
+[05/06 05:39:09] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37172
+[05/06 05:39:09] EA0 INFO: WildRefer-official Acc0.25: 0.38200 | Acc0.50: 0.36610 | mIoU: 0.26040
+[05/06 05:39:09] EA0 INFO: Timing(s): inf=0.099689, visual=0.037789, text=0.007460, fusion_wo_head=0.048801, head=0.003861
+[05/06 05:39:09] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005519, bi_layer1=0.004796, bi_layer2=0.004360, total=0.014675
+[05/06 05:39:09] EA0 INFO: GPU memory(MiB): avg_allocated=1027.71, avg_reserved=13896.00, peak_allocated=3887.55, peak_reserved=14430.00, warmup_iters=20
+[05/06 05:40:22] EA0 INFO: epoch 382, total time 73.60, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:41:38] EA0 INFO: epoch 383, total time 75.92, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:42:52] EA0 INFO: epoch 384, total time 73.73, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:43:06] EA0 INFO: Eval: [384]  
+[05/06 05:43:06] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.38015
+[05/06 05:43:06] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.36704
+[05/06 05:43:06] EA0 INFO: WildRefer-official Acc0.25: 0.38010 | Acc0.50: 0.36330 | mIoU: 0.25930
+[05/06 05:43:06] EA0 INFO: Timing(s): inf=0.099133, visual=0.037197, text=0.007658, fusion_wo_head=0.048661, head=0.003758
+[05/06 05:43:06] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005812, bi_layer1=0.005113, bi_layer2=0.004472, total=0.015398
+[05/06 05:43:06] EA0 INFO: GPU memory(MiB): avg_allocated=1027.76, avg_reserved=13679.68, peak_allocated=3887.09, peak_reserved=14958.00, warmup_iters=20
+[05/06 05:44:20] EA0 INFO: epoch 385, total time 74.11, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:45:33] EA0 INFO: epoch 386, total time 72.58, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:46:47] EA0 INFO: epoch 387, total time 74.92, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:47:01] EA0 INFO: Eval: [387]  
+[05/06 05:47:01] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39794
+[05/06 05:47:01] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38483
+[05/06 05:47:01] EA0 INFO: WildRefer-official Acc0.25: 0.39790 | Acc0.50: 0.37920 | mIoU: 0.27240
+[05/06 05:47:01] EA0 INFO: Timing(s): inf=0.096019, visual=0.036940, text=0.007596, fusion_wo_head=0.045901, head=0.003797
+[05/06 05:47:01] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004983, bi_layer1=0.004551, bi_layer2=0.004280, total=0.013814
+[05/06 05:47:01] EA0 INFO: GPU memory(MiB): avg_allocated=1027.39, avg_reserved=14266.53, peak_allocated=3889.27, peak_reserved=14268.00, warmup_iters=20
+[05/06 05:48:13] EA0 INFO: epoch 388, total time 71.76, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:49:27] EA0 INFO: epoch 389, total time 73.64, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:50:41] EA0 INFO: epoch 390, total time 74.29, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:50:55] EA0 INFO: Eval: [390]  
+[05/06 05:50:55] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.36704
+[05/06 05:50:55] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35768
+[05/06 05:50:55] EA0 INFO: WildRefer-official Acc0.25: 0.36700 | Acc0.50: 0.35490 | mIoU: 0.24940
+[05/06 05:50:55] EA0 INFO: Timing(s): inf=0.092702, visual=0.035491, text=0.007101, fusion_wo_head=0.045016, head=0.003331
+[05/06 05:50:55] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004762, bi_layer1=0.004469, bi_layer2=0.004030, total=0.013261
+[05/06 05:50:55] EA0 INFO: GPU memory(MiB): avg_allocated=1026.81, avg_reserved=15500.53, peak_allocated=3889.56, peak_reserved=15502.00, warmup_iters=20
+[05/06 05:52:07] EA0 INFO: epoch 391, total time 71.63, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:53:21] EA0 INFO: epoch 392, total time 73.75, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:54:34] EA0 INFO: epoch 393, total time 73.51, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:54:49] EA0 INFO: Eval: [393]  
+[05/06 05:54:49] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.39326
+[05/06 05:54:49] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.37921
+[05/06 05:54:49] EA0 INFO: WildRefer-official Acc0.25: 0.39230 | Acc0.50: 0.37640 | mIoU: 0.26720
+[05/06 05:54:49] EA0 INFO: Timing(s): inf=0.092763, visual=0.035318, text=0.007214, fusion_wo_head=0.045241, head=0.003256
+[05/06 05:54:49] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005654, bi_layer1=0.004367, bi_layer2=0.004188, total=0.014209
+[05/06 05:54:49] EA0 INFO: GPU memory(MiB): avg_allocated=1028.21, avg_reserved=7733.89, peak_allocated=3890.61, peak_reserved=15502.00, warmup_iters=20
+[05/06 05:56:02] EA0 INFO: epoch 394, total time 72.78, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:57:15] EA0 INFO: epoch 395, total time 72.62, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:58:30] EA0 INFO: epoch 396, total time 75.03, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 05:58:45] EA0 INFO: Eval: [396]  
+[05/06 05:58:45] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.34457
+[05/06 05:58:45] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.33146
+[05/06 05:58:45] EA0 INFO: WildRefer-official Acc0.25: 0.34460 | Acc0.50: 0.32960 | mIoU: 0.23380
+[05/06 05:58:45] EA0 INFO: Timing(s): inf=0.094103, visual=0.035874, text=0.007096, fusion_wo_head=0.045954, head=0.003372
+[05/06 05:58:45] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005721, bi_layer1=0.004471, bi_layer2=0.004273, total=0.014465
+[05/06 05:58:45] EA0 INFO: GPU memory(MiB): avg_allocated=1026.43, avg_reserved=6560.21, peak_allocated=3888.25, peak_reserved=15186.00, warmup_iters=20
+[05/06 05:59:58] EA0 INFO: epoch 397, total time 72.97, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 06:01:12] EA0 INFO: epoch 398, total time 74.59, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 06:02:26] EA0 INFO: epoch 399, total time 74.10, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 06:02:41] EA0 INFO: Eval: [399]  
+[05/06 06:02:41] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.37172
+[05/06 06:02:41] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.35768
+[05/06 06:02:41] EA0 INFO: WildRefer-official Acc0.25: 0.37170 | Acc0.50: 0.35580 | mIoU: 0.25430
+[05/06 06:02:41] EA0 INFO: Timing(s): inf=0.099666, visual=0.037869, text=0.007742, fusion_wo_head=0.048517, head=0.003667
+[05/06 06:02:41] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.005321, bi_layer1=0.004921, bi_layer2=0.004582, total=0.014824
+[05/06 06:02:41] EA0 INFO: GPU memory(MiB): avg_allocated=1026.15, avg_reserved=15190.00, peak_allocated=3888.49, peak_reserved=15190.00, warmup_iters=20
+[05/06 06:03:54] EA0 INFO: epoch 400, total time 73.17, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/06 06:03:55] EA0 INFO: Saved in /share/lxy/TSP3D_ori/scripts/experiments/strefer/EA0/strefer/2026-05-05_21-20-53/ckpt_epoch_last.pth
+[05/06 06:04:10] EA0 INFO: Eval: [400]  
+[05/06 06:04:10] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.40075
+[05/06 06:04:10] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38577
+[05/06 06:04:10] EA0 INFO: WildRefer-official Acc0.25: 0.40070 | Acc0.50: 0.38580 | mIoU: 0.27230
+[05/06 06:04:10] EA0 INFO: Timing(s): inf=0.095133, visual=0.036707, text=0.007176, fusion_wo_head=0.045926, head=0.003589
+[05/06 06:04:10] EA0 INFO: External-attn-affected module time(s): bi_layer0=0.004954, bi_layer1=0.004584, bi_layer2=0.004328, total=0.013866
+[05/06 06:04:10] EA0 INFO: GPU memory(MiB): avg_allocated=1027.54, avg_reserved=15190.00, peak_allocated=3889.05, peak_reserved=15190.00, warmup_iters=20

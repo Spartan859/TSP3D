@@ -21,7 +21,6 @@ GPU_FREE_UTIL_THRESHOLD=10
 TF32_MATMUL=default
 TF32_CUDNN=default
 CVD=""
-DATASET="strefer"
 
 data_root="${PWD}/data"
 
@@ -147,27 +146,25 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
     --voxel_size=0.01 --num_workers=32 \
-    --dataset ${DATASET} --test_dataset ${DATASET} \
-    --detect_intermediate \
+    --dataset nr3d --test_dataset nr3d \
+    --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \
     --augment_det \
-    --lr_decay_epochs 400\
+    --lr_decay_epochs 50 75\
     --load_optimizer \
     --load_scheduler \
     --tf32_matmul ${TF32_MATMUL} \
     --tf32_cudnn ${TF32_CUDNN} \
     "${train_extra_args[@]}" \
-    --use_external_attn_bi_layer 0 2\
-    --use_text_guided_external_attn_bi_layer 0 2\
-    --use_film_text_guided_external_attn_bi_layer 0 2\
+    --use_external_attn_bi_layer 0\
+    --use_text_guided_external_attn_bi_layer 0\
+    --use_film_text_guided_external_attn_bi_layer 0\
     --rng_seed ${RNG_SEED}\
     --external_attn_k_keep0 64\
     --external_attn_k_keep1 64\
     --external_attn_k_com 64\
     --external_attn_k_seg128 64\
     --external_attn_k_seg64 64\
-    --prune_threshold_0 0.35\
-    --prune_threshold_1 0.35\
     # --com_threshold 0.15\
     # --num_samples_com 1800\
     # --use_refine \
