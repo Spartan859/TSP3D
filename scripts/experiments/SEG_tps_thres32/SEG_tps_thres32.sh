@@ -203,7 +203,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --use_film_text_guided_external_attn_bi_layer 0\
     --use_refine \
     --use_seg \
-    --checkpoint_path /root/lxy/TSP3D_ori/scripts/experiments/20260216/scanrefer/2026-02-16_11-14-34/ckpt_epoch_204.pth \
+    --checkpoint_path ${PWD}/scripts/experiments/20260216/scanrefer/2026-02-16_11-14-34/ckpt_epoch_204.pth \
     # --use_seg_external_self_attn \
     # --com_threshold 0.15\
     # --num_samples_com 1800\

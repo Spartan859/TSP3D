@@ -19,3 +19,10 @@
 [05/08 05:31:54] EA0 INFO: bbox_loss 0.6512 	cls_loss 0.3504 	com_loss 0.3234 	keep_loss 0.1656 	loss 1.4906 	
 [05/08 05:37:00] EA0 INFO: Train: [2][1500/2779]  
 [05/08 05:37:00] EA0 INFO: bbox_loss 0.6448 	cls_loss 0.3447 	com_loss 0.3202 	keep_loss 0.1629 	loss 1.4725 	
+[05/08 05:42:07] EA0 INFO: Train: [2][2000/2779]  
+[05/08 05:42:07] EA0 INFO: bbox_loss 0.6389 	cls_loss 0.3392 	com_loss 0.3162 	keep_loss 0.1601 	loss 1.4544 	
+[05/08 05:47:13] EA0 INFO: Train: [2][2500/2779]  
+[05/08 05:47:13] EA0 INFO: bbox_loss 0.6325 	cls_loss 0.3333 	com_loss 0.3116 	keep_loss 0.1573 	loss 1.4347 	
+[05/08 05:50:02] EA0 INFO: epoch 2, total time 1708.98, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[05/08 05:55:17] EA0 INFO: Train: [3][500/2779]  
+[05/08 05:55:17] EA0 INFO: bbox_loss 0.5852 	cls_loss 0.2958 	com_loss 0.2828 	keep_loss 0.1368 	loss 1.3005 	
