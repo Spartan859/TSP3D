@@ -208,3 +208,11 @@
 [05/09 02:11:41] EA02_resume INFO: Train: [43][2500/2779]  
 [05/09 02:11:41] EA02_resume INFO: bbox_loss 0.4156 	cls_loss 0.1099 	com_loss 0.0861 	keep_loss 0.0406 	loss 0.6522 	
 [05/09 02:14:28] EA02_resume INFO: epoch 43, total time 1714.13, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[05/09 02:19:40] EA02_resume INFO: Train: [44][500/2779]  
+[05/09 02:19:40] EA02_resume INFO: bbox_loss 0.4155 	cls_loss 0.1111 	com_loss 0.0865 	keep_loss 0.0404 	loss 0.6536 	
+[05/09 02:24:46] EA02_resume INFO: Train: [44][1000/2779]  
+[05/09 02:24:46] EA02_resume INFO: bbox_loss 0.4156 	cls_loss 0.1108 	com_loss 0.0862 	keep_loss 0.0402 	loss 0.6528 	
+[05/09 02:29:40] EA02_resume INFO: Train: [44][1500/2779]  
+[05/09 02:29:40] EA02_resume INFO: bbox_loss 0.4166 	cls_loss 0.1109 	com_loss 0.0864 	keep_loss 0.0403 	loss 0.6543 	
+[05/09 02:34:33] EA02_resume INFO: Train: [44][2000/2779]  
+[05/09 02:34:33] EA02_resume INFO: bbox_loss 0.4169 	cls_loss 0.1107 	com_loss 0.0860 	keep_loss 0.0404 	loss 0.6541 	
