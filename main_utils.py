@@ -302,9 +302,11 @@ def load_checkpoint(args, model, optimizer, scheduler):
             try:
                 optimizer.load_state_dict(checkpoint['optimizer'])
                 if args.load_scheduler and 'scheduler' in checkpoint:
-                    # pdb.set_trace()
                     try:
+                        cli_milestones = scheduler.milestones if hasattr(scheduler, 'milestones') else None
                         scheduler.load_state_dict(checkpoint['scheduler'])
+                        if cli_milestones is not None:
+                            scheduler.milestones = cli_milestones
                     except Exception as e:
                         print("scheduler loaded failed, maybe due to different scheduler settings.")
                         print(e)
