@@ -276,3 +276,8 @@
 [05/09 15:59:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume INFO: bbox_loss 0.4026 	cls_loss 0.1260 	com_loss 0.1065 	keep_loss 0.0617 	loss 2.2557 	refine_bbox_loss 1.4498 	refine_score_loss 0.0000 	seg_loss 0.0641 	seg_loss_dice 0.0451 	
 [05/09 16:12:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume INFO: Train: [248][1500/1737]  
 [05/09 16:12:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume INFO: bbox_loss 0.4031 	cls_loss 0.1261 	com_loss 0.1068 	keep_loss 0.0614 	loss 2.2459 	refine_bbox_loss 1.4393 	refine_score_loss 0.0000 	seg_loss 0.0641 	seg_loss_dice 0.0451 	
+[05/09 16:18:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume INFO: epoch 248, total time 2715.40, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/09 16:31:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume INFO: Train: [249][500/1737]  
+[05/09 16:31:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume INFO: bbox_loss 0.4070 	cls_loss 0.1260 	com_loss 0.1071 	keep_loss 0.0617 	loss 2.1346 	refine_bbox_loss 1.3243 	refine_score_loss 0.0000 	seg_loss 0.0641 	seg_loss_dice 0.0446 	
+[05/09 16:45:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume INFO: Train: [249][1000/1737]  
+[05/09 16:45:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume INFO: bbox_loss 0.4048 	cls_loss 0.1257 	com_loss 0.1071 	keep_loss 0.0618 	loss 2.1345 	refine_bbox_loss 1.3255 	refine_score_loss 0.0000 	seg_loss 0.0647 	seg_loss_dice 0.0449 	

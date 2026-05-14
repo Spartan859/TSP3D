@@ -244,3 +244,5 @@
 [05/09 16:07:41] EA0_resume INFO: bbox_loss 0.4239 	cls_loss 0.1165 	com_loss 0.0940 	keep_loss 0.0459 	loss 0.6804 	
 [05/09 16:12:56] EA0_resume INFO: Train: [46][2000/2779]  
 [05/09 16:12:56] EA0_resume INFO: bbox_loss 0.4232 	cls_loss 0.1164 	com_loss 0.0939 	keep_loss 0.0460 	loss 0.6796 	
+[05/09 16:18:15] EA0_resume INFO: Train: [46][2500/2779]  
+[05/09 16:18:15] EA0_resume INFO: bbox_loss 0.4226 	cls_loss 0.1161 	com_loss 0.0940 	keep_loss 0.0461 	loss 0.6788 	
