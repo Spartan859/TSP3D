@@ -241,6 +241,7 @@ class TSPHead(nn.Module):
                  r=(13,13),
                  assign_type='volume',
                  prune_threshold=(0.3,0.7),
+                 random_prune_threshold=(1200,4000),
                  com_threshold = 0.15,
                  num_samples_com=2400,
                  seg_thr = 0.3,
@@ -300,7 +301,7 @@ class TSPHead(nn.Module):
         self.num_samples = (3200,320)
         self.num_samples_com = num_samples_com
         self.com_threshold = com_threshold
-        self.random_prune_threshold = (1200,4000)
+        self.random_prune_threshold = random_prune_threshold
         self.seg_thr = seg_thr
         
         self.padding = 0.08

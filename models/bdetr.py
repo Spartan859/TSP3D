@@ -38,6 +38,8 @@ class BeaUTyDETR(nn.Module):
                  top_pts_threshold=None,
                  top_pts_threshold_det=None,
                  prune_threshold=(0.3, 0.7),
+                 pts_prune_threshold=(1200, 4000),
+                 random_prune_threshold=(1200, 4000),
                  test_cfg=None,
                  measure_fps_detail=False):
         """Initialize layers."""
@@ -81,6 +83,8 @@ class BeaUTyDETR(nn.Module):
             top_pts_threshold=top_pts_threshold,
             top_pts_threshold_det=top_pts_threshold_det,
             prune_threshold=prune_threshold,
+            pts_prune_threshold=pts_prune_threshold,
+            random_prune_threshold=random_prune_threshold,
             **(dict(test_cfg=test_cfg) if test_cfg is not None else {}),
             measure_fps_detail=measure_fps_detail
         )

@@ -220,6 +220,14 @@ def parse_option():
                              'Points with (1-sigmoid(keep_score)) > threshold are kept.')
     parser.add_argument('--prune_threshold_1', type=float, default=0.7,
                         help='Inference pruning threshold for UNet decoder layer 1.')
+    parser.add_argument('--pts_prune_threshold', type=int, nargs=2, default=[1200, 4000],
+                        metavar=('L0', 'L1'),
+                        help='Training-time top-k point count per sample per decoder layer. '
+                             'Default: 1200 4000.')
+    parser.add_argument('--random_prune_threshold', type=int, nargs=2, default=None,
+                        metavar=('LO', 'HI'),
+                        help='Random range for layer-0 pruning threshold during training. '
+                             'Default: same as --pts_prune_threshold.')
     parser.add_argument('--nms_pre', type=int, default=1,
                         help='Top-k candidates before NMS at inference. 1 = take best box directly.')
     parser.add_argument('--nms_iou_thr', type=float, default=0.5,
@@ -256,6 +264,8 @@ def parse_option():
         parser.error('--top_pts_threshold must be a positive integer.')
     if args.top_pts_threshold_det <= 0:
         parser.error('--top_pts_threshold_det must be a positive integer.')
+    if args.random_prune_threshold is None:
+        args.random_prune_threshold = list(args.pts_prune_threshold)
 
     valid_bi_layers = {0, 1, 2}
     args.use_external_attn_bi_layer = sorted(

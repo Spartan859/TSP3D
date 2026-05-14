@@ -150,6 +150,8 @@ class TrainTester(BaseTrainTester):
             top_pts_threshold=args.top_pts_threshold,
             top_pts_threshold_det=args.top_pts_threshold_det,
             prune_threshold=(args.prune_threshold_0, args.prune_threshold_1),
+            pts_prune_threshold=tuple(args.pts_prune_threshold),
+            random_prune_threshold=tuple(args.random_prune_threshold),
             test_cfg=dict(
                 nms_pre=args.nms_pre,
                 iou_thr=args.nms_iou_thr,
