@@ -7,16 +7,16 @@
   "self_position_embedding": "loc_learned",
   "self_attend": false,
   "query_points_obj_topk": 4,
-  "use_contrastive_align": false,
-  "use_soft_token_loss": false,
+  "use_contrastive_align": true,
+  "use_soft_token_loss": true,
   "detect_intermediate": true,
   "joint_det": true,
-  "batch_size": 7,
+  "batch_size": 4,
   "dataset": [
-    "nr3d"
+    "sr3d"
   ],
-  "test_dataset": "nr3d",
-  "data_root": "/share/lxy/TSP3D_ori/data/",
+  "test_dataset": "sr3d",
+  "data_root": "/mnt/share/algorithm/kimi/cache/lxy/TSP3D/data/",
   "use_height": false,
   "use_color": true,
   "use_multiview": false,
@@ -25,20 +25,20 @@
   "butd_gt": false,
   "butd_cls": false,
   "augment_det": true,
-  "num_workers": 32,
+  "num_workers": 8,
   "start_epoch": 1,
   "max_epoch": 400,
   "optimizer": "adamW",
   "weight_decay": 0.0005,
-  "lr": 0.0005,
-  "keep_trans_lr": 0.0005,
+  "lr": 0.0004,
+  "keep_trans_lr": 0.0004,
   "text_encoder_lr": 1e-05,
   "box_select_lr": 0.0004,
   "seg_lr": 0.0001,
   "lr_scheduler": "step",
   "lr_decay_epochs": [
-    50,
-    75
+    40,
+    60
   ],
   "lr_decay_rate": 0.1,
   "clip_norm": 0.1,
@@ -51,7 +51,7 @@
   "checkpoint_path": null,
   "load_optimizer": true,
   "load_scheduler": true,
-  "log_dir": "/share/lxy/TSP3D_ori/scripts/experiments/nr3d/EA0/nr3d/2026-05-05_09-43-20",
+  "log_dir": "/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/sr3d_fixed2/EA0/sr3d/2026-05-15_06-01-34",
   "print_freq": 500,
   "save_freq": 3,
   "val_freq": 3,
@@ -103,6 +103,14 @@
   "gpu_mem_limit_gb": 0.0,
   "prune_threshold_0": 0.3,
   "prune_threshold_1": 0.7,
+  "pts_prune_threshold": [
+    1600,
+    4000
+  ],
+  "random_prune_threshold": [
+    1200,
+    4000
+  ],
   "nms_pre": 1,
   "nms_iou_thr": 0.5,
   "nms_score_thr": 0.01

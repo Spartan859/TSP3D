@@ -1,11 +1,18 @@
-export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH}"
+TSP3D_ENV="/mnt/share/micromamba/root/envs/TSP3D"
+export PATH="${TSP3D_ENV}/bin:${PATH}"
+export CONDA_PREFIX="${TSP3D_ENV}"
+export LD_LIBRARY_PATH="${TSP3D_ENV}/lib:${LD_LIBRARY_PATH}"
+unset PYTHONHOME PYTHONPATH
+which python
+python -c "import sys; print(sys.path)"
 
 # Configurable parameters
-NPROC_PER_NODE=4
-BS_PER_GPU=7
-BASE_BS_PER_GPU=7
-BASE_LR=5e-4
-BASE_KEEP_TRANS_LR=5e-4
+NPROC_PER_NODE=8
+BASE_NPROC_PER_NODE=8
+BS_PER_GPU=4
+BASE_BS_PER_GPU=4
+BASE_LR=4e-4
+BASE_KEEP_TRANS_LR=4e-4
 BASE_TEXT_ENCODER_LR=1e-5
 BASE_BOX_SELECT_LR=4e-4
 # BASE_LR=5e-5
@@ -76,15 +83,15 @@ find_free_gpus_script="${scripts_dir}/find_free_gpus.sh"
 switch_dataset_mode_script="${scripts_dir}/switch_dataset_mode.sh"
 
 lr_scale() {
-    python - "$1" "$BASE_BS_PER_GPU" "$BS_PER_GPU" "$NPROC_PER_NODE" <<'PY'
+    python - "$1" "$BASE_BS_PER_GPU" "$BS_PER_GPU" "$BASE_NPROC_PER_NODE" "$NPROC_PER_NODE" <<'PY'
 import sys
 
 base_lr = float(sys.argv[1])
 base_bs_per_gpu = float(sys.argv[2])
 bs_per_gpu = float(sys.argv[3])
-nproc = int(sys.argv[4])
-# linear scaling: scale by (current total bs) / (base total bs at 4 GPUs)
-print(base_lr * (bs_per_gpu * nproc) / (base_bs_per_gpu * 4))
+base_nproc = int(sys.argv[4])
+nproc = int(sys.argv[5])
+print(base_lr * (bs_per_gpu * nproc) / (base_bs_per_gpu * base_nproc))
 PY
 }
 
@@ -133,7 +140,13 @@ fi
 
 echo master_port: ${master_port}
 
-TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
+if [[ -x "${TSP3D_ENV}/bin/torchrun" ]]; then
+    dist_launch_cmd=("${TSP3D_ENV}/bin/torchrun")
+else
+    dist_launch_cmd=(python -m torch.distributed.launch)
+fi
+
+TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}" \
     --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
     train_dist_mod.py \
     --use_color \
@@ -145,12 +158,12 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --text_encoder_lr=$(lr_scale "${BASE_TEXT_ENCODER_LR}") \
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
-    --voxel_size=0.01 --num_workers=32 \
+    --voxel_size=0.01 --num_workers=8 \
     --dataset nr3d --test_dataset nr3d \
-    --detect_intermediate --joint_det \
+    --joint_det \
     --log_dir "${log_dir}" \
     --augment_det \
-    --lr_decay_epochs 50 75\
+    --lr_decay_epochs 100 130\
     --load_optimizer \
     --load_scheduler \
     --tf32_matmul ${TF32_MATMUL} \
@@ -165,6 +178,9 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     --external_attn_k_com 64\
     --external_attn_k_seg128 64\
     --external_attn_k_seg64 64\
+    # --pts_prune_threshold 1600 4000 \
+    # --random_prune_threshold 1200 4000 \
+    # --detect_intermediate \
     # --com_threshold 0.15\
     # --num_samples_com 1800\
     # --use_refine \
@@ -173,7 +189,8 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
     
 if [[ "${OCCUPY_GPU_AFTER_TRAIN:-0}" == "1" ]]; then
     echo "Post-train GPU occupy enabled (OCCUPY_GPU_AFTER_TRAIN=1)."
-    torchrun --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
+    # TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}" --nproc_per_node=$nproc_per_node ${PWD}/occupy_GPU_cal.py
+    sleep infinity
 else
     echo "Skip post-train GPU occupy (set OCCUPY_GPU_AFTER_TRAIN=1 to enable)."
 fi

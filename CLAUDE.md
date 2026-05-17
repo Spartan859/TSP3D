@@ -56,10 +56,11 @@
 | 主训练入口 | `train_dist_mod.py` | `torchrun` 入口，内含 `TrainTester` |
 | CLI & 配置 | `main_utils.py` | `parse_option()` 所有 CLI 参数都在这 |
 | BeaUTyDETR 模型 | `models/bdetr.py` | 顶层模型 |
-| **主 grounding head** | `models/multilevel_head_refine.py` | `TSPHead`，含 `_prune_inference`（:791）、`forward_test`（:1552）、3 个 `BiEncoderLayer` + `com_trans` |
+| **主 grounding head** | `models/multilevel_head_refine.py` | `TSPHead`，含 `_prune_inference`（:800）、`_prune_training`（:848）、`forward_test`（:1580）、3 个 `BiEncoderLayer` + `com_trans` |
 | **Attention 模块** | `models/trans_modules.py` | `BiEncoderLayer`（:212）、`ExternalMultiheadAttention`（:304）、`CrossAttentionLayer`（:28）|
 | 数据集 | `src/joint_det_dataset.py` | ScanRefer / NR3D / SR3D / WildRefer 多数据集 |
 | 评估器 | `src/grounding_evaluator.py` | Top-k + IoU 阈值 |
+| **对比参考** | `../EDA-prun/models/multilevel_head_com_visual_box_3dsps.py` | `DSPHead`，TSPHead 的前身，`pts_prune_threshold=(10000,4000)`，`prune_threshold=(0.4,0.75)` |
 
 ## External Attention 关键参数
 
@@ -74,6 +75,22 @@
 
 优先级：FiLM > text-guided > plain EA > self-attention。同一层多选时以最高级为准（在 `BiEncoderLayer.__init__` 的条件分支里）。
 
+## Pruning 参数（训练 vs 推理）
+
+训练用 top-k，推理用阈值。两套参数独立控制，需要确保训练-推理 mismatch 不要太大。
+
+```bash
+# 训练时每层每样本保留的 top-k 点数
+--pts_prune_threshold 1200 4000           # 默认（layer 0: 1200, layer 1+: 4000）
+
+# 训练时 layer 0 的随机采样范围（每 forward 随机选 LO~HI）
+--random_prune_threshold 1200 4000       # 默认同 pts_prune_threshold
+
+# 推理时的阈值过滤
+--prune_threshold_0 0.3                   # layer 0（DSPHead 用 0.4）
+--prune_threshold_1 0.7                   # layer 1+（DSPHead 用 0.75）
+```
+
 ## 已知坑 / 踩过的雷
 
 1. **`ExternalMultiheadAttention` 里 `self.k` 曾硬编码为 `256 // coef`**（与 `embed_dim` 无关）。已修正为 `embed_dim // coef`（`trans_modules.py:315`）。**副作用**：`embed_dim ∈ {128, 64}` 的旧 checkpoint（来自 `keep_trans`/`com_trans`，见 `multilevel_head_refine.py:425,433`）里 `linear_0/linear_1/text_mlp*` 形状与修正后不匹配，`load_state_dict` 会报 size mismatch。需要重训或者为兼容旧权重显式传 `k` 参数。
@@ -83,6 +100,8 @@
 3. **FiLM 顺序**：`(1+γ)·attn + β` 必须在 `masked_fill(-inf)` **之前**，否则 `γ=-1` 时 `0*(-inf)=nan`。当前顺序正确（`trans_modules.py:354-367`）。
 
 4. **Pruning 链路**：`ExternalMultiheadAttention → keep_conv → sigmoid → 1-score > threshold` 剪点。任何上游 nan 都会让所有点被剪掉并触发 `forward_test` 中的 `break`（`multilevel_head_refine.py:1586`）。日志关键词 `Prune inference removed all points`。
+
+5. **SR3D anchor object 污染 GT（已修复，`ae19ff5`）**：`Joint3DDataset`（`joint_det_dataset.py:954`）在 `detect_intermediate=True` 时会把 `anchor_ids[0]` 追加到 `tids`，导致 SR3D 的 GT target 多了一个无关 anchor 物体，严重干扰 loss 计算。SR3D 训练 Acc@0.25 卡在 ~0.15 就是这个原因。注释掉 anchor 追加逻辑后恢复正常。注意 ScanRefer 不受影响（走不同的数据分支）。排查过程中排除了 `pts_prune_threshold`、`--use_soft_token_loss`、`--use_contrastive_align`、`--butd_cls`、`--pp_checkpoint` — 这些都不是根因。
 
 ## 训练 / 测试
 
@@ -107,7 +126,7 @@ bash scripts/experiments/EA_fixed/EA0.sh --checkpoint_path /path/to/ckpt.pth --e
 
 ## 目录速查
 
-- `scripts/experiments/` — 按实验分组的训练脚本；`EA_fixed/` 是当前主力，`inference_speed/` 是速度测试
+- `scripts/experiments/` — 按实验分组的训练脚本；`EA_fixed/` 是当前主力（ScanRefer），`sr3d_fixed3/` 是 SR3D 成功实验，`inference_speed/` 是速度测试
 - `EVAL_PARAMS.md` — 免重训就能调的评估期参数（`--com_threshold`、`--prune_threshold_0/1`、`--nms_pre` 等），含扫描建议和命令模板
 - `experiments.md` — 推理速度对比表 + 日志路径
 - `TSP3D_method_explanation.md` — TSP3D 原方法说明

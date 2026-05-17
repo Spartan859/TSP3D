@@ -169,9 +169,6 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}"
     --tf32_matmul ${TF32_MATMUL} \
     --tf32_cudnn ${TF32_CUDNN} \
     "${train_extra_args[@]}" \
-    --use_external_attn_bi_layer 0\
-    --use_text_guided_external_attn_bi_layer 0\
-    --use_film_text_guided_external_attn_bi_layer 0\
     --rng_seed ${RNG_SEED}\
     --external_attn_k_keep0 64\
     --external_attn_k_keep1 64\

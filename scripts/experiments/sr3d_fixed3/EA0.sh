@@ -159,11 +159,11 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}"
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
     --voxel_size=0.01 --num_workers=8 \
-    --dataset nr3d --test_dataset nr3d \
+    --dataset sr3d --test_dataset sr3d \
     --joint_det \
     --log_dir "${log_dir}" \
     --augment_det \
-    --lr_decay_epochs 100 130\
+    --lr_decay_epochs 40 60\
     --load_optimizer \
     --load_scheduler \
     --tf32_matmul ${TF32_MATMUL} \
@@ -178,6 +178,8 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}"
     --external_attn_k_com 64\
     --external_attn_k_seg128 64\
     --external_attn_k_seg64 64\
+    --use_soft_token_loss \
+    --use_contrastive_align \
     # --pts_prune_threshold 1600 4000 \
     # --random_prune_threshold 1200 4000 \
     # --detect_intermediate \
