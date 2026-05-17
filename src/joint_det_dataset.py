@@ -954,12 +954,12 @@ class Joint3DDataset(Dataset):
             tids = anno['target_id']
         else:  # referit dataset
             tids = [anno['target_id']]
-            # TODO SR3D: anchor object
-            if self.detect_intermediate:
-                # tids += anno.get('anchor_ids', [])    # BUTD-DETR
-                # EDA
-                if anno['auxi_entity'] is not None and len(anno['anchor_ids']):
-                    tids.append(anno['anchor_ids'][0])
+            # # TODO SR3D: anchor object
+            # if self.detect_intermediate:
+            #     # tids += anno.get('anchor_ids', [])    # BUTD-DETR
+            #     # EDA
+            #     if anno['auxi_entity'] is not None and len(anno['anchor_ids']):
+            #         tids.append(anno['anchor_ids'][0])
         point_instance_label = -np.ones(len(scan.pc))
         gt_masks = np.zeros((MAX_NUM_OBJ, len(scan.pc)))
         for t, tid in enumerate(tids):
