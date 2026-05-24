@@ -1,0 +1,1263 @@
+[05/12 09:01:15] EA02-continue INFO: Full config saved to /share/lxy/TSP3D_ori/scripts/experiments/strefer/EA02-continue/strefer/2026-05-12_09-01-12/config.json
+[05/12 09:01:15] EA02-continue INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': False, 'batch_size': 7, 'dataset': ['strefer'], 'test_dataset': 'strefer', 'data_root': '/share/lxy/TSP3D_ori/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 32, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [0, 400], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'default', 'tf32_cudnn': 'default', 'checkpoint_path': '/share/lxy/TSP3D_ori/scripts/experiments/strefer/EA02/strefer/2026-05-06_12-22-22/ckpt_epoch_24.pth', 'load_optimizer': False, 'load_scheduler': False, 'log_dir': '/share/lxy/TSP3D_ori/scripts/experiments/strefer/EA02-continue/strefer/2026-05-12_09-01-12', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 42, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'measure_fps_detail': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'cudnn_benchmark': True, 'cudnn_deterministic': True, 'use_deterministic_algorithms': False, 'deterministic_warn_only': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [0, 2], 'use_text_guided_external_attn_bi_layer': [0, 2], 'use_film_text_guided_external_attn_bi_layer': [0, 2], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 4, 'external_attn_k_keep0': 64, 'external_attn_k_keep1': 64, 'external_attn_k_com': 64, 'external_attn_k_seg128': 64, 'external_attn_k_seg64': 64, 'top_pts_threshold': 32, 'top_pts_threshold_det': 32, 'gpu_mem_limit_gb': 0.0, 'prune_threshold_0': 0.35, 'prune_threshold_1': 0.35, 'nms_pre': 1, 'nms_iou_thr': 0.5, 'nms_score_thr': 0.01}
+[05/12 09:01:16] EA02-continue INFO: length of training dataset: 4392
+[05/12 09:01:16] EA02-continue INFO: length of testing dataset: 1066
+[05/12 09:03:04] EA02-continue INFO: epoch 25, total time 88.99, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:04:36] EA02-continue INFO: epoch 26, total time 92.09, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:06:03] EA02-continue INFO: epoch 27, total time 87.33, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:06:26] EA02-continue INFO: Eval: [27]  
+[05/12 09:06:26] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.33240
+[05/12 09:06:26] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.31367
+[05/12 09:06:26] EA02-continue INFO: WildRefer-official Acc0.25: 0.33150 | Acc0.50: 0.31270 | mIoU: 0.22250
+[05/12 09:06:26] EA02-continue INFO: Timing(s): inf=0.104719, visual=0.035577, text=0.006588, fusion_wo_head=0.057688, head=0.003346
+[05/12 09:06:26] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.013292, bi_layer1=0.014643, bi_layer2=0.005303, total=0.033238
+[05/12 09:06:26] EA02-continue INFO: GPU memory(MiB): avg_allocated=1007.10, avg_reserved=2363.37, peak_allocated=2093.88, peak_reserved=8330.00, warmup_iters=20
+[05/12 09:07:55] EA02-continue INFO: epoch 28, total time 88.54, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:09:22] EA02-continue INFO: epoch 29, total time 87.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:10:56] EA02-continue INFO: epoch 30, total time 93.88, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:11:20] EA02-continue INFO: Eval: [30]  
+[05/12 09:11:20] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.33895
+[05/12 09:11:20] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.32210
+[05/12 09:11:20] EA02-continue INFO: WildRefer-official Acc0.25: 0.33990 | Acc0.50: 0.32020 | mIoU: 0.22910
+[05/12 09:11:20] EA02-continue INFO: Timing(s): inf=0.095006, visual=0.035896, text=0.006735, fusion_wo_head=0.047425, head=0.003302
+[05/12 09:11:20] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.013531, bi_layer1=0.004696, bi_layer2=0.004871, total=0.023098
+[05/12 09:11:20] EA02-continue INFO: GPU memory(MiB): avg_allocated=1007.93, avg_reserved=2254.95, peak_allocated=2094.09, peak_reserved=9814.00, warmup_iters=20
+[05/12 09:12:49] EA02-continue INFO: epoch 31, total time 88.88, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:14:19] EA02-continue INFO: epoch 32, total time 90.77, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:15:47] EA02-continue INFO: epoch 33, total time 87.84, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:16:08] EA02-continue INFO: Eval: [33]  
+[05/12 09:16:08] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32491
+[05/12 09:16:08] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30712
+[05/12 09:16:08] EA02-continue INFO: WildRefer-official Acc0.25: 0.32580 | Acc0.50: 0.30520 | mIoU: 0.22110
+[05/12 09:16:08] EA02-continue INFO: Timing(s): inf=0.090214, visual=0.034305, text=0.006347, fusion_wo_head=0.044982, head=0.003059
+[05/12 09:16:08] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.012137, bi_layer1=0.004426, bi_layer2=0.004966, total=0.021529
+[05/12 09:16:08] EA02-continue INFO: GPU memory(MiB): avg_allocated=1008.97, avg_reserved=2296.32, peak_allocated=2096.00, peak_reserved=9870.00, warmup_iters=20
+[05/12 09:17:38] EA02-continue INFO: epoch 34, total time 89.47, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:19:08] EA02-continue INFO: epoch 35, total time 90.20, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:20:37] EA02-continue INFO: epoch 36, total time 88.84, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:20:59] EA02-continue INFO: Eval: [36]  
+[05/12 09:20:59] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32584
+[05/12 09:20:59] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30524
+[05/12 09:20:59] EA02-continue INFO: WildRefer-official Acc0.25: 0.32580 | Acc0.50: 0.30520 | mIoU: 0.22130
+[05/12 09:20:59] EA02-continue INFO: Timing(s): inf=0.091857, visual=0.034779, text=0.006622, fusion_wo_head=0.045708, head=0.003179
+[05/12 09:20:59] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.011097, bi_layer1=0.005003, bi_layer2=0.004883, total=0.020983
+[05/12 09:20:59] EA02-continue INFO: GPU memory(MiB): avg_allocated=1009.99, avg_reserved=2161.68, peak_allocated=2096.28, peak_reserved=11010.00, warmup_iters=20
+[05/12 09:22:29] EA02-continue INFO: epoch 37, total time 90.16, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:23:58] EA02-continue INFO: epoch 38, total time 88.56, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:25:28] EA02-continue INFO: epoch 39, total time 90.04, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:25:50] EA02-continue INFO: Eval: [39]  
+[05/12 09:25:50] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32210
+[05/12 09:25:50] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30337
+[05/12 09:25:50] EA02-continue INFO: WildRefer-official Acc0.25: 0.32300 | Acc0.50: 0.30060 | mIoU: 0.21980
+[05/12 09:25:50] EA02-continue INFO: Timing(s): inf=0.089589, visual=0.035472, text=0.006570, fusion_wo_head=0.042741, head=0.003188
+[05/12 09:25:50] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.009576, bi_layer1=0.004319, bi_layer2=0.004607, total=0.018502
+[05/12 09:25:50] EA02-continue INFO: GPU memory(MiB): avg_allocated=1006.10, avg_reserved=2341.26, peak_allocated=2093.21, peak_reserved=9906.00, warmup_iters=20
+[05/12 09:27:21] EA02-continue INFO: epoch 40, total time 90.96, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:28:51] EA02-continue INFO: epoch 41, total time 90.49, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:30:23] EA02-continue INFO: epoch 42, total time 91.16, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:30:43] EA02-continue INFO: Eval: [42]  
+[05/12 09:30:43] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31554
+[05/12 09:30:43] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29869
+[05/12 09:30:43] EA02-continue INFO: WildRefer-official Acc0.25: 0.31550 | Acc0.50: 0.29680 | mIoU: 0.21310
+[05/12 09:30:43] EA02-continue INFO: Timing(s): inf=0.133486, visual=0.049407, text=0.011274, fusion_wo_head=0.065123, head=0.005198
+[05/12 09:30:43] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.015364, bi_layer1=0.007858, bi_layer2=0.008005, total=0.031227
+[05/12 09:30:43] EA02-continue INFO: GPU memory(MiB): avg_allocated=1010.71, avg_reserved=2663.47, peak_allocated=2099.06, peak_reserved=9356.00, warmup_iters=20
+[05/12 09:32:10] EA02-continue INFO: epoch 43, total time 86.70, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:33:37] EA02-continue INFO: epoch 44, total time 87.61, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:35:04] EA02-continue INFO: epoch 45, total time 86.15, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:35:24] EA02-continue INFO: Eval: [45]  
+[05/12 09:35:24] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29775
+[05/12 09:35:24] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27528
+[05/12 09:35:24] EA02-continue INFO: WildRefer-official Acc0.25: 0.29680 | Acc0.50: 0.27620 | mIoU: 0.19900
+[05/12 09:35:24] EA02-continue INFO: Timing(s): inf=0.089293, visual=0.034565, text=0.006445, fusion_wo_head=0.043520, head=0.003188
+[05/12 09:35:24] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.009627, bi_layer1=0.004612, bi_layer2=0.004700, total=0.018939
+[05/12 09:35:24] EA02-continue INFO: GPU memory(MiB): avg_allocated=1007.52, avg_reserved=2456.95, peak_allocated=2095.07, peak_reserved=9490.00, warmup_iters=20
+[05/12 09:36:53] EA02-continue INFO: epoch 46, total time 89.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:38:22] EA02-continue INFO: epoch 47, total time 89.16, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:39:51] EA02-continue INFO: epoch 48, total time 88.89, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:40:13] EA02-continue INFO: Eval: [48]  
+[05/12 09:40:13] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32116
+[05/12 09:40:13] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30618
+[05/12 09:40:13] EA02-continue INFO: WildRefer-official Acc0.25: 0.32120 | Acc0.50: 0.30150 | mIoU: 0.21880
+[05/12 09:40:13] EA02-continue INFO: Timing(s): inf=0.093810, visual=0.036050, text=0.007149, fusion_wo_head=0.045483, head=0.003344
+[05/12 09:40:13] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.010596, bi_layer1=0.004891, bi_layer2=0.005107, total=0.020594
+[05/12 09:40:13] EA02-continue INFO: GPU memory(MiB): avg_allocated=1012.27, avg_reserved=2584.21, peak_allocated=2098.46, peak_reserved=9758.00, warmup_iters=20
+[05/12 09:41:38] EA02-continue INFO: epoch 49, total time 85.77, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:43:10] EA02-continue INFO: epoch 50, total time 91.53, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:44:39] EA02-continue INFO: epoch 51, total time 89.43, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:45:01] EA02-continue INFO: Eval: [51]  
+[05/12 09:45:01] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29963
+[05/12 09:45:01] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28933
+[05/12 09:45:01] EA02-continue INFO: WildRefer-official Acc0.25: 0.30060 | Acc0.50: 0.28930 | mIoU: 0.20310
+[05/12 09:45:01] EA02-continue INFO: Timing(s): inf=0.101600, visual=0.038146, text=0.007625, fusion_wo_head=0.050297, head=0.003674
+[05/12 09:45:01] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.011700, bi_layer1=0.005194, bi_layer2=0.006272, total=0.023165
+[05/12 09:45:01] EA02-continue INFO: GPU memory(MiB): avg_allocated=1011.12, avg_reserved=2492.00, peak_allocated=2096.10, peak_reserved=10372.00, warmup_iters=20
+[05/12 09:46:35] EA02-continue INFO: epoch 52, total time 93.88, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:48:07] EA02-continue INFO: epoch 53, total time 91.59, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:49:38] EA02-continue INFO: epoch 54, total time 90.71, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:49:58] EA02-continue INFO: Eval: [54]  
+[05/12 09:49:58] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32022
+[05/12 09:49:58] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30056
+[05/12 09:49:58] EA02-continue INFO: WildRefer-official Acc0.25: 0.32020 | Acc0.50: 0.29960 | mIoU: 0.21560
+[05/12 09:49:58] EA02-continue INFO: Timing(s): inf=0.101362, visual=0.038206, text=0.008098, fusion_wo_head=0.049334, head=0.003787
+[05/12 09:49:58] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.011590, bi_layer1=0.005179, bi_layer2=0.005654, total=0.022423
+[05/12 09:49:58] EA02-continue INFO: GPU memory(MiB): avg_allocated=1010.73, avg_reserved=2486.00, peak_allocated=2095.31, peak_reserved=9472.00, warmup_iters=20
+[05/12 09:51:30] EA02-continue INFO: epoch 55, total time 92.42, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:53:07] EA02-continue INFO: epoch 56, total time 97.10, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:54:44] EA02-continue INFO: epoch 57, total time 96.32, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:55:06] EA02-continue INFO: Eval: [57]  
+[05/12 09:55:06] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32678
+[05/12 09:55:06] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.31086
+[05/12 09:55:06] EA02-continue INFO: WildRefer-official Acc0.25: 0.32680 | Acc0.50: 0.30990 | mIoU: 0.22000
+[05/12 09:55:06] EA02-continue INFO: Timing(s): inf=0.089141, visual=0.035326, text=0.006773, fusion_wo_head=0.042231, head=0.003165
+[05/12 09:55:06] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.009169, bi_layer1=0.004348, bi_layer2=0.004396, total=0.017912
+[05/12 09:55:06] EA02-continue INFO: GPU memory(MiB): avg_allocated=1010.36, avg_reserved=2565.47, peak_allocated=2096.03, peak_reserved=9266.00, warmup_iters=20
+[05/12 09:56:37] EA02-continue INFO: epoch 58, total time 90.72, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:58:11] EA02-continue INFO: epoch 59, total time 93.98, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 09:59:45] EA02-continue INFO: epoch 60, total time 94.14, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:00:06] EA02-continue INFO: Eval: [60]  
+[05/12 10:00:06] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31180
+[05/12 10:00:06] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30056
+[05/12 10:00:06] EA02-continue INFO: WildRefer-official Acc0.25: 0.31180 | Acc0.50: 0.29960 | mIoU: 0.21120
+[05/12 10:00:06] EA02-continue INFO: Timing(s): inf=0.089171, visual=0.034477, text=0.006543, fusion_wo_head=0.043375, head=0.003145
+[05/12 10:00:06] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.009569, bi_layer1=0.004451, bi_layer2=0.004881, total=0.018901
+[05/12 10:00:06] EA02-continue INFO: GPU memory(MiB): avg_allocated=1009.30, avg_reserved=2629.37, peak_allocated=2096.85, peak_reserved=10514.00, warmup_iters=20
+[05/12 10:01:36] EA02-continue INFO: epoch 61, total time 90.22, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:03:03] EA02-continue INFO: epoch 62, total time 87.54, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:04:33] EA02-continue INFO: epoch 63, total time 89.59, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:04:52] EA02-continue INFO: Eval: [63]  
+[05/12 10:04:52] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.33052
+[05/12 10:04:52] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.31461
+[05/12 10:04:52] EA02-continue INFO: WildRefer-official Acc0.25: 0.33050 | Acc0.50: 0.31550 | mIoU: 0.22270
+[05/12 10:04:52] EA02-continue INFO: Timing(s): inf=0.096650, visual=0.037669, text=0.007776, fusion_wo_head=0.045525, head=0.003752
+[05/12 10:04:52] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008400, bi_layer1=0.005004, bi_layer2=0.005150, total=0.018554
+[05/12 10:04:52] EA02-continue INFO: GPU memory(MiB): avg_allocated=1009.61, avg_reserved=3037.79, peak_allocated=2095.75, peak_reserved=9744.00, warmup_iters=20
+[05/12 10:06:25] EA02-continue INFO: epoch 64, total time 93.19, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:07:58] EA02-continue INFO: epoch 65, total time 92.31, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:09:29] EA02-continue INFO: epoch 66, total time 91.36, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:09:51] EA02-continue INFO: Eval: [66]  
+[05/12 10:09:51] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31835
+[05/12 10:09:51] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30524
+[05/12 10:09:51] EA02-continue INFO: WildRefer-official Acc0.25: 0.31840 | Acc0.50: 0.30620 | mIoU: 0.21560
+[05/12 10:09:51] EA02-continue INFO: Timing(s): inf=0.096358, visual=0.037250, text=0.007269, fusion_wo_head=0.046514, head=0.003585
+[05/12 10:09:51] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.010388, bi_layer1=0.004937, bi_layer2=0.005158, total=0.020483
+[05/12 10:09:51] EA02-continue INFO: GPU memory(MiB): avg_allocated=1012.37, avg_reserved=2538.42, peak_allocated=2096.75, peak_reserved=9452.00, warmup_iters=20
+[05/12 10:11:21] EA02-continue INFO: epoch 67, total time 89.87, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:12:54] EA02-continue INFO: epoch 68, total time 92.61, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:14:27] EA02-continue INFO: epoch 69, total time 92.76, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:14:49] EA02-continue INFO: Eval: [69]  
+[05/12 10:14:49] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31648
+[05/12 10:14:49] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30618
+[05/12 10:14:49] EA02-continue INFO: WildRefer-official Acc0.25: 0.31650 | Acc0.50: 0.30710 | mIoU: 0.21390
+[05/12 10:14:49] EA02-continue INFO: Timing(s): inf=0.089578, visual=0.034852, text=0.006970, fusion_wo_head=0.042939, head=0.003237
+[05/12 10:14:49] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008830, bi_layer1=0.004505, bi_layer2=0.004654, total=0.017988
+[05/12 10:14:49] EA02-continue INFO: GPU memory(MiB): avg_allocated=1013.07, avg_reserved=2684.32, peak_allocated=2099.89, peak_reserved=8262.00, warmup_iters=20
+[05/12 10:16:21] EA02-continue INFO: epoch 70, total time 91.58, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:17:51] EA02-continue INFO: epoch 71, total time 89.89, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:19:23] EA02-continue INFO: epoch 72, total time 92.11, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:19:45] EA02-continue INFO: Eval: [72]  
+[05/12 10:19:45] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31180
+[05/12 10:19:45] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29682
+[05/12 10:19:45] EA02-continue INFO: WildRefer-official Acc0.25: 0.31180 | Acc0.50: 0.29680 | mIoU: 0.20850
+[05/12 10:19:45] EA02-continue INFO: Timing(s): inf=0.091210, visual=0.036526, text=0.007103, fusion_wo_head=0.042531, head=0.003344
+[05/12 10:19:45] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008572, bi_layer1=0.004556, bi_layer2=0.004788, total=0.017916
+[05/12 10:19:45] EA02-continue INFO: GPU memory(MiB): avg_allocated=1010.13, avg_reserved=2434.84, peak_allocated=2093.88, peak_reserved=10260.00, warmup_iters=20
+[05/12 10:21:16] EA02-continue INFO: epoch 73, total time 90.57, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:22:44] EA02-continue INFO: epoch 74, total time 88.90, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:24:13] EA02-continue INFO: epoch 75, total time 88.81, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:24:36] EA02-continue INFO: Eval: [75]  
+[05/12 10:24:36] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.33240
+[05/12 10:24:36] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.32116
+[05/12 10:24:36] EA02-continue INFO: WildRefer-official Acc0.25: 0.33240 | Acc0.50: 0.31840 | mIoU: 0.22590
+[05/12 10:24:36] EA02-continue INFO: Timing(s): inf=0.099204, visual=0.038332, text=0.007813, fusion_wo_head=0.047494, head=0.003741
+[05/12 10:24:36] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.010337, bi_layer1=0.005023, bi_layer2=0.005042, total=0.020402
+[05/12 10:24:36] EA02-continue INFO: GPU memory(MiB): avg_allocated=1015.33, avg_reserved=2532.63, peak_allocated=2100.75, peak_reserved=10000.00, warmup_iters=20
+[05/12 10:26:07] EA02-continue INFO: epoch 76, total time 91.58, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:27:36] EA02-continue INFO: epoch 77, total time 89.22, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:29:09] EA02-continue INFO: epoch 78, total time 92.25, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:29:30] EA02-continue INFO: Eval: [78]  
+[05/12 10:29:30] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.33333
+[05/12 10:29:30] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.31929
+[05/12 10:29:30] EA02-continue INFO: WildRefer-official Acc0.25: 0.33330 | Acc0.50: 0.31840 | mIoU: 0.22430
+[05/12 10:29:30] EA02-continue INFO: Timing(s): inf=0.120229, visual=0.046743, text=0.007861, fusion_wo_head=0.059954, head=0.003776
+[05/12 10:29:30] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.013348, bi_layer1=0.007904, bi_layer2=0.005891, total=0.027143
+[05/12 10:29:30] EA02-continue INFO: GPU memory(MiB): avg_allocated=1011.30, avg_reserved=2408.84, peak_allocated=2097.32, peak_reserved=9948.00, warmup_iters=20
+[05/12 10:30:57] EA02-continue INFO: epoch 79, total time 87.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:32:26] EA02-continue INFO: epoch 80, total time 89.16, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:33:54] EA02-continue INFO: epoch 81, total time 88.60, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:34:15] EA02-continue INFO: Eval: [81]  
+[05/12 10:34:15] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30243
+[05/12 10:34:15] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29120
+[05/12 10:34:15] EA02-continue INFO: WildRefer-official Acc0.25: 0.30240 | Acc0.50: 0.29210 | mIoU: 0.20510
+[05/12 10:34:15] EA02-continue INFO: Timing(s): inf=0.089596, visual=0.035217, text=0.006859, fusion_wo_head=0.042622, head=0.003249
+[05/12 10:34:15] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008625, bi_layer1=0.004505, bi_layer2=0.004707, total=0.017836
+[05/12 10:34:15] EA02-continue INFO: GPU memory(MiB): avg_allocated=1013.04, avg_reserved=2527.89, peak_allocated=2098.13, peak_reserved=9556.00, warmup_iters=20
+[05/12 10:35:47] EA02-continue INFO: epoch 82, total time 92.22, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:37:15] EA02-continue INFO: epoch 83, total time 87.58, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:38:45] EA02-continue INFO: epoch 84, total time 89.95, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:39:04] EA02-continue INFO: Eval: [84]  
+[05/12 10:39:04] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30243
+[05/12 10:39:04] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28933
+[05/12 10:39:04] EA02-continue INFO: WildRefer-official Acc0.25: 0.30240 | Acc0.50: 0.28930 | mIoU: 0.20560
+[05/12 10:39:04] EA02-continue INFO: Timing(s): inf=0.092169, visual=0.035779, text=0.007011, fusion_wo_head=0.044404, head=0.003300
+[05/12 10:39:04] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.009877, bi_layer1=0.004746, bi_layer2=0.004793, total=0.019417
+[05/12 10:39:04] EA02-continue INFO: GPU memory(MiB): avg_allocated=1013.67, avg_reserved=2898.11, peak_allocated=2098.52, peak_reserved=9224.00, warmup_iters=20
+[05/12 10:40:34] EA02-continue INFO: epoch 85, total time 89.56, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:42:06] EA02-continue INFO: epoch 86, total time 92.13, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:43:37] EA02-continue INFO: epoch 87, total time 91.27, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:43:56] EA02-continue INFO: Eval: [87]  
+[05/12 10:43:56] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31273
+[05/12 10:43:56] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29307
+[05/12 10:43:56] EA02-continue INFO: WildRefer-official Acc0.25: 0.31180 | Acc0.50: 0.29120 | mIoU: 0.20770
+[05/12 10:43:56] EA02-continue INFO: Timing(s): inf=0.097841, visual=0.037920, text=0.007930, fusion_wo_head=0.046112, head=0.003846
+[05/12 10:43:56] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008567, bi_layer1=0.005027, bi_layer2=0.005214, total=0.018808
+[05/12 10:43:56] EA02-continue INFO: GPU memory(MiB): avg_allocated=1012.34, avg_reserved=2910.74, peak_allocated=2100.09, peak_reserved=8828.00, warmup_iters=20
+[05/12 10:45:26] EA02-continue INFO: epoch 88, total time 89.78, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:46:57] EA02-continue INFO: epoch 89, total time 91.04, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:48:27] EA02-continue INFO: epoch 90, total time 89.83, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:48:49] EA02-continue INFO: Eval: [90]  
+[05/12 10:48:49] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32303
+[05/12 10:48:49] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30805
+[05/12 10:48:49] EA02-continue INFO: WildRefer-official Acc0.25: 0.32210 | Acc0.50: 0.30810 | mIoU: 0.21750
+[05/12 10:48:49] EA02-continue INFO: Timing(s): inf=0.089789, visual=0.035381, text=0.007163, fusion_wo_head=0.041705, head=0.003726
+[05/12 10:48:49] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007153, bi_layer1=0.004636, bi_layer2=0.004781, total=0.016570
+[05/12 10:48:49] EA02-continue INFO: GPU memory(MiB): avg_allocated=1013.66, avg_reserved=2762.84, peak_allocated=2100.42, peak_reserved=9348.00, warmup_iters=20
+[05/12 10:50:19] EA02-continue INFO: epoch 91, total time 89.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:51:50] EA02-continue INFO: epoch 92, total time 91.72, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:53:23] EA02-continue INFO: epoch 93, total time 92.36, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:53:42] EA02-continue INFO: Eval: [93]  
+[05/12 10:53:42] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31835
+[05/12 10:53:42] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30618
+[05/12 10:53:42] EA02-continue INFO: WildRefer-official Acc0.25: 0.31840 | Acc0.50: 0.30430 | mIoU: 0.21580
+[05/12 10:53:42] EA02-continue INFO: Timing(s): inf=0.094322, visual=0.036819, text=0.007202, fusion_wo_head=0.045062, head=0.003583
+[05/12 10:53:42] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008744, bi_layer1=0.004777, bi_layer2=0.004951, total=0.018472
+[05/12 10:53:42] EA02-continue INFO: GPU memory(MiB): avg_allocated=1014.37, avg_reserved=2750.32, peak_allocated=2100.10, peak_reserved=12290.00, warmup_iters=20
+[05/12 10:55:10] EA02-continue INFO: epoch 94, total time 88.76, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:56:41] EA02-continue INFO: epoch 95, total time 90.75, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:58:13] EA02-continue INFO: epoch 96, total time 91.52, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 10:58:30] EA02-continue INFO: Eval: [96]  
+[05/12 10:58:30] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27622
+[05/12 10:58:30] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26124
+[05/12 10:58:30] EA02-continue INFO: WildRefer-official Acc0.25: 0.27530 | Acc0.50: 0.26030 | mIoU: 0.18470
+[05/12 10:58:30] EA02-continue INFO: Timing(s): inf=0.114028, visual=0.047992, text=0.006763, fusion_wo_head=0.054430, head=0.003254
+[05/12 10:58:30] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.010639, bi_layer1=0.006091, bi_layer2=0.004653, total=0.021383
+[05/12 10:58:30] EA02-continue INFO: GPU memory(MiB): avg_allocated=1015.01, avg_reserved=2771.89, peak_allocated=2098.57, peak_reserved=8466.00, warmup_iters=20
+[05/12 10:59:56] EA02-continue INFO: epoch 97, total time 86.52, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:01:21] EA02-continue INFO: epoch 98, total time 84.36, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:02:45] EA02-continue INFO: epoch 99, total time 84.03, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:03:01] EA02-continue INFO: Eval: [99]  
+[05/12 11:03:01] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27715
+[05/12 11:03:01] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26404
+[05/12 11:03:01] EA02-continue INFO: WildRefer-official Acc0.25: 0.27720 | Acc0.50: 0.26310 | mIoU: 0.18630
+[05/12 11:03:01] EA02-continue INFO: Timing(s): inf=0.093382, visual=0.036820, text=0.007236, fusion_wo_head=0.044059, head=0.003604
+[05/12 11:03:01] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007418, bi_layer1=0.004953, bi_layer2=0.004944, total=0.017315
+[05/12 11:03:01] EA02-continue INFO: GPU memory(MiB): avg_allocated=1013.73, avg_reserved=2789.79, peak_allocated=2096.60, peak_reserved=8518.00, warmup_iters=20
+[05/12 11:04:24] EA02-continue INFO: epoch 100, total time 82.66, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:05:46] EA02-continue INFO: epoch 101, total time 82.61, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:07:12] EA02-continue INFO: epoch 102, total time 85.43, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:07:30] EA02-continue INFO: Eval: [102]  
+[05/12 11:07:30] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32210
+[05/12 11:07:30] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29869
+[05/12 11:07:30] EA02-continue INFO: WildRefer-official Acc0.25: 0.32210 | Acc0.50: 0.29870 | mIoU: 0.21530
+[05/12 11:07:30] EA02-continue INFO: Timing(s): inf=0.124864, visual=0.052743, text=0.007621, fusion_wo_head=0.058910, head=0.003781
+[05/12 11:07:30] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.009159, bi_layer1=0.005802, bi_layer2=0.005207, total=0.020168
+[05/12 11:07:30] EA02-continue INFO: GPU memory(MiB): avg_allocated=1014.59, avg_reserved=2840.95, peak_allocated=2101.93, peak_reserved=10738.00, warmup_iters=20
+[05/12 11:08:51] EA02-continue INFO: epoch 103, total time 80.97, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:10:20] EA02-continue INFO: epoch 104, total time 89.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:11:54] EA02-continue INFO: epoch 105, total time 94.76, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:12:11] EA02-continue INFO: Eval: [105]  
+[05/12 11:12:11] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29963
+[05/12 11:12:11] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28090
+[05/12 11:12:11] EA02-continue INFO: WildRefer-official Acc0.25: 0.29870 | Acc0.50: 0.27720 | mIoU: 0.20120
+[05/12 11:12:11] EA02-continue INFO: Timing(s): inf=0.095298, visual=0.036635, text=0.007118, fusion_wo_head=0.046290, head=0.003597
+[05/12 11:12:11] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.009210, bi_layer1=0.004758, bi_layer2=0.005376, total=0.019343
+[05/12 11:12:11] EA02-continue INFO: GPU memory(MiB): avg_allocated=1011.76, avg_reserved=2915.37, peak_allocated=2096.07, peak_reserved=10888.00, warmup_iters=20
+[05/12 11:13:36] EA02-continue INFO: epoch 106, total time 84.25, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:15:01] EA02-continue INFO: epoch 107, total time 84.96, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:16:31] EA02-continue INFO: epoch 108, total time 90.42, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:16:47] EA02-continue INFO: Eval: [108]  
+[05/12 11:16:47] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32491
+[05/12 11:16:47] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.31180
+[05/12 11:16:47] EA02-continue INFO: WildRefer-official Acc0.25: 0.32490 | Acc0.50: 0.31090 | mIoU: 0.22110
+[05/12 11:16:47] EA02-continue INFO: Timing(s): inf=0.087631, visual=0.035373, text=0.006901, fusion_wo_head=0.040596, head=0.003241
+[05/12 11:16:47] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007738, bi_layer1=0.004228, bi_layer2=0.004416, total=0.016382
+[05/12 11:16:47] EA02-continue INFO: GPU memory(MiB): avg_allocated=1017.07, avg_reserved=2924.11, peak_allocated=2102.10, peak_reserved=10188.00, warmup_iters=20
+[05/12 11:18:12] EA02-continue INFO: epoch 109, total time 84.53, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:19:38] EA02-continue INFO: epoch 110, total time 86.23, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:21:04] EA02-continue INFO: epoch 111, total time 85.61, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:21:22] EA02-continue INFO: Eval: [111]  
+[05/12 11:21:22] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30431
+[05/12 11:21:22] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28558
+[05/12 11:21:22] EA02-continue INFO: WildRefer-official Acc0.25: 0.30430 | Acc0.50: 0.28650 | mIoU: 0.20560
+[05/12 11:21:22] EA02-continue INFO: Timing(s): inf=0.087872, visual=0.035662, text=0.006838, fusion_wo_head=0.040464, head=0.003341
+[05/12 11:21:22] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007301, bi_layer1=0.004428, bi_layer2=0.004647, total=0.016376
+[05/12 11:21:22] EA02-continue INFO: GPU memory(MiB): avg_allocated=1015.40, avg_reserved=3106.42, peak_allocated=2103.05, peak_reserved=9996.00, warmup_iters=20
+[05/12 11:22:47] EA02-continue INFO: epoch 112, total time 85.69, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:24:11] EA02-continue INFO: epoch 113, total time 83.92, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:25:36] EA02-continue INFO: epoch 114, total time 84.39, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:25:53] EA02-continue INFO: Eval: [114]  
+[05/12 11:25:53] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29963
+[05/12 11:25:53] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28652
+[05/12 11:25:53] EA02-continue INFO: WildRefer-official Acc0.25: 0.29960 | Acc0.50: 0.28370 | mIoU: 0.20450
+[05/12 11:25:53] EA02-continue INFO: Timing(s): inf=0.095738, visual=0.037214, text=0.007493, fusion_wo_head=0.045551, head=0.003694
+[05/12 11:25:53] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008690, bi_layer1=0.005264, bi_layer2=0.005119, total=0.019073
+[05/12 11:25:53] EA02-continue INFO: GPU memory(MiB): avg_allocated=1016.11, avg_reserved=2829.37, peak_allocated=2103.03, peak_reserved=10042.00, warmup_iters=20
+[05/12 11:27:17] EA02-continue INFO: epoch 115, total time 83.54, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:28:43] EA02-continue INFO: epoch 116, total time 85.90, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:30:06] EA02-continue INFO: epoch 117, total time 83.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:30:23] EA02-continue INFO: Eval: [117]  
+[05/12 11:30:23] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31835
+[05/12 11:30:23] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30150
+[05/12 11:30:23] EA02-continue INFO: WildRefer-official Acc0.25: 0.31840 | Acc0.50: 0.30340 | mIoU: 0.21590
+[05/12 11:30:23] EA02-continue INFO: Timing(s): inf=0.092457, visual=0.037255, text=0.007042, fusion_wo_head=0.042774, head=0.003765
+[05/12 11:30:23] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007149, bi_layer1=0.004491, bi_layer2=0.004714, total=0.016354
+[05/12 11:30:23] EA02-continue INFO: GPU memory(MiB): avg_allocated=1013.22, avg_reserved=2665.68, peak_allocated=2096.70, peak_reserved=8488.00, warmup_iters=20
+[05/12 11:31:47] EA02-continue INFO: epoch 118, total time 83.62, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:33:11] EA02-continue INFO: epoch 119, total time 84.80, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:34:36] EA02-continue INFO: epoch 120, total time 84.64, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:34:53] EA02-continue INFO: Eval: [120]  
+[05/12 11:34:53] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26966
+[05/12 11:34:53] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25843
+[05/12 11:34:53] EA02-continue INFO: WildRefer-official Acc0.25: 0.27060 | Acc0.50: 0.25750 | mIoU: 0.18300
+[05/12 11:34:53] EA02-continue INFO: Timing(s): inf=0.086100, visual=0.034933, text=0.006417, fusion_wo_head=0.040010, head=0.003220
+[05/12 11:34:53] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007365, bi_layer1=0.004233, bi_layer2=0.004284, total=0.015882
+[05/12 11:34:53] EA02-continue INFO: GPU memory(MiB): avg_allocated=1014.92, avg_reserved=2932.32, peak_allocated=2099.52, peak_reserved=9156.00, warmup_iters=20
+[05/12 11:36:19] EA02-continue INFO: epoch 121, total time 85.99, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:37:44] EA02-continue INFO: epoch 122, total time 84.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:39:12] EA02-continue INFO: epoch 123, total time 87.74, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:39:30] EA02-continue INFO: Eval: [123]  
+[05/12 11:39:30] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28184
+[05/12 11:39:30] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26404
+[05/12 11:39:30] EA02-continue INFO: WildRefer-official Acc0.25: 0.28180 | Acc0.50: 0.26310 | mIoU: 0.19010
+[05/12 11:39:30] EA02-continue INFO: Timing(s): inf=0.108732, visual=0.046262, text=0.006379, fusion_wo_head=0.051233, head=0.003350
+[05/12 11:39:30] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006976, bi_layer1=0.005265, bi_layer2=0.004725, total=0.016966
+[05/12 11:39:30] EA02-continue INFO: GPU memory(MiB): avg_allocated=1014.52, avg_reserved=2880.32, peak_allocated=2100.14, peak_reserved=9074.00, warmup_iters=20
+[05/12 11:40:59] EA02-continue INFO: epoch 124, total time 88.54, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:42:21] EA02-continue INFO: epoch 125, total time 82.71, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:43:46] EA02-continue INFO: epoch 126, total time 84.89, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:44:02] EA02-continue INFO: Eval: [126]  
+[05/12 11:44:02] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29494
+[05/12 11:44:02] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28184
+[05/12 11:44:02] EA02-continue INFO: WildRefer-official Acc0.25: 0.29490 | Acc0.50: 0.28090 | mIoU: 0.19960
+[05/12 11:44:02] EA02-continue INFO: Timing(s): inf=0.087385, visual=0.035125, text=0.006594, fusion_wo_head=0.040909, head=0.003212
+[05/12 11:44:02] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007712, bi_layer1=0.004624, bi_layer2=0.004446, total=0.016781
+[05/12 11:44:02] EA02-continue INFO: GPU memory(MiB): avg_allocated=1015.38, avg_reserved=2674.42, peak_allocated=2102.13, peak_reserved=8844.00, warmup_iters=20
+[05/12 11:45:25] EA02-continue INFO: epoch 127, total time 83.13, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:46:53] EA02-continue INFO: epoch 128, total time 87.98, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:48:19] EA02-continue INFO: epoch 129, total time 85.12, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:48:36] EA02-continue INFO: Eval: [129]  
+[05/12 11:48:36] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30524
+[05/12 11:48:36] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28933
+[05/12 11:48:36] EA02-continue INFO: WildRefer-official Acc0.25: 0.30520 | Acc0.50: 0.29030 | mIoU: 0.20740
+[05/12 11:48:36] EA02-continue INFO: Timing(s): inf=0.094471, visual=0.037353, text=0.007502, fusion_wo_head=0.043884, head=0.003932
+[05/12 11:48:36] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007362, bi_layer1=0.005084, bi_layer2=0.004915, total=0.017361
+[05/12 11:48:36] EA02-continue INFO: GPU memory(MiB): avg_allocated=1021.59, avg_reserved=2844.42, peak_allocated=2107.83, peak_reserved=8764.00, warmup_iters=20
+[05/12 11:50:01] EA02-continue INFO: epoch 130, total time 84.30, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:51:23] EA02-continue INFO: epoch 131, total time 82.06, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:52:47] EA02-continue INFO: epoch 132, total time 84.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:53:04] EA02-continue INFO: Eval: [132]  
+[05/12 11:53:04] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27903
+[05/12 11:53:04] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25749
+[05/12 11:53:04] EA02-continue INFO: WildRefer-official Acc0.25: 0.27900 | Acc0.50: 0.25840 | mIoU: 0.18720
+[05/12 11:53:04] EA02-continue INFO: Timing(s): inf=0.088864, visual=0.036328, text=0.006508, fusion_wo_head=0.040914, head=0.003418
+[05/12 11:53:04] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006881, bi_layer1=0.004461, bi_layer2=0.004910, total=0.016252
+[05/12 11:53:04] EA02-continue INFO: GPU memory(MiB): avg_allocated=1016.21, avg_reserved=2804.11, peak_allocated=2102.78, peak_reserved=10058.00, warmup_iters=20
+[05/12 11:54:30] EA02-continue INFO: epoch 133, total time 86.43, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:55:54] EA02-continue INFO: epoch 134, total time 83.04, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:57:18] EA02-continue INFO: epoch 135, total time 84.32, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 11:57:35] EA02-continue INFO: Eval: [135]  
+[05/12 11:57:35] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26873
+[05/12 11:57:35] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25562
+[05/12 11:57:35] EA02-continue INFO: WildRefer-official Acc0.25: 0.26870 | Acc0.50: 0.25370 | mIoU: 0.18130
+[05/12 11:57:35] EA02-continue INFO: Timing(s): inf=0.092735, visual=0.036737, text=0.007056, fusion_wo_head=0.043574, head=0.003710
+[05/12 11:57:35] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006977, bi_layer1=0.004854, bi_layer2=0.004849, total=0.016680
+[05/12 11:57:35] EA02-continue INFO: GPU memory(MiB): avg_allocated=1018.21, avg_reserved=3170.95, peak_allocated=2103.69, peak_reserved=10092.00, warmup_iters=20
+[05/12 11:59:01] EA02-continue INFO: epoch 136, total time 85.87, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:00:25] EA02-continue INFO: epoch 137, total time 83.88, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:01:51] EA02-continue INFO: epoch 138, total time 86.68, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:02:09] EA02-continue INFO: Eval: [138]  
+[05/12 12:02:09] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26779
+[05/12 12:02:09] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25281
+[05/12 12:02:09] EA02-continue INFO: WildRefer-official Acc0.25: 0.26780 | Acc0.50: 0.25090 | mIoU: 0.18080
+[05/12 12:02:09] EA02-continue INFO: Timing(s): inf=0.087704, visual=0.035314, text=0.006712, fusion_wo_head=0.040610, head=0.003469
+[05/12 12:02:09] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007531, bi_layer1=0.004358, bi_layer2=0.004434, total=0.016323
+[05/12 12:02:09] EA02-continue INFO: GPU memory(MiB): avg_allocated=1019.74, avg_reserved=3335.37, peak_allocated=2105.38, peak_reserved=8450.00, warmup_iters=20
+[05/12 12:03:34] EA02-continue INFO: epoch 139, total time 84.96, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:04:58] EA02-continue INFO: epoch 140, total time 84.19, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:06:23] EA02-continue INFO: epoch 141, total time 85.04, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:06:41] EA02-continue INFO: Eval: [141]  
+[05/12 12:06:41] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28464
+[05/12 12:06:41] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26592
+[05/12 12:06:41] EA02-continue INFO: WildRefer-official Acc0.25: 0.28460 | Acc0.50: 0.26500 | mIoU: 0.19060
+[05/12 12:06:41] EA02-continue INFO: Timing(s): inf=0.086796, visual=0.035497, text=0.006622, fusion_wo_head=0.039667, head=0.003426
+[05/12 12:06:41] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006375, bi_layer1=0.004446, bi_layer2=0.004604, total=0.015426
+[05/12 12:06:41] EA02-continue INFO: GPU memory(MiB): avg_allocated=1017.38, avg_reserved=3121.89, peak_allocated=2103.41, peak_reserved=9124.00, warmup_iters=20
+[05/12 12:08:07] EA02-continue INFO: epoch 142, total time 86.09, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:09:34] EA02-continue INFO: epoch 143, total time 86.83, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:10:58] EA02-continue INFO: epoch 144, total time 84.55, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:11:16] EA02-continue INFO: Eval: [144]  
+[05/12 12:11:16] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25468
+[05/12 12:11:16] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.23783
+[05/12 12:11:16] EA02-continue INFO: WildRefer-official Acc0.25: 0.25370 | Acc0.50: 0.23880 | mIoU: 0.17270
+[05/12 12:11:16] EA02-continue INFO: Timing(s): inf=0.095228, visual=0.037367, text=0.007462, fusion_wo_head=0.044817, head=0.003854
+[05/12 12:11:16] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007798, bi_layer1=0.005012, bi_layer2=0.005103, total=0.017913
+[05/12 12:11:16] EA02-continue INFO: GPU memory(MiB): avg_allocated=1016.11, avg_reserved=3154.00, peak_allocated=2104.94, peak_reserved=8600.00, warmup_iters=20
+[05/12 12:12:42] EA02-continue INFO: epoch 145, total time 86.44, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:14:07] EA02-continue INFO: epoch 146, total time 85.00, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:15:35] EA02-continue INFO: epoch 147, total time 87.90, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:15:55] EA02-continue INFO: Eval: [147]  
+[05/12 12:15:55] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27715
+[05/12 12:15:55] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25936
+[05/12 12:15:55] EA02-continue INFO: WildRefer-official Acc0.25: 0.27720 | Acc0.50: 0.26030 | mIoU: 0.18770
+[05/12 12:15:55] EA02-continue INFO: Timing(s): inf=0.086918, visual=0.035841, text=0.006821, fusion_wo_head=0.039365, head=0.003313
+[05/12 12:15:55] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006201, bi_layer1=0.004390, bi_layer2=0.004928, total=0.015519
+[05/12 12:15:55] EA02-continue INFO: GPU memory(MiB): avg_allocated=1016.03, avg_reserved=3390.32, peak_allocated=2100.50, peak_reserved=9902.00, warmup_iters=20
+[05/12 12:17:30] EA02-continue INFO: epoch 148, total time 95.45, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:18:59] EA02-continue INFO: epoch 149, total time 88.57, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:20:22] EA02-continue INFO: epoch 150, total time 83.33, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:20:39] EA02-continue INFO: Eval: [150]  
+[05/12 12:20:39] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29026
+[05/12 12:20:39] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27903
+[05/12 12:20:39] EA02-continue INFO: WildRefer-official Acc0.25: 0.29030 | Acc0.50: 0.28000 | mIoU: 0.19800
+[05/12 12:20:39] EA02-continue INFO: Timing(s): inf=0.087070, visual=0.035083, text=0.006661, fusion_wo_head=0.040458, head=0.003319
+[05/12 12:20:39] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007297, bi_layer1=0.004303, bi_layer2=0.004711, total=0.016311
+[05/12 12:20:39] EA02-continue INFO: GPU memory(MiB): avg_allocated=1018.98, avg_reserved=2915.47, peak_allocated=2106.18, peak_reserved=10692.00, warmup_iters=20
+[05/12 12:22:06] EA02-continue INFO: epoch 151, total time 86.34, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:23:41] EA02-continue INFO: epoch 152, total time 94.89, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:25:14] EA02-continue INFO: epoch 153, total time 93.33, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:25:31] EA02-continue INFO: Eval: [153]  
+[05/12 12:25:31] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26966
+[05/12 12:25:31] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25468
+[05/12 12:25:31] EA02-continue INFO: WildRefer-official Acc0.25: 0.26870 | Acc0.50: 0.25370 | mIoU: 0.18160
+[05/12 12:25:31] EA02-continue INFO: Timing(s): inf=0.105939, visual=0.041690, text=0.007078, fusion_wo_head=0.052140, head=0.003368
+[05/12 12:25:31] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008840, bi_layer1=0.004373, bi_layer2=0.004866, total=0.018078
+[05/12 12:25:31] EA02-continue INFO: GPU memory(MiB): avg_allocated=1017.50, avg_reserved=3086.32, peak_allocated=2101.64, peak_reserved=9876.00, warmup_iters=20
+[05/12 12:26:54] EA02-continue INFO: epoch 154, total time 83.32, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:28:23] EA02-continue INFO: epoch 155, total time 88.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:29:48] EA02-continue INFO: epoch 156, total time 84.36, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:30:04] EA02-continue INFO: Eval: [156]  
+[05/12 12:30:04] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28277
+[05/12 12:30:04] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26592
+[05/12 12:30:04] EA02-continue INFO: WildRefer-official Acc0.25: 0.28280 | Acc0.50: 0.26590 | mIoU: 0.19120
+[05/12 12:30:04] EA02-continue INFO: Timing(s): inf=0.094045, visual=0.036984, text=0.007307, fusion_wo_head=0.044331, head=0.003687
+[05/12 12:30:04] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007996, bi_layer1=0.004905, bi_layer2=0.005105, total=0.018006
+[05/12 12:30:04] EA02-continue INFO: GPU memory(MiB): avg_allocated=1019.27, avg_reserved=3037.37, peak_allocated=2106.00, peak_reserved=9928.00, warmup_iters=20
+[05/12 12:31:29] EA02-continue INFO: epoch 157, total time 84.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:32:54] EA02-continue INFO: epoch 158, total time 84.77, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:34:19] EA02-continue INFO: epoch 159, total time 84.93, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:34:36] EA02-continue INFO: Eval: [159]  
+[05/12 12:34:36] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.24813
+[05/12 12:34:36] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.23502
+[05/12 12:34:36] EA02-continue INFO: WildRefer-official Acc0.25: 0.24810 | Acc0.50: 0.23600 | mIoU: 0.16760
+[05/12 12:34:36] EA02-continue INFO: Timing(s): inf=0.097447, visual=0.039096, text=0.007497, fusion_wo_head=0.045488, head=0.003679
+[05/12 12:34:36] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008419, bi_layer1=0.004955, bi_layer2=0.005175, total=0.018549
+[05/12 12:34:36] EA02-continue INFO: GPU memory(MiB): avg_allocated=1017.15, avg_reserved=3183.89, peak_allocated=2106.50, peak_reserved=10696.00, warmup_iters=20
+[05/12 12:36:03] EA02-continue INFO: epoch 160, total time 86.97, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:37:30] EA02-continue INFO: epoch 161, total time 86.62, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:38:56] EA02-continue INFO: epoch 162, total time 85.77, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:39:13] EA02-continue INFO: Eval: [162]  
+[05/12 12:39:13] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28277
+[05/12 12:39:13] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26404
+[05/12 12:39:13] EA02-continue INFO: WildRefer-official Acc0.25: 0.28370 | Acc0.50: 0.26220 | mIoU: 0.19010
+[05/12 12:39:13] EA02-continue INFO: Timing(s): inf=0.094626, visual=0.037493, text=0.007400, fusion_wo_head=0.044330, head=0.003576
+[05/12 12:39:13] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007963, bi_layer1=0.004795, bi_layer2=0.005231, total=0.017989
+[05/12 12:39:13] EA02-continue INFO: GPU memory(MiB): avg_allocated=1019.68, avg_reserved=2932.84, peak_allocated=2104.06, peak_reserved=9582.00, warmup_iters=20
+[05/12 12:40:37] EA02-continue INFO: epoch 163, total time 84.14, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:42:00] EA02-continue INFO: epoch 164, total time 83.23, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:43:23] EA02-continue INFO: epoch 165, total time 82.68, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:43:39] EA02-continue INFO: Eval: [165]  
+[05/12 12:43:39] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26873
+[05/12 12:43:39] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25375
+[05/12 12:43:39] EA02-continue INFO: WildRefer-official Acc0.25: 0.26870 | Acc0.50: 0.25280 | mIoU: 0.18200
+[05/12 12:43:39] EA02-continue INFO: Timing(s): inf=0.084169, visual=0.035173, text=0.006363, fusion_wo_head=0.037931, head=0.003175
+[05/12 12:43:39] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005533, bi_layer1=0.004030, bi_layer2=0.004303, total=0.013866
+[05/12 12:43:39] EA02-continue INFO: GPU memory(MiB): avg_allocated=1018.33, avg_reserved=3507.47, peak_allocated=2105.59, peak_reserved=8426.00, warmup_iters=20
+[05/12 12:45:05] EA02-continue INFO: epoch 166, total time 86.01, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:46:31] EA02-continue INFO: epoch 167, total time 85.72, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:47:57] EA02-continue INFO: epoch 168, total time 85.53, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:48:14] EA02-continue INFO: Eval: [168]  
+[05/12 12:48:14] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25281
+[05/12 12:48:14] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24345
+[05/12 12:48:14] EA02-continue INFO: WildRefer-official Acc0.25: 0.25280 | Acc0.50: 0.24160 | mIoU: 0.17250
+[05/12 12:48:14] EA02-continue INFO: Timing(s): inf=0.093950, visual=0.037907, text=0.007383, fusion_wo_head=0.043292, head=0.003679
+[05/12 12:48:14] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006515, bi_layer1=0.004936, bi_layer2=0.005034, total=0.016485
+[05/12 12:48:14] EA02-continue INFO: GPU memory(MiB): avg_allocated=1018.42, avg_reserved=3671.79, peak_allocated=2103.40, peak_reserved=10580.00, warmup_iters=20
+[05/12 12:49:39] EA02-continue INFO: epoch 169, total time 85.26, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:51:04] EA02-continue INFO: epoch 170, total time 85.62, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:52:30] EA02-continue INFO: epoch 171, total time 85.25, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:52:47] EA02-continue INFO: Eval: [171]  
+[05/12 12:52:47] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28558
+[05/12 12:52:47] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26685
+[05/12 12:52:47] EA02-continue INFO: WildRefer-official Acc0.25: 0.28560 | Acc0.50: 0.26590 | mIoU: 0.19410
+[05/12 12:52:47] EA02-continue INFO: Timing(s): inf=0.096663, visual=0.038051, text=0.007909, fusion_wo_head=0.044983, head=0.003847
+[05/12 12:52:47] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007399, bi_layer1=0.004901, bi_layer2=0.005559, total=0.017859
+[05/12 12:52:47] EA02-continue INFO: GPU memory(MiB): avg_allocated=1018.94, avg_reserved=3686.42, peak_allocated=2103.75, peak_reserved=10546.00, warmup_iters=20
+[05/12 12:54:14] EA02-continue INFO: epoch 172, total time 86.51, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:55:42] EA02-continue INFO: epoch 173, total time 88.58, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:57:14] EA02-continue INFO: epoch 174, total time 91.95, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 12:57:31] EA02-continue INFO: Eval: [174]  
+[05/12 12:57:31] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29307
+[05/12 12:57:31] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27434
+[05/12 12:57:31] EA02-continue INFO: WildRefer-official Acc0.25: 0.29400 | Acc0.50: 0.27340 | mIoU: 0.19670
+[05/12 12:57:31] EA02-continue INFO: Timing(s): inf=0.101447, visual=0.039262, text=0.007249, fusion_wo_head=0.049008, head=0.004181
+[05/12 12:57:31] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007090, bi_layer1=0.004650, bi_layer2=0.005371, total=0.017111
+[05/12 12:57:31] EA02-continue INFO: GPU memory(MiB): avg_allocated=1019.39, avg_reserved=3345.26, peak_allocated=2105.70, peak_reserved=11026.00, warmup_iters=20
+[05/12 12:58:55] EA02-continue INFO: epoch 175, total time 83.85, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:00:18] EA02-continue INFO: epoch 176, total time 83.09, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:01:42] EA02-continue INFO: epoch 177, total time 83.28, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:01:59] EA02-continue INFO: Eval: [177]  
+[05/12 13:01:59] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26592
+[05/12 13:01:59] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24813
+[05/12 13:01:59] EA02-continue INFO: WildRefer-official Acc0.25: 0.26590 | Acc0.50: 0.24720 | mIoU: 0.17970
+[05/12 13:01:59] EA02-continue INFO: Timing(s): inf=0.089719, visual=0.035654, text=0.007077, fusion_wo_head=0.041767, head=0.003343
+[05/12 13:01:59] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007023, bi_layer1=0.004694, bi_layer2=0.004708, total=0.016425
+[05/12 13:01:59] EA02-continue INFO: GPU memory(MiB): avg_allocated=1024.29, avg_reserved=3112.00, peak_allocated=2109.85, peak_reserved=10722.00, warmup_iters=20
+[05/12 13:03:24] EA02-continue INFO: epoch 178, total time 84.91, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:04:48] EA02-continue INFO: epoch 179, total time 83.62, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:06:12] EA02-continue INFO: epoch 180, total time 84.80, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:06:30] EA02-continue INFO: Eval: [180]  
+[05/12 13:06:30] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28745
+[05/12 13:06:30] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27341
+[05/12 13:06:30] EA02-continue INFO: WildRefer-official Acc0.25: 0.28750 | Acc0.50: 0.27250 | mIoU: 0.19430
+[05/12 13:06:30] EA02-continue INFO: Timing(s): inf=0.106809, visual=0.041309, text=0.006865, fusion_wo_head=0.053769, head=0.003326
+[05/12 13:06:30] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007186, bi_layer1=0.004396, bi_layer2=0.004521, total=0.016104
+[05/12 13:06:30] EA02-continue INFO: GPU memory(MiB): avg_allocated=1019.79, avg_reserved=3017.79, peak_allocated=2106.00, peak_reserved=9506.00, warmup_iters=20
+[05/12 13:07:54] EA02-continue INFO: epoch 181, total time 84.45, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:09:24] EA02-continue INFO: epoch 182, total time 89.39, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:10:48] EA02-continue INFO: epoch 183, total time 84.02, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:11:04] EA02-continue INFO: Eval: [183]  
+[05/12 13:11:04] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25843
+[05/12 13:11:04] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24625
+[05/12 13:11:04] EA02-continue INFO: WildRefer-official Acc0.25: 0.25840 | Acc0.50: 0.24530 | mIoU: 0.17610
+[05/12 13:11:04] EA02-continue INFO: Timing(s): inf=0.086554, visual=0.035355, text=0.006549, fusion_wo_head=0.039841, head=0.003215
+[05/12 13:11:04] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006639, bi_layer1=0.004545, bi_layer2=0.004421, total=0.015605
+[05/12 13:11:04] EA02-continue INFO: GPU memory(MiB): avg_allocated=1021.78, avg_reserved=3369.58, peak_allocated=2105.81, peak_reserved=9850.00, warmup_iters=20
+[05/12 13:12:31] EA02-continue INFO: epoch 184, total time 86.43, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:13:55] EA02-continue INFO: epoch 185, total time 84.35, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:15:18] EA02-continue INFO: epoch 186, total time 83.09, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:15:38] EA02-continue INFO: Eval: [186]  
+[05/12 13:15:38] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27060
+[05/12 13:15:38] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25375
+[05/12 13:15:38] EA02-continue INFO: WildRefer-official Acc0.25: 0.27060 | Acc0.50: 0.25470 | mIoU: 0.18250
+[05/12 13:15:38] EA02-continue INFO: Timing(s): inf=0.087810, visual=0.035858, text=0.006770, fusion_wo_head=0.040131, head=0.003427
+[05/12 13:15:38] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006431, bi_layer1=0.004413, bi_layer2=0.004638, total=0.015482
+[05/12 13:15:38] EA02-continue INFO: GPU memory(MiB): avg_allocated=1019.62, avg_reserved=2920.32, peak_allocated=2104.71, peak_reserved=8422.00, warmup_iters=20
+[05/12 13:17:06] EA02-continue INFO: epoch 187, total time 88.60, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:18:39] EA02-continue INFO: epoch 188, total time 92.34, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:20:11] EA02-continue INFO: epoch 189, total time 92.27, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:20:34] EA02-continue INFO: Eval: [189]  
+[05/12 13:20:34] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25000
+[05/12 13:20:34] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.23596
+[05/12 13:20:34] EA02-continue INFO: WildRefer-official Acc0.25: 0.25000 | Acc0.50: 0.23220 | mIoU: 0.16780
+[05/12 13:20:34] EA02-continue INFO: Timing(s): inf=0.090104, visual=0.036605, text=0.007022, fusion_wo_head=0.041398, head=0.003338
+[05/12 13:20:34] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007046, bi_layer1=0.004717, bi_layer2=0.004966, total=0.016729
+[05/12 13:20:34] EA02-continue INFO: GPU memory(MiB): avg_allocated=1020.96, avg_reserved=3400.74, peak_allocated=2105.94, peak_reserved=9788.00, warmup_iters=20
+[05/12 13:22:06] EA02-continue INFO: epoch 190, total time 91.65, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:23:35] EA02-continue INFO: epoch 191, total time 89.39, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:25:03] EA02-continue INFO: epoch 192, total time 88.07, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:25:26] EA02-continue INFO: Eval: [192]  
+[05/12 13:25:26] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26124
+[05/12 13:25:26] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24438
+[05/12 13:25:26] EA02-continue INFO: WildRefer-official Acc0.25: 0.26030 | Acc0.50: 0.24440 | mIoU: 0.17650
+[05/12 13:25:26] EA02-continue INFO: Timing(s): inf=0.095634, visual=0.042706, text=0.006757, fusion_wo_head=0.041295, head=0.003202
+[05/12 13:25:26] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005504, bi_layer1=0.004341, bi_layer2=0.004469, total=0.014314
+[05/12 13:25:26] EA02-continue INFO: GPU memory(MiB): avg_allocated=1021.02, avg_reserved=3072.74, peak_allocated=2105.79, peak_reserved=8468.00, warmup_iters=20
+[05/12 13:26:56] EA02-continue INFO: epoch 193, total time 89.96, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:28:31] EA02-continue INFO: epoch 194, total time 94.95, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:30:01] EA02-continue INFO: epoch 195, total time 89.93, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:30:23] EA02-continue INFO: Eval: [195]  
+[05/12 13:30:23] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28464
+[05/12 13:30:23] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27247
+[05/12 13:30:23] EA02-continue INFO: WildRefer-official Acc0.25: 0.28460 | Acc0.50: 0.27060 | mIoU: 0.19410
+[05/12 13:30:23] EA02-continue INFO: Timing(s): inf=0.093487, visual=0.037793, text=0.007532, fusion_wo_head=0.042426, head=0.003863
+[05/12 13:30:23] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005938, bi_layer1=0.004752, bi_layer2=0.004917, total=0.015607
+[05/12 13:30:23] EA02-continue INFO: GPU memory(MiB): avg_allocated=1021.73, avg_reserved=8346.84, peak_allocated=2107.27, peak_reserved=9036.00, warmup_iters=20
+[05/12 13:31:57] EA02-continue INFO: epoch 196, total time 93.86, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:33:28] EA02-continue INFO: epoch 197, total time 91.02, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:34:55] EA02-continue INFO: epoch 198, total time 87.12, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:35:17] EA02-continue INFO: Eval: [198]  
+[05/12 13:35:17] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28745
+[05/12 13:35:17] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27060
+[05/12 13:35:17] EA02-continue INFO: WildRefer-official Acc0.25: 0.28750 | Acc0.50: 0.27060 | mIoU: 0.19460
+[05/12 13:35:17] EA02-continue INFO: Timing(s): inf=0.097237, visual=0.039289, text=0.008125, fusion_wo_head=0.044187, head=0.003720
+[05/12 13:35:17] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005953, bi_layer1=0.005356, bi_layer2=0.005090, total=0.016398
+[05/12 13:35:17] EA02-continue INFO: GPU memory(MiB): avg_allocated=1020.73, avg_reserved=7865.47, peak_allocated=2105.19, peak_reserved=10748.00, warmup_iters=20
+[05/12 13:36:50] EA02-continue INFO: epoch 199, total time 92.85, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:38:22] EA02-continue INFO: epoch 200, total time 92.00, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:39:49] EA02-continue INFO: epoch 201, total time 87.18, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:40:10] EA02-continue INFO: Eval: [201]  
+[05/12 13:40:10] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27341
+[05/12 13:40:10] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25843
+[05/12 13:40:10] EA02-continue INFO: WildRefer-official Acc0.25: 0.27340 | Acc0.50: 0.25660 | mIoU: 0.18580
+[05/12 13:40:10] EA02-continue INFO: Timing(s): inf=0.086120, visual=0.036093, text=0.006796, fusion_wo_head=0.038444, head=0.003190
+[05/12 13:40:10] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005549, bi_layer1=0.004283, bi_layer2=0.004402, total=0.014234
+[05/12 13:40:10] EA02-continue INFO: GPU memory(MiB): avg_allocated=1023.89, avg_reserved=4185.58, peak_allocated=2110.46, peak_reserved=8694.00, warmup_iters=20
+[05/12 13:41:39] EA02-continue INFO: epoch 202, total time 89.35, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:43:08] EA02-continue INFO: epoch 203, total time 88.37, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:44:40] EA02-continue INFO: epoch 204, total time 92.49, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:45:01] EA02-continue INFO: Eval: [204]  
+[05/12 13:45:01] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27622
+[05/12 13:45:01] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25655
+[05/12 13:45:01] EA02-continue INFO: WildRefer-official Acc0.25: 0.27620 | Acc0.50: 0.25660 | mIoU: 0.18430
+[05/12 13:45:01] EA02-continue INFO: Timing(s): inf=0.089534, visual=0.036476, text=0.006915, fusion_wo_head=0.040999, head=0.003385
+[05/12 13:45:01] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006865, bi_layer1=0.004367, bi_layer2=0.004663, total=0.015895
+[05/12 13:45:01] EA02-continue INFO: GPU memory(MiB): avg_allocated=1022.58, avg_reserved=3195.79, peak_allocated=2107.59, peak_reserved=8556.00, warmup_iters=20
+[05/12 13:46:32] EA02-continue INFO: epoch 205, total time 91.04, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:47:58] EA02-continue INFO: epoch 206, total time 85.59, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:49:29] EA02-continue INFO: epoch 207, total time 90.87, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:49:50] EA02-continue INFO: Eval: [207]  
+[05/12 13:49:50] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28464
+[05/12 13:49:50] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27715
+[05/12 13:49:50] EA02-continue INFO: WildRefer-official Acc0.25: 0.28460 | Acc0.50: 0.27720 | mIoU: 0.19440
+[05/12 13:49:50] EA02-continue INFO: Timing(s): inf=0.089641, visual=0.037154, text=0.007275, fusion_wo_head=0.040118, head=0.003331
+[05/12 13:49:50] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005131, bi_layer1=0.004554, bi_layer2=0.004702, total=0.014386
+[05/12 13:49:50] EA02-continue INFO: GPU memory(MiB): avg_allocated=1024.32, avg_reserved=10981.89, peak_allocated=2110.15, peak_reserved=11022.00, warmup_iters=20
+[05/12 13:51:20] EA02-continue INFO: epoch 208, total time 90.38, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:52:50] EA02-continue INFO: epoch 209, total time 89.94, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:54:23] EA02-continue INFO: epoch 210, total time 93.31, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:54:44] EA02-continue INFO: Eval: [210]  
+[05/12 13:54:44] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27996
+[05/12 13:54:44] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26873
+[05/12 13:54:44] EA02-continue INFO: WildRefer-official Acc0.25: 0.28090 | Acc0.50: 0.26780 | mIoU: 0.19130
+[05/12 13:54:44] EA02-continue INFO: Timing(s): inf=0.086820, visual=0.035492, text=0.006932, fusion_wo_head=0.039326, head=0.003268
+[05/12 13:54:44] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005316, bi_layer1=0.004486, bi_layer2=0.004662, total=0.014464
+[05/12 13:54:44] EA02-continue INFO: GPU memory(MiB): avg_allocated=1024.03, avg_reserved=4724.95, peak_allocated=2110.70, peak_reserved=11022.00, warmup_iters=20
+[05/12 13:56:15] EA02-continue INFO: epoch 211, total time 91.57, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:57:50] EA02-continue INFO: epoch 212, total time 94.48, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:59:22] EA02-continue INFO: epoch 213, total time 92.22, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 13:59:43] EA02-continue INFO: Eval: [213]  
+[05/12 13:59:43] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28933
+[05/12 13:59:43] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27715
+[05/12 13:59:43] EA02-continue INFO: WildRefer-official Acc0.25: 0.28930 | Acc0.50: 0.27810 | mIoU: 0.19750
+[05/12 13:59:43] EA02-continue INFO: Timing(s): inf=0.092859, visual=0.037208, text=0.007610, fusion_wo_head=0.042541, head=0.003701
+[05/12 13:59:43] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006006, bi_layer1=0.004738, bi_layer2=0.004959, total=0.015703
+[05/12 13:59:43] EA02-continue INFO: GPU memory(MiB): avg_allocated=1022.33, avg_reserved=3855.58, peak_allocated=2108.48, peak_reserved=8328.00, warmup_iters=20
+[05/12 14:01:16] EA02-continue INFO: epoch 214, total time 93.25, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:02:48] EA02-continue INFO: epoch 215, total time 91.84, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:04:17] EA02-continue INFO: epoch 216, total time 88.98, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:04:41] EA02-continue INFO: Eval: [216]  
+[05/12 14:04:41] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27996
+[05/12 14:04:41] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26217
+[05/12 14:04:41] EA02-continue INFO: WildRefer-official Acc0.25: 0.28000 | Acc0.50: 0.26220 | mIoU: 0.18970
+[05/12 14:04:41] EA02-continue INFO: Timing(s): inf=0.087543, visual=0.036091, text=0.006952, fusion_wo_head=0.039415, head=0.003394
+[05/12 14:04:41] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005518, bi_layer1=0.004444, bi_layer2=0.004710, total=0.014672
+[05/12 14:04:41] EA02-continue INFO: GPU memory(MiB): avg_allocated=1023.77, avg_reserved=9111.89, peak_allocated=2108.52, peak_reserved=10762.00, warmup_iters=20
+[05/12 14:06:12] EA02-continue INFO: epoch 217, total time 91.10, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:07:48] EA02-continue INFO: epoch 218, total time 96.25, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:09:20] EA02-continue INFO: epoch 219, total time 92.45, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:09:40] EA02-continue INFO: Eval: [219]  
+[05/12 14:09:40] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25468
+[05/12 14:09:40] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.23689
+[05/12 14:09:40] EA02-continue INFO: WildRefer-official Acc0.25: 0.25470 | Acc0.50: 0.23780 | mIoU: 0.17180
+[05/12 14:09:40] EA02-continue INFO: Timing(s): inf=0.092457, visual=0.036248, text=0.007275, fusion_wo_head=0.043922, head=0.003313
+[05/12 14:09:40] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008105, bi_layer1=0.004948, bi_layer2=0.004887, total=0.017939
+[05/12 14:09:40] EA02-continue INFO: GPU memory(MiB): avg_allocated=1025.92, avg_reserved=3226.11, peak_allocated=2113.36, peak_reserved=8812.00, warmup_iters=20
+[05/12 14:11:10] EA02-continue INFO: epoch 220, total time 90.30, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:12:38] EA02-continue INFO: epoch 221, total time 88.26, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:14:08] EA02-continue INFO: epoch 222, total time 90.37, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:14:31] EA02-continue INFO: Eval: [222]  
+[05/12 14:14:31] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25562
+[05/12 14:14:31] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.23970
+[05/12 14:14:31] EA02-continue INFO: WildRefer-official Acc0.25: 0.25560 | Acc0.50: 0.24060 | mIoU: 0.17270
+[05/12 14:14:31] EA02-continue INFO: Timing(s): inf=0.124686, visual=0.053856, text=0.008043, fusion_wo_head=0.056905, head=0.003813
+[05/12 14:14:31] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006817, bi_layer1=0.004960, bi_layer2=0.005542, total=0.017318
+[05/12 14:14:31] EA02-continue INFO: GPU memory(MiB): avg_allocated=1022.87, avg_reserved=3620.95, peak_allocated=2108.32, peak_reserved=11184.00, warmup_iters=20
+[05/12 14:16:00] EA02-continue INFO: epoch 223, total time 88.88, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:17:33] EA02-continue INFO: epoch 224, total time 93.14, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:19:05] EA02-continue INFO: epoch 225, total time 91.23, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:19:28] EA02-continue INFO: Eval: [225]  
+[05/12 14:19:28] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27434
+[05/12 14:19:28] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25655
+[05/12 14:19:28] EA02-continue INFO: WildRefer-official Acc0.25: 0.27430 | Acc0.50: 0.25750 | mIoU: 0.18570
+[05/12 14:19:28] EA02-continue INFO: Timing(s): inf=0.101723, visual=0.043961, text=0.007655, fusion_wo_head=0.044248, head=0.003863
+[05/12 14:19:28] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006556, bi_layer1=0.004832, bi_layer2=0.005311, total=0.016699
+[05/12 14:19:28] EA02-continue INFO: GPU memory(MiB): avg_allocated=1023.75, avg_reserved=3691.16, peak_allocated=2106.94, peak_reserved=9056.00, warmup_iters=20
+[05/12 14:20:59] EA02-continue INFO: epoch 226, total time 91.54, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:22:30] EA02-continue INFO: epoch 227, total time 90.75, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:23:59] EA02-continue INFO: epoch 228, total time 89.18, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:24:20] EA02-continue INFO: Eval: [228]  
+[05/12 14:24:20] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28558
+[05/12 14:24:20] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27247
+[05/12 14:24:20] EA02-continue INFO: WildRefer-official Acc0.25: 0.28560 | Acc0.50: 0.27340 | mIoU: 0.19390
+[05/12 14:24:20] EA02-continue INFO: Timing(s): inf=0.097330, visual=0.038421, text=0.008230, fusion_wo_head=0.044713, head=0.003923
+[05/12 14:24:20] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006905, bi_layer1=0.005244, bi_layer2=0.005265, total=0.017414
+[05/12 14:24:20] EA02-continue INFO: GPU memory(MiB): avg_allocated=1023.53, avg_reserved=4868.42, peak_allocated=2110.97, peak_reserved=10796.00, warmup_iters=20
+[05/12 14:25:51] EA02-continue INFO: epoch 229, total time 90.52, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:27:22] EA02-continue INFO: epoch 230, total time 91.57, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:28:55] EA02-continue INFO: epoch 231, total time 93.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:29:18] EA02-continue INFO: Eval: [231]  
+[05/12 14:29:18] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27247
+[05/12 14:29:18] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26030
+[05/12 14:29:18] EA02-continue INFO: WildRefer-official Acc0.25: 0.27250 | Acc0.50: 0.26220 | mIoU: 0.18540
+[05/12 14:29:18] EA02-continue INFO: Timing(s): inf=0.097452, visual=0.039060, text=0.007956, fusion_wo_head=0.044547, head=0.003893
+[05/12 14:29:18] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007062, bi_layer1=0.005078, bi_layer2=0.005122, total=0.017262
+[05/12 14:29:18] EA02-continue INFO: GPU memory(MiB): avg_allocated=1024.14, avg_reserved=3742.74, peak_allocated=2109.99, peak_reserved=10132.00, warmup_iters=20
+[05/12 14:30:48] EA02-continue INFO: epoch 232, total time 90.57, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:32:25] EA02-continue INFO: epoch 233, total time 96.50, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:33:53] EA02-continue INFO: epoch 234, total time 88.50, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:34:13] EA02-continue INFO: Eval: [234]  
+[05/12 14:34:13] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29963
+[05/12 14:34:13] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28371
+[05/12 14:34:13] EA02-continue INFO: WildRefer-official Acc0.25: 0.29960 | Acc0.50: 0.28460 | mIoU: 0.20290
+[05/12 14:34:13] EA02-continue INFO: Timing(s): inf=0.099700, visual=0.040088, text=0.008097, fusion_wo_head=0.045273, head=0.004173
+[05/12 14:34:13] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006806, bi_layer1=0.005024, bi_layer2=0.005455, total=0.017285
+[05/12 14:34:13] EA02-continue INFO: GPU memory(MiB): avg_allocated=1024.73, avg_reserved=3698.21, peak_allocated=2111.34, peak_reserved=8516.00, warmup_iters=20
+[05/12 14:35:42] EA02-continue INFO: epoch 235, total time 88.35, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:37:10] EA02-continue INFO: epoch 236, total time 88.40, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:38:43] EA02-continue INFO: epoch 237, total time 93.09, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:39:05] EA02-continue INFO: Eval: [237]  
+[05/12 14:39:05] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26124
+[05/12 14:39:05] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25094
+[05/12 14:39:05] EA02-continue INFO: WildRefer-official Acc0.25: 0.26120 | Acc0.50: 0.24910 | mIoU: 0.17870
+[05/12 14:39:05] EA02-continue INFO: Timing(s): inf=0.096355, visual=0.040068, text=0.007974, fusion_wo_head=0.042473, head=0.003878
+[05/12 14:39:05] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005104, bi_layer1=0.005104, bi_layer2=0.005135, total=0.015342
+[05/12 14:39:05] EA02-continue INFO: GPU memory(MiB): avg_allocated=1026.79, avg_reserved=8945.47, peak_allocated=2112.55, peak_reserved=8984.00, warmup_iters=20
+[05/12 14:40:41] EA02-continue INFO: epoch 238, total time 95.15, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:42:09] EA02-continue INFO: epoch 239, total time 88.06, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:43:44] EA02-continue INFO: epoch 240, total time 95.35, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:44:04] EA02-continue INFO: Eval: [240]  
+[05/12 14:44:04] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30431
+[05/12 14:44:04] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28558
+[05/12 14:44:04] EA02-continue INFO: WildRefer-official Acc0.25: 0.30430 | Acc0.50: 0.28750 | mIoU: 0.20760
+[05/12 14:44:04] EA02-continue INFO: Timing(s): inf=0.100268, visual=0.038775, text=0.008215, fusion_wo_head=0.047227, head=0.004068
+[05/12 14:44:04] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.008090, bi_layer1=0.005153, bi_layer2=0.005845, total=0.019088
+[05/12 14:44:04] EA02-continue INFO: GPU memory(MiB): avg_allocated=1025.93, avg_reserved=3371.37, peak_allocated=2110.11, peak_reserved=8984.00, warmup_iters=20
+[05/12 14:45:34] EA02-continue INFO: epoch 241, total time 89.18, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:47:02] EA02-continue INFO: epoch 242, total time 88.47, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:48:38] EA02-continue INFO: epoch 243, total time 95.49, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:48:56] EA02-continue INFO: Eval: [243]  
+[05/12 14:48:56] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.23315
+[05/12 14:48:56] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.21910
+[05/12 14:48:56] EA02-continue INFO: WildRefer-official Acc0.25: 0.23310 | Acc0.50: 0.22190 | mIoU: 0.15850
+[05/12 14:48:56] EA02-continue INFO: Timing(s): inf=0.084919, visual=0.035836, text=0.006832, fusion_wo_head=0.037348, head=0.003309
+[05/12 14:48:56] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.004666, bi_layer1=0.004175, bi_layer2=0.004482, total=0.013324
+[05/12 14:48:56] EA02-continue INFO: GPU memory(MiB): avg_allocated=1025.44, avg_reserved=11693.47, peak_allocated=2111.25, peak_reserved=11732.00, warmup_iters=20
+[05/12 14:50:31] EA02-continue INFO: epoch 244, total time 94.79, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:52:02] EA02-continue INFO: epoch 245, total time 90.58, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:53:34] EA02-continue INFO: epoch 246, total time 92.02, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:53:55] EA02-continue INFO: Eval: [246]  
+[05/12 14:53:55] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.24438
+[05/12 14:53:55] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.23221
+[05/12 14:53:55] EA02-continue INFO: WildRefer-official Acc0.25: 0.24440 | Acc0.50: 0.23030 | mIoU: 0.16520
+[05/12 14:53:55] EA02-continue INFO: Timing(s): inf=0.088521, visual=0.036373, text=0.007479, fusion_wo_head=0.039468, head=0.003402
+[05/12 14:53:55] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.004892, bi_layer1=0.004539, bi_layer2=0.004674, total=0.014104
+[05/12 14:53:55] EA02-continue INFO: GPU memory(MiB): avg_allocated=1026.00, avg_reserved=11732.00, peak_allocated=2112.12, peak_reserved=11732.00, warmup_iters=20
+[05/12 14:55:25] EA02-continue INFO: epoch 247, total time 90.14, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:56:54] EA02-continue INFO: epoch 248, total time 88.40, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:58:27] EA02-continue INFO: epoch 249, total time 92.86, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 14:58:45] EA02-continue INFO: Eval: [249]  
+[05/12 14:58:45] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27154
+[05/12 14:58:45] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25936
+[05/12 14:58:45] EA02-continue INFO: WildRefer-official Acc0.25: 0.27150 | Acc0.50: 0.25940 | mIoU: 0.18530
+[05/12 14:58:45] EA02-continue INFO: Timing(s): inf=0.093540, visual=0.038383, text=0.007458, fusion_wo_head=0.041856, head=0.003888
+[05/12 14:58:45] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005871, bi_layer1=0.004742, bi_layer2=0.004945, total=0.015557
+[05/12 14:58:45] EA02-continue INFO: GPU memory(MiB): avg_allocated=1024.70, avg_reserved=4348.32, peak_allocated=2109.82, peak_reserved=11732.00, warmup_iters=20
+[05/12 15:00:14] EA02-continue INFO: epoch 250, total time 89.04, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:01:44] EA02-continue INFO: epoch 251, total time 89.66, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:03:13] EA02-continue INFO: epoch 252, total time 89.20, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:03:32] EA02-continue INFO: Eval: [252]  
+[05/12 15:03:32] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26404
+[05/12 15:03:32] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25468
+[05/12 15:03:32] EA02-continue INFO: WildRefer-official Acc0.25: 0.26400 | Acc0.50: 0.25470 | mIoU: 0.18150
+[05/12 15:03:32] EA02-continue INFO: Timing(s): inf=0.098760, visual=0.041360, text=0.007982, fusion_wo_head=0.043904, head=0.003660
+[05/12 15:03:32] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005805, bi_layer1=0.004964, bi_layer2=0.005159, total=0.015928
+[05/12 15:03:32] EA02-continue INFO: GPU memory(MiB): avg_allocated=1027.83, avg_reserved=6539.37, peak_allocated=2115.28, peak_reserved=8684.00, warmup_iters=20
+[05/12 15:05:01] EA02-continue INFO: epoch 253, total time 88.80, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:06:29] EA02-continue INFO: epoch 254, total time 88.26, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:07:58] EA02-continue INFO: epoch 255, total time 89.32, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:08:20] EA02-continue INFO: Eval: [255]  
+[05/12 15:08:20] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26498
+[05/12 15:08:20] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25281
+[05/12 15:08:20] EA02-continue INFO: WildRefer-official Acc0.25: 0.26500 | Acc0.50: 0.25280 | mIoU: 0.18080
+[05/12 15:08:20] EA02-continue INFO: Timing(s): inf=0.089794, visual=0.036950, text=0.007160, fusion_wo_head=0.040445, head=0.003438
+[05/12 15:08:20] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006022, bi_layer1=0.004508, bi_layer2=0.004980, total=0.015510
+[05/12 15:08:20] EA02-continue INFO: GPU memory(MiB): avg_allocated=1027.64, avg_reserved=3789.47, peak_allocated=2113.45, peak_reserved=10040.00, warmup_iters=20
+[05/12 15:09:51] EA02-continue INFO: epoch 256, total time 90.80, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:11:20] EA02-continue INFO: epoch 257, total time 89.29, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:12:50] EA02-continue INFO: epoch 258, total time 89.30, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:13:10] EA02-continue INFO: Eval: [258]  
+[05/12 15:13:10] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25375
+[05/12 15:13:10] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.23876
+[05/12 15:13:10] EA02-continue INFO: WildRefer-official Acc0.25: 0.25370 | Acc0.50: 0.23780 | mIoU: 0.17140
+[05/12 15:13:10] EA02-continue INFO: Timing(s): inf=0.092052, visual=0.037033, text=0.007354, fusion_wo_head=0.042226, head=0.003649
+[05/12 15:13:10] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005959, bi_layer1=0.004662, bi_layer2=0.004817, total=0.015438
+[05/12 15:13:10] EA02-continue INFO: GPU memory(MiB): avg_allocated=1027.75, avg_reserved=3628.32, peak_allocated=2114.58, peak_reserved=8462.00, warmup_iters=20
+[05/12 15:14:40] EA02-continue INFO: epoch 259, total time 89.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:16:02] EA02-continue INFO: epoch 260, total time 82.56, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:17:28] EA02-continue INFO: epoch 261, total time 85.26, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:17:45] EA02-continue INFO: Eval: [261]  
+[05/12 15:17:45] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28745
+[05/12 15:17:45] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27528
+[05/12 15:17:45] EA02-continue INFO: WildRefer-official Acc0.25: 0.28750 | Acc0.50: 0.27620 | mIoU: 0.19710
+[05/12 15:17:45] EA02-continue INFO: Timing(s): inf=0.084914, visual=0.035100, text=0.006606, fusion_wo_head=0.038380, head=0.003274
+[05/12 15:17:45] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005197, bi_layer1=0.004368, bi_layer2=0.004569, total=0.014134
+[05/12 15:17:45] EA02-continue INFO: GPU memory(MiB): avg_allocated=1025.55, avg_reserved=4607.47, peak_allocated=2108.66, peak_reserved=8392.00, warmup_iters=20
+[05/12 15:19:13] EA02-continue INFO: epoch 262, total time 87.79, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:20:37] EA02-continue INFO: epoch 263, total time 84.32, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:22:04] EA02-continue INFO: epoch 264, total time 86.86, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:22:20] EA02-continue INFO: Eval: [264]  
+[05/12 15:22:20] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26124
+[05/12 15:22:20] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24813
+[05/12 15:22:20] EA02-continue INFO: WildRefer-official Acc0.25: 0.26120 | Acc0.50: 0.24530 | mIoU: 0.17860
+[05/12 15:22:20] EA02-continue INFO: Timing(s): inf=0.087383, visual=0.035661, text=0.006908, fusion_wo_head=0.039784, head=0.003358
+[05/12 15:22:20] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005608, bi_layer1=0.004429, bi_layer2=0.004646, total=0.014683
+[05/12 15:22:20] EA02-continue INFO: GPU memory(MiB): avg_allocated=1028.22, avg_reserved=3715.16, peak_allocated=2112.70, peak_reserved=8890.00, warmup_iters=20
+[05/12 15:23:43] EA02-continue INFO: epoch 265, total time 82.77, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:25:08] EA02-continue INFO: epoch 266, total time 85.13, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:26:33] EA02-continue INFO: epoch 267, total time 84.30, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:26:50] EA02-continue INFO: Eval: [267]  
+[05/12 15:26:50] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.24532
+[05/12 15:26:50] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.23408
+[05/12 15:26:50] EA02-continue INFO: WildRefer-official Acc0.25: 0.24530 | Acc0.50: 0.23310 | mIoU: 0.16670
+[05/12 15:26:50] EA02-continue INFO: Timing(s): inf=0.091408, visual=0.037765, text=0.007270, fusion_wo_head=0.040967, head=0.003697
+[05/12 15:26:50] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005029, bi_layer1=0.004926, bi_layer2=0.004883, total=0.014837
+[05/12 15:26:50] EA02-continue INFO: GPU memory(MiB): avg_allocated=1026.41, avg_reserved=9269.47, peak_allocated=2112.56, peak_reserved=9308.00, warmup_iters=20
+[05/12 15:28:14] EA02-continue INFO: epoch 268, total time 83.45, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:29:37] EA02-continue INFO: epoch 269, total time 83.02, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:31:03] EA02-continue INFO: epoch 270, total time 85.89, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:31:19] EA02-continue INFO: Eval: [270]  
+[05/12 15:31:19] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25843
+[05/12 15:31:19] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24157
+[05/12 15:31:19] EA02-continue INFO: WildRefer-official Acc0.25: 0.25840 | Acc0.50: 0.24160 | mIoU: 0.17430
+[05/12 15:31:19] EA02-continue INFO: Timing(s): inf=0.086474, visual=0.035599, text=0.007062, fusion_wo_head=0.038932, head=0.003287
+[05/12 15:31:19] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005363, bi_layer1=0.004313, bi_layer2=0.004622, total=0.014298
+[05/12 15:31:19] EA02-continue INFO: GPU memory(MiB): avg_allocated=1029.54, avg_reserved=8601.89, peak_allocated=2115.83, peak_reserved=9308.00, warmup_iters=20
+[05/12 15:32:43] EA02-continue INFO: epoch 271, total time 83.33, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:34:08] EA02-continue INFO: epoch 272, total time 85.00, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:35:30] EA02-continue INFO: epoch 273, total time 82.45, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:35:47] EA02-continue INFO: Eval: [273]  
+[05/12 15:35:47] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26030
+[05/12 15:35:47] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24906
+[05/12 15:35:47] EA02-continue INFO: WildRefer-official Acc0.25: 0.26030 | Acc0.50: 0.24720 | mIoU: 0.17770
+[05/12 15:35:47] EA02-continue INFO: Timing(s): inf=0.095128, visual=0.039417, text=0.007864, fusion_wo_head=0.042246, head=0.003859
+[05/12 15:35:47] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005326, bi_layer1=0.004956, bi_layer2=0.005257, total=0.015540
+[05/12 15:35:47] EA02-continue INFO: GPU memory(MiB): avg_allocated=1027.35, avg_reserved=12095.47, peak_allocated=2111.39, peak_reserved=12134.00, warmup_iters=20
+[05/12 15:37:13] EA02-continue INFO: epoch 274, total time 86.11, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:38:35] EA02-continue INFO: epoch 275, total time 82.01, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:39:59] EA02-continue INFO: epoch 276, total time 83.36, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:40:16] EA02-continue INFO: Eval: [276]  
+[05/12 15:40:16] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25655
+[05/12 15:40:16] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.23970
+[05/12 15:40:16] EA02-continue INFO: WildRefer-official Acc0.25: 0.25660 | Acc0.50: 0.24060 | mIoU: 0.17460
+[05/12 15:40:16] EA02-continue INFO: Timing(s): inf=0.093466, visual=0.039073, text=0.007464, fusion_wo_head=0.041563, head=0.003744
+[05/12 15:40:16] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005336, bi_layer1=0.004796, bi_layer2=0.004898, total=0.015030
+[05/12 15:40:16] EA02-continue INFO: GPU memory(MiB): avg_allocated=1027.56, avg_reserved=12134.00, peak_allocated=2113.85, peak_reserved=12134.00, warmup_iters=20
+[05/12 15:41:38] EA02-continue INFO: epoch 277, total time 82.05, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:43:02] EA02-continue INFO: epoch 278, total time 84.85, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:44:27] EA02-continue INFO: epoch 279, total time 84.49, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:44:43] EA02-continue INFO: Eval: [279]  
+[05/12 15:44:43] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27060
+[05/12 15:44:43] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26124
+[05/12 15:44:43] EA02-continue INFO: WildRefer-official Acc0.25: 0.27150 | Acc0.50: 0.25940 | mIoU: 0.18450
+[05/12 15:44:43] EA02-continue INFO: Timing(s): inf=0.092407, visual=0.037580, text=0.007372, fusion_wo_head=0.042062, head=0.003678
+[05/12 15:44:43] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006332, bi_layer1=0.004618, bi_layer2=0.005009, total=0.015960
+[05/12 15:44:43] EA02-continue INFO: GPU memory(MiB): avg_allocated=1028.13, avg_reserved=4461.79, peak_allocated=2113.45, peak_reserved=12134.00, warmup_iters=20
+[05/12 15:46:07] EA02-continue INFO: epoch 280, total time 83.57, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:47:32] EA02-continue INFO: epoch 281, total time 85.33, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:48:56] EA02-continue INFO: epoch 282, total time 84.51, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:49:13] EA02-continue INFO: Eval: [282]  
+[05/12 15:49:13] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30243
+[05/12 15:49:13] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29307
+[05/12 15:49:13] EA02-continue INFO: WildRefer-official Acc0.25: 0.30240 | Acc0.50: 0.29120 | mIoU: 0.20580
+[05/12 15:49:13] EA02-continue INFO: Timing(s): inf=0.087960, visual=0.035957, text=0.006911, fusion_wo_head=0.039969, head=0.003492
+[05/12 15:49:13] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006164, bi_layer1=0.004302, bi_layer2=0.004888, total=0.015353
+[05/12 15:49:13] EA02-continue INFO: GPU memory(MiB): avg_allocated=1032.30, avg_reserved=4010.74, peak_allocated=2117.91, peak_reserved=9634.00, warmup_iters=20
+[05/12 15:50:37] EA02-continue INFO: epoch 283, total time 84.27, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:52:04] EA02-continue INFO: epoch 284, total time 87.12, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:53:32] EA02-continue INFO: epoch 285, total time 87.84, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:53:48] EA02-continue INFO: Eval: [285]  
+[05/12 15:53:48] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28745
+[05/12 15:53:48] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27341
+[05/12 15:53:48] EA02-continue INFO: WildRefer-official Acc0.25: 0.28750 | Acc0.50: 0.27150 | mIoU: 0.19660
+[05/12 15:53:48] EA02-continue INFO: Timing(s): inf=0.099164, visual=0.040219, text=0.008327, fusion_wo_head=0.044430, head=0.004241
+[05/12 15:53:48] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005682, bi_layer1=0.005099, bi_layer2=0.005511, total=0.016292
+[05/12 15:53:48] EA02-continue INFO: GPU memory(MiB): avg_allocated=1029.53, avg_reserved=10763.47, peak_allocated=2115.73, peak_reserved=10802.00, warmup_iters=20
+[05/12 15:55:12] EA02-continue INFO: epoch 286, total time 83.48, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:56:35] EA02-continue INFO: epoch 287, total time 83.43, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:58:00] EA02-continue INFO: epoch 288, total time 84.64, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 15:58:18] EA02-continue INFO: Eval: [288]  
+[05/12 15:58:18] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29401
+[05/12 15:58:18] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27528
+[05/12 15:58:18] EA02-continue INFO: WildRefer-official Acc0.25: 0.29400 | Acc0.50: 0.27530 | mIoU: 0.20010
+[05/12 15:58:18] EA02-continue INFO: Timing(s): inf=0.088843, visual=0.036095, text=0.006737, fusion_wo_head=0.041024, head=0.003408
+[05/12 15:58:18] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006176, bi_layer1=0.004554, bi_layer2=0.004542, total=0.015271
+[05/12 15:58:18] EA02-continue INFO: GPU memory(MiB): avg_allocated=1029.57, avg_reserved=3791.47, peak_allocated=2115.37, peak_reserved=10802.00, warmup_iters=20
+[05/12 15:59:41] EA02-continue INFO: epoch 289, total time 82.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:01:05] EA02-continue INFO: epoch 290, total time 84.27, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:02:32] EA02-continue INFO: epoch 291, total time 86.35, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:02:49] EA02-continue INFO: Eval: [291]  
+[05/12 16:02:49] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26030
+[05/12 16:02:49] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25281
+[05/12 16:02:49] EA02-continue INFO: WildRefer-official Acc0.25: 0.26030 | Acc0.50: 0.24910 | mIoU: 0.17910
+[05/12 16:02:49] EA02-continue INFO: Timing(s): inf=0.093360, visual=0.037638, text=0.007609, fusion_wo_head=0.042319, head=0.003999
+[05/12 16:02:49] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006030, bi_layer1=0.004684, bi_layer2=0.005041, total=0.015754
+[05/12 16:02:49] EA02-continue INFO: GPU memory(MiB): avg_allocated=1029.55, avg_reserved=7301.05, peak_allocated=2113.76, peak_reserved=8532.00, warmup_iters=20
+[05/12 16:04:15] EA02-continue INFO: epoch 292, total time 85.57, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:05:38] EA02-continue INFO: epoch 293, total time 82.99, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:07:03] EA02-continue INFO: epoch 294, total time 84.83, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:07:20] EA02-continue INFO: Eval: [294]  
+[05/12 16:07:20] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27247
+[05/12 16:07:20] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25843
+[05/12 16:07:20] EA02-continue INFO: WildRefer-official Acc0.25: 0.27250 | Acc0.50: 0.25750 | mIoU: 0.18590
+[05/12 16:07:20] EA02-continue INFO: Timing(s): inf=0.086119, visual=0.035376, text=0.006800, fusion_wo_head=0.039086, head=0.003259
+[05/12 16:07:20] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005415, bi_layer1=0.004347, bi_layer2=0.004488, total=0.014250
+[05/12 16:07:20] EA02-continue INFO: GPU memory(MiB): avg_allocated=1030.33, avg_reserved=6253.79, peak_allocated=2117.62, peak_reserved=11168.00, warmup_iters=20
+[05/12 16:08:43] EA02-continue INFO: epoch 295, total time 83.03, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:10:09] EA02-continue INFO: epoch 296, total time 86.11, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:11:35] EA02-continue INFO: epoch 297, total time 85.66, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:11:53] EA02-continue INFO: Eval: [297]  
+[05/12 16:11:53] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25562
+[05/12 16:11:53] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24438
+[05/12 16:11:53] EA02-continue INFO: WildRefer-official Acc0.25: 0.25560 | Acc0.50: 0.24630 | mIoU: 0.17430
+[05/12 16:11:53] EA02-continue INFO: Timing(s): inf=0.090886, visual=0.037176, text=0.007446, fusion_wo_head=0.040766, head=0.003788
+[05/12 16:11:53] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.004948, bi_layer1=0.004848, bi_layer2=0.004847, total=0.014643
+[05/12 16:11:53] EA02-continue INFO: GPU memory(MiB): avg_allocated=1029.86, avg_reserved=9195.47, peak_allocated=2115.66, peak_reserved=9234.00, warmup_iters=20
+[05/12 16:13:19] EA02-continue INFO: epoch 298, total time 86.05, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:14:45] EA02-continue INFO: epoch 299, total time 86.20, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:16:11] EA02-continue INFO: epoch 300, total time 86.03, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:16:29] EA02-continue INFO: Eval: [300]  
+[05/12 16:16:29] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26498
+[05/12 16:16:29] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25375
+[05/12 16:16:29] EA02-continue INFO: WildRefer-official Acc0.25: 0.26500 | Acc0.50: 0.25370 | mIoU: 0.18040
+[05/12 16:16:29] EA02-continue INFO: Timing(s): inf=0.112977, visual=0.046102, text=0.007317, fusion_wo_head=0.054109, head=0.003675
+[05/12 16:16:29] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005004, bi_layer1=0.004663, bi_layer2=0.004931, total=0.014599
+[05/12 16:16:29] EA02-continue INFO: GPU memory(MiB): avg_allocated=1031.82, avg_reserved=9234.00, peak_allocated=2119.88, peak_reserved=9234.00, warmup_iters=20
+[05/12 16:17:53] EA02-continue INFO: epoch 301, total time 83.39, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:19:22] EA02-continue INFO: epoch 302, total time 89.35, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:20:44] EA02-continue INFO: epoch 303, total time 82.03, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:21:02] EA02-continue INFO: Eval: [303]  
+[05/12 16:21:02] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26685
+[05/12 16:21:02] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25281
+[05/12 16:21:02] EA02-continue INFO: WildRefer-official Acc0.25: 0.26690 | Acc0.50: 0.25090 | mIoU: 0.18200
+[05/12 16:21:02] EA02-continue INFO: Timing(s): inf=0.085972, visual=0.035965, text=0.006866, fusion_wo_head=0.038157, head=0.003356
+[05/12 16:21:02] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.004758, bi_layer1=0.004242, bi_layer2=0.004695, total=0.013695
+[05/12 16:21:02] EA02-continue INFO: GPU memory(MiB): avg_allocated=1032.38, avg_reserved=9234.00, peak_allocated=2120.06, peak_reserved=9234.00, warmup_iters=20
+[05/12 16:22:26] EA02-continue INFO: epoch 304, total time 84.46, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:23:53] EA02-continue INFO: epoch 305, total time 86.26, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:25:24] EA02-continue INFO: epoch 306, total time 91.31, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:25:41] EA02-continue INFO: Eval: [306]  
+[05/12 16:25:41] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26311
+[05/12 16:25:41] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25000
+[05/12 16:25:41] EA02-continue INFO: WildRefer-official Acc0.25: 0.26220 | Acc0.50: 0.24910 | mIoU: 0.18210
+[05/12 16:25:41] EA02-continue INFO: Timing(s): inf=0.088569, visual=0.035905, text=0.006809, fusion_wo_head=0.040845, head=0.003386
+[05/12 16:25:41] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005897, bi_layer1=0.004370, bi_layer2=0.004603, total=0.014870
+[05/12 16:25:41] EA02-continue INFO: GPU memory(MiB): avg_allocated=1030.65, avg_reserved=3952.11, peak_allocated=2114.76, peak_reserved=9234.00, warmup_iters=20
+[05/12 16:27:07] EA02-continue INFO: epoch 307, total time 86.69, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:28:34] EA02-continue INFO: epoch 308, total time 86.72, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:29:58] EA02-continue INFO: epoch 309, total time 83.90, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:30:15] EA02-continue INFO: Eval: [309]  
+[05/12 16:30:15] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25843
+[05/12 16:30:15] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24906
+[05/12 16:30:15] EA02-continue INFO: WildRefer-official Acc0.25: 0.25840 | Acc0.50: 0.24440 | mIoU: 0.17750
+[05/12 16:30:15] EA02-continue INFO: Timing(s): inf=0.084670, visual=0.035448, text=0.006831, fusion_wo_head=0.037531, head=0.003281
+[05/12 16:30:15] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.004715, bi_layer1=0.004221, bi_layer2=0.004446, total=0.013382
+[05/12 16:30:15] EA02-continue INFO: GPU memory(MiB): avg_allocated=1034.22, avg_reserved=9101.47, peak_allocated=2117.52, peak_reserved=9140.00, warmup_iters=20
+[05/12 16:31:39] EA02-continue INFO: epoch 310, total time 83.67, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:33:05] EA02-continue INFO: epoch 311, total time 86.20, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:34:30] EA02-continue INFO: epoch 312, total time 84.87, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:34:46] EA02-continue INFO: Eval: [312]  
+[05/12 16:34:46] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25655
+[05/12 16:34:46] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24345
+[05/12 16:34:46] EA02-continue INFO: WildRefer-official Acc0.25: 0.25660 | Acc0.50: 0.24250 | mIoU: 0.17630
+[05/12 16:34:46] EA02-continue INFO: Timing(s): inf=0.092456, visual=0.038049, text=0.007565, fusion_wo_head=0.041463, head=0.003643
+[05/12 16:34:46] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005611, bi_layer1=0.004739, bi_layer2=0.005019, total=0.015369
+[05/12 16:34:46] EA02-continue INFO: GPU memory(MiB): avg_allocated=1032.27, avg_reserved=3767.47, peak_allocated=2118.17, peak_reserved=9140.00, warmup_iters=20
+[05/12 16:36:08] EA02-continue INFO: epoch 313, total time 82.52, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:37:34] EA02-continue INFO: epoch 314, total time 86.09, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:39:02] EA02-continue INFO: epoch 315, total time 87.50, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:39:19] EA02-continue INFO: Eval: [315]  
+[05/12 16:39:19] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26404
+[05/12 16:39:19] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24813
+[05/12 16:39:19] EA02-continue INFO: WildRefer-official Acc0.25: 0.26400 | Acc0.50: 0.24720 | mIoU: 0.18030
+[05/12 16:39:19] EA02-continue INFO: Timing(s): inf=0.091147, visual=0.036972, text=0.007345, fusion_wo_head=0.041413, head=0.003758
+[05/12 16:39:19] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005865, bi_layer1=0.004641, bi_layer2=0.004998, total=0.015503
+[05/12 16:39:19] EA02-continue INFO: GPU memory(MiB): avg_allocated=1030.99, avg_reserved=3977.47, peak_allocated=2116.87, peak_reserved=8312.00, warmup_iters=20
+[05/12 16:40:42] EA02-continue INFO: epoch 316, total time 82.88, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:42:08] EA02-continue INFO: epoch 317, total time 85.73, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:43:32] EA02-continue INFO: epoch 318, total time 84.15, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:43:48] EA02-continue INFO: Eval: [318]  
+[05/12 16:43:48] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28464
+[05/12 16:43:48] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27060
+[05/12 16:43:48] EA02-continue INFO: WildRefer-official Acc0.25: 0.28460 | Acc0.50: 0.26870 | mIoU: 0.19390
+[05/12 16:43:48] EA02-continue INFO: Timing(s): inf=0.092582, visual=0.037610, text=0.007218, fusion_wo_head=0.042504, head=0.003599
+[05/12 16:43:48] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005770, bi_layer1=0.005009, bi_layer2=0.004836, total=0.015616
+[05/12 16:43:48] EA02-continue INFO: GPU memory(MiB): avg_allocated=1031.08, avg_reserved=4327.47, peak_allocated=2119.65, peak_reserved=8338.00, warmup_iters=20
+[05/12 16:45:11] EA02-continue INFO: epoch 319, total time 82.92, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:46:34] EA02-continue INFO: epoch 320, total time 82.28, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:47:57] EA02-continue INFO: epoch 321, total time 83.38, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:48:15] EA02-continue INFO: Eval: [321]  
+[05/12 16:48:15] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27434
+[05/12 16:48:15] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26404
+[05/12 16:48:15] EA02-continue INFO: WildRefer-official Acc0.25: 0.27430 | Acc0.50: 0.26310 | mIoU: 0.18840
+[05/12 16:48:15] EA02-continue INFO: Timing(s): inf=0.090927, visual=0.036851, text=0.007286, fusion_wo_head=0.041488, head=0.003624
+[05/12 16:48:15] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005560, bi_layer1=0.004724, bi_layer2=0.004783, total=0.015067
+[05/12 16:48:15] EA02-continue INFO: GPU memory(MiB): avg_allocated=1030.26, avg_reserved=3881.47, peak_allocated=2115.05, peak_reserved=8618.00, warmup_iters=20
+[05/12 16:49:41] EA02-continue INFO: epoch 322, total time 86.02, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:51:08] EA02-continue INFO: epoch 323, total time 86.62, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:52:33] EA02-continue INFO: epoch 324, total time 85.34, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:52:50] EA02-continue INFO: Eval: [324]  
+[05/12 16:52:50] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29682
+[05/12 16:52:50] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28090
+[05/12 16:52:50] EA02-continue INFO: WildRefer-official Acc0.25: 0.29680 | Acc0.50: 0.27720 | mIoU: 0.20210
+[05/12 16:52:50] EA02-continue INFO: Timing(s): inf=0.088865, visual=0.037062, text=0.006994, fusion_wo_head=0.039447, head=0.003716
+[05/12 16:52:50] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.004889, bi_layer1=0.004267, bi_layer2=0.005044, total=0.014200
+[05/12 16:52:50] EA02-continue INFO: GPU memory(MiB): avg_allocated=1031.69, avg_reserved=8542.00, peak_allocated=2117.36, peak_reserved=8542.00, warmup_iters=20
+[05/12 16:54:11] EA02-continue INFO: epoch 325, total time 81.27, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:55:35] EA02-continue INFO: epoch 326, total time 84.06, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:56:58] EA02-continue INFO: epoch 327, total time 83.04, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 16:57:15] EA02-continue INFO: Eval: [327]  
+[05/12 16:57:15] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26966
+[05/12 16:57:15] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25562
+[05/12 16:57:15] EA02-continue INFO: WildRefer-official Acc0.25: 0.26970 | Acc0.50: 0.25370 | mIoU: 0.18280
+[05/12 16:57:15] EA02-continue INFO: Timing(s): inf=0.092937, visual=0.037846, text=0.007551, fusion_wo_head=0.042044, head=0.003692
+[05/12 16:57:15] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005756, bi_layer1=0.004667, bi_layer2=0.005059, total=0.015482
+[05/12 16:57:15] EA02-continue INFO: GPU memory(MiB): avg_allocated=1034.15, avg_reserved=8204.00, peak_allocated=2118.79, peak_reserved=8542.00, warmup_iters=20
+[05/12 16:58:40] EA02-continue INFO: epoch 328, total time 85.05, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:00:04] EA02-continue INFO: epoch 329, total time 84.16, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:01:41] EA02-continue INFO: epoch 330, total time 97.59, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:01:58] EA02-continue INFO: Eval: [330]  
+[05/12 17:01:58] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30712
+[05/12 17:01:58] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29401
+[05/12 17:01:58] EA02-continue INFO: WildRefer-official Acc0.25: 0.30710 | Acc0.50: 0.29400 | mIoU: 0.21000
+[05/12 17:01:58] EA02-continue INFO: Timing(s): inf=0.092326, visual=0.037358, text=0.007838, fusion_wo_head=0.041521, head=0.003816
+[05/12 17:01:58] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005074, bi_layer1=0.004736, bi_layer2=0.004901, total=0.014711
+[05/12 17:01:58] EA02-continue INFO: GPU memory(MiB): avg_allocated=1031.77, avg_reserved=11727.47, peak_allocated=2117.43, peak_reserved=11766.00, warmup_iters=20
+[05/12 17:03:33] EA02-continue INFO: epoch 331, total time 95.35, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:04:58] EA02-continue INFO: epoch 332, total time 85.45, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:06:23] EA02-continue INFO: epoch 333, total time 84.63, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:06:40] EA02-continue INFO: Eval: [333]  
+[05/12 17:06:40] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29120
+[05/12 17:06:40] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27996
+[05/12 17:06:40] EA02-continue INFO: WildRefer-official Acc0.25: 0.29120 | Acc0.50: 0.27430 | mIoU: 0.19820
+[05/12 17:06:40] EA02-continue INFO: Timing(s): inf=0.093723, visual=0.037808, text=0.007573, fusion_wo_head=0.042779, head=0.003818
+[05/12 17:06:40] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006250, bi_layer1=0.004864, bi_layer2=0.005122, total=0.016236
+[05/12 17:06:40] EA02-continue INFO: GPU memory(MiB): avg_allocated=1034.86, avg_reserved=4463.47, peak_allocated=2122.26, peak_reserved=11766.00, warmup_iters=20
+[05/12 17:08:04] EA02-continue INFO: epoch 334, total time 84.49, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:09:27] EA02-continue INFO: epoch 335, total time 82.21, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:10:52] EA02-continue INFO: epoch 336, total time 85.17, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:11:10] EA02-continue INFO: Eval: [336]  
+[05/12 17:11:10] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.25655
+[05/12 17:11:10] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.24719
+[05/12 17:11:10] EA02-continue INFO: WildRefer-official Acc0.25: 0.25660 | Acc0.50: 0.24340 | mIoU: 0.17700
+[05/12 17:11:10] EA02-continue INFO: Timing(s): inf=0.089596, visual=0.036461, text=0.007472, fusion_wo_head=0.040289, head=0.003614
+[05/12 17:11:10] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005999, bi_layer1=0.004461, bi_layer2=0.004705, total=0.015165
+[05/12 17:11:10] EA02-continue INFO: GPU memory(MiB): avg_allocated=1032.60, avg_reserved=3865.26, peak_allocated=2118.45, peak_reserved=8652.00, warmup_iters=20
+[05/12 17:12:35] EA02-continue INFO: epoch 337, total time 84.94, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:13:58] EA02-continue INFO: epoch 338, total time 82.86, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:15:21] EA02-continue INFO: epoch 339, total time 83.46, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:15:38] EA02-continue INFO: Eval: [339]  
+[05/12 17:15:38] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30056
+[05/12 17:15:38] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28745
+[05/12 17:15:38] EA02-continue INFO: WildRefer-official Acc0.25: 0.30060 | Acc0.50: 0.28840 | mIoU: 0.20290
+[05/12 17:15:38] EA02-continue INFO: Timing(s): inf=0.091787, visual=0.037325, text=0.007419, fusion_wo_head=0.041679, head=0.003687
+[05/12 17:15:38] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005689, bi_layer1=0.004622, bi_layer2=0.004814, total=0.015125
+[05/12 17:15:38] EA02-continue INFO: GPU memory(MiB): avg_allocated=1036.34, avg_reserved=7732.21, peak_allocated=2122.06, peak_reserved=8334.00, warmup_iters=20
+[05/12 17:17:04] EA02-continue INFO: epoch 340, total time 86.60, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:18:29] EA02-continue INFO: epoch 341, total time 84.42, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:19:56] EA02-continue INFO: epoch 342, total time 87.31, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:20:13] EA02-continue INFO: Eval: [342]  
+[05/12 17:20:13] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27622
+[05/12 17:20:13] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26873
+[05/12 17:20:13] EA02-continue INFO: WildRefer-official Acc0.25: 0.27620 | Acc0.50: 0.26590 | mIoU: 0.19070
+[05/12 17:20:13] EA02-continue INFO: Timing(s): inf=0.096387, visual=0.039018, text=0.007796, fusion_wo_head=0.043820, head=0.003966
+[05/12 17:20:13] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006414, bi_layer1=0.005069, bi_layer2=0.005266, total=0.016749
+[05/12 17:20:13] EA02-continue INFO: GPU memory(MiB): avg_allocated=1033.34, avg_reserved=3881.47, peak_allocated=2120.17, peak_reserved=9606.00, warmup_iters=20
+[05/12 17:21:36] EA02-continue INFO: epoch 343, total time 83.50, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:22:58] EA02-continue INFO: epoch 344, total time 81.36, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:24:21] EA02-continue INFO: epoch 345, total time 83.00, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:24:38] EA02-continue INFO: Eval: [345]  
+[05/12 17:24:38] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30712
+[05/12 17:24:38] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28933
+[05/12 17:24:38] EA02-continue INFO: WildRefer-official Acc0.25: 0.30810 | Acc0.50: 0.28840 | mIoU: 0.20930
+[05/12 17:24:38] EA02-continue INFO: Timing(s): inf=0.093104, visual=0.038162, text=0.007361, fusion_wo_head=0.042062, head=0.003772
+[05/12 17:24:38] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005990, bi_layer1=0.004673, bi_layer2=0.005085, total=0.015749
+[05/12 17:24:38] EA02-continue INFO: GPU memory(MiB): avg_allocated=1035.25, avg_reserved=4201.47, peak_allocated=2120.17, peak_reserved=8672.00, warmup_iters=20
+[05/12 17:26:03] EA02-continue INFO: epoch 346, total time 85.08, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:27:32] EA02-continue INFO: epoch 347, total time 88.86, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:28:56] EA02-continue INFO: epoch 348, total time 83.52, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:29:13] EA02-continue INFO: Eval: [348]  
+[05/12 17:29:13] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30056
+[05/12 17:29:13] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28371
+[05/12 17:29:13] EA02-continue INFO: WildRefer-official Acc0.25: 0.30060 | Acc0.50: 0.28280 | mIoU: 0.20460
+[05/12 17:29:13] EA02-continue INFO: Timing(s): inf=0.093317, visual=0.037760, text=0.007466, fusion_wo_head=0.042612, head=0.003663
+[05/12 17:29:13] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005908, bi_layer1=0.004812, bi_layer2=0.005131, total=0.015850
+[05/12 17:29:13] EA02-continue INFO: GPU memory(MiB): avg_allocated=1034.88, avg_reserved=4585.47, peak_allocated=2120.40, peak_reserved=8498.00, warmup_iters=20
+[05/12 17:30:38] EA02-continue INFO: epoch 349, total time 84.84, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:32:03] EA02-continue INFO: epoch 350, total time 85.53, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:33:29] EA02-continue INFO: epoch 351, total time 85.99, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:33:46] EA02-continue INFO: Eval: [351]  
+[05/12 17:33:46] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30056
+[05/12 17:33:46] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28371
+[05/12 17:33:46] EA02-continue INFO: WildRefer-official Acc0.25: 0.30060 | Acc0.50: 0.28180 | mIoU: 0.20420
+[05/12 17:33:46] EA02-continue INFO: Timing(s): inf=0.086995, visual=0.036658, text=0.006888, fusion_wo_head=0.038469, head=0.003407
+[05/12 17:33:46] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005539, bi_layer1=0.004229, bi_layer2=0.004403, total=0.014171
+[05/12 17:33:46] EA02-continue INFO: GPU memory(MiB): avg_allocated=1034.36, avg_reserved=3713.47, peak_allocated=2118.38, peak_reserved=8548.00, warmup_iters=20
+[05/12 17:35:10] EA02-continue INFO: epoch 352, total time 83.28, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:36:34] EA02-continue INFO: epoch 353, total time 84.02, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:38:06] EA02-continue INFO: epoch 354, total time 92.23, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:38:22] EA02-continue INFO: Eval: [354]  
+[05/12 17:38:22] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27809
+[05/12 17:38:22] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26779
+[05/12 17:38:22] EA02-continue INFO: WildRefer-official Acc0.25: 0.27810 | Acc0.50: 0.26590 | mIoU: 0.18990
+[05/12 17:38:22] EA02-continue INFO: Timing(s): inf=0.092927, visual=0.037461, text=0.007731, fusion_wo_head=0.042268, head=0.003738
+[05/12 17:38:22] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005836, bi_layer1=0.004818, bi_layer2=0.004864, total=0.015517
+[05/12 17:38:22] EA02-continue INFO: GPU memory(MiB): avg_allocated=1036.99, avg_reserved=3575.26, peak_allocated=2123.47, peak_reserved=8674.00, warmup_iters=20
+[05/12 17:39:46] EA02-continue INFO: epoch 355, total time 84.47, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:41:11] EA02-continue INFO: epoch 356, total time 84.47, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:42:35] EA02-continue INFO: epoch 357, total time 84.59, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:42:52] EA02-continue INFO: Eval: [357]  
+[05/12 17:42:52] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30899
+[05/12 17:42:52] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28933
+[05/12 17:42:52] EA02-continue INFO: WildRefer-official Acc0.25: 0.30900 | Acc0.50: 0.28650 | mIoU: 0.20910
+[05/12 17:42:52] EA02-continue INFO: Timing(s): inf=0.093532, visual=0.037628, text=0.007874, fusion_wo_head=0.042211, head=0.003926
+[05/12 17:42:52] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005202, bi_layer1=0.004983, bi_layer2=0.005225, total=0.015410
+[05/12 17:42:52] EA02-continue INFO: GPU memory(MiB): avg_allocated=1034.84, avg_reserved=11743.47, peak_allocated=2120.12, peak_reserved=11782.00, warmup_iters=20
+[05/12 17:44:18] EA02-continue INFO: epoch 358, total time 85.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:45:41] EA02-continue INFO: epoch 359, total time 83.82, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:47:05] EA02-continue INFO: epoch 360, total time 83.89, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:47:22] EA02-continue INFO: Eval: [360]  
+[05/12 17:47:22] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.26685
+[05/12 17:47:22] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.25562
+[05/12 17:47:22] EA02-continue INFO: WildRefer-official Acc0.25: 0.26690 | Acc0.50: 0.25280 | mIoU: 0.18370
+[05/12 17:47:22] EA02-continue INFO: Timing(s): inf=0.099386, visual=0.037717, text=0.007203, fusion_wo_head=0.048976, head=0.003756
+[05/12 17:47:22] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006339, bi_layer1=0.004700, bi_layer2=0.011300, total=0.022339
+[05/12 17:47:22] EA02-continue INFO: GPU memory(MiB): avg_allocated=1033.41, avg_reserved=4009.26, peak_allocated=2117.95, peak_reserved=11782.00, warmup_iters=20
+[05/12 17:48:46] EA02-continue INFO: epoch 361, total time 84.03, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:50:10] EA02-continue INFO: epoch 362, total time 83.35, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:51:36] EA02-continue INFO: epoch 363, total time 86.11, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:51:53] EA02-continue INFO: Eval: [363]  
+[05/12 17:51:53] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27715
+[05/12 17:51:53] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26404
+[05/12 17:51:53] EA02-continue INFO: WildRefer-official Acc0.25: 0.27720 | Acc0.50: 0.26030 | mIoU: 0.18820
+[05/12 17:51:53] EA02-continue INFO: Timing(s): inf=0.089653, visual=0.036708, text=0.007087, fusion_wo_head=0.040484, head=0.003728
+[05/12 17:51:53] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005648, bi_layer1=0.004529, bi_layer2=0.004715, total=0.014891
+[05/12 17:51:53] EA02-continue INFO: GPU memory(MiB): avg_allocated=1034.92, avg_reserved=8736.32, peak_allocated=2119.90, peak_reserved=9152.00, warmup_iters=20
+[05/12 17:53:14] EA02-continue INFO: epoch 364, total time 80.99, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:54:35] EA02-continue INFO: epoch 365, total time 81.72, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:55:58] EA02-continue INFO: epoch 366, total time 82.95, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:56:15] EA02-continue INFO: Eval: [366]  
+[05/12 17:56:15] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28558
+[05/12 17:56:15] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27341
+[05/12 17:56:15] EA02-continue INFO: WildRefer-official Acc0.25: 0.28560 | Acc0.50: 0.27150 | mIoU: 0.19410
+[05/12 17:56:15] EA02-continue INFO: Timing(s): inf=0.091073, visual=0.036753, text=0.006907, fusion_wo_head=0.042493, head=0.003280
+[05/12 17:56:15] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.007058, bi_layer1=0.004370, bi_layer2=0.004517, total=0.015945
+[05/12 17:56:15] EA02-continue INFO: GPU memory(MiB): avg_allocated=1037.44, avg_reserved=3807.47, peak_allocated=2123.26, peak_reserved=9594.00, warmup_iters=20
+[05/12 17:57:50] EA02-continue INFO: epoch 367, total time 95.26, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 17:59:14] EA02-continue INFO: epoch 368, total time 83.40, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:00:38] EA02-continue INFO: epoch 369, total time 84.81, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:00:55] EA02-continue INFO: Eval: [369]  
+[05/12 18:00:55] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29775
+[05/12 18:00:55] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28371
+[05/12 18:00:55] EA02-continue INFO: WildRefer-official Acc0.25: 0.29960 | Acc0.50: 0.28370 | mIoU: 0.20380
+[05/12 18:00:55] EA02-continue INFO: Timing(s): inf=0.085111, visual=0.035415, text=0.006907, fusion_wo_head=0.037768, head=0.003397
+[05/12 18:00:55] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.004583, bi_layer1=0.004324, bi_layer2=0.004468, total=0.013375
+[05/12 18:00:55] EA02-continue INFO: GPU memory(MiB): avg_allocated=1037.64, avg_reserved=9337.47, peak_allocated=2123.07, peak_reserved=9376.00, warmup_iters=20
+[05/12 18:02:20] EA02-continue INFO: epoch 370, total time 84.77, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:03:46] EA02-continue INFO: epoch 371, total time 85.79, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:05:16] EA02-continue INFO: epoch 372, total time 90.17, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:05:32] EA02-continue INFO: Eval: [372]  
+[05/12 18:05:32] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31742
+[05/12 18:05:32] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30056
+[05/12 18:05:32] EA02-continue INFO: WildRefer-official Acc0.25: 0.31740 | Acc0.50: 0.29960 | mIoU: 0.21520
+[05/12 18:05:32] EA02-continue INFO: Timing(s): inf=0.101387, visual=0.045219, text=0.007800, fusion_wo_head=0.042543, head=0.003959
+[05/12 18:05:32] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005170, bi_layer1=0.004891, bi_layer2=0.005457, total=0.015518
+[05/12 18:05:32] EA02-continue INFO: GPU memory(MiB): avg_allocated=1036.40, avg_reserved=9376.00, peak_allocated=2123.33, peak_reserved=9376.00, warmup_iters=20
+[05/12 18:06:55] EA02-continue INFO: epoch 373, total time 82.55, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:08:20] EA02-continue INFO: epoch 374, total time 84.61, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:09:47] EA02-continue INFO: epoch 375, total time 87.88, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:10:04] EA02-continue INFO: Eval: [375]  
+[05/12 18:10:04] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31086
+[05/12 18:10:04] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29963
+[05/12 18:10:04] EA02-continue INFO: WildRefer-official Acc0.25: 0.31090 | Acc0.50: 0.29780 | mIoU: 0.21200
+[05/12 18:10:04] EA02-continue INFO: Timing(s): inf=0.093183, visual=0.037987, text=0.007614, fusion_wo_head=0.041924, head=0.003893
+[05/12 18:10:04] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005724, bi_layer1=0.004743, bi_layer2=0.004963, total=0.015429
+[05/12 18:10:04] EA02-continue INFO: GPU memory(MiB): avg_allocated=1034.70, avg_reserved=4082.00, peak_allocated=2120.91, peak_reserved=9376.00, warmup_iters=20
+[05/12 18:11:29] EA02-continue INFO: epoch 376, total time 85.36, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:12:54] EA02-continue INFO: epoch 377, total time 84.88, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:14:21] EA02-continue INFO: epoch 378, total time 86.81, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:14:37] EA02-continue INFO: Eval: [378]  
+[05/12 18:14:37] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.32116
+[05/12 18:14:37] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30524
+[05/12 18:14:37] EA02-continue INFO: WildRefer-official Acc0.25: 0.32120 | Acc0.50: 0.30430 | mIoU: 0.21790
+[05/12 18:14:37] EA02-continue INFO: Timing(s): inf=0.086413, visual=0.035636, text=0.006725, fusion_wo_head=0.038923, head=0.003496
+[05/12 18:14:37] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005263, bi_layer1=0.004282, bi_layer2=0.004603, total=0.014148
+[05/12 18:14:37] EA02-continue INFO: GPU memory(MiB): avg_allocated=1038.55, avg_reserved=4223.89, peak_allocated=2123.20, peak_reserved=8610.00, warmup_iters=20
+[05/12 18:16:02] EA02-continue INFO: epoch 379, total time 84.60, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:17:27] EA02-continue INFO: epoch 380, total time 85.16, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:18:57] EA02-continue INFO: epoch 381, total time 90.71, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:19:15] EA02-continue INFO: Eval: [381]  
+[05/12 18:19:15] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.31742
+[05/12 18:19:15] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.30431
+[05/12 18:19:15] EA02-continue INFO: WildRefer-official Acc0.25: 0.31740 | Acc0.50: 0.30340 | mIoU: 0.21630
+[05/12 18:19:15] EA02-continue INFO: Timing(s): inf=0.090092, visual=0.037876, text=0.006921, fusion_wo_head=0.040132, head=0.003540
+[05/12 18:19:15] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005352, bi_layer1=0.004455, bi_layer2=0.004707, total=0.014514
+[05/12 18:19:15] EA02-continue INFO: GPU memory(MiB): avg_allocated=1041.74, avg_reserved=3789.47, peak_allocated=2125.20, peak_reserved=8388.00, warmup_iters=20
+[05/12 18:20:39] EA02-continue INFO: epoch 382, total time 84.47, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:22:05] EA02-continue INFO: epoch 383, total time 86.13, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:23:31] EA02-continue INFO: epoch 384, total time 85.71, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:23:48] EA02-continue INFO: Eval: [384]  
+[05/12 18:23:48] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29682
+[05/12 18:23:48] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.28558
+[05/12 18:23:48] EA02-continue INFO: WildRefer-official Acc0.25: 0.29680 | Acc0.50: 0.28280 | mIoU: 0.20320
+[05/12 18:23:48] EA02-continue INFO: Timing(s): inf=0.086740, visual=0.036293, text=0.006818, fusion_wo_head=0.038499, head=0.003469
+[05/12 18:23:48] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.004616, bi_layer1=0.004313, bi_layer2=0.004537, total=0.013466
+[05/12 18:23:48] EA02-continue INFO: GPU memory(MiB): avg_allocated=1036.05, avg_reserved=8376.00, peak_allocated=2121.44, peak_reserved=8376.00, warmup_iters=20
+[05/12 18:25:14] EA02-continue INFO: epoch 385, total time 86.25, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:26:41] EA02-continue INFO: epoch 386, total time 86.71, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:28:04] EA02-continue INFO: epoch 387, total time 83.50, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:28:21] EA02-continue INFO: Eval: [387]  
+[05/12 18:28:21] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30524
+[05/12 18:28:21] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29401
+[05/12 18:28:21] EA02-continue INFO: WildRefer-official Acc0.25: 0.30520 | Acc0.50: 0.29400 | mIoU: 0.20920
+[05/12 18:28:21] EA02-continue INFO: Timing(s): inf=0.086770, visual=0.036355, text=0.006874, fusion_wo_head=0.038704, head=0.003270
+[05/12 18:28:21] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005200, bi_layer1=0.004172, bi_layer2=0.004447, total=0.013819
+[05/12 18:28:21] EA02-continue INFO: GPU memory(MiB): avg_allocated=1037.43, avg_reserved=4219.47, peak_allocated=2122.50, peak_reserved=8576.00, warmup_iters=20
+[05/12 18:29:46] EA02-continue INFO: epoch 388, total time 84.79, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:31:09] EA02-continue INFO: epoch 389, total time 83.31, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:32:34] EA02-continue INFO: epoch 390, total time 84.42, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:32:51] EA02-continue INFO: Eval: [390]  
+[05/12 18:32:51] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.29120
+[05/12 18:32:51] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27622
+[05/12 18:32:51] EA02-continue INFO: WildRefer-official Acc0.25: 0.29120 | Acc0.50: 0.27530 | mIoU: 0.19820
+[05/12 18:32:51] EA02-continue INFO: Timing(s): inf=0.087356, visual=0.035912, text=0.006788, fusion_wo_head=0.039439, head=0.003538
+[05/12 18:32:51] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005695, bi_layer1=0.004677, bi_layer2=0.004637, total=0.015009
+[05/12 18:32:51] EA02-continue INFO: GPU memory(MiB): avg_allocated=1036.11, avg_reserved=4821.47, peak_allocated=2123.17, peak_reserved=8702.00, warmup_iters=20
+[05/12 18:34:15] EA02-continue INFO: epoch 391, total time 84.79, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:35:41] EA02-continue INFO: epoch 392, total time 85.36, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:37:05] EA02-continue INFO: epoch 393, total time 84.56, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:37:22] EA02-continue INFO: Eval: [393]  
+[05/12 18:37:22] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30056
+[05/12 18:37:22] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29120
+[05/12 18:37:22] EA02-continue INFO: WildRefer-official Acc0.25: 0.30060 | Acc0.50: 0.29120 | mIoU: 0.20700
+[05/12 18:37:22] EA02-continue INFO: Timing(s): inf=0.094567, visual=0.038469, text=0.007597, fusion_wo_head=0.042920, head=0.003773
+[05/12 18:37:22] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006436, bi_layer1=0.004832, bi_layer2=0.005120, total=0.016387
+[05/12 18:37:22] EA02-continue INFO: GPU memory(MiB): avg_allocated=1039.89, avg_reserved=3868.95, peak_allocated=2123.57, peak_reserved=10722.00, warmup_iters=20
+[05/12 18:38:51] EA02-continue INFO: epoch 394, total time 88.11, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:40:16] EA02-continue INFO: epoch 395, total time 85.21, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:41:42] EA02-continue INFO: epoch 396, total time 85.81, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:41:58] EA02-continue INFO: Eval: [396]  
+[05/12 18:41:58] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.30337
+[05/12 18:41:58] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.29026
+[05/12 18:41:58] EA02-continue INFO: WildRefer-official Acc0.25: 0.30340 | Acc0.50: 0.28840 | mIoU: 0.20840
+[05/12 18:41:58] EA02-continue INFO: Timing(s): inf=0.091273, visual=0.037273, text=0.007194, fusion_wo_head=0.041325, head=0.003753
+[05/12 18:41:58] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.005361, bi_layer1=0.004695, bi_layer2=0.005061, total=0.015116
+[05/12 18:41:58] EA02-continue INFO: GPU memory(MiB): avg_allocated=1037.51, avg_reserved=9219.47, peak_allocated=2121.38, peak_reserved=9258.00, warmup_iters=20
+[05/12 18:43:23] EA02-continue INFO: epoch 397, total time 85.16, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:44:51] EA02-continue INFO: epoch 398, total time 88.38, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:46:21] EA02-continue INFO: epoch 399, total time 90.14, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:46:40] EA02-continue INFO: Eval: [399]  
+[05/12 18:46:40] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.27809
+[05/12 18:46:40] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.26404
+[05/12 18:46:40] EA02-continue INFO: WildRefer-official Acc0.25: 0.28000 | Acc0.50: 0.26310 | mIoU: 0.19110
+[05/12 18:46:40] EA02-continue INFO: Timing(s): inf=0.093851, visual=0.037910, text=0.007197, fusion_wo_head=0.043123, head=0.003896
+[05/12 18:46:40] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006267, bi_layer1=0.004715, bi_layer2=0.005312, total=0.016293
+[05/12 18:46:40] EA02-continue INFO: GPU memory(MiB): avg_allocated=1037.45, avg_reserved=3879.47, peak_allocated=2124.19, peak_reserved=9260.00, warmup_iters=20
+[05/12 18:48:11] EA02-continue INFO: epoch 400, total time 90.94, lr_base 0.0000500, lr_tran 0.0000500, lr_text 0.0000010, lr_select 0.0000400, lr_seg 0.0000100
+[05/12 18:48:11] EA02-continue INFO: Saved in /share/lxy/TSP3D_ori/scripts/experiments/strefer/EA02-continue/strefer/2026-05-12_09-01-12/ckpt_epoch_last.pth
+[05/12 18:48:29] EA02-continue INFO: Eval: [400]  
+[05/12 18:48:29] EA02-continue INFO: 3dcnn Acc0.25: Top-1: 0.28652
+[05/12 18:48:29] EA02-continue INFO: 3dcnn Acc0.50: Top-1: 0.27434
+[05/12 18:48:29] EA02-continue INFO: WildRefer-official Acc0.25: 0.28650 | Acc0.50: 0.27530 | mIoU: 0.19660
+[05/12 18:48:29] EA02-continue INFO: Timing(s): inf=0.115894, visual=0.043734, text=0.007346, fusion_wo_head=0.059517, head=0.003616
+[05/12 18:48:29] EA02-continue INFO: External-attn-affected module time(s): bi_layer0=0.006343, bi_layer1=0.004909, bi_layer2=0.004881, total=0.016133
+[05/12 18:48:29] EA02-continue INFO: GPU memory(MiB): avg_allocated=1039.08, avg_reserved=3418.32, peak_allocated=2123.34, peak_reserved=8418.00, warmup_iters=20

@@ -2,18 +2,21 @@ export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH}"
 
 # Configurable parameters
 NPROC_PER_NODE=4
-BS_PER_GPU=7
-BASE_BS_PER_GPU=7
-BASE_LR=5e-4
-BASE_KEEP_TRANS_LR=5e-4
-BASE_TEXT_ENCODER_LR=1e-5
-BASE_BOX_SELECT_LR=4e-4
-# BASE_LR=5e-5
-# BASE_KEEP_TRANS_LR=5e-5
-# BASE_TEXT_ENCODER_LR=1e-6
-# BASE_BOX_SELECT_LR=4e-5
+BASE_BS=28
+CUR_BS=28
+# --- for grounding ------
+# BASE_LR=5e-4
+# BASE_KEEP_TRANS_LR=5e-4
+# BASE_TEXT_ENCODER_LR=1e-5
+# BASE_BOX_SELECT_LR=4e-4
+# ------------------------
+# --- for segmentation ---
+BASE_LR=5e-5
+BASE_KEEP_TRANS_LR=5e-5
+BASE_TEXT_ENCODER_LR=1e-6
+BASE_BOX_SELECT_LR=4e-5
 BASE_SEG_LR=1e-4
-RNG_SEED=42
+# ------------------------
 MASTER_PORT_DEFAULT=11022
 MASTER_PORT_MAX=12022
 GPU_FREE_MEM_THRESHOLD=1024
@@ -21,7 +24,6 @@ GPU_FREE_UTIL_THRESHOLD=10
 TF32_MATMUL=default
 TF32_CUDNN=default
 CVD=""
-DATASET="strefer"
 
 data_root="${PWD}/data"
 
@@ -43,6 +45,40 @@ for port in range(start, end):
         sys.exit(0)
 print('NO_FREE_PORT', file=sys.stderr)
 sys.exit(1)
+PY
+}
+
+choose_free_gpus() {
+    local need=${1:-1}
+    local mem_th=${2:-${GPU_FREE_MEM_THRESHOLD}}
+    local util_th=${3:-${GPU_FREE_UTIL_THRESHOLD}}
+    python - "$need" "$mem_th" "$util_th" <<'PY'
+import subprocess, sys
+need = int(sys.argv[1])
+mem_th = int(sys.argv[2])
+util_th = int(sys.argv[3])
+try:
+    out = subprocess.check_output([
+        'nvidia-smi',
+        '--query-gpu=index,memory.used,utilization.gpu',
+        '--format=csv,noheader,nounits'
+    ], encoding='utf-8', errors='ignore')
+except Exception:
+    sys.exit(2)
+free = []
+for line in out.splitlines():
+    parts = [x.strip() for x in line.split(',')]
+    if len(parts) != 3:
+        continue
+    try:
+        idx = int(parts[0]); mem = int(parts[1]); util = int(parts[2])
+    except ValueError:
+        continue
+    if mem < mem_th and util < util_th:
+        free.append(str(idx))
+if len(free) < need:
+    sys.exit(1)
+print(','.join(free[:need]))
 PY
 }
 
@@ -72,27 +108,39 @@ fi
 
 log_dir="$(dirname "$(readlink -f "$0")")/${EXP_NAME}"
 mkdir -p "${log_dir}"
-scripts_dir="$(readlink -f "$(dirname "$(readlink -f "$0")")/../..")"
-find_free_gpus_script="${scripts_dir}/find_free_gpus.sh"
-switch_dataset_mode_script="${scripts_dir}/switch_dataset_mode.sh"
 
 lr_scale() {
-    python - "$1" "$BASE_BS_PER_GPU" "$BS_PER_GPU" "$NPROC_PER_NODE" <<'PY'
+    python - "$1" "$BASE_BS" "$CUR_BS" <<'PY'
 import sys
 
 base_lr = float(sys.argv[1])
-base_bs_per_gpu = float(sys.argv[2])
-bs_per_gpu = float(sys.argv[3])
-nproc = int(sys.argv[4])
-# linear scaling: scale by (current total bs) / (base total bs at 4 GPUs)
-print(base_lr * (bs_per_gpu * nproc) / (base_bs_per_gpu * 4))
+base_bs = float(sys.argv[2])
+cur_bs = float(sys.argv[3])
+print(base_lr * cur_bs / base_bs)
 PY
 }
 
-if ! bash "${switch_dataset_mode_script}" "${mode}" "${data_root}"; then
-    echo "Error: failed to switch dataset mode to '${mode}'" >&2
-    exit 1
-fi
+bs_per_gpu() {
+    python - "$1" "$2" <<'PY'
+import sys
+
+total_bs = float(sys.argv[1])
+ngpu = int(sys.argv[2])
+per = total_bs / ngpu
+if per != int(per):
+    print(f"Warning: total batch size {total_bs} not divisible by GPUs {ngpu}", file=sys.stderr)
+print(int(per))
+PY
+}
+
+ln -sf ${data_root}/ScanRefer/ScanRefer_filtered_train_${mode}.txt \
+    ${data_root}/ScanRefer/ScanRefer_filtered_train.txt
+ln -sf ${data_root}/ScanRefer/ScanRefer_filtered_val_${mode}.txt \
+    ${data_root}/ScanRefer/ScanRefer_filtered_val.txt
+ln -sf ${data_root}/train_v3scans_${mode}.pkl \
+    ${data_root}/train_v3scans.pkl
+ln -sf ${data_root}/val_v3scans_${mode}.pkl \
+    ${data_root}/val_v3scans.pkl
 
 nproc_per_node=${NPROC_PER_NODE:-$(nvidia-smi -L | wc -l)}
 if [[ ${single_mode} -eq 1 ]]; then
@@ -111,14 +159,8 @@ if [[ -n "${CVD}" ]]; then
         exit 1
     fi
 else
-    if ! cvd=$(bash "${find_free_gpus_script}" "${nproc_per_node}" "${GPU_FREE_MEM_THRESHOLD}" "${GPU_FREE_UTIL_THRESHOLD}"); then
+    if ! cvd=$(choose_free_gpus "${nproc_per_node}" "${GPU_FREE_MEM_THRESHOLD}" "${GPU_FREE_UTIL_THRESHOLD}"); then
         echo "Error: failed to find ${nproc_per_node} free GPUs with memory < ${GPU_FREE_MEM_THRESHOLD} MiB and utilization < ${GPU_FREE_UTIL_THRESHOLD}%" >&2
-        exit 1
-    fi
-    cvd="$(echo "${cvd}" | tr -d '[:space:]')"
-    IFS=',' read -r -a cvd_arr <<< "${cvd}"
-    if [[ ${#cvd_arr[@]} -ne ${nproc_per_node} ]]; then
-        echo "Error: found ${#cvd_arr[@]} free GPU(s) (${cvd}), but NPROC_PER_NODE is ${nproc_per_node}" >&2
         exit 1
     fi
 fi
@@ -134,50 +176,43 @@ fi
 
 echo master_port: ${master_port}
 
-TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} torchrun \
-    --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
+TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distributed.launch --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
     train_dist_mod.py \
     --use_color \
     --weight_decay 0.0005 \
     --data_root ${data_root}/ \
-    --val_freq 3 --batch_size ${BS_PER_GPU} --save_freq 3 --print_freq 500 \
+    --val_freq 3 --batch_size $(bs_per_gpu "${CUR_BS}" "${nproc_per_node}") --save_freq 3 --print_freq 500 \
     --lr=$(lr_scale "${BASE_LR}") \
     --keep_trans_lr=$(lr_scale "${BASE_KEEP_TRANS_LR}") \
     --text_encoder_lr=$(lr_scale "${BASE_TEXT_ENCODER_LR}") \
     --box_select_lr=$(lr_scale "${BASE_BOX_SELECT_LR}") \
     --seg_lr=$(lr_scale "${BASE_SEG_LR}") \
-    --voxel_size=0.01 --num_workers=32 \
-    --dataset ${DATASET} --test_dataset ${DATASET} \
-    --detect_intermediate \
+    --voxel_size=0.01 --num_workers=8 \
+    --dataset scanrefer --test_dataset scanrefer \
+    --detect_intermediate --joint_det \
     --log_dir "${log_dir}" \
     --augment_det \
-    --lr_decay_epochs 0 400\
+    --lr_decay_epochs 30\
+    --load_optimizer \
+    --load_scheduler \
     --tf32_matmul ${TF32_MATMUL} \
     --tf32_cudnn ${TF32_CUDNN} \
     "${train_extra_args[@]}" \
-    --use_external_attn_bi_layer 0 2\
-    --use_text_guided_external_attn_bi_layer 0 2\
-    --use_film_text_guided_external_attn_bi_layer 0 2\
-    --rng_seed ${RNG_SEED}\
-    --external_attn_k_keep0 64\
-    --external_attn_k_keep1 64\
-    --external_attn_k_com 64\
-    --external_attn_k_seg128 64\
-    --external_attn_k_seg64 64\
-    --prune_threshold_0 0.35\
-    --prune_threshold_1 0.35\
-    --checkpoint_path ${PWD}/scripts/experiments/strefer/EA02/strefer/2026-05-06_12-22-22/ckpt_epoch_24.pth\
-    # --load_optimizer \
-    # --load_scheduler \
+    --use_external_attn_bi_layer 0\
+    --use_text_guided_external_attn_bi_layer 0\
+    --use_film_text_guided_external_attn_bi_layer 0\
+    --use_refine \
+    --use_seg \
+    --checkpoint_path ${PWD}/scripts/experiments/SEG_tps_thres32/SEG_tps_thres_seg_single_multi_32_SEGEA_resume/scanrefer/2026-05-08_18-02-49/ckpt_epoch_246.pth \
+    --top_pts_threshold 32\
+    --top_pts_threshold_det 32\
+    --use_seg_external_self_attn \
     # --com_threshold 0.15\
     # --num_samples_com 1800\
-    # --use_refine \
-    # --use_seg \
-    # --use_seg_external_self_attn \
     
 if [[ "${OCCUPY_GPU_AFTER_TRAIN:-0}" == "1" ]]; then
     echo "Post-train GPU occupy enabled (OCCUPY_GPU_AFTER_TRAIN=1)."
-    torchrun --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
+    python -m torch.distributed.launch --nproc_per_node=$nproc_per_node ~/lxy/occupy_GPU_cal.py
 else
     echo "Skip post-train GPU occupy (set OCCUPY_GPU_AFTER_TRAIN=1 to enable)."
 fi
