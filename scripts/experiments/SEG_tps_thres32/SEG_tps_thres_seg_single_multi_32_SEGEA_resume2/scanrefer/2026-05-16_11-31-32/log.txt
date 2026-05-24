@@ -482,3 +482,1018 @@
 [05/17 22:37:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 296, total time 2482.58, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
 [05/17 22:49:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [297][500/1737]  
 [05/17 22:49:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4012 	cls_loss 0.1228 	com_loss 0.1032 	keep_loss 0.0607 	loss 1.9472 	refine_bbox_loss 1.1525 	refine_score_loss 0.0000 	seg_loss 0.0618 	seg_loss_dice 0.0449 	
+[05/17 23:01:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [297][1000/1737]  
+[05/17 23:01:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4019 	cls_loss 0.1236 	com_loss 0.1040 	keep_loss 0.0605 	loss 1.9931 	refine_bbox_loss 1.1967 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0449 	
+[05/17 23:13:21] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [297][1500/1737]  
+[05/17 23:13:21] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4021 	cls_loss 0.1234 	com_loss 0.1046 	keep_loss 0.0603 	loss 2.0484 	refine_bbox_loss 1.2511 	refine_score_loss 0.0000 	seg_loss 0.0618 	seg_loss_dice 0.0451 	
+[05/17 23:19:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 297, total time 2509.27, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/17 23:20:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [297]  
+[05/17 23:20:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55911
+[05/17 23:20:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48801
+[05/17 23:20:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5788809423643247
+[05/17 23:20:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5098864114429954
+[05/17 23:20:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.210758, visual=0.046065, text=0.008729, fusion_wo_head=0.064048, head=0.089368
+[05/17 23:20:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.011084, bi_layer1=0.008713, bi_layer2=0.005593, total=0.025390
+[05/17 23:20:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1430.21, avg_reserved=13621.65, peak_allocated=5705.57, peak_reserved=32554.00, warmup_iters=20
+[05/17 23:32:31] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [298][500/1737]  
+[05/17 23:32:31] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4072 	cls_loss 0.1235 	com_loss 0.1036 	keep_loss 0.0613 	loss 2.0976 	refine_bbox_loss 1.2941 	refine_score_loss 0.0000 	seg_loss 0.0625 	seg_loss_dice 0.0454 	
+[05/17 23:44:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [298][1000/1737]  
+[05/17 23:44:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4059 	cls_loss 0.1250 	com_loss 0.1055 	keep_loss 0.0616 	loss 2.1172 	refine_bbox_loss 1.3121 	refine_score_loss 0.0000 	seg_loss 0.0618 	seg_loss_dice 0.0451 	
+[05/17 23:56:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [298][1500/1737]  
+[05/17 23:56:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4046 	cls_loss 0.1248 	com_loss 0.1053 	keep_loss 0.0612 	loss 2.0901 	refine_bbox_loss 1.2875 	refine_score_loss 0.0000 	seg_loss 0.0618 	seg_loss_dice 0.0450 	
+[05/18 00:01:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 298, total time 2483.88, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 00:13:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [299][500/1737]  
+[05/18 00:13:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4090 	cls_loss 0.1263 	com_loss 0.1062 	keep_loss 0.0605 	loss 2.1277 	refine_bbox_loss 1.3202 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0445 	
+[05/18 00:25:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [299][1000/1737]  
+[05/18 00:25:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4053 	cls_loss 0.1266 	com_loss 0.1072 	keep_loss 0.0607 	loss 2.1462 	refine_bbox_loss 1.3400 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0448 	
+[05/18 00:37:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [299][1500/1737]  
+[05/18 00:37:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4058 	cls_loss 0.1262 	com_loss 0.1066 	keep_loss 0.0610 	loss 2.1025 	refine_bbox_loss 1.2967 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0446 	
+[05/18 00:43:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 299, total time 2503.22, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 00:55:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [300][500/1737]  
+[05/18 00:55:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4027 	cls_loss 0.1237 	com_loss 0.1043 	keep_loss 0.0608 	loss 1.9866 	refine_bbox_loss 1.1870 	refine_score_loss 0.0000 	seg_loss 0.0625 	seg_loss_dice 0.0456 	
+[05/18 01:07:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [300][1000/1737]  
+[05/18 01:07:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4037 	cls_loss 0.1238 	com_loss 0.1044 	keep_loss 0.0605 	loss 2.0920 	refine_bbox_loss 1.2926 	refine_score_loss 0.0000 	seg_loss 0.0618 	seg_loss_dice 0.0453 	
+[05/18 01:19:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [300][1500/1737]  
+[05/18 01:19:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4020 	cls_loss 0.1241 	com_loss 0.1049 	keep_loss 0.0609 	loss 2.0812 	refine_bbox_loss 1.2826 	refine_score_loss 0.0000 	seg_loss 0.0617 	seg_loss_dice 0.0451 	
+[05/18 01:25:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 300, total time 2498.31, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [300]  
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56216
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48896
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5816154816996214
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5111485065208246
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.210580, visual=0.046550, text=0.008482, fusion_wo_head=0.064877, head=0.088279
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010159, bi_layer1=0.008860, bi_layer2=0.006020, total=0.025040
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1433.46, avg_reserved=15612.73, peak_allocated=5712.37, peak_reserved=30648.00, warmup_iters=20
+[05/18 01:38:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [301][500/1737]  
+[05/18 01:38:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4110 	cls_loss 0.1263 	com_loss 0.1057 	keep_loss 0.0612 	loss 2.1565 	refine_bbox_loss 1.3466 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0444 	
+[05/18 01:50:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [301][1000/1737]  
+[05/18 01:50:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4067 	cls_loss 0.1250 	com_loss 0.1056 	keep_loss 0.0611 	loss 2.1544 	refine_bbox_loss 1.3500 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0445 	
+[05/18 02:02:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [301][1500/1737]  
+[05/18 02:02:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4058 	cls_loss 0.1249 	com_loss 0.1056 	keep_loss 0.0612 	loss 2.1493 	refine_bbox_loss 1.3459 	refine_score_loss 0.0000 	seg_loss 0.0613 	seg_loss_dice 0.0446 	
+[05/18 02:08:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 301, total time 2503.61, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 02:20:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [302][500/1737]  
+[05/18 02:20:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4056 	cls_loss 0.1266 	com_loss 0.1063 	keep_loss 0.0616 	loss 2.1608 	refine_bbox_loss 1.3526 	refine_score_loss 0.0000 	seg_loss 0.0629 	seg_loss_dice 0.0452 	
+[05/18 02:32:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [302][1000/1737]  
+[05/18 02:32:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4082 	cls_loss 0.1267 	com_loss 0.1063 	keep_loss 0.0615 	loss 2.1510 	refine_bbox_loss 1.3405 	refine_score_loss 0.0000 	seg_loss 0.0627 	seg_loss_dice 0.0451 	
+[05/18 02:44:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [302][1500/1737]  
+[05/18 02:44:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4069 	cls_loss 0.1267 	com_loss 0.1064 	keep_loss 0.0618 	loss 2.1156 	refine_bbox_loss 1.3069 	refine_score_loss 0.0000 	seg_loss 0.0621 	seg_loss_dice 0.0450 	
+[05/18 02:50:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 302, total time 2519.71, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 03:02:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [303][500/1737]  
+[05/18 03:02:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4005 	cls_loss 0.1244 	com_loss 0.1051 	keep_loss 0.0598 	loss 2.0878 	refine_bbox_loss 1.2922 	refine_score_loss 0.0000 	seg_loss 0.0613 	seg_loss_dice 0.0443 	
+[05/18 03:14:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [303][1000/1737]  
+[05/18 03:14:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4031 	cls_loss 0.1247 	com_loss 0.1053 	keep_loss 0.0605 	loss 2.1337 	refine_bbox_loss 1.3341 	refine_score_loss 0.0000 	seg_loss 0.0613 	seg_loss_dice 0.0447 	
+[05/18 03:27:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [303][1500/1737]  
+[05/18 03:27:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4034 	cls_loss 0.1250 	com_loss 0.1059 	keep_loss 0.0606 	loss 2.1179 	refine_bbox_loss 1.3169 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0447 	
+[05/18 03:33:31] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 303, total time 2591.41, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 03:35:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [303]  
+[05/18 03:35:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56069
+[05/18 03:35:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48727
+[05/18 03:35:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5802482120319731
+[05/18 03:35:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5112536811106436
+[05/18 03:35:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.230342, visual=0.047915, text=0.009505, fusion_wo_head=0.071078, head=0.098869
+[05/18 03:35:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.012257, bi_layer1=0.010022, bi_layer2=0.006747, total=0.029025
+[05/18 03:35:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1436.71, avg_reserved=16672.00, peak_allocated=5711.63, peak_reserved=30662.00, warmup_iters=20
+[05/18 03:48:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [304][500/1737]  
+[05/18 03:48:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4037 	cls_loss 0.1247 	com_loss 0.1051 	keep_loss 0.0610 	loss 2.0599 	refine_bbox_loss 1.2594 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0449 	
+[05/18 04:00:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [304][1000/1737]  
+[05/18 04:00:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4039 	cls_loss 0.1257 	com_loss 0.1061 	keep_loss 0.0610 	loss 2.1400 	refine_bbox_loss 1.3370 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0449 	
+[05/18 04:13:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [304][1500/1737]  
+[05/18 04:13:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4052 	cls_loss 0.1251 	com_loss 0.1055 	keep_loss 0.0609 	loss 2.1534 	refine_bbox_loss 1.3504 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0449 	
+[05/18 04:20:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 304, total time 2705.17, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 04:33:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [305][500/1737]  
+[05/18 04:33:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4049 	cls_loss 0.1261 	com_loss 0.1061 	keep_loss 0.0603 	loss 2.1581 	refine_bbox_loss 1.3537 	refine_score_loss 0.0000 	seg_loss 0.0618 	seg_loss_dice 0.0451 	
+[05/18 04:45:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [305][1000/1737]  
+[05/18 04:45:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4070 	cls_loss 0.1268 	com_loss 0.1067 	keep_loss 0.0609 	loss 2.1545 	refine_bbox_loss 1.3460 	refine_score_loss 0.0000 	seg_loss 0.0619 	seg_loss_dice 0.0452 	
+[05/18 04:58:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [305][1500/1737]  
+[05/18 04:58:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4053 	cls_loss 0.1261 	com_loss 0.1064 	keep_loss 0.0607 	loss 2.1133 	refine_bbox_loss 1.3084 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0449 	
+[05/18 05:03:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 305, total time 2627.41, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 05:15:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [306][500/1737]  
+[05/18 05:15:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3983 	cls_loss 0.1226 	com_loss 0.1045 	keep_loss 0.0609 	loss 1.9607 	refine_bbox_loss 1.1687 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0444 	
+[05/18 05:28:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [306][1000/1737]  
+[05/18 05:28:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4012 	cls_loss 0.1238 	com_loss 0.1051 	keep_loss 0.0609 	loss 2.0090 	refine_bbox_loss 1.2119 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0447 	
+[05/18 05:40:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [306][1500/1737]  
+[05/18 05:40:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3989 	cls_loss 0.1229 	com_loss 0.1043 	keep_loss 0.0608 	loss 2.0296 	refine_bbox_loss 1.2368 	refine_score_loss 0.0000 	seg_loss 0.0613 	seg_loss_dice 0.0447 	
+[05/18 05:45:45] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 306, total time 2512.68, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 05:47:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [306]  
+[05/18 05:47:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56005
+[05/18 05:47:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48538
+[05/18 05:47:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5793016407236011
+[05/18 05:47:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5111485065208246
+[05/18 05:47:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.218708, visual=0.046932, text=0.008356, fusion_wo_head=0.064915, head=0.096192
+[05/18 05:47:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010788, bi_layer1=0.008643, bi_layer2=0.005899, total=0.025330
+[05/18 05:47:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1439.30, avg_reserved=18242.17, peak_allocated=5716.59, peak_reserved=29136.00, warmup_iters=20
+[05/18 05:59:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [307][500/1737]  
+[05/18 05:59:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4063 	cls_loss 0.1255 	com_loss 0.1067 	keep_loss 0.0608 	loss 2.0537 	refine_bbox_loss 1.2485 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0448 	
+[05/18 06:11:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [307][1000/1737]  
+[05/18 06:11:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4065 	cls_loss 0.1249 	com_loss 0.1058 	keep_loss 0.0609 	loss 2.1275 	refine_bbox_loss 1.3232 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0448 	
+[05/18 06:23:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [307][1500/1737]  
+[05/18 06:23:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4045 	cls_loss 0.1251 	com_loss 0.1059 	keep_loss 0.0608 	loss 2.1119 	refine_bbox_loss 1.3098 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0448 	
+[05/18 06:28:55] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 307, total time 2504.57, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 06:41:08] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [308][500/1737]  
+[05/18 06:41:08] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4003 	cls_loss 0.1248 	com_loss 0.1048 	keep_loss 0.0605 	loss 1.9639 	refine_bbox_loss 1.1678 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0448 	
+[05/18 06:53:08] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [308][1000/1737]  
+[05/18 06:53:08] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4031 	cls_loss 0.1252 	com_loss 0.1059 	keep_loss 0.0606 	loss 2.0014 	refine_bbox_loss 1.2004 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0450 	
+[05/18 07:05:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [308][1500/1737]  
+[05/18 07:05:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4012 	cls_loss 0.1252 	com_loss 0.1059 	keep_loss 0.0609 	loss 2.0027 	refine_bbox_loss 1.2033 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0449 	
+[05/18 07:10:51] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 308, total time 2515.77, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 07:22:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [309][500/1737]  
+[05/18 07:22:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3971 	cls_loss 0.1233 	com_loss 0.1046 	keep_loss 0.0607 	loss 1.8607 	refine_bbox_loss 1.0697 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0444 	
+[05/18 07:34:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [309][1000/1737]  
+[05/18 07:34:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4006 	cls_loss 0.1242 	com_loss 0.1050 	keep_loss 0.0611 	loss 1.9445 	refine_bbox_loss 1.1486 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0444 	
+[05/18 07:46:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [309][1500/1737]  
+[05/18 07:46:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4037 	cls_loss 0.1241 	com_loss 0.1046 	keep_loss 0.0608 	loss 1.9852 	refine_bbox_loss 1.1867 	refine_score_loss 0.0000 	seg_loss 0.0609 	seg_loss_dice 0.0444 	
+[05/18 07:52:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 309, total time 2505.39, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 07:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [309]  
+[05/18 07:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55942
+[05/18 07:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48706
+[05/18 07:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5799326882625158
+[05/18 07:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5109381573411864
+[05/18 07:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.207676, visual=0.045960, text=0.008405, fusion_wo_head=0.062963, head=0.087978
+[05/18 07:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010031, bi_layer1=0.008762, bi_layer2=0.005523, total=0.024316
+[05/18 07:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1439.46, avg_reserved=14478.86, peak_allocated=5714.45, peak_reserved=35184.00, warmup_iters=20
+[05/18 08:06:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [310][500/1737]  
+[05/18 08:06:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4025 	cls_loss 0.1206 	com_loss 0.1017 	keep_loss 0.0593 	loss 2.1172 	refine_bbox_loss 1.3268 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0450 	
+[05/18 08:18:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [310][1000/1737]  
+[05/18 08:18:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4036 	cls_loss 0.1233 	com_loss 0.1039 	keep_loss 0.0602 	loss 2.0955 	refine_bbox_loss 1.2982 	refine_score_loss 0.0000 	seg_loss 0.0613 	seg_loss_dice 0.0449 	
+[05/18 08:30:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [310][1500/1737]  
+[05/18 08:30:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4062 	cls_loss 0.1244 	com_loss 0.1049 	keep_loss 0.0604 	loss 2.1325 	refine_bbox_loss 1.3300 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0451 	
+[05/18 08:35:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 310, total time 2511.21, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 08:47:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [311][500/1737]  
+[05/18 08:47:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4071 	cls_loss 0.1255 	com_loss 0.1059 	keep_loss 0.0618 	loss 2.3310 	refine_bbox_loss 1.5239 	refine_score_loss 0.0000 	seg_loss 0.0617 	seg_loss_dice 0.0450 	
+[05/18 08:59:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [311][1000/1737]  
+[05/18 08:59:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4056 	cls_loss 0.1244 	com_loss 0.1053 	keep_loss 0.0611 	loss 2.2479 	refine_bbox_loss 1.4450 	refine_score_loss 0.0000 	seg_loss 0.0616 	seg_loss_dice 0.0450 	
+[05/18 09:11:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [311][1500/1737]  
+[05/18 09:11:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4044 	cls_loss 0.1243 	com_loss 0.1055 	keep_loss 0.0608 	loss 2.1709 	refine_bbox_loss 1.3699 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0450 	
+[05/18 09:17:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 311, total time 2492.96, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 09:29:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [312][500/1737]  
+[05/18 09:29:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4064 	cls_loss 0.1248 	com_loss 0.1058 	keep_loss 0.0622 	loss 2.2452 	refine_bbox_loss 1.4394 	refine_score_loss 0.0000 	seg_loss 0.0621 	seg_loss_dice 0.0446 	
+[05/18 09:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [312][1000/1737]  
+[05/18 09:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4024 	cls_loss 0.1242 	com_loss 0.1049 	keep_loss 0.0606 	loss 2.1405 	refine_bbox_loss 1.3423 	refine_score_loss 0.0000 	seg_loss 0.0613 	seg_loss_dice 0.0448 	
+[05/18 09:53:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [312][1500/1737]  
+[05/18 09:53:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4014 	cls_loss 0.1237 	com_loss 0.1043 	keep_loss 0.0605 	loss 2.0941 	refine_bbox_loss 1.2980 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0447 	
+[05/18 09:58:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 312, total time 2496.19, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 10:00:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [312]  
+[05/18 10:00:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55942
+[05/18 10:00:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48664
+[05/18 10:00:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5799326882625158
+[05/18 10:00:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.509465713083719
+[05/18 10:00:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.207843, visual=0.045322, text=0.008062, fusion_wo_head=0.064853, head=0.087318
+[05/18 10:00:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010708, bi_layer1=0.008456, bi_layer2=0.005956, total=0.025120
+[05/18 10:00:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1442.51, avg_reserved=15510.02, peak_allocated=5717.72, peak_reserved=29590.00, warmup_iters=20
+[05/18 10:12:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [313][500/1737]  
+[05/18 10:12:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4074 	cls_loss 0.1237 	com_loss 0.1043 	keep_loss 0.0603 	loss 2.0367 	refine_bbox_loss 1.2358 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0446 	
+[05/18 10:24:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [313][1000/1737]  
+[05/18 10:24:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4062 	cls_loss 0.1226 	com_loss 0.1037 	keep_loss 0.0604 	loss 2.0515 	refine_bbox_loss 1.2529 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0449 	
+[05/18 10:36:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [313][1500/1737]  
+[05/18 10:36:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4071 	cls_loss 0.1228 	com_loss 0.1038 	keep_loss 0.0606 	loss 2.1181 	refine_bbox_loss 1.3174 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0450 	
+[05/18 10:42:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 313, total time 2504.48, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 10:54:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [314][500/1737]  
+[05/18 10:54:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4014 	cls_loss 0.1225 	com_loss 0.1040 	keep_loss 0.0612 	loss 1.9998 	refine_bbox_loss 1.2046 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0451 	
+[05/18 11:05:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [314][1000/1737]  
+[05/18 11:05:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4012 	cls_loss 0.1230 	com_loss 0.1039 	keep_loss 0.0607 	loss 2.0439 	refine_bbox_loss 1.2496 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0448 	
+[05/18 11:17:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [314][1500/1737]  
+[05/18 11:17:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4014 	cls_loss 0.1237 	com_loss 0.1047 	keep_loss 0.0609 	loss 2.0654 	refine_bbox_loss 1.2690 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0448 	
+[05/18 11:23:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 314, total time 2483.57, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 11:35:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [315][500/1737]  
+[05/18 11:35:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4069 	cls_loss 0.1264 	com_loss 0.1070 	keep_loss 0.0605 	loss 2.1610 	refine_bbox_loss 1.3549 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0447 	
+[05/18 11:47:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [315][1000/1737]  
+[05/18 11:47:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4078 	cls_loss 0.1259 	com_loss 0.1054 	keep_loss 0.0612 	loss 2.1047 	refine_bbox_loss 1.2977 	refine_score_loss 0.0000 	seg_loss 0.0618 	seg_loss_dice 0.0450 	
+[05/18 11:59:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [315][1500/1737]  
+[05/18 11:59:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4087 	cls_loss 0.1261 	com_loss 0.1058 	keep_loss 0.0611 	loss 2.1433 	refine_bbox_loss 1.3350 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0451 	
+[05/18 12:05:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 315, total time 2493.77, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 12:06:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [315]  
+[05/18 12:06:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55785
+[05/18 12:06:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48286
+[05/18 12:06:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5791964661337821
+[05/18 12:06:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5098864114429954
+[05/18 12:06:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.214504, visual=0.047036, text=0.008796, fusion_wo_head=0.064503, head=0.091635
+[05/18 12:06:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010837, bi_layer1=0.009159, bi_layer2=0.005695, total=0.025691
+[05/18 12:06:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1448.34, avg_reserved=16219.60, peak_allocated=5723.41, peak_reserved=32394.00, warmup_iters=20
+[05/18 12:18:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [316][500/1737]  
+[05/18 12:18:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4016 	cls_loss 0.1251 	com_loss 0.1068 	keep_loss 0.0606 	loss 2.0441 	refine_bbox_loss 1.2437 	refine_score_loss 0.0000 	seg_loss 0.0616 	seg_loss_dice 0.0448 	
+[05/18 12:30:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [316][1000/1737]  
+[05/18 12:30:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4048 	cls_loss 0.1242 	com_loss 0.1057 	keep_loss 0.0606 	loss 2.0595 	refine_bbox_loss 1.2588 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0447 	
+[05/18 12:42:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [316][1500/1737]  
+[05/18 12:42:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4045 	cls_loss 0.1242 	com_loss 0.1053 	keep_loss 0.0607 	loss 2.0990 	refine_bbox_loss 1.2988 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0447 	
+[05/18 12:47:55] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 316, total time 2488.42, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 12:59:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [317][500/1737]  
+[05/18 12:59:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4098 	cls_loss 0.1253 	com_loss 0.1052 	keep_loss 0.0610 	loss 2.1714 	refine_bbox_loss 1.3639 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0451 	
+[05/18 13:11:51] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [317][1000/1737]  
+[05/18 13:11:51] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4051 	cls_loss 0.1256 	com_loss 0.1061 	keep_loss 0.0608 	loss 2.1047 	refine_bbox_loss 1.3020 	refine_score_loss 0.0000 	seg_loss 0.0604 	seg_loss_dice 0.0447 	
+[05/18 13:23:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [317][1500/1737]  
+[05/18 13:23:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4037 	cls_loss 0.1252 	com_loss 0.1057 	keep_loss 0.0605 	loss 2.0669 	refine_bbox_loss 1.2662 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0449 	
+[05/18 13:29:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 317, total time 2496.54, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 13:41:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [318][500/1737]  
+[05/18 13:41:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4043 	cls_loss 0.1253 	com_loss 0.1051 	keep_loss 0.0607 	loss 2.1248 	refine_bbox_loss 1.3239 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0450 	
+[05/18 13:53:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [318][1000/1737]  
+[05/18 13:53:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4048 	cls_loss 0.1253 	com_loss 0.1052 	keep_loss 0.0610 	loss 2.1102 	refine_bbox_loss 1.3081 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0449 	
+[05/18 14:05:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [318][1500/1737]  
+[05/18 14:05:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4052 	cls_loss 0.1250 	com_loss 0.1054 	keep_loss 0.0612 	loss 2.1136 	refine_bbox_loss 1.3108 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0449 	
+[05/18 14:11:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 318, total time 2505.80, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 14:12:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [318]  
+[05/18 14:12:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55774
+[05/18 14:12:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48517
+[05/18 14:12:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5783550694152293
+[05/18 14:12:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5085191417753471
+[05/18 14:12:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.202518, visual=0.043867, text=0.008304, fusion_wo_head=0.062881, head=0.085164
+[05/18 14:12:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010288, bi_layer1=0.008997, bi_layer2=0.005798, total=0.025083
+[05/18 14:12:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1455.05, avg_reserved=14730.92, peak_allocated=5729.11, peak_reserved=35052.00, warmup_iters=20
+[05/18 14:24:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [319][500/1737]  
+[05/18 14:24:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4027 	cls_loss 0.1246 	com_loss 0.1054 	keep_loss 0.0612 	loss 2.0433 	refine_bbox_loss 1.2429 	refine_score_loss 0.0000 	seg_loss 0.0616 	seg_loss_dice 0.0449 	
+[05/18 14:36:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [319][1000/1737]  
+[05/18 14:36:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4043 	cls_loss 0.1253 	com_loss 0.1060 	keep_loss 0.0610 	loss 2.0506 	refine_bbox_loss 1.2475 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0451 	
+[05/18 14:48:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [319][1500/1737]  
+[05/18 14:48:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4035 	cls_loss 0.1247 	com_loss 0.1051 	keep_loss 0.0609 	loss 2.0671 	refine_bbox_loss 1.2668 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0448 	
+[05/18 14:54:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 319, total time 2498.36, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 15:06:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [320][500/1737]  
+[05/18 15:06:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4067 	cls_loss 0.1253 	com_loss 0.1063 	keep_loss 0.0619 	loss 2.0802 	refine_bbox_loss 1.2739 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0449 	
+[05/18 15:18:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [320][1000/1737]  
+[05/18 15:18:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4034 	cls_loss 0.1244 	com_loss 0.1056 	keep_loss 0.0611 	loss 2.0043 	refine_bbox_loss 1.2048 	refine_score_loss 0.0000 	seg_loss 0.0604 	seg_loss_dice 0.0446 	
+[05/18 15:30:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [320][1500/1737]  
+[05/18 15:30:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4038 	cls_loss 0.1251 	com_loss 0.1062 	keep_loss 0.0611 	loss 2.0098 	refine_bbox_loss 1.2086 	refine_score_loss 0.0000 	seg_loss 0.0604 	seg_loss_dice 0.0446 	
+[05/18 15:35:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 320, total time 2482.17, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 15:47:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [321][500/1737]  
+[05/18 15:47:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4096 	cls_loss 0.1234 	com_loss 0.1036 	keep_loss 0.0602 	loss 2.2009 	refine_bbox_loss 1.3985 	refine_score_loss 0.0000 	seg_loss 0.0609 	seg_loss_dice 0.0446 	
+[05/18 15:59:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [321][1000/1737]  
+[05/18 15:59:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4100 	cls_loss 0.1239 	com_loss 0.1043 	keep_loss 0.0606 	loss 2.2224 	refine_bbox_loss 1.4170 	refine_score_loss 0.0000 	seg_loss 0.0616 	seg_loss_dice 0.0449 	
+[05/18 16:11:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [321][1500/1737]  
+[05/18 16:11:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4050 	cls_loss 0.1235 	com_loss 0.1043 	keep_loss 0.0608 	loss 2.1828 	refine_bbox_loss 1.3834 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0448 	
+[05/18 16:17:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 321, total time 2497.54, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 16:18:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [321]  
+[05/18 16:18:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55869
+[05/18 16:18:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48570
+[05/18 16:18:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5774084981068573
+[05/18 16:18:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.509465713083719
+[05/18 16:18:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.210698, visual=0.045574, text=0.008598, fusion_wo_head=0.064304, head=0.089796
+[05/18 16:18:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010607, bi_layer1=0.009009, bi_layer2=0.005871, total=0.025488
+[05/18 16:18:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1456.87, avg_reserved=15429.38, peak_allocated=5733.27, peak_reserved=31878.00, warmup_iters=20
+[05/18 16:30:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [322][500/1737]  
+[05/18 16:30:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4071 	cls_loss 0.1269 	com_loss 0.1057 	keep_loss 0.0607 	loss 2.1028 	refine_bbox_loss 1.2986 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0445 	
+[05/18 16:42:39] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [322][1000/1737]  
+[05/18 16:42:39] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4054 	cls_loss 0.1255 	com_loss 0.1050 	keep_loss 0.0602 	loss 2.0798 	refine_bbox_loss 1.2786 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0448 	
+[05/18 16:54:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [322][1500/1737]  
+[05/18 16:54:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4049 	cls_loss 0.1262 	com_loss 0.1061 	keep_loss 0.0607 	loss 2.1012 	refine_bbox_loss 1.2978 	refine_score_loss 0.0000 	seg_loss 0.0604 	seg_loss_dice 0.0450 	
+[05/18 17:00:08] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 322, total time 2487.99, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 17:12:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [323][500/1737]  
+[05/18 17:12:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4030 	cls_loss 0.1251 	com_loss 0.1063 	keep_loss 0.0608 	loss 2.0064 	refine_bbox_loss 1.2043 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0454 	
+[05/18 17:24:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [323][1000/1737]  
+[05/18 17:24:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4045 	cls_loss 0.1250 	com_loss 0.1054 	keep_loss 0.0607 	loss 2.0724 	refine_bbox_loss 1.2701 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0452 	
+[05/18 17:36:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [323][1500/1737]  
+[05/18 17:36:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4036 	cls_loss 0.1249 	com_loss 0.1051 	keep_loss 0.0604 	loss 2.0748 	refine_bbox_loss 1.2749 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0450 	
+[05/18 17:42:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 323, total time 2511.94, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 17:53:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [324][500/1737]  
+[05/18 17:53:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4000 	cls_loss 0.1233 	com_loss 0.1030 	keep_loss 0.0608 	loss 1.9979 	refine_bbox_loss 1.2066 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0445 	
+[05/18 18:05:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [324][1000/1737]  
+[05/18 18:05:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3990 	cls_loss 0.1228 	com_loss 0.1036 	keep_loss 0.0604 	loss 2.0582 	refine_bbox_loss 1.2675 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0448 	
+[05/18 18:17:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [324][1500/1737]  
+[05/18 18:17:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4006 	cls_loss 0.1231 	com_loss 0.1038 	keep_loss 0.0606 	loss 2.0510 	refine_bbox_loss 1.2574 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0448 	
+[05/18 18:23:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 324, total time 2486.67, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 18:24:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [324]  
+[05/18 18:24:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55827
+[05/18 18:24:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48475
+[05/18 18:24:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.578144720235591
+[05/18 18:24:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5097812368531762
+[05/18 18:24:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.211336, visual=0.046095, text=0.008371, fusion_wo_head=0.064855, head=0.089699
+[05/18 18:24:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010760, bi_layer1=0.008657, bi_layer2=0.006113, total=0.025529
+[05/18 18:24:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1458.04, avg_reserved=16074.38, peak_allocated=5731.76, peak_reserved=30070.00, warmup_iters=20
+[05/18 18:36:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [325][500/1737]  
+[05/18 18:36:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4047 	cls_loss 0.1225 	com_loss 0.1035 	keep_loss 0.0607 	loss 2.1285 	refine_bbox_loss 1.3319 	refine_score_loss 0.0000 	seg_loss 0.0609 	seg_loss_dice 0.0444 	
+[05/18 18:48:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [325][1000/1737]  
+[05/18 18:48:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4057 	cls_loss 0.1244 	com_loss 0.1048 	keep_loss 0.0610 	loss 2.1725 	refine_bbox_loss 1.3716 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0445 	
+[05/18 19:00:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [325][1500/1737]  
+[05/18 19:00:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4075 	cls_loss 0.1252 	com_loss 0.1054 	keep_loss 0.0611 	loss 2.1810 	refine_bbox_loss 1.3760 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0447 	
+[05/18 19:06:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 325, total time 2492.42, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 19:18:21] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [326][500/1737]  
+[05/18 19:18:21] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4046 	cls_loss 0.1259 	com_loss 0.1069 	keep_loss 0.0620 	loss 2.1127 	refine_bbox_loss 1.3080 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0448 	
+[05/18 19:30:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [326][1000/1737]  
+[05/18 19:30:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4014 	cls_loss 0.1254 	com_loss 0.1062 	keep_loss 0.0612 	loss 2.0331 	refine_bbox_loss 1.2335 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0448 	
+[05/18 19:42:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [326][1500/1737]  
+[05/18 19:42:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1250 	com_loss 0.1056 	keep_loss 0.0610 	loss 2.0394 	refine_bbox_loss 1.2386 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0447 	
+[05/18 19:48:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 326, total time 2502.36, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 19:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [327][500/1737]  
+[05/18 19:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4010 	cls_loss 0.1223 	com_loss 0.1031 	keep_loss 0.0616 	loss 2.0857 	refine_bbox_loss 1.2914 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0448 	
+[05/18 20:11:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [327][1000/1737]  
+[05/18 20:11:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4020 	cls_loss 0.1231 	com_loss 0.1038 	keep_loss 0.0609 	loss 2.1189 	refine_bbox_loss 1.3233 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0448 	
+[05/18 20:24:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [327][1500/1737]  
+[05/18 20:24:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4020 	cls_loss 0.1227 	com_loss 0.1034 	keep_loss 0.0608 	loss 2.1017 	refine_bbox_loss 1.3075 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0448 	
+[05/18 20:29:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 327, total time 2504.23, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 20:31:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [327]  
+[05/18 20:31:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55974
+[05/18 20:31:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48517
+[05/18 20:31:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5804585612116113
+[05/18 20:31:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5109381573411864
+[05/18 20:31:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.215762, visual=0.048068, text=0.008357, fusion_wo_head=0.065995, head=0.090988
+[05/18 20:31:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010699, bi_layer1=0.008740, bi_layer2=0.005956, total=0.025394
+[05/18 20:31:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1456.36, avg_reserved=15152.90, peak_allocated=5730.03, peak_reserved=32064.00, warmup_iters=20
+[05/18 20:43:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [328][500/1737]  
+[05/18 20:43:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4035 	cls_loss 0.1262 	com_loss 0.1056 	keep_loss 0.0615 	loss 2.1953 	refine_bbox_loss 1.3938 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0449 	
+[05/18 20:55:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [328][1000/1737]  
+[05/18 20:55:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4051 	cls_loss 0.1250 	com_loss 0.1049 	keep_loss 0.0611 	loss 2.1499 	refine_bbox_loss 1.3493 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0446 	
+[05/18 21:07:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [328][1500/1737]  
+[05/18 21:07:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4041 	cls_loss 0.1251 	com_loss 0.1049 	keep_loss 0.0610 	loss 2.1123 	refine_bbox_loss 1.3123 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0446 	
+[05/18 21:12:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 328, total time 2492.06, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 21:24:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [329][500/1737]  
+[05/18 21:24:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3991 	cls_loss 0.1239 	com_loss 0.1043 	keep_loss 0.0594 	loss 2.0852 	refine_bbox_loss 1.2964 	refine_score_loss 0.0000 	seg_loss 0.0582 	seg_loss_dice 0.0439 	
+[05/18 21:36:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [329][1000/1737]  
+[05/18 21:36:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4013 	cls_loss 0.1249 	com_loss 0.1053 	keep_loss 0.0605 	loss 2.0928 	refine_bbox_loss 1.2961 	refine_score_loss 0.0000 	seg_loss 0.0600 	seg_loss_dice 0.0445 	
+[05/18 21:48:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [329][1500/1737]  
+[05/18 21:48:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4008 	cls_loss 0.1245 	com_loss 0.1051 	keep_loss 0.0605 	loss 2.0848 	refine_bbox_loss 1.2894 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0446 	
+[05/18 21:54:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 329, total time 2498.31, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 22:06:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [330][500/1737]  
+[05/18 22:06:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4052 	cls_loss 0.1245 	com_loss 0.1042 	keep_loss 0.0608 	loss 2.1277 	refine_bbox_loss 1.3267 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0451 	
+[05/18 22:18:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [330][1000/1737]  
+[05/18 22:18:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4051 	cls_loss 0.1240 	com_loss 0.1041 	keep_loss 0.0602 	loss 2.1167 	refine_bbox_loss 1.3181 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0445 	
+[05/18 22:30:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [330][1500/1737]  
+[05/18 22:30:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4041 	cls_loss 0.1239 	com_loss 0.1041 	keep_loss 0.0605 	loss 2.0726 	refine_bbox_loss 1.2749 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0446 	
+[05/18 22:36:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 330, total time 2501.61, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 22:37:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [330]  
+[05/18 22:37:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55827
+[05/18 22:37:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48528
+[05/18 22:37:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5786705931846866
+[05/18 22:37:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5117795540597392
+[05/18 22:37:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.216871, visual=0.046569, text=0.008861, fusion_wo_head=0.066285, head=0.092632
+[05/18 22:37:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.011351, bi_layer1=0.009168, bi_layer2=0.006103, total=0.026622
+[05/18 22:37:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1462.84, avg_reserved=16513.47, peak_allocated=5740.51, peak_reserved=28388.00, warmup_iters=20
+[05/18 22:49:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [331][500/1737]  
+[05/18 22:49:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4107 	cls_loss 0.1269 	com_loss 0.1079 	keep_loss 0.0615 	loss 2.1361 	refine_bbox_loss 1.3250 	refine_score_loss 0.0000 	seg_loss 0.0598 	seg_loss_dice 0.0443 	
+[05/18 23:01:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [331][1000/1737]  
+[05/18 23:01:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4069 	cls_loss 0.1260 	com_loss 0.1067 	keep_loss 0.0614 	loss 2.1132 	refine_bbox_loss 1.3072 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0447 	
+[05/18 23:13:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [331][1500/1737]  
+[05/18 23:13:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4082 	cls_loss 0.1249 	com_loss 0.1052 	keep_loss 0.0610 	loss 2.1458 	refine_bbox_loss 1.3415 	refine_score_loss 0.0000 	seg_loss 0.0604 	seg_loss_dice 0.0446 	
+[05/18 23:18:55] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 331, total time 2487.00, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/18 23:31:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [332][500/1737]  
+[05/18 23:31:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4108 	cls_loss 0.1263 	com_loss 0.1063 	keep_loss 0.0607 	loss 2.1156 	refine_bbox_loss 1.3058 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0447 	
+[05/18 23:42:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [332][1000/1737]  
+[05/18 23:42:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4066 	cls_loss 0.1263 	com_loss 0.1062 	keep_loss 0.0610 	loss 2.1730 	refine_bbox_loss 1.3677 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0447 	
+[05/18 23:54:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [332][1500/1737]  
+[05/18 23:54:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4050 	cls_loss 0.1251 	com_loss 0.1055 	keep_loss 0.0608 	loss 2.1476 	refine_bbox_loss 1.3457 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0448 	
+[05/19 00:00:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 332, total time 2498.76, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 00:12:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [333][500/1737]  
+[05/19 00:12:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4018 	cls_loss 0.1234 	com_loss 0.1042 	keep_loss 0.0600 	loss 2.1431 	refine_bbox_loss 1.3491 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0443 	
+[05/19 00:24:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [333][1000/1737]  
+[05/19 00:24:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4028 	cls_loss 0.1252 	com_loss 0.1060 	keep_loss 0.0604 	loss 2.1244 	refine_bbox_loss 1.3255 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0444 	
+[05/19 00:36:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [333][1500/1737]  
+[05/19 00:36:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4025 	cls_loss 0.1246 	com_loss 0.1051 	keep_loss 0.0605 	loss 2.1196 	refine_bbox_loss 1.3220 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0446 	
+[05/19 00:42:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 333, total time 2500.37, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 00:43:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [333]  
+[05/19 00:43:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56100
+[05/19 00:43:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48580
+[05/19 00:43:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.580143037442154
+[05/19 00:43:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5120950778291965
+[05/19 00:43:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.199193, visual=0.044019, text=0.008088, fusion_wo_head=0.061982, head=0.082899
+[05/19 00:43:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010193, bi_layer1=0.008379, bi_layer2=0.005627, total=0.024200
+[05/19 00:43:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1466.13, avg_reserved=14162.33, peak_allocated=5742.75, peak_reserved=31508.00, warmup_iters=20
+[05/19 00:55:39] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [334][500/1737]  
+[05/19 00:55:39] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3976 	cls_loss 0.1232 	com_loss 0.1052 	keep_loss 0.0602 	loss 2.0456 	refine_bbox_loss 1.2546 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0448 	
+[05/19 01:07:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [334][1000/1737]  
+[05/19 01:07:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4021 	cls_loss 0.1229 	com_loss 0.1041 	keep_loss 0.0604 	loss 2.0570 	refine_bbox_loss 1.2628 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0445 	
+[05/19 01:19:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [334][1500/1737]  
+[05/19 01:19:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4033 	cls_loss 0.1237 	com_loss 0.1048 	keep_loss 0.0606 	loss 2.0469 	refine_bbox_loss 1.2500 	refine_score_loss 0.0000 	seg_loss 0.0600 	seg_loss_dice 0.0445 	
+[05/19 01:25:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 334, total time 2504.90, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 01:37:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [335][500/1737]  
+[05/19 01:37:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4076 	cls_loss 0.1236 	com_loss 0.1038 	keep_loss 0.0603 	loss 2.1306 	refine_bbox_loss 1.3317 	refine_score_loss 0.0000 	seg_loss 0.0595 	seg_loss_dice 0.0441 	
+[05/19 01:49:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [335][1000/1737]  
+[05/19 01:49:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4044 	cls_loss 0.1234 	com_loss 0.1035 	keep_loss 0.0599 	loss 2.0943 	refine_bbox_loss 1.2983 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0444 	
+[05/19 02:01:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [335][1500/1737]  
+[05/19 02:01:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4035 	cls_loss 0.1237 	com_loss 0.1040 	keep_loss 0.0604 	loss 2.0808 	refine_bbox_loss 1.2844 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0445 	
+[05/19 02:07:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 335, total time 2503.01, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 02:19:09] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [336][500/1737]  
+[05/19 02:19:09] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4070 	cls_loss 0.1218 	com_loss 0.1024 	keep_loss 0.0600 	loss 2.0921 	refine_bbox_loss 1.2954 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0451 	
+[05/19 02:31:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [336][1000/1737]  
+[05/19 02:31:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4064 	cls_loss 0.1229 	com_loss 0.1025 	keep_loss 0.0603 	loss 2.1413 	refine_bbox_loss 1.3438 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0449 	
+[05/19 02:43:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [336][1500/1737]  
+[05/19 02:43:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4044 	cls_loss 0.1224 	com_loss 0.1023 	keep_loss 0.0600 	loss 2.0959 	refine_bbox_loss 1.3016 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0447 	
+[05/19 02:48:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 336, total time 2505.29, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 02:50:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [336]  
+[05/19 02:50:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55869
+[05/19 02:50:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48538
+[05/19 02:50:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5793016407236011
+[05/19 02:50:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5105174589819099
+[05/19 02:50:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.208824, visual=0.045884, text=0.008432, fusion_wo_head=0.064678, head=0.087360
+[05/19 02:50:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010551, bi_layer1=0.008713, bi_layer2=0.006012, total=0.025276
+[05/19 02:50:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1465.40, avg_reserved=16382.98, peak_allocated=5743.78, peak_reserved=27648.00, warmup_iters=20
+[05/19 03:02:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [337][500/1737]  
+[05/19 03:02:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4042 	cls_loss 0.1241 	com_loss 0.1047 	keep_loss 0.0608 	loss 1.9429 	refine_bbox_loss 1.1446 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0446 	
+[05/19 03:14:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [337][1000/1737]  
+[05/19 03:14:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4045 	cls_loss 0.1245 	com_loss 0.1048 	keep_loss 0.0609 	loss 2.0284 	refine_bbox_loss 1.2282 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0449 	
+[05/19 03:26:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [337][1500/1737]  
+[05/19 03:26:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4060 	cls_loss 0.1255 	com_loss 0.1060 	keep_loss 0.0612 	loss 2.0610 	refine_bbox_loss 1.2571 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0447 	
+[05/19 03:32:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 337, total time 2513.51, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 03:44:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [338][500/1737]  
+[05/19 03:44:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3995 	cls_loss 0.1221 	com_loss 0.1036 	keep_loss 0.0603 	loss 1.9677 	refine_bbox_loss 1.1789 	refine_score_loss 0.0000 	seg_loss 0.0589 	seg_loss_dice 0.0445 	
+[05/19 03:56:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [338][1000/1737]  
+[05/19 03:56:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4021 	cls_loss 0.1220 	com_loss 0.1033 	keep_loss 0.0602 	loss 2.0321 	refine_bbox_loss 1.2407 	refine_score_loss 0.0000 	seg_loss 0.0594 	seg_loss_dice 0.0444 	
+[05/19 04:08:09] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [338][1500/1737]  
+[05/19 04:08:09] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3997 	cls_loss 0.1230 	com_loss 0.1043 	keep_loss 0.0605 	loss 2.0428 	refine_bbox_loss 1.2515 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0445 	
+[05/19 04:13:55] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 338, total time 2508.32, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 04:26:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [339][500/1737]  
+[05/19 04:26:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4013 	cls_loss 0.1250 	com_loss 0.1059 	keep_loss 0.0616 	loss 2.0627 	refine_bbox_loss 1.2634 	refine_score_loss 0.0000 	seg_loss 0.0609 	seg_loss_dice 0.0447 	
+[05/19 04:38:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [339][1000/1737]  
+[05/19 04:38:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4039 	cls_loss 0.1256 	com_loss 0.1059 	keep_loss 0.0614 	loss 2.0137 	refine_bbox_loss 1.2121 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0446 	
+[05/19 04:50:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [339][1500/1737]  
+[05/19 04:50:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4038 	cls_loss 0.1251 	com_loss 0.1055 	keep_loss 0.0611 	loss 1.9983 	refine_bbox_loss 1.1980 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0446 	
+[05/19 04:55:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 339, total time 2511.58, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 04:57:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [339]  
+[05/19 04:57:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56111
+[05/19 04:57:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48664
+[05/19 04:57:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5809844341607068
+[05/19 04:57:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5098864114429954
+[05/19 04:57:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.214253, visual=0.046691, text=0.008782, fusion_wo_head=0.066220, head=0.090108
+[05/19 04:57:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010550, bi_layer1=0.009333, bi_layer2=0.006049, total=0.025933
+[05/19 04:57:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1472.53, avg_reserved=16377.80, peak_allocated=5746.43, peak_reserved=31724.00, warmup_iters=20
+[05/19 05:09:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [340][500/1737]  
+[05/19 05:09:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4027 	cls_loss 0.1235 	com_loss 0.1041 	keep_loss 0.0600 	loss 2.0258 	refine_bbox_loss 1.2301 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0447 	
+[05/19 05:21:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [340][1000/1737]  
+[05/19 05:21:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4047 	cls_loss 0.1246 	com_loss 0.1050 	keep_loss 0.0607 	loss 2.0398 	refine_bbox_loss 1.2399 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0447 	
+[05/19 05:33:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [340][1500/1737]  
+[05/19 05:33:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4047 	cls_loss 0.1241 	com_loss 0.1046 	keep_loss 0.0606 	loss 2.0341 	refine_bbox_loss 1.2352 	refine_score_loss 0.0000 	seg_loss 0.0600 	seg_loss_dice 0.0447 	
+[05/19 05:38:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 340, total time 2503.50, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 05:50:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [341][500/1737]  
+[05/19 05:50:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1222 	com_loss 0.1029 	keep_loss 0.0594 	loss 2.0448 	refine_bbox_loss 1.2524 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0442 	
+[05/19 06:03:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [341][1000/1737]  
+[05/19 06:03:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4035 	cls_loss 0.1222 	com_loss 0.1027 	keep_loss 0.0592 	loss 2.0389 	refine_bbox_loss 1.2476 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0444 	
+[05/19 06:15:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [341][1500/1737]  
+[05/19 06:15:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4050 	cls_loss 0.1235 	com_loss 0.1037 	keep_loss 0.0598 	loss 2.0711 	refine_bbox_loss 1.2749 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0445 	
+[05/19 06:20:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 341, total time 2519.06, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 06:33:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [342][500/1737]  
+[05/19 06:33:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1251 	com_loss 0.1057 	keep_loss 0.0603 	loss 2.1332 	refine_bbox_loss 1.3322 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0447 	
+[05/19 06:45:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [342][1000/1737]  
+[05/19 06:45:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4043 	cls_loss 0.1245 	com_loss 0.1049 	keep_loss 0.0601 	loss 2.0922 	refine_bbox_loss 1.2936 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0446 	
+[05/19 06:57:09] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [342][1500/1737]  
+[05/19 06:57:09] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4039 	cls_loss 0.1236 	com_loss 0.1042 	keep_loss 0.0599 	loss 2.1088 	refine_bbox_loss 1.3122 	refine_score_loss 0.0000 	seg_loss 0.0604 	seg_loss_dice 0.0446 	
+[05/19 07:02:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 342, total time 2513.51, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 07:04:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [342]  
+[05/19 07:04:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55879
+[05/19 07:04:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48549
+[05/19 07:04:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5783550694152293
+[05/19 07:04:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5114640302902819
+[05/19 07:04:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.203614, visual=0.043911, text=0.008600, fusion_wo_head=0.063190, head=0.085493
+[05/19 07:04:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010608, bi_layer1=0.008711, bi_layer2=0.005746, total=0.025066
+[05/19 07:04:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1477.01, avg_reserved=15092.96, peak_allocated=5754.22, peak_reserved=33552.00, warmup_iters=20
+[05/19 07:16:42] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [343][500/1737]  
+[05/19 07:16:42] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4008 	cls_loss 0.1230 	com_loss 0.1040 	keep_loss 0.0602 	loss 2.0255 	refine_bbox_loss 1.2329 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0450 	
+[05/19 07:28:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [343][1000/1737]  
+[05/19 07:28:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4019 	cls_loss 0.1231 	com_loss 0.1039 	keep_loss 0.0600 	loss 2.0083 	refine_bbox_loss 1.2155 	refine_score_loss 0.0000 	seg_loss 0.0592 	seg_loss_dice 0.0447 	
+[05/19 07:40:51] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [343][1500/1737]  
+[05/19 07:40:51] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4014 	cls_loss 0.1231 	com_loss 0.1040 	keep_loss 0.0598 	loss 1.9949 	refine_bbox_loss 1.2025 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0445 	
+[05/19 07:46:42] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 343, total time 2551.96, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 07:58:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [344][500/1737]  
+[05/19 07:58:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4102 	cls_loss 0.1236 	com_loss 0.1039 	keep_loss 0.0604 	loss 2.1544 	refine_bbox_loss 1.3508 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0449 	
+[05/19 08:10:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [344][1000/1737]  
+[05/19 08:10:54] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4076 	cls_loss 0.1235 	com_loss 0.1031 	keep_loss 0.0603 	loss 2.1108 	refine_bbox_loss 1.3118 	refine_score_loss 0.0000 	seg_loss 0.0598 	seg_loss_dice 0.0446 	
+[05/19 08:23:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [344][1500/1737]  
+[05/19 08:23:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4051 	cls_loss 0.1235 	com_loss 0.1033 	keep_loss 0.0604 	loss 2.0724 	refine_bbox_loss 1.2761 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0445 	
+[05/19 08:28:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 344, total time 2525.38, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 08:40:55] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [345][500/1737]  
+[05/19 08:40:55] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4046 	cls_loss 0.1272 	com_loss 0.1077 	keep_loss 0.0610 	loss 2.1614 	refine_bbox_loss 1.3561 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0447 	
+[05/19 08:52:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [345][1000/1737]  
+[05/19 08:52:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3983 	cls_loss 0.1246 	com_loss 0.1053 	keep_loss 0.0606 	loss 2.1839 	refine_bbox_loss 1.3908 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0447 	
+[05/19 09:05:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [345][1500/1737]  
+[05/19 09:05:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3997 	cls_loss 0.1244 	com_loss 0.1048 	keep_loss 0.0606 	loss 2.1326 	refine_bbox_loss 1.3389 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0445 	
+[05/19 09:10:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 345, total time 2528.46, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 09:12:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [345]  
+[05/19 09:12:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55995
+[05/19 09:12:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48664
+[05/19 09:12:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5791964661337821
+[05/19 09:12:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5115692048801009
+[05/19 09:12:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.214849, visual=0.046421, text=0.008598, fusion_wo_head=0.066452, head=0.090888
+[05/19 09:12:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.011060, bi_layer1=0.008994, bi_layer2=0.005888, total=0.025942
+[05/19 09:12:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1474.09, avg_reserved=13586.31, peak_allocated=5754.32, peak_reserved=30392.00, warmup_iters=20
+[05/19 09:24:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [346][500/1737]  
+[05/19 09:24:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4077 	cls_loss 0.1213 	com_loss 0.1021 	keep_loss 0.0594 	loss 2.1936 	refine_bbox_loss 1.3991 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0442 	
+[05/19 09:36:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [346][1000/1737]  
+[05/19 09:36:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4057 	cls_loss 0.1222 	com_loss 0.1033 	keep_loss 0.0602 	loss 2.0623 	refine_bbox_loss 1.2670 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0444 	
+[05/19 09:48:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [346][1500/1737]  
+[05/19 09:48:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4066 	cls_loss 0.1237 	com_loss 0.1046 	keep_loss 0.0605 	loss 2.0692 	refine_bbox_loss 1.2696 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0446 	
+[05/19 09:54:09] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 346, total time 2509.29, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 10:06:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [347][500/1737]  
+[05/19 10:06:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3997 	cls_loss 0.1235 	com_loss 0.1050 	keep_loss 0.0596 	loss 2.0802 	refine_bbox_loss 1.2869 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0449 	
+[05/19 10:18:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [347][1000/1737]  
+[05/19 10:18:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1241 	com_loss 0.1043 	keep_loss 0.0602 	loss 2.1002 	refine_bbox_loss 1.3023 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0449 	
+[05/19 10:30:31] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [347][1500/1737]  
+[05/19 10:30:31] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4037 	cls_loss 0.1244 	com_loss 0.1049 	keep_loss 0.0604 	loss 2.0779 	refine_bbox_loss 1.2791 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0449 	
+[05/19 10:36:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 347, total time 2521.45, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 10:48:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [348][500/1737]  
+[05/19 10:48:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3978 	cls_loss 0.1222 	com_loss 0.1033 	keep_loss 0.0601 	loss 2.1870 	refine_bbox_loss 1.3994 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0445 	
+[05/19 11:00:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [348][1000/1737]  
+[05/19 11:00:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4022 	cls_loss 0.1235 	com_loss 0.1043 	keep_loss 0.0600 	loss 2.1249 	refine_bbox_loss 1.3307 	refine_score_loss 0.0000 	seg_loss 0.0598 	seg_loss_dice 0.0444 	
+[05/19 11:12:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [348][1500/1737]  
+[05/19 11:12:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4035 	cls_loss 0.1239 	com_loss 0.1048 	keep_loss 0.0599 	loss 2.0959 	refine_bbox_loss 1.2990 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0446 	
+[05/19 11:18:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 348, total time 2521.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 11:19:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [348]  
+[05/19 11:19:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55932
+[05/19 11:19:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48580
+[05/19 11:19:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5795119899032394
+[05/19 11:19:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5107278081615482
+[05/19 11:19:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.200997, visual=0.044689, text=0.008315, fusion_wo_head=0.061672, head=0.084002
+[05/19 11:19:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010171, bi_layer1=0.008482, bi_layer2=0.004678, total=0.023331
+[05/19 11:19:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1475.69, avg_reserved=13208.00, peak_allocated=5752.30, peak_reserved=32972.00, warmup_iters=20
+[05/19 11:31:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [349][500/1737]  
+[05/19 11:31:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4065 	cls_loss 0.1239 	com_loss 0.1054 	keep_loss 0.0614 	loss 2.0546 	refine_bbox_loss 1.2529 	refine_score_loss 0.0000 	seg_loss 0.0600 	seg_loss_dice 0.0445 	
+[05/19 11:43:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [349][1000/1737]  
+[05/19 11:43:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4035 	cls_loss 0.1228 	com_loss 0.1042 	keep_loss 0.0608 	loss 2.0306 	refine_bbox_loss 1.2347 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0444 	
+[05/19 11:55:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [349][1500/1737]  
+[05/19 11:55:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4047 	cls_loss 0.1234 	com_loss 0.1044 	keep_loss 0.0613 	loss 2.0721 	refine_bbox_loss 1.2739 	refine_score_loss 0.0000 	seg_loss 0.0600 	seg_loss_dice 0.0445 	
+[05/19 12:01:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 349, total time 2503.65, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 12:13:31] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [350][500/1737]  
+[05/19 12:13:31] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4082 	cls_loss 0.1227 	com_loss 0.1026 	keep_loss 0.0604 	loss 2.1814 	refine_bbox_loss 1.3836 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0448 	
+[05/19 12:25:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [350][1000/1737]  
+[05/19 12:25:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4046 	cls_loss 0.1235 	com_loss 0.1038 	keep_loss 0.0602 	loss 2.0870 	refine_bbox_loss 1.2904 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0449 	
+[05/19 12:37:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [350][1500/1737]  
+[05/19 12:37:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4037 	cls_loss 0.1237 	com_loss 0.1041 	keep_loss 0.0605 	loss 2.0969 	refine_bbox_loss 1.3005 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0447 	
+[05/19 12:43:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 350, total time 2529.02, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 12:55:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [351][500/1737]  
+[05/19 12:55:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4052 	cls_loss 0.1249 	com_loss 0.1055 	keep_loss 0.0618 	loss 2.0260 	refine_bbox_loss 1.2262 	refine_score_loss 0.0000 	seg_loss 0.0584 	seg_loss_dice 0.0441 	
+[05/19 13:07:42] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [351][1000/1737]  
+[05/19 13:07:42] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4052 	cls_loss 0.1238 	com_loss 0.1042 	keep_loss 0.0611 	loss 2.0862 	refine_bbox_loss 1.2886 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0442 	
+[05/19 13:19:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [351][1500/1737]  
+[05/19 13:19:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4042 	cls_loss 0.1246 	com_loss 0.1045 	keep_loss 0.0609 	loss 2.0707 	refine_bbox_loss 1.2727 	refine_score_loss 0.0000 	seg_loss 0.0594 	seg_loss_dice 0.0444 	
+[05/19 13:25:39] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 351, total time 2532.17, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 13:27:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [351]  
+[05/19 13:27:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55900
+[05/19 13:27:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48485
+[05/19 13:27:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5785654185948674
+[05/19 13:27:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5093605384938998
+[05/19 13:27:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.197229, visual=0.043375, text=0.008079, fusion_wo_head=0.061031, head=0.082447
+[05/19 13:27:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.009806, bi_layer1=0.008708, bi_layer2=0.005193, total=0.023707
+[05/19 13:27:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1480.35, avg_reserved=16955.20, peak_allocated=5753.95, peak_reserved=32832.00, warmup_iters=20
+[05/19 13:39:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [352][500/1737]  
+[05/19 13:39:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4081 	cls_loss 0.1224 	com_loss 0.1041 	keep_loss 0.0597 	loss 2.0799 	refine_bbox_loss 1.2812 	refine_score_loss 0.0000 	seg_loss 0.0598 	seg_loss_dice 0.0447 	
+[05/19 13:51:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [352][1000/1737]  
+[05/19 13:51:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4071 	cls_loss 0.1229 	com_loss 0.1034 	keep_loss 0.0597 	loss 2.0763 	refine_bbox_loss 1.2784 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0446 	
+[05/19 14:03:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [352][1500/1737]  
+[05/19 14:03:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4051 	cls_loss 0.1232 	com_loss 0.1038 	keep_loss 0.0602 	loss 2.0690 	refine_bbox_loss 1.2721 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0446 	
+[05/19 14:08:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 352, total time 2504.45, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 14:20:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [353][500/1737]  
+[05/19 14:20:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4137 	cls_loss 0.1274 	com_loss 0.1062 	keep_loss 0.0611 	loss 2.1572 	refine_bbox_loss 1.3444 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0445 	
+[05/19 14:32:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [353][1000/1737]  
+[05/19 14:32:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4078 	cls_loss 0.1255 	com_loss 0.1056 	keep_loss 0.0607 	loss 2.1044 	refine_bbox_loss 1.3002 	refine_score_loss 0.0000 	seg_loss 0.0598 	seg_loss_dice 0.0448 	
+[05/19 14:44:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [353][1500/1737]  
+[05/19 14:44:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4068 	cls_loss 0.1247 	com_loss 0.1056 	keep_loss 0.0609 	loss 2.0825 	refine_bbox_loss 1.2798 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0448 	
+[05/19 14:50:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 353, total time 2513.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 15:02:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [354][500/1737]  
+[05/19 15:02:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4045 	cls_loss 0.1239 	com_loss 0.1044 	keep_loss 0.0605 	loss 2.1692 	refine_bbox_loss 1.3726 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0446 	
+[05/19 15:14:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [354][1000/1737]  
+[05/19 15:14:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4023 	cls_loss 0.1238 	com_loss 0.1042 	keep_loss 0.0609 	loss 2.1296 	refine_bbox_loss 1.3338 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0449 	
+[05/19 15:26:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [354][1500/1737]  
+[05/19 15:26:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4038 	cls_loss 0.1244 	com_loss 0.1049 	keep_loss 0.0608 	loss 2.1378 	refine_bbox_loss 1.3395 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0447 	
+[05/19 15:32:21] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 354, total time 2501.50, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 15:33:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [354]  
+[05/19 15:33:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55848
+[05/19 15:33:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48633
+[05/19 15:33:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5787757677745057
+[05/19 15:33:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5088346655448044
+[05/19 15:33:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.209875, visual=0.046409, text=0.008435, fusion_wo_head=0.063007, head=0.089632
+[05/19 15:33:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010159, bi_layer1=0.008811, bi_layer2=0.005635, total=0.024605
+[05/19 15:33:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1480.94, avg_reserved=12001.60, peak_allocated=5754.26, peak_reserved=25894.00, warmup_iters=20
+[05/19 15:45:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [355][500/1737]  
+[05/19 15:45:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4045 	cls_loss 0.1238 	com_loss 0.1058 	keep_loss 0.0607 	loss 2.2021 	refine_bbox_loss 1.4034 	refine_score_loss 0.0000 	seg_loss 0.0592 	seg_loss_dice 0.0446 	
+[05/19 15:58:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [355][1000/1737]  
+[05/19 15:58:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4028 	cls_loss 0.1235 	com_loss 0.1047 	keep_loss 0.0598 	loss 2.1078 	refine_bbox_loss 1.3130 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0447 	
+[05/19 16:10:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [355][1500/1737]  
+[05/19 16:10:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1238 	com_loss 0.1048 	keep_loss 0.0602 	loss 2.0706 	refine_bbox_loss 1.2734 	refine_score_loss 0.0000 	seg_loss 0.0598 	seg_loss_dice 0.0447 	
+[05/19 16:15:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 355, total time 2534.81, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 16:28:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [356][500/1737]  
+[05/19 16:28:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4038 	cls_loss 0.1258 	com_loss 0.1056 	keep_loss 0.0609 	loss 2.0326 	refine_bbox_loss 1.2326 	refine_score_loss 0.0000 	seg_loss 0.0595 	seg_loss_dice 0.0443 	
+[05/19 16:40:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [356][1000/1737]  
+[05/19 16:40:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4001 	cls_loss 0.1240 	com_loss 0.1044 	keep_loss 0.0601 	loss 2.0549 	refine_bbox_loss 1.2627 	refine_score_loss 0.0000 	seg_loss 0.0592 	seg_loss_dice 0.0443 	
+[05/19 16:52:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [356][1500/1737]  
+[05/19 16:52:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4001 	cls_loss 0.1238 	com_loss 0.1043 	keep_loss 0.0603 	loss 2.0587 	refine_bbox_loss 1.2665 	refine_score_loss 0.0000 	seg_loss 0.0592 	seg_loss_dice 0.0444 	
+[05/19 16:58:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 356, total time 2528.30, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 17:10:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [357][500/1737]  
+[05/19 17:10:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4046 	cls_loss 0.1261 	com_loss 0.1064 	keep_loss 0.0607 	loss 2.1116 	refine_bbox_loss 1.3096 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0445 	
+[05/19 17:22:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [357][1000/1737]  
+[05/19 17:22:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4027 	cls_loss 0.1251 	com_loss 0.1056 	keep_loss 0.0608 	loss 2.0931 	refine_bbox_loss 1.2947 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0446 	
+[05/19 17:34:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [357][1500/1737]  
+[05/19 17:34:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4011 	cls_loss 0.1243 	com_loss 0.1047 	keep_loss 0.0605 	loss 2.0957 	refine_bbox_loss 1.3008 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0446 	
+[05/19 17:40:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 357, total time 2514.84, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 17:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [357]  
+[05/19 17:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55585
+[05/19 17:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48507
+[05/19 17:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5775136726966765
+[05/19 17:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5107278081615482
+[05/19 17:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.218390, visual=0.047961, text=0.008862, fusion_wo_head=0.066522, head=0.092617
+[05/19 17:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010615, bi_layer1=0.009724, bi_layer2=0.006061, total=0.026400
+[05/19 17:41:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1490.36, avg_reserved=14678.19, peak_allocated=5770.00, peak_reserved=30422.00, warmup_iters=20
+[05/19 17:53:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [358][500/1737]  
+[05/19 17:53:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4030 	cls_loss 0.1218 	com_loss 0.1027 	keep_loss 0.0608 	loss 2.0262 	refine_bbox_loss 1.2335 	refine_score_loss 0.0000 	seg_loss 0.0598 	seg_loss_dice 0.0446 	
+[05/19 18:05:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [358][1000/1737]  
+[05/19 18:05:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4039 	cls_loss 0.1235 	com_loss 0.1043 	keep_loss 0.0607 	loss 2.0974 	refine_bbox_loss 1.3018 	refine_score_loss 0.0000 	seg_loss 0.0589 	seg_loss_dice 0.0443 	
+[05/19 18:17:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [358][1500/1737]  
+[05/19 18:17:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4024 	cls_loss 0.1233 	com_loss 0.1042 	keep_loss 0.0603 	loss 2.0686 	refine_bbox_loss 1.2753 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0444 	
+[05/19 18:23:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 358, total time 2518.27, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 18:35:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [359][500/1737]  
+[05/19 18:35:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4000 	cls_loss 0.1223 	com_loss 0.1037 	keep_loss 0.0601 	loss 2.0537 	refine_bbox_loss 1.2639 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0443 	
+[05/19 18:47:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [359][1000/1737]  
+[05/19 18:47:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4021 	cls_loss 0.1229 	com_loss 0.1030 	keep_loss 0.0603 	loss 2.0824 	refine_bbox_loss 1.2908 	refine_score_loss 0.0000 	seg_loss 0.0590 	seg_loss_dice 0.0443 	
+[05/19 18:59:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [359][1500/1737]  
+[05/19 18:59:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4025 	cls_loss 0.1230 	com_loss 0.1034 	keep_loss 0.0605 	loss 2.0986 	refine_bbox_loss 1.3055 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0444 	
+[05/19 19:05:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 359, total time 2527.56, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 19:17:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [360][500/1737]  
+[05/19 19:17:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4081 	cls_loss 0.1249 	com_loss 0.1048 	keep_loss 0.0613 	loss 2.0949 	refine_bbox_loss 1.2908 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0448 	
+[05/19 19:29:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [360][1000/1737]  
+[05/19 19:29:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4045 	cls_loss 0.1239 	com_loss 0.1048 	keep_loss 0.0612 	loss 2.0221 	refine_bbox_loss 1.2235 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0446 	
+[05/19 19:41:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [360][1500/1737]  
+[05/19 19:41:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4054 	cls_loss 0.1235 	com_loss 0.1046 	keep_loss 0.0608 	loss 2.0495 	refine_bbox_loss 1.2511 	refine_score_loss 0.0000 	seg_loss 0.0595 	seg_loss_dice 0.0445 	
+[05/19 19:47:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 360, total time 2503.92, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 19:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [360]  
+[05/19 19:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55848
+[05/19 19:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48601
+[05/19 19:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.579091291543963
+[05/19 19:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5096760622633572
+[05/19 19:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.207795, visual=0.044794, text=0.008497, fusion_wo_head=0.064566, head=0.087491
+[05/19 19:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010950, bi_layer1=0.008815, bi_layer2=0.006052, total=0.025817
+[05/19 19:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1485.18, avg_reserved=13037.78, peak_allocated=5759.65, peak_reserved=31210.00, warmup_iters=20
+[05/19 20:00:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [361][500/1737]  
+[05/19 20:00:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4001 	cls_loss 0.1213 	com_loss 0.1012 	keep_loss 0.0596 	loss 1.9815 	refine_bbox_loss 1.1983 	refine_score_loss 0.0000 	seg_loss 0.0572 	seg_loss_dice 0.0438 	
+[05/19 20:12:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [361][1000/1737]  
+[05/19 20:12:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4007 	cls_loss 0.1222 	com_loss 0.1021 	keep_loss 0.0597 	loss 1.9941 	refine_bbox_loss 1.2081 	refine_score_loss 0.0000 	seg_loss 0.0576 	seg_loss_dice 0.0438 	
+[05/19 20:24:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [361][1500/1737]  
+[05/19 20:24:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4023 	cls_loss 0.1224 	com_loss 0.1028 	keep_loss 0.0597 	loss 2.0514 	refine_bbox_loss 1.2622 	refine_score_loss 0.0000 	seg_loss 0.0580 	seg_loss_dice 0.0440 	
+[05/19 20:30:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 361, total time 2495.70, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 20:42:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [362][500/1737]  
+[05/19 20:42:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3986 	cls_loss 0.1214 	com_loss 0.1037 	keep_loss 0.0589 	loss 1.9946 	refine_bbox_loss 1.2092 	refine_score_loss 0.0000 	seg_loss 0.0586 	seg_loss_dice 0.0441 	
+[05/19 20:54:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [362][1000/1737]  
+[05/19 20:54:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1227 	com_loss 0.1041 	keep_loss 0.0604 	loss 2.0288 	refine_bbox_loss 1.2342 	refine_score_loss 0.0000 	seg_loss 0.0590 	seg_loss_dice 0.0444 	
+[05/19 21:06:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [362][1500/1737]  
+[05/19 21:06:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1233 	com_loss 0.1040 	keep_loss 0.0603 	loss 2.0213 	refine_bbox_loss 1.2267 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0443 	
+[05/19 21:12:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 362, total time 2520.44, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 21:24:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [363][500/1737]  
+[05/19 21:24:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4131 	cls_loss 0.1254 	com_loss 0.1054 	keep_loss 0.0616 	loss 2.2311 	refine_bbox_loss 1.4220 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0444 	
+[05/19 21:36:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [363][1000/1737]  
+[05/19 21:36:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4099 	cls_loss 0.1241 	com_loss 0.1042 	keep_loss 0.0607 	loss 2.1541 	refine_bbox_loss 1.3511 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0445 	
+[05/19 21:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [363][1500/1737]  
+[05/19 21:48:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4079 	cls_loss 0.1236 	com_loss 0.1042 	keep_loss 0.0606 	loss 2.1142 	refine_bbox_loss 1.3140 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0444 	
+[05/19 21:54:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 363, total time 2522.61, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 21:55:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [363]  
+[05/19 21:55:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55858
+[05/19 21:55:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48549
+[05/19 21:55:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5797223390828776
+[05/19 21:55:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5116743794699201
+[05/19 21:55:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.202902, visual=0.044931, text=0.008180, fusion_wo_head=0.063262, head=0.084206
+[05/19 21:55:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010552, bi_layer1=0.009044, bi_layer2=0.005578, total=0.025174
+[05/19 21:55:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1489.62, avg_reserved=15356.39, peak_allocated=5767.01, peak_reserved=28344.00, warmup_iters=20
+[05/19 22:07:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [364][500/1737]  
+[05/19 22:07:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4000 	cls_loss 0.1236 	com_loss 0.1042 	keep_loss 0.0593 	loss 2.0655 	refine_bbox_loss 1.2749 	refine_score_loss 0.0000 	seg_loss 0.0588 	seg_loss_dice 0.0446 	
+[05/19 22:19:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [364][1000/1737]  
+[05/19 22:19:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4030 	cls_loss 0.1234 	com_loss 0.1041 	keep_loss 0.0592 	loss 2.0359 	refine_bbox_loss 1.2423 	refine_score_loss 0.0000 	seg_loss 0.0592 	seg_loss_dice 0.0446 	
+[05/19 22:31:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [364][1500/1737]  
+[05/19 22:31:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4018 	cls_loss 0.1232 	com_loss 0.1040 	keep_loss 0.0598 	loss 2.0259 	refine_bbox_loss 1.2333 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0446 	
+[05/19 22:37:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 364, total time 2503.30, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 22:49:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [365][500/1737]  
+[05/19 22:49:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3964 	cls_loss 0.1231 	com_loss 0.1034 	keep_loss 0.0612 	loss 1.9625 	refine_bbox_loss 1.1758 	refine_score_loss 0.0000 	seg_loss 0.0582 	seg_loss_dice 0.0443 	
+[05/19 23:01:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [365][1000/1737]  
+[05/19 23:01:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4025 	cls_loss 0.1243 	com_loss 0.1052 	keep_loss 0.0609 	loss 2.0407 	refine_bbox_loss 1.2446 	refine_score_loss 0.0000 	seg_loss 0.0588 	seg_loss_dice 0.0444 	
+[05/19 23:13:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [365][1500/1737]  
+[05/19 23:13:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4032 	cls_loss 0.1244 	com_loss 0.1052 	keep_loss 0.0609 	loss 2.0683 	refine_bbox_loss 1.2712 	refine_score_loss 0.0000 	seg_loss 0.0590 	seg_loss_dice 0.0444 	
+[05/19 23:19:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 365, total time 2512.48, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/19 23:31:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [366][500/1737]  
+[05/19 23:31:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4097 	cls_loss 0.1243 	com_loss 0.1041 	keep_loss 0.0599 	loss 1.9973 	refine_bbox_loss 1.1944 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0446 	
+[05/19 23:43:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [366][1000/1737]  
+[05/19 23:43:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4073 	cls_loss 0.1240 	com_loss 0.1042 	keep_loss 0.0604 	loss 2.0847 	refine_bbox_loss 1.2855 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0443 	
+[05/19 23:55:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [366][1500/1737]  
+[05/19 23:55:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4047 	cls_loss 0.1237 	com_loss 0.1043 	keep_loss 0.0606 	loss 2.0906 	refine_bbox_loss 1.2939 	refine_score_loss 0.0000 	seg_loss 0.0590 	seg_loss_dice 0.0444 	
+[05/20 00:01:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 366, total time 2507.46, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 00:02:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [366]  
+[05/20 00:02:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55827
+[05/20 00:02:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48391
+[05/20 00:02:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5791964661337821
+[05/20 00:02:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5104122843920909
+[05/20 00:02:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.210420, visual=0.045487, text=0.008650, fusion_wo_head=0.064543, head=0.089225
+[05/20 00:02:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010554, bi_layer1=0.009141, bi_layer2=0.005940, total=0.025636
+[05/20 00:02:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1490.58, avg_reserved=16596.30, peak_allocated=5762.12, peak_reserved=28134.00, warmup_iters=20
+[05/20 00:14:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [367][500/1737]  
+[05/20 00:14:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4032 	cls_loss 0.1235 	com_loss 0.1023 	keep_loss 0.0595 	loss 1.9637 	refine_bbox_loss 1.1723 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0442 	
+[05/20 00:26:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [367][1000/1737]  
+[05/20 00:26:27] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1244 	com_loss 0.1040 	keep_loss 0.0604 	loss 2.0480 	refine_bbox_loss 1.2515 	refine_score_loss 0.0000 	seg_loss 0.0590 	seg_loss_dice 0.0446 	
+[05/20 00:38:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [367][1500/1737]  
+[05/20 00:38:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4049 	cls_loss 0.1244 	com_loss 0.1040 	keep_loss 0.0602 	loss 2.0531 	refine_bbox_loss 1.2556 	refine_score_loss 0.0000 	seg_loss 0.0592 	seg_loss_dice 0.0448 	
+[05/20 00:44:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 367, total time 2491.30, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 00:56:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [368][500/1737]  
+[05/20 00:56:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4032 	cls_loss 0.1238 	com_loss 0.1048 	keep_loss 0.0605 	loss 2.0004 	refine_bbox_loss 1.2043 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0440 	
+[05/20 01:08:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [368][1000/1737]  
+[05/20 01:08:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4054 	cls_loss 0.1240 	com_loss 0.1046 	keep_loss 0.0610 	loss 2.0038 	refine_bbox_loss 1.2047 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0442 	
+[05/20 01:20:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [368][1500/1737]  
+[05/20 01:20:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4027 	cls_loss 0.1239 	com_loss 0.1045 	keep_loss 0.0607 	loss 1.9910 	refine_bbox_loss 1.1955 	refine_score_loss 0.0000 	seg_loss 0.0595 	seg_loss_dice 0.0441 	
+[05/20 01:26:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 368, total time 2518.16, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 01:38:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [369][500/1737]  
+[05/20 01:38:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4048 	cls_loss 0.1246 	com_loss 0.1050 	keep_loss 0.0599 	loss 2.1301 	refine_bbox_loss 1.3323 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0448 	
+[05/20 01:50:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [369][1000/1737]  
+[05/20 01:50:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4045 	cls_loss 0.1238 	com_loss 0.1039 	keep_loss 0.0600 	loss 2.0975 	refine_bbox_loss 1.3012 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0447 	
+[05/20 02:02:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [369][1500/1737]  
+[05/20 02:02:10] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4029 	cls_loss 0.1229 	com_loss 0.1034 	keep_loss 0.0598 	loss 2.0692 	refine_bbox_loss 1.2766 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0445 	
+[05/20 02:07:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 369, total time 2515.08, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 02:09:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [369]  
+[05/20 02:09:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55816
+[05/20 02:09:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48485
+[05/20 02:09:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.579091291543963
+[05/20 02:09:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5108329827513672
+[05/20 02:09:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.202140, visual=0.044699, text=0.008046, fusion_wo_head=0.062943, head=0.084211
+[05/20 02:09:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010383, bi_layer1=0.008507, bi_layer2=0.006174, total=0.025064
+[05/20 02:09:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1499.36, avg_reserved=13030.49, peak_allocated=5773.41, peak_reserved=27770.00, warmup_iters=20
+[05/20 02:21:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [370][500/1737]  
+[05/20 02:21:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3999 	cls_loss 0.1233 	com_loss 0.1045 	keep_loss 0.0601 	loss 2.0866 	refine_bbox_loss 1.2954 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0444 	
+[05/20 02:33:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [370][1000/1737]  
+[05/20 02:33:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4015 	cls_loss 0.1228 	com_loss 0.1037 	keep_loss 0.0596 	loss 2.1197 	refine_bbox_loss 1.3285 	refine_score_loss 0.0000 	seg_loss 0.0590 	seg_loss_dice 0.0445 	
+[05/20 02:45:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [370][1500/1737]  
+[05/20 02:45:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4017 	cls_loss 0.1224 	com_loss 0.1031 	keep_loss 0.0599 	loss 2.0886 	refine_bbox_loss 1.2981 	refine_score_loss 0.0000 	seg_loss 0.0588 	seg_loss_dice 0.0445 	
+[05/20 02:51:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 370, total time 2520.02, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 03:03:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [371][500/1737]  
+[05/20 03:03:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4018 	cls_loss 0.1240 	com_loss 0.1039 	keep_loss 0.0603 	loss 2.0665 	refine_bbox_loss 1.2739 	refine_score_loss 0.0000 	seg_loss 0.0585 	seg_loss_dice 0.0441 	
+[05/20 03:15:42] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [371][1000/1737]  
+[05/20 03:15:42] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4038 	cls_loss 0.1228 	com_loss 0.1031 	keep_loss 0.0596 	loss 2.0368 	refine_bbox_loss 1.2438 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0443 	
+[05/20 03:27:45] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [371][1500/1737]  
+[05/20 03:27:45] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4022 	cls_loss 0.1230 	com_loss 0.1034 	keep_loss 0.0600 	loss 2.0791 	refine_bbox_loss 1.2873 	refine_score_loss 0.0000 	seg_loss 0.0590 	seg_loss_dice 0.0442 	
+[05/20 03:33:39] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 371, total time 2539.14, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 03:45:55] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [372][500/1737]  
+[05/20 03:45:55] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3969 	cls_loss 0.1218 	com_loss 0.1031 	keep_loss 0.0596 	loss 2.0074 	refine_bbox_loss 1.2234 	refine_score_loss 0.0000 	seg_loss 0.0585 	seg_loss_dice 0.0441 	
+[05/20 03:58:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [372][1000/1737]  
+[05/20 03:58:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3962 	cls_loss 0.1219 	com_loss 0.1030 	keep_loss 0.0598 	loss 2.0452 	refine_bbox_loss 1.2622 	refine_score_loss 0.0000 	seg_loss 0.0581 	seg_loss_dice 0.0440 	
+[05/20 04:10:21] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [372][1500/1737]  
+[05/20 04:10:21] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3986 	cls_loss 0.1224 	com_loss 0.1031 	keep_loss 0.0599 	loss 2.0326 	refine_bbox_loss 1.2460 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0442 	
+[05/20 04:16:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 372, total time 2542.53, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 04:17:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [372]  
+[05/20 04:17:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55932
+[05/20 04:17:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48675
+[05/20 04:17:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5798275136726967
+[05/20 04:17:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5132519983172066
+[05/20 04:17:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.213239, visual=0.046405, text=0.008656, fusion_wo_head=0.066866, head=0.088827
+[05/20 04:17:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010328, bi_layer1=0.010391, bi_layer2=0.005864, total=0.026583
+[05/20 04:17:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1506.04, avg_reserved=17797.56, peak_allocated=5779.36, peak_reserved=38714.00, warmup_iters=20
+[05/20 04:29:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [373][500/1737]  
+[05/20 04:29:34] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4081 	cls_loss 0.1219 	com_loss 0.1022 	keep_loss 0.0616 	loss 2.1624 	refine_bbox_loss 1.3650 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0445 	
+[05/20 04:41:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [373][1000/1737]  
+[05/20 04:41:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4066 	cls_loss 0.1221 	com_loss 0.1025 	keep_loss 0.0612 	loss 2.1801 	refine_bbox_loss 1.3844 	refine_score_loss 0.0000 	seg_loss 0.0589 	seg_loss_dice 0.0444 	
+[05/20 04:53:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [373][1500/1737]  
+[05/20 04:53:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4059 	cls_loss 0.1224 	com_loss 0.1032 	keep_loss 0.0610 	loss 2.1561 	refine_bbox_loss 1.3602 	refine_score_loss 0.0000 	seg_loss 0.0589 	seg_loss_dice 0.0445 	
+[05/20 04:59:29] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 373, total time 2520.35, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 05:11:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [374][500/1737]  
+[05/20 05:11:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4064 	cls_loss 0.1243 	com_loss 0.1050 	keep_loss 0.0601 	loss 2.1048 	refine_bbox_loss 1.3050 	refine_score_loss 0.0000 	seg_loss 0.0594 	seg_loss_dice 0.0445 	
+[05/20 05:23:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [374][1000/1737]  
+[05/20 05:23:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4053 	cls_loss 0.1251 	com_loss 0.1054 	keep_loss 0.0609 	loss 2.1391 	refine_bbox_loss 1.3389 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0444 	
+[05/20 05:35:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [374][1500/1737]  
+[05/20 05:35:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4051 	cls_loss 0.1257 	com_loss 0.1060 	keep_loss 0.0612 	loss 2.1749 	refine_bbox_loss 1.3730 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0445 	
+[05/20 05:41:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 374, total time 2508.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 05:53:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [375][500/1737]  
+[05/20 05:53:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3994 	cls_loss 0.1246 	com_loss 0.1053 	keep_loss 0.0607 	loss 2.0008 	refine_bbox_loss 1.2079 	refine_score_loss 0.0000 	seg_loss 0.0592 	seg_loss_dice 0.0437 	
+[05/20 06:05:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [375][1000/1737]  
+[05/20 06:05:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4026 	cls_loss 0.1242 	com_loss 0.1045 	keep_loss 0.0607 	loss 1.9990 	refine_bbox_loss 1.2045 	refine_score_loss 0.0000 	seg_loss 0.0586 	seg_loss_dice 0.0438 	
+[05/20 06:17:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [375][1500/1737]  
+[05/20 06:17:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4048 	cls_loss 0.1251 	com_loss 0.1051 	keep_loss 0.0607 	loss 2.0398 	refine_bbox_loss 1.2411 	refine_score_loss 0.0000 	seg_loss 0.0588 	seg_loss_dice 0.0442 	
+[05/20 06:23:28] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 375, total time 2530.44, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 06:24:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [375]  
+[05/20 06:24:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56090
+[05/20 06:24:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48717
+[05/20 06:24:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5807740849810685
+[05/20 06:24:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5114640302902819
+[05/20 06:24:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.206769, visual=0.046291, text=0.008201, fusion_wo_head=0.063781, head=0.086093
+[05/20 06:24:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010738, bi_layer1=0.008699, bi_layer2=0.005694, total=0.025130
+[05/20 06:24:52] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1502.35, avg_reserved=17424.81, peak_allocated=5779.88, peak_reserved=33584.00, warmup_iters=20
+[05/20 06:37:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [376][500/1737]  
+[05/20 06:37:01] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4022 	cls_loss 0.1245 	com_loss 0.1061 	keep_loss 0.0606 	loss 2.0612 	refine_bbox_loss 1.2634 	refine_score_loss 0.0000 	seg_loss 0.0595 	seg_loss_dice 0.0450 	
+[05/20 06:49:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [376][1000/1737]  
+[05/20 06:49:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4047 	cls_loss 0.1238 	com_loss 0.1048 	keep_loss 0.0603 	loss 2.0976 	refine_bbox_loss 1.3004 	refine_score_loss 0.0000 	seg_loss 0.0590 	seg_loss_dice 0.0446 	
+[05/20 07:01:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [376][1500/1737]  
+[05/20 07:01:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4043 	cls_loss 0.1234 	com_loss 0.1041 	keep_loss 0.0601 	loss 2.0918 	refine_bbox_loss 1.2960 	refine_score_loss 0.0000 	seg_loss 0.0594 	seg_loss_dice 0.0446 	
+[05/20 07:06:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 376, total time 2512.30, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 07:19:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [377][500/1737]  
+[05/20 07:19:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4100 	cls_loss 0.1254 	com_loss 0.1056 	keep_loss 0.0602 	loss 2.1916 	refine_bbox_loss 1.3875 	refine_score_loss 0.0000 	seg_loss 0.0582 	seg_loss_dice 0.0447 	
+[05/20 07:31:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [377][1000/1737]  
+[05/20 07:31:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4059 	cls_loss 0.1252 	com_loss 0.1059 	keep_loss 0.0607 	loss 2.1868 	refine_bbox_loss 1.3860 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0448 	
+[05/20 07:42:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [377][1500/1737]  
+[05/20 07:42:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4047 	cls_loss 0.1247 	com_loss 0.1054 	keep_loss 0.0604 	loss 2.1346 	refine_bbox_loss 1.3364 	refine_score_loss 0.0000 	seg_loss 0.0585 	seg_loss_dice 0.0446 	
+[05/20 07:48:41] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 377, total time 2517.00, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 08:00:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [378][500/1737]  
+[05/20 08:00:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4016 	cls_loss 0.1229 	com_loss 0.1037 	keep_loss 0.0602 	loss 1.9566 	refine_bbox_loss 1.1656 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0443 	
+[05/20 08:13:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [378][1000/1737]  
+[05/20 08:13:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4032 	cls_loss 0.1218 	com_loss 0.1027 	keep_loss 0.0602 	loss 2.0166 	refine_bbox_loss 1.2262 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0443 	
+[05/20 08:25:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [378][1500/1737]  
+[05/20 08:25:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4026 	cls_loss 0.1220 	com_loss 0.1028 	keep_loss 0.0599 	loss 2.0473 	refine_bbox_loss 1.2571 	refine_score_loss 0.0000 	seg_loss 0.0584 	seg_loss_dice 0.0444 	
+[05/20 08:30:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 378, total time 2532.41, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 08:32:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [378]  
+[05/20 08:32:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56100
+[05/20 08:32:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48843
+[05/20 08:32:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5809844341607068
+[05/20 08:32:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5111485065208246
+[05/20 08:32:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.205482, visual=0.044622, text=0.008213, fusion_wo_head=0.065040, head=0.085307
+[05/20 08:32:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010615, bi_layer1=0.009472, bi_layer2=0.005703, total=0.025789
+[05/20 08:32:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1506.67, avg_reserved=15906.58, peak_allocated=5784.09, peak_reserved=32184.00, warmup_iters=20
+[05/20 08:44:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [379][500/1737]  
+[05/20 08:44:35] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4023 	cls_loss 0.1192 	com_loss 0.1007 	keep_loss 0.0594 	loss 2.0618 	refine_bbox_loss 1.2777 	refine_score_loss 0.0000 	seg_loss 0.0584 	seg_loss_dice 0.0440 	
+[05/20 08:56:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [379][1000/1737]  
+[05/20 08:56:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4007 	cls_loss 0.1223 	com_loss 0.1034 	keep_loss 0.0598 	loss 1.9844 	refine_bbox_loss 1.1956 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0442 	
+[05/20 09:08:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [379][1500/1737]  
+[05/20 09:08:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4015 	cls_loss 0.1232 	com_loss 0.1039 	keep_loss 0.0601 	loss 2.0264 	refine_bbox_loss 1.2347 	refine_score_loss 0.0000 	seg_loss 0.0585 	seg_loss_dice 0.0444 	
+[05/20 09:14:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 379, total time 2535.78, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 09:26:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [380][500/1737]  
+[05/20 09:26:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4065 	cls_loss 0.1246 	com_loss 0.1055 	keep_loss 0.0600 	loss 2.0768 	refine_bbox_loss 1.2758 	refine_score_loss 0.0000 	seg_loss 0.0594 	seg_loss_dice 0.0449 	
+[05/20 09:38:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [380][1000/1737]  
+[05/20 09:38:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4063 	cls_loss 0.1230 	com_loss 0.1038 	keep_loss 0.0602 	loss 2.2059 	refine_bbox_loss 1.4090 	refine_score_loss 0.0000 	seg_loss 0.0589 	seg_loss_dice 0.0447 	
+[05/20 09:50:51] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [380][1500/1737]  
+[05/20 09:50:51] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4070 	cls_loss 0.1237 	com_loss 0.1041 	keep_loss 0.0604 	loss 2.1551 	refine_bbox_loss 1.3558 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0448 	
+[05/20 09:56:32] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 380, total time 2519.67, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 10:08:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [381][500/1737]  
+[05/20 10:08:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4029 	cls_loss 0.1207 	com_loss 0.1017 	keep_loss 0.0600 	loss 2.0667 	refine_bbox_loss 1.2795 	refine_score_loss 0.0000 	seg_loss 0.0578 	seg_loss_dice 0.0441 	
+[05/20 10:20:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [381][1000/1737]  
+[05/20 10:20:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4012 	cls_loss 0.1222 	com_loss 0.1026 	keep_loss 0.0597 	loss 2.0095 	refine_bbox_loss 1.2208 	refine_score_loss 0.0000 	seg_loss 0.0585 	seg_loss_dice 0.0444 	
+[05/20 10:32:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [381][1500/1737]  
+[05/20 10:32:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4025 	cls_loss 0.1232 	com_loss 0.1037 	keep_loss 0.0601 	loss 2.0160 	refine_bbox_loss 1.2235 	refine_score_loss 0.0000 	seg_loss 0.0585 	seg_loss_dice 0.0444 	
+[05/20 10:38:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 381, total time 2514.08, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 10:39:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [381]  
+[05/20 10:39:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56069
+[05/20 10:39:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48812
+[05/20 10:39:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5808792595708877
+[05/20 10:39:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5096760622633572
+[05/20 10:39:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.214834, visual=0.046397, text=0.008671, fusion_wo_head=0.066069, head=0.091215
+[05/20 10:39:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010963, bi_layer1=0.009357, bi_layer2=0.006100, total=0.026420
+[05/20 10:39:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1508.91, avg_reserved=18324.36, peak_allocated=5783.56, peak_reserved=31630.00, warmup_iters=20
+[05/20 10:51:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [382][500/1737]  
+[05/20 10:51:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3950 	cls_loss 0.1216 	com_loss 0.1035 	keep_loss 0.0594 	loss 1.9625 	refine_bbox_loss 1.1809 	refine_score_loss 0.0000 	seg_loss 0.0581 	seg_loss_dice 0.0440 	
+[05/20 11:04:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [382][1000/1737]  
+[05/20 11:04:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3983 	cls_loss 0.1215 	com_loss 0.1028 	keep_loss 0.0594 	loss 1.9648 	refine_bbox_loss 1.1798 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0442 	
+[05/20 11:16:08] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [382][1500/1737]  
+[05/20 11:16:08] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4005 	cls_loss 0.1224 	com_loss 0.1034 	keep_loss 0.0600 	loss 1.9896 	refine_bbox_loss 1.2004 	refine_score_loss 0.0000 	seg_loss 0.0586 	seg_loss_dice 0.0443 	
+[05/20 11:21:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 382, total time 2519.04, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 11:33:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [383][500/1737]  
+[05/20 11:33:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4023 	cls_loss 0.1226 	com_loss 0.1025 	keep_loss 0.0592 	loss 2.0664 	refine_bbox_loss 1.2777 	refine_score_loss 0.0000 	seg_loss 0.0578 	seg_loss_dice 0.0443 	
+[05/20 11:45:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [383][1000/1737]  
+[05/20 11:45:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4023 	cls_loss 0.1211 	com_loss 0.1016 	keep_loss 0.0593 	loss 2.0009 	refine_bbox_loss 1.2138 	refine_score_loss 0.0000 	seg_loss 0.0582 	seg_loss_dice 0.0446 	
+[05/20 11:57:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [383][1500/1737]  
+[05/20 11:57:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1218 	com_loss 0.1022 	keep_loss 0.0596 	loss 2.0374 	refine_bbox_loss 1.2471 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0444 	
+[05/20 12:03:31] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 383, total time 2501.43, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 12:15:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [384][500/1737]  
+[05/20 12:15:30] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4050 	cls_loss 0.1240 	com_loss 0.1045 	keep_loss 0.0588 	loss 2.0554 	refine_bbox_loss 1.2596 	refine_score_loss 0.0000 	seg_loss 0.0588 	seg_loss_dice 0.0447 	
+[05/20 12:27:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [384][1000/1737]  
+[05/20 12:27:22] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4026 	cls_loss 0.1239 	com_loss 0.1041 	keep_loss 0.0596 	loss 2.0190 	refine_bbox_loss 1.2252 	refine_score_loss 0.0000 	seg_loss 0.0589 	seg_loss_dice 0.0447 	
+[05/20 12:39:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [384][1500/1737]  
+[05/20 12:39:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4041 	cls_loss 0.1245 	com_loss 0.1049 	keep_loss 0.0598 	loss 2.0573 	refine_bbox_loss 1.2606 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0446 	
+[05/20 12:44:48] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 384, total time 2477.13, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 12:46:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [384]  
+[05/20 12:46:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56058
+[05/20 12:46:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48780
+[05/20 12:46:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5806689103912495
+[05/20 12:46:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5119899032393773
+[05/20 12:46:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.215293, visual=0.047667, text=0.008499, fusion_wo_head=0.065685, head=0.091051
+[05/20 12:46:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010803, bi_layer1=0.009709, bi_layer2=0.005978, total=0.026490
+[05/20 12:46:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1519.56, avg_reserved=14834.19, peak_allocated=5802.51, peak_reserved=32876.00, warmup_iters=20
+[05/20 12:58:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [385][500/1737]  
+[05/20 12:58:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4019 	cls_loss 0.1223 	com_loss 0.1037 	keep_loss 0.0605 	loss 2.0580 	refine_bbox_loss 1.2654 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0451 	
+[05/20 13:10:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [385][1000/1737]  
+[05/20 13:10:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4003 	cls_loss 0.1221 	com_loss 0.1030 	keep_loss 0.0601 	loss 2.0786 	refine_bbox_loss 1.2901 	refine_score_loss 0.0000 	seg_loss 0.0584 	seg_loss_dice 0.0445 	
+[05/20 13:22:21] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [385][1500/1737]  
+[05/20 13:22:21] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4015 	cls_loss 0.1225 	com_loss 0.1032 	keep_loss 0.0603 	loss 2.0903 	refine_bbox_loss 1.2996 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0446 	
+[05/20 13:28:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 385, total time 2512.54, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 13:40:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [386][500/1737]  
+[05/20 13:40:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4054 	cls_loss 0.1233 	com_loss 0.1049 	keep_loss 0.0611 	loss 2.2388 	refine_bbox_loss 1.4423 	refine_score_loss 0.0000 	seg_loss 0.0577 	seg_loss_dice 0.0441 	
+[05/20 13:52:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [386][1000/1737]  
+[05/20 13:52:12] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4036 	cls_loss 0.1242 	com_loss 0.1049 	keep_loss 0.0607 	loss 2.2203 	refine_bbox_loss 1.4243 	refine_score_loss 0.0000 	seg_loss 0.0581 	seg_loss_dice 0.0444 	
+[05/20 14:04:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [386][1500/1737]  
+[05/20 14:04:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4022 	cls_loss 0.1241 	com_loss 0.1048 	keep_loss 0.0607 	loss 2.1187 	refine_bbox_loss 1.3241 	refine_score_loss 0.0000 	seg_loss 0.0584 	seg_loss_dice 0.0443 	
+[05/20 14:09:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 386, total time 2514.78, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 14:22:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [387][500/1737]  
+[05/20 14:22:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4064 	cls_loss 0.1234 	com_loss 0.1034 	keep_loss 0.0594 	loss 2.0571 	refine_bbox_loss 1.2613 	refine_score_loss 0.0000 	seg_loss 0.0586 	seg_loss_dice 0.0447 	
+[05/20 14:34:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [387][1000/1737]  
+[05/20 14:34:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4064 	cls_loss 0.1234 	com_loss 0.1036 	keep_loss 0.0602 	loss 2.0981 	refine_bbox_loss 1.3012 	refine_score_loss 0.0000 	seg_loss 0.0585 	seg_loss_dice 0.0447 	
+[05/20 14:46:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [387][1500/1737]  
+[05/20 14:46:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4067 	cls_loss 0.1239 	com_loss 0.1043 	keep_loss 0.0602 	loss 2.0538 	refine_bbox_loss 1.2558 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0446 	
+[05/20 14:51:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 387, total time 2504.73, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 14:53:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [387]  
+[05/20 14:53:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55942
+[05/20 14:53:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48685
+[05/20 14:53:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.580143037442154
+[05/20 14:53:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5089398401346235
+[05/20 14:53:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.214544, visual=0.047843, text=0.008479, fusion_wo_head=0.064788, head=0.091022
+[05/20 14:53:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010544, bi_layer1=0.008670, bi_layer2=0.006001, total=0.025215
+[05/20 14:53:07] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1510.01, avg_reserved=20180.20, peak_allocated=5784.16, peak_reserved=36980.00, warmup_iters=20
+[05/20 15:05:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [388][500/1737]  
+[05/20 15:05:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4003 	cls_loss 0.1213 	com_loss 0.1029 	keep_loss 0.0612 	loss 2.0611 	refine_bbox_loss 1.2731 	refine_score_loss 0.0000 	seg_loss 0.0579 	seg_loss_dice 0.0444 	
+[05/20 15:17:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [388][1000/1737]  
+[05/20 15:17:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4022 	cls_loss 0.1221 	com_loss 0.1029 	keep_loss 0.0608 	loss 2.0700 	refine_bbox_loss 1.2796 	refine_score_loss 0.0000 	seg_loss 0.0582 	seg_loss_dice 0.0443 	
+[05/20 15:29:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [388][1500/1737]  
+[05/20 15:29:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4027 	cls_loss 0.1231 	com_loss 0.1037 	keep_loss 0.0608 	loss 2.1108 	refine_bbox_loss 1.3181 	refine_score_loss 0.0000 	seg_loss 0.0581 	seg_loss_dice 0.0443 	
+[05/20 15:34:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 388, total time 2511.97, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 15:46:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [389][500/1737]  
+[05/20 15:46:59] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4085 	cls_loss 0.1243 	com_loss 0.1042 	keep_loss 0.0604 	loss 2.0817 	refine_bbox_loss 1.2824 	refine_score_loss 0.0000 	seg_loss 0.0579 	seg_loss_dice 0.0441 	
+[05/20 15:58:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [389][1000/1737]  
+[05/20 15:58:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4044 	cls_loss 0.1243 	com_loss 0.1053 	keep_loss 0.0604 	loss 2.0602 	refine_bbox_loss 1.2640 	refine_score_loss 0.0000 	seg_loss 0.0576 	seg_loss_dice 0.0441 	
+[05/20 16:10:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [389][1500/1737]  
+[05/20 16:10:53] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4050 	cls_loss 0.1247 	com_loss 0.1054 	keep_loss 0.0604 	loss 2.0371 	refine_bbox_loss 1.2396 	refine_score_loss 0.0000 	seg_loss 0.0578 	seg_loss_dice 0.0442 	
+[05/20 16:16:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 389, total time 2497.97, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 16:28:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [390][500/1737]  
+[05/20 16:28:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4044 	cls_loss 0.1226 	com_loss 0.1024 	keep_loss 0.0602 	loss 2.0743 	refine_bbox_loss 1.2816 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0447 	
+[05/20 16:40:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [390][1000/1737]  
+[05/20 16:40:38] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4055 	cls_loss 0.1234 	com_loss 0.1035 	keep_loss 0.0604 	loss 2.0324 	refine_bbox_loss 1.2368 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0444 	
+[05/20 16:52:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [390][1500/1737]  
+[05/20 16:52:44] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4046 	cls_loss 0.1244 	com_loss 0.1048 	keep_loss 0.0606 	loss 2.0029 	refine_bbox_loss 1.2056 	refine_score_loss 0.0000 	seg_loss 0.0585 	seg_loss_dice 0.0445 	
+[05/20 16:58:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 390, total time 2515.85, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 16:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [390]  
+[05/20 16:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56037
+[05/20 16:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48727
+[05/20 16:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5809844341607068
+[05/20 16:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5104122843920909
+[05/20 16:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.213075, visual=0.047201, text=0.008505, fusion_wo_head=0.065456, head=0.089508
+[05/20 16:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010332, bi_layer1=0.008864, bi_layer2=0.006238, total=0.025434
+[05/20 16:59:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1522.66, avg_reserved=15177.01, peak_allocated=5800.54, peak_reserved=26756.00, warmup_iters=20
+[05/20 17:12:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [391][500/1737]  
+[05/20 17:12:00] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4017 	cls_loss 0.1226 	com_loss 0.1031 	keep_loss 0.0602 	loss 1.8954 	refine_bbox_loss 1.1069 	refine_score_loss 0.0000 	seg_loss 0.0569 	seg_loss_dice 0.0440 	
+[05/20 17:24:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [391][1000/1737]  
+[05/20 17:24:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4009 	cls_loss 0.1233 	com_loss 0.1037 	keep_loss 0.0608 	loss 1.9621 	refine_bbox_loss 1.1719 	refine_score_loss 0.0000 	seg_loss 0.0573 	seg_loss_dice 0.0442 	
+[05/20 17:36:09] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [391][1500/1737]  
+[05/20 17:36:09] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4023 	cls_loss 0.1232 	com_loss 0.1037 	keep_loss 0.0607 	loss 2.0083 	refine_bbox_loss 1.2163 	refine_score_loss 0.0000 	seg_loss 0.0578 	seg_loss_dice 0.0443 	
+[05/20 17:41:46] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 391, total time 2509.64, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 17:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [392][500/1737]  
+[05/20 17:53:58] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4015 	cls_loss 0.1233 	com_loss 0.1027 	keep_loss 0.0598 	loss 2.0911 	refine_bbox_loss 1.3018 	refine_score_loss 0.0000 	seg_loss 0.0579 	seg_loss_dice 0.0442 	
+[05/20 18:06:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [392][1000/1737]  
+[05/20 18:06:06] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4015 	cls_loss 0.1225 	com_loss 0.1028 	keep_loss 0.0600 	loss 2.0445 	refine_bbox_loss 1.2549 	refine_score_loss 0.0000 	seg_loss 0.0584 	seg_loss_dice 0.0443 	
+[05/20 18:18:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [392][1500/1737]  
+[05/20 18:18:04] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4002 	cls_loss 0.1223 	com_loss 0.1027 	keep_loss 0.0600 	loss 2.0271 	refine_bbox_loss 1.2389 	refine_score_loss 0.0000 	seg_loss 0.0585 	seg_loss_dice 0.0444 	
+[05/20 18:23:37] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 392, total time 2511.66, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 18:35:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [393][500/1737]  
+[05/20 18:35:49] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4053 	cls_loss 0.1229 	com_loss 0.1033 	keep_loss 0.0605 	loss 2.0421 	refine_bbox_loss 1.2466 	refine_score_loss 0.0000 	seg_loss 0.0589 	seg_loss_dice 0.0445 	
+[05/20 18:47:45] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [393][1000/1737]  
+[05/20 18:47:45] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4052 	cls_loss 0.1238 	com_loss 0.1037 	keep_loss 0.0603 	loss 2.0840 	refine_bbox_loss 1.2876 	refine_score_loss 0.0000 	seg_loss 0.0588 	seg_loss_dice 0.0446 	
+[05/20 18:59:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [393][1500/1737]  
+[05/20 18:59:40] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4048 	cls_loss 0.1229 	com_loss 0.1032 	keep_loss 0.0601 	loss 2.0470 	refine_bbox_loss 1.2533 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0444 	
+[05/20 19:05:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 393, total time 2502.99, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 19:06:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [393]  
+[05/20 19:06:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56027
+[05/20 19:06:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48780
+[05/20 19:06:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5815103071098022
+[05/20 19:06:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.512726125368111
+[05/20 19:06:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.210545, visual=0.046542, text=0.008452, fusion_wo_head=0.064307, head=0.088894
+[05/20 19:06:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010746, bi_layer1=0.008944, bi_layer2=0.005828, total=0.025518
+[05/20 19:06:43] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1518.05, avg_reserved=13488.89, peak_allocated=5794.20, peak_reserved=27498.00, warmup_iters=20
+[05/20 19:18:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [394][500/1737]  
+[05/20 19:18:47] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3997 	cls_loss 0.1232 	com_loss 0.1032 	keep_loss 0.0591 	loss 2.1311 	refine_bbox_loss 1.3420 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0448 	
+[05/20 19:30:45] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [394][1000/1737]  
+[05/20 19:30:45] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4023 	cls_loss 0.1222 	com_loss 0.1033 	keep_loss 0.0592 	loss 2.0958 	refine_bbox_loss 1.3054 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0448 	
+[05/20 19:42:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [394][1500/1737]  
+[05/20 19:42:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4018 	cls_loss 0.1224 	com_loss 0.1033 	keep_loss 0.0596 	loss 2.0698 	refine_bbox_loss 1.2802 	refine_score_loss 0.0000 	seg_loss 0.0580 	seg_loss_dice 0.0444 	
+[05/20 19:48:18] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 394, total time 2495.61, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 20:00:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [395][500/1737]  
+[05/20 20:00:33] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4017 	cls_loss 0.1230 	com_loss 0.1035 	keep_loss 0.0601 	loss 2.0499 	refine_bbox_loss 1.2595 	refine_score_loss 0.0000 	seg_loss 0.0581 	seg_loss_dice 0.0441 	
+[05/20 20:12:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [395][1000/1737]  
+[05/20 20:12:26] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4030 	cls_loss 0.1227 	com_loss 0.1034 	keep_loss 0.0601 	loss 2.0583 	refine_bbox_loss 1.2660 	refine_score_loss 0.0000 	seg_loss 0.0584 	seg_loss_dice 0.0445 	
+[05/20 20:24:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [395][1500/1737]  
+[05/20 20:24:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4022 	cls_loss 0.1221 	com_loss 0.1034 	keep_loss 0.0599 	loss 2.0660 	refine_bbox_loss 1.2751 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0445 	
+[05/20 20:30:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 395, total time 2506.38, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 20:42:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [396][500/1737]  
+[05/20 20:42:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3998 	cls_loss 0.1220 	com_loss 0.1027 	keep_loss 0.0593 	loss 1.9945 	refine_bbox_loss 1.2076 	refine_score_loss 0.0000 	seg_loss 0.0589 	seg_loss_dice 0.0443 	
+[05/20 20:54:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [396][1000/1737]  
+[05/20 20:54:11] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3990 	cls_loss 0.1224 	com_loss 0.1032 	keep_loss 0.0593 	loss 2.0137 	refine_bbox_loss 1.2279 	refine_score_loss 0.0000 	seg_loss 0.0580 	seg_loss_dice 0.0440 	
+[05/20 21:06:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [396][1500/1737]  
+[05/20 21:06:13] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4008 	cls_loss 0.1217 	com_loss 0.1029 	keep_loss 0.0594 	loss 2.0060 	refine_bbox_loss 1.2187 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0441 	
+[05/20 21:11:56] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 396, total time 2511.59, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 21:13:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [396]  
+[05/20 21:13:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55963
+[05/20 21:13:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48528
+[05/20 21:13:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5791964661337821
+[05/20 21:13:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5087294909549853
+[05/20 21:13:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.203657, visual=0.044864, text=0.008154, fusion_wo_head=0.063698, head=0.084647
+[05/20 21:13:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010279, bi_layer1=0.008948, bi_layer2=0.005691, total=0.024918
+[05/20 21:13:19] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1518.38, avg_reserved=17029.06, peak_allocated=5792.88, peak_reserved=30008.00, warmup_iters=20
+[05/20 21:25:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [397][500/1737]  
+[05/20 21:25:25] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4093 	cls_loss 0.1252 	com_loss 0.1058 	keep_loss 0.0602 	loss 1.9945 	refine_bbox_loss 1.1919 	refine_score_loss 0.0000 	seg_loss 0.0578 	seg_loss_dice 0.0443 	
+[05/20 21:37:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [397][1000/1737]  
+[05/20 21:37:24] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4063 	cls_loss 0.1240 	com_loss 0.1054 	keep_loss 0.0602 	loss 2.0160 	refine_bbox_loss 1.2181 	refine_score_loss 0.0000 	seg_loss 0.0579 	seg_loss_dice 0.0442 	
+[05/20 21:49:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [397][1500/1737]  
+[05/20 21:49:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4054 	cls_loss 0.1232 	com_loss 0.1043 	keep_loss 0.0600 	loss 2.0267 	refine_bbox_loss 1.2317 	refine_score_loss 0.0000 	seg_loss 0.0579 	seg_loss_dice 0.0443 	
+[05/20 21:55:05] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 397, total time 2506.34, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 22:07:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [398][500/1737]  
+[05/20 22:07:17] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3986 	cls_loss 0.1202 	com_loss 0.1018 	keep_loss 0.0587 	loss 1.9272 	refine_bbox_loss 1.1451 	refine_score_loss 0.0000 	seg_loss 0.0579 	seg_loss_dice 0.0450 	
+[05/20 22:19:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [398][1000/1737]  
+[05/20 22:19:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3982 	cls_loss 0.1209 	com_loss 0.1022 	keep_loss 0.0593 	loss 1.9955 	refine_bbox_loss 1.2124 	refine_score_loss 0.0000 	seg_loss 0.0579 	seg_loss_dice 0.0447 	
+[05/20 22:31:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [398][1500/1737]  
+[05/20 22:31:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.3995 	cls_loss 0.1213 	com_loss 0.1024 	keep_loss 0.0598 	loss 2.0452 	refine_bbox_loss 1.2599 	refine_score_loss 0.0000 	seg_loss 0.0579 	seg_loss_dice 0.0444 	
+[05/20 22:36:51] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 398, total time 2505.66, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 22:48:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [399][500/1737]  
+[05/20 22:48:57] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4030 	cls_loss 0.1217 	com_loss 0.1030 	keep_loss 0.0603 	loss 2.0731 	refine_bbox_loss 1.2821 	refine_score_loss 0.0000 	seg_loss 0.0582 	seg_loss_dice 0.0447 	
+[05/20 23:01:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [399][1000/1737]  
+[05/20 23:01:03] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4060 	cls_loss 0.1235 	com_loss 0.1044 	keep_loss 0.0605 	loss 2.0777 	refine_bbox_loss 1.2813 	refine_score_loss 0.0000 	seg_loss 0.0577 	seg_loss_dice 0.0443 	
+[05/20 23:13:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [399][1500/1737]  
+[05/20 23:13:02] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4047 	cls_loss 0.1232 	com_loss 0.1038 	keep_loss 0.0604 	loss 2.0629 	refine_bbox_loss 1.2689 	refine_score_loss 0.0000 	seg_loss 0.0576 	seg_loss_dice 0.0443 	
+[05/20 23:18:50] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 399, total time 2519.00, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/20 23:20:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [399]  
+[05/20 23:20:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.55974
+[05/20 23:20:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48601
+[05/20 23:20:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5798275136726967
+[05/20 23:20:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5089398401346235
+[05/20 23:20:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.196876, visual=0.044243, text=0.008006, fusion_wo_head=0.060299, head=0.082091
+[05/20 23:20:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.009439, bi_layer1=0.008221, bi_layer2=0.005118, total=0.022778
+[05/20 23:20:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1520.19, avg_reserved=15193.15, peak_allocated=5796.22, peak_reserved=27190.00, warmup_iters=20
+[05/20 23:32:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [400][500/1737]  
+[05/20 23:32:14] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4020 	cls_loss 0.1232 	com_loss 0.1042 	keep_loss 0.0590 	loss 1.9635 	refine_bbox_loss 1.1710 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0451 	
+[05/20 23:44:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [400][1000/1737]  
+[05/20 23:44:20] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4040 	cls_loss 0.1227 	com_loss 0.1035 	keep_loss 0.0598 	loss 1.9675 	refine_bbox_loss 1.1744 	refine_score_loss 0.0000 	seg_loss 0.0583 	seg_loss_dice 0.0447 	
+[05/20 23:56:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Train: [400][1500/1737]  
+[05/20 23:56:23] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: bbox_loss 0.4043 	cls_loss 0.1224 	com_loss 0.1034 	keep_loss 0.0597 	loss 2.0161 	refine_bbox_loss 1.2238 	refine_score_loss 0.0000 	seg_loss 0.0580 	seg_loss_dice 0.0444 	
+[05/21 00:02:15] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: epoch 400, total time 2521.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/21 00:02:16] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Saved in /share/lxy/TSP3D_ori/scripts/experiments/SEG_tps_thres32/SEG_tps_thres_seg_single_multi_32_SEGEA_resume2/scanrefer/2026-05-16_11-31-32/ckpt_epoch_last.pth
+[05/21 00:03:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [400]  
+[05/21 00:03:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56142
+[05/21 00:03:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48906
+[05/21 00:03:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5814051325199832
+[05/21 00:03:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5120950778291965
+[05/21 00:03:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Timing(s): inf=0.195993, visual=0.044764, text=0.008510, fusion_wo_head=0.059325, head=0.080968
+[05/21 00:03:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: External-attn-affected module time(s): bi_layer0=0.010107, bi_layer1=0.004905, bi_layer2=0.005409, total=0.020421
+[05/21 00:03:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: GPU memory(MiB): avg_allocated=1532.61, avg_reserved=12914.00, peak_allocated=5810.24, peak_reserved=30228.00, warmup_iters=20

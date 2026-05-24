@@ -52,11 +52,19 @@ scripts/experiments/TGEA_convrefine/TGEA_refine_noscore/scanrefer/2026-03-21_03-
 
 scripts/experiments/SEG_tps_thres32/SEG_tps_thres_seg_single_multi_32/scanrefer/2026-04-28_17-22-12/ckpt_epoch_378.pth
 
-## Acc_mask0.50: 378
 ```
 [05/03 15:11:52] SEG_tps_thres_seg_single_multi_32 INFO: Eval: [378]  
 [05/03 15:11:52] SEG_tps_thres_seg_single_multi_32 INFO: 3dcnn Acc0.25: Top-1: 0.56153
 [05/03 15:11:52] SEG_tps_thres_seg_single_multi_32 INFO: 3dcnn Acc0.50: Top-1: 0.48696
 [05/03 15:11:52] SEG_tps_thres_seg_single_multi_32 INFO: Acc_mask0.25 0.5835086243163652
 [05/03 15:11:52] SEG_tps_thres_seg_single_multi_32 INFO: Acc_mask0.50 0.5135675220866639
+```
+
+## EA0+seg+refine+tps_thres_fix+SEGEA
+```
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Eval: [300]  
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.25: Top-1: 0.56216
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48896
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5816154816996214
+[05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5111485065208246
 ```
