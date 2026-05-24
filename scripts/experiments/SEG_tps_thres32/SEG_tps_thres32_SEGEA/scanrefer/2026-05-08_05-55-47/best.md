@@ -1,0 +1,35 @@
+## 3dcnn Acc0.25: 207
+```
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: Eval: [207]  
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: 3dcnn Acc0.25: Top-1: 0.55732
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: 3dcnn Acc0.50: Top-1: 0.47539
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: Acc_mask0.25 0.5728859907446361
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: Acc_mask0.50 0.48190997055111484
+```
+
+## 3dcnn Acc0.50: 210
+```
+[05/08 10:16:22] SEG_tps_thres32_SEGEA INFO: Eval: [210]  
+[05/08 10:16:22] SEG_tps_thres32_SEGEA INFO: 3dcnn Acc0.25: Top-1: 0.55385
+[05/08 10:16:22] SEG_tps_thres32_SEGEA INFO: 3dcnn Acc0.50: Top-1: 0.47549
+[05/08 10:16:22] SEG_tps_thres32_SEGEA INFO: Acc_mask0.25 0.5721497686159024
+[05/08 10:16:22] SEG_tps_thres32_SEGEA INFO: Acc_mask0.50 0.48148927219183846
+```
+
+## Acc_mask0.25: 207
+```
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: Eval: [207]  
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: 3dcnn Acc0.25: Top-1: 0.55732
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: 3dcnn Acc0.50: Top-1: 0.47539
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: Acc_mask0.25 0.5728859907446361
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: Acc_mask0.50 0.48190997055111484
+```
+
+## Acc_mask0.50: 207
+```
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: Eval: [207]  
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: 3dcnn Acc0.25: Top-1: 0.55732
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: 3dcnn Acc0.50: Top-1: 0.47539
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: Acc_mask0.25 0.5728859907446361
+[05/08 08:09:19] SEG_tps_thres32_SEGEA INFO: Acc_mask0.50 0.48190997055111484
+```

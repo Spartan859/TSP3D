@@ -1,3 +1,4 @@
+# scanrefer
 ## EA0 
 
 scripts/experiments/TF32/EA0/scanrefer/2026-04-18_17-45-08
@@ -67,4 +68,44 @@ scripts/experiments/SEG_tps_thres32/SEG_tps_thres_seg_single_multi_32/scanrefer/
 [05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: 3dcnn Acc0.50: Top-1: 0.48896
 [05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.25 0.5816154816996214
 [05/18 01:26:36] SEG_tps_thres_seg_single_multi_32_SEGEA_resume2 INFO: Acc_mask0.50 0.5111485065208246
+```
+
+# nr3d
+## EA0
+scripts/experiments/nr3d/EA0/nr3d/2026-05-18_01-11-03/ckpt_epoch_201.pth
+
+```
+[05/19 13:49:51] EA0 INFO: Eval: [201]  
+[05/19 13:49:51] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.49861
+[05/19 13:49:51] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.38171
+```
+
+## EA02
+
+scripts/experiments/nr3d/EA02/nr3d/2026-05-18_01-13-49/ckpt_epoch_141.pth
+
+```
+[05/19 03:10:26] EA02 INFO: Eval: [141]  
+[05/19 03:10:26] EA02 INFO: 3dcnn Acc0.25: Top-1: 0.48925
+[05/19 03:10:26] EA02 INFO: 3dcnn Acc0.50: Top-1: 0.37930
+```
+
+# sr3d
+
+## EA0
+scripts/experiments/sr3d_fixed3/EA0/sr3d/2026-05-17_21-39-50/ckpt_epoch_75.pth
+
+```
+[05/18 22:03:29] EA0 INFO: Eval: [75]  
+[05/18 22:03:29] EA0 INFO: 3dcnn Acc0.25: Top-1: 0.57395
+[05/18 22:03:29] EA0 INFO: 3dcnn Acc0.50: Top-1: 0.44393
+```
+
+## EA02
+scripts/experiments/sr3d_fixed3/EA02/sr3d/2026-05-18_01-12-46/ckpt_epoch_84.pth
+
+```
+[05/19 03:38:39] EA02 INFO: Eval: [84]  
+[05/19 03:38:39] EA02 INFO: 3dcnn Acc0.25: Top-1: 0.55505
+[05/19 03:38:39] EA02 INFO: 3dcnn Acc0.50: Top-1: 0.43445
 ```

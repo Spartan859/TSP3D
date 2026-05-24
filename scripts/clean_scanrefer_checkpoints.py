@@ -225,8 +225,11 @@ def process_folder(folder: Path, apply: bool = False, dry_run: bool = True):
     if unmatched:
         print(f"Warning: in {folder} best epochs {unmatched} not matched to any .pth filename")
 
-    # decide deletions: all pth not in keep_files
-    to_delete = [p for p in pth_files if p not in keep_files]
+    # decide deletions: only delete pth whose epoch appears in eval log but is NOT best
+    eval_epochs = set(epoch_metrics.keys())
+    to_delete = [p for p in pth_files
+                 if p not in keep_files
+                 and epoch_from_pth(p) in eval_epochs]
 
     if dry_run:
         print(f"Folder: {folder}")
