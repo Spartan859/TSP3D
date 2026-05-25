@@ -90,6 +90,15 @@ scripts/experiments/nr3d/EA02/nr3d/2026-05-18_01-13-49/ckpt_epoch_141.pth
 [05/19 03:10:26] EA02 INFO: 3dcnn Acc0.50: Top-1: 0.37930
 ```
 
+## EA0+seg
+```
+[05/25 12:13:15] EA0_SEG INFO: Eval: [216]  
+[05/25 12:13:15] EA0_SEG INFO: 3dcnn Acc0.25: Top-1: 0.50051
+[05/25 12:13:15] EA0_SEG INFO: 3dcnn Acc0.50: Top-1: 0.39562
+[05/25 12:13:15] EA0_SEG INFO: Acc_mask0.25 0.5187246963562753
+[05/25 12:13:15] EA0_SEG INFO: Acc_mask0.50 0.4277580971659919
+```
+
 # sr3d
 
 ## EA0

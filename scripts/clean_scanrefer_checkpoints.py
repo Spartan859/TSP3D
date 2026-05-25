@@ -229,7 +229,8 @@ def process_folder(folder: Path, apply: bool = False, dry_run: bool = True):
     eval_epochs = set(epoch_metrics.keys())
     to_delete = [p for p in pth_files
                  if p not in keep_files
-                 and epoch_from_pth(p) in eval_epochs]
+                 and epoch_from_pth(p) in eval_epochs
+                 and 'last' not in p.name]
 
     if dry_run:
         print(f"Folder: {folder}")

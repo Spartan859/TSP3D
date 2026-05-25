@@ -297,7 +297,7 @@ def parse_option():
     return args
 
 # BRIEF load checkpoint.
-def load_checkpoint(args, model, optimizer, scheduler):
+def load_checkpoint(args, model, optimizer, scheduler, n_iter_per_epoch=1):
     """Load from checkpoint."""
     print("=> loading checkpoint '{}'".format(args.checkpoint_path))
 
@@ -317,6 +317,7 @@ def load_checkpoint(args, model, optimizer, scheduler):
                         scheduler.load_state_dict(checkpoint['scheduler'])
                         if cli_milestones is not None:
                             scheduler.milestones = cli_milestones
+                            scheduler.last_epoch = (args.start_epoch - 1) * n_iter_per_epoch
                     except Exception as e:
                         print("scheduler loaded failed, maybe due to different scheduler settings.")
                         print(e)
@@ -665,7 +666,7 @@ class BaseTrainTester:
 
         # Check for a checkpoint (file existence asserted earlier)
         if args.checkpoint_path:
-            load_checkpoint(args, model, optimizer, scheduler)
+            load_checkpoint(args, model, optimizer, scheduler, len(train_loader))
         
         # ##############################################
         # NOTE [eval-only] Just eval and end execution #
