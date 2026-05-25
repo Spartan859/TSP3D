@@ -294,3 +294,5 @@
 [05/25 20:49:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1257.33, avg_reserved=6197.63, peak_allocated=3711.75, peak_reserved=33198.00, warmup_iters=20
 [05/25 20:59:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [331][500/1520]  
 [05/25 20:59:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3672 	cls_loss 0.1502 	com_loss 0.1373 	keep_loss 0.0609 	loss 1.9396 	refine_bbox_loss 1.1198 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0440 	
+[05/25 21:08:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [331][1000/1520]  
+[05/25 21:08:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3639 	cls_loss 0.1477 	com_loss 0.1345 	keep_loss 0.0604 	loss 1.9352 	refine_bbox_loss 1.1249 	refine_score_loss 0.0000 	seg_loss 0.0598 	seg_loss_dice 0.0440 	

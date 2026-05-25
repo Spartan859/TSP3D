@@ -265,3 +265,11 @@
 [05/25 20:57:12] EA0_SEG INFO: Train: [98][2000/2432]  
 [05/25 20:57:12] EA0_SEG INFO: bbox_loss 0.3926 	cls_loss 0.1224 	com_loss 0.1004 	keep_loss 0.0463 	loss 1.9916 	refine_bbox_loss 1.2101 	refine_score_loss 0.0000 	seg_loss 0.0725 	seg_loss_dice 0.0473 	
 [05/25 21:03:53] EA0_SEG INFO: epoch 98, total time 2256.28, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0001000
+[05/25 21:11:41] EA0_SEG INFO: Train: [99][500/2432]  
+[05/25 21:11:41] EA0_SEG INFO: bbox_loss 0.3965 	cls_loss 0.1272 	com_loss 0.1043 	keep_loss 0.0466 	loss 2.1464 	refine_bbox_loss 1.3513 	refine_score_loss 0.0000 	seg_loss 0.0730 	seg_loss_dice 0.0476 	
+[05/25 21:19:21] EA0_SEG INFO: Train: [99][1000/2432]  
+[05/25 21:19:21] EA0_SEG INFO: bbox_loss 0.3957 	cls_loss 0.1256 	com_loss 0.1035 	keep_loss 0.0466 	loss 2.0785 	refine_bbox_loss 1.2860 	refine_score_loss 0.0000 	seg_loss 0.0733 	seg_loss_dice 0.0477 	
+[05/25 21:27:01] EA0_SEG INFO: Train: [99][1500/2432]  
+[05/25 21:27:01] EA0_SEG INFO: bbox_loss 0.3969 	cls_loss 0.1244 	com_loss 0.1030 	keep_loss 0.0465 	loss 2.0975 	refine_bbox_loss 1.3060 	refine_score_loss 0.0000 	seg_loss 0.0731 	seg_loss_dice 0.0476 	
+[05/25 21:34:41] EA0_SEG INFO: Train: [99][2000/2432]  
+[05/25 21:34:41] EA0_SEG INFO: bbox_loss 0.3952 	cls_loss 0.1241 	com_loss 0.1026 	keep_loss 0.0464 	loss 2.0796 	refine_bbox_loss 1.2912 	refine_score_loss 0.0000 	seg_loss 0.0727 	seg_loss_dice 0.0475 	
