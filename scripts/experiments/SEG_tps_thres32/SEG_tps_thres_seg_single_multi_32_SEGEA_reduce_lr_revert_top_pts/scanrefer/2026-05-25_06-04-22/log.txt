@@ -1,0 +1,296 @@
+[05/25 06:04:28] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Full config saved to /mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/SEG_tps_thres32/SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts/scanrefer/2026-05-25_06-04-22/config.json
+[05/25 06:04:28] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': True, 'batch_size': 4, 'dataset': ['scanrefer'], 'test_dataset': 'scanrefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': True, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 400, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 5e-05, 'keep_trans_lr': 5e-05, 'text_encoder_lr': 1e-06, 'box_select_lr': 4e-05, 'seg_lr': 0.0001, 'lr_scheduler': 'step', 'lr_decay_epochs': [30, 301], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'default', 'tf32_cudnn': 'default', 'checkpoint_path': '/root/lxy/TSP3D/scripts/experiments/SEG_tps_thres32/SEG_tps_thres_seg_single_multi_32_SEGEA_resume2/scanrefer/2026-05-16_11-31-32/ckpt_epoch_300.pth', 'load_optimizer': True, 'load_scheduler': True, 'log_dir': '/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/SEG_tps_thres32/SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts/scanrefer/2026-05-25_06-04-22', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 42, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'measure_fps_detail': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'cudnn_benchmark': True, 'cudnn_deterministic': True, 'use_deterministic_algorithms': False, 'deterministic_warn_only': False, 'use_seg': True, 'use_refine': True, 'use_external_attn_bi_layer': [0], 'use_text_guided_external_attn_bi_layer': [0], 'use_film_text_guided_external_attn_bi_layer': [0], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': True, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 4, 'external_attn_k_keep0': 64, 'external_attn_k_keep1': 64, 'external_attn_k_com': 64, 'external_attn_k_seg128': 64, 'external_attn_k_seg64': 64, 'top_pts_threshold': 24, 'top_pts_threshold_det': 8, 'gpu_mem_limit_gb': 0.0, 'prune_threshold_0': 0.3, 'prune_threshold_1': 0.7, 'pts_prune_threshold': [1200, 4000], 'random_prune_threshold': [1200, 4000], 'nms_pre': 1, 'nms_iou_thr': 0.5, 'nms_score_thr': 0.01}
+[05/25 06:10:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: length of training dataset: 48655
+[05/25 06:10:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: length of testing dataset: 9508
+[05/25 06:20:30] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [301][500/1520]  
+[05/25 06:20:30] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3711 	cls_loss 0.1974 	com_loss 0.1687 	keep_loss 0.0604 	loss 2.0976 	refine_bbox_loss 1.1952 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0441 	
+[05/25 06:30:18] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [301][1000/1520]  
+[05/25 06:30:18] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3742 	cls_loss 0.1832 	com_loss 0.1586 	keep_loss 0.0606 	loss 2.1027 	refine_bbox_loss 1.2217 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0442 	
+[05/25 06:40:01] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [301][1500/1520]  
+[05/25 06:40:01] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3707 	cls_loss 0.1760 	com_loss 0.1533 	keep_loss 0.0604 	loss 2.0104 	refine_bbox_loss 1.1450 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0442 	
+[05/25 06:40:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 301, total time 1778.20, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 06:50:05] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [302][500/1520]  
+[05/25 06:50:05] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3722 	cls_loss 0.1595 	com_loss 0.1411 	keep_loss 0.0608 	loss 2.1161 	refine_bbox_loss 1.2763 	refine_score_loss 0.0000 	seg_loss 0.0616 	seg_loss_dice 0.0448 	
+[05/25 06:59:42] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [302][1000/1520]  
+[05/25 06:59:42] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3705 	cls_loss 0.1597 	com_loss 0.1406 	keep_loss 0.0605 	loss 2.0274 	refine_bbox_loss 1.1906 	refine_score_loss 0.0000 	seg_loss 0.0609 	seg_loss_dice 0.0445 	
+[05/25 07:09:18] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [302][1500/1520]  
+[05/25 07:09:18] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3672 	cls_loss 0.1587 	com_loss 0.1404 	keep_loss 0.0613 	loss 2.0172 	refine_bbox_loss 1.1840 	refine_score_loss 0.0000 	seg_loss 0.0609 	seg_loss_dice 0.0446 	
+[05/25 07:09:39] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 302, total time 1755.31, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 07:19:19] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [303][500/1520]  
+[05/25 07:19:19] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3654 	cls_loss 0.1577 	com_loss 0.1381 	keep_loss 0.0609 	loss 2.0588 	refine_bbox_loss 1.2315 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0443 	
+[05/25 07:28:52] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [303][1000/1520]  
+[05/25 07:28:52] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3617 	cls_loss 0.1565 	com_loss 0.1380 	keep_loss 0.0603 	loss 1.9327 	refine_bbox_loss 1.1116 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0440 	
+[05/25 07:38:28] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [303][1500/1520]  
+[05/25 07:38:28] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3605 	cls_loss 0.1571 	com_loss 0.1388 	keep_loss 0.0605 	loss 1.9597 	refine_bbox_loss 1.1390 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0437 	
+[05/25 07:38:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 303, total time 1751.42, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 07:39:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [303]  
+[05/25 07:39:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55887
+[05/25 07:39:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48759
+[05/25 07:39:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.5805298570227082
+[05/25 07:39:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5130361648444071
+[05/25 07:39:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.188980, visual=0.045688, text=0.013438, fusion_wo_head=0.063473, head=0.062984
+[05/25 07:39:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.008224, bi_layer1=0.015049, bi_layer2=0.007095, total=0.030368
+[05/25 07:39:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1235.58, avg_reserved=5593.58, peak_allocated=10056.17, peak_reserved=18512.00, warmup_iters=20
+[05/25 07:49:49] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [304][500/1520]  
+[05/25 07:49:49] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3717 	cls_loss 0.1586 	com_loss 0.1402 	keep_loss 0.0611 	loss 1.9393 	refine_bbox_loss 1.1026 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0443 	
+[05/25 07:59:25] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [304][1000/1520]  
+[05/25 07:59:25] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3696 	cls_loss 0.1557 	com_loss 0.1387 	keep_loss 0.0607 	loss 1.8902 	refine_bbox_loss 1.0599 	refine_score_loss 0.0000 	seg_loss 0.0613 	seg_loss_dice 0.0443 	
+[05/25 08:09:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [304][1500/1520]  
+[05/25 08:09:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3688 	cls_loss 0.1557 	com_loss 0.1395 	keep_loss 0.0608 	loss 1.9327 	refine_bbox_loss 1.1017 	refine_score_loss 0.0000 	seg_loss 0.0616 	seg_loss_dice 0.0445 	
+[05/25 08:09:25] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 304, total time 1769.85, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 08:19:08] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [305][500/1520]  
+[05/25 08:19:08] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3675 	cls_loss 0.1542 	com_loss 0.1380 	keep_loss 0.0602 	loss 1.9901 	refine_bbox_loss 1.1637 	refine_score_loss 0.0000 	seg_loss 0.0621 	seg_loss_dice 0.0444 	
+[05/25 08:28:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [305][1000/1520]  
+[05/25 08:28:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3684 	cls_loss 0.1550 	com_loss 0.1384 	keep_loss 0.0610 	loss 2.0050 	refine_bbox_loss 1.1763 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0445 	
+[05/25 08:38:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [305][1500/1520]  
+[05/25 08:38:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3679 	cls_loss 0.1546 	com_loss 0.1379 	keep_loss 0.0606 	loss 2.0323 	refine_bbox_loss 1.2055 	refine_score_loss 0.0000 	seg_loss 0.0614 	seg_loss_dice 0.0444 	
+[05/25 08:38:35] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 305, total time 1749.40, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 08:48:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [306][500/1520]  
+[05/25 08:48:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3690 	cls_loss 0.1558 	com_loss 0.1392 	keep_loss 0.0613 	loss 2.0551 	refine_bbox_loss 1.2260 	refine_score_loss 0.0000 	seg_loss 0.0600 	seg_loss_dice 0.0438 	
+[05/25 08:57:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [306][1000/1520]  
+[05/25 08:57:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3676 	cls_loss 0.1538 	com_loss 0.1370 	keep_loss 0.0610 	loss 2.0224 	refine_bbox_loss 1.1983 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0440 	
+[05/25 09:07:28] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [306][1500/1520]  
+[05/25 09:07:28] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3678 	cls_loss 0.1550 	com_loss 0.1386 	keep_loss 0.0614 	loss 2.0322 	refine_bbox_loss 1.2036 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0442 	
+[05/25 09:07:52] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 306, total time 1756.72, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 09:08:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [306]  
+[05/25 09:08:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55772
+[05/25 09:08:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48644
+[05/25 09:08:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.5782169890664424
+[05/25 09:08:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5105130361648444
+[05/25 09:08:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.170218, visual=0.037474, text=0.010870, fusion_wo_head=0.056748, head=0.063179
+[05/25 09:08:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.007706, bi_layer1=0.005925, bi_layer2=0.007688, total=0.021319
+[05/25 09:08:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1237.95, avg_reserved=5743.59, peak_allocated=3692.16, peak_reserved=18976.00, warmup_iters=20
+[05/25 09:18:35] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [307][500/1520]  
+[05/25 09:18:35] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3703 	cls_loss 0.1532 	com_loss 0.1391 	keep_loss 0.0605 	loss 2.1372 	refine_bbox_loss 1.3079 	refine_score_loss 0.0000 	seg_loss 0.0616 	seg_loss_dice 0.0447 	
+[05/25 09:28:05] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [307][1000/1520]  
+[05/25 09:28:05] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3705 	cls_loss 0.1529 	com_loss 0.1386 	keep_loss 0.0617 	loss 2.2095 	refine_bbox_loss 1.3804 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0443 	
+[05/25 09:37:30] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [307][1500/1520]  
+[05/25 09:37:30] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3700 	cls_loss 0.1525 	com_loss 0.1383 	keep_loss 0.0612 	loss 2.1466 	refine_bbox_loss 1.3200 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0443 	
+[05/25 09:37:53] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 307, total time 1742.09, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 09:47:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [308][500/1520]  
+[05/25 09:47:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3724 	cls_loss 0.1513 	com_loss 0.1367 	keep_loss 0.0594 	loss 2.0333 	refine_bbox_loss 1.2069 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0450 	
+[05/25 09:56:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [308][1000/1520]  
+[05/25 09:56:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3706 	cls_loss 0.1510 	com_loss 0.1363 	keep_loss 0.0596 	loss 2.1784 	refine_bbox_loss 1.3546 	refine_score_loss 0.0000 	seg_loss 0.0615 	seg_loss_dice 0.0448 	
+[05/25 10:06:29] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [308][1500/1520]  
+[05/25 10:06:29] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3695 	cls_loss 0.1513 	com_loss 0.1364 	keep_loss 0.0602 	loss 2.1243 	refine_bbox_loss 1.3011 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0447 	
+[05/25 10:06:52] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 308, total time 1738.70, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 10:16:38] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [309][500/1520]  
+[05/25 10:16:38] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3770 	cls_loss 0.1568 	com_loss 0.1416 	keep_loss 0.0631 	loss 2.1373 	refine_bbox_loss 1.2936 	refine_score_loss 0.0000 	seg_loss 0.0609 	seg_loss_dice 0.0444 	
+[05/25 10:26:11] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [309][1000/1520]  
+[05/25 10:26:11] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3720 	cls_loss 0.1537 	com_loss 0.1393 	keep_loss 0.0618 	loss 2.0965 	refine_bbox_loss 1.2642 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0443 	
+[05/25 10:35:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [309][1500/1520]  
+[05/25 10:35:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3734 	cls_loss 0.1542 	com_loss 0.1400 	keep_loss 0.0612 	loss 2.1097 	refine_bbox_loss 1.2747 	refine_score_loss 0.0000 	seg_loss 0.0619 	seg_loss_dice 0.0443 	
+[05/25 10:36:04] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 309, total time 1751.93, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 10:37:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [309]  
+[05/25 10:37:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55635
+[05/25 10:37:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48465
+[05/25 10:37:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.5772708158116064
+[05/25 10:37:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5094617325483599
+[05/25 10:37:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.171155, visual=0.038920, text=0.010779, fusion_wo_head=0.058449, head=0.060969
+[05/25 10:37:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.008538, bi_layer1=0.006192, bi_layer2=0.008310, total=0.023040
+[05/25 10:37:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1240.32, avg_reserved=5969.93, peak_allocated=3695.36, peak_reserved=23936.00, warmup_iters=20
+[05/25 10:46:36] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [310][500/1520]  
+[05/25 10:46:36] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3723 	cls_loss 0.1507 	com_loss 0.1370 	keep_loss 0.0613 	loss 2.1023 	refine_bbox_loss 1.2760 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0447 	
+[05/25 10:56:08] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [310][1000/1520]  
+[05/25 10:56:08] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3688 	cls_loss 0.1512 	com_loss 0.1376 	keep_loss 0.0604 	loss 2.0726 	refine_bbox_loss 1.2495 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0445 	
+[05/25 11:05:37] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [310][1500/1520]  
+[05/25 11:05:37] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3696 	cls_loss 0.1513 	com_loss 0.1380 	keep_loss 0.0605 	loss 2.0451 	refine_bbox_loss 1.2204 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0445 	
+[05/25 11:06:00] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 310, total time 1737.08, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 11:15:36] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [311][500/1520]  
+[05/25 11:15:36] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3674 	cls_loss 0.1492 	com_loss 0.1337 	keep_loss 0.0605 	loss 2.0312 	refine_bbox_loss 1.2155 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0441 	
+[05/25 11:25:09] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [311][1000/1520]  
+[05/25 11:25:09] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3687 	cls_loss 0.1511 	com_loss 0.1365 	keep_loss 0.0606 	loss 2.0201 	refine_bbox_loss 1.1977 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0444 	
+[05/25 11:34:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [311][1500/1520]  
+[05/25 11:34:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3687 	cls_loss 0.1517 	com_loss 0.1367 	keep_loss 0.0610 	loss 2.0860 	refine_bbox_loss 1.2622 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0446 	
+[05/25 11:35:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 311, total time 1743.56, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 11:44:38] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [312][500/1520]  
+[05/25 11:44:38] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3653 	cls_loss 0.1484 	com_loss 0.1340 	keep_loss 0.0596 	loss 1.8630 	refine_bbox_loss 1.0500 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0446 	
+[05/25 11:54:09] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [312][1000/1520]  
+[05/25 11:54:09] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3649 	cls_loss 0.1493 	com_loss 0.1352 	keep_loss 0.0606 	loss 1.9120 	refine_bbox_loss 1.0964 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0444 	
+[05/25 12:03:37] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [312][1500/1520]  
+[05/25 12:03:37] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3659 	cls_loss 0.1503 	com_loss 0.1370 	keep_loss 0.0611 	loss 1.8982 	refine_bbox_loss 1.0790 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0444 	
+[05/25 12:03:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 312, total time 1735.88, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 12:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [312]  
+[05/25 12:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55614
+[05/25 12:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48570
+[05/25 12:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.5770605550883096
+[05/25 12:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5094617325483599
+[05/25 12:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.172945, visual=0.038237, text=0.011622, fusion_wo_head=0.057786, head=0.063266
+[05/25 12:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.006827, bi_layer1=0.006511, bi_layer2=0.008794, total=0.022131
+[05/25 12:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1242.69, avg_reserved=5894.44, peak_allocated=3699.11, peak_reserved=22520.00, warmup_iters=20
+[05/25 12:14:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [313][500/1520]  
+[05/25 12:14:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3644 	cls_loss 0.1490 	com_loss 0.1351 	keep_loss 0.0599 	loss 1.8961 	refine_bbox_loss 1.0834 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0445 	
+[05/25 12:24:05] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [313][1000/1520]  
+[05/25 12:24:05] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3647 	cls_loss 0.1486 	com_loss 0.1352 	keep_loss 0.0599 	loss 1.8273 	refine_bbox_loss 1.0145 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0443 	
+[05/25 12:33:32] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [313][1500/1520]  
+[05/25 12:33:32] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3686 	cls_loss 0.1508 	com_loss 0.1366 	keep_loss 0.0603 	loss 1.9174 	refine_bbox_loss 1.0961 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0442 	
+[05/25 12:33:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 313, total time 1735.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 12:43:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [314][500/1520]  
+[05/25 12:43:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3663 	cls_loss 0.1486 	com_loss 0.1352 	keep_loss 0.0610 	loss 2.0692 	refine_bbox_loss 1.2540 	refine_score_loss 0.0000 	seg_loss 0.0600 	seg_loss_dice 0.0441 	
+[05/25 12:52:58] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [314][1000/1520]  
+[05/25 12:52:58] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3666 	cls_loss 0.1480 	com_loss 0.1349 	keep_loss 0.0610 	loss 1.9805 	refine_bbox_loss 1.1659 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0441 	
+[05/25 13:02:34] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [314][1500/1520]  
+[05/25 13:02:34] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3671 	cls_loss 0.1488 	com_loss 0.1353 	keep_loss 0.0610 	loss 2.0190 	refine_bbox_loss 1.2018 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0444 	
+[05/25 13:02:55] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 314, total time 1741.48, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 13:12:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [315][500/1520]  
+[05/25 13:12:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3683 	cls_loss 0.1473 	com_loss 0.1341 	keep_loss 0.0607 	loss 1.9119 	refine_bbox_loss 1.0961 	refine_score_loss 0.0000 	seg_loss 0.0611 	seg_loss_dice 0.0441 	
+[05/25 13:21:52] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [315][1000/1520]  
+[05/25 13:21:52] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3691 	cls_loss 0.1493 	com_loss 0.1358 	keep_loss 0.0620 	loss 2.0974 	refine_bbox_loss 1.2761 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0443 	
+[05/25 13:31:21] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [315][1500/1520]  
+[05/25 13:31:21] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3663 	cls_loss 0.1494 	com_loss 0.1358 	keep_loss 0.0617 	loss 2.0370 	refine_bbox_loss 1.2186 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0445 	
+[05/25 13:31:44] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 315, total time 1728.86, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 13:32:43] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [315]  
+[05/25 13:32:43] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55698
+[05/25 13:32:43] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48696
+[05/25 13:32:43] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.5775862068965517
+[05/25 13:32:43] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5117746005046258
+[05/25 13:32:43] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.170252, visual=0.037988, text=0.010392, fusion_wo_head=0.055490, head=0.064364
+[05/25 13:32:43] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.008178, bi_layer1=0.005566, bi_layer2=0.007029, total=0.020773
+[05/25 13:32:43] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1245.47, avg_reserved=6067.28, peak_allocated=3701.12, peak_reserved=29786.00, warmup_iters=20
+[05/25 13:42:16] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [316][500/1520]  
+[05/25 13:42:16] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3666 	cls_loss 0.1491 	com_loss 0.1377 	keep_loss 0.0604 	loss 2.0920 	refine_bbox_loss 1.2739 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0439 	
+[05/25 13:51:49] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [316][1000/1520]  
+[05/25 13:51:49] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3653 	cls_loss 0.1484 	com_loss 0.1367 	keep_loss 0.0598 	loss 2.0046 	refine_bbox_loss 1.1901 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0441 	
+[05/25 14:01:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [316][1500/1520]  
+[05/25 14:01:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3654 	cls_loss 0.1481 	com_loss 0.1357 	keep_loss 0.0598 	loss 1.9695 	refine_bbox_loss 1.1564 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0441 	
+[05/25 14:01:36] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 316, total time 1733.50, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 14:11:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [317][500/1520]  
+[05/25 14:11:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3643 	cls_loss 0.1469 	com_loss 0.1347 	keep_loss 0.0601 	loss 1.9104 	refine_bbox_loss 1.1024 	refine_score_loss 0.0000 	seg_loss 0.0584 	seg_loss_dice 0.0435 	
+[05/25 14:20:45] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [317][1000/1520]  
+[05/25 14:20:45] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3637 	cls_loss 0.1477 	com_loss 0.1348 	keep_loss 0.0604 	loss 1.9588 	refine_bbox_loss 1.1496 	refine_score_loss 0.0000 	seg_loss 0.0587 	seg_loss_dice 0.0439 	
+[05/25 14:30:14] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [317][1500/1520]  
+[05/25 14:30:14] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3648 	cls_loss 0.1484 	com_loss 0.1356 	keep_loss 0.0609 	loss 1.9963 	refine_bbox_loss 1.1835 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0439 	
+[05/25 14:30:36] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 317, total time 1739.52, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 14:40:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [318][500/1520]  
+[05/25 14:40:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3670 	cls_loss 0.1510 	com_loss 0.1365 	keep_loss 0.0600 	loss 1.8668 	refine_bbox_loss 1.0474 	refine_score_loss 0.0000 	seg_loss 0.0603 	seg_loss_dice 0.0447 	
+[05/25 14:49:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [318][1000/1520]  
+[05/25 14:49:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3671 	cls_loss 0.1473 	com_loss 0.1343 	keep_loss 0.0600 	loss 2.0264 	refine_bbox_loss 1.2129 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0444 	
+[05/25 14:59:05] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [318][1500/1520]  
+[05/25 14:59:05] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3690 	cls_loss 0.1477 	com_loss 0.1343 	keep_loss 0.0599 	loss 1.9771 	refine_bbox_loss 1.1607 	refine_score_loss 0.0000 	seg_loss 0.0609 	seg_loss_dice 0.0446 	
+[05/25 14:59:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 318, total time 1731.21, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 15:00:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [318]  
+[05/25 15:00:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55614
+[05/25 15:00:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48665
+[05/25 15:00:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.5768502943650126
+[05/25 15:00:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5096719932716569
+[05/25 15:00:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.175675, visual=0.039422, text=0.012528, fusion_wo_head=0.058076, head=0.063502
+[05/25 15:00:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.008357, bi_layer1=0.007133, bi_layer2=0.007424, total=0.022913
+[05/25 15:00:27] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1247.44, avg_reserved=6089.35, peak_allocated=3701.65, peak_reserved=18358.00, warmup_iters=20
+[05/25 15:09:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [319][500/1520]  
+[05/25 15:09:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3657 	cls_loss 0.1481 	com_loss 0.1342 	keep_loss 0.0614 	loss 2.0130 	refine_bbox_loss 1.2016 	refine_score_loss 0.0000 	seg_loss 0.0582 	seg_loss_dice 0.0437 	
+[05/25 15:19:30] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [319][1000/1520]  
+[05/25 15:19:30] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3653 	cls_loss 0.1478 	com_loss 0.1337 	keep_loss 0.0607 	loss 1.9649 	refine_bbox_loss 1.1548 	refine_score_loss 0.0000 	seg_loss 0.0590 	seg_loss_dice 0.0437 	
+[05/25 15:28:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [319][1500/1520]  
+[05/25 15:28:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3659 	cls_loss 0.1484 	com_loss 0.1346 	keep_loss 0.0607 	loss 1.9784 	refine_bbox_loss 1.1655 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0439 	
+[05/25 15:29:19] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 319, total time 1732.12, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 15:38:53] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [320][500/1520]  
+[05/25 15:38:53] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3626 	cls_loss 0.1425 	com_loss 0.1310 	keep_loss 0.0601 	loss 1.8010 	refine_bbox_loss 1.0020 	refine_score_loss 0.0000 	seg_loss 0.0589 	seg_loss_dice 0.0440 	
+[05/25 15:48:17] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [320][1000/1520]  
+[05/25 15:48:17] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3635 	cls_loss 0.1447 	com_loss 0.1325 	keep_loss 0.0606 	loss 1.8536 	refine_bbox_loss 1.0484 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0440 	
+[05/25 15:57:42] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [320][1500/1520]  
+[05/25 15:57:42] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3654 	cls_loss 0.1466 	com_loss 0.1347 	keep_loss 0.0608 	loss 1.8955 	refine_bbox_loss 1.0837 	refine_score_loss 0.0000 	seg_loss 0.0604 	seg_loss_dice 0.0439 	
+[05/25 15:58:05] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 320, total time 1725.21, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 16:07:38] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [321][500/1520]  
+[05/25 16:07:38] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3766 	cls_loss 0.1523 	com_loss 0.1379 	keep_loss 0.0620 	loss 2.0170 	refine_bbox_loss 1.1830 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0441 	
+[05/25 16:17:10] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [321][1000/1520]  
+[05/25 16:17:10] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3730 	cls_loss 0.1500 	com_loss 0.1362 	keep_loss 0.0619 	loss 2.0336 	refine_bbox_loss 1.2073 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0442 	
+[05/25 16:26:32] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [321][1500/1520]  
+[05/25 16:26:32] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3726 	cls_loss 0.1486 	com_loss 0.1351 	keep_loss 0.0615 	loss 2.0024 	refine_bbox_loss 1.1800 	refine_score_loss 0.0000 	seg_loss 0.0605 	seg_loss_dice 0.0440 	
+[05/25 16:26:55] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 321, total time 1730.15, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 16:27:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [321]  
+[05/25 16:27:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55635
+[05/25 16:27:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48633
+[05/25 16:27:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.5780067283431455
+[05/25 16:27:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5114592094196804
+[05/25 16:27:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.172217, visual=0.037075, text=0.010825, fusion_wo_head=0.056615, head=0.065647
+[05/25 16:27:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.007817, bi_layer1=0.006317, bi_layer2=0.007594, total=0.021728
+[05/25 16:27:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1249.81, avg_reserved=5867.30, peak_allocated=3707.03, peak_reserved=24292.00, warmup_iters=20
+[05/25 16:37:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [322][500/1520]  
+[05/25 16:37:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3618 	cls_loss 0.1476 	com_loss 0.1363 	keep_loss 0.0605 	loss 1.9913 	refine_bbox_loss 1.1803 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0443 	
+[05/25 16:46:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [322][1000/1520]  
+[05/25 16:46:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3632 	cls_loss 0.1470 	com_loss 0.1354 	keep_loss 0.0606 	loss 2.0018 	refine_bbox_loss 1.1913 	refine_score_loss 0.0000 	seg_loss 0.0598 	seg_loss_dice 0.0445 	
+[05/25 16:56:25] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [322][1500/1520]  
+[05/25 16:56:25] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3638 	cls_loss 0.1464 	com_loss 0.1339 	keep_loss 0.0602 	loss 1.9612 	refine_bbox_loss 1.1529 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0444 	
+[05/25 16:56:47] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 322, total time 1732.48, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 17:06:18] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [323][500/1520]  
+[05/25 17:06:18] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3702 	cls_loss 0.1492 	com_loss 0.1368 	keep_loss 0.0618 	loss 2.1453 	refine_bbox_loss 1.3218 	refine_score_loss 0.0000 	seg_loss 0.0610 	seg_loss_dice 0.0445 	
+[05/25 17:15:47] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [323][1000/1520]  
+[05/25 17:15:47] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3703 	cls_loss 0.1490 	com_loss 0.1362 	keep_loss 0.0607 	loss 2.1095 	refine_bbox_loss 1.2882 	refine_score_loss 0.0000 	seg_loss 0.0607 	seg_loss_dice 0.0444 	
+[05/25 17:25:15] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [323][1500/1520]  
+[05/25 17:25:15] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3684 	cls_loss 0.1485 	com_loss 0.1357 	keep_loss 0.0611 	loss 2.0492 	refine_bbox_loss 1.2301 	refine_score_loss 0.0000 	seg_loss 0.0609 	seg_loss_dice 0.0446 	
+[05/25 17:25:37] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 323, total time 1730.54, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 17:35:10] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [324][500/1520]  
+[05/25 17:35:10] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3709 	cls_loss 0.1497 	com_loss 0.1367 	keep_loss 0.0618 	loss 2.0507 	refine_bbox_loss 1.2249 	refine_score_loss 0.0000 	seg_loss 0.0618 	seg_loss_dice 0.0449 	
+[05/25 17:44:34] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [324][1000/1520]  
+[05/25 17:44:34] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3713 	cls_loss 0.1498 	com_loss 0.1364 	keep_loss 0.0616 	loss 2.0921 	refine_bbox_loss 1.2671 	refine_score_loss 0.0000 	seg_loss 0.0612 	seg_loss_dice 0.0447 	
+[05/25 17:54:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [324][1500/1520]  
+[05/25 17:54:03] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3708 	cls_loss 0.1498 	com_loss 0.1366 	keep_loss 0.0613 	loss 2.1101 	refine_bbox_loss 1.2862 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0445 	
+[05/25 17:54:26] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 324, total time 1728.09, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 17:55:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [324]  
+[05/25 17:55:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55614
+[05/25 17:55:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48591
+[05/25 17:55:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.5762195121951219
+[05/25 17:55:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5105130361648444
+[05/25 17:55:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.170992, visual=0.038217, text=0.011020, fusion_wo_head=0.056801, head=0.062959
+[05/25 17:55:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.007635, bi_layer1=0.006037, bi_layer2=0.007381, total=0.021052
+[05/25 17:55:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1252.18, avg_reserved=6079.29, peak_allocated=3706.45, peak_reserved=23024.00, warmup_iters=20
+[05/25 18:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [325][500/1520]  
+[05/25 18:04:59] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3621 	cls_loss 0.1448 	com_loss 0.1337 	keep_loss 0.0599 	loss 1.9102 	refine_bbox_loss 1.1062 	refine_score_loss 0.0000 	seg_loss 0.0594 	seg_loss_dice 0.0441 	
+[05/25 18:14:26] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [325][1000/1520]  
+[05/25 18:14:26] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3671 	cls_loss 0.1466 	com_loss 0.1344 	keep_loss 0.0602 	loss 1.9774 	refine_bbox_loss 1.1654 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0444 	
+[05/25 18:23:49] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [325][1500/1520]  
+[05/25 18:23:49] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3664 	cls_loss 0.1458 	com_loss 0.1329 	keep_loss 0.0601 	loss 1.9548 	refine_bbox_loss 1.1455 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0444 	
+[05/25 18:24:11] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 325, total time 1726.68, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 18:33:42] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [326][500/1520]  
+[05/25 18:33:42] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3656 	cls_loss 0.1520 	com_loss 0.1383 	keep_loss 0.0625 	loss 2.0128 	refine_bbox_loss 1.1909 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0438 	
+[05/25 18:43:06] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [326][1000/1520]  
+[05/25 18:43:06] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3639 	cls_loss 0.1501 	com_loss 0.1376 	keep_loss 0.0613 	loss 1.9944 	refine_bbox_loss 1.1775 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0440 	
+[05/25 18:52:34] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [326][1500/1520]  
+[05/25 18:52:34] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3638 	cls_loss 0.1496 	com_loss 0.1368 	keep_loss 0.0612 	loss 1.9522 	refine_bbox_loss 1.1368 	refine_score_loss 0.0000 	seg_loss 0.0599 	seg_loss_dice 0.0441 	
+[05/25 18:52:56] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 326, total time 1724.76, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 19:02:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [327][500/1520]  
+[05/25 19:02:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3656 	cls_loss 0.1500 	com_loss 0.1381 	keep_loss 0.0610 	loss 2.0567 	refine_bbox_loss 1.2381 	refine_score_loss 0.0000 	seg_loss 0.0596 	seg_loss_dice 0.0444 	
+[05/25 19:11:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [327][1000/1520]  
+[05/25 19:11:54] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3664 	cls_loss 0.1483 	com_loss 0.1348 	keep_loss 0.0607 	loss 2.0928 	refine_bbox_loss 1.2784 	refine_score_loss 0.0000 	seg_loss 0.0600 	seg_loss_dice 0.0443 	
+[05/25 19:21:20] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [327][1500/1520]  
+[05/25 19:21:20] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3655 	cls_loss 0.1479 	com_loss 0.1345 	keep_loss 0.0606 	loss 2.1063 	refine_bbox_loss 1.2933 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0442 	
+[05/25 19:21:42] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 327, total time 1726.11, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 19:22:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [327]  
+[05/25 19:22:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55719
+[05/25 19:22:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48476
+[05/25 19:22:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.5779015979814971
+[05/25 19:22:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5109335576114382
+[05/25 19:22:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.171184, visual=0.037915, text=0.011392, fusion_wo_head=0.057975, head=0.061859
+[05/25 19:22:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.007121, bi_layer1=0.006506, bi_layer2=0.008122, total=0.021749
+[05/25 19:22:41] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1254.55, avg_reserved=6196.57, peak_allocated=3710.40, peak_reserved=33026.00, warmup_iters=20
+[05/25 19:32:15] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [328][500/1520]  
+[05/25 19:32:15] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3662 	cls_loss 0.1472 	com_loss 0.1346 	keep_loss 0.0614 	loss 1.9151 	refine_bbox_loss 1.1016 	refine_score_loss 0.0000 	seg_loss 0.0592 	seg_loss_dice 0.0449 	
+[05/25 19:41:44] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [328][1000/1520]  
+[05/25 19:41:44] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3634 	cls_loss 0.1470 	com_loss 0.1343 	keep_loss 0.0612 	loss 1.9313 	refine_bbox_loss 1.1210 	refine_score_loss 0.0000 	seg_loss 0.0597 	seg_loss_dice 0.0447 	
+[05/25 19:51:08] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [328][1500/1520]  
+[05/25 19:51:08] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3658 	cls_loss 0.1476 	com_loss 0.1351 	keep_loss 0.0612 	loss 2.0178 	refine_bbox_loss 1.2032 	refine_score_loss 0.0000 	seg_loss 0.0601 	seg_loss_dice 0.0447 	
+[05/25 19:51:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 328, total time 1729.89, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 20:01:00] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [329][500/1520]  
+[05/25 20:01:00] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3637 	cls_loss 0.1479 	com_loss 0.1345 	keep_loss 0.0609 	loss 1.9945 	refine_bbox_loss 1.1847 	refine_score_loss 0.0000 	seg_loss 0.0588 	seg_loss_dice 0.0440 	
+[05/25 20:10:26] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [329][1000/1520]  
+[05/25 20:10:26] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3624 	cls_loss 0.1463 	com_loss 0.1324 	keep_loss 0.0612 	loss 2.0029 	refine_bbox_loss 1.1972 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0439 	
+[05/25 20:19:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [329][1500/1520]  
+[05/25 20:19:51] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3654 	cls_loss 0.1462 	com_loss 0.1316 	keep_loss 0.0610 	loss 1.9885 	refine_bbox_loss 1.1811 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0439 	
+[05/25 20:20:13] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 329, total time 1722.36, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 20:29:39] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [330][500/1520]  
+[05/25 20:29:39] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3646 	cls_loss 0.1481 	com_loss 0.1344 	keep_loss 0.0603 	loss 2.0037 	refine_bbox_loss 1.1934 	refine_score_loss 0.0000 	seg_loss 0.0591 	seg_loss_dice 0.0439 	
+[05/25 20:39:09] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [330][1000/1520]  
+[05/25 20:39:09] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3648 	cls_loss 0.1479 	com_loss 0.1346 	keep_loss 0.0613 	loss 2.0105 	refine_bbox_loss 1.1985 	refine_score_loss 0.0000 	seg_loss 0.0593 	seg_loss_dice 0.0441 	
+[05/25 20:48:35] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [330][1500/1520]  
+[05/25 20:48:35] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3652 	cls_loss 0.1483 	com_loss 0.1350 	keep_loss 0.0613 	loss 2.0750 	refine_bbox_loss 1.2616 	refine_score_loss 0.0000 	seg_loss 0.0594 	seg_loss_dice 0.0442 	
+[05/25 20:48:58] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: epoch 330, total time 1724.72, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000100
+[05/25 20:49:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Eval: [330]  
+[05/25 20:49:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.25: Top-1: 0.55614
+[05/25 20:49:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: 3dcnn Acc0.50: Top-1: 0.48518
+[05/25 20:49:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.25 0.578111858704794
+[05/25 20:49:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Acc_mask0.50 0.5130361648444071
+[05/25 20:49:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Timing(s): inf=0.169210, visual=0.037362, text=0.010362, fusion_wo_head=0.054404, head=0.065071
+[05/25 20:49:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: External-attn-affected module time(s): bi_layer0=0.007057, bi_layer1=0.005797, bi_layer2=0.006815, total=0.019669
+[05/25 20:49:57] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: GPU memory(MiB): avg_allocated=1257.33, avg_reserved=6197.63, peak_allocated=3711.75, peak_reserved=33198.00, warmup_iters=20
+[05/25 20:59:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: Train: [331][500/1520]  
+[05/25 20:59:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr_revert_top_pts INFO: bbox_loss 0.3672 	cls_loss 0.1502 	com_loss 0.1373 	keep_loss 0.0609 	loss 1.9396 	refine_bbox_loss 1.1198 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0440 	
