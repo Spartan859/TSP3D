@@ -20,3 +20,16 @@
 [05/25 23:03:44] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: bbox_loss 0.3889 	cls_loss 0.1244 	com_loss 0.1049 	keep_loss 0.0610 	loss 2.0346 	refine_bbox_loss 1.2491 	refine_score_loss 0.0000 	seg_loss 0.0617 	seg_loss_dice 0.0446 	
 [05/25 23:14:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: Train: [303][1000/1520]  
 [05/25 23:14:31] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: bbox_loss 0.3845 	cls_loss 0.1224 	com_loss 0.1035 	keep_loss 0.0600 	loss 1.9362 	refine_bbox_loss 1.1607 	refine_score_loss 0.0000 	seg_loss 0.0608 	seg_loss_dice 0.0443 	
+[05/25 23:25:07] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: Train: [303][1500/1520]  
+[05/25 23:25:07] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: bbox_loss 0.3827 	cls_loss 0.1230 	com_loss 0.1040 	keep_loss 0.0603 	loss 1.9502 	refine_bbox_loss 1.1761 	refine_score_loss 0.0000 	seg_loss 0.0602 	seg_loss_dice 0.0439 	
+[05/25 23:25:32] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: epoch 303, total time 1956.69, lr_base 0.0000005, lr_tran 0.0000005, lr_text 0.0000000, lr_select 0.0000004, lr_seg 0.0000010
+[05/25 23:26:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: Eval: [303]  
+[05/25 23:26:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: 3dcnn Acc0.25: Top-1: 0.55908
+[05/25 23:26:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: 3dcnn Acc0.50: Top-1: 0.48581
+[05/25 23:26:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: Acc_mask0.25 0.5800042052144659
+[05/25 23:26:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: Acc_mask0.50 0.512089991589571
+[05/25 23:26:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: Timing(s): inf=0.195382, visual=0.043968, text=0.013186, fusion_wo_head=0.069897, head=0.065496
+[05/25 23:26:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: External-attn-affected module time(s): bi_layer0=0.009785, bi_layer1=0.015377, bi_layer2=0.007761, total=0.032923
+[05/25 23:26:40] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: GPU memory(MiB): avg_allocated=1235.45, avg_reserved=5525.91, peak_allocated=10058.29, peak_reserved=19486.00, warmup_iters=20
+[05/25 23:37:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: Train: [304][500/1520]  
+[05/25 23:37:24] SEG_tps_thres_seg_single_multi_32_SEGEA_reduce_lr INFO: bbox_loss 0.3954 	cls_loss 0.1235 	com_loss 0.1046 	keep_loss 0.0608 	loss 2.0030 	refine_bbox_loss 1.2137 	refine_score_loss 0.0000 	seg_loss 0.0606 	seg_loss_dice 0.0444 	
