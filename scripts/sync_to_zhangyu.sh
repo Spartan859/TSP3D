@@ -4,7 +4,7 @@ set -euo pipefail
 LOCAL_BASE="/share/lxy/TSP3D_ori"
 REMOTE_USER="root"
 REMOTE_HOST="120.48.163.20"
-REMOTE_PORT=8551
+REMOTE_PORT=8641
 REMOTE_BASE="/mnt/share/algorithm/kimi/cache/lxy/TSP3D"
 
 usage() {
