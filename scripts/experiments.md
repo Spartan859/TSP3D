@@ -36,7 +36,7 @@ scripts/experiments/TF32/ori/scanrefer/2026-04-19_04-49-09
 [04/20 19:35:19] ori INFO: 3dcnn Acc0.50: Top-1: 0.46424
 ```
 
-## EA0+seg+refine
+## EA0+seg+refine (deprecated)
 
 scripts/experiments/TGEA_convrefine/TGEA_refine_noscore/scanrefer/2026-03-21_03-14-46
 

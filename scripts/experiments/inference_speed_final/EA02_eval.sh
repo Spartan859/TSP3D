@@ -206,7 +206,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --measure_fps \
     --fps_warmup_iters 100 \
     --fps_max_iters -1 \
-    --checkpoint_path ${PWD}/scripts/experiments/TF32/EA02_num_sps_com_2400/scanrefer/2026-04-18_17-51-17/ckpt_epoch_96.pth \
+    --checkpoint_path ${PWD}/scripts/experiments/TF32/EA02_num_sps_com_2400/scanrefer/2026-04-18_17-51-17/ckpt_epoch_294.pth \
     # --use_refine \
     # --use_seg \
     # --use_seg_external_self_attn \
