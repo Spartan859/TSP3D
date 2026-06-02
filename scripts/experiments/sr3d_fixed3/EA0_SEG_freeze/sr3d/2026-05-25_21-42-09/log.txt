@@ -50,3 +50,322 @@
 [05/26 00:29:23] EA0_SEG_freeze INFO: bbox_loss 0.3965 	cls_loss 0.2273 	com_loss 0.2265 	keep_loss 0.0465 	loss 2.3722 	refine_bbox_loss 1.3334 	refine_score_loss 0.0000 	seg_loss 0.0924 	seg_loss_dice 0.0495 	
 [05/26 00:37:03] EA0_SEG_freeze INFO: Train: [80][1000/2432]  
 [05/26 00:37:03] EA0_SEG_freeze INFO: bbox_loss 0.4007 	cls_loss 0.2314 	com_loss 0.2316 	keep_loss 0.0472 	loss 2.4640 	refine_bbox_loss 1.4117 	refine_score_loss 0.0000 	seg_loss 0.0919 	seg_loss_dice 0.0495 	
+[05/26 00:44:42] EA0_SEG_freeze INFO: Train: [80][1500/2432]  
+[05/26 00:44:42] EA0_SEG_freeze INFO: bbox_loss 0.4014 	cls_loss 0.2291 	com_loss 0.2302 	keep_loss 0.0471 	loss 2.5147 	refine_bbox_loss 1.4656 	refine_score_loss 0.0000 	seg_loss 0.0915 	seg_loss_dice 0.0497 	
+[05/26 00:52:38] EA0_SEG_freeze INFO: Train: [80][2000/2432]  
+[05/26 00:52:38] EA0_SEG_freeze INFO: bbox_loss 0.3986 	cls_loss 0.2273 	com_loss 0.2280 	keep_loss 0.0468 	loss 2.4984 	refine_bbox_loss 1.4570 	refine_score_loss 0.0000 	seg_loss 0.0911 	seg_loss_dice 0.0497 	
+[05/26 00:59:15] EA0_SEG_freeze INFO: epoch 80, total time 2253.00, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 01:07:02] EA0_SEG_freeze INFO: Train: [81][500/2432]  
+[05/26 01:07:02] EA0_SEG_freeze INFO: bbox_loss 0.3992 	cls_loss 0.2364 	com_loss 0.2378 	keep_loss 0.0469 	loss 2.4297 	refine_bbox_loss 1.3684 	refine_score_loss 0.0000 	seg_loss 0.0912 	seg_loss_dice 0.0498 	
+[05/26 01:14:44] EA0_SEG_freeze INFO: Train: [81][1000/2432]  
+[05/26 01:14:44] EA0_SEG_freeze INFO: bbox_loss 0.4030 	cls_loss 0.2337 	com_loss 0.2344 	keep_loss 0.0468 	loss 2.5192 	refine_bbox_loss 1.4622 	refine_score_loss 0.0000 	seg_loss 0.0897 	seg_loss_dice 0.0495 	
+[05/26 01:22:23] EA0_SEG_freeze INFO: Train: [81][1500/2432]  
+[05/26 01:22:23] EA0_SEG_freeze INFO: bbox_loss 0.4010 	cls_loss 0.2319 	com_loss 0.2329 	keep_loss 0.0465 	loss 2.5623 	refine_bbox_loss 1.5107 	refine_score_loss 0.0000 	seg_loss 0.0898 	seg_loss_dice 0.0496 	
+[05/26 01:30:02] EA0_SEG_freeze INFO: Train: [81][2000/2432]  
+[05/26 01:30:02] EA0_SEG_freeze INFO: bbox_loss 0.3994 	cls_loss 0.2283 	com_loss 0.2296 	keep_loss 0.0465 	loss 2.5220 	refine_bbox_loss 1.4799 	refine_score_loss 0.0000 	seg_loss 0.0889 	seg_loss_dice 0.0494 	
+[05/26 01:36:42] EA0_SEG_freeze INFO: epoch 81, total time 2246.77, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 01:38:28] EA0_SEG_freeze INFO: Eval: [81]  
+[05/26 01:38:28] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.57457
+[05/26 01:38:28] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.46661
+[05/26 01:38:28] EA0_SEG_freeze INFO: Acc_mask0.25 0.5919449458483754
+[05/26 01:38:28] EA0_SEG_freeze INFO: Acc_mask0.50 0.5011845667870036
+[05/26 01:38:28] EA0_SEG_freeze INFO: Timing(s): inf=0.169945, visual=0.041797, text=0.011647, fusion_wo_head=0.067879, head=0.046567
+[05/26 01:38:28] EA0_SEG_freeze INFO: External-attn-affected module time(s): bi_layer0=0.012116, bi_layer1=0.007016, bi_layer2=0.009522, total=0.028653
+[05/26 01:38:28] EA0_SEG_freeze INFO: GPU memory(MiB): avg_allocated=1239.10, avg_reserved=4428.00, peak_allocated=3061.88, peak_reserved=30192.00, warmup_iters=20
+[05/26 01:46:12] EA0_SEG_freeze INFO: Train: [82][500/2432]  
+[05/26 01:46:12] EA0_SEG_freeze INFO: bbox_loss 0.3982 	cls_loss 0.2362 	com_loss 0.2356 	keep_loss 0.0466 	loss 2.5494 	refine_bbox_loss 1.4965 	refine_score_loss 0.0000 	seg_loss 0.0872 	seg_loss_dice 0.0491 	
+[05/26 01:53:49] EA0_SEG_freeze INFO: Train: [82][1000/2432]  
+[05/26 01:53:49] EA0_SEG_freeze INFO: bbox_loss 0.4010 	cls_loss 0.2378 	com_loss 0.2398 	keep_loss 0.0466 	loss 2.5174 	refine_bbox_loss 1.4553 	refine_score_loss 0.0000 	seg_loss 0.0878 	seg_loss_dice 0.0492 	
+[05/26 02:01:28] EA0_SEG_freeze INFO: Train: [82][1500/2432]  
+[05/26 02:01:28] EA0_SEG_freeze INFO: bbox_loss 0.4006 	cls_loss 0.2392 	com_loss 0.2427 	keep_loss 0.0467 	loss 2.5349 	refine_bbox_loss 1.4687 	refine_score_loss 0.0000 	seg_loss 0.0880 	seg_loss_dice 0.0491 	
+[05/26 02:09:05] EA0_SEG_freeze INFO: Train: [82][2000/2432]  
+[05/26 02:09:05] EA0_SEG_freeze INFO: bbox_loss 0.3994 	cls_loss 0.2353 	com_loss 0.2377 	keep_loss 0.0465 	loss 2.4784 	refine_bbox_loss 1.4229 	refine_score_loss 0.0000 	seg_loss 0.0877 	seg_loss_dice 0.0489 	
+[05/26 02:15:39] EA0_SEG_freeze INFO: epoch 82, total time 2230.58, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 02:23:41] EA0_SEG_freeze INFO: Train: [83][500/2432]  
+[05/26 02:23:41] EA0_SEG_freeze INFO: bbox_loss 0.4049 	cls_loss 0.2395 	com_loss 0.2424 	keep_loss 0.0476 	loss 2.7110 	refine_bbox_loss 1.6382 	refine_score_loss 0.0000 	seg_loss 0.0885 	seg_loss_dice 0.0498 	
+[05/26 02:31:20] EA0_SEG_freeze INFO: Train: [83][1000/2432]  
+[05/26 02:31:20] EA0_SEG_freeze INFO: bbox_loss 0.3995 	cls_loss 0.2323 	com_loss 0.2334 	keep_loss 0.0470 	loss 2.4888 	refine_bbox_loss 1.4404 	refine_score_loss 0.0000 	seg_loss 0.0869 	seg_loss_dice 0.0493 	
+[05/26 02:39:01] EA0_SEG_freeze INFO: Train: [83][1500/2432]  
+[05/26 02:39:01] EA0_SEG_freeze INFO: bbox_loss 0.4008 	cls_loss 0.2369 	com_loss 0.2396 	keep_loss 0.0466 	loss 2.4610 	refine_bbox_loss 1.4015 	refine_score_loss 0.0000 	seg_loss 0.0866 	seg_loss_dice 0.0490 	
+[05/26 02:46:39] EA0_SEG_freeze INFO: Train: [83][2000/2432]  
+[05/26 02:46:39] EA0_SEG_freeze INFO: bbox_loss 0.3998 	cls_loss 0.2340 	com_loss 0.2356 	keep_loss 0.0465 	loss 2.4431 	refine_bbox_loss 1.3921 	refine_score_loss 0.0000 	seg_loss 0.0862 	seg_loss_dice 0.0489 	
+[05/26 02:53:12] EA0_SEG_freeze INFO: epoch 83, total time 2253.85, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 03:00:57] EA0_SEG_freeze INFO: Train: [84][500/2432]  
+[05/26 03:00:57] EA0_SEG_freeze INFO: bbox_loss 0.3890 	cls_loss 0.2253 	com_loss 0.2259 	keep_loss 0.0465 	loss 2.2820 	refine_bbox_loss 1.2629 	refine_score_loss 0.0000 	seg_loss 0.0835 	seg_loss_dice 0.0489 	
+[05/26 03:08:39] EA0_SEG_freeze INFO: Train: [84][1000/2432]  
+[05/26 03:08:39] EA0_SEG_freeze INFO: bbox_loss 0.3939 	cls_loss 0.2306 	com_loss 0.2335 	keep_loss 0.0463 	loss 2.3257 	refine_bbox_loss 1.2887 	refine_score_loss 0.0000 	seg_loss 0.0840 	seg_loss_dice 0.0488 	
+[05/26 03:16:16] EA0_SEG_freeze INFO: Train: [84][1500/2432]  
+[05/26 03:16:16] EA0_SEG_freeze INFO: bbox_loss 0.3960 	cls_loss 0.2306 	com_loss 0.2332 	keep_loss 0.0466 	loss 2.4418 	refine_bbox_loss 1.4025 	refine_score_loss 0.0000 	seg_loss 0.0841 	seg_loss_dice 0.0488 	
+[05/26 03:23:58] EA0_SEG_freeze INFO: Train: [84][2000/2432]  
+[05/26 03:23:58] EA0_SEG_freeze INFO: bbox_loss 0.3978 	cls_loss 0.2301 	com_loss 0.2326 	keep_loss 0.0467 	loss 2.4149 	refine_bbox_loss 1.3748 	refine_score_loss 0.0000 	seg_loss 0.0841 	seg_loss_dice 0.0488 	
+[05/26 03:30:32] EA0_SEG_freeze INFO: epoch 84, total time 2240.01, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 03:32:22] EA0_SEG_freeze INFO: Eval: [84]  
+[05/26 03:32:22] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.57231
+[05/26 03:32:22] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.46858
+[05/26 03:32:22] EA0_SEG_freeze INFO: Acc_mask0.25 0.5926218411552346
+[05/26 03:32:22] EA0_SEG_freeze INFO: Acc_mask0.50 0.5005076714801444
+[05/26 03:32:22] EA0_SEG_freeze INFO: Timing(s): inf=0.167308, visual=0.040104, text=0.010915, fusion_wo_head=0.066513, head=0.047718
+[05/26 03:32:22] EA0_SEG_freeze INFO: External-attn-affected module time(s): bi_layer0=0.011089, bi_layer1=0.006542, bi_layer2=0.009603, total=0.027235
+[05/26 03:32:22] EA0_SEG_freeze INFO: GPU memory(MiB): avg_allocated=1242.93, avg_reserved=4452.00, peak_allocated=3063.15, peak_reserved=33118.00, warmup_iters=20
+[05/26 03:40:08] EA0_SEG_freeze INFO: Train: [85][500/2432]  
+[05/26 03:40:08] EA0_SEG_freeze INFO: bbox_loss 0.3936 	cls_loss 0.2235 	com_loss 0.2261 	keep_loss 0.0462 	loss 2.3542 	refine_bbox_loss 1.3303 	refine_score_loss 0.0000 	seg_loss 0.0851 	seg_loss_dice 0.0495 	
+[05/26 03:47:45] EA0_SEG_freeze INFO: Train: [85][1000/2432]  
+[05/26 03:47:45] EA0_SEG_freeze INFO: bbox_loss 0.3979 	cls_loss 0.2270 	com_loss 0.2299 	keep_loss 0.0463 	loss 2.4137 	refine_bbox_loss 1.3796 	refine_score_loss 0.0000 	seg_loss 0.0840 	seg_loss_dice 0.0490 	
+[05/26 03:55:44] EA0_SEG_freeze INFO: Train: [85][1500/2432]  
+[05/26 03:55:44] EA0_SEG_freeze INFO: bbox_loss 0.3989 	cls_loss 0.2303 	com_loss 0.2321 	keep_loss 0.0465 	loss 2.3900 	refine_bbox_loss 1.3485 	refine_score_loss 0.0000 	seg_loss 0.0846 	seg_loss_dice 0.0491 	
+[05/26 04:03:18] EA0_SEG_freeze INFO: Train: [85][2000/2432]  
+[05/26 04:03:18] EA0_SEG_freeze INFO: bbox_loss 0.3979 	cls_loss 0.2302 	com_loss 0.2327 	keep_loss 0.0465 	loss 2.3806 	refine_bbox_loss 1.3398 	refine_score_loss 0.0000 	seg_loss 0.0845 	seg_loss_dice 0.0490 	
+[05/26 04:09:55] EA0_SEG_freeze INFO: epoch 85, total time 2253.36, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 04:17:41] EA0_SEG_freeze INFO: Train: [86][500/2432]  
+[05/26 04:17:41] EA0_SEG_freeze INFO: bbox_loss 0.3953 	cls_loss 0.2222 	com_loss 0.2244 	keep_loss 0.0463 	loss 2.4560 	refine_bbox_loss 1.4353 	refine_score_loss 0.0000 	seg_loss 0.0832 	seg_loss_dice 0.0493 	
+[05/26 04:25:21] EA0_SEG_freeze INFO: Train: [86][1000/2432]  
+[05/26 04:25:21] EA0_SEG_freeze INFO: bbox_loss 0.3976 	cls_loss 0.2285 	com_loss 0.2312 	keep_loss 0.0463 	loss 2.4620 	refine_bbox_loss 1.4262 	refine_score_loss 0.0000 	seg_loss 0.0832 	seg_loss_dice 0.0489 	
+[05/26 04:33:02] EA0_SEG_freeze INFO: Train: [86][1500/2432]  
+[05/26 04:33:02] EA0_SEG_freeze INFO: bbox_loss 0.4007 	cls_loss 0.2342 	com_loss 0.2358 	keep_loss 0.0469 	loss 2.4662 	refine_bbox_loss 1.4158 	refine_score_loss 0.0000 	seg_loss 0.0837 	seg_loss_dice 0.0491 	
+[05/26 04:40:41] EA0_SEG_freeze INFO: Train: [86][2000/2432]  
+[05/26 04:40:41] EA0_SEG_freeze INFO: bbox_loss 0.4041 	cls_loss 0.2339 	com_loss 0.2349 	keep_loss 0.0469 	loss 2.5565 	refine_bbox_loss 1.5039 	refine_score_loss 0.0000 	seg_loss 0.0837 	seg_loss_dice 0.0490 	
+[05/26 04:47:16] EA0_SEG_freeze INFO: epoch 86, total time 2241.04, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 04:55:04] EA0_SEG_freeze INFO: Train: [87][500/2432]  
+[05/26 04:55:04] EA0_SEG_freeze INFO: bbox_loss 0.3987 	cls_loss 0.2234 	com_loss 0.2237 	keep_loss 0.0463 	loss 2.2710 	refine_bbox_loss 1.2477 	refine_score_loss 0.0000 	seg_loss 0.0824 	seg_loss_dice 0.0489 	
+[05/26 05:02:45] EA0_SEG_freeze INFO: Train: [87][1000/2432]  
+[05/26 05:02:45] EA0_SEG_freeze INFO: bbox_loss 0.3979 	cls_loss 0.2303 	com_loss 0.2312 	keep_loss 0.0461 	loss 2.3144 	refine_bbox_loss 1.2783 	refine_score_loss 0.0000 	seg_loss 0.0821 	seg_loss_dice 0.0485 	
+[05/26 05:10:29] EA0_SEG_freeze INFO: Train: [87][1500/2432]  
+[05/26 05:10:29] EA0_SEG_freeze INFO: bbox_loss 0.3992 	cls_loss 0.2287 	com_loss 0.2284 	keep_loss 0.0462 	loss 2.3193 	refine_bbox_loss 1.2861 	refine_score_loss 0.0000 	seg_loss 0.0820 	seg_loss_dice 0.0486 	
+[05/26 05:18:08] EA0_SEG_freeze INFO: Train: [87][2000/2432]  
+[05/26 05:18:08] EA0_SEG_freeze INFO: bbox_loss 0.3993 	cls_loss 0.2284 	com_loss 0.2287 	keep_loss 0.0465 	loss 2.3368 	refine_bbox_loss 1.3030 	refine_score_loss 0.0000 	seg_loss 0.0821 	seg_loss_dice 0.0487 	
+[05/26 05:25:01] EA0_SEG_freeze INFO: epoch 87, total time 2264.63, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 05:26:49] EA0_SEG_freeze INFO: Eval: [87]  
+[05/26 05:26:49] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.57542
+[05/26 05:26:49] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.47005
+[05/26 05:26:49] EA0_SEG_freeze INFO: Acc_mask0.25 0.5946525270758123
+[05/26 05:26:49] EA0_SEG_freeze INFO: Acc_mask0.50 0.5077842960288809
+[05/26 05:26:49] EA0_SEG_freeze INFO: Timing(s): inf=0.163431, visual=0.040079, text=0.011483, fusion_wo_head=0.064606, head=0.045296
+[05/26 05:26:49] EA0_SEG_freeze INFO: External-attn-affected module time(s): bi_layer0=0.011179, bi_layer1=0.006738, bi_layer2=0.008136, total=0.026053
+[05/26 05:26:49] EA0_SEG_freeze INFO: GPU memory(MiB): avg_allocated=1246.76, avg_reserved=4460.00, peak_allocated=3067.64, peak_reserved=35418.00, warmup_iters=20
+[05/26 05:34:33] EA0_SEG_freeze INFO: Train: [88][500/2432]  
+[05/26 05:34:33] EA0_SEG_freeze INFO: bbox_loss 0.4044 	cls_loss 0.2388 	com_loss 0.2369 	keep_loss 0.0472 	loss 2.5269 	refine_bbox_loss 1.4689 	refine_score_loss 0.0000 	seg_loss 0.0820 	seg_loss_dice 0.0487 	
+[05/26 05:42:11] EA0_SEG_freeze INFO: Train: [88][1000/2432]  
+[05/26 05:42:11] EA0_SEG_freeze INFO: bbox_loss 0.4012 	cls_loss 0.2392 	com_loss 0.2404 	keep_loss 0.0472 	loss 2.4737 	refine_bbox_loss 1.4160 	refine_score_loss 0.0000 	seg_loss 0.0812 	seg_loss_dice 0.0485 	
+[05/26 05:49:49] EA0_SEG_freeze INFO: Train: [88][1500/2432]  
+[05/26 05:49:49] EA0_SEG_freeze INFO: bbox_loss 0.4034 	cls_loss 0.2381 	com_loss 0.2394 	keep_loss 0.0474 	loss 2.4815 	refine_bbox_loss 1.4228 	refine_score_loss 0.0000 	seg_loss 0.0817 	seg_loss_dice 0.0488 	
+[05/26 05:57:31] EA0_SEG_freeze INFO: Train: [88][2000/2432]  
+[05/26 05:57:31] EA0_SEG_freeze INFO: bbox_loss 0.4039 	cls_loss 0.2363 	com_loss 0.2383 	keep_loss 0.0472 	loss 2.4792 	refine_bbox_loss 1.4231 	refine_score_loss 0.0000 	seg_loss 0.0815 	seg_loss_dice 0.0488 	
+[05/26 06:04:05] EA0_SEG_freeze INFO: epoch 88, total time 2235.57, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 06:11:46] EA0_SEG_freeze INFO: Train: [89][500/2432]  
+[05/26 06:11:46] EA0_SEG_freeze INFO: bbox_loss 0.4013 	cls_loss 0.2312 	com_loss 0.2346 	keep_loss 0.0461 	loss 2.3533 	refine_bbox_loss 1.3122 	refine_score_loss 0.0000 	seg_loss 0.0800 	seg_loss_dice 0.0481 	
+[05/26 06:19:30] EA0_SEG_freeze INFO: Train: [89][1000/2432]  
+[05/26 06:19:30] EA0_SEG_freeze INFO: bbox_loss 0.3996 	cls_loss 0.2322 	com_loss 0.2355 	keep_loss 0.0463 	loss 2.3230 	refine_bbox_loss 1.2809 	refine_score_loss 0.0000 	seg_loss 0.0803 	seg_loss_dice 0.0481 	
+[05/26 06:27:16] EA0_SEG_freeze INFO: Train: [89][1500/2432]  
+[05/26 06:27:16] EA0_SEG_freeze INFO: bbox_loss 0.4000 	cls_loss 0.2329 	com_loss 0.2352 	keep_loss 0.0467 	loss 2.3886 	refine_bbox_loss 1.3445 	refine_score_loss 0.0000 	seg_loss 0.0809 	seg_loss_dice 0.0484 	
+[05/26 06:34:55] EA0_SEG_freeze INFO: Train: [89][2000/2432]  
+[05/26 06:34:55] EA0_SEG_freeze INFO: bbox_loss 0.4000 	cls_loss 0.2337 	com_loss 0.2363 	keep_loss 0.0467 	loss 2.3948 	refine_bbox_loss 1.3486 	refine_score_loss 0.0000 	seg_loss 0.0808 	seg_loss_dice 0.0486 	
+[05/26 06:41:33] EA0_SEG_freeze INFO: epoch 89, total time 2247.92, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 06:49:20] EA0_SEG_freeze INFO: Train: [90][500/2432]  
+[05/26 06:49:20] EA0_SEG_freeze INFO: bbox_loss 0.4027 	cls_loss 0.2329 	com_loss 0.2357 	keep_loss 0.0460 	loss 2.3591 	refine_bbox_loss 1.3139 	refine_score_loss 0.0000 	seg_loss 0.0795 	seg_loss_dice 0.0484 	
+[05/26 06:57:09] EA0_SEG_freeze INFO: Train: [90][1000/2432]  
+[05/26 06:57:09] EA0_SEG_freeze INFO: bbox_loss 0.3980 	cls_loss 0.2305 	com_loss 0.2322 	keep_loss 0.0469 	loss 2.3134 	refine_bbox_loss 1.2783 	refine_score_loss 0.0000 	seg_loss 0.0793 	seg_loss_dice 0.0482 	
+[05/26 07:04:49] EA0_SEG_freeze INFO: Train: [90][1500/2432]  
+[05/26 07:04:49] EA0_SEG_freeze INFO: bbox_loss 0.3993 	cls_loss 0.2276 	com_loss 0.2274 	keep_loss 0.0467 	loss 2.3317 	refine_bbox_loss 1.3033 	refine_score_loss 0.0000 	seg_loss 0.0791 	seg_loss_dice 0.0483 	
+[05/26 07:12:27] EA0_SEG_freeze INFO: Train: [90][2000/2432]  
+[05/26 07:12:27] EA0_SEG_freeze INFO: bbox_loss 0.3994 	cls_loss 0.2313 	com_loss 0.2315 	keep_loss 0.0467 	loss 2.3991 	refine_bbox_loss 1.3623 	refine_score_loss 0.0000 	seg_loss 0.0795 	seg_loss_dice 0.0483 	
+[05/26 07:19:02] EA0_SEG_freeze INFO: epoch 90, total time 2249.38, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 07:20:50] EA0_SEG_freeze INFO: Eval: [90]  
+[05/26 07:20:50] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.57384
+[05/26 07:20:50] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.46407
+[05/26 07:20:50] EA0_SEG_freeze INFO: Acc_mask0.25 0.5923398014440433
+[05/26 07:20:50] EA0_SEG_freeze INFO: Acc_mask0.50 0.5121841155234657
+[05/26 07:20:50] EA0_SEG_freeze INFO: Timing(s): inf=0.165536, visual=0.039222, text=0.010933, fusion_wo_head=0.063352, head=0.050093
+[05/26 07:20:50] EA0_SEG_freeze INFO: External-attn-affected module time(s): bi_layer0=0.009450, bi_layer1=0.006428, bi_layer2=0.009051, total=0.024929
+[05/26 07:20:50] EA0_SEG_freeze INFO: GPU memory(MiB): avg_allocated=1250.60, avg_reserved=4476.00, peak_allocated=3072.53, peak_reserved=31882.00, warmup_iters=20
+[05/26 07:28:35] EA0_SEG_freeze INFO: Train: [91][500/2432]  
+[05/26 07:28:35] EA0_SEG_freeze INFO: bbox_loss 0.3961 	cls_loss 0.2139 	com_loss 0.2147 	keep_loss 0.0451 	loss 2.3465 	refine_bbox_loss 1.3511 	refine_score_loss 0.0000 	seg_loss 0.0771 	seg_loss_dice 0.0485 	
+[05/26 07:36:14] EA0_SEG_freeze INFO: Train: [91][1000/2432]  
+[05/26 07:36:14] EA0_SEG_freeze INFO: bbox_loss 0.3973 	cls_loss 0.2231 	com_loss 0.2242 	keep_loss 0.0457 	loss 2.2947 	refine_bbox_loss 1.2784 	refine_score_loss 0.0000 	seg_loss 0.0777 	seg_loss_dice 0.0484 	
+[05/26 07:43:57] EA0_SEG_freeze INFO: Train: [91][1500/2432]  
+[05/26 07:43:57] EA0_SEG_freeze INFO: bbox_loss 0.3964 	cls_loss 0.2247 	com_loss 0.2260 	keep_loss 0.0460 	loss 2.2706 	refine_bbox_loss 1.2512 	refine_score_loss 0.0000 	seg_loss 0.0778 	seg_loss_dice 0.0484 	
+[05/26 07:51:37] EA0_SEG_freeze INFO: Train: [91][2000/2432]  
+[05/26 07:51:37] EA0_SEG_freeze INFO: bbox_loss 0.3970 	cls_loss 0.2277 	com_loss 0.2284 	keep_loss 0.0462 	loss 2.3259 	refine_bbox_loss 1.3004 	refine_score_loss 0.0000 	seg_loss 0.0777 	seg_loss_dice 0.0484 	
+[05/26 07:58:15] EA0_SEG_freeze INFO: epoch 91, total time 2244.23, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 08:06:00] EA0_SEG_freeze INFO: Train: [92][500/2432]  
+[05/26 08:06:00] EA0_SEG_freeze INFO: bbox_loss 0.3972 	cls_loss 0.2393 	com_loss 0.2413 	keep_loss 0.0470 	loss 2.2751 	refine_bbox_loss 1.2241 	refine_score_loss 0.0000 	seg_loss 0.0780 	seg_loss_dice 0.0482 	
+[05/26 08:13:41] EA0_SEG_freeze INFO: Train: [92][1000/2432]  
+[05/26 08:13:41] EA0_SEG_freeze INFO: bbox_loss 0.4001 	cls_loss 0.2372 	com_loss 0.2400 	keep_loss 0.0476 	loss 2.3950 	refine_bbox_loss 1.3437 	refine_score_loss 0.0000 	seg_loss 0.0783 	seg_loss_dice 0.0480 	
+[05/26 08:21:20] EA0_SEG_freeze INFO: Train: [92][1500/2432]  
+[05/26 08:21:20] EA0_SEG_freeze INFO: bbox_loss 0.3985 	cls_loss 0.2350 	com_loss 0.2366 	keep_loss 0.0472 	loss 2.3542 	refine_bbox_loss 1.3106 	refine_score_loss 0.0000 	seg_loss 0.0783 	seg_loss_dice 0.0480 	
+[05/26 08:29:13] EA0_SEG_freeze INFO: Train: [92][2000/2432]  
+[05/26 08:29:13] EA0_SEG_freeze INFO: bbox_loss 0.3972 	cls_loss 0.2313 	com_loss 0.2333 	keep_loss 0.0473 	loss 2.3065 	refine_bbox_loss 1.2714 	refine_score_loss 0.0000 	seg_loss 0.0778 	seg_loss_dice 0.0480 	
+[05/26 08:35:55] EA0_SEG_freeze INFO: epoch 92, total time 2260.28, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 08:43:46] EA0_SEG_freeze INFO: Train: [93][500/2432]  
+[05/26 08:43:46] EA0_SEG_freeze INFO: bbox_loss 0.3922 	cls_loss 0.2258 	com_loss 0.2246 	keep_loss 0.0457 	loss 2.1912 	refine_bbox_loss 1.1778 	refine_score_loss 0.0000 	seg_loss 0.0771 	seg_loss_dice 0.0479 	
+[05/26 08:51:28] EA0_SEG_freeze INFO: Train: [93][1000/2432]  
+[05/26 08:51:28] EA0_SEG_freeze INFO: bbox_loss 0.4001 	cls_loss 0.2275 	com_loss 0.2272 	keep_loss 0.0461 	loss 2.3633 	refine_bbox_loss 1.3374 	refine_score_loss 0.0000 	seg_loss 0.0770 	seg_loss_dice 0.0479 	
+[05/26 08:59:11] EA0_SEG_freeze INFO: Train: [93][1500/2432]  
+[05/26 08:59:11] EA0_SEG_freeze INFO: bbox_loss 0.4000 	cls_loss 0.2302 	com_loss 0.2310 	keep_loss 0.0467 	loss 2.4152 	refine_bbox_loss 1.3826 	refine_score_loss 0.0000 	seg_loss 0.0767 	seg_loss_dice 0.0480 	
+[05/26 09:06:51] EA0_SEG_freeze INFO: Train: [93][2000/2432]  
+[05/26 09:06:51] EA0_SEG_freeze INFO: bbox_loss 0.4003 	cls_loss 0.2290 	com_loss 0.2291 	keep_loss 0.0466 	loss 2.4099 	refine_bbox_loss 1.3798 	refine_score_loss 0.0000 	seg_loss 0.0770 	seg_loss_dice 0.0481 	
+[05/26 09:13:27] EA0_SEG_freeze INFO: epoch 93, total time 2252.01, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 09:15:14] EA0_SEG_freeze INFO: Eval: [93]  
+[05/26 09:15:14] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.57271
+[05/26 09:15:14] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.46520
+[05/26 09:15:14] EA0_SEG_freeze INFO: Acc_mask0.25 0.5949909747292419
+[05/26 09:15:14] EA0_SEG_freeze INFO: Acc_mask0.50 0.5108303249097473
+[05/26 09:15:14] EA0_SEG_freeze INFO: Timing(s): inf=0.166284, visual=0.039750, text=0.011112, fusion_wo_head=0.064469, head=0.049006
+[05/26 09:15:14] EA0_SEG_freeze INFO: External-attn-affected module time(s): bi_layer0=0.009401, bi_layer1=0.006427, bi_layer2=0.008799, total=0.024626
+[05/26 09:15:14] EA0_SEG_freeze INFO: GPU memory(MiB): avg_allocated=1254.43, avg_reserved=4480.45, peak_allocated=3077.14, peak_reserved=32364.00, warmup_iters=20
+[05/26 09:23:00] EA0_SEG_freeze INFO: Train: [94][500/2432]  
+[05/26 09:23:00] EA0_SEG_freeze INFO: bbox_loss 0.3991 	cls_loss 0.2364 	com_loss 0.2408 	keep_loss 0.0455 	loss 2.3769 	refine_bbox_loss 1.3292 	refine_score_loss 0.0000 	seg_loss 0.0775 	seg_loss_dice 0.0485 	
+[05/26 09:30:34] EA0_SEG_freeze INFO: Train: [94][1000/2432]  
+[05/26 09:30:34] EA0_SEG_freeze INFO: bbox_loss 0.3984 	cls_loss 0.2299 	com_loss 0.2319 	keep_loss 0.0456 	loss 2.2870 	refine_bbox_loss 1.2558 	refine_score_loss 0.0000 	seg_loss 0.0771 	seg_loss_dice 0.0484 	
+[05/26 09:38:13] EA0_SEG_freeze INFO: Train: [94][1500/2432]  
+[05/26 09:38:13] EA0_SEG_freeze INFO: bbox_loss 0.3992 	cls_loss 0.2305 	com_loss 0.2326 	keep_loss 0.0458 	loss 2.3249 	refine_bbox_loss 1.2922 	refine_score_loss 0.0000 	seg_loss 0.0765 	seg_loss_dice 0.0480 	
+[05/26 09:45:49] EA0_SEG_freeze INFO: Train: [94][2000/2432]  
+[05/26 09:45:49] EA0_SEG_freeze INFO: bbox_loss 0.3997 	cls_loss 0.2323 	com_loss 0.2338 	keep_loss 0.0462 	loss 2.3096 	refine_bbox_loss 1.2733 	refine_score_loss 0.0000 	seg_loss 0.0763 	seg_loss_dice 0.0480 	
+[05/26 09:52:25] EA0_SEG_freeze INFO: epoch 94, total time 2230.82, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 10:00:22] EA0_SEG_freeze INFO: Train: [95][500/2432]  
+[05/26 10:00:22] EA0_SEG_freeze INFO: bbox_loss 0.3973 	cls_loss 0.2257 	com_loss 0.2279 	keep_loss 0.0471 	loss 2.3684 	refine_bbox_loss 1.3457 	refine_score_loss 0.0000 	seg_loss 0.0769 	seg_loss_dice 0.0479 	
+[05/26 10:08:15] EA0_SEG_freeze INFO: Train: [95][1000/2432]  
+[05/26 10:08:15] EA0_SEG_freeze INFO: bbox_loss 0.3983 	cls_loss 0.2300 	com_loss 0.2306 	keep_loss 0.0466 	loss 2.3623 	refine_bbox_loss 1.3323 	refine_score_loss 0.0000 	seg_loss 0.0765 	seg_loss_dice 0.0479 	
+[05/26 10:15:58] EA0_SEG_freeze INFO: Train: [95][1500/2432]  
+[05/26 10:15:58] EA0_SEG_freeze INFO: bbox_loss 0.4004 	cls_loss 0.2313 	com_loss 0.2322 	keep_loss 0.0468 	loss 2.3780 	refine_bbox_loss 1.3430 	refine_score_loss 0.0000 	seg_loss 0.0762 	seg_loss_dice 0.0480 	
+[05/26 10:23:41] EA0_SEG_freeze INFO: Train: [95][2000/2432]  
+[05/26 10:23:41] EA0_SEG_freeze INFO: bbox_loss 0.3983 	cls_loss 0.2293 	com_loss 0.2308 	keep_loss 0.0467 	loss 2.3152 	refine_bbox_loss 1.2863 	refine_score_loss 0.0000 	seg_loss 0.0759 	seg_loss_dice 0.0479 	
+[05/26 10:30:23] EA0_SEG_freeze INFO: epoch 95, total time 2277.88, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 10:38:11] EA0_SEG_freeze INFO: Train: [96][500/2432]  
+[05/26 10:38:11] EA0_SEG_freeze INFO: bbox_loss 0.4032 	cls_loss 0.2312 	com_loss 0.2317 	keep_loss 0.0468 	loss 2.2158 	refine_bbox_loss 1.1784 	refine_score_loss 0.0000 	seg_loss 0.0763 	seg_loss_dice 0.0483 	
+[05/26 10:45:55] EA0_SEG_freeze INFO: Train: [96][1000/2432]  
+[05/26 10:45:55] EA0_SEG_freeze INFO: bbox_loss 0.4016 	cls_loss 0.2305 	com_loss 0.2313 	keep_loss 0.0471 	loss 2.2680 	refine_bbox_loss 1.2336 	refine_score_loss 0.0000 	seg_loss 0.0759 	seg_loss_dice 0.0480 	
+[05/26 10:53:35] EA0_SEG_freeze INFO: Train: [96][1500/2432]  
+[05/26 10:53:35] EA0_SEG_freeze INFO: bbox_loss 0.4025 	cls_loss 0.2306 	com_loss 0.2319 	keep_loss 0.0468 	loss 2.2928 	refine_bbox_loss 1.2570 	refine_score_loss 0.0000 	seg_loss 0.0760 	seg_loss_dice 0.0481 	
+[05/26 11:01:12] EA0_SEG_freeze INFO: Train: [96][2000/2432]  
+[05/26 11:01:12] EA0_SEG_freeze INFO: bbox_loss 0.4023 	cls_loss 0.2331 	com_loss 0.2338 	keep_loss 0.0467 	loss 2.3366 	refine_bbox_loss 1.2971 	refine_score_loss 0.0000 	seg_loss 0.0758 	seg_loss_dice 0.0479 	
+[05/26 11:07:53] EA0_SEG_freeze INFO: epoch 96, total time 2249.56, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 11:09:41] EA0_SEG_freeze INFO: Eval: [96]  
+[05/26 11:09:41] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.57389
+[05/26 11:09:41] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.46700
+[05/26 11:09:41] EA0_SEG_freeze INFO: Acc_mask0.25 0.595216606498195
+[05/26 11:09:41] EA0_SEG_freeze INFO: Acc_mask0.50 0.5135943140794224
+[05/26 11:09:41] EA0_SEG_freeze INFO: Timing(s): inf=0.165624, visual=0.039628, text=0.011084, fusion_wo_head=0.063707, head=0.049159
+[05/26 11:09:41] EA0_SEG_freeze INFO: External-attn-affected module time(s): bi_layer0=0.008695, bi_layer1=0.006199, bi_layer2=0.008400, total=0.023294
+[05/26 11:09:41] EA0_SEG_freeze INFO: GPU memory(MiB): avg_allocated=1258.26, avg_reserved=4606.81, peak_allocated=3078.89, peak_reserved=32146.00, warmup_iters=20
+[05/26 11:17:31] EA0_SEG_freeze INFO: Train: [97][500/2432]  
+[05/26 11:17:31] EA0_SEG_freeze INFO: bbox_loss 0.4011 	cls_loss 0.2312 	com_loss 0.2328 	keep_loss 0.0465 	loss 2.3293 	refine_bbox_loss 1.2936 	refine_score_loss 0.0000 	seg_loss 0.0759 	seg_loss_dice 0.0481 	
+[05/26 11:25:11] EA0_SEG_freeze INFO: Train: [97][1000/2432]  
+[05/26 11:25:11] EA0_SEG_freeze INFO: bbox_loss 0.3988 	cls_loss 0.2302 	com_loss 0.2324 	keep_loss 0.0465 	loss 2.2823 	refine_bbox_loss 1.2507 	refine_score_loss 0.0000 	seg_loss 0.0756 	seg_loss_dice 0.0481 	
+[05/26 11:33:00] EA0_SEG_freeze INFO: Train: [97][1500/2432]  
+[05/26 11:33:00] EA0_SEG_freeze INFO: bbox_loss 0.3984 	cls_loss 0.2257 	com_loss 0.2276 	keep_loss 0.0463 	loss 2.2855 	refine_bbox_loss 1.2639 	refine_score_loss 0.0000 	seg_loss 0.0756 	seg_loss_dice 0.0481 	
+[05/26 11:40:49] EA0_SEG_freeze INFO: Train: [97][2000/2432]  
+[05/26 11:40:49] EA0_SEG_freeze INFO: bbox_loss 0.3991 	cls_loss 0.2253 	com_loss 0.2260 	keep_loss 0.0465 	loss 2.3061 	refine_bbox_loss 1.2854 	refine_score_loss 0.0000 	seg_loss 0.0756 	seg_loss_dice 0.0482 	
+[05/26 11:47:22] EA0_SEG_freeze INFO: epoch 97, total time 2260.94, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 11:55:10] EA0_SEG_freeze INFO: Train: [98][500/2432]  
+[05/26 11:55:10] EA0_SEG_freeze INFO: bbox_loss 0.4035 	cls_loss 0.2216 	com_loss 0.2232 	keep_loss 0.0464 	loss 2.3292 	refine_bbox_loss 1.3132 	refine_score_loss 0.0000 	seg_loss 0.0733 	seg_loss_dice 0.0479 	
+[05/26 12:02:49] EA0_SEG_freeze INFO: Train: [98][1000/2432]  
+[05/26 12:02:49] EA0_SEG_freeze INFO: bbox_loss 0.4003 	cls_loss 0.2297 	com_loss 0.2319 	keep_loss 0.0462 	loss 2.3341 	refine_bbox_loss 1.3045 	refine_score_loss 0.0000 	seg_loss 0.0738 	seg_loss_dice 0.0477 	
+[05/26 12:10:31] EA0_SEG_freeze INFO: Train: [98][1500/2432]  
+[05/26 12:10:31] EA0_SEG_freeze INFO: bbox_loss 0.3992 	cls_loss 0.2298 	com_loss 0.2312 	keep_loss 0.0463 	loss 2.3167 	refine_bbox_loss 1.2885 	refine_score_loss 0.0000 	seg_loss 0.0740 	seg_loss_dice 0.0477 	
+[05/26 12:18:14] EA0_SEG_freeze INFO: Train: [98][2000/2432]  
+[05/26 12:18:14] EA0_SEG_freeze INFO: bbox_loss 0.3976 	cls_loss 0.2280 	com_loss 0.2289 	keep_loss 0.0463 	loss 2.2813 	refine_bbox_loss 1.2592 	refine_score_loss 0.0000 	seg_loss 0.0737 	seg_loss_dice 0.0476 	
+[05/26 12:24:53] EA0_SEG_freeze INFO: epoch 98, total time 2250.75, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 12:32:39] EA0_SEG_freeze INFO: Train: [99][500/2432]  
+[05/26 12:32:39] EA0_SEG_freeze INFO: bbox_loss 0.4017 	cls_loss 0.2380 	com_loss 0.2404 	keep_loss 0.0464 	loss 2.5073 	refine_bbox_loss 1.4578 	refine_score_loss 0.0000 	seg_loss 0.0751 	seg_loss_dice 0.0480 	
+[05/26 12:40:20] EA0_SEG_freeze INFO: Train: [99][1000/2432]  
+[05/26 12:40:20] EA0_SEG_freeze INFO: bbox_loss 0.4011 	cls_loss 0.2340 	com_loss 0.2368 	keep_loss 0.0463 	loss 2.3837 	refine_bbox_loss 1.3423 	refine_score_loss 0.0000 	seg_loss 0.0751 	seg_loss_dice 0.0481 	
+[05/26 12:48:01] EA0_SEG_freeze INFO: Train: [99][1500/2432]  
+[05/26 12:48:01] EA0_SEG_freeze INFO: bbox_loss 0.4023 	cls_loss 0.2334 	com_loss 0.2355 	keep_loss 0.0464 	loss 2.4032 	refine_bbox_loss 1.3632 	refine_score_loss 0.0000 	seg_loss 0.0745 	seg_loss_dice 0.0480 	
+[05/26 12:55:40] EA0_SEG_freeze INFO: Train: [99][2000/2432]  
+[05/26 12:55:40] EA0_SEG_freeze INFO: bbox_loss 0.4006 	cls_loss 0.2325 	com_loss 0.2338 	keep_loss 0.0463 	loss 2.3678 	refine_bbox_loss 1.3328 	refine_score_loss 0.0000 	seg_loss 0.0740 	seg_loss_dice 0.0479 	
+[05/26 13:02:23] EA0_SEG_freeze INFO: epoch 99, total time 2250.00, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 13:04:10] EA0_SEG_freeze INFO: Eval: [99]  
+[05/26 13:04:10] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.56983
+[05/26 13:04:10] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.46683
+[05/26 13:04:10] EA0_SEG_freeze INFO: Acc_mask0.25 0.5926218411552346
+[05/26 13:04:10] EA0_SEG_freeze INFO: Acc_mask0.50 0.5092509025270758
+[05/26 13:04:10] EA0_SEG_freeze INFO: Timing(s): inf=0.162756, visual=0.039964, text=0.011182, fusion_wo_head=0.063153, head=0.046451
+[05/26 13:04:10] EA0_SEG_freeze INFO: External-attn-affected module time(s): bi_layer0=0.009252, bi_layer1=0.006684, bi_layer2=0.007944, total=0.023880
+[05/26 13:04:10] EA0_SEG_freeze INFO: GPU memory(MiB): avg_allocated=1262.10, avg_reserved=4612.00, peak_allocated=3082.58, peak_reserved=31472.00, warmup_iters=20
+[05/26 13:12:05] EA0_SEG_freeze INFO: Train: [100][500/2432]  
+[05/26 13:12:05] EA0_SEG_freeze INFO: bbox_loss 0.4016 	cls_loss 0.2209 	com_loss 0.2250 	keep_loss 0.0458 	loss 2.2471 	refine_bbox_loss 1.2330 	refine_score_loss 0.0000 	seg_loss 0.0730 	seg_loss_dice 0.0478 	
+[05/26 13:19:48] EA0_SEG_freeze INFO: Train: [100][1000/2432]  
+[05/26 13:19:48] EA0_SEG_freeze INFO: bbox_loss 0.4026 	cls_loss 0.2221 	com_loss 0.2238 	keep_loss 0.0461 	loss 2.2392 	refine_bbox_loss 1.2234 	refine_score_loss 0.0000 	seg_loss 0.0733 	seg_loss_dice 0.0479 	
+[05/26 13:27:24] EA0_SEG_freeze INFO: Train: [100][1500/2432]  
+[05/26 13:27:24] EA0_SEG_freeze INFO: bbox_loss 0.4022 	cls_loss 0.2277 	com_loss 0.2292 	keep_loss 0.0466 	loss 2.2712 	refine_bbox_loss 1.2443 	refine_score_loss 0.0000 	seg_loss 0.0734 	seg_loss_dice 0.0479 	
+[05/26 13:35:06] EA0_SEG_freeze INFO: Train: [100][2000/2432]  
+[05/26 13:35:06] EA0_SEG_freeze INFO: bbox_loss 0.3993 	cls_loss 0.2285 	com_loss 0.2310 	keep_loss 0.0467 	loss 2.2992 	refine_bbox_loss 1.2727 	refine_score_loss 0.0000 	seg_loss 0.0732 	seg_loss_dice 0.0478 	
+[05/26 13:41:41] EA0_SEG_freeze INFO: epoch 100, total time 2251.22, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 13:49:24] EA0_SEG_freeze INFO: Train: [101][500/2432]  
+[05/26 13:49:24] EA0_SEG_freeze INFO: bbox_loss 0.3939 	cls_loss 0.2327 	com_loss 0.2401 	keep_loss 0.0464 	loss 2.4186 	refine_bbox_loss 1.3861 	refine_score_loss 0.0000 	seg_loss 0.0721 	seg_loss_dice 0.0473 	
+[05/26 13:57:03] EA0_SEG_freeze INFO: Train: [101][1000/2432]  
+[05/26 13:57:03] EA0_SEG_freeze INFO: bbox_loss 0.4015 	cls_loss 0.2378 	com_loss 0.2414 	keep_loss 0.0469 	loss 2.4073 	refine_bbox_loss 1.3599 	refine_score_loss 0.0000 	seg_loss 0.0724 	seg_loss_dice 0.0474 	
+[05/26 14:04:42] EA0_SEG_freeze INFO: Train: [101][1500/2432]  
+[05/26 14:04:42] EA0_SEG_freeze INFO: bbox_loss 0.4018 	cls_loss 0.2344 	com_loss 0.2369 	keep_loss 0.0467 	loss 2.3575 	refine_bbox_loss 1.3183 	refine_score_loss 0.0000 	seg_loss 0.0721 	seg_loss_dice 0.0474 	
+[05/26 14:12:18] EA0_SEG_freeze INFO: Train: [101][2000/2432]  
+[05/26 14:12:18] EA0_SEG_freeze INFO: bbox_loss 0.4006 	cls_loss 0.2340 	com_loss 0.2360 	keep_loss 0.0466 	loss 2.3249 	refine_bbox_loss 1.2878 	refine_score_loss 0.0000 	seg_loss 0.0723 	seg_loss_dice 0.0476 	
+[05/26 14:18:56] EA0_SEG_freeze INFO: epoch 101, total time 2234.45, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 14:26:44] EA0_SEG_freeze INFO: Train: [102][500/2432]  
+[05/26 14:26:44] EA0_SEG_freeze INFO: bbox_loss 0.4013 	cls_loss 0.2295 	com_loss 0.2322 	keep_loss 0.0473 	loss 2.2872 	refine_bbox_loss 1.2581 	refine_score_loss 0.0000 	seg_loss 0.0712 	seg_loss_dice 0.0476 	
+[05/26 14:34:31] EA0_SEG_freeze INFO: Train: [102][1000/2432]  
+[05/26 14:34:31] EA0_SEG_freeze INFO: bbox_loss 0.4009 	cls_loss 0.2358 	com_loss 0.2372 	keep_loss 0.0472 	loss 2.2991 	refine_bbox_loss 1.2575 	refine_score_loss 0.0000 	seg_loss 0.0726 	seg_loss_dice 0.0478 	
+[05/26 14:42:21] EA0_SEG_freeze INFO: Train: [102][1500/2432]  
+[05/26 14:42:21] EA0_SEG_freeze INFO: bbox_loss 0.4009 	cls_loss 0.2346 	com_loss 0.2362 	keep_loss 0.0470 	loss 2.3059 	refine_bbox_loss 1.2659 	refine_score_loss 0.0000 	seg_loss 0.0732 	seg_loss_dice 0.0480 	
+[05/26 14:50:00] EA0_SEG_freeze INFO: Train: [102][2000/2432]  
+[05/26 14:50:00] EA0_SEG_freeze INFO: bbox_loss 0.4005 	cls_loss 0.2311 	com_loss 0.2327 	keep_loss 0.0469 	loss 2.2822 	refine_bbox_loss 1.2506 	refine_score_loss 0.0000 	seg_loss 0.0726 	seg_loss_dice 0.0478 	
+[05/26 14:56:39] EA0_SEG_freeze INFO: epoch 102, total time 2263.70, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 14:58:26] EA0_SEG_freeze INFO: Eval: [102]  
+[05/26 14:58:26] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.57327
+[05/26 14:58:26] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.46424
+[05/26 14:58:26] EA0_SEG_freeze INFO: Acc_mask0.25 0.5949345667870036
+[05/26 14:58:26] EA0_SEG_freeze INFO: Acc_mask0.50 0.5125789711191335
+[05/26 14:58:26] EA0_SEG_freeze INFO: Timing(s): inf=0.164623, visual=0.040651, text=0.010837, fusion_wo_head=0.063061, head=0.048072
+[05/26 14:58:26] EA0_SEG_freeze INFO: External-attn-affected module time(s): bi_layer0=0.008797, bi_layer1=0.006885, bi_layer2=0.007811, total=0.023492
+[05/26 14:58:26] EA0_SEG_freeze INFO: GPU memory(MiB): avg_allocated=1265.93, avg_reserved=4618.00, peak_allocated=3087.39, peak_reserved=30838.00, warmup_iters=20
+[05/26 15:06:10] EA0_SEG_freeze INFO: Train: [103][500/2432]  
+[05/26 15:06:10] EA0_SEG_freeze INFO: bbox_loss 0.3949 	cls_loss 0.2349 	com_loss 0.2389 	keep_loss 0.0455 	loss 2.3463 	refine_bbox_loss 1.3131 	refine_score_loss 0.0000 	seg_loss 0.0717 	seg_loss_dice 0.0474 	
+[05/26 15:13:50] EA0_SEG_freeze INFO: Train: [103][1000/2432]  
+[05/26 15:13:50] EA0_SEG_freeze INFO: bbox_loss 0.3991 	cls_loss 0.2305 	com_loss 0.2331 	keep_loss 0.0458 	loss 2.3788 	refine_bbox_loss 1.3513 	refine_score_loss 0.0000 	seg_loss 0.0712 	seg_loss_dice 0.0478 	
+[05/26 15:21:27] EA0_SEG_freeze INFO: Train: [103][1500/2432]  
+[05/26 15:21:27] EA0_SEG_freeze INFO: bbox_loss 0.4000 	cls_loss 0.2287 	com_loss 0.2301 	keep_loss 0.0460 	loss 2.2961 	refine_bbox_loss 1.2721 	refine_score_loss 0.0000 	seg_loss 0.0714 	seg_loss_dice 0.0478 	
+[05/26 15:29:04] EA0_SEG_freeze INFO: Train: [103][2000/2432]  
+[05/26 15:29:04] EA0_SEG_freeze INFO: bbox_loss 0.3992 	cls_loss 0.2299 	com_loss 0.2314 	keep_loss 0.0463 	loss 2.3074 	refine_bbox_loss 1.2810 	refine_score_loss 0.0000 	seg_loss 0.0716 	seg_loss_dice 0.0478 	
+[05/26 15:35:37] EA0_SEG_freeze INFO: epoch 103, total time 2231.04, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 15:43:24] EA0_SEG_freeze INFO: Train: [104][500/2432]  
+[05/26 15:43:24] EA0_SEG_freeze INFO: bbox_loss 0.4099 	cls_loss 0.2297 	com_loss 0.2316 	keep_loss 0.0475 	loss 2.2792 	refine_bbox_loss 1.2430 	refine_score_loss 0.0000 	seg_loss 0.0706 	seg_loss_dice 0.0470 	
+[05/26 15:51:03] EA0_SEG_freeze INFO: Train: [104][1000/2432]  
+[05/26 15:51:03] EA0_SEG_freeze INFO: bbox_loss 0.4050 	cls_loss 0.2284 	com_loss 0.2312 	keep_loss 0.0475 	loss 2.2313 	refine_bbox_loss 1.2014 	refine_score_loss 0.0000 	seg_loss 0.0707 	seg_loss_dice 0.0470 	
+[05/26 15:58:44] EA0_SEG_freeze INFO: Train: [104][1500/2432]  
+[05/26 15:58:44] EA0_SEG_freeze INFO: bbox_loss 0.4025 	cls_loss 0.2339 	com_loss 0.2382 	keep_loss 0.0470 	loss 2.2253 	refine_bbox_loss 1.1856 	refine_score_loss 0.0000 	seg_loss 0.0710 	seg_loss_dice 0.0471 	
+[05/26 16:06:27] EA0_SEG_freeze INFO: Train: [104][2000/2432]  
+[05/26 16:06:27] EA0_SEG_freeze INFO: bbox_loss 0.4014 	cls_loss 0.2315 	com_loss 0.2354 	keep_loss 0.0468 	loss 2.2447 	refine_bbox_loss 1.2118 	refine_score_loss 0.0000 	seg_loss 0.0707 	seg_loss_dice 0.0472 	
+[05/26 16:13:07] EA0_SEG_freeze INFO: epoch 104, total time 2249.99, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 16:20:54] EA0_SEG_freeze INFO: Train: [105][500/2432]  
+[05/26 16:20:54] EA0_SEG_freeze INFO: bbox_loss 0.3944 	cls_loss 0.2295 	com_loss 0.2312 	keep_loss 0.0473 	loss 2.2006 	refine_bbox_loss 1.1806 	refine_score_loss 0.0000 	seg_loss 0.0703 	seg_loss_dice 0.0474 	
+[05/26 16:28:34] EA0_SEG_freeze INFO: Train: [105][1000/2432]  
+[05/26 16:28:34] EA0_SEG_freeze INFO: bbox_loss 0.3936 	cls_loss 0.2301 	com_loss 0.2324 	keep_loss 0.0466 	loss 2.2175 	refine_bbox_loss 1.1975 	refine_score_loss 0.0000 	seg_loss 0.0699 	seg_loss_dice 0.0472 	
+[05/26 16:36:15] EA0_SEG_freeze INFO: Train: [105][1500/2432]  
+[05/26 16:36:15] EA0_SEG_freeze INFO: bbox_loss 0.3953 	cls_loss 0.2286 	com_loss 0.2308 	keep_loss 0.0467 	loss 2.2351 	refine_bbox_loss 1.2166 	refine_score_loss 0.0000 	seg_loss 0.0699 	seg_loss_dice 0.0473 	
+[05/26 16:43:55] EA0_SEG_freeze INFO: Train: [105][2000/2432]  
+[05/26 16:43:55] EA0_SEG_freeze INFO: bbox_loss 0.3952 	cls_loss 0.2298 	com_loss 0.2325 	keep_loss 0.0464 	loss 2.2885 	refine_bbox_loss 1.2670 	refine_score_loss 0.0000 	seg_loss 0.0702 	seg_loss_dice 0.0474 	
+[05/26 16:50:30] EA0_SEG_freeze INFO: epoch 105, total time 2243.18, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0001000
+[05/26 16:52:17] EA0_SEG_freeze INFO: Eval: [105]  
+[05/26 16:52:17] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.57198
+[05/26 16:52:17] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.46734
+[05/26 16:52:17] EA0_SEG_freeze INFO: Acc_mask0.25 0.5935243682310469
+[05/26 16:52:17] EA0_SEG_freeze INFO: Acc_mask0.50 0.5130302346570397
+[05/26 16:52:17] EA0_SEG_freeze INFO: Timing(s): inf=0.165421, visual=0.039724, text=0.011181, fusion_wo_head=0.064488, head=0.048035
+[05/26 16:52:17] EA0_SEG_freeze INFO: External-attn-affected module time(s): bi_layer0=0.008721, bi_layer1=0.006278, bi_layer2=0.008588, total=0.023587
+[05/26 16:52:17] EA0_SEG_freeze INFO: GPU memory(MiB): avg_allocated=1269.76, avg_reserved=4514.00, peak_allocated=3090.87, peak_reserved=32864.00, warmup_iters=20
+[05/26 17:00:02] EA0_SEG_freeze INFO: Train: [106][500/2432]  
+[05/26 17:00:02] EA0_SEG_freeze INFO: bbox_loss 0.3956 	cls_loss 0.2305 	com_loss 0.2281 	keep_loss 0.0460 	loss 2.3415 	refine_bbox_loss 1.3242 	refine_score_loss 0.0000 	seg_loss 0.0697 	seg_loss_dice 0.0475 	
+[05/26 17:07:41] EA0_SEG_freeze INFO: Train: [106][1000/2432]  
+[05/26 17:07:41] EA0_SEG_freeze INFO: bbox_loss 0.3992 	cls_loss 0.2325 	com_loss 0.2321 	keep_loss 0.0461 	loss 2.2938 	refine_bbox_loss 1.2673 	refine_score_loss 0.0000 	seg_loss 0.0693 	seg_loss_dice 0.0473 	
+[05/26 17:15:20] EA0_SEG_freeze INFO: Train: [106][1500/2432]  
+[05/26 17:15:20] EA0_SEG_freeze INFO: bbox_loss 0.3991 	cls_loss 0.2309 	com_loss 0.2305 	keep_loss 0.0464 	loss 2.2725 	refine_bbox_loss 1.2482 	refine_score_loss 0.0000 	seg_loss 0.0698 	seg_loss_dice 0.0476 	
+[05/26 17:23:02] EA0_SEG_freeze INFO: Train: [106][2000/2432]  
+[05/26 17:23:02] EA0_SEG_freeze INFO: bbox_loss 0.3976 	cls_loss 0.2298 	com_loss 0.2302 	keep_loss 0.0463 	loss 2.2363 	refine_bbox_loss 1.2155 	refine_score_loss 0.0000 	seg_loss 0.0695 	seg_loss_dice 0.0473 	
+[05/26 17:29:37] EA0_SEG_freeze INFO: epoch 106, total time 2240.05, lr_base 0.0000000, lr_tran 0.0000000, lr_text 0.0000000, lr_select 0.0000000, lr_seg 0.0000100
+[05/26 17:37:29] EA0_SEG_freeze INFO: Train: [107][500/2432]  
+[05/26 17:37:29] EA0_SEG_freeze INFO: bbox_loss 0.4039 	cls_loss 0.2320 	com_loss 0.2340 	keep_loss 0.0481 	loss 2.3664 	refine_bbox_loss 1.3307 	refine_score_loss 0.0000 	seg_loss 0.0700 	seg_loss_dice 0.0477 	
+[05/26 17:45:08] EA0_SEG_freeze INFO: Train: [107][1000/2432]  
+[05/26 17:45:08] EA0_SEG_freeze INFO: bbox_loss 0.4021 	cls_loss 0.2369 	com_loss 0.2387 	keep_loss 0.0479 	loss 2.3908 	refine_bbox_loss 1.3490 	refine_score_loss 0.0000 	seg_loss 0.0690 	seg_loss_dice 0.0471 	
+[05/26 17:52:54] EA0_SEG_freeze INFO: Train: [107][1500/2432]  
+[05/26 17:52:54] EA0_SEG_freeze INFO: bbox_loss 0.4020 	cls_loss 0.2343 	com_loss 0.2367 	keep_loss 0.0476 	loss 2.4064 	refine_bbox_loss 1.3705 	refine_score_loss 0.0000 	seg_loss 0.0684 	seg_loss_dice 0.0470 	
+[05/26 18:00:31] EA0_SEG_freeze INFO: Train: [107][2000/2432]  
+[05/26 18:00:31] EA0_SEG_freeze INFO: bbox_loss 0.4001 	cls_loss 0.2339 	com_loss 0.2364 	keep_loss 0.0474 	loss 2.3590 	refine_bbox_loss 1.3260 	refine_score_loss 0.0000 	seg_loss 0.0682 	seg_loss_dice 0.0469 	

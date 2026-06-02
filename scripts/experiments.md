@@ -99,6 +99,15 @@ scripts/experiments/nr3d/EA02/nr3d/2026-05-18_01-13-49/ckpt_epoch_141.pth
 [05/25 12:13:15] EA0_SEG INFO: Acc_mask0.50 0.4277580971659919
 ```
 
+## EA0+seg(freeze)
+```
+[05/26 16:02:13] EA0_SEG_freeze INFO: Eval: [249]  
+[05/26 16:02:13] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.50329
+[05/26 16:02:13] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.39841
+[05/26 16:02:13] EA0_SEG_freeze INFO: Acc_mask0.25 0.5264423076923077
+[05/26 16:02:13] EA0_SEG_freeze INFO: Acc_mask0.50 0.43509615384615385
+```
+
 # sr3d
 
 ## EA0
@@ -117,4 +126,14 @@ scripts/experiments/sr3d_fixed3/EA02/sr3d/2026-05-18_01-12-46/ckpt_epoch_84.pth
 [05/19 03:38:39] EA02 INFO: Eval: [84]  
 [05/19 03:38:39] EA02 INFO: 3dcnn Acc0.25: Top-1: 0.55505
 [05/19 03:38:39] EA02 INFO: 3dcnn Acc0.50: Top-1: 0.43445
+```
+
+## EA0+seg(freeze)
+scripts/experiments/sr3d_fixed3/EA0_SEG_freeze/sr3d/2026-05-25_21-42-09/ckpt_epoch_96.pth
+```
+[05/26 11:09:41] EA0_SEG_freeze INFO: Eval: [96]  
+[05/26 11:09:41] EA0_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.57389
+[05/26 11:09:41] EA0_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.46700
+[05/26 11:09:41] EA0_SEG_freeze INFO: Acc_mask0.25 0.595216606498195
+[05/26 11:09:41] EA0_SEG_freeze INFO: Acc_mask0.50 0.5135943140794224
 ```
