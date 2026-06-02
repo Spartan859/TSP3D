@@ -666,7 +666,8 @@ class BaseTrainTester:
 
         # Check for a checkpoint (file existence asserted earlier)
         if args.checkpoint_path:
-            load_checkpoint(args, model, optimizer, scheduler, len(train_loader))
+            n_iter = len(train_loader) if train_loader is not None else 1
+            load_checkpoint(args, model, optimizer, scheduler, n_iter)
         
         # ##############################################
         # NOTE [eval-only] Just eval and end execution #
