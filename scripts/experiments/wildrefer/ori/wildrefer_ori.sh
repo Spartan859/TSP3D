@@ -83,10 +83,11 @@ if [[ -z "${EXP_NAME}" ]]; then
     EXP_NAME="$(basename "${0}" .sh)_${WILDREFER_DATASET}"
 fi
 
-log_dir="$(dirname "$(readlink -f "$0")")/${EXP_NAME}"
+script_dir="$(dirname "$(readlink -f "$0")")"
+repo_root="$(readlink -f "${script_dir}/../../..")"
+log_dir="${script_dir}/${EXP_NAME}"
 mkdir -p "${log_dir}"
-scripts_dir="$(readlink -f "$(dirname "$(readlink -f "$0")")/../..")"
-find_free_gpus_script="${scripts_dir}/find_free_gpus.sh"
+find_free_gpus_script="${repo_root}/scripts/find_free_gpus.sh"
 
 lr_scale() {
     python - "$1" "$BASE_BS_PER_GPU" "$BS_PER_GPU" "$BASE_NPROC_PER_NODE" "$NPROC_PER_NODE" <<'PY'
