@@ -2682,3 +2682,64 @@
 [06/06 05:43:52] EA0_resume INFO: Train: [394][1500/1520]  
 [06/06 05:43:52] EA0_resume INFO: bbox_loss 0.3934 	cls_loss 0.1254 	com_loss 0.1073 	keep_loss 0.0624 	loss 0.6885 	
 [06/06 05:44:02] EA0_resume INFO: epoch 394, total time 798.68, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[06/06 05:48:32] EA0_resume INFO: Train: [395][500/1520]  
+[06/06 05:48:32] EA0_resume INFO: bbox_loss 0.3944 	cls_loss 0.1289 	com_loss 0.1108 	keep_loss 0.0625 	loss 0.6967 	
+[06/06 05:52:54] EA0_resume INFO: Train: [395][1000/1520]  
+[06/06 05:52:54] EA0_resume INFO: bbox_loss 0.3942 	cls_loss 0.1267 	com_loss 0.1087 	keep_loss 0.0623 	loss 0.6919 	
+[06/06 05:57:14] EA0_resume INFO: Train: [395][1500/1520]  
+[06/06 05:57:14] EA0_resume INFO: bbox_loss 0.3953 	cls_loss 0.1261 	com_loss 0.1086 	keep_loss 0.0623 	loss 0.6924 	
+[06/06 05:57:24] EA0_resume INFO: epoch 395, total time 801.65, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[06/06 06:01:54] EA0_resume INFO: Train: [396][500/1520]  
+[06/06 06:01:54] EA0_resume INFO: bbox_loss 0.3871 	cls_loss 0.1224 	com_loss 0.1052 	keep_loss 0.0600 	loss 0.6747 	
+[06/06 06:06:19] EA0_resume INFO: Train: [396][1000/1520]  
+[06/06 06:06:19] EA0_resume INFO: bbox_loss 0.3932 	cls_loss 0.1237 	com_loss 0.1056 	keep_loss 0.0612 	loss 0.6836 	
+[06/06 06:10:39] EA0_resume INFO: Train: [396][1500/1520]  
+[06/06 06:10:39] EA0_resume INFO: bbox_loss 0.3912 	cls_loss 0.1246 	com_loss 0.1067 	keep_loss 0.0614 	loss 0.6839 	
+[06/06 06:10:49] EA0_resume INFO: epoch 396, total time 804.88, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[06/06 06:11:37] EA0_resume INFO: Eval: [396]  
+[06/06 06:11:37] EA0_resume INFO: 3dcnn Acc0.25: Top-1: 0.56119
+[06/06 06:11:37] EA0_resume INFO: 3dcnn Acc0.50: Top-1: 0.45942
+[06/06 06:11:37] EA0_resume INFO: Timing(s): inf=0.128070, visual=0.050740, text=0.014513, fusion_wo_head=0.056474, head=0.003889
+[06/06 06:11:37] EA0_resume INFO: External-attn-affected module time(s): bi_layer0=0.007285, bi_layer1=0.007520, bi_layer2=0.007113, total=0.021918
+[06/06 06:11:37] EA0_resume INFO: GPU memory(MiB): avg_allocated=1167.17, avg_reserved=3497.63, peak_allocated=2992.17, peak_reserved=11328.00, warmup_iters=20
+[06/06 06:16:08] EA0_resume INFO: Train: [397][500/1520]  
+[06/06 06:16:08] EA0_resume INFO: bbox_loss 0.3876 	cls_loss 0.1239 	com_loss 0.1075 	keep_loss 0.0609 	loss 0.6799 	
+[06/06 06:20:31] EA0_resume INFO: Train: [397][1000/1520]  
+[06/06 06:20:31] EA0_resume INFO: bbox_loss 0.3924 	cls_loss 0.1247 	com_loss 0.1071 	keep_loss 0.0610 	loss 0.6853 	
+[06/06 06:24:50] EA0_resume INFO: Train: [397][1500/1520]  
+[06/06 06:24:50] EA0_resume INFO: bbox_loss 0.3931 	cls_loss 0.1247 	com_loss 0.1071 	keep_loss 0.0610 	loss 0.6859 	
+[06/06 06:25:01] EA0_resume INFO: epoch 397, total time 803.92, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[06/06 06:29:30] EA0_resume INFO: Train: [398][500/1520]  
+[06/06 06:29:30] EA0_resume INFO: bbox_loss 0.3933 	cls_loss 0.1251 	com_loss 0.1070 	keep_loss 0.0630 	loss 0.6885 	
+[06/06 06:33:54] EA0_resume INFO: Train: [398][1000/1520]  
+[06/06 06:33:54] EA0_resume INFO: bbox_loss 0.3978 	cls_loss 0.1249 	com_loss 0.1073 	keep_loss 0.0622 	loss 0.6921 	
+[06/06 06:38:12] EA0_resume INFO: Train: [398][1500/1520]  
+[06/06 06:38:12] EA0_resume INFO: bbox_loss 0.3951 	cls_loss 0.1230 	com_loss 0.1056 	keep_loss 0.0615 	loss 0.6852 	
+[06/06 06:38:22] EA0_resume INFO: epoch 398, total time 801.48, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[06/06 06:42:57] EA0_resume INFO: Train: [399][500/1520]  
+[06/06 06:42:57] EA0_resume INFO: bbox_loss 0.3938 	cls_loss 0.1255 	com_loss 0.1081 	keep_loss 0.0612 	loss 0.6886 	
+[06/06 06:47:24] EA0_resume INFO: Train: [399][1000/1520]  
+[06/06 06:47:24] EA0_resume INFO: bbox_loss 0.3923 	cls_loss 0.1251 	com_loss 0.1078 	keep_loss 0.0613 	loss 0.6865 	
+[06/06 06:51:52] EA0_resume INFO: Train: [399][1500/1520]  
+[06/06 06:51:52] EA0_resume INFO: bbox_loss 0.3943 	cls_loss 0.1253 	com_loss 0.1079 	keep_loss 0.0617 	loss 0.6893 	
+[06/06 06:52:03] EA0_resume INFO: epoch 399, total time 820.59, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[06/06 06:52:51] EA0_resume INFO: Eval: [399]  
+[06/06 06:52:51] EA0_resume INFO: 3dcnn Acc0.25: Top-1: 0.55950
+[06/06 06:52:51] EA0_resume INFO: 3dcnn Acc0.50: Top-1: 0.45900
+[06/06 06:52:51] EA0_resume INFO: Timing(s): inf=0.130607, visual=0.049420, text=0.013516, fusion_wo_head=0.061343, head=0.003595
+[06/06 06:52:51] EA0_resume INFO: External-attn-affected module time(s): bi_layer0=0.008619, bi_layer1=0.009330, bi_layer2=0.006874, total=0.024823
+[06/06 06:52:51] EA0_resume INFO: GPU memory(MiB): avg_allocated=1169.54, avg_reserved=3547.17, peak_allocated=2995.45, peak_reserved=11532.00, warmup_iters=20
+[06/06 06:57:28] EA0_resume INFO: Train: [400][500/1520]  
+[06/06 06:57:28] EA0_resume INFO: bbox_loss 0.3996 	cls_loss 0.1246 	com_loss 0.1059 	keep_loss 0.0616 	loss 0.6917 	
+[06/06 07:01:54] EA0_resume INFO: Train: [400][1000/1520]  
+[06/06 07:01:54] EA0_resume INFO: bbox_loss 0.3939 	cls_loss 0.1244 	com_loss 0.1058 	keep_loss 0.0614 	loss 0.6855 	
+[06/06 07:06:16] EA0_resume INFO: Train: [400][1500/1520]  
+[06/06 07:06:16] EA0_resume INFO: bbox_loss 0.3934 	cls_loss 0.1249 	com_loss 0.1067 	keep_loss 0.0617 	loss 0.6866 	
+[06/06 07:06:26] EA0_resume INFO: epoch 400, total time 814.87, lr_base 0.0000050, lr_tran 0.0000050, lr_text 0.0000001, lr_select 0.0000040, lr_seg 0.0000010
+[06/06 07:06:27] EA0_resume INFO: Saved in /mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/TF32/EA0_resume/scanrefer/2026-06-03_09-46-02/ckpt_epoch_last.pth
+[06/06 07:07:14] EA0_resume INFO: Eval: [400]  
+[06/06 07:07:14] EA0_resume INFO: 3dcnn Acc0.25: Top-1: 0.56045
+[06/06 07:07:14] EA0_resume INFO: 3dcnn Acc0.50: Top-1: 0.45753
+[06/06 07:07:14] EA0_resume INFO: Timing(s): inf=0.127720, visual=0.049672, text=0.013564, fusion_wo_head=0.058682, head=0.003394
+[06/06 07:07:14] EA0_resume INFO: External-attn-affected module time(s): bi_layer0=0.007783, bi_layer1=0.008699, bi_layer2=0.006329, total=0.022811
+[06/06 07:07:14] EA0_resume INFO: GPU memory(MiB): avg_allocated=1170.43, avg_reserved=5387.35, peak_allocated=2994.49, peak_reserved=11506.00, warmup_iters=20
