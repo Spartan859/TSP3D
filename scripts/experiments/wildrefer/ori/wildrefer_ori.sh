@@ -84,10 +84,14 @@ if [[ -z "${EXP_NAME}" ]]; then
 fi
 
 script_dir="$(dirname "$(readlink -f "$0")")"
-repo_root="$(readlink -f "${script_dir}/../../..")"
+repo_root="$(git -C "${script_dir}" rev-parse --show-toplevel 2>/dev/null || readlink -f "${script_dir}/../../../..")"
 log_dir="${script_dir}/${EXP_NAME}"
 mkdir -p "${log_dir}"
 find_free_gpus_script="${repo_root}/scripts/find_free_gpus.sh"
+if [[ ! -f "${find_free_gpus_script}" ]]; then
+    echo "Error: find_free_gpus.sh not found at '${find_free_gpus_script}' (repo_root='${repo_root}')" >&2
+    exit 1
+fi
 
 lr_scale() {
     python - "$1" "$BASE_BS_PER_GPU" "$BS_PER_GPU" "$BASE_NPROC_PER_NODE" "$NPROC_PER_NODE" <<'PY'
