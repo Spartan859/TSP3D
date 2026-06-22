@@ -19,7 +19,7 @@ import torch.distributed as dist
 from main_utils import parse_option, BaseTrainTester, set_random_seed
 from data.model_util_scannet import ScannetDatasetConfig
 from src.joint_det_dataset import Joint3DDataset
-from src.grounding_evaluator import GroundingEvaluator
+from src.grounding_evaluator import GroundingEvaluator, scores_to_box_scores
 from src.wildrefer_official_eval import cal_accuracy as wildrefer_cal_accuracy
 from models import BeaUTyDETR
 from models import APCalculator, parse_predictions, parse_groundtruths
@@ -276,8 +276,9 @@ class TrainTester(BaseTrainTester):
                     bboxes = end_points['bbox_results'][bid]['bboxes_3d']
                     bboxes = torch.cat([bboxes.gravity_center, bboxes.dims], dim=1)
                     pred_box = np.zeros((7,), dtype=np.float32)
-                    if scores.numel() > 0:
-                        best_idx = int(torch.argmax(scores).item())
+                    box_scores = scores_to_box_scores(scores, bboxes.shape[0])
+                    if box_scores.numel() > 0:
+                        best_idx = int(torch.argmax(box_scores).item())
                         pred_box[:6] = bboxes[best_idx].detach().cpu().numpy().astype(np.float32)
                     gt_box = end_points['wildrefer_bbox7'][bid].detach().cpu().numpy().astype(np.float32)
                     wildrefer_pred_boxes.append(pred_box)

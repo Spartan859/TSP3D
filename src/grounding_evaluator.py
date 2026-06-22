@@ -19,6 +19,31 @@ def softmax(x):
     probs /= np.sum(probs, axis=len(shape) - 1, keepdims=True)
     return probs
 
+
+def scores_to_box_scores(scores, num_boxes):
+    """Convert detector scores to one scalar score per predicted box."""
+    if scores.numel() == 0 or num_boxes == 0:
+        return scores.new_zeros((0,))
+
+    if scores.dim() == 0:
+        box_scores = scores.reshape(1)
+    elif scores.shape[0] == num_boxes:
+        box_scores = scores.reshape(num_boxes, -1).max(dim=1).values
+    elif scores.shape[-1] == num_boxes:
+        box_scores = scores.reshape(-1, num_boxes).max(dim=0).values
+    else:
+        flat_scores = scores.reshape(-1)
+        if flat_scores.numel() % num_boxes == 0:
+            box_scores = flat_scores.reshape(num_boxes, -1).max(dim=1).values
+        else:
+            box_scores = flat_scores
+
+    if box_scores.numel() >= num_boxes:
+        return box_scores[:num_boxes]
+
+    padding = box_scores.new_full((num_boxes - box_scores.numel(),), float('-inf'))
+    return torch.cat([box_scores, padding], dim=0)
+
 # BRIEF Evaluator
 class GroundingEvaluator:
     """
@@ -252,12 +277,17 @@ class GroundingEvaluator:
             scores = end_points['bbox_results'][bid]['scores_3d']
             bboxes = end_points['bbox_results'][bid]['bboxes_3d']
             bboxes = torch.cat([bboxes.gravity_center, bboxes.dims], dim=1)
-            if scores.shape[0]>4:
-                _, top = torch.topk(scores, 5)
+            num_keep = max(5, max(self.topks) if self.topks else 1)
+            box_scores = scores_to_box_scores(scores, bboxes.shape[0])
+            topk = min(num_keep, bboxes.shape[0], box_scores.numel())
+            if topk > 0:
+                _, top = torch.topk(box_scores, topk)
                 pbox = bboxes[top]
             else:
-                padded_tensor = torch.zeros(5-bboxes.shape[0], 6, device=bboxes.device)
-                pbox = torch.cat([bboxes, padded_tensor], dim=0)
+                pbox = bboxes.new_zeros((0, 6))
+            if pbox.shape[0] < num_keep:
+                padded_tensor = torch.zeros(num_keep - pbox.shape[0], 6, device=bboxes.device)
+                pbox = torch.cat([pbox, padded_tensor], dim=0)
             # IoU
             ious, _ = _iou3d_par(
                 box_cxcyczwhd_to_xyzxyz(gt_bboxes),  # (obj, 6)
