@@ -103,6 +103,12 @@ def parse_option():
                         help='Fuse loaded WildRefer temporal frames into the voxel input.')
     parser.add_argument('--wildrefer_use_proj_geometry', action='store_true',
                         help='Append per-point WildRefer camera projection geometry features.')
+    parser.add_argument('--wildrefer_use_image_features', action='store_true',
+                        help='Append projected per-point WildRefer image features from HDF5.')
+    parser.add_argument('--wildrefer_image_feature_path', default='',
+                        help='HDF5 file produced by extract_wildrefer_image_features.py.')
+    parser.add_argument('--wildrefer_image_feature_dim', type=int, default=0,
+                        help='Number of image feature channels appended per WildRefer point.')
     parser.add_argument('--wo_obj_name', default='None')    # grounding without object name
     parser.add_argument('--butd', action='store_true')
     parser.add_argument('--butd_gt', action='store_true')

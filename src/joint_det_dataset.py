@@ -52,6 +52,8 @@ class Joint3DDataset(Dataset):
                  use_color=False, use_height=False, use_multiview=False,
                  wildrefer_frame_num=3, wildrefer_fuse_frames=False,
                  wildrefer_use_proj_geometry=False,
+                 wildrefer_use_image_features=False,
+                 wildrefer_image_feature_path='',
                  detect_intermediate=False,
                  butd=False, butd_gt=False, butd_cls=False, augment_det=False,
                  wo_obj_name="None"):
@@ -84,8 +86,11 @@ class Joint3DDataset(Dataset):
         self.wildrefer_frame_num = max(int(wildrefer_frame_num), 1)
         self.wildrefer_fuse_frames = bool(wildrefer_fuse_frames)
         self.wildrefer_use_proj_geometry = bool(wildrefer_use_proj_geometry)
+        self.wildrefer_use_image_features = bool(wildrefer_use_image_features)
+        self.wildrefer_image_feature_path = wildrefer_image_feature_path
         self._wildrefer_meta = {}
         self._wildrefer_image_size_cache = {}
+        self._wildrefer_image_features = {}
         self._wildrefer_spacy_nlp = None
         if self.split == 'train' and selected_wildrefer_dsets:
             if len(selected_wildrefer_dsets) != 1 or len(dataset_dict.keys()) != 1:
@@ -1358,34 +1363,9 @@ class Joint3DDataset(Dataset):
         return self._wildrefer_image_size_cache[image_path]
 
     def _get_wildrefer_projection_geometry(self, xyz, anno):
-        calibration = anno.get('wildrefer_calibration') or {}
-        ex_matrix = np.asarray(calibration.get('ex_matrix'), dtype=np.float32)
-        in_matrix = np.asarray(calibration.get('in_matrix'), dtype=np.float32)
-        if ex_matrix.shape != (3, 4) or in_matrix.shape != (3, 3):
-            return np.zeros((xyz.shape[0], 4), dtype=np.float32)
-
         image_width, image_height = self._get_wildrefer_image_size(anno)
-        xyz_h = np.concatenate(
-            [xyz.astype(np.float32), np.ones((xyz.shape[0], 1), dtype=np.float32)],
-            axis=1
-        )
-        camera_xyz = xyz_h @ ex_matrix.T
-        depth = camera_xyz[:, 2]
-        valid_depth = depth > 1e-5
-
-        projected = camera_xyz @ in_matrix.T
-        u = np.zeros_like(depth, dtype=np.float32)
-        v = np.zeros_like(depth, dtype=np.float32)
-        u[valid_depth] = projected[valid_depth, 0] / depth[valid_depth]
-        v[valid_depth] = projected[valid_depth, 1] / depth[valid_depth]
-
-        valid = (
-            valid_depth
-            & (u >= 0)
-            & (u < image_width)
-            & (v >= 0)
-            & (v < image_height)
-        )
+        u, v, depth, valid = self._project_wildrefer_points_to_image(
+            xyz, anno, image_width, image_height)
         u_norm = np.zeros_like(depth, dtype=np.float32)
         v_norm = np.zeros_like(depth, dtype=np.float32)
         depth_norm = np.zeros_like(depth, dtype=np.float32)
@@ -1401,6 +1381,73 @@ class Joint3DDataset(Dataset):
             [u_norm, v_norm, depth_norm, valid.astype(np.float32)],
             axis=1
         ).astype(np.float32)
+
+    def _project_wildrefer_points_to_image(self, xyz, anno, image_width, image_height):
+        calibration = anno.get('wildrefer_calibration') or {}
+        ex_matrix = np.asarray(calibration.get('ex_matrix'), dtype=np.float32)
+        in_matrix = np.asarray(calibration.get('in_matrix'), dtype=np.float32)
+        zeros = np.zeros((xyz.shape[0],), dtype=np.float32)
+        if ex_matrix.shape != (3, 4) or in_matrix.shape != (3, 3):
+            return zeros.copy(), zeros.copy(), zeros.copy(), np.zeros_like(zeros, dtype=bool)
+
+        xyz_h = np.concatenate(
+            [xyz.astype(np.float32), np.ones((xyz.shape[0], 1), dtype=np.float32)],
+            axis=1
+        )
+        camera_xyz = xyz_h @ ex_matrix.T
+        depth = camera_xyz[:, 2]
+        valid_depth = depth > 1e-5
+
+        projected = camera_xyz @ in_matrix.T
+        u = zeros.copy()
+        v = zeros.copy()
+        u[valid_depth] = projected[valid_depth, 0] / depth[valid_depth]
+        v[valid_depth] = projected[valid_depth, 1] / depth[valid_depth]
+        valid = (
+            valid_depth
+            & (u >= 0)
+            & (u < image_width)
+            & (v >= 0)
+            & (v < image_height)
+        )
+        return u, v, depth.astype(np.float32), valid
+
+    def _get_wildrefer_feature_key(self, anno):
+        return f"{anno['dataset']}/{anno['wildrefer_scene_id']}/{anno['wildrefer_image_name']}"
+
+    def _load_wildrefer_image_feature_map(self, anno):
+        if not self.wildrefer_image_feature_path:
+            raise ValueError('--wildrefer_image_feature_path is required when image features are enabled.')
+        pid = mp.current_process().pid
+        if pid not in self._wildrefer_image_features:
+            self._wildrefer_image_features[pid] = h5py.File(
+                self.wildrefer_image_feature_path, 'r', libver='latest')
+        feature_file = self._wildrefer_image_features[pid]
+        feature_key = self._get_wildrefer_feature_key(anno)
+        if feature_key not in feature_file:
+            raise KeyError(f"Missing WildRefer image feature key '{feature_key}' in {self.wildrefer_image_feature_path}")
+        return feature_file[feature_key][:]
+
+    def _get_wildrefer_projected_image_features(self, xyz, anno):
+        feature_map = np.asarray(self._load_wildrefer_image_feature_map(anno), dtype=np.float32)
+        if feature_map.ndim != 3:
+            raise ValueError(f'Expected image feature map CxHxW, got shape {feature_map.shape}')
+        channels, feature_height, feature_width = feature_map.shape
+        image_width, image_height = self._get_wildrefer_image_size(anno)
+        u, v, _, valid = self._project_wildrefer_points_to_image(
+            xyz, anno, image_width, image_height)
+        point_features = np.zeros((xyz.shape[0], channels), dtype=np.float32)
+        if not np.any(valid):
+            return point_features
+
+        feature_x = np.clip(
+            np.rint(u[valid] * float(feature_width - 1) / float(max(image_width - 1, 1))).astype(np.int64),
+            0, feature_width - 1)
+        feature_y = np.clip(
+            np.rint(v[valid] * float(feature_height - 1) / float(max(image_height - 1, 1))).astype(np.int64),
+            0, feature_height - 1)
+        point_features[valid] = feature_map[:, feature_y, feature_x].T
+        return point_features
 
     def _get_wildrefer_item(self, anno, language_dataset):
         scenes, dynamic_mask = self._get_wildrefer_temporal_scenes(anno)
@@ -1425,6 +1472,9 @@ class Joint3DDataset(Dataset):
         if self.wildrefer_use_proj_geometry:
             proj_geometry = self._get_wildrefer_projection_geometry(xyz, anno)
             point_cloud = np.concatenate([point_cloud, proj_geometry], 1)
+        if self.wildrefer_use_image_features:
+            image_features = self._get_wildrefer_projected_image_features(xyz, anno)
+            point_cloud = np.concatenate([point_cloud, image_features], 1)
 
         target_bbox7 = np.array(anno['wildrefer_bbox7'], dtype=np.float32)
         gt_bboxes = np.zeros((MAX_NUM_OBJ, 6), dtype=np.float32)

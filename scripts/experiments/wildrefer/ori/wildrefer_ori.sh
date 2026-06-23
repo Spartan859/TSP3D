@@ -35,6 +35,8 @@ PRUNE_THRESHOLD_0="${PRUNE_THRESHOLD_0:-}"
 PRUNE_THRESHOLD_1="${PRUNE_THRESHOLD_1:-}"
 WILDREFER_FRAME_NUM="${WILDREFER_FRAME_NUM:-3}"
 WILDREFER_FUSE_FRAMES="${WILDREFER_FUSE_FRAMES:-0}"
+WILDREFER_IMAGE_FEATURE_PATH="${WILDREFER_IMAGE_FEATURE_PATH:-}"
+WILDREFER_IMAGE_FEATURE_DIM="${WILDREFER_IMAGE_FEATURE_DIM:-0}"
 
 data_root="${PWD}/data"
 checkpoint_path="${CHECKPOINT_PATH:-}"
@@ -184,6 +186,13 @@ if [[ "${WILDREFER_FUSE_FRAMES}" == "1" || "${WILDREFER_FUSE_FRAMES}" == "true" 
 fi
 if [[ "${WILDREFER_USE_PROJ_GEOMETRY:-0}" == "1" || "${WILDREFER_USE_PROJ_GEOMETRY:-0}" == "true" || "${WILDREFER_USE_PROJ_GEOMETRY:-0}" == "TRUE" ]]; then
     wildrefer_frame_args+=(--wildrefer_use_proj_geometry)
+fi
+if [[ "${WILDREFER_USE_IMAGE_FEATURES:-0}" == "1" || "${WILDREFER_USE_IMAGE_FEATURES:-0}" == "true" || "${WILDREFER_USE_IMAGE_FEATURES:-0}" == "TRUE" ]]; then
+    wildrefer_frame_args+=(
+        --wildrefer_use_image_features
+        --wildrefer_image_feature_path "${WILDREFER_IMAGE_FEATURE_PATH}"
+        --wildrefer_image_feature_dim "${WILDREFER_IMAGE_FEATURE_DIM}"
+    )
 fi
 wildrefer_extra_args=()
 if [[ -n "${WILDREFER_EXTRA_ARGS:-}" ]]; then

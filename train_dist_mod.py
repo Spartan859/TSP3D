@@ -85,6 +85,8 @@ class TrainTester(BaseTrainTester):
                 wildrefer_frame_num=args.wildrefer_frame_num,
                 wildrefer_fuse_frames=args.wildrefer_fuse_frames,
                 wildrefer_use_proj_geometry=args.wildrefer_use_proj_geometry,
+                wildrefer_use_image_features=args.wildrefer_use_image_features,
+                wildrefer_image_feature_path=args.wildrefer_image_feature_path,
                 butd=args.butd,
                 butd_gt=args.butd_gt,
                 butd_cls=args.butd_cls,
@@ -103,6 +105,8 @@ class TrainTester(BaseTrainTester):
             wildrefer_frame_num=args.wildrefer_frame_num,
             wildrefer_fuse_frames=args.wildrefer_fuse_frames,
             wildrefer_use_proj_geometry=args.wildrefer_use_proj_geometry,
+            wildrefer_use_image_features=args.wildrefer_use_image_features,
+            wildrefer_image_feature_path=args.wildrefer_image_feature_path,
             butd=args.butd,
             butd_gt=args.butd_gt,
             butd_cls=args.butd_cls,
@@ -121,6 +125,10 @@ class TrainTester(BaseTrainTester):
             num_input_channel += 128
         if args.wildrefer_use_proj_geometry:
             num_input_channel += 4
+        if args.wildrefer_use_image_features:
+            if args.wildrefer_image_feature_dim <= 0:
+                raise ValueError('--wildrefer_image_feature_dim must be positive when --wildrefer_use_image_features is set.')
+            num_input_channel += args.wildrefer_image_feature_dim
         if args.use_soft_token_loss:
             num_class = 256
         else:
