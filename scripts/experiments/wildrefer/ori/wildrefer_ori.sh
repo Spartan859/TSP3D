@@ -30,6 +30,9 @@ NMS_PRE=${NMS_PRE:-50}
 NMS_IOU_THR=${NMS_IOU_THR:-0.5}
 NMS_SCORE_THR=${NMS_SCORE_THR:-0.01}
 MAX_EPOCH=${MAX_EPOCH:-100}
+LR_DECAY_EPOCHS="${LR_DECAY_EPOCHS:-30 60 85}"
+PRUNE_THRESHOLD_0="${PRUNE_THRESHOLD_0:-}"
+PRUNE_THRESHOLD_1="${PRUNE_THRESHOLD_1:-}"
 
 data_root="${PWD}/data"
 checkpoint_path="${CHECKPOINT_PATH:-}"
@@ -85,7 +88,8 @@ fi
 
 script_dir="$(dirname "$(readlink -f "$0")")"
 repo_root="$(git -C "${script_dir}" rev-parse --show-toplevel 2>/dev/null || readlink -f "${script_dir}/../../../..")"
-log_dir="${script_dir}/${EXP_NAME}"
+log_root="${WILDREFER_LOG_ROOT:-${script_dir}}"
+log_dir="${log_root}/${EXP_NAME}"
 mkdir -p "${log_dir}"
 find_free_gpus_script="${repo_root}/scripts/find_free_gpus.sh"
 if [[ ! -f "${find_free_gpus_script}" ]]; then
@@ -161,6 +165,22 @@ checkpoint_args=()
 if [[ -n "${checkpoint_path}" ]]; then
     checkpoint_args=(--checkpoint_path "${checkpoint_path}")
 fi
+lr_decay_args=()
+for epoch in ${LR_DECAY_EPOCHS}; do
+    lr_decay_args+=("${epoch}")
+done
+prune_args=()
+if [[ -n "${PRUNE_THRESHOLD_0}" ]]; then
+    prune_args+=(--prune_threshold_0 "${PRUNE_THRESHOLD_0}")
+fi
+if [[ -n "${PRUNE_THRESHOLD_1}" ]]; then
+    prune_args+=(--prune_threshold_1 "${PRUNE_THRESHOLD_1}")
+fi
+wildrefer_extra_args=()
+if [[ -n "${WILDREFER_EXTRA_ARGS:-}" ]]; then
+    # shellcheck disable=SC2206
+    wildrefer_extra_args=(${WILDREFER_EXTRA_ARGS})
+fi
 
 TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}" \
     --nproc_per_node ${nproc_per_node} --master_port ${master_port} \
@@ -179,12 +199,14 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}"
     --dataset ${WILDREFER_DATASET} --test_dataset ${WILDREFER_DATASET} \
     --detect_intermediate \
     --log_dir "${log_dir}" \
-    --lr_decay_epochs 30 60 85 \
+    --lr_decay_epochs "${lr_decay_args[@]}" \
     --tf32_matmul ${TF32_MATMUL} \
     --tf32_cudnn ${TF32_CUDNN} \
     --nms_pre ${NMS_PRE} \
     --nms_iou_thr ${NMS_IOU_THR} \
     --nms_score_thr ${NMS_SCORE_THR} \
+    "${wildrefer_extra_args[@]}" \
+    "${prune_args[@]}" \
     "${train_extra_args[@]}" \
     --rng_seed ${RNG_SEED} \
     "${checkpoint_args[@]}"
