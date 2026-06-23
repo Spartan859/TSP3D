@@ -51,9 +51,12 @@ class BeaUTyDETR(nn.Module):
         self.contrastive_align_loss = contrastive_align_loss
         self.butd = butd
         self.voxel_size = voxel_size
+        self.input_feature_dim = input_feature_dim
 
         # Visual encoder
-        self.vision_backbone = TSPBackbone(in_channels=6, conv1_stride=mink_conv1_stride)
+        self.vision_backbone = TSPBackbone(
+            in_channels=3 + input_feature_dim,
+            conv1_stride=mink_conv1_stride)
         
         # Text encoder
         t_type = f'{data_path}roberta-base/'
@@ -143,7 +146,8 @@ class BeaUTyDETR(nn.Module):
         field = self.collate(points, ME.SparseTensorQuantizationMode.RANDOM_SUBSAMPLE)
         x = field.sparse()
         # pdb.set_trace()
-        targets = x.features[:, 6:].round().long()
+        input_channels = 3 + self.input_feature_dim
+        targets = x.features[:, input_channels:].round().long()
         if self.target_pool is not None:
             targets = ME.SparseTensor(
                 features=targets.float(),
@@ -152,7 +156,7 @@ class BeaUTyDETR(nn.Module):
             )
             targets = self.target_pool(targets).features
         x = ME.SparseTensor(
-            x.features[:, :6],
+            x.features[:, :input_channels],
             coordinate_map_key=x.coordinate_map_key,
             coordinate_manager=x.coordinate_manager,
         )

@@ -101,6 +101,8 @@ def parse_option():
                         help='Number of temporal point-cloud frames to load for strefer/liferefer.')
     parser.add_argument('--wildrefer_fuse_frames', action='store_true',
                         help='Fuse loaded WildRefer temporal frames into the voxel input.')
+    parser.add_argument('--wildrefer_use_proj_geometry', action='store_true',
+                        help='Append per-point WildRefer camera projection geometry features.')
     parser.add_argument('--wo_obj_name', default='None')    # grounding without object name
     parser.add_argument('--butd', action='store_true')
     parser.add_argument('--butd_gt', action='store_true')

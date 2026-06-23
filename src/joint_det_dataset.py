@@ -20,6 +20,7 @@ import torch
 from torch.utils.data import Dataset
 from transformers import RobertaTokenizerFast
 import wandb
+from PIL import Image
 
 import copy,sys
 
@@ -50,6 +51,7 @@ class Joint3DDataset(Dataset):
                  data_path='./',
                  use_color=False, use_height=False, use_multiview=False,
                  wildrefer_frame_num=3, wildrefer_fuse_frames=False,
+                 wildrefer_use_proj_geometry=False,
                  detect_intermediate=False,
                  butd=False, butd_gt=False, butd_cls=False, augment_det=False,
                  wo_obj_name="None"):
@@ -81,7 +83,9 @@ class Joint3DDataset(Dataset):
         )
         self.wildrefer_frame_num = max(int(wildrefer_frame_num), 1)
         self.wildrefer_fuse_frames = bool(wildrefer_fuse_frames)
+        self.wildrefer_use_proj_geometry = bool(wildrefer_use_proj_geometry)
         self._wildrefer_meta = {}
+        self._wildrefer_image_size_cache = {}
         self._wildrefer_spacy_nlp = None
         if self.split == 'train' and selected_wildrefer_dsets:
             if len(selected_wildrefer_dsets) != 1 or len(dataset_dict.keys()) != 1:
@@ -222,6 +226,7 @@ class Joint3DDataset(Dataset):
                 scene_id = str(anno['scene_id'])
                 point_cloud_name = str(anno['point_cloud']['point_cloud_name'])
                 image_name = str(anno['image'].get('image_name', point_cloud_name))
+                calibration = anno.get('calibration', {})
                 group_id = str(anno.get('group_id', dataset_name))
                 annos.append({
                     'scan_id': f'{dataset_name}:{group_id}:{scene_id}:{point_cloud_name}',
@@ -237,6 +242,7 @@ class Joint3DDataset(Dataset):
                     'wildrefer_group_id': group_id,
                     'wildrefer_point_cloud_name': point_cloud_name,
                     'wildrefer_image_name': image_name,
+                    'wildrefer_calibration': calibration,
                     'wildrefer_bbox': bbox,
                     'wildrefer_bbox7': bbox7,
                     'wildrefer_ann_id': str(anno['language'].get('ann_id', '0'))
@@ -1327,6 +1333,75 @@ class Joint3DDataset(Dataset):
             f'Checked: {[candidate]}'
         )
 
+    def _get_wildrefer_image_path(self, anno):
+        dataset_name = anno['dataset']
+        scene_id = anno['wildrefer_scene_id']
+        image_name = anno['wildrefer_image_name']
+        root = self._load_wildrefer_meta(dataset_name)['root']
+        candidates = [
+            os.path.join(root, 'image', scene_id, f'{image_name}.jpg'),
+            os.path.join(root, 'image', scene_id, f'{image_name}.png'),
+        ]
+        for candidate in candidates:
+            if os.path.exists(candidate):
+                return candidate
+        raise FileNotFoundError(
+            f'WildRefer image not found for dataset={dataset_name}, scene={scene_id}, image={image_name}. '
+            f'Checked: {candidates}'
+        )
+
+    def _get_wildrefer_image_size(self, anno):
+        image_path = self._get_wildrefer_image_path(anno)
+        if image_path not in self._wildrefer_image_size_cache:
+            with Image.open(image_path) as image:
+                self._wildrefer_image_size_cache[image_path] = image.size
+        return self._wildrefer_image_size_cache[image_path]
+
+    def _get_wildrefer_projection_geometry(self, xyz, anno):
+        calibration = anno.get('wildrefer_calibration') or {}
+        ex_matrix = np.asarray(calibration.get('ex_matrix'), dtype=np.float32)
+        in_matrix = np.asarray(calibration.get('in_matrix'), dtype=np.float32)
+        if ex_matrix.shape != (3, 4) or in_matrix.shape != (3, 3):
+            return np.zeros((xyz.shape[0], 4), dtype=np.float32)
+
+        image_width, image_height = self._get_wildrefer_image_size(anno)
+        xyz_h = np.concatenate(
+            [xyz.astype(np.float32), np.ones((xyz.shape[0], 1), dtype=np.float32)],
+            axis=1
+        )
+        camera_xyz = xyz_h @ ex_matrix.T
+        depth = camera_xyz[:, 2]
+        valid_depth = depth > 1e-5
+
+        projected = camera_xyz @ in_matrix.T
+        u = np.zeros_like(depth, dtype=np.float32)
+        v = np.zeros_like(depth, dtype=np.float32)
+        u[valid_depth] = projected[valid_depth, 0] / depth[valid_depth]
+        v[valid_depth] = projected[valid_depth, 1] / depth[valid_depth]
+
+        valid = (
+            valid_depth
+            & (u >= 0)
+            & (u < image_width)
+            & (v >= 0)
+            & (v < image_height)
+        )
+        u_norm = np.zeros_like(depth, dtype=np.float32)
+        v_norm = np.zeros_like(depth, dtype=np.float32)
+        depth_norm = np.zeros_like(depth, dtype=np.float32)
+        if image_width > 1:
+            u_norm[valid] = (u[valid] / float(image_width - 1)) * 2.0 - 1.0
+        if image_height > 1:
+            v_norm[valid] = (v[valid] / float(image_height - 1)) * 2.0 - 1.0
+        u_norm[valid] = np.clip(u_norm[valid], -1.0, 1.0)
+        v_norm[valid] = np.clip(v_norm[valid], -1.0, 1.0)
+        depth_norm[valid] = np.clip(depth[valid] / 80.0, 0.0, 1.0)
+
+        return np.stack(
+            [u_norm, v_norm, depth_norm, valid.astype(np.float32)],
+            axis=1
+        ).astype(np.float32)
+
     def _get_wildrefer_item(self, anno, language_dataset):
         scenes, dynamic_mask = self._get_wildrefer_temporal_scenes(anno)
         if self.wildrefer_fuse_frames:
@@ -1347,6 +1422,9 @@ class Joint3DDataset(Dataset):
             floor_height = np.percentile(xyz[:, 2], 0.99)
             height = np.expand_dims(xyz[:, 2] - floor_height, 1)
             point_cloud = np.concatenate([point_cloud, height], 1)
+        if self.wildrefer_use_proj_geometry:
+            proj_geometry = self._get_wildrefer_projection_geometry(xyz, anno)
+            point_cloud = np.concatenate([point_cloud, proj_geometry], 1)
 
         target_bbox7 = np.array(anno['wildrefer_bbox7'], dtype=np.float32)
         gt_bboxes = np.zeros((MAX_NUM_OBJ, 6), dtype=np.float32)

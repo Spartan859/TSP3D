@@ -84,6 +84,7 @@ class TrainTester(BaseTrainTester):
                 use_multiview=args.use_multiview,
                 wildrefer_frame_num=args.wildrefer_frame_num,
                 wildrefer_fuse_frames=args.wildrefer_fuse_frames,
+                wildrefer_use_proj_geometry=args.wildrefer_use_proj_geometry,
                 butd=args.butd,
                 butd_gt=args.butd_gt,
                 butd_cls=args.butd_cls,
@@ -101,6 +102,7 @@ class TrainTester(BaseTrainTester):
             use_multiview=args.use_multiview,
             wildrefer_frame_num=args.wildrefer_frame_num,
             wildrefer_fuse_frames=args.wildrefer_fuse_frames,
+            wildrefer_use_proj_geometry=args.wildrefer_use_proj_geometry,
             butd=args.butd,
             butd_gt=args.butd_gt,
             butd_cls=args.butd_cls,
@@ -117,6 +119,8 @@ class TrainTester(BaseTrainTester):
             num_input_channel += 1
         if args.use_multiview:
             num_input_channel += 128
+        if args.wildrefer_use_proj_geometry:
+            num_input_channel += 4
         if args.use_soft_token_loss:
             num_class = 256
         else:

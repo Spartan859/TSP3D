@@ -182,6 +182,9 @@ wildrefer_frame_args=(--wildrefer_frame_num "${WILDREFER_FRAME_NUM}")
 if [[ "${WILDREFER_FUSE_FRAMES}" == "1" || "${WILDREFER_FUSE_FRAMES}" == "true" || "${WILDREFER_FUSE_FRAMES}" == "TRUE" ]]; then
     wildrefer_frame_args+=(--wildrefer_fuse_frames)
 fi
+if [[ "${WILDREFER_USE_PROJ_GEOMETRY:-0}" == "1" || "${WILDREFER_USE_PROJ_GEOMETRY:-0}" == "true" || "${WILDREFER_USE_PROJ_GEOMETRY:-0}" == "TRUE" ]]; then
+    wildrefer_frame_args+=(--wildrefer_use_proj_geometry)
+fi
 wildrefer_extra_args=()
 if [[ -n "${WILDREFER_EXTRA_ARGS:-}" ]]; then
     # shellcheck disable=SC2206
