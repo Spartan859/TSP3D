@@ -49,6 +49,7 @@ class Joint3DDataset(Dataset):
                  split='train', overfit=False,
                  data_path='./',
                  use_color=False, use_height=False, use_multiview=False,
+                 wildrefer_frame_num=3, wildrefer_fuse_frames=False,
                  detect_intermediate=False,
                  butd=False, butd_gt=False, butd_cls=False, augment_det=False,
                  wo_obj_name="None"):
@@ -78,7 +79,8 @@ class Joint3DDataset(Dataset):
             (self.split == 'train' and len(selected_wildrefer_dsets) == 1 and len(dataset_dict.keys()) == 1)
             or (self.split != 'train' and test_dataset in WILDREFER_DATASETS)
         )
-        self.wildrefer_frame_num = 3
+        self.wildrefer_frame_num = max(int(wildrefer_frame_num), 1)
+        self.wildrefer_fuse_frames = bool(wildrefer_fuse_frames)
         self._wildrefer_meta = {}
         self._wildrefer_spacy_nlp = None
         if self.split == 'train' and selected_wildrefer_dsets:
@@ -1327,7 +1329,14 @@ class Joint3DDataset(Dataset):
 
     def _get_wildrefer_item(self, anno, language_dataset):
         scenes, dynamic_mask = self._get_wildrefer_temporal_scenes(anno)
-        scene = scenes[0]
+        if self.wildrefer_fuse_frames:
+            valid_scenes = scenes[dynamic_mask.astype(bool)]
+            if len(valid_scenes) == 0:
+                valid_scenes = scenes[:1]
+            scene = np.concatenate(valid_scenes, axis=0)
+            scene, _ = self._wildrefer_random_sampling(scene, 30000)
+        else:
+            scene = scenes[0]
         xyz = scene[:, :3]
         og_color = scene[:, 3:6].astype(np.float32)
 

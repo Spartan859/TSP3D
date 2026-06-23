@@ -97,6 +97,10 @@ def parse_option():
     parser.add_argument('--use_color', action='store_true',
                         help='Use RGB color in input.')     # color
     parser.add_argument('--use_multiview', action='store_true')
+    parser.add_argument('--wildrefer_frame_num', type=int, default=3,
+                        help='Number of temporal point-cloud frames to load for strefer/liferefer.')
+    parser.add_argument('--wildrefer_fuse_frames', action='store_true',
+                        help='Fuse loaded WildRefer temporal frames into the voxel input.')
     parser.add_argument('--wo_obj_name', default='None')    # grounding without object name
     parser.add_argument('--butd', action='store_true')
     parser.add_argument('--butd_gt', action='store_true')

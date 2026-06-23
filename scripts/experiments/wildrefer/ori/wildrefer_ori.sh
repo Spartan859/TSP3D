@@ -33,6 +33,8 @@ MAX_EPOCH=${MAX_EPOCH:-100}
 LR_DECAY_EPOCHS="${LR_DECAY_EPOCHS:-30 60 85}"
 PRUNE_THRESHOLD_0="${PRUNE_THRESHOLD_0:-}"
 PRUNE_THRESHOLD_1="${PRUNE_THRESHOLD_1:-}"
+WILDREFER_FRAME_NUM="${WILDREFER_FRAME_NUM:-3}"
+WILDREFER_FUSE_FRAMES="${WILDREFER_FUSE_FRAMES:-0}"
 
 data_root="${PWD}/data"
 checkpoint_path="${CHECKPOINT_PATH:-}"
@@ -176,6 +178,10 @@ fi
 if [[ -n "${PRUNE_THRESHOLD_1}" ]]; then
     prune_args+=(--prune_threshold_1 "${PRUNE_THRESHOLD_1}")
 fi
+wildrefer_frame_args=(--wildrefer_frame_num "${WILDREFER_FRAME_NUM}")
+if [[ "${WILDREFER_FUSE_FRAMES}" == "1" || "${WILDREFER_FUSE_FRAMES}" == "true" || "${WILDREFER_FUSE_FRAMES}" == "TRUE" ]]; then
+    wildrefer_frame_args+=(--wildrefer_fuse_frames)
+fi
 wildrefer_extra_args=()
 if [[ -n "${WILDREFER_EXTRA_ARGS:-}" ]]; then
     # shellcheck disable=SC2206
@@ -205,6 +211,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}"
     --nms_pre ${NMS_PRE} \
     --nms_iou_thr ${NMS_IOU_THR} \
     --nms_score_thr ${NMS_SCORE_THR} \
+    "${wildrefer_frame_args[@]}" \
     "${wildrefer_extra_args[@]}" \
     "${prune_args[@]}" \
     "${train_extra_args[@]}" \
