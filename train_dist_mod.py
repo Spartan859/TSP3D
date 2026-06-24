@@ -330,15 +330,12 @@ class TrainTester(BaseTrainTester):
                 merged_pred = wildrefer_pred_boxes
                 merged_gt = wildrefer_gt_boxes
             official_acc25, official_acc50, official_miou = wildrefer_cal_accuracy(merged_pred, merged_gt)
-        else:
-            official_acc25, official_acc50, official_miou = 0.0, 0.0, 0.0
 
         metrics = {
             'acc0.25':            float(acc25),
             'acc0.50':            float(acc50),
-            'official_acc0.25':   float(official_acc25),
-            'official_acc0.50':   float(official_acc50),
-            'official_miou':      float(official_miou),
+            '3dcnn_acc0.25':      float(acc25),
+            '3dcnn_acc0.50':      float(acc50),
             'elapsed_s':          round(elapsed, 3),
             'avg_inf_s':          round(avg_inf, 6),
             'avg_latency_ms':     round(avg_inf * 1000, 3),
@@ -366,6 +363,12 @@ class TrainTester(BaseTrainTester):
             '_mem_device_avail':  mem_device is not None,
             '_mem_measured':      len(mem_allocated_mb) > 0,
         }
+        if collect_wildrefer_official:
+            metrics.update({
+                'official_acc0.25': float(official_acc25),
+                'official_acc0.50': float(official_acc50),
+                'official_miou':    float(official_miou),
+            })
         if args.use_seg:
             metrics['acc_mask0.25'] = evaluator.dets['overall_mask']  / max(evaluator.gts['mask_3dcnn'], 1e-14)
             metrics['acc_mask0.50'] = evaluator.dets['overall50_mask'] / max(evaluator.gts['mask_3dcnn'], 1e-14)
@@ -384,7 +387,7 @@ class TrainTester(BaseTrainTester):
         m = TrainTester.evaluate_grounding(test_loader, model, args)
 
         if dist.get_rank() != 0:
-            return None
+            return m
 
         evaluator        = m['_evaluator']
         fps_enabled      = m['_fps_enabled']
@@ -454,7 +457,7 @@ class TrainTester(BaseTrainTester):
                 self.logger.info(
                     'FPS(single-card): N/A (no measured samples; reduce --fps_warmup_iters or increase eval iters).'
                 )
-        return None
+        return m
        
     # BRIEF Scannet detection evalution
     @torch.no_grad()

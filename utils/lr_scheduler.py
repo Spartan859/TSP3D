@@ -4,7 +4,12 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------
 # noinspection PyProtectedMember
-from torch.optim.lr_scheduler import _LRScheduler, MultiStepLR, CosineAnnealingLR
+from torch.optim.lr_scheduler import (
+    _LRScheduler,
+    MultiStepLR,
+    CosineAnnealingLR,
+    ReduceLROnPlateau,
+)
 
 
 # noinspection PyAttributeOutsideInit
@@ -80,6 +85,18 @@ def get_scheduler(optimizer, n_iter_per_epoch, args):
             optimizer=optimizer,
             gamma=args.lr_decay_rate,
             milestones=[(m - args.warmup_epoch) * n_iter_per_epoch for m in args.lr_decay_epochs])
+    elif "plateau" in args.lr_scheduler:
+        if args.warmup_epoch > 0:
+            raise ValueError('--lr-scheduler plateau does not support --warmup-epoch > 0')
+        scheduler = ReduceLROnPlateau(
+            optimizer=optimizer,
+            mode=args.plateau_mode,
+            factor=args.plateau_factor,
+            patience=args.plateau_patience,
+            threshold=args.plateau_threshold,
+            cooldown=args.plateau_cooldown,
+            min_lr=args.plateau_min_lr,
+        )
     else:
         raise NotImplementedError(f"scheduler {args.lr_scheduler} not supported")
 

@@ -127,11 +127,25 @@ def parse_option():
     parser.add_argument("--box_select_lr", default=4e-4, type=float)
     parser.add_argument("--seg_lr", default=1e-3, type=float)
     parser.add_argument('--lr-scheduler', type=str, default='step',
-                        choices=["step", "cosine"])
+                        choices=["step", "cosine", "plateau"])
     parser.add_argument('--lr_decay_epochs', type=int, default=[280, 340],
                         nargs='+', help='when to decay lr, can be a list')
     parser.add_argument('--lr_decay_rate', type=float, default=0.1,
                         help='for step scheduler. decay rate for lr')
+    parser.add_argument('--plateau_metric', type=str, default='official_acc0.50',
+                        choices=[
+                            'official_acc0.25', 'official_acc0.50', 'official_miou',
+                            '3dcnn_acc0.25', '3dcnn_acc0.50',
+                            'acc0.25', 'acc0.50'
+                        ],
+                        help='Validation metric used by ReduceLROnPlateau.')
+    parser.add_argument('--plateau_mode', type=str, default='max',
+                        choices=['min', 'max'])
+    parser.add_argument('--plateau_factor', type=float, default=0.5)
+    parser.add_argument('--plateau_patience', type=int, default=5)
+    parser.add_argument('--plateau_threshold', type=float, default=1e-4)
+    parser.add_argument('--plateau_cooldown', type=int, default=0)
+    parser.add_argument('--plateau_min_lr', type=float, default=1e-7)
     parser.add_argument('--clip_norm', default=0.1, type=float,
                         help='gradient clipping max norm')
     parser.add_argument('--bn_momentum', type=float, default=0.1)
@@ -405,7 +419,8 @@ class BaseTrainTester:
         self.tensorboard = record_tensorboard.TensorBoard(args.log_dir, distributed_rank=dist.get_rank())
 
         # Save config file and initialize tb writer
-        if dist.get_rank() == 0:
+        rank = dist.get_rank() if dist.is_available() and dist.is_initialized() else 0
+        if rank == 0:
             path = os.path.join(args.log_dir, "config.json")
             with open(path, 'w') as f:
                 json.dump(vars(args), f, indent=2)
@@ -632,6 +647,52 @@ class BaseTrainTester:
                                 weight_decay=args.weight_decay)
         return optimizer
 
+    @staticmethod
+    def _uses_plateau_scheduler(args):
+        return getattr(args, 'lr_scheduler', None) == 'plateau'
+
+    def _step_plateau_scheduler(self, scheduler, optimizer, metrics, args):
+        metric_name = args.plateau_metric
+        has_metric = metrics is not None and metric_name in metrics
+        metric_value = float(metrics[metric_name]) if has_metric else 0.0
+
+        device = torch.device('cuda', args.local_rank) if torch.cuda.is_available() else torch.device('cpu')
+        metric_tensor = torch.tensor(
+            [metric_value, 1.0 if has_metric else 0.0],
+            dtype=torch.float64,
+            device=device,
+        )
+        if dist.is_available() and dist.is_initialized():
+            dist.broadcast(metric_tensor, src=0)
+
+        metric_value = float(metric_tensor[0].item())
+        if int(metric_tensor[1].item()) != 1:
+            raise ValueError(
+                f"--plateau_metric '{metric_name}' was not returned by evaluate_one_epoch()."
+            )
+
+        old_lrs = [group['lr'] for group in optimizer.param_groups]
+        scheduler.step(metric_value)
+        new_lrs = [group['lr'] for group in optimizer.param_groups]
+
+        rank = dist.get_rank() if dist.is_available() and dist.is_initialized() else 0
+        if rank == 0:
+            changed = any(abs(old - new) > 0 for old, new in zip(old_lrs, new_lrs))
+            self.logger.info(
+                "Plateau scheduler step: metric %s=%.6f, lr_base %.7f -> %.7f, "
+                "lr_tran %.7f -> %.7f, lr_text %.7f -> %.7f, "
+                "lr_select %.7f -> %.7f, lr_seg %.7f -> %.7f%s"
+                % (
+                    metric_name, metric_value,
+                    old_lrs[0], new_lrs[0],
+                    old_lrs[1], new_lrs[1],
+                    old_lrs[2], new_lrs[2],
+                    old_lrs[3], new_lrs[3],
+                    old_lrs[4], new_lrs[4],
+                    " (reduced)" if changed else "",
+                )
+            )
+
 
     # BRIEF main training/testing
     def main(self, args):
@@ -725,15 +786,19 @@ class BaseTrainTester:
 
             # save model and validate
             if epoch % args.val_freq == 0:
-                if dist.get_rank() == 0:
+                if dist.get_rank() == 0 and not self._uses_plateau_scheduler(args):
                     save_checkpoint(args, epoch, model, optimizer, scheduler)
                 
                 # validate *
                 print("Test evaluation.......")
-                self.evaluate_one_epoch(
+                metrics = self.evaluate_one_epoch(
                     epoch, test_loader,
                     model, criterion, set_criterion, args
                 )
+                if self._uses_plateau_scheduler(args):
+                    self._step_plateau_scheduler(scheduler, optimizer, metrics, args)
+                    if dist.get_rank() == 0:
+                        save_checkpoint(args, epoch, model, optimizer, scheduler)
 
         saved_path = os.path.join(args.log_dir, 'ckpt_epoch_last.pth')
         # Training is over (only rank0 writes checkpoint files).
@@ -880,7 +945,8 @@ class BaseTrainTester:
                 stat_dict['grad_norm'] = grad_total_norm
             
             optimizer.step()
-            scheduler.step()
+            if not self._uses_plateau_scheduler(args):
+                scheduler.step()
 
             # Accumulate statistics and print out
             stat_dict = self._accumulate_stats(stat_dict, losses)
