@@ -390,7 +390,10 @@ class BaseTrainTester:
         name = args.log_dir.split('/')[-1]
 
         # Use a single run timestamp across all DDP ranks to avoid split log dirs.
-        if dist.is_available() and dist.is_initialized():
+        forced_run_time = os.environ.get('TSP3D_RUN_TIME', '').strip()
+        if forced_run_time:
+            current_time = forced_run_time
+        elif dist.is_available() and dist.is_initialized():
             if dist.get_rank() == 0:
                 run_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
             else:
