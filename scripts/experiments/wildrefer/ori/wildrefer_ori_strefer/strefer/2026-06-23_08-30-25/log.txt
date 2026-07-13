@@ -1,0 +1,343 @@
+[06/23 08:30:31] wildrefer_ori_strefer INFO: Full config saved to /mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/wildrefer/ori/wildrefer_ori_strefer/strefer/2026-06-23_08-30-25/config.json
+[06/23 08:30:31] wildrefer_ori_strefer INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': False, 'batch_size': 7, 'dataset': ['strefer'], 'test_dataset': 'strefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': False, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 100, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.001, 'keep_trans_lr': 0.001, 'text_encoder_lr': 2e-05, 'box_select_lr': 0.0008, 'seg_lr': 0.0002, 'lr_scheduler': 'step', 'lr_decay_epochs': [30, 60, 85], 'lr_decay_rate': 0.1, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'default', 'tf32_cudnn': 'default', 'checkpoint_path': None, 'load_optimizer': False, 'load_scheduler': False, 'log_dir': '/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/wildrefer/ori/wildrefer_ori_strefer/strefer/2026-06-23_08-30-25', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 42, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'measure_fps_detail': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'cudnn_benchmark': True, 'cudnn_deterministic': True, 'use_deterministic_algorithms': False, 'deterministic_warn_only': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [], 'use_text_guided_external_attn_bi_layer': [], 'use_film_text_guided_external_attn_bi_layer': [], 'use_external_attn_bi_layer0': False, 'use_text_guided_external_attn_bi_layer0': False, 'use_film_text_guided_external_attn_bi_layer0': False, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 4, 'external_attn_k_keep0': 64, 'external_attn_k_keep1': 64, 'external_attn_k_com': 64, 'external_attn_k_seg128': 64, 'external_attn_k_seg64': 64, 'top_pts_threshold': 32, 'top_pts_threshold_det': 32, 'gpu_mem_limit_gb': 0.0, 'prune_threshold_0': 0.3, 'prune_threshold_1': 0.7, 'pts_prune_threshold': [1200, 4000], 'random_prune_threshold': [1200, 4000], 'nms_pre': 50, 'nms_iou_thr': 0.5, 'nms_score_thr': 0.01}
+[06/23 08:30:31] wildrefer_ori_strefer INFO: length of training dataset: 4392
+[06/23 08:30:31] wildrefer_ori_strefer INFO: length of testing dataset: 1066
+[06/23 08:31:27] wildrefer_ori_strefer INFO: epoch 1, total time 53.92, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:32:16] wildrefer_ori_strefer INFO: epoch 2, total time 49.36, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:33:05] wildrefer_ori_strefer INFO: epoch 3, total time 49.55, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:33:12] wildrefer_ori_strefer INFO: Eval: [3]  
+[06/23 08:33:12] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.21269
+[06/23 08:33:12] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.17444
+[06/23 08:33:12] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.21270 | Acc0.50: 0.17630 | mIoU: 0.13120
+[06/23 08:33:12] wildrefer_ori_strefer INFO: Timing(s): inf=0.125226, visual=0.045001, text=0.009278, fusion_wo_head=0.061168, head=0.003416
+[06/23 08:33:12] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.004793, bi_layer1=0.012814, bi_layer2=0.008445, total=0.026052
+[06/23 08:33:12] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:34:01] wildrefer_ori_strefer INFO: epoch 4, total time 49.34, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:34:51] wildrefer_ori_strefer INFO: epoch 5, total time 49.96, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:35:41] wildrefer_ori_strefer INFO: epoch 6, total time 49.38, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:35:47] wildrefer_ori_strefer INFO: Eval: [6]  
+[06/23 08:35:47] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.20802
+[06/23 08:35:47] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.15672
+[06/23 08:35:47] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.20900 | Acc0.50: 0.15670 | mIoU: 0.12930
+[06/23 08:35:47] wildrefer_ori_strefer INFO: Timing(s): inf=0.106887, visual=0.040598, text=0.010056, fusion_wo_head=0.050798, head=0.003506
+[06/23 08:35:47] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.006626, bi_layer1=0.004621, bi_layer2=0.004523, total=0.015770
+[06/23 08:35:47] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:36:36] wildrefer_ori_strefer INFO: epoch 7, total time 49.16, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:37:26] wildrefer_ori_strefer INFO: epoch 8, total time 49.60, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:38:16] wildrefer_ori_strefer INFO: epoch 9, total time 49.75, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:38:22] wildrefer_ori_strefer INFO: Eval: [9]  
+[06/23 08:38:22] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.21828
+[06/23 08:38:22] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.16231
+[06/23 08:38:22] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.21920 | Acc0.50: 0.16510 | mIoU: 0.13500
+[06/23 08:38:22] wildrefer_ori_strefer INFO: Timing(s): inf=0.113310, visual=0.043681, text=0.010098, fusion_wo_head=0.052663, head=0.004803
+[06/23 08:38:22] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.005395, bi_layer1=0.006970, bi_layer2=0.004525, total=0.016890
+[06/23 08:38:22] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:39:12] wildrefer_ori_strefer INFO: epoch 10, total time 49.95, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:40:01] wildrefer_ori_strefer INFO: epoch 11, total time 49.33, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:40:51] wildrefer_ori_strefer INFO: epoch 12, total time 49.91, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:40:58] wildrefer_ori_strefer INFO: Eval: [12]  
+[06/23 08:40:58] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.24067
+[06/23 08:40:58] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.19030
+[06/23 08:40:58] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.23970 | Acc0.50: 0.19310 | mIoU: 0.15580
+[06/23 08:40:58] wildrefer_ori_strefer INFO: Timing(s): inf=0.120524, visual=0.045221, text=0.013961, fusion_wo_head=0.055755, head=0.003561
+[06/23 08:40:58] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.007170, bi_layer1=0.005225, bi_layer2=0.006138, total=0.018533
+[06/23 08:40:58] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:41:47] wildrefer_ori_strefer INFO: epoch 13, total time 49.16, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:42:36] wildrefer_ori_strefer INFO: epoch 14, total time 49.37, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:43:26] wildrefer_ori_strefer INFO: epoch 15, total time 49.35, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:43:32] wildrefer_ori_strefer INFO: Eval: [15]  
+[06/23 08:43:32] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.10821
+[06/23 08:43:32] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.09142
+[06/23 08:43:32] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.10910 | Acc0.50: 0.09240 | mIoU: 0.07200
+[06/23 08:43:32] wildrefer_ori_strefer INFO: Timing(s): inf=0.119346, visual=0.044034, text=0.009354, fusion_wo_head=0.056488, head=0.004645
+[06/23 08:43:32] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.010544, bi_layer1=0.004712, bi_layer2=0.005170, total=0.020426
+[06/23 08:43:32] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:44:21] wildrefer_ori_strefer INFO: epoch 16, total time 49.21, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:45:11] wildrefer_ori_strefer INFO: epoch 17, total time 49.15, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:46:00] wildrefer_ori_strefer INFO: epoch 18, total time 49.13, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:46:07] wildrefer_ori_strefer INFO: Eval: [18]  
+[06/23 08:46:07] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.08862
+[06/23 08:46:07] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.06716
+[06/23 08:46:07] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.08960 | Acc0.50: 0.06720 | mIoU: 0.05680
+[06/23 08:46:07] wildrefer_ori_strefer INFO: Timing(s): inf=0.126060, visual=0.046483, text=0.010507, fusion_wo_head=0.060037, head=0.002745
+[06/23 08:46:07] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.011179, bi_layer1=0.006311, bi_layer2=0.005932, total=0.023423
+[06/23 08:46:07] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:46:56] wildrefer_ori_strefer INFO: epoch 19, total time 49.05, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:47:46] wildrefer_ori_strefer INFO: epoch 20, total time 50.26, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:48:36] wildrefer_ori_strefer INFO: epoch 21, total time 49.76, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:48:42] wildrefer_ori_strefer INFO: Eval: [21]  
+[06/23 08:48:42] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.07183
+[06/23 08:48:42] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.05317
+[06/23 08:48:42] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.07370 | Acc0.50: 0.05220 | mIoU: 0.04500
+[06/23 08:48:42] wildrefer_ori_strefer INFO: Timing(s): inf=0.128953, visual=0.048245, text=0.009439, fusion_wo_head=0.063893, head=0.003680
+[06/23 08:48:42] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.013217, bi_layer1=0.006235, bi_layer2=0.005798, total=0.025251
+[06/23 08:48:42] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:49:32] wildrefer_ori_strefer INFO: epoch 22, total time 49.97, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:50:22] wildrefer_ori_strefer INFO: epoch 23, total time 49.91, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:51:11] wildrefer_ori_strefer INFO: epoch 24, total time 49.20, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:51:18] wildrefer_ori_strefer INFO: Eval: [24]  
+[06/23 08:51:18] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.08209
+[06/23 08:51:18] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.06250
+[06/23 08:51:18] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.08120 | Acc0.50: 0.06530 | mIoU: 0.05380
+[06/23 08:51:18] wildrefer_ori_strefer INFO: Timing(s): inf=0.115538, visual=0.041377, text=0.010523, fusion_wo_head=0.056798, head=0.002634
+[06/23 08:51:18] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.011661, bi_layer1=0.004831, bi_layer2=0.005928, total=0.022419
+[06/23 08:51:18] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:52:07] wildrefer_ori_strefer INFO: epoch 25, total time 49.17, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:52:57] wildrefer_ori_strefer INFO: epoch 26, total time 49.16, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:53:45] wildrefer_ori_strefer INFO: epoch 27, total time 48.25, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:53:52] wildrefer_ori_strefer INFO: Eval: [27]  
+[06/23 08:53:52] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.09328
+[06/23 08:53:52] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.07649
+[06/23 08:53:52] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.09330 | Acc0.50: 0.07650 | mIoU: 0.05950
+[06/23 08:53:52] wildrefer_ori_strefer INFO: Timing(s): inf=0.125678, visual=0.046663, text=0.010319, fusion_wo_head=0.061540, head=0.002660
+[06/23 08:53:52] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.012437, bi_layer1=0.004705, bi_layer2=0.004760, total=0.021902
+[06/23 08:53:52] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:54:40] wildrefer_ori_strefer INFO: epoch 28, total time 48.41, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:55:29] wildrefer_ori_strefer INFO: epoch 29, total time 49.29, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:56:18] wildrefer_ori_strefer INFO: epoch 30, total time 48.80, lr_base 0.0010000, lr_tran 0.0010000, lr_text 0.0000200, lr_select 0.0008000, lr_seg 0.0002000
+[06/23 08:56:25] wildrefer_ori_strefer INFO: Eval: [30]  
+[06/23 08:56:25] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.15858
+[06/23 08:56:25] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.14366
+[06/23 08:56:25] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.15860 | Acc0.50: 0.14180 | mIoU: 0.10590
+[06/23 08:56:25] wildrefer_ori_strefer INFO: Timing(s): inf=0.125591, visual=0.047519, text=0.011269, fusion_wo_head=0.059452, head=0.002781
+[06/23 08:56:25] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.009890, bi_layer1=0.004807, bi_layer2=0.004807, total=0.019505
+[06/23 08:56:25] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:57:14] wildrefer_ori_strefer INFO: epoch 31, total time 49.42, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 08:58:03] wildrefer_ori_strefer INFO: epoch 32, total time 48.41, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 08:58:52] wildrefer_ori_strefer INFO: epoch 33, total time 49.45, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 08:58:59] wildrefer_ori_strefer INFO: Eval: [33]  
+[06/23 08:58:59] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.09049
+[06/23 08:58:59] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.07929
+[06/23 08:58:59] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.09050 | Acc0.50: 0.07840 | mIoU: 0.05950
+[06/23 08:58:59] wildrefer_ori_strefer INFO: Timing(s): inf=0.122140, visual=0.045325, text=0.010315, fusion_wo_head=0.059740, head=0.002525
+[06/23 08:58:59] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.009137, bi_layer1=0.007137, bi_layer2=0.004786, total=0.021060
+[06/23 08:58:59] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 08:59:48] wildrefer_ori_strefer INFO: epoch 34, total time 49.48, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:00:37] wildrefer_ori_strefer INFO: epoch 35, total time 48.84, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:01:26] wildrefer_ori_strefer INFO: epoch 36, total time 49.09, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:01:32] wildrefer_ori_strefer INFO: Eval: [36]  
+[06/23 09:01:32] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.13526
+[06/23 09:01:32] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.11940
+[06/23 09:01:32] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.13430 | Acc0.50: 0.11850 | mIoU: 0.08880
+[06/23 09:01:32] wildrefer_ori_strefer INFO: Timing(s): inf=0.119700, visual=0.047819, text=0.009189, fusion_wo_head=0.055243, head=0.003721
+[06/23 09:01:32] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.008915, bi_layer1=0.004510, bi_layer2=0.004700, total=0.018125
+[06/23 09:01:32] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:02:21] wildrefer_ori_strefer INFO: epoch 37, total time 48.83, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:03:11] wildrefer_ori_strefer INFO: epoch 38, total time 49.84, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:04:01] wildrefer_ori_strefer INFO: epoch 39, total time 49.42, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:04:07] wildrefer_ori_strefer INFO: Eval: [39]  
+[06/23 09:04:07] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.10728
+[06/23 09:04:07] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.09422
+[06/23 09:04:07] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.10820 | Acc0.50: 0.09240 | mIoU: 0.07110
+[06/23 09:04:07] wildrefer_ori_strefer INFO: Timing(s): inf=0.114697, visual=0.042492, text=0.010605, fusion_wo_head=0.055145, head=0.002467
+[06/23 09:04:07] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.006897, bi_layer1=0.007109, bi_layer2=0.006800, total=0.020806
+[06/23 09:04:07] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:04:57] wildrefer_ori_strefer INFO: epoch 40, total time 49.83, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:05:46] wildrefer_ori_strefer INFO: epoch 41, total time 49.14, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:06:35] wildrefer_ori_strefer INFO: epoch 42, total time 48.78, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:06:42] wildrefer_ori_strefer INFO: Eval: [42]  
+[06/23 09:06:42] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.14552
+[06/23 09:06:42] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.13153
+[06/23 09:06:42] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.14550 | Acc0.50: 0.12870 | mIoU: 0.09670
+[06/23 09:06:42] wildrefer_ori_strefer INFO: Timing(s): inf=0.135607, visual=0.050081, text=0.010073, fusion_wo_head=0.066603, head=0.005199
+[06/23 09:06:42] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.015078, bi_layer1=0.007101, bi_layer2=0.004920, total=0.027100
+[06/23 09:06:42] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:07:31] wildrefer_ori_strefer INFO: epoch 43, total time 49.29, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:08:20] wildrefer_ori_strefer INFO: epoch 44, total time 48.97, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:09:08] wildrefer_ori_strefer INFO: epoch 45, total time 48.59, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:09:15] wildrefer_ori_strefer INFO: Eval: [45]  
+[06/23 09:09:15] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.11660
+[06/23 09:09:15] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.10354
+[06/23 09:09:15] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.11660 | Acc0.50: 0.10260 | mIoU: 0.07730
+[06/23 09:09:15] wildrefer_ori_strefer INFO: Timing(s): inf=0.113083, visual=0.041904, text=0.010404, fusion_wo_head=0.054266, head=0.002506
+[06/23 09:09:15] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.007984, bi_layer1=0.005828, bi_layer2=0.005677, total=0.019490
+[06/23 09:09:15] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:10:04] wildrefer_ori_strefer INFO: epoch 46, total time 49.33, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:10:54] wildrefer_ori_strefer INFO: epoch 47, total time 49.92, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:11:43] wildrefer_ori_strefer INFO: epoch 48, total time 49.06, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:11:50] wildrefer_ori_strefer INFO: Eval: [48]  
+[06/23 09:11:50] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.12966
+[06/23 09:11:50] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.11754
+[06/23 09:11:50] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.13060 | Acc0.50: 0.11660 | mIoU: 0.08630
+[06/23 09:11:50] wildrefer_ori_strefer INFO: Timing(s): inf=0.104005, visual=0.039903, text=0.009284, fusion_wo_head=0.050281, head=0.002605
+[06/23 09:11:50] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.004481, bi_layer1=0.004811, bi_layer2=0.004801, total=0.014093
+[06/23 09:11:50] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:12:39] wildrefer_ori_strefer INFO: epoch 49, total time 49.64, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:13:29] wildrefer_ori_strefer INFO: epoch 50, total time 49.89, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:14:19] wildrefer_ori_strefer INFO: epoch 51, total time 49.57, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:14:26] wildrefer_ori_strefer INFO: Eval: [51]  
+[06/23 09:14:26] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.15485
+[06/23 09:14:26] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.13899
+[06/23 09:14:26] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.15490 | Acc0.50: 0.13900 | mIoU: 0.10320
+[06/23 09:14:26] wildrefer_ori_strefer INFO: Timing(s): inf=0.133345, visual=0.051934, text=0.011036, fusion_wo_head=0.063122, head=0.002930
+[06/23 09:14:26] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.007958, bi_layer1=0.007891, bi_layer2=0.005856, total=0.021705
+[06/23 09:14:26] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:15:15] wildrefer_ori_strefer INFO: epoch 52, total time 49.18, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:16:04] wildrefer_ori_strefer INFO: epoch 53, total time 49.24, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:16:54] wildrefer_ori_strefer INFO: epoch 54, total time 49.93, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:17:01] wildrefer_ori_strefer INFO: Eval: [54]  
+[06/23 09:17:01] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.12593
+[06/23 09:17:01] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.11567
+[06/23 09:17:01] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.12590 | Acc0.50: 0.11570 | mIoU: 0.08360
+[06/23 09:17:01] wildrefer_ori_strefer INFO: Timing(s): inf=0.126511, visual=0.045675, text=0.011648, fusion_wo_head=0.059978, head=0.002870
+[06/23 09:17:01] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.011880, bi_layer1=0.004755, bi_layer2=0.006526, total=0.023161
+[06/23 09:17:01] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:17:50] wildrefer_ori_strefer INFO: epoch 55, total time 48.92, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:18:39] wildrefer_ori_strefer INFO: epoch 56, total time 49.36, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:19:27] wildrefer_ori_strefer INFO: epoch 57, total time 48.33, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:19:34] wildrefer_ori_strefer INFO: Eval: [57]  
+[06/23 09:19:34] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.15951
+[06/23 09:19:34] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.14552
+[06/23 09:19:34] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.16040 | Acc0.50: 0.14550 | mIoU: 0.10640
+[06/23 09:19:34] wildrefer_ori_strefer INFO: Timing(s): inf=0.107674, visual=0.041567, text=0.009345, fusion_wo_head=0.052128, head=0.002694
+[06/23 09:19:34] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.004510, bi_layer1=0.005830, bi_layer2=0.006194, total=0.016534
+[06/23 09:19:34] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:20:23] wildrefer_ori_strefer INFO: epoch 58, total time 49.24, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:21:12] wildrefer_ori_strefer INFO: epoch 59, total time 48.98, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:22:01] wildrefer_ori_strefer INFO: epoch 60, total time 48.48, lr_base 0.0001000, lr_tran 0.0001000, lr_text 0.0000020, lr_select 0.0000800, lr_seg 0.0000200
+[06/23 09:22:07] wildrefer_ori_strefer INFO: Eval: [60]  
+[06/23 09:22:07] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.17444
+[06/23 09:22:07] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.16511
+[06/23 09:22:07] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.17440 | Acc0.50: 0.16510 | mIoU: 0.11890
+[06/23 09:22:07] wildrefer_ori_strefer INFO: Timing(s): inf=0.122815, visual=0.045045, text=0.009336, fusion_wo_head=0.060791, head=0.002935
+[06/23 09:22:07] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.008694, bi_layer1=0.007962, bi_layer2=0.004965, total=0.021622
+[06/23 09:22:07] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:22:56] wildrefer_ori_strefer INFO: epoch 61, total time 48.99, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:23:45] wildrefer_ori_strefer INFO: epoch 62, total time 49.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:24:35] wildrefer_ori_strefer INFO: epoch 63, total time 49.24, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:24:41] wildrefer_ori_strefer INFO: Eval: [63]  
+[06/23 09:24:41] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.18563
+[06/23 09:24:41] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.16884
+[06/23 09:24:41] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.18560 | Acc0.50: 0.16880 | mIoU: 0.12300
+[06/23 09:24:41] wildrefer_ori_strefer INFO: Timing(s): inf=0.123453, visual=0.047979, text=0.011739, fusion_wo_head=0.055660, head=0.004055
+[06/23 09:24:41] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.006263, bi_layer1=0.004946, bi_layer2=0.008968, total=0.020176
+[06/23 09:24:41] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:25:31] wildrefer_ori_strefer INFO: epoch 64, total time 49.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:26:19] wildrefer_ori_strefer INFO: epoch 65, total time 48.62, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:27:08] wildrefer_ori_strefer INFO: epoch 66, total time 49.14, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:27:15] wildrefer_ori_strefer INFO: Eval: [66]  
+[06/23 09:27:15] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.17631
+[06/23 09:27:15] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.15951
+[06/23 09:27:15] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.17720 | Acc0.50: 0.15950 | mIoU: 0.11680
+[06/23 09:27:15] wildrefer_ori_strefer INFO: Timing(s): inf=0.117729, visual=0.043869, text=0.010350, fusion_wo_head=0.055740, head=0.003829
+[06/23 09:27:15] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.008289, bi_layer1=0.005105, bi_layer2=0.004782, total=0.018175
+[06/23 09:27:15] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:28:04] wildrefer_ori_strefer INFO: epoch 67, total time 48.68, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:28:53] wildrefer_ori_strefer INFO: epoch 68, total time 49.08, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:29:41] wildrefer_ori_strefer INFO: epoch 69, total time 48.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:29:47] wildrefer_ori_strefer INFO: Eval: [69]  
+[06/23 09:29:47] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.17071
+[06/23 09:29:47] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.15485
+[06/23 09:29:47] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.17160 | Acc0.50: 0.15490 | mIoU: 0.11460
+[06/23 09:29:47] wildrefer_ori_strefer INFO: Timing(s): inf=0.119256, visual=0.049945, text=0.010517, fusion_wo_head=0.053636, head=0.002940
+[06/23 09:29:47] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.006647, bi_layer1=0.004919, bi_layer2=0.005974, total=0.017540
+[06/23 09:29:47] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:30:37] wildrefer_ori_strefer INFO: epoch 70, total time 49.71, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:31:26] wildrefer_ori_strefer INFO: epoch 71, total time 48.83, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:32:15] wildrefer_ori_strefer INFO: epoch 72, total time 48.99, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:32:22] wildrefer_ori_strefer INFO: Eval: [72]  
+[06/23 09:32:22] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.15765
+[06/23 09:32:22] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.14552
+[06/23 09:32:22] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.15760 | Acc0.50: 0.14550 | mIoU: 0.10670
+[06/23 09:32:22] wildrefer_ori_strefer INFO: Timing(s): inf=0.113924, visual=0.041479, text=0.010856, fusion_wo_head=0.054155, head=0.002925
+[06/23 09:32:22] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.007141, bi_layer1=0.005618, bi_layer2=0.004920, total=0.017680
+[06/23 09:32:22] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:33:11] wildrefer_ori_strefer INFO: epoch 73, total time 49.07, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:34:00] wildrefer_ori_strefer INFO: epoch 74, total time 48.88, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:34:49] wildrefer_ori_strefer INFO: epoch 75, total time 49.20, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:34:55] wildrefer_ori_strefer INFO: Eval: [75]  
+[06/23 09:34:55] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.16231
+[06/23 09:34:55] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.14552
+[06/23 09:34:55] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.16230 | Acc0.50: 0.14550 | mIoU: 0.10800
+[06/23 09:34:55] wildrefer_ori_strefer INFO: Timing(s): inf=0.137594, visual=0.051248, text=0.011936, fusion_wo_head=0.067552, head=0.003041
+[06/23 09:34:55] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.008488, bi_layer1=0.005982, bi_layer2=0.004986, total=0.019457
+[06/23 09:34:55] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:35:44] wildrefer_ori_strefer INFO: epoch 76, total time 48.74, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:36:33] wildrefer_ori_strefer INFO: epoch 77, total time 48.41, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:37:22] wildrefer_ori_strefer INFO: epoch 78, total time 49.38, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:37:29] wildrefer_ori_strefer INFO: Eval: [78]  
+[06/23 09:37:29] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.16604
+[06/23 09:37:29] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.14925
+[06/23 09:37:29] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.16700 | Acc0.50: 0.14830 | mIoU: 0.10970
+[06/23 09:37:29] wildrefer_ori_strefer INFO: Timing(s): inf=0.113887, visual=0.042168, text=0.010306, fusion_wo_head=0.054586, head=0.002893
+[06/23 09:37:29] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.008783, bi_layer1=0.006685, bi_layer2=0.005737, total=0.021205
+[06/23 09:37:29] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:38:18] wildrefer_ori_strefer INFO: epoch 79, total time 49.35, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:39:07] wildrefer_ori_strefer INFO: epoch 80, total time 49.04, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:39:56] wildrefer_ori_strefer INFO: epoch 81, total time 48.75, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:40:03] wildrefer_ori_strefer INFO: Eval: [81]  
+[06/23 09:40:03] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.17910
+[06/23 09:40:03] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.16325
+[06/23 09:40:03] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.18000 | Acc0.50: 0.16320 | mIoU: 0.11980
+[06/23 09:40:03] wildrefer_ori_strefer INFO: Timing(s): inf=0.114816, visual=0.043129, text=0.010617, fusion_wo_head=0.054041, head=0.003059
+[06/23 09:40:03] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.006933, bi_layer1=0.005935, bi_layer2=0.006647, total=0.019515
+[06/23 09:40:03] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:40:52] wildrefer_ori_strefer INFO: epoch 82, total time 49.03, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:41:40] wildrefer_ori_strefer INFO: epoch 83, total time 48.67, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:42:30] wildrefer_ori_strefer INFO: epoch 84, total time 49.42, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:42:37] wildrefer_ori_strefer INFO: Eval: [84]  
+[06/23 09:42:37] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.18097
+[06/23 09:42:37] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.16791
+[06/23 09:42:37] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.18100 | Acc0.50: 0.16790 | mIoU: 0.12200
+[06/23 09:42:37] wildrefer_ori_strefer INFO: Timing(s): inf=0.135807, visual=0.050302, text=0.011525, fusion_wo_head=0.066573, head=0.003277
+[06/23 09:42:37] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.007563, bi_layer1=0.010520, bi_layer2=0.011065, total=0.029148
+[06/23 09:42:37] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:43:26] wildrefer_ori_strefer INFO: epoch 85, total time 49.45, lr_base 0.0000100, lr_tran 0.0000100, lr_text 0.0000002, lr_select 0.0000080, lr_seg 0.0000020
+[06/23 09:44:15] wildrefer_ori_strefer INFO: epoch 86, total time 49.21, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:45:05] wildrefer_ori_strefer INFO: epoch 87, total time 49.78, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:45:12] wildrefer_ori_strefer INFO: Eval: [87]  
+[06/23 09:45:12] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.19590
+[06/23 09:45:12] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.17724
+[06/23 09:45:12] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.19590 | Acc0.50: 0.17820 | mIoU: 0.12990
+[06/23 09:45:12] wildrefer_ori_strefer INFO: Timing(s): inf=0.120618, visual=0.045326, text=0.014278, fusion_wo_head=0.054427, head=0.002901
+[06/23 09:45:12] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.006965, bi_layer1=0.005746, bi_layer2=0.005831, total=0.018542
+[06/23 09:45:12] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:46:01] wildrefer_ori_strefer INFO: epoch 88, total time 49.31, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:46:50] wildrefer_ori_strefer INFO: epoch 89, total time 48.80, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:47:39] wildrefer_ori_strefer INFO: epoch 90, total time 49.16, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:47:45] wildrefer_ori_strefer INFO: Eval: [90]  
+[06/23 09:47:45] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.19030
+[06/23 09:47:45] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.17257
+[06/23 09:47:45] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.19030 | Acc0.50: 0.17160 | mIoU: 0.12690
+[06/23 09:47:45] wildrefer_ori_strefer INFO: Timing(s): inf=0.128247, visual=0.050672, text=0.011267, fusion_wo_head=0.060987, head=0.003111
+[06/23 09:47:45] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.004763, bi_layer1=0.006213, bi_layer2=0.008801, total=0.019777
+[06/23 09:47:45] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:48:35] wildrefer_ori_strefer INFO: epoch 91, total time 49.09, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:49:24] wildrefer_ori_strefer INFO: epoch 92, total time 49.64, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:50:14] wildrefer_ori_strefer INFO: epoch 93, total time 49.49, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:50:20] wildrefer_ori_strefer INFO: Eval: [93]  
+[06/23 09:50:20] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.18750
+[06/23 09:50:20] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.17164
+[06/23 09:50:20] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.18840 | Acc0.50: 0.17160 | mIoU: 0.12350
+[06/23 09:50:20] wildrefer_ori_strefer INFO: Timing(s): inf=0.110883, visual=0.040959, text=0.012434, fusion_wo_head=0.052478, head=0.002977
+[06/23 09:50:20] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.005648, bi_layer1=0.004795, bi_layer2=0.004705, total=0.015148
+[06/23 09:50:20] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:51:10] wildrefer_ori_strefer INFO: epoch 94, total time 49.52, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:51:59] wildrefer_ori_strefer INFO: epoch 95, total time 49.92, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:52:50] wildrefer_ori_strefer INFO: epoch 96, total time 50.08, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:52:56] wildrefer_ori_strefer INFO: Eval: [96]  
+[06/23 09:52:56] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.19310
+[06/23 09:52:56] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.17444
+[06/23 09:52:56] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.19500 | Acc0.50: 0.17440 | mIoU: 0.12780
+[06/23 09:52:56] wildrefer_ori_strefer INFO: Timing(s): inf=0.114359, visual=0.043852, text=0.010702, fusion_wo_head=0.054819, head=0.002894
+[06/23 09:52:56] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.005584, bi_layer1=0.006723, bi_layer2=0.006571, total=0.018879
+[06/23 09:52:56] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:53:45] wildrefer_ori_strefer INFO: epoch 97, total time 48.40, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:54:34] wildrefer_ori_strefer INFO: epoch 98, total time 49.77, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:55:23] wildrefer_ori_strefer INFO: epoch 99, total time 48.37, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:55:29] wildrefer_ori_strefer INFO: Eval: [99]  
+[06/23 09:55:29] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.18750
+[06/23 09:55:29] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.17164
+[06/23 09:55:29] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.18750 | Acc0.50: 0.17160 | mIoU: 0.12460
+[06/23 09:55:29] wildrefer_ori_strefer INFO: Timing(s): inf=0.110443, visual=0.041835, text=0.010543, fusion_wo_head=0.053072, head=0.002960
+[06/23 09:55:29] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.006517, bi_layer1=0.005856, bi_layer2=0.004811, total=0.017184
+[06/23 09:55:29] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/23 09:56:18] wildrefer_ori_strefer INFO: epoch 100, total time 49.11, lr_base 0.0000010, lr_tran 0.0000010, lr_text 0.0000000, lr_select 0.0000008, lr_seg 0.0000002
+[06/23 09:56:19] wildrefer_ori_strefer INFO: Saved in /mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/wildrefer/ori/wildrefer_ori_strefer/strefer/2026-06-23_08-30-25/ckpt_epoch_last.pth
+[06/23 09:56:25] wildrefer_ori_strefer INFO: Eval: [100]  
+[06/23 09:56:25] wildrefer_ori_strefer INFO: 3dcnn Acc0.25: Top-1: 0.19590
+[06/23 09:56:25] wildrefer_ori_strefer INFO: 3dcnn Acc0.50: Top-1: 0.17817
+[06/23 09:56:25] wildrefer_ori_strefer INFO: WildRefer-official Acc0.25: 0.19590 | Acc0.50: 0.17720 | mIoU: 0.12960
+[06/23 09:56:25] wildrefer_ori_strefer INFO: Timing(s): inf=0.111463, visual=0.042677, text=0.011431, fusion_wo_head=0.051142, head=0.004126
+[06/23 09:56:25] wildrefer_ori_strefer INFO: External-attn-affected module time(s): bi_layer0=0.004568, bi_layer1=0.006007, bi_layer2=0.005732, total=0.016306
+[06/23 09:56:25] wildrefer_ori_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).

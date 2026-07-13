@@ -1,0 +1,388 @@
+[06/24 19:56:45] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Full config saved to /mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/wildrefer/image_features/wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer/strefer/2026-06-24_19-56-39/config.json
+[06/24 19:56:45] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: {'num_target': 256, 'sampling': 'kps', 'voxel_size': 0.01, 'num_encoder_layers': 3, 'num_decoder_layers': 6, 'self_position_embedding': 'loc_learned', 'self_attend': False, 'query_points_obj_topk': 4, 'use_contrastive_align': False, 'use_soft_token_loss': False, 'detect_intermediate': True, 'joint_det': False, 'batch_size': 7, 'dataset': ['strefer'], 'test_dataset': 'strefer', 'data_root': '/root/lxy/TSP3D/data/', 'use_height': False, 'use_color': True, 'use_multiview': False, 'wildrefer_frame_num': 1, 'wildrefer_fuse_frames': False, 'wildrefer_use_proj_geometry': False, 'wildrefer_use_image_features': True, 'wildrefer_image_feature_path': '/root/lxy/TSP3D/data/WildRefer/strefer_resnet18_layer3_448.h5', 'wildrefer_image_feature_dim': 256, 'wo_obj_name': 'None', 'butd': False, 'butd_gt': False, 'butd_cls': False, 'augment_det': False, 'num_workers': 8, 'start_epoch': 1, 'max_epoch': 260, 'optimizer': 'adamW', 'weight_decay': 0.0005, 'lr': 0.0005, 'keep_trans_lr': 0.0005, 'text_encoder_lr': 1e-05, 'box_select_lr': 0.0004, 'seg_lr': 0.0001, 'lr_scheduler': 'plateau', 'lr_decay_epochs': [400], 'lr_decay_rate': 0.1, 'plateau_metric': 'official_acc0.50', 'plateau_mode': 'max', 'plateau_factor': 0.5, 'plateau_patience': 3, 'plateau_threshold': 0.0001, 'plateau_cooldown': 1, 'plateau_min_lr': 1e-07, 'clip_norm': 0.1, 'bn_momentum': 0.1, 'warmup_epoch': -1, 'warmup_multiplier': 100, 'enable_tf32': False, 'tf32_matmul': 'default', 'tf32_cudnn': 'default', 'checkpoint_path': '/root/lxy/TSP3D/scripts/experiments/wildrefer/image_features/wildrefer_EA0_resnet18img_prune035_400e_strefer/strefer/2026-06-24_01-05-41/ckpt_epoch_156.pth', 'load_optimizer': False, 'load_scheduler': False, 'log_dir': '/mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/wildrefer/image_features/wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer/strefer/2026-06-24_19-56-39', 'print_freq': 500, 'save_freq': 3, 'val_freq': 3, 'local_rank': 0, 'ap_iou_thresholds': [0.25, 0.5], 'rng_seed': 42, 'debug': False, 'eval': False, 'eval_train': False, 'measure_fps': False, 'measure_fps_detail': False, 'fps_warmup_iters': 20, 'fps_max_iters': -1, 'pp_checkpoint': None, 'reduce_lr': False, 'cudnn_benchmark': True, 'cudnn_deterministic': True, 'use_deterministic_algorithms': False, 'deterministic_warn_only': False, 'use_seg': False, 'use_refine': False, 'use_external_attn_bi_layer': [0], 'use_text_guided_external_attn_bi_layer': [0], 'use_film_text_guided_external_attn_bi_layer': [0], 'use_external_attn_bi_layer0': True, 'use_text_guided_external_attn_bi_layer0': True, 'use_film_text_guided_external_attn_bi_layer0': True, 'mink_conv1_stride': 2, 'use_seg_external_self_attn': False, 'com_threshold': 0.15, 'num_samples_com': 2400, 'external_attn_coef': 4, 'external_attn_k_keep0': 64, 'external_attn_k_keep1': 64, 'external_attn_k_com': 64, 'external_attn_k_seg128': 64, 'external_attn_k_seg64': 64, 'top_pts_threshold': 32, 'top_pts_threshold_det': 32, 'gpu_mem_limit_gb': 0.0, 'prune_threshold_0': 0.35, 'prune_threshold_1': 0.35, 'pts_prune_threshold': [1200, 4000], 'random_prune_threshold': [1200, 4000], 'nms_pre': 1, 'nms_iou_thr': 0.5, 'nms_score_thr': 0.01}
+[06/24 19:56:45] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: length of training dataset: 4392
+[06/24 19:56:45] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: length of testing dataset: 1066
+[06/24 19:57:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 157, total time 69.03, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 19:59:01] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 158, total time 65.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:00:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 159, total time 64.40, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:00:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [159]  
+[06/24 20:00:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.30597
+[06/24 20:00:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.28358
+[06/24 20:00:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.30600 | Acc0.50: 0.28260 | mIoU: 0.20390
+[06/24 20:00:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.227091, visual=0.073079, text=0.012242, fusion_wo_head=0.130128, head=0.008015
+[06/24 20:00:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.011048, bi_layer1=0.042490, bi_layer2=0.013969, total=0.067507
+[06/24 20:00:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:00:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.282600, lr_base 0.0005000 -> 0.0005000, lr_tran 0.0005000 -> 0.0005000, lr_text 0.0000100 -> 0.0000100, lr_select 0.0004000 -> 0.0004000, lr_seg 0.0001000 -> 0.0001000
+[06/24 20:01:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 160, total time 63.61, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:02:26] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 161, total time 65.03, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:03:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 162, total time 65.24, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:03:43] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [162]  
+[06/24 20:03:43] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.36754
+[06/24 20:03:43] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.35075
+[06/24 20:03:43] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.36750 | Acc0.50: 0.35070 | mIoU: 0.24840
+[06/24 20:03:43] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.225783, visual=0.082200, text=0.015792, fusion_wo_head=0.109647, head=0.004462
+[06/24 20:03:43] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.033626, bi_layer1=0.006544, bi_layer2=0.008674, total=0.048844
+[06/24 20:03:43] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:03:43] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.350700, lr_base 0.0005000 -> 0.0005000, lr_tran 0.0005000 -> 0.0005000, lr_text 0.0000100 -> 0.0000100, lr_select 0.0004000 -> 0.0004000, lr_seg 0.0001000 -> 0.0001000
+[06/24 20:04:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 163, total time 65.16, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:05:54] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 164, total time 65.06, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:06:59] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 165, total time 64.59, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:07:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [165]  
+[06/24 20:07:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.39925
+[06/24 20:07:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.37687
+[06/24 20:07:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.39930 | Acc0.50: 0.36850 | mIoU: 0.26710
+[06/24 20:07:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.173753, visual=0.056701, text=0.011718, fusion_wo_head=0.083092, head=0.008551
+[06/24 20:07:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.016826, bi_layer1=0.012114, bi_layer2=0.007741, total=0.036682
+[06/24 20:07:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:07:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.368500, lr_base 0.0005000 -> 0.0005000, lr_tran 0.0005000 -> 0.0005000, lr_text 0.0000100 -> 0.0000100, lr_select 0.0004000 -> 0.0004000, lr_seg 0.0001000 -> 0.0001000
+[06/24 20:08:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 166, total time 65.29, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:09:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 167, total time 64.71, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:10:26] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 168, total time 65.27, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:10:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [168]  
+[06/24 20:10:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.35821
+[06/24 20:10:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.34795
+[06/24 20:10:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.35820 | Acc0.50: 0.34610 | mIoU: 0.24590
+[06/24 20:10:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.194247, visual=0.075137, text=0.016341, fusion_wo_head=0.095259, head=0.004015
+[06/24 20:10:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.016356, bi_layer1=0.005835, bi_layer2=0.011615, total=0.033806
+[06/24 20:10:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:10:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.346100, lr_base 0.0005000 -> 0.0005000, lr_tran 0.0005000 -> 0.0005000, lr_text 0.0000100 -> 0.0000100, lr_select 0.0004000 -> 0.0004000, lr_seg 0.0001000 -> 0.0001000
+[06/24 20:11:43] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 169, total time 65.20, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:12:50] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 170, total time 67.12, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:13:55] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 171, total time 65.34, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:14:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [171]  
+[06/24 20:14:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33769
+[06/24 20:14:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.31996
+[06/24 20:14:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33860 | Acc0.50: 0.31900 | mIoU: 0.22600
+[06/24 20:14:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.178462, visual=0.064538, text=0.023358, fusion_wo_head=0.075075, head=0.003706
+[06/24 20:14:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.020956, bi_layer1=0.005878, bi_layer2=0.006613, total=0.033447
+[06/24 20:14:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:14:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.319000, lr_base 0.0005000 -> 0.0005000, lr_tran 0.0005000 -> 0.0005000, lr_text 0.0000100 -> 0.0000100, lr_select 0.0004000 -> 0.0004000, lr_seg 0.0001000 -> 0.0001000
+[06/24 20:15:11] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 172, total time 64.26, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:16:15] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 173, total time 64.05, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:17:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 174, total time 65.44, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:17:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [174]  
+[06/24 20:17:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.36754
+[06/24 20:17:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.34981
+[06/24 20:17:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.36750 | Acc0.50: 0.34700 | mIoU: 0.24880
+[06/24 20:17:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.177466, visual=0.090746, text=0.011272, fusion_wo_head=0.065560, head=0.006289
+[06/24 20:17:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.012492, bi_layer1=0.005611, bi_layer2=0.007018, total=0.025120
+[06/24 20:17:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:17:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.347000, lr_base 0.0005000 -> 0.0005000, lr_tran 0.0005000 -> 0.0005000, lr_text 0.0000100 -> 0.0000100, lr_select 0.0004000 -> 0.0004000, lr_seg 0.0001000 -> 0.0001000
+[06/24 20:18:38] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 175, total time 64.86, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:19:44] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 176, total time 65.99, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:20:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 177, total time 65.54, lr_base 0.0005000, lr_tran 0.0005000, lr_text 0.0000100, lr_select 0.0004000, lr_seg 0.0001000
+[06/24 20:21:01] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [177]  
+[06/24 20:21:01] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.36847
+[06/24 20:21:01] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.35634
+[06/24 20:21:01] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.36850 | Acc0.50: 0.35540 | mIoU: 0.25110
+[06/24 20:21:01] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.182938, visual=0.072841, text=0.014592, fusion_wo_head=0.067427, head=0.003697
+[06/24 20:21:01] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.010111, bi_layer1=0.005093, bi_layer2=0.009126, total=0.024330
+[06/24 20:21:01] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:21:01] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.355400, lr_base 0.0005000 -> 0.0002500, lr_tran 0.0005000 -> 0.0002500, lr_text 0.0000100 -> 0.0000050, lr_select 0.0004000 -> 0.0002000, lr_seg 0.0001000 -> 0.0000500 (reduced)
+[06/24 20:22:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 178, total time 64.96, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:23:11] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 179, total time 65.24, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:24:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 180, total time 66.55, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:24:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [180]  
+[06/24 20:24:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.39366
+[06/24 20:24:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.37873
+[06/24 20:24:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.39370 | Acc0.50: 0.37500 | mIoU: 0.26770
+[06/24 20:24:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.213714, visual=0.071188, text=0.011212, fusion_wo_head=0.123567, head=0.004286
+[06/24 20:24:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.018127, bi_layer1=0.015348, bi_layer2=0.026793, total=0.060267
+[06/24 20:24:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:24:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.375000, lr_base 0.0002500 -> 0.0002500, lr_tran 0.0002500 -> 0.0002500, lr_text 0.0000050 -> 0.0000050, lr_select 0.0002000 -> 0.0002000, lr_seg 0.0000500 -> 0.0000500
+[06/24 20:25:35] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 181, total time 64.97, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:26:41] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 182, total time 66.03, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:27:48] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 183, total time 66.65, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:27:58] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [183]  
+[06/24 20:27:58] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.37593
+[06/24 20:27:58] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.36194
+[06/24 20:27:58] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.37590 | Acc0.50: 0.35910 | mIoU: 0.25320
+[06/24 20:27:58] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.184488, visual=0.054811, text=0.010138, fusion_wo_head=0.110727, head=0.004466
+[06/24 20:27:58] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.031015, bi_layer1=0.008513, bi_layer2=0.007212, total=0.046740
+[06/24 20:27:58] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:27:58] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.359100, lr_base 0.0002500 -> 0.0002500, lr_tran 0.0002500 -> 0.0002500, lr_text 0.0000050 -> 0.0000050, lr_select 0.0002000 -> 0.0002000, lr_seg 0.0000500 -> 0.0000500
+[06/24 20:29:04] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 184, total time 64.43, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:30:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 185, total time 66.25, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:31:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 186, total time 66.03, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:31:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [186]  
+[06/24 20:31:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.26119
+[06/24 20:31:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.25187
+[06/24 20:31:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.26120 | Acc0.50: 0.25090 | mIoU: 0.17770
+[06/24 20:31:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.180245, visual=0.058346, text=0.014581, fusion_wo_head=0.098861, head=0.003999
+[06/24 20:31:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.018028, bi_layer1=0.005554, bi_layer2=0.028890, total=0.052473
+[06/24 20:31:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:31:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.250900, lr_base 0.0002500 -> 0.0002500, lr_tran 0.0002500 -> 0.0002500, lr_text 0.0000050 -> 0.0000050, lr_select 0.0002000 -> 0.0002000, lr_seg 0.0000500 -> 0.0000500
+[06/24 20:32:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 187, total time 65.05, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:33:38] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 188, total time 65.91, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:34:44] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 189, total time 66.10, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:34:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [189]  
+[06/24 20:34:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.34608
+[06/24 20:34:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.32929
+[06/24 20:34:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.34610 | Acc0.50: 0.32840 | mIoU: 0.23360
+[06/24 20:34:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.212151, visual=0.088905, text=0.010848, fusion_wo_head=0.104499, head=0.003921
+[06/24 20:34:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.009518, bi_layer1=0.024788, bi_layer2=0.021309, total=0.055615
+[06/24 20:34:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:34:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.328400, lr_base 0.0002500 -> 0.0002500, lr_tran 0.0002500 -> 0.0002500, lr_text 0.0000050 -> 0.0000050, lr_select 0.0002000 -> 0.0002000, lr_seg 0.0000500 -> 0.0000500
+[06/24 20:36:02] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 190, total time 65.17, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:37:08] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 191, total time 66.19, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:38:14] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 192, total time 66.29, lr_base 0.0002500, lr_tran 0.0002500, lr_text 0.0000050, lr_select 0.0002000, lr_seg 0.0000500
+[06/24 20:38:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [192]  
+[06/24 20:38:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.32556
+[06/24 20:38:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.31063
+[06/24 20:38:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.32560 | Acc0.50: 0.30780 | mIoU: 0.21950
+[06/24 20:38:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.201176, visual=0.070061, text=0.025626, fusion_wo_head=0.096996, head=0.004526
+[06/24 20:38:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.011914, bi_layer1=0.023603, bi_layer2=0.007284, total=0.042802
+[06/24 20:38:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:38:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.307800, lr_base 0.0002500 -> 0.0001250, lr_tran 0.0002500 -> 0.0001250, lr_text 0.0000050 -> 0.0000025, lr_select 0.0002000 -> 0.0001000, lr_seg 0.0000500 -> 0.0000250 (reduced)
+[06/24 20:39:30] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 193, total time 64.19, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:40:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 194, total time 66.36, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:41:42] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 195, total time 65.35, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:41:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [195]  
+[06/24 20:41:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.36194
+[06/24 20:41:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.34235
+[06/24 20:41:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.36290 | Acc0.50: 0.33960 | mIoU: 0.24430
+[06/24 20:41:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.197973, visual=0.082340, text=0.011162, fusion_wo_head=0.090094, head=0.003554
+[06/24 20:41:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.008010, bi_layer1=0.013867, bi_layer2=0.017388, total=0.039265
+[06/24 20:41:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:41:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.339600, lr_base 0.0001250 -> 0.0001250, lr_tran 0.0001250 -> 0.0001250, lr_text 0.0000025 -> 0.0000025, lr_select 0.0001000 -> 0.0001000, lr_seg 0.0000250 -> 0.0000250
+[06/24 20:43:00] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 196, total time 65.63, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:44:05] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 197, total time 65.51, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:45:10] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 198, total time 65.08, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:45:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [198]  
+[06/24 20:45:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.35448
+[06/24 20:45:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.33675
+[06/24 20:45:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.35450 | Acc0.50: 0.33400 | mIoU: 0.23960
+[06/24 20:45:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.163910, visual=0.061157, text=0.014009, fusion_wo_head=0.078277, head=0.007041
+[06/24 20:45:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.012837, bi_layer1=0.005542, bi_layer2=0.013012, total=0.031390
+[06/24 20:45:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:45:21] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.334000, lr_base 0.0001250 -> 0.0001250, lr_tran 0.0001250 -> 0.0001250, lr_text 0.0000025 -> 0.0000025, lr_select 0.0001000 -> 0.0001000, lr_seg 0.0000250 -> 0.0000250
+[06/24 20:46:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 199, total time 64.71, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:47:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 200, total time 65.32, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:48:38] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 201, total time 65.65, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:48:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [201]  
+[06/24 20:48:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.32649
+[06/24 20:48:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.30970
+[06/24 20:48:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.32650 | Acc0.50: 0.30690 | mIoU: 0.22060
+[06/24 20:48:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.154067, visual=0.077070, text=0.009992, fusion_wo_head=0.059235, head=0.003724
+[06/24 20:48:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.009406, bi_layer1=0.004939, bi_layer2=0.005760, total=0.020105
+[06/24 20:48:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:48:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.306900, lr_base 0.0001250 -> 0.0001250, lr_tran 0.0001250 -> 0.0001250, lr_text 0.0000025 -> 0.0000025, lr_select 0.0001000 -> 0.0001000, lr_seg 0.0000250 -> 0.0000250
+[06/24 20:49:54] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 202, total time 65.10, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:51:00] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 203, total time 65.83, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:52:07] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 204, total time 66.43, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:52:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [204]  
+[06/24 20:52:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.34049
+[06/24 20:52:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.32090
+[06/24 20:52:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.34050 | Acc0.50: 0.31900 | mIoU: 0.22850
+[06/24 20:52:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.183425, visual=0.078192, text=0.016947, fusion_wo_head=0.081152, head=0.003741
+[06/24 20:52:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.017786, bi_layer1=0.012127, bi_layer2=0.010506, total=0.040419
+[06/24 20:52:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:52:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.319000, lr_base 0.0001250 -> 0.0001250, lr_tran 0.0001250 -> 0.0001250, lr_text 0.0000025 -> 0.0000025, lr_select 0.0001000 -> 0.0001000, lr_seg 0.0000250 -> 0.0000250
+[06/24 20:53:24] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 205, total time 65.40, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:54:30] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 206, total time 66.50, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:55:36] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 207, total time 65.29, lr_base 0.0001250, lr_tran 0.0001250, lr_text 0.0000025, lr_select 0.0001000, lr_seg 0.0000250
+[06/24 20:55:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [207]  
+[06/24 20:55:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.35261
+[06/24 20:55:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.33582
+[06/24 20:55:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.35260 | Acc0.50: 0.33020 | mIoU: 0.23810
+[06/24 20:55:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.173218, visual=0.061032, text=0.011994, fusion_wo_head=0.092201, head=0.003725
+[06/24 20:55:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.020126, bi_layer1=0.005971, bi_layer2=0.010767, total=0.036864
+[06/24 20:55:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:55:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.330200, lr_base 0.0001250 -> 0.0000625, lr_tran 0.0001250 -> 0.0000625, lr_text 0.0000025 -> 0.0000013, lr_select 0.0001000 -> 0.0000500, lr_seg 0.0000250 -> 0.0000125 (reduced)
+[06/24 20:56:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 208, total time 65.27, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 20:57:59] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 209, total time 66.36, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 20:59:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 210, total time 67.37, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 20:59:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [210]  
+[06/24 20:59:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.30877
+[06/24 20:59:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.29571
+[06/24 20:59:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.30880 | Acc0.50: 0.29290 | mIoU: 0.20960
+[06/24 20:59:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.152404, visual=0.051666, text=0.010599, fusion_wo_head=0.074275, head=0.003631
+[06/24 20:59:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.015582, bi_layer1=0.005465, bi_layer2=0.005928, total=0.026976
+[06/24 20:59:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 20:59:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.292900, lr_base 0.0000625 -> 0.0000625, lr_tran 0.0000625 -> 0.0000625, lr_text 0.0000013 -> 0.0000013, lr_select 0.0000500 -> 0.0000500, lr_seg 0.0000125 -> 0.0000125
+[06/24 21:00:23] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 211, total time 65.31, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:01:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 212, total time 65.74, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:02:35] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 213, total time 66.17, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:02:46] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [213]  
+[06/24 21:02:46] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33862
+[06/24 21:02:46] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.32276
+[06/24 21:02:46] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33960 | Acc0.50: 0.31900 | mIoU: 0.22800
+[06/24 21:02:46] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.167776, visual=0.052731, text=0.011448, fusion_wo_head=0.096311, head=0.003950
+[06/24 21:02:46] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.012223, bi_layer1=0.023956, bi_layer2=0.006538, total=0.042717
+[06/24 21:02:46] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:02:46] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.319000, lr_base 0.0000625 -> 0.0000625, lr_tran 0.0000625 -> 0.0000625, lr_text 0.0000013 -> 0.0000013, lr_select 0.0000500 -> 0.0000500, lr_seg 0.0000125 -> 0.0000125
+[06/24 21:03:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 214, total time 65.54, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:04:59] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 215, total time 66.06, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:06:05] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 216, total time 66.24, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:06:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [216]  
+[06/24 21:06:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.32276
+[06/24 21:06:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.30877
+[06/24 21:06:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.32280 | Acc0.50: 0.30690 | mIoU: 0.21950
+[06/24 21:06:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.203770, visual=0.067137, text=0.025954, fusion_wo_head=0.102026, head=0.004592
+[06/24 21:06:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.014567, bi_layer1=0.007510, bi_layer2=0.013430, total=0.035507
+[06/24 21:06:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:06:16] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.306900, lr_base 0.0000625 -> 0.0000625, lr_tran 0.0000625 -> 0.0000625, lr_text 0.0000013 -> 0.0000013, lr_select 0.0000500 -> 0.0000500, lr_seg 0.0000125 -> 0.0000125
+[06/24 21:07:22] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 217, total time 65.17, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:08:28] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 218, total time 66.14, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:09:35] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 219, total time 66.74, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:09:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [219]  
+[06/24 21:09:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33582
+[06/24 21:09:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.32463
+[06/24 21:09:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33580 | Acc0.50: 0.32280 | mIoU: 0.22690
+[06/24 21:09:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.198177, visual=0.056603, text=0.017809, fusion_wo_head=0.105564, head=0.014319
+[06/24 21:09:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.006470, bi_layer1=0.005068, bi_layer2=0.017197, total=0.028735
+[06/24 21:09:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:09:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.322800, lr_base 0.0000625 -> 0.0000625, lr_tran 0.0000625 -> 0.0000625, lr_text 0.0000013 -> 0.0000013, lr_select 0.0000500 -> 0.0000500, lr_seg 0.0000125 -> 0.0000125
+[06/24 21:10:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 220, total time 65.58, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:11:59] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 221, total time 66.11, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:13:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 222, total time 66.58, lr_base 0.0000625, lr_tran 0.0000625, lr_text 0.0000013, lr_select 0.0000500, lr_seg 0.0000125
+[06/24 21:13:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [222]  
+[06/24 21:13:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.31623
+[06/24 21:13:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.30037
+[06/24 21:13:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.31620 | Acc0.50: 0.29760 | mIoU: 0.21340
+[06/24 21:13:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.189178, visual=0.068914, text=0.012036, fusion_wo_head=0.095457, head=0.004444
+[06/24 21:13:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.007928, bi_layer1=0.005697, bi_layer2=0.011641, total=0.025266
+[06/24 21:13:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:13:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.297600, lr_base 0.0000625 -> 0.0000313, lr_tran 0.0000625 -> 0.0000313, lr_text 0.0000013 -> 0.0000006, lr_select 0.0000500 -> 0.0000250, lr_seg 0.0000125 -> 0.0000063 (reduced)
+[06/24 21:14:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 223, total time 67.49, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:15:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 224, total time 66.61, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:16:38] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 225, total time 66.43, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:16:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [225]  
+[06/24 21:16:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33955
+[06/24 21:16:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.32090
+[06/24 21:16:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33960 | Acc0.50: 0.31620 | mIoU: 0.22860
+[06/24 21:16:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.189860, visual=0.059545, text=0.028806, fusion_wo_head=0.090330, head=0.006983
+[06/24 21:16:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.009631, bi_layer1=0.014206, bi_layer2=0.006414, total=0.030251
+[06/24 21:16:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:16:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.316200, lr_base 0.0000313 -> 0.0000313, lr_tran 0.0000313 -> 0.0000313, lr_text 0.0000006 -> 0.0000006, lr_select 0.0000250 -> 0.0000250, lr_seg 0.0000063 -> 0.0000063
+[06/24 21:17:54] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 226, total time 64.53, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:19:00] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 227, total time 65.97, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:20:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 228, total time 66.02, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:20:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [228]  
+[06/24 21:20:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33582
+[06/24 21:20:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.31903
+[06/24 21:20:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33680 | Acc0.50: 0.31720 | mIoU: 0.22900
+[06/24 21:20:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.201325, visual=0.068732, text=0.021974, fusion_wo_head=0.095473, head=0.010267
+[06/24 21:20:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.014068, bi_layer1=0.013768, bi_layer2=0.006135, total=0.033971
+[06/24 21:20:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:20:18] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.317200, lr_base 0.0000313 -> 0.0000313, lr_tran 0.0000313 -> 0.0000313, lr_text 0.0000006 -> 0.0000006, lr_select 0.0000250 -> 0.0000250, lr_seg 0.0000063 -> 0.0000063
+[06/24 21:21:24] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 229, total time 65.84, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:22:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 230, total time 65.24, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:23:36] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 231, total time 66.56, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:23:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [231]  
+[06/24 21:23:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.32743
+[06/24 21:23:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.31623
+[06/24 21:23:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.32740 | Acc0.50: 0.31250 | mIoU: 0.22230
+[06/24 21:23:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.172197, visual=0.057099, text=0.027480, fusion_wo_head=0.078858, head=0.004514
+[06/24 21:23:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.016030, bi_layer1=0.006283, bi_layer2=0.006162, total=0.028475
+[06/24 21:23:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:23:47] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.312500, lr_base 0.0000313 -> 0.0000313, lr_tran 0.0000313 -> 0.0000313, lr_text 0.0000006 -> 0.0000006, lr_select 0.0000250 -> 0.0000250, lr_seg 0.0000063 -> 0.0000063
+[06/24 21:24:53] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 232, total time 65.14, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:26:00] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 233, total time 66.81, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:27:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 234, total time 65.69, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:27:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [234]  
+[06/24 21:27:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.32463
+[06/24 21:27:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.31343
+[06/24 21:27:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.32560 | Acc0.50: 0.30970 | mIoU: 0.22060
+[06/24 21:27:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.194948, visual=0.083320, text=0.024963, fusion_wo_head=0.078433, head=0.004128
+[06/24 21:27:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.011442, bi_layer1=0.006435, bi_layer2=0.012601, total=0.030477
+[06/24 21:27:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:27:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.309700, lr_base 0.0000313 -> 0.0000313, lr_tran 0.0000313 -> 0.0000313, lr_text 0.0000006 -> 0.0000006, lr_select 0.0000250 -> 0.0000250, lr_seg 0.0000063 -> 0.0000063
+[06/24 21:28:24] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 235, total time 66.60, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:29:31] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 236, total time 67.19, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:30:38] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 237, total time 66.85, lr_base 0.0000313, lr_tran 0.0000313, lr_text 0.0000006, lr_select 0.0000250, lr_seg 0.0000063
+[06/24 21:30:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [237]  
+[06/24 21:30:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33675
+[06/24 21:30:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.32743
+[06/24 21:30:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33770 | Acc0.50: 0.32460 | mIoU: 0.23010
+[06/24 21:30:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.192656, visual=0.058173, text=0.026157, fusion_wo_head=0.081410, head=0.003898
+[06/24 21:30:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.007135, bi_layer1=0.013933, bi_layer2=0.006328, total=0.027396
+[06/24 21:30:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:30:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.324600, lr_base 0.0000313 -> 0.0000156, lr_tran 0.0000313 -> 0.0000156, lr_text 0.0000006 -> 0.0000003, lr_select 0.0000250 -> 0.0000125, lr_seg 0.0000063 -> 0.0000031 (reduced)
+[06/24 21:31:56] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 238, total time 65.73, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:33:03] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 239, total time 67.11, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:34:08] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 240, total time 65.50, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:34:19] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [240]  
+[06/24 21:34:19] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.31903
+[06/24 21:34:19] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.30410
+[06/24 21:34:19] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.31900 | Acc0.50: 0.30130 | mIoU: 0.21620
+[06/24 21:34:19] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.169417, visual=0.054353, text=0.014083, fusion_wo_head=0.087358, head=0.009956
+[06/24 21:34:19] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.011384, bi_layer1=0.013334, bi_layer2=0.014297, total=0.039015
+[06/24 21:34:19] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:34:19] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.301300, lr_base 0.0000156 -> 0.0000156, lr_tran 0.0000156 -> 0.0000156, lr_text 0.0000003 -> 0.0000003, lr_select 0.0000125 -> 0.0000125, lr_seg 0.0000031 -> 0.0000031
+[06/24 21:35:26] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 241, total time 65.39, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:36:31] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 242, total time 65.69, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:37:38] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 243, total time 66.18, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:37:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [243]  
+[06/24 21:37:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33022
+[06/24 21:37:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.31157
+[06/24 21:37:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33020 | Acc0.50: 0.30970 | mIoU: 0.22290
+[06/24 21:37:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.206894, visual=0.068748, text=0.013213, fusion_wo_head=0.117562, head=0.003701
+[06/24 21:37:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.006926, bi_layer1=0.005323, bi_layer2=0.017099, total=0.029348
+[06/24 21:37:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:37:49] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.309700, lr_base 0.0000156 -> 0.0000156, lr_tran 0.0000156 -> 0.0000156, lr_text 0.0000003 -> 0.0000003, lr_select 0.0000125 -> 0.0000125, lr_seg 0.0000031 -> 0.0000031
+[06/24 21:38:54] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 244, total time 64.65, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:40:00] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 245, total time 65.63, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:41:06] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 246, total time 66.28, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:41:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [246]  
+[06/24 21:41:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33582
+[06/24 21:41:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.32276
+[06/24 21:41:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33580 | Acc0.50: 0.31900 | mIoU: 0.22700
+[06/24 21:41:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.198730, visual=0.055255, text=0.016892, fusion_wo_head=0.117476, head=0.004904
+[06/24 21:41:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.027786, bi_layer1=0.015399, bi_layer2=0.009367, total=0.052552
+[06/24 21:41:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:41:17] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.319000, lr_base 0.0000156 -> 0.0000156, lr_tran 0.0000156 -> 0.0000156, lr_text 0.0000003 -> 0.0000003, lr_select 0.0000125 -> 0.0000125, lr_seg 0.0000031 -> 0.0000031
+[06/24 21:42:23] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 247, total time 65.14, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:43:29] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 248, total time 65.86, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:44:37] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 249, total time 67.43, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:44:48] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [249]  
+[06/24 21:44:48] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.32929
+[06/24 21:44:48] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.31343
+[06/24 21:44:48] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.32840 | Acc0.50: 0.30970 | mIoU: 0.22230
+[06/24 21:44:48] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.192037, visual=0.059804, text=0.016535, fusion_wo_head=0.104549, head=0.007101
+[06/24 21:44:48] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.007270, bi_layer1=0.018251, bi_layer2=0.006194, total=0.031714
+[06/24 21:44:48] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:44:48] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.309700, lr_base 0.0000156 -> 0.0000156, lr_tran 0.0000156 -> 0.0000156, lr_text 0.0000003 -> 0.0000003, lr_select 0.0000125 -> 0.0000125, lr_seg 0.0000031 -> 0.0000031
+[06/24 21:45:55] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 250, total time 66.50, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:47:02] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 251, total time 66.81, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:48:08] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 252, total time 66.02, lr_base 0.0000156, lr_tran 0.0000156, lr_text 0.0000003, lr_select 0.0000125, lr_seg 0.0000031
+[06/24 21:48:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [252]  
+[06/24 21:48:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.31810
+[06/24 21:48:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.30131
+[06/24 21:48:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.31810 | Acc0.50: 0.29940 | mIoU: 0.21490
+[06/24 21:48:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.169464, visual=0.053944, text=0.018466, fusion_wo_head=0.089466, head=0.004426
+[06/24 21:48:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.014457, bi_layer1=0.008472, bi_layer2=0.009748, total=0.032677
+[06/24 21:48:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:48:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.299400, lr_base 0.0000156 -> 0.0000078, lr_tran 0.0000156 -> 0.0000078, lr_text 0.0000003 -> 0.0000002, lr_select 0.0000125 -> 0.0000063, lr_seg 0.0000031 -> 0.0000016 (reduced)
+[06/24 21:49:27] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 253, total time 66.25, lr_base 0.0000078, lr_tran 0.0000078, lr_text 0.0000002, lr_select 0.0000063, lr_seg 0.0000016
+[06/24 21:50:33] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 254, total time 66.41, lr_base 0.0000078, lr_tran 0.0000078, lr_text 0.0000002, lr_select 0.0000063, lr_seg 0.0000016
+[06/24 21:51:39] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 255, total time 66.35, lr_base 0.0000078, lr_tran 0.0000078, lr_text 0.0000002, lr_select 0.0000063, lr_seg 0.0000016
+[06/24 21:51:51] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [255]  
+[06/24 21:51:51] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33582
+[06/24 21:51:51] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.32090
+[06/24 21:51:51] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33490 | Acc0.50: 0.31900 | mIoU: 0.22690
+[06/24 21:51:51] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.199996, visual=0.066064, text=0.012323, fusion_wo_head=0.114247, head=0.004136
+[06/24 21:51:51] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.012771, bi_layer1=0.006482, bi_layer2=0.024564, total=0.043818
+[06/24 21:51:51] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:51:51] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.319000, lr_base 0.0000078 -> 0.0000078, lr_tran 0.0000078 -> 0.0000078, lr_text 0.0000002 -> 0.0000002, lr_select 0.0000063 -> 0.0000063, lr_seg 0.0000016 -> 0.0000016
+[06/24 21:52:57] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 256, total time 65.42, lr_base 0.0000078, lr_tran 0.0000078, lr_text 0.0000002, lr_select 0.0000063, lr_seg 0.0000016
+[06/24 21:54:03] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 257, total time 65.76, lr_base 0.0000078, lr_tran 0.0000078, lr_text 0.0000002, lr_select 0.0000063, lr_seg 0.0000016
+[06/24 21:55:09] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 258, total time 66.23, lr_base 0.0000078, lr_tran 0.0000078, lr_text 0.0000002, lr_select 0.0000063, lr_seg 0.0000016
+[06/24 21:55:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [258]  
+[06/24 21:55:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.32743
+[06/24 21:55:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.31250
+[06/24 21:55:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.32740 | Acc0.50: 0.30970 | mIoU: 0.22350
+[06/24 21:55:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.199295, visual=0.053218, text=0.037868, fusion_wo_head=0.097252, head=0.007901
+[06/24 21:55:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.013112, bi_layer1=0.010976, bi_layer2=0.005421, total=0.029509
+[06/24 21:55:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).
+[06/24 21:55:20] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Plateau scheduler step: metric official_acc0.50=0.309700, lr_base 0.0000078 -> 0.0000078, lr_tran 0.0000078 -> 0.0000078, lr_text 0.0000002 -> 0.0000002, lr_select 0.0000063 -> 0.0000063, lr_seg 0.0000016 -> 0.0000016
+[06/24 21:56:25] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 259, total time 64.40, lr_base 0.0000078, lr_tran 0.0000078, lr_text 0.0000002, lr_select 0.0000063, lr_seg 0.0000016
+[06/24 21:57:31] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: epoch 260, total time 65.37, lr_base 0.0000078, lr_tran 0.0000078, lr_text 0.0000002, lr_select 0.0000063, lr_seg 0.0000016
+[06/24 21:57:32] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Saved in /mnt/share/algorithm/kimi/cache/lxy/TSP3D/scripts/experiments/wildrefer/image_features/wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer/strefer/2026-06-24_19-56-39/ckpt_epoch_last.pth
+[06/24 21:57:42] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Eval: [260]  
+[06/24 21:57:42] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.25: Top-1: 0.33489
+[06/24 21:57:42] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: 3dcnn Acc0.50: Top-1: 0.31623
+[06/24 21:57:42] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: WildRefer-official Acc0.25: 0.33490 | Acc0.50: 0.31440 | mIoU: 0.22610
+[06/24 21:57:42] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: Timing(s): inf=0.147250, visual=0.049401, text=0.010185, fusion_wo_head=0.080951, head=0.003937
+[06/24 21:57:42] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: External-attn-affected module time(s): bi_layer0=0.008910, bi_layer1=0.011353, bi_layer2=0.004958, total=0.025221
+[06/24 21:57:42] wildrefer_EA0_resnet18img_resume156_plateau_baseLR_260e_strefer INFO: GPU memory(MiB): N/A (no measured iterations; reduce --fps_warmup_iters or increase eval iters).

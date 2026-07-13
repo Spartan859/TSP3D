@@ -1,0 +1,35 @@
+## 3dcnn Acc0.25: 297
+```
+[07/04 22:01:26] EA02_SEG_freeze INFO: Eval: [297]  
+[07/04 22:01:26] EA02_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.56224
+[07/04 22:01:26] EA02_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.47750
+[07/04 22:01:26] EA02_SEG_freeze INFO: Acc_mask0.25 0.5720142977291842
+[07/04 22:01:26] EA02_SEG_freeze INFO: Acc_mask0.50 0.4725609756097561
+```
+
+## 3dcnn Acc0.50: 318
+```
+[07/05 07:57:33] EA02_SEG_freeze INFO: Eval: [318]  
+[07/05 07:57:33] EA02_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.56213
+[07/05 07:57:33] EA02_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.48171
+[07/05 07:57:33] EA02_SEG_freeze INFO: Acc_mask0.25 0.5793734230445753
+[07/05 07:57:33] EA02_SEG_freeze INFO: Acc_mask0.50 0.5032590412111018
+```
+
+## Acc_mask0.25: 318
+```
+[07/05 07:57:33] EA02_SEG_freeze INFO: Eval: [318]  
+[07/05 07:57:33] EA02_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.56213
+[07/05 07:57:33] EA02_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.48171
+[07/05 07:57:33] EA02_SEG_freeze INFO: Acc_mask0.25 0.5793734230445753
+[07/05 07:57:33] EA02_SEG_freeze INFO: Acc_mask0.50 0.5032590412111018
+```
+
+## Acc_mask0.50: 318
+```
+[07/05 07:57:33] EA02_SEG_freeze INFO: Eval: [318]  
+[07/05 07:57:33] EA02_SEG_freeze INFO: 3dcnn Acc0.25: Top-1: 0.56213
+[07/05 07:57:33] EA02_SEG_freeze INFO: 3dcnn Acc0.50: Top-1: 0.48171
+[07/05 07:57:33] EA02_SEG_freeze INFO: Acc_mask0.25 0.5793734230445753
+[07/05 07:57:33] EA02_SEG_freeze INFO: Acc_mask0.50 0.5032590412111018
+```

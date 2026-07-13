@@ -2,7 +2,8 @@
 # Measure ScanRefer inference speed for EA02+seg+refine+tps32 unfreeze.
 set -euo pipefail
 
-TSP3D_ENV="${TSP3D_ENV:-/mnt/share/micromamba/root/envs/TSP3D_4090}"
+default_tsp3d_env="${CONDA_PREFIX:-/mnt/share/micromamba/root/envs/TSP3D_4090}"
+TSP3D_ENV="${TSP3D_ENV:-${default_tsp3d_env}}"
 export PATH="${TSP3D_ENV}/bin:${PATH}"
 export CONDA_PREFIX="${TSP3D_ENV}"
 export LD_LIBRARY_PATH="${TSP3D_ENV}/lib:${LD_LIBRARY_PATH:-}"
