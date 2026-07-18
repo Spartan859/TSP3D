@@ -1337,6 +1337,7 @@ class TSPHead(nn.Module):
                     [targets.new_zeros((0, 7)) for i in range(len(rois))],
                     [targets.new_zeros(0) for i in range(len(rois))],
                     [targets.new_zeros(0) for i in range(len(rois))],
+                    None,
                     None)
 
         feats = ME.SparseTensor(tensors.features[:, :-1], tensors.coordinates)
