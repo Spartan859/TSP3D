@@ -200,6 +200,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} python -m torch.distrib
     --measure_fps \
     --fps_warmup_iters 100 \
     --fps_max_iters -1 \
+    --cudnn_benchmark false \
     --checkpoint_path ${PWD}/scripts/experiments/SEG_tps_thres32/SEG_tps_thres_seg_single_multi_32_SEGEA_resume2/scanrefer/2026-05-16_11-31-32/ckpt_epoch_300.pth \
     # --com_threshold 0.15\
     # --num_samples_com 1800\

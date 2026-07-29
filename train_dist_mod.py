@@ -234,8 +234,6 @@ class TrainTester(BaseTrainTester):
         wildrefer_pred_boxes = []
         wildrefer_gt_boxes = []
         mem_device = torch.cuda.current_device() if torch.cuda.is_available() else None
-        if mem_device is not None:
-            torch.cuda.reset_peak_memory_stats(mem_device)
 
         stat_dict = {}
         t_wall0 = _time.time()
@@ -279,12 +277,12 @@ class TrainTester(BaseTrainTester):
                 total_ext_time    += float(ext_profile.get('total', 0.0))
 
             if mem_device is not None and batch_idx >= fps_warmup_iters:
-                mem_allocated_mb.append(torch.cuda.memory_allocated(mem_device) / (1024.0 ** 2))
-                mem_reserved_mb.append(torch.cuda.memory_reserved(mem_device)   / (1024.0 ** 2))
-                max_allocated_mb = max(max_allocated_mb,
-                                       torch.cuda.max_memory_allocated(mem_device) / (1024.0 ** 2))
-                max_reserved_mb  = max(max_reserved_mb,
-                                       torch.cuda.max_memory_reserved(mem_device)  / (1024.0 ** 2))
+                memory = end_points.get('_inference_memory')
+                if memory is not None:
+                    mem_allocated_mb.append(memory['allocated_mib'])
+                    mem_reserved_mb.append(memory['reserved_mib'])
+                    max_allocated_mb = max(max_allocated_mb, memory['peak_allocated_mib'])
+                    max_reserved_mb = max(max_reserved_mb, memory['peak_reserved_mib'])
 
             if collect_wildrefer_official:
                 for bid in range(len(end_points['bbox_results'])):
@@ -434,7 +432,7 @@ class TrainTester(BaseTrainTester):
                 f"avg_reserved={m['mem_avg_res_mib']:.2f}, "
                 f"peak_allocated={m['mem_peak_alloc_mib']:.2f}, "
                 f"peak_reserved={m['mem_peak_res_mib']:.2f}, "
-                f'warmup_iters={fps_warmup_iters}'
+                f'warmup_iters={fps_warmup_iters}, scope=forward_only'
             )
         elif m['_mem_device_avail']:
             self.logger.info(

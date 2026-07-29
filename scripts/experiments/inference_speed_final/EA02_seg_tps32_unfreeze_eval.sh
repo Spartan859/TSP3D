@@ -237,6 +237,7 @@ TORCH_DISTRIBUTED_DEBUG=INFO CUDA_VISIBLE_DEVICES=${cvd} "${dist_launch_cmd[@]}"
     --measure_fps \
     --fps_warmup_iters "${FPS_WARMUP_ITERS}" \
     --fps_max_iters "${FPS_MAX_ITERS}" \
+    --cudnn_benchmark false \
     --checkpoint_path "${CHECKPOINT_PATH}"
 
 if [[ "${OCCUPY_GPU_AFTER_TRAIN:-0}" == "1" ]]; then

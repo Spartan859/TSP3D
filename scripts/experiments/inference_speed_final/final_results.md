@@ -1,6 +1,6 @@
 # Final Results Summary
 
-Accuracy results are summarized from `scripts/experiments.md`. Values are reported as percentages.
+Accuracy results are summarized from `scripts/experiments.md`. Values are reported as percentages. When both training-time and standalone evaluation results are available, all accuracy metrics in a row come from the same result set; train and eval metrics are not mixed.
 
 ## ScanRefer Accuracy
 
@@ -53,6 +53,7 @@ RTX 4090 D, batch_size=1. TSP3D rows use warmup=100, 9408 samples. EDA and BUTD-
 | EA02 | 56.20 | 46.10 | -- | -- | 18.28 | 869 |
 | EA0+seg | 55.96 | 48.37 | 58.21 | 51.22 | 12.42 | 1238 |
 | EA0+seg+SEGEA | 56.20 | 48.86 | 58.13 | 51.04 | 11.43 | 1381 |
+| EA02+seg+refine+tps32 unfreeze | 56.70 | 48.88 | 58.41 | 51.62 | 12.32 | 1048.48 |
 | MCLN-single | 51.96 | 33.16 | 55.83 | 47.60 | 6.18 | 972 |
 | MCLN-multi | 57.12 | 45.52 | 58.65 | 50.67 | 6.05 | 1000 |
 | EDA-single | 53.51 | 41.61 | -- | -- | 9.55 | 17463 |
@@ -62,3 +63,5 @@ RTX 4090 D, batch_size=1. TSP3D rows use warmup=100, 9408 samples. EDA and BUTD-
 EDA source log: `/mnt/share/algorithm/kimi/cache/lxy/EDA/outputs/platform_logs/eda_scanrefer_all_eval_20260622_084340.log`.
 
 BUTD-DETR source log: `/mnt/share/algorithm/kimi/cache/lxy/butd_detr/outputs/platform_logs/butd_detr_scanrefer_eval_20260622_114716.log`.
+
+EA02+seg+refine+tps32 unfreeze source log: `scripts/experiments/inference_speed_final/EA02_seg_tps32_unfreeze_eval/scanrefer/2026-07-18_06-01-49/log.txt`.

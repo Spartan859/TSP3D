@@ -187,7 +187,7 @@ def parse_option():
                         help='Measure inference FPS during eval (single-card recommended).')
     parser.add_argument('--measure_fps_detail', action='store_true',
                         help='Enable detailed per-stage inference timing (adds profiling overhead).')
-    parser.add_argument('--fps_warmup_iters', type=int, default=20,
+    parser.add_argument('--fps_warmup_iters', type=int, default=100,
                         help='Number of warmup eval iterations excluded from FPS stats.')
     parser.add_argument('--fps_max_iters', type=int, default=-1,
                         help='Max eval iterations to include for FPS; -1 means full loader.')
@@ -984,6 +984,14 @@ class BaseTrainTester:
             inputs["train"] = False
 
         # STEP Forward pass
+        measure_memory = (
+            torch.cuda.is_available()
+            and batch_idx >= max(int(getattr(args, 'fps_warmup_iters', 100)), 0)
+        )
+        if measure_memory:
+            mem_device = torch.cuda.current_device()
+            torch.cuda.synchronize(mem_device)
+            torch.cuda.reset_peak_memory_stats(mem_device)
         if torch.cuda.is_available():
             torch.cuda.synchronize()
         start_time = time.time()
@@ -995,6 +1003,13 @@ class BaseTrainTester:
         inf_time = end_time - start_time
 
         end_points = {'bbox_results': bbox_results, 'gt_bboxes_3d': gt_bboxes_3d, "seg_pred": seg_masks, "seg_gt": gt_masks}
+        if measure_memory:
+            end_points['_inference_memory'] = {
+                'allocated_mib': torch.cuda.memory_allocated(mem_device) / (1024.0 ** 2),
+                'reserved_mib': torch.cuda.memory_reserved(mem_device) / (1024.0 ** 2),
+                'peak_allocated_mib': torch.cuda.max_memory_allocated(mem_device) / (1024.0 ** 2),
+                'peak_reserved_mib': torch.cuda.max_memory_reserved(mem_device) / (1024.0 ** 2),
+            }
         # STEP Compute loss
         for key in batch_data:
             assert (key not in end_points)
