@@ -44,7 +44,7 @@ Best SR3D Acc@0.50 in this summary: `EA0+seg (freeze)`, 46.70. Best Mask@0.50: `
 
 ## ScanRefer Inference Speed Reference
 
-RTX 4090 D, batch_size=1. TSP3D rows use warmup=100, 9408 samples. EDA and BUTD-DETR rows use warmup=20, 9488 samples.
+RTX 4090 D, batch_size=1. TSP3D and EDA rows use warmup=100, 9408 measured samples, and forward-only FPS/memory scope. The BUTD-DETR row is a legacy warmup=20, 9488-sample result and is not directly comparable.
 
 | Config | Acc@0.25 | Acc@0.50 | Mask@0.25 | Mask@0.50 | FPS | Peak Alloc (MiB) |
 |--------|----------|----------|-----------|-----------|------|-------------------|
@@ -56,11 +56,11 @@ RTX 4090 D, batch_size=1. TSP3D rows use warmup=100, 9408 samples. EDA and BUTD-
 | EA02+seg+refine+tps32 unfreeze | 56.70 | 48.88 | 58.41 | 51.62 | 12.32 | 1048.48 |
 | MCLN-single | 51.96 | 33.16 | 55.83 | 47.60 | 6.18 | 972 |
 | MCLN-multi | 57.12 | 45.52 | 58.65 | 50.67 | 6.05 | 1000 |
-| EDA-single | 53.51 | 41.61 | -- | -- | 9.55 | 17463 |
-| EDA-multi | 54.45 | 42.30 | -- | -- | 9.16 | 17491 |
+| EDA-single | 53.54 | 41.62 | -- | -- | 10.17 | 806 |
+| EDA-multi | 54.45 | 42.31 | -- | -- | 9.84 | 834 |
 | BUTD-DETR | 53.70 | 40.90 | -- | -- | 9.05 | 17489 |
 
-EDA source log: `/mnt/share/algorithm/kimi/cache/lxy/EDA/outputs/platform_logs/eda_scanrefer_all_eval_20260622_084340.log`.
+EDA source log: `/share/lxy/EDA/output/platform_logs/eda_scanrefer_all_eval_20260729_072720.log` (`warmup_iters=100`, `scope=forward_only`, `measured_samples=9408`; multi-stage first, single-stage second).
 
 BUTD-DETR source log: `/mnt/share/algorithm/kimi/cache/lxy/butd_detr/outputs/platform_logs/butd_detr_scanrefer_eval_20260622_114716.log`.
 
