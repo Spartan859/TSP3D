@@ -44,7 +44,7 @@ Best SR3D Acc@0.50 in this summary: `EA0+seg (freeze)`, 46.70. Best Mask@0.50: `
 
 ## ScanRefer Inference Speed Reference
 
-RTX 4090 D, batch_size=1. TSP3D and EDA rows use warmup=100, 9408 measured samples, and forward-only FPS/memory scope. The BUTD-DETR row is a legacy warmup=20, 9488-sample result and is not directly comparable.
+RTX 4090 D, batch_size=1. All rows use warmup=100, 9408 measured samples, and forward-only FPS/memory scope.
 
 | Config | Acc@0.25 | Acc@0.50 | Mask@0.25 | Mask@0.50 | FPS | Peak Alloc (MiB) |
 |--------|----------|----------|-----------|-----------|------|-------------------|
@@ -58,10 +58,10 @@ RTX 4090 D, batch_size=1. TSP3D and EDA rows use warmup=100, 9408 measured sampl
 | MCLN-multi | 57.12 | 45.52 | 58.65 | 50.67 | 6.05 | 1000 |
 | EDA-single | 53.54 | 41.62 | -- | -- | 10.17 | 806 |
 | EDA-multi | 54.45 | 42.31 | -- | -- | 9.84 | 834 |
-| BUTD-DETR | 53.70 | 40.90 | -- | -- | 9.05 | 17489 |
+| BUTD-DETR | 53.70 | 40.90 | -- | -- | 9.14 | 831 |
 
 EDA source log: `/share/lxy/EDA/output/platform_logs/eda_scanrefer_all_eval_20260729_072720.log` (`warmup_iters=100`, `scope=forward_only`, `measured_samples=9408`; multi-stage first, single-stage second).
 
-BUTD-DETR source log: `/mnt/share/algorithm/kimi/cache/lxy/butd_detr/outputs/platform_logs/butd_detr_scanrefer_eval_20260622_114716.log`.
+BUTD-DETR source log: `/share/lxy/butd_detr/output/platform_logs/butd_detr_scanrefer_eval_20260729_111822.log` (`warmup_iters=100`, `scope=forward_only`, `measured_samples=9408`; contrastive alignment accuracy).
 
 EA02+seg+refine+tps32 unfreeze source log: `scripts/experiments/inference_speed_final/EA02_seg_tps32_unfreeze_eval/scanrefer/2026-07-18_06-01-49/log.txt`.
